@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
- *             .vaultName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .vaultName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .vaultType("STANDARD")
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .name(String.format("Example-%s", defaultInteger.result()))
+ *             .name(String.format("Example-%s", defaultInteger.get("result")))
  *             .description("terraform-example")
  *             .accessedBy("Any")
  *             .tags(Map.ofEntries(
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new OtsBackupPlan("example", OtsBackupPlanArgs.builder()
- *             .otsBackupPlanName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .otsBackupPlanName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .vaultId(defaultVault.id())
  *             .backupType("COMPLETE")
  *             .retention("1")

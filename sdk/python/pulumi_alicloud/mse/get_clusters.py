@@ -184,7 +184,7 @@ def get_clusters(cluster_alias_name: Optional[_builtins.str] = None,
         mse_version="mse_pro",
         vswitch_id=example_switch.id,
         vpc_id=example_network.id)
-    # Declare the data source
+    # Declare the function
     example_get_clusters = alicloud.mse.get_clusters_output(enable_details=True,
         ids=[example_cluster.id],
         status="INIT_SUCCESS",
@@ -264,7 +264,7 @@ def get_clusters_output(cluster_alias_name: pulumi.Input[Optional[Optional[_buil
         mse_version="mse_pro",
         vswitch_id=example_switch.id,
         vpc_id=example_network.id)
-    # Declare the data source
+    # Declare the function
     example_get_clusters = alicloud.mse.get_clusters_output(enable_details=True,
         ids=[example_cluster.id],
         status="INIT_SUCCESS",

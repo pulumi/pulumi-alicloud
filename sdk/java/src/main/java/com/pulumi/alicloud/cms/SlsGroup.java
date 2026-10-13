@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .projectName(StdFunctions.substr(SubstrArgs.builder()
  *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
- *                     .text(defaultUuid.result())
+ *                     .text(defaultUuid.get("result"))
  *                     .search("-")
  *                     .replace("")
  *                     .build()).result()))

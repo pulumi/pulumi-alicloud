@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("%s-%s", name,defaultInteger.result()))
+ *             .bucket(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .tags(Map.of("For", "example"))
  *             .build());
  * 

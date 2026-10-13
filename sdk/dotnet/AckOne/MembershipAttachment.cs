@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.AckOne
     ///     {
     ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
     ///         CpuCoreCount = 4,
-    ///         MemorySize = 8,
+    ///         MemorySize = 8.0,
     ///         KubernetesNodeRole = "Worker",
     ///         SystemDiskCategory = "cloud_efficiency",
     ///     });

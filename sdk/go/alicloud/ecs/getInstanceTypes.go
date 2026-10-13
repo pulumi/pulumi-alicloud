@@ -48,7 +48,7 @@ import (
 // if err != nil {
 // return err
 // }
-// // Declare the data source
+// // Declare the function
 // defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 // AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 // InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),

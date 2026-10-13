@@ -110,7 +110,7 @@ def get_key_versions(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     alicloud_kms_key_versions_ds = alicloud.kms.get_key_versions(key_id="08438c-b4d5-4d05-928c-07b7xxxx",
         ids=["d89e8a53-b708-41aa-8c67-6873axxx"])
     pulumi.export("allVersions", alicloud_kms_key_versions_ds.versions)
@@ -149,7 +149,7 @@ def get_key_versions_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     alicloud_kms_key_versions_ds = alicloud.kms.get_key_versions(key_id="08438c-b4d5-4d05-928c-07b7xxxx",
         ids=["d89e8a53-b708-41aa-8c67-6873axxx"])
     pulumi.export("allVersions", alicloud_kms_key_versions_ds.versions)

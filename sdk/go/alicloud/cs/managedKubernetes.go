@@ -173,7 +173,7 @@ import (
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitches-%v", key0), &vpc.SwitchArgs{
 // VpcId: pulumi.String(tmp1),
-// CidrBlock: pulumi.String(vswitchCidrs[val0]),
+// CidrBlock: vswitchCidrs[val0],
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
 // if err != nil {
@@ -205,7 +205,7 @@ import (
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("terway_vswitches-%v", key0), &vpc.SwitchArgs{
 // VpcId: pulumi.String(tmp3),
-// CidrBlock: pulumi.String(terwayVswitchCidrs[val0]),
+// CidrBlock: terwayVswitchCidrs[val0],
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
 // if err != nil {

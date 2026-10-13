@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     vswitchId: exampleSwitch.id,
  *     vpcId: exampleNetwork.id,
  * });
- * // Declare the data source
+ * // Declare the function
  * const exampleGetClusters = alicloud.mse.getClustersOutput({
  *     enableDetails: true,
  *     ids: [exampleCluster.id],
@@ -170,7 +170,7 @@ export interface GetClustersResult {
  *     vswitchId: exampleSwitch.id,
  *     vpcId: exampleNetwork.id,
  * });
- * // Declare the data source
+ * // Declare the function
  * const exampleGetClusters = alicloud.mse.getClustersOutput({
  *     enableDetails: true,
  *     ids: [exampleCluster.id],

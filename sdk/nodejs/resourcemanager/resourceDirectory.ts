@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const _default = alicloud.resourcemanager.getResourceDirectories({});
  * const defaultResourceDirectory: alicloud.resourcemanager.ResourceDirectory[] = [];
- * _default.then(_default => _default.directories).length.apply(length => {
+ * _default.then(_default => _default.directories.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultResourceDirectory.push(new alicloud.resourcemanager.ResourceDirectory(`default-${range}`, {status: "Enabled"}));
  *     }

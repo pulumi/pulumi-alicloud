@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
  *             .build());
  * 
- *         final var index = default_.zones().size().applyValue(_length -> _length - 1);
+ *         final var index = default_.zones().size() - 1;
  * 
- *         final var zoneId = default_.zones()[index].id();
+ *         final var zoneId = index.applyValue(_index -> default_.zones()[_index]).applyValue(_obj -> _obj.id());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .cidrBlock("10.0.0.0/8")
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *         // modify private network address.
  *         var private_ = new ReplicaSetRole("private", ReplicaSetRoleArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
- *             .roleId(defaultInstance.replicaSets().applyValue(_replicaSets -> _replicaSets[0].roleId()))
+ *             .roleId(defaultInstance.replicaSets().applyValue(_replicaSets -> _replicaSets.get(0).roleId()))
  *             .connectionPrefix("test-tf-private-change")
  *             .connectionPort(3718)
  *             .networkType("VPC")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *         // modify public network address.
  *         var public_ = new ReplicaSetRole("public", ReplicaSetRoleArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
- *             .roleId(defaultPublicNetworkAddress.replicaSets().applyValue(_replicaSets -> _replicaSets[0].roleId()))
+ *             .roleId(defaultPublicNetworkAddress.replicaSets().applyValue(_replicaSets -> _replicaSets.get(0).roleId()))
  *             .connectionPrefix("test-tf-public-0")
  *             .connectionPort(3719)
  *             .networkType("Public")

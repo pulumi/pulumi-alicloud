@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Governance
     ///         AccountNamePrefix = $"{name}-{defaultInteger.Result}",
     ///         FolderId = defaultGetFolders.Apply(getFoldersResult =&gt; getFoldersResult.Ids[0]),
     ///         BaselineId = defaultGetBaselines.Apply(getBaselinesResult =&gt; getBaselinesResult.Ids[0]),
-    ///         PayerAccountId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         PayerAccountId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         DisplayName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 

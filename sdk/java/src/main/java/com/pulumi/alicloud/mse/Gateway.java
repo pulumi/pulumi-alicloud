@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  *             .gatewayName("terraform-example")
  *             .replica(2)
  *             .spec("MSE_GTW_2_4_200_c")
- *             .vswitchId(exampleSwitch[0].id())
- *             .backupVswitchId(exampleSwitch[1].id())
+ *             .vswitchId(exampleSwitch.get(0).id())
+ *             .backupVswitchId(exampleSwitch.get(1).id())
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 

@@ -142,7 +142,7 @@ def get_registry_enterprise_instances(enable_details: Optional[_builtins.bool] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     my_instances = alicloud.cs.get_registry_enterprise_instances(name_regex="my-instances",
         output_file="my-instances-json")
     pulumi.export("output", my_instances.instances)
@@ -190,7 +190,7 @@ def get_registry_enterprise_instances_output(enable_details: pulumi.Input[Option
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     my_instances = alicloud.cs.get_registry_enterprise_instances(name_regex="my-instances",
         output_file="my-instances-json")
     pulumi.export("output", my_instances.instances)

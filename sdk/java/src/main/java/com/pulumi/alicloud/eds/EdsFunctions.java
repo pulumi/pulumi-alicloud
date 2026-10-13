@@ -2432,12 +2432,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -2537,12 +2537,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -2642,12 +2642,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -2747,12 +2747,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -2852,12 +2852,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -2957,12 +2957,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -3062,12 +3062,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops().get(0).id()));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops().get(0).id()));
      *     }
      * }
      * }
@@ -3165,12 +3165,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3268,12 +3268,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3371,12 +3371,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3474,12 +3474,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3577,12 +3577,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3680,12 +3680,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3783,12 +3783,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images().get(0).id()));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images().get(0).id()));
      *     }
      * }
      * }
@@ -3854,7 +3854,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -3920,7 +3920,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -3986,7 +3986,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -4052,7 +4052,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -4118,7 +4118,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -4184,7 +4184,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -4250,7 +4250,7 @@ public final class EdsFunctions {
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems().get(0).id()));
      *     }
      * }
      * }
@@ -4310,7 +4310,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }
@@ -4370,7 +4370,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }
@@ -4430,7 +4430,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }
@@ -4490,7 +4490,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }
@@ -4550,7 +4550,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }
@@ -4610,7 +4610,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }
@@ -4670,7 +4670,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages().get(0).id()));
      *     }
      * }
      * }

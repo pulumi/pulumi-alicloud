@@ -69,12 +69,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEventBus = new EventBus("defaultEventBus", EventBusArgs.builder()
- *             .eventBusName(String.format("%s-%s", name,default_.result()))
+ *             .eventBusName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultEventSourceV2 = new EventSourceV2("defaultEventSourceV2", EventSourceV2Args.builder()
  *             .eventBusName(defaultEventBus.eventBusName())
- *             .eventSourceName(String.format("%s-%s", name,default_.result()))
+ *             .eventSourceName(String.format("%s-%s", name,default_.get("result")))
  *             .description(name)
  *             .linkedExternalSource(true)
  *             .sourceHttpEventParameters(EventSourceV2SourceHttpEventParametersArgs.builder()

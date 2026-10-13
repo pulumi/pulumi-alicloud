@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());

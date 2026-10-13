@@ -32,22 +32,24 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
+        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones).Length);
         /// 
-        ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+        ///     var zoneId = Output.Tuple(@default, countSize, @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[(countSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///     {
         ///         var @default = values.Item1;
         ///         var countSize = values.Item2;
-        ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+        ///         var obj = values.Item3;
+        ///         return obj.ZoneId;
         ///     });
         /// 
-        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length();
+        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
         /// 
-        ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+        ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize, defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[(instanceTypeCountSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///     {
         ///         var defaultGetInstanceTypes = values.Item1;
         ///         var instanceTypeCountSize = values.Item2;
-        ///         return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+        ///         var obj = values.Item3;
+        ///         return obj.InstanceType;
         ///     });
         /// 
         ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
@@ -81,11 +83,12 @@ namespace Pulumi.AliCloud.Ecp
         ///         KeyPairName = defaultKeyPair.KeyPairName,
         ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         ImageId = "android_9_0_0_release_2851157_20211201.vhd",
-        ///         InstanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+        ///         InstanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize, defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[(instanceTypeCountSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///         {
         ///             var defaultGetInstanceTypes = values.Item1;
         ///             var instanceTypeCountSize = values.Item2;
-        ///             return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+        ///             var obj = values.Item3;
+        ///             return obj.InstanceType;
         ///         }),
         ///         PaymentType = "PayAsYouGo",
         ///     });
@@ -117,22 +120,24 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
+        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones).Length);
         /// 
-        ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+        ///     var zoneId = Output.Tuple(@default, countSize, @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[(countSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///     {
         ///         var @default = values.Item1;
         ///         var countSize = values.Item2;
-        ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+        ///         var obj = values.Item3;
+        ///         return obj.ZoneId;
         ///     });
         /// 
-        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length();
+        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
         /// 
-        ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+        ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize, defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[(instanceTypeCountSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///     {
         ///         var defaultGetInstanceTypes = values.Item1;
         ///         var instanceTypeCountSize = values.Item2;
-        ///         return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+        ///         var obj = values.Item3;
+        ///         return obj.InstanceType;
         ///     });
         /// 
         ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
@@ -166,11 +171,12 @@ namespace Pulumi.AliCloud.Ecp
         ///         KeyPairName = defaultKeyPair.KeyPairName,
         ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         ImageId = "android_9_0_0_release_2851157_20211201.vhd",
-        ///         InstanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+        ///         InstanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize, defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[(instanceTypeCountSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///         {
         ///             var defaultGetInstanceTypes = values.Item1;
         ///             var instanceTypeCountSize = values.Item2;
-        ///             return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+        ///             var obj = values.Item3;
+        ///             return obj.InstanceType;
         ///         }),
         ///         PaymentType = "PayAsYouGo",
         ///     });
@@ -202,22 +208,24 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
+        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones).Length);
         /// 
-        ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+        ///     var zoneId = Output.Tuple(@default, countSize, @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[(countSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///     {
         ///         var @default = values.Item1;
         ///         var countSize = values.Item2;
-        ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+        ///         var obj = values.Item3;
+        ///         return obj.ZoneId;
         ///     });
         /// 
-        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length();
+        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
         /// 
-        ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+        ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize, defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[(instanceTypeCountSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///     {
         ///         var defaultGetInstanceTypes = values.Item1;
         ///         var instanceTypeCountSize = values.Item2;
-        ///         return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+        ///         var obj = values.Item3;
+        ///         return obj.InstanceType;
         ///     });
         /// 
         ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
@@ -251,11 +259,12 @@ namespace Pulumi.AliCloud.Ecp
         ///         KeyPairName = defaultKeyPair.KeyPairName,
         ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         ImageId = "android_9_0_0_release_2851157_20211201.vhd",
-        ///         InstanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+        ///         InstanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize, defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[(instanceTypeCountSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
         ///         {
         ///             var defaultGetInstanceTypes = values.Item1;
         ///             var instanceTypeCountSize = values.Item2;
-        ///             return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+        ///             var obj = values.Item3;
+        ///             return obj.InstanceType;
         ///         }),
         ///         PaymentType = "PayAsYouGo",
         ///     });

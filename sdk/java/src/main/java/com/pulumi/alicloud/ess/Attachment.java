@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+ *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")
@@ -163,8 +163,8 @@ import javax.annotation.Nullable;
  *         var defaultAttachment = new Attachment("defaultAttachment", AttachmentArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .instanceIds(            
- *                 defaultInstance[0].id(),
- *                 defaultInstance[1].id())
+ *                 defaultInstance.get(0).id(),
+ *                 defaultInstance.get(1).id())
  *             .force(true)
  *             .build());
  * 

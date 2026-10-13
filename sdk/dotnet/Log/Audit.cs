@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Log
     ///             { "oss_access_enabled", "true" },
     ///             { "oss_access_ttl", "180" },
     ///         },
-    ///         MultiAccounts = new[] {},
+    ///         MultiAccounts = new() {},
     ///         ResourceDirectoryType = "custom",
     ///     });
     /// 

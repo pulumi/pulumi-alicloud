@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+ *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")

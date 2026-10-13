@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
         ///     {
         ///         NameRegex = "my-cluster",
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
         ///     {
         ///         NameRegex = "my-cluster",
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
         ///     {
         ///         NameRegex = "my-cluster",

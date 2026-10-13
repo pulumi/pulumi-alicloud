@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("example-value-%s", defaultInteger.result()))
+ *             .projectName(String.format("example-value-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
- *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
+ *             .name(String.format("fcservicerole-%s", defaultInteger.get("result")))
  *             .document("""
  *   {
  *       \"Statement\": [
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .name(String.format("example-value-%s", defaultInteger.get("result")))
  *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
@@ -258,11 +258,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
- *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .name(String.format("example-value-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
- *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
+ *             .name(String.format("fcservicerole-%s", defaultInteger.get("result")))
  *             .document("""
  *   {
  *       \"Statement\": [
@@ -290,13 +290,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .name(String.format("example-value-%s", defaultInteger.get("result")))
  *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
@@ -313,7 +313,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
- *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -395,7 +395,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
- *             .domainName(String.format("example%s.tf.com", defaultInteger.result()))
+ *             .domainName(String.format("example%s.tf.com", defaultInteger.get("result")))
  *             .cdnType("web")
  *             .scope("overseas")
  *             .sources(DomainNewSourceArgs.builder()
@@ -408,13 +408,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .name(String.format("example-value-%s", defaultInteger.get("result")))
  *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
- *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
+ *             .name(String.format("fcservicerole-%s", defaultInteger.get("result")))
  *             .document("""
  *     }{{@code
  *       \"Statement\": [
@@ -436,7 +436,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
- *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.result()))
+ *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.get("result")))
  *             .policyDocument(defaultService.name().applyValue(_name -> """
  *     }{{@code
  *         \"Version\": \"1\",
@@ -465,7 +465,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
@@ -482,7 +482,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
- *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -577,13 +577,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .name(String.format("example-value-%s", defaultInteger.get("result")))
  *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
@@ -675,7 +675,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new com.pulumi.alicloud.rocketmq.Instance("defaultInstance", com.pulumi.alicloud.rocketmq.InstanceArgs.builder()
- *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .instanceName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .remark("terraform-example")
  *             .build());
  * 
@@ -738,7 +738,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance2 = new com.pulumi.alicloud.amqp.Instance("defaultInstance2", com.pulumi.alicloud.amqp.InstanceArgs.builder()
- *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .instanceName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .instanceType("professional")
  *             .maxTps("1000")
  *             .queueCapacity("50")

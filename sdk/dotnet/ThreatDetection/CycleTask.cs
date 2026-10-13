@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///         TargetStartTime = 0,
     ///         Source = "console_batch",
     ///         TaskName = "VIRUS_VUL_SCHEDULE_SCAN",
-    ///         FirstDateStr = 1650556800000,
+    ///         FirstDateStr = (int)1650556800000,
     ///         PeriodUnit = "day",
     ///         IntervalPeriod = 7,
     ///         Param = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;

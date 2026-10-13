@@ -186,11 +186,11 @@ class Backup(pulumi.CustomResource):
                     zone_id=zone_id,
                     vswitch_name=name))
 
-        len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
-        vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default_get_switches.ids) > 0 else 1.apply(create_vswitch)
+        vswitch_id = default_get_switches.ids[0] if len(default_get_switches.ids) > 0 else std.concat(input=[
             [__item.id for __item in vswitch],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_instance = alicloud.kvstore.Instance("default",
             port=6379,
             payment_type="PrePaid",
@@ -198,7 +198,7 @@ class Backup(pulumi.CustomResource):
             password="123456_tf",
             engine_version="5.0",
             zone_id=zone_id,
-            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
+            vswitch_id=vswitch_id.apply(lambda x: str(x)),
             period="1",
             instance_class="redis.shard.small.2.ce")
         default_backup = alicloud.redis.Backup("default",
@@ -270,11 +270,11 @@ class Backup(pulumi.CustomResource):
                     zone_id=zone_id,
                     vswitch_name=name))
 
-        len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
-        vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default_get_switches.ids) > 0 else 1.apply(create_vswitch)
+        vswitch_id = default_get_switches.ids[0] if len(default_get_switches.ids) > 0 else std.concat(input=[
             [__item.id for __item in vswitch],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_instance = alicloud.kvstore.Instance("default",
             port=6379,
             payment_type="PrePaid",
@@ -282,7 +282,7 @@ class Backup(pulumi.CustomResource):
             password="123456_tf",
             engine_version="5.0",
             zone_id=zone_id,
-            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
+            vswitch_id=vswitch_id.apply(lambda x: str(x)),
             period="1",
             instance_class="redis.shard.small.2.ce")
         default_backup = alicloud.redis.Backup("default",

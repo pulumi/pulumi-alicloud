@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new ChangeSet("example", ChangeSetArgs.builder()
  *             .changeSetName("example_value")
- *             .stackName(String.format("tf-example-%s", default_.result()))
+ *             .stackName(String.format("tf-example-%s", default_.get("result")))
  *             .changeSetType("CREATE")
  *             .description("Test From Terraform")
  *             .templateBody("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}")

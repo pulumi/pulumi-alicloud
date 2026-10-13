@@ -168,8 +168,8 @@ import javax.annotation.Nullable;
  *             .functionName(function.functionName())
  *             .build());
  * 
- *         ctx.export("outputCalicloudFcv3TriggerInternet", alicloudFcv3Trigger.default().httpTrigger()[0].urlInternet());
- *         ctx.export("outputCalicloudFcv3TriggerIntranet", alicloudFcv3Trigger.default().httpTrigger()[0].urlIntranet());
+ *         ctx.export("outputCalicloudFcv3TriggerInternet", alicloudFcv3Trigger.get("default").get("httpTrigger")[0].get("urlInternet"));
+ *         ctx.export("outputCalicloudFcv3TriggerIntranet", alicloudFcv3Trigger.get("default").get("httpTrigger")[0].get("urlIntranet"));
  *     }
  * }
  * }

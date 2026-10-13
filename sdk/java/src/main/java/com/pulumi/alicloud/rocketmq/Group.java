@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()

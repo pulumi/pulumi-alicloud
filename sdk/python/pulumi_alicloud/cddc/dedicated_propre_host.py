@@ -1019,7 +1019,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                     vpc_id=default_get_switches.vswitches[0].vpc_id,
                     name="tf-exampleacc-cddc-dedicated_propre_host"))
 
-        len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default_get_security_groups.ids) > 0 else 1.apply(create_default)
         default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
         default_ecs_deployment_set: list[alicloud.ecs.EcsDeploymentSet] = []
         def create_default(range_body):
@@ -1031,14 +1031,14 @@ class DedicatedPropreHost(pulumi.CustomResource):
                     deployment_set_name="tf-exampleacc-cddc-dedicated_propre_host",
                     description="tf-exampleacc-cddc-dedicated_propre_host"))
 
-        len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default_get_ecs_deployment_sets.ids) > 0 else 1.apply(create_default)
         default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
         default_key_pair: list[alicloud.ecs.KeyPair] = []
         def create_default(range_body):
             for default_key_pair_range in [{"value": i} for i in range(0, range_body)]:
                 default_key_pair.append(alicloud.ecs.KeyPair(f"default-{default_key_pair_range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
 
-        len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default_get_key_pairs.ids) > 0 else 1.apply(create_default)
         default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
             name_regex="tf-exampleacc-cddc-dedicated_propre_host")
         default_dedicated_host_group: list[alicloud.cddc.DedicatedHostGroup] = []
@@ -1055,30 +1055,30 @@ class DedicatedPropreHost(pulumi.CustomResource):
                     dedicated_host_group_desc="tf-exampleacc-cddc-dedicated_propre_host",
                     open_permission=True))
 
-        len(default_get_dedicated_host_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        alicloud_security_group_id = len(default_get_security_groups.ids).apply(lambda length: default_get_security_groups.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default_get_dedicated_host_groups.ids) > 0 else 1.apply(create_default)
+        alicloud_security_group_id = default_get_security_groups.ids[0] if len(default_get_security_groups.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_security_group],
             [""],
-        ]).result[0])
-        alicloud_ecs_deployment_set_id = len(default_get_ecs_deployment_sets.ids).apply(lambda length: default_get_ecs_deployment_sets.sets[0].deployment_set_id if length > 0 else std.concat(input=[
+        ]).result[0]
+        alicloud_ecs_deployment_set_id = default_get_ecs_deployment_sets.sets[0].deployment_set_id if len(default_get_ecs_deployment_sets.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_ecs_deployment_set],
             [""],
-        ]).result[0])
-        alicloud_key_pair_id = len(default_get_key_pairs.ids).apply(lambda length: default_get_key_pairs.ids[0] if length > 0 else std.concat(input=[
+        ]).result[0]
+        alicloud_key_pair_id = default_get_key_pairs.ids[0] if len(default_get_key_pairs.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_key_pair],
             [""],
-        ]).result[0])
-        dedicated_host_group_id = len(default_get_dedicated_host_groups.ids).apply(lambda length: default_get_dedicated_host_groups.ids[0] if length > 0 else std.concat(input=[
+        ]).result[0]
+        dedicated_host_group_id = default_get_dedicated_host_groups.ids[0] if len(default_get_dedicated_host_groups.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_dedicated_host_group],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
             vswitch_id=default_get_switches.ids[0],
             ecs_instance_name="exampleTf",
-            ecs_deployment_set_id=output(alicloud_ecs_deployment_set_id).apply(lambda x: str(x)),
+            ecs_deployment_set_id=alicloud_ecs_deployment_set_id.apply(lambda x: str(x)),
             auto_renew="false",
-            security_group_id=output(alicloud_security_group_id).apply(lambda x: str(x)),
-            dedicated_host_group_id=output(dedicated_host_group_id).apply(lambda x: str(x)),
+            security_group_id=alicloud_security_group_id.apply(lambda x: str(x)),
+            dedicated_host_group_id=dedicated_host_group_id.apply(lambda x: str(x)),
             ecs_host_name="exampleTf",
             vpc_id=default_get_networks.ids[0],
             ecs_unique_suffix="false",
@@ -1210,7 +1210,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                     vpc_id=default_get_switches.vswitches[0].vpc_id,
                     name="tf-exampleacc-cddc-dedicated_propre_host"))
 
-        len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default_get_security_groups.ids) > 0 else 1.apply(create_default)
         default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
         default_ecs_deployment_set: list[alicloud.ecs.EcsDeploymentSet] = []
         def create_default(range_body):
@@ -1222,14 +1222,14 @@ class DedicatedPropreHost(pulumi.CustomResource):
                     deployment_set_name="tf-exampleacc-cddc-dedicated_propre_host",
                     description="tf-exampleacc-cddc-dedicated_propre_host"))
 
-        len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default_get_ecs_deployment_sets.ids) > 0 else 1.apply(create_default)
         default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
         default_key_pair: list[alicloud.ecs.KeyPair] = []
         def create_default(range_body):
             for default_key_pair_range in [{"value": i} for i in range(0, range_body)]:
                 default_key_pair.append(alicloud.ecs.KeyPair(f"default-{default_key_pair_range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
 
-        len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default_get_key_pairs.ids) > 0 else 1.apply(create_default)
         default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
             name_regex="tf-exampleacc-cddc-dedicated_propre_host")
         default_dedicated_host_group: list[alicloud.cddc.DedicatedHostGroup] = []
@@ -1246,30 +1246,30 @@ class DedicatedPropreHost(pulumi.CustomResource):
                     dedicated_host_group_desc="tf-exampleacc-cddc-dedicated_propre_host",
                     open_permission=True))
 
-        len(default_get_dedicated_host_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        alicloud_security_group_id = len(default_get_security_groups.ids).apply(lambda length: default_get_security_groups.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default_get_dedicated_host_groups.ids) > 0 else 1.apply(create_default)
+        alicloud_security_group_id = default_get_security_groups.ids[0] if len(default_get_security_groups.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_security_group],
             [""],
-        ]).result[0])
-        alicloud_ecs_deployment_set_id = len(default_get_ecs_deployment_sets.ids).apply(lambda length: default_get_ecs_deployment_sets.sets[0].deployment_set_id if length > 0 else std.concat(input=[
+        ]).result[0]
+        alicloud_ecs_deployment_set_id = default_get_ecs_deployment_sets.sets[0].deployment_set_id if len(default_get_ecs_deployment_sets.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_ecs_deployment_set],
             [""],
-        ]).result[0])
-        alicloud_key_pair_id = len(default_get_key_pairs.ids).apply(lambda length: default_get_key_pairs.ids[0] if length > 0 else std.concat(input=[
+        ]).result[0]
+        alicloud_key_pair_id = default_get_key_pairs.ids[0] if len(default_get_key_pairs.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_key_pair],
             [""],
-        ]).result[0])
-        dedicated_host_group_id = len(default_get_dedicated_host_groups.ids).apply(lambda length: default_get_dedicated_host_groups.ids[0] if length > 0 else std.concat(input=[
+        ]).result[0]
+        dedicated_host_group_id = default_get_dedicated_host_groups.ids[0] if len(default_get_dedicated_host_groups.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_dedicated_host_group],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
             vswitch_id=default_get_switches.ids[0],
             ecs_instance_name="exampleTf",
-            ecs_deployment_set_id=output(alicloud_ecs_deployment_set_id).apply(lambda x: str(x)),
+            ecs_deployment_set_id=alicloud_ecs_deployment_set_id.apply(lambda x: str(x)),
             auto_renew="false",
-            security_group_id=output(alicloud_security_group_id).apply(lambda x: str(x)),
-            dedicated_host_group_id=output(dedicated_host_group_id).apply(lambda x: str(x)),
+            security_group_id=alicloud_security_group_id.apply(lambda x: str(x)),
+            dedicated_host_group_id=dedicated_host_group_id.apply(lambda x: str(x)),
             ecs_host_name="exampleTf",
             vpc_id=default_get_networks.ids[0],
             ecs_unique_suffix="false",

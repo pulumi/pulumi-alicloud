@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Eais
     ///     {
     ///         AvailabilityZone = "cn-hangzhou-i",
     ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         MemorySize = 2.0,
     ///     });
     /// 
     ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()

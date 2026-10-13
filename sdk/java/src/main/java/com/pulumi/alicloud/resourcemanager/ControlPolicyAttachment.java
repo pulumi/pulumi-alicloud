@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultFolder = new Folder("defaultFolder", FolderArgs.builder()
- *             .folderName(String.format("%s-%s", name,default_.result()))
+ *             .folderName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultControlPolicyAttachment = new ControlPolicyAttachment("defaultControlPolicyAttachment", ControlPolicyAttachmentArgs.builder()

@@ -71,17 +71,15 @@ import (
 // if err != nil {
 // return err
 // }
-// var vswitch []*vpc.Switch
-// for index := 0; index < int(len(defaultGetSwitches.Ids).ApplyT(func(length int) (int, error) {
-// var tmp0 int
-// if length > 0 {
+// var tmp0 pulumi.Int
+// if len(defaultGetSwitches.Ids) > 0 {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
 // }
-// return tmp0, nil
+// var vswitch []*vpc.Switch
 //
-//	}).(pulumi.IntOutput)); index++ {
+//	for index := 0; index < tmp0; index++ {
 //	    key0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
@@ -95,9 +93,8 @@ import (
 // }
 // vswitch = append(vswitch, __res)
 // }
-// vswitchId := len(defaultGetSwitches.Ids).ApplyT(func(length int) (*interface{}, error) {
-// var tmp1 *interface{}
-// if length > 0 {
+// var tmp1 pulumi.Any
+// if len(defaultGetSwitches.Ids) > 0 {
 // tmp1 = defaultGetSwitches.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
@@ -109,8 +106,7 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// return &tmp1, nil
-// }).(pulumi.Interface{}PtrOutput)
+// vswitchId := tmp1;
 // defaultInstance, err := kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
 // Port: pulumi.Int(6379),
 // PaymentType: pulumi.String("PrePaid"),
@@ -118,7 +114,7 @@ import (
 // Password: pulumi.String("123456_tf"),
 // EngineVersion: pulumi.String("5.0"),
 // ZoneId: pulumi.String(zoneId),
-// VswitchId: pulumi.Any(vswitchId),
+// VswitchId: vswitchId,
 // Period: pulumi.String("1"),
 // InstanceClass: pulumi.String("redis.shard.small.2.ce"),
 // })

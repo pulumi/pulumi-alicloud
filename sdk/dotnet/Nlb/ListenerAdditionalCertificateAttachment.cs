@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Nlb
     ///     {
     ///         AddressIpVersion = "Ipv4",
     ///         Scheduler = "Wrr",
-    ///         HealthCheck = null,
+    ///         HealthCheck = new() { },
     ///         ServerGroupType = "Instance",
     ///         VpcId = createVpc.Id,
     ///         Protocol = "TCPSSL",
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Nlb
     ///         {
     ///             ssl0.Id.Apply(id =&gt; $"{id}-cn-hangzhou"),
     ///         },
-    ///         CaCertificateIds = new[] {},
+    ///         CaCertificateIds = new() {},
     ///     });
     /// 
     ///     var ssl = new AliCloud.Cas.ServiceCertificate("ssl", new()

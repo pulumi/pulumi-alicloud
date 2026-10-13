@@ -77,13 +77,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .projectName(String.format("%s-%s", name,default_.get("result")))
  *             .description(name)
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
  *             .projectName(defaultProject.name())
- *             .logstoreName(String.format("%s-%s", name,default_.result()))
+ *             .logstoreName(String.format("%s-%s", name,default_.get("result")))
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .memorySize(512)
  *             .cpu(0.5)
  *             .handler("index.handler")
- *             .functionName(String.format("%s-%s", name,default_.result()))
+ *             .functionName(String.format("%s-%s", name,default_.get("result")))
  *             .runtime("python3.10")
  *             .diskSize(512)
  *             .code(V3FunctionCodeArgs.builder()

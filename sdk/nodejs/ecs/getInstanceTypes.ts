@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * // Declare the data source
+ * // Declare the function
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: _default.zones?.[0]?.id,
  *     instanceTypeFamily: "ecs.sn1ne",
@@ -247,7 +247,7 @@ export interface GetInstanceTypesResult {
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * // Declare the data source
+ * // Declare the function
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: _default.zones?.[0]?.id,
  *     instanceTypeFamily: "ecs.sn1ne",

@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *                     .input(String.format("%s-%d", name))
  *                     .args(range.value() + 1)
  *                     .build()).result())
- *                 .vlanId(vlanId.id() + range.value())
+ *                 .vlanId(((Number) vlanId.get("id")).doubleValue() + range.value())
  *                 .minRxInterval(1000)
  *                 .minTxInterval(1000)
  *                 .detectMultiplier(10)
@@ -115,8 +115,8 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var exampleVbrHa = new VbrHa("exampleVbrHa", VbrHaArgs.builder()
- *             .vbrId(exampleInstanceAttachment[0].childInstanceId())
- *             .peerVbrId(exampleInstanceAttachment[1].childInstanceId())
+ *             .vbrId(exampleInstanceAttachment.get(0).childInstanceId())
+ *             .peerVbrId(exampleInstanceAttachment.get(1).childInstanceId())
  *             .vbrHaName(name)
  *             .description(name)
  *             .build());

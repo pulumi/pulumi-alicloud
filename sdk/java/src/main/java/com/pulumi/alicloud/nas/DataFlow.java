@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleBucket = new Bucket("exampleBucket", BucketArgs.builder()
- *             .bucket(String.format("example-value-%s", exampleInteger.result()))
+ *             .bucket(String.format("example-value-%s", exampleInteger.get("result")))
  *             .acl("private")
  *             .tags(Map.of("cpfs-dataflow", "true"))
  *             .build());

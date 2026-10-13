@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaultProjectMember = new AliCloud.DataWorks.ProjectMember("default", new()
     ///     {
     ///         UserId = defaultKCTrB2.Id,
-    ///         ProjectId = defaultQeRfvU.Id,
+    ///         ProjectId = defaultQeRfvU.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Roles = new[]
     ///         {
     ///             new AliCloud.DataWorks.Inputs.ProjectMemberRoleArgs

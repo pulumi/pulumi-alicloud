@@ -78,12 +78,12 @@ import javax.annotation.Nullable;
  *             .status("CreateSuccess")
  *             .build());
  * 
- *         final var last = default_.accounts().size().applyValue(_length -> _length - 1);
+ *         final var last = default_.accounts().size() - 1;
  * 
  *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
- *                 .accountId(default_.accounts()[last].accountId())
- *                 .accountName(default_.accounts()[last].displayName())
+ *                 .accountId(last.applyValue(_last -> default_.accounts()[_last]).applyValue(_obj -> _obj.accountId()))
+ *                 .accountName(last.applyValue(_last -> default_.accounts()[_last]).applyValue(_obj -> _obj.displayName()))
  *                 .accountType("ResourceDirectory")
  *                 .build())
  *             .aggregatorName(name)
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .projectName(StdFunctions.substr(SubstrArgs.builder()
  *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
- *                     .text(defaultUuid.result())
+ *                     .text(defaultUuid.get("result"))
  *                     .search("-")
  *                     .replace("")
  *                     .build()).result()))

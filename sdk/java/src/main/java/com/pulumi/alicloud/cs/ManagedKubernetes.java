@@ -106,14 +106,14 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example-");
  *         final var vpcId = config.get("vpcId").orElse("");
  *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
- *         final var vswitchIds = config.get("vswitchIds").orElse(Arrays.asList());
- *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(Arrays.asList(        
+ *         final var vswitchIds = config.getObject("vswitchIds", com.pulumi.core.TypeShape.list(String.class)).orElse(Arrays.asList());
+ *         final var vswitchCidrs = config.getObject("vswitchCidrs", com.pulumi.core.TypeShape.list(String.class)).orElse(Arrays.asList(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
  *         final var proxyMode = config.get("proxyMode").orElse("ipvs");
  *         final var serviceCidr = config.get("serviceCidr").orElse("192.168.0.0/16");
- *         final var terwayVswitchIds = config.get("terwayVswitchIds").orElse(Arrays.asList());
- *         final var terwayVswitchCidrs = config.get("terwayVswitchCidrs").orElse(Arrays.asList(        
+ *         final var terwayVswitchIds = config.getObject("terwayVswitchIds", com.pulumi.core.TypeShape.list(String.class)).orElse(Arrays.asList());
+ *         final var terwayVswitchCidrs = config.getObject("terwayVswitchCidrs", com.pulumi.core.TypeShape.list(String.class)).orElse(Arrays.asList(        
  *             "10.4.0.0/16",
  *             "10.5.0.0/16"));
  *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()

@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Alb
     ///                 {
     ///                     name,
     ///                     defaultInteger.Result,
-    ///                     range.Value,
+    ///                     range.Value.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             Cert = @"-----BEGIN CERTIFICATE-----

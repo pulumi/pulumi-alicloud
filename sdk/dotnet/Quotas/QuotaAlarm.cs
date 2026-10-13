@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Quotas
     ///                 Value = "cn-hangzhou",
     ///             },
     ///         },
-    ///         ThresholdPercent = 80,
+    ///         ThresholdPercent = 80.0,
     ///         ProductCode = "gws",
     ///         QuotaAlarmName = $"{name}-{@default.Result}",
     ///         ThresholdType = "used",

@@ -316,7 +316,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine("MySQL")
      *             .build());
@@ -360,7 +360,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine("MySQL")
      *             .build());
@@ -404,7 +404,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine("MySQL")
      *             .build());
@@ -448,7 +448,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine("MySQL")
      *             .build());
@@ -492,7 +492,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine("MySQL")
      *             .build());
@@ -1321,11 +1321,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }
@@ -1364,11 +1364,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }
@@ -1407,11 +1407,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }
@@ -1450,11 +1450,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }
@@ -1493,11 +1493,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }
@@ -1536,11 +1536,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }
@@ -1579,11 +1579,11 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.get("ids")[0]);
      *     }
      * }
      * }

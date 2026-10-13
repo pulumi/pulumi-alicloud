@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///         DataSourceConfig = kafka_config,
     ///         DataSourceType = "kafka",
     ///         DataSourceDescription = "example-kafka",
-    ///         ServiceId = defaultwruvdv.ServiceId,
+    ///         ServiceId = defaultwruvdv.ServiceId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

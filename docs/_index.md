@@ -51,7 +51,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as alicloud from "@pulumi/alicloud";
 
 const config = new pulumi.Config();
-const name = config.get("name") || "pulumi-example";
+const name = config.get("name") || "terraform-example";
 const _default = alicloud.getZones({
     availableDiskCategory: "cloud_essd",
     availableResourceCreation: "VSwitch",
@@ -124,7 +124,7 @@ import pulumi_alicloud as alicloud
 config = pulumi.Config()
 name = config.get("name")
 if name is None:
-    name = "pulumi-example"
+    name = "terraform-example"
 default = alicloud.get_zones(available_disk_category="cloud_essd",
     available_resource_creation="VSwitch")
 # Create a new ECS instance for VPC
@@ -192,7 +192,7 @@ using AliCloud = Pulumi.AliCloud;
 return await Deployment.RunAsync(() =>
 {
     var config = new Config();
-    var name = config.Get("name") ?? "pulumi-example";
+    var name = config.Get("name") ?? "terraform-example";
     var @default = AliCloud.GetZones.Invoke(new()
     {
         AvailableDiskCategory = "cloud_essd",
@@ -293,7 +293,7 @@ import (
 func main() {
 pulumi.Run(func(ctx *pulumi.Context) error {
 cfg := config.New(ctx, "")
-name := "pulumi-example";
+name := "terraform-example";
 if param := cfg.Get("name"); param != ""{
 name = param
 }
@@ -449,7 +449,7 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var name = config.get("name").orElse("pulumi-example");
+        final var name = config.get("name").orElse("terraform-example");
         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
             .availableDiskCategory("cloud_essd")
             .availableResourceCreation("VSwitch")
@@ -510,7 +510,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     alicloud = {
       source = "pulumi/alicloud"
@@ -518,37 +518,52 @@ pulumi {
   }
 }
 
-data "alicloud_getzones" "default" {
+data "alicloud_zones" "default" {
   available_disk_category     = "cloud_essd"
   available_resource_creation = "VSwitch"
 }
 
 # Create a new ECS instance for VPC
 resource "alicloud_vpc_network" "vpc" {
+  lifecycle {
+    create_before_destroy = true
+  }
   vpc_name   = var.name
   cidr_block = "172.16.0.0/16"
 }
 resource "alicloud_vpc_switch" "vswitch" {
+  lifecycle {
+    create_before_destroy = true
+  }
   vpc_id       = alicloud_vpc_network.vpc.id
   cidr_block   = "172.16.0.0/24"
-  zone_id      = data.alicloud_getzones.default.zones[0].id
+  zone_id      = data.alicloud_zones.default.zones[0].id
   vswitch_name = var.name
 }
 # Create a new Security in a VPC
-resource "alicloud_ecs_securitygroup" "group" {
+resource "alicloud_ecs_security_group" "group" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name        = var.name
   description = "foo"
   vpc_id      = alicloud_vpc_network.vpc.id
 }
 # Create a kms to encrypt the disk
 resource "alicloud_kms_key" "key" {
+  lifecycle {
+    create_before_destroy = true
+  }
   description            = "Hello KMS"
   pending_window_in_days = 7
   status                 = "Enabled"
 }
 resource "alicloud_ecs_instance" "instance" {
-  availability_zone          = data.alicloud_getzones.default.zones[0].id
-  security_groups            = [alicloud_ecs_securitygroup.group][*].id
+  lifecycle {
+    create_before_destroy = true
+  }
+  availability_zone          = data.alicloud_zones.default.zones[0].id
+  security_groups            = [alicloud_ecs_security_group.group][*].id
   instance_type              = "ecs.n4.large"
   system_disk_category       = "cloud_essd"
   system_disk_name           = var.name
@@ -568,7 +583,7 @@ resource "alicloud_ecs_instance" "instance" {
 }
 variable "name" {
   type    = string
-  default = "pulumi-example"
+  default = "terraform-example"
 }
 ```
 

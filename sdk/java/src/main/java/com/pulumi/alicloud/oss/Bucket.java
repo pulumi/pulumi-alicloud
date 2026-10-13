@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_acl = new Bucket("bucket-acl", BucketArgs.builder()
- *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .bucket(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var bucket_aclBucketAcl = new BucketAcl("bucket-aclBucketAcl", BucketAclArgs.builder()
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_website = new Bucket("bucket-website", BucketArgs.builder()
- *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .bucket(String.format("example-value-%s", default_.get("result")))
  *             .website(BucketWebsiteArgs.builder()
  *                 .indexDocument("index.html")
  *                 .errorDocument("error.html")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_target = new Bucket("bucket-target", BucketArgs.builder()
- *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .bucket(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var bucket_targetBucketAcl = new BucketAcl("bucket-targetBucketAcl", BucketAclArgs.builder()
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_logging = new Bucket("bucket-logging", BucketArgs.builder()
- *             .bucket(String.format("example-logging-%s", default_.result()))
+ *             .bucket(String.format("example-logging-%s", default_.get("result")))
  *             .logging(BucketLoggingArgs.builder()
  *                 .targetBucket(bucket_target.id())
  *                 .targetPrefix("log/")
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_referer = new Bucket("bucket-referer", BucketArgs.builder()
- *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .bucket(String.format("example-value-%s", default_.get("result")))
  *             .refererConfig(BucketRefererConfigArgs.builder()
  *                 .allowEmpty(false)
  *                 .referers(                
@@ -283,7 +283,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_lifecycle1 = new Bucket("bucket-lifecycle1", BucketArgs.builder()
- *             .bucket(String.format("example-lifecycle1-%s", default_.result()))
+ *             .bucket(String.format("example-lifecycle1-%s", default_.get("result")))
  *             .lifecycleRules(            
  *                 BucketLifecycleRuleArgs.builder()
  *                     .id("rule-days")
@@ -309,7 +309,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_lifecycle2 = new Bucket("bucket-lifecycle2", BucketArgs.builder()
- *             .bucket(String.format("example-lifecycle2-%s", default_.result()))
+ *             .bucket(String.format("example-lifecycle2-%s", default_.get("result")))
  *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
  *                 .id("rule-days-transition")
  *                 .prefix("path3/")
@@ -332,7 +332,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_lifecycle3 = new Bucket("bucket-lifecycle3", BucketArgs.builder()
- *             .bucket(String.format("example-lifecycle3-%s", default_.result()))
+ *             .bucket(String.format("example-lifecycle3-%s", default_.get("result")))
  *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
  *                 .id("rule-days-transition")
  *                 .prefix("path3/")
@@ -355,7 +355,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_lifecycle4 = new Bucket("bucket-lifecycle4", BucketArgs.builder()
- *             .bucket(String.format("example-lifecycle4-%s", default_.result()))
+ *             .bucket(String.format("example-lifecycle4-%s", default_.get("result")))
  *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
  *                 .id("rule-abort-multipart-upload")
  *                 .prefix("path3/")
@@ -372,7 +372,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_versioning_lifecycle = new Bucket("bucket-versioning-lifecycle", BucketArgs.builder()
- *             .bucket(String.format("example-lifecycle5-%s", default_.result()))
+ *             .bucket(String.format("example-lifecycle5-%s", default_.get("result")))
  *             .versioning(BucketVersioningArgs.builder()
  *                 .status("Enabled")
  *                 .build())
@@ -406,7 +406,7 @@ import javax.annotation.Nullable;
  *         var bucket_access_monitor_lifecycle = new Bucket("bucket-access-monitor-lifecycle", BucketArgs.builder()
  *             .bucket(StdFunctions.format(FormatArgs.builder()
  *                 .input("example-lifecycle6-%s")
- *                 .args(default_.result())
+ *                 .args(default_.get("result"))
  *                 .build()).result())
  *             .accessMonitor(BucketAccessMonitorArgs.builder()
  *                 .status("Enabled")
@@ -432,7 +432,7 @@ import javax.annotation.Nullable;
  *         var bucket_tag_lifecycle = new Bucket("bucket-tag-lifecycle", BucketArgs.builder()
  *             .bucket(StdFunctions.format(FormatArgs.builder()
  *                 .input("example-lifecycle7-%s")
- *                 .args(default_.result())
+ *                 .args(default_.get("result"))
  *                 .build()).result())
  *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
  *                 .id("rule-days-transition")
@@ -493,7 +493,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_policy = new Bucket("bucket-policy", BucketArgs.builder()
- *             .bucket(String.format("example-policy-%s", default_.result()))
+ *             .bucket(String.format("example-policy-%s", default_.get("result")))
  *             .policy("""
  *   {\"Statement\":
  *       [{\"Action\":
@@ -556,7 +556,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Bucket("example", BucketArgs.builder()
- *             .bucket(String.format("example-sub-resources-%s", default_.result()))
+ *             .bucket(String.format("example-sub-resources-%s", default_.get("result")))
  *             .build());
  * 
  *         var exampleBucketAcl = new BucketAcl("exampleBucketAcl", BucketAclArgs.builder()
@@ -626,7 +626,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("example-%s", default_.result()))
+ *             .bucket(String.format("example-%s", default_.get("result")))
  *             .storageClass("IA")
  *             .build());
  * 
@@ -672,7 +672,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_sserule = new Bucket("bucket-sserule", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .serverSideEncryptionRule(BucketServerSideEncryptionRuleArgs.builder()
  *                 .sseAlgorithm("AES256")
  *                 .build())
@@ -690,7 +690,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_kms = new Bucket("bucket-kms", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-kms-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-kms-%s", default_.get("result")))
  *             .serverSideEncryptionRule(BucketServerSideEncryptionRuleArgs.builder()
  *                 .sseAlgorithm("KMS")
  *                 .kmsMasterKeyId(kms.id())
@@ -741,7 +741,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_tags = new Bucket("bucket-tags", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .tags(Map.ofEntries(
  *                 Map.entry("key1", "value1"),
  *                 Map.entry("key2", "value2")
@@ -793,7 +793,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_versioning = new Bucket("bucket-versioning", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .versioning(BucketVersioningArgs.builder()
  *                 .status("Enabled")
  *                 .build())
@@ -841,7 +841,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_redundancytype = new Bucket("bucket-redundancytype", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .redundancyType("ZRS")
  *             .build());
  * 
@@ -883,7 +883,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_accelerate = new Bucket("bucket-accelerate", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .transferAcceleration(BucketTransferAccelerationArgs.builder()
  *                 .enabled(false)
  *                 .build())
@@ -932,7 +932,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_accelerate = new Bucket("bucket-accelerate", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 

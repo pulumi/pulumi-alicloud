@@ -63,7 +63,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }
@@ -117,7 +117,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }
@@ -171,7 +171,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }
@@ -225,7 +225,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }
@@ -279,7 +279,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }
@@ -333,7 +333,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }
@@ -387,7 +387,7 @@ public final class HbaseFunctions {
      *             .build());
      * 
      *         var hbase = new Instance("hbase", InstanceArgs.builder()
-     *             .coreInstanceType(default_.types()[0].id())
+     *             .coreInstanceType(((String) default_.types()[0].id()))
      *             .build());
      * 
      *     }

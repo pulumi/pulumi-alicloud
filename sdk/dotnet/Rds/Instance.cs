@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Rds
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = "terraform-example",
     ///         VswitchId = exampleSwitch.Id,
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Rds
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = "terraform-example",
     ///         VswitchId = exampleSwitch.Id,
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Rds
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = "terraform-example",
     ///         VswitchId = Std.Join.Invoke(new()
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.Rds
     ///         EngineVersion = "8.0",
     ///         Category = "HighAvailability",
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
     ///         VswitchId = Std.Join.Invoke(new()
@@ -501,7 +501,7 @@ namespace Pulumi.AliCloud.Rds
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceChargeType = "Serverless",
     ///         InstanceName = name,
@@ -513,7 +513,7 @@ namespace Pulumi.AliCloud.Rds
     ///         {
     ///             new AliCloud.Rds.Inputs.InstanceServerlessConfigArgs
     ///             {
-    ///                 MaxCapacity = 8,
+    ///                 MaxCapacity = 8.0,
     ///                 MinCapacity = 0.5,
     ///                 AutoPause = false,
     ///                 SwitchForce = false,
@@ -571,7 +571,7 @@ namespace Pulumi.AliCloud.Rds
     ///     {
     ///         Engine = "PostgreSQL",
     ///         EngineVersion = "14.0",
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceChargeType = "Serverless",
     ///         InstanceName = name,
@@ -583,7 +583,7 @@ namespace Pulumi.AliCloud.Rds
     ///         {
     ///             new AliCloud.Rds.Inputs.InstanceServerlessConfigArgs
     ///             {
-    ///                 MaxCapacity = 12,
+    ///                 MaxCapacity = 12.0,
     ///                 MinCapacity = 0.5,
     ///             },
     ///         },
@@ -643,7 +643,7 @@ namespace Pulumi.AliCloud.Rds
     ///     {
     ///         Engine = "SQLServer",
     ///         EngineVersion = "2019_std_sl",
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceChargeType = "Serverless",
     ///         InstanceName = name,
@@ -664,8 +664,8 @@ namespace Pulumi.AliCloud.Rds
     ///         {
     ///             new AliCloud.Rds.Inputs.InstanceServerlessConfigArgs
     ///             {
-    ///                 MaxCapacity = 8,
-    ///                 MinCapacity = 2,
+    ///                 MaxCapacity = 8.0,
+    ///                 MinCapacity = 2.0,
     ///             },
     ///         },
     ///     });

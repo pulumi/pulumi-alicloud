@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Domain("example", DomainArgs.builder()
- *             .domainName(String.format("alicloud-provider-%s.online", default_.result()))
+ *             .domainName(String.format("alicloud-provider-%s.online", default_.get("result")))
  *             .build());
  * 
  *     }

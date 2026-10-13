@@ -242,7 +242,7 @@ class ResourceDirectory(pulumi.CustomResource):
             for default_resource_directory_range in [{"value": i} for i in range(0, range_body)]:
                 default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{default_resource_directory_range['value']}", status="Enabled"))
 
-        len(default.directories).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default.directories) > 0 else 1.apply(create_default)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -294,7 +294,7 @@ class ResourceDirectory(pulumi.CustomResource):
             for default_resource_directory_range in [{"value": i} for i in range(0, range_body)]:
                 default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{default_resource_directory_range['value']}", status="Enabled"))
 
-        len(default.directories).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default.directories) > 0 else 1.apply(create_default)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

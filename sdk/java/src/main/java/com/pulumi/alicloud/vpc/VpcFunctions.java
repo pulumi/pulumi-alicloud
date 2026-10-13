@@ -3705,7 +3705,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations().get(0).id()));
      *     }
      * }
      * }
@@ -3784,7 +3784,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations().get(0).id()));
      *     }
      * }
      * }
@@ -3863,7 +3863,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations().get(0).id()));
      *     }
      * }
      * }
@@ -3942,7 +3942,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations().get(0).id()));
      *     }
      * }
      * }
@@ -4021,7 +4021,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations().get(0).id()));
      *     }
      * }
      * }
@@ -4088,7 +4088,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs().get(0).id()));
      *     }
      * }
      * }
@@ -4155,7 +4155,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs().get(0).id()));
      *     }
      * }
      * }
@@ -4222,7 +4222,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs().get(0).id()));
      *     }
      * }
      * }
@@ -4289,7 +4289,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs().get(0).id()));
      *     }
      * }
      * }
@@ -4356,7 +4356,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs().get(0).id()));
      *     }
      * }
      * }
@@ -4927,7 +4927,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -4994,7 +4994,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -5061,7 +5061,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -5128,7 +5128,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -5195,7 +5195,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -5262,7 +5262,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -5329,7 +5329,7 @@ public final class VpcFunctions {
      *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes().get(0).id()));
      *     }
      * }
      * }
@@ -5389,7 +5389,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -5449,7 +5449,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -5509,7 +5509,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -5569,7 +5569,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -5629,7 +5629,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -5689,7 +5689,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -5749,7 +5749,7 @@ public final class VpcFunctions {
      *             .ipamName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams().get(0).id()));
      *     }
      * }
      * }
@@ -6944,7 +6944,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultVpc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks().get(0).id()));
      *     }
      * }
      * }
@@ -7026,7 +7026,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultVpc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks().get(0).id()));
      *     }
      * }
      * }
@@ -7108,7 +7108,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultVpc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks().get(0).id()));
      *     }
      * }
      * }
@@ -7190,7 +7190,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultVpc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks().get(0).id()));
      *     }
      * }
      * }
@@ -7272,7 +7272,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultVpc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks().get(0).id()));
      *     }
      * }
      * }
@@ -13091,7 +13091,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13276,7 +13276,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13461,7 +13461,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13646,7 +13646,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13831,7 +13831,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -14016,7 +14016,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -14201,7 +14201,7 @@ public final class VpcFunctions {
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudVpcRouteTargetGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }

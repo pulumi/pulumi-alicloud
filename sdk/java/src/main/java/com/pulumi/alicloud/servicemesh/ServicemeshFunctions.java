@@ -389,7 +389,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }
@@ -434,7 +434,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }
@@ -479,7 +479,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }
@@ -524,7 +524,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }
@@ -569,7 +569,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }
@@ -614,7 +614,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }
@@ -659,7 +659,7 @@ public final class ServicemeshFunctions {
      *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export("serviceMeshVersion", versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].get("version"));
      *     }
      * }
      * }

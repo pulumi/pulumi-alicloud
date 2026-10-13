@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
- *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(Arrays.asList(        
+ *         final var vswitchCidrs = config.getObject("vswitchCidrs", com.pulumi.core.TypeShape.list(String.class)).orElse(Arrays.asList(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
  *         final var clusterName = config.get("clusterName").orElse("terraform-example-");

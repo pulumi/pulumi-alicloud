@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .bizType(StdFunctions.format(FormatArgs.builder()
  *                 .input("type-%s")
- *                 .args(default_.result())
+ *                 .args(default_.get("result"))
  *                 .build()).result())
  *             .build());
  * 

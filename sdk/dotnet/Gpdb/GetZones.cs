@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.Gpdb.GetZones.Invoke();
         /// 
         ///     // Create an Gpdb instance with the first matched zone
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.Gpdb.GetZones.Invoke();
         /// 
         ///     // Create an Gpdb instance with the first matched zone
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.Gpdb.GetZones.Invoke();
         /// 
         ///     // Create an Gpdb instance with the first matched zone

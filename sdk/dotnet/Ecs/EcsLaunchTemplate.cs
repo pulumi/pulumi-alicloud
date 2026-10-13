@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         RamRoleName = "ram_role_name",
     ///         NetworkType = "vpc",
     ///         SecurityEnhancementStrategy = "Active",
-    ///         SpotPriceLimit = 5,
+    ///         SpotPriceLimit = 5.0,
     ///         SpotStrategy = "SpotWithPriceLimit",
     ///         SecurityGroupIds = new[]
     ///         {

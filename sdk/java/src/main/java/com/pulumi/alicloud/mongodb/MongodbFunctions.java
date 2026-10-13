@@ -571,7 +571,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups().get(0).id()));
      *     }
      * }
      * }
@@ -658,7 +658,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups().get(0).id()));
      *     }
      * }
      * }
@@ -745,7 +745,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups().get(0).id()));
      *     }
      * }
      * }
@@ -832,7 +832,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups().get(0).id()));
      *     }
      * }
      * }
@@ -919,7 +919,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups()[0].id()));
+     *         ctx.export("alicloudMongodbBackupExampleId", default_.applyValue(_default_ -> _default_.backups().get(0).id()));
      *     }
      * }
      * }
@@ -1002,7 +1002,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1085,7 +1085,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1168,7 +1168,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1251,7 +1251,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1334,7 +1334,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1417,7 +1417,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1500,7 +1500,7 @@ public final class MongodbFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("mongodbInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1997,7 +1997,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
      *             .build());
      * 
-     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters().get(0).id()));
      *     }
      * }
      * }
@@ -2095,7 +2095,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
      *             .build());
      * 
-     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters().get(0).id()));
      *     }
      * }
      * }
@@ -2193,7 +2193,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
      *             .build());
      * 
-     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters().get(0).id()));
      *     }
      * }
      * }
@@ -2291,7 +2291,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
      *             .build());
      * 
-     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters().get(0).id()));
      *     }
      * }
      * }
@@ -2389,7 +2389,7 @@ public final class MongodbFunctions {
      *             .dbInstanceId(defaultShardingAuditFilter.dbInstanceId())
      *             .build());
      * 
-     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters()[0].id()));
+     *         ctx.export("shardingAuditFilterId", defaultGetShardingAuditFilters.applyValue(_defaultGetShardingAuditFilters -> _defaultGetShardingAuditFilters.filters().get(0).id()));
      *     }
      * }
      * }
@@ -2900,7 +2900,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2949,7 +2949,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2998,7 +2998,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -3047,7 +3047,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -3096,7 +3096,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -3145,7 +3145,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -3194,7 +3194,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = MongodbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 

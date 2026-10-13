@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .document("""
  * \t\t{
  * \t\t\t\"Statement\": [
@@ -110,12 +110,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("192.168.192.0/24")
  *             .zoneId(default_.zones()[0].id())
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(defaultSwitch.id())
- *             .instanceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .instanceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultRamRoleAttachment = new RamRoleAttachment("defaultRamRoleAttachment", RamRoleAttachmentArgs.builder()

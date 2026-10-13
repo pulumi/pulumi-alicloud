@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
  *             .build());
  * 
- *         final var index = default_.zones().size().applyValue(_length -> _length - 1);
+ *         final var index = default_.zones().size() - 1;
  * 
- *         final var zoneId = default_.zones()[index].id();
+ *         final var zoneId = index.applyValue(_index -> default_.zones()[_index]).applyValue(_obj -> _obj.id());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new ShardingNetworkPublicAddress("example", ShardingNetworkPublicAddressArgs.builder()
  *             .dbInstanceId(defaultShardingInstance.id())
- *             .nodeId(defaultShardingInstance.mongoLists().applyValue(_mongoLists -> _mongoLists[0].nodeId()))
+ *             .nodeId(defaultShardingInstance.mongoLists().applyValue(_mongoLists -> _mongoLists.get(0).nodeId()))
  *             .build());
  * 
  *     }

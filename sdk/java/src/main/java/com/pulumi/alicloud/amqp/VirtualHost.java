@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .instanceType("enterprise")
  *             .maxTps("3000")
  *             .maxConnections(2000)
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
  *             .instanceId(defaultInstance.id())
- *             .virtualHostName(String.format("%s-%s", name,default_.result()))
+ *             .virtualHostName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *     }

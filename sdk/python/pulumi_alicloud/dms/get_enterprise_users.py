@@ -162,7 +162,7 @@ def get_enterprise_users(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=["uid"],
         role="USER",
         status="NORMAL")
@@ -219,7 +219,7 @@ def get_enterprise_users_output(ids: pulumi.Input[Optional[Optional[Sequence[_bu
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=["uid"],
         role="USER",
         status="NORMAL")

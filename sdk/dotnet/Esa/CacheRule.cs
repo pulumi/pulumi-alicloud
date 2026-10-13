@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Esa
     ///         QueryStringMode = "ignore_all",
     ///         Rule = "http.host eq \"video.example.com\"",
     ///         CacheDeceptionArmor = "off",
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         BypassCache = "cache_all",
     ///         EdgeCacheTtl = "300",
     ///         RuleEnable = "off",

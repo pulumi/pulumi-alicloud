@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Mse
     ///                 Input = "172.16.%d.0/21",
     ///                 Args = new[]
     ///                 {
-    ///                     (range.Value + 1) * 16,
+    ///                     (range.Value + 1) * 16.0,
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,

@@ -68,13 +68,13 @@ import javax.annotation.Nullable;
  * 
  *         var defaultPyhXOV = new Bucket("defaultPyhXOV", BucketArgs.builder()
  *             .storageClass("Standard")
- *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .bucket(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultJnW8Na = new Callback("defaultJnW8Na", CallbackArgs.builder()
  *             .callbackUrl("https://www.aliyun.com/")
  *             .cryptType(0)
- *             .callbackName(String.format("%s%s", name,default_.result()))
+ *             .callbackName(String.format("%s%s", name,default_.get("result")))
  *             .callbackTypes("machineScan")
  *             .callbackSuggestions("block")
  *             .build());

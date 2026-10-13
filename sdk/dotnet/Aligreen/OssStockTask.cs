@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Aligreen
     ///             ["Type"] = "suggestion",
     ///             ["Value"] = "block",
     ///         }),
-    ///         CallbackId = defaultJnW8Na.Id,
+    ///         CallbackId = defaultJnW8Na.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         ImageAdFreezeConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Type"] = "suggestion",

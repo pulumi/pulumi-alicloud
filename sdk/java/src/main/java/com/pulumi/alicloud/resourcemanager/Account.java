@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
- *             .displayName(String.format("%s-%s", displayName,default_.result()))
+ *             .displayName(String.format("%s-%s", displayName,default_.get("result")))
  *             .folderId(example.ids()[0])
  *             .build());
  * 

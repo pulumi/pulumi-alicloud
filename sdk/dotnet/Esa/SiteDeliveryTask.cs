@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Esa
     ///             MaxBatchSize = 1000,
     ///         },
     ///         DataCenter = "global",
-    ///         DiscardRate = 0,
+    ///         DiscardRate = 0.0,
     ///         TaskName = "dcdn-example-task",
     ///         BusinessType = "dcdn_log_access_l1",
     ///         FieldName = "ConsoleLog,CPUTime,Duration,ErrorCode,ErrorMessage,ResponseSize,ResponseStatus,RoutineName,ClientRequestID,LogTimestamp,FetchStatus,SubRequestID",

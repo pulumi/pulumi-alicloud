@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///         }),
     ///         DataSourceType = "kafka",
     ///         DataSourceDescription = "example",
-    ///         ServiceId = default2dUszY.ServiceId,
+    ///         ServiceId = default2dUszY.ServiceId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     ///     var @default = new AliCloud.Gpdb.StreamingJob("default", new()

@@ -557,7 +557,7 @@ public final class EnsFunctions {
      *             .ids(defaultLoadBalancerUdpListener.id())
      *             .build());
      * 
-     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners().get(0).id()));
      *     }
      * }
      * }
@@ -642,7 +642,7 @@ public final class EnsFunctions {
      *             .ids(defaultLoadBalancerUdpListener.id())
      *             .build());
      * 
-     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners().get(0).id()));
      *     }
      * }
      * }
@@ -727,7 +727,7 @@ public final class EnsFunctions {
      *             .ids(defaultLoadBalancerUdpListener.id())
      *             .build());
      * 
-     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners().get(0).id()));
      *     }
      * }
      * }
@@ -812,7 +812,7 @@ public final class EnsFunctions {
      *             .ids(defaultLoadBalancerUdpListener.id())
      *             .build());
      * 
-     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners().get(0).id()));
      *     }
      * }
      * }
@@ -897,7 +897,7 @@ public final class EnsFunctions {
      *             .ids(defaultLoadBalancerUdpListener.id())
      *             .build());
      * 
-     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners()[0].id()));
+     *         ctx.export("udpListenerId", default_.applyValue(_default_ -> _default_.listeners().get(0).id()));
      *     }
      * }
      * }

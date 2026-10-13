@@ -79,8 +79,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultINsMgl = new Project("defaultINsMgl", ProjectArgs.builder()
- *             .description(String.format("%s-%s", projectName,default_.result()))
- *             .projectName(String.format("%s-%s", projectName,default_.result()))
+ *             .description(String.format("%s-%s", projectName,default_.get("result")))
+ *             .projectName(String.format("%s-%s", projectName,default_.get("result")))
  *             .build());
  * 
  *         var defaultAlert = new Alert("defaultAlert", AlertArgs.builder()

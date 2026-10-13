@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
- *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
+ *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.get("result")))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)

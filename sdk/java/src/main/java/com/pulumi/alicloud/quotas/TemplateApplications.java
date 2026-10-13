@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .displayName(String.format("%s-%s", name,default_.result()))
+ *             .displayName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()

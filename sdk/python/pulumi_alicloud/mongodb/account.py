@@ -251,8 +251,8 @@ class Account(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
+        index = len(default.zones) - 1
+        zone_id = index.apply(lambda index: default.zones[index]).id
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
@@ -334,8 +334,8 @@ class Account(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
+        index = len(default.zones) - 1
+        zone_id = index.apply(lambda index: default.zones[index]).id
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")

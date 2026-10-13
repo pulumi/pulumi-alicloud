@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Namespace("example", NamespaceArgs.builder()
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());

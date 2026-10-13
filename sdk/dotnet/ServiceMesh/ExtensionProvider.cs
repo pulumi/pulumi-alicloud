@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///     });
     /// 
     ///     var defaultNetwork = new List&lt;AliCloud.Vpc.Network&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultNetwork.Add(new AliCloud.Vpc.Network($"default-{range.Value}", new()
@@ -55,12 +55,12 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///     });
     /// 
     ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
     ///         {
-    ///             VpcId = Output.Tuple(defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length(), defaultGetNetworks, defaultNetwork[0].Id).Apply(values =&gt;
+    ///             VpcId = Output.Tuple(defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length, defaultGetNetworks, defaultNetwork[0].Id).Apply(values =&gt;
     ///             {
     ///                 var length = values.Item1;
     ///                 var defaultGetNetworks = values.Item2;
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///         Edition = "Default",
     ///         Network = new AliCloud.ServiceMesh.Inputs.ServiceMeshNetworkArgs
     ///         {
-    ///             VpcId = Output.Tuple(defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length(), defaultGetNetworks, defaultNetwork[0].Id).Apply(values =&gt;
+    ///             VpcId = Output.Tuple(defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length, defaultGetNetworks, defaultNetwork[0].Id).Apply(values =&gt;
     ///             {
     ///                 var length = values.Item1;
     ///                 var defaultGetNetworks = values.Item2;
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///             }),
     ///             VswitcheLists = new[]
     ///             {
-    ///                 Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, defaultSwitch[0].Id).Apply(values =&gt;
+    ///                 Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, defaultSwitch[0].Id).Apply(values =&gt;
     ///                 {
     ///                     var length = values.Item1;
     ///                     var defaultGetSwitches = values.Item2;

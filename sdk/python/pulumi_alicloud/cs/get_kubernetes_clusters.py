@@ -144,7 +144,7 @@ def get_kubernetes_clusters(enable_details: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     k8s_clusters = alicloud.cs.get_kubernetes_clusters(name_regex="my-first-k8s",
         output_file="my-first-k8s-json",
         kube_config_file_prefix="~/.kube/k8s")
@@ -197,7 +197,7 @@ def get_kubernetes_clusters_output(enable_details: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     k8s_clusters = alicloud.cs.get_kubernetes_clusters(name_regex="my-first-k8s",
         output_file="my-first-k8s-json",
         kube_config_file_prefix="~/.kube/k8s")

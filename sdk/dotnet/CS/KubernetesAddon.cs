@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.CS
     ///         },
     ///     });
     /// 
-    ///     // data source provides the information of available addons
+    ///     // function provides the information of available addons
     ///     var defaultGetKubernetesAddons = AliCloud.CS.GetKubernetesAddons.Invoke(new()
     ///     {
     ///         ClusterId = defaultManagedKubernetes.Id,

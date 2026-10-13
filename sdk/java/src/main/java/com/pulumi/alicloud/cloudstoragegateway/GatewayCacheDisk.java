@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         var defaultStorageBundle = new StorageBundle("defaultStorageBundle", StorageBundleArgs.builder()
  *             .storageBundleName(StdFunctions.substr(SubstrArgs.builder()
  *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
- *                     .text(defaultUuid.result())
+ *                     .text(defaultUuid.get("result"))
  *                     .search("-")
  *                     .replace("")
  *                     .build()).result()))

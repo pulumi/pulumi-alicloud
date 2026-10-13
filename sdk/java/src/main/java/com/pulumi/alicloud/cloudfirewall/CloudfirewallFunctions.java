@@ -91,7 +91,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -150,7 +150,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -209,7 +209,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -268,7 +268,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -327,7 +327,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -386,7 +386,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -445,7 +445,7 @@ public final class CloudfirewallFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books()[0].id()));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(_ids -> _ids.books().get(0).id()));
      *     }
      * }
      * }
@@ -705,7 +705,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -748,7 +748,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -791,7 +791,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -834,7 +834,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -877,7 +877,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -920,7 +920,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -963,7 +963,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
@@ -1398,7 +1398,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -1522,7 +1522,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -1646,7 +1646,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -1770,7 +1770,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -1894,7 +1894,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -2018,7 +2018,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -2142,7 +2142,7 @@ public final class CloudfirewallFunctions {
      *             .vpcId(defaultikZ0gD.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -2187,7 +2187,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2235,7 +2235,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2283,7 +2283,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2331,7 +2331,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2379,7 +2379,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2427,7 +2427,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2475,7 +2475,7 @@ public final class CloudfirewallFunctions {
      *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
      * 
      *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
-     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
@@ -2646,7 +2646,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -2814,7 +2814,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -2982,7 +2982,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -3150,7 +3150,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -3318,7 +3318,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -3486,7 +3486,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -3654,7 +3654,7 @@ public final class CloudfirewallFunctions {
      *             .transitRouterId(tr.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls().get(0).id()));
      *     }
      * }
      * }
@@ -3694,7 +3694,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
@@ -3741,7 +3741,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
@@ -3788,7 +3788,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
@@ -3835,7 +3835,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
@@ -3882,7 +3882,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
@@ -3929,7 +3929,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
@@ -3976,7 +3976,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.get("id"))
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")

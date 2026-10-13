@@ -75,14 +75,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var listener = new ApplicationLoadBalancer("listener", ApplicationLoadBalancerArgs.builder()
- *             .loadBalancerName(String.format("%s-%s", name,default_.result()))
+ *             .loadBalancerName(String.format("%s-%s", name,default_.get("result")))
  *             .internetChargeType("PayByTraffic")
  *             .addressType("internet")
  *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
  *         var listenerAcl = new Acl("listenerAcl", AclArgs.builder()
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .ipVersion("ipv4")
  *             .build());
  * 

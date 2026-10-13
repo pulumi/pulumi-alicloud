@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var defaultUW8inp = new AliCloud.DataWorks.DiJob("defaultUW8inp", new()
     ///     {
     ///         Description = "xxxx",
-    ///         ProjectId = defaulteNv8bu.Id,
+    ///         ProjectId = defaulteNv8bu.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         JobName = "xxx",
     ///         MigrationType = "api_xxx",
     ///         SourceDataSourceType = "xxx",
@@ -51,17 +51,17 @@ namespace Pulumi.AliCloud.DataWorks
     ///         {
     ///             OfflineResourceSettings = new AliCloud.DataWorks.Inputs.DiJobResourceSettingsOfflineResourceSettingsArgs
     ///             {
-    ///                 RequestedCu = 2,
+    ///                 RequestedCu = 2.0,
     ///                 ResourceGroupIdentifier = "xx",
     ///             },
     ///             RealtimeResourceSettings = new AliCloud.DataWorks.Inputs.DiJobResourceSettingsRealtimeResourceSettingsArgs
     ///             {
-    ///                 RequestedCu = 2,
+    ///                 RequestedCu = 2.0,
     ///                 ResourceGroupIdentifier = "xx",
     ///             },
     ///             ScheduleResourceSettings = new AliCloud.DataWorks.Inputs.DiJobResourceSettingsScheduleResourceSettingsArgs
     ///             {
-    ///                 RequestedCu = 2,
+    ///                 RequestedCu = 2.0,
     ///                 ResourceGroupIdentifier = "xx",
     ///             },
     ///         },

@@ -370,7 +370,7 @@ public final class EdasFunctions {
      *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.get("clusters")[0].get("clusterName"));
      *     }
      * }
      * }
@@ -415,7 +415,7 @@ public final class EdasFunctions {
      *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.get("clusters")[0].get("clusterName"));
      *     }
      * }
      * }
@@ -460,7 +460,7 @@ public final class EdasFunctions {
      *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.get("clusters")[0].get("clusterName"));
      *     }
      * }
      * }
@@ -505,7 +505,7 @@ public final class EdasFunctions {
      *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.get("clusters")[0].get("clusterName"));
      *     }
      * }
      * }
@@ -550,7 +550,7 @@ public final class EdasFunctions {
      *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.get("clusters")[0].get("clusterName"));
      *     }
      * }
      * }

@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .name(String.format("example-value-%s", default_.result()))
+ *             .name(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
- *             .name(String.format("fcservicerole-%s", default_.result()))
+ *             .name(String.format("fcservicerole-%s", default_.get("result")))
  *             .document("""
  *   {
  *       \"Statement\": [
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .name(String.format("example-value-%s", default_.result()))
+ *             .name(String.format("example-value-%s", default_.get("result")))
  *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.

@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const securityGroupId = config.requireObject<any>("securityGroupId");
- * // Or get it from the alicloud_security_groups data source.
- * // Please note that the data source arguments must be enough to filter results to one security group.
+ * // Or get it from the alicloud_security_groups function.
+ * // Please note that the function arguments must be enough to filter results to one security group.
  * const groupsDs = alicloud.ecs.getSecurityGroups({
  *     nameRegex: "api",
  * });
@@ -133,8 +133,8 @@ export interface GetSecurityGroupRulesResult {
  *
  * const config = new pulumi.Config();
  * const securityGroupId = config.requireObject<any>("securityGroupId");
- * // Or get it from the alicloud_security_groups data source.
- * // Please note that the data source arguments must be enough to filter results to one security group.
+ * // Or get it from the alicloud_security_groups function.
+ * // Please note that the function arguments must be enough to filter results to one security group.
  * const groupsDs = alicloud.ecs.getSecurityGroups({
  *     nameRegex: "api",
  * });

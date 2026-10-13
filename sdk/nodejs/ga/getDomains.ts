@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     status: "active",
  * });
  * const defaultAccelerator: alicloud.ga.Accelerator[] = [];
- * _default.then(_default => _default.accelerators).length.apply(length => {
+ * _default.then(_default => _default.accelerators.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range}`, {
  *             duration: 1,
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *         }));
  *     }
  * });
- * const acceleratorId = pulumi.all([_default.then(_default => _default.accelerators).length, _default, defaultAccelerator[0].id]).apply(([length, _default, id]) => length > 0 ? _default.accelerators?.[0]?.id : id);
+ * const acceleratorId = pulumi.all([_default.then(_default => _default.accelerators.length), _default, defaultAccelerator[0].id]).apply(([length, _default, id]) => length > 0 ? _default.accelerators?.[0]?.id : id);
  * const defaultGetDomains = alicloud.ga.getDomains({
  *     acceleratorId: acceleratorIdLocals,
  *     domain: "your_domain",
@@ -124,7 +124,7 @@ export interface GetDomainsResult {
  *     status: "active",
  * });
  * const defaultAccelerator: alicloud.ga.Accelerator[] = [];
- * _default.then(_default => _default.accelerators).length.apply(length => {
+ * _default.then(_default => _default.accelerators.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range}`, {
  *             duration: 1,
@@ -133,7 +133,7 @@ export interface GetDomainsResult {
  *         }));
  *     }
  * });
- * const acceleratorId = pulumi.all([_default.then(_default => _default.accelerators).length, _default, defaultAccelerator[0].id]).apply(([length, _default, id]) => length > 0 ? _default.accelerators?.[0]?.id : id);
+ * const acceleratorId = pulumi.all([_default.then(_default => _default.accelerators.length), _default, defaultAccelerator[0].id]).apply(([length, _default, id]) => length > 0 ? _default.accelerators?.[0]?.id : id);
  * const defaultGetDomains = alicloud.ga.getDomains({
  *     acceleratorId: acceleratorIdLocals,
  *     domain: "your_domain",

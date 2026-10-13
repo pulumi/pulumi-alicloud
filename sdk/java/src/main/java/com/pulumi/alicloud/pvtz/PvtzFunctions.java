@@ -1416,7 +1416,7 @@ public final class PvtzFunctions {
      *             .ids(defaultZoneRecord.recordId())
      *             .build());
      * 
-     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records().get(0).id()));
      *     }
      * }
      * }
@@ -1482,7 +1482,7 @@ public final class PvtzFunctions {
      *             .ids(defaultZoneRecord.recordId())
      *             .build());
      * 
-     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records().get(0).id()));
      *     }
      * }
      * }
@@ -1548,7 +1548,7 @@ public final class PvtzFunctions {
      *             .ids(defaultZoneRecord.recordId())
      *             .build());
      * 
-     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records().get(0).id()));
      *     }
      * }
      * }
@@ -1614,7 +1614,7 @@ public final class PvtzFunctions {
      *             .ids(defaultZoneRecord.recordId())
      *             .build());
      * 
-     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records().get(0).id()));
      *     }
      * }
      * }
@@ -1680,7 +1680,7 @@ public final class PvtzFunctions {
      *             .ids(defaultZoneRecord.recordId())
      *             .build());
      * 
-     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records()[0].id()));
+     *         ctx.export("pvtzZoneRecordsId0", ids.applyValue(_ids -> _ids.records().get(0).id()));
      *     }
      * }
      * }
@@ -1733,7 +1733,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }
@@ -1786,7 +1786,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }
@@ -1839,7 +1839,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }
@@ -1892,7 +1892,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }
@@ -1945,7 +1945,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }
@@ -1998,7 +1998,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }
@@ -2051,7 +2051,7 @@ public final class PvtzFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones()[0].id()));
+     *         ctx.export("pvtzZonesId0", ids.applyValue(_ids -> _ids.zones().get(0).id()));
      *     }
      * }
      * }

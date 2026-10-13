@@ -44,9 +44,7 @@ import (
 //				return err
 //			}
 //			countSize := len(_default.Zones)
-//			zoneId := countSize.ApplyT(func(countSize int) (nas.GetZonesZone, error) {
-//				return _default.Zones[int(countSize-1)].(nas.GetZonesZone), nil
-//			}).(nas.GetZonesZoneOutput).ZoneId()
+//			zoneId := _default.Zones[int(countSize-1)].ZoneId()
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),

@@ -678,7 +678,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -724,7 +724,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -770,7 +770,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -816,7 +816,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -862,7 +862,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -908,7 +908,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -954,7 +954,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids("execution_id")
      *             .templateName("name")
@@ -1031,7 +1031,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1101,7 +1101,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1171,7 +1171,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1241,7 +1241,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1311,7 +1311,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1381,7 +1381,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1451,7 +1451,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1584,7 +1584,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1654,7 +1654,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1724,7 +1724,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1794,7 +1794,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1864,7 +1864,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -1934,7 +1934,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -2004,7 +2004,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
      *     }
      * }
      * }
@@ -2351,7 +2351,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(
@@ -2401,7 +2401,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(
@@ -2451,7 +2451,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(
@@ -2501,7 +2501,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(
@@ -2551,7 +2551,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(
@@ -2601,7 +2601,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(
@@ -2651,7 +2651,7 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
      *             .nameRegex("test")
      *             .tags(Map.ofEntries(

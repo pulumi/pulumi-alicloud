@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var env_ecs = new Environment("env-ecs", EnvironmentArgs.builder()
  *             .environmentType("ECS")
- *             .environmentName(String.format("terraform-example-%s", default_.result()))
+ *             .environmentName(String.format("terraform-example-%s", default_.get("result")))
  *             .bindResourceId(vpc.id())
  *             .environmentSubType("ECS")
  *             .build());

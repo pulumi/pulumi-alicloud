@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultKvNamespace = new KvNamespace("defaultKvNamespace", KvNamespaceArgs.builder()
  *             .description(name)
- *             .namespace(String.format("%s-%s", name,default_.result()))
+ *             .namespace(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *     }

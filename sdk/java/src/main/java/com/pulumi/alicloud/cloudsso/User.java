@@ -68,22 +68,22 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         for (var i = 0; i < default_.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < default_.ids().size() > 0 ? 0 : 1; i++) {
  *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
  *                 .directoryName(name)
  *                 .build());
  * 
  *         
  * }
- *         final var directoryId = default_.ids().size().applyValue(_length -> _length > 0 ? default_.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var directoryId = default_.ids().size() > 0 ? default_.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultDirectory.stream().map(element -> element.id()).collect(toList()),
  *                 "")
- *             .build()).result()[0]);
+ *             .build()).result()[0];
  * 
  *         var defaultUser = new User("defaultUser", UserArgs.builder()
- *             .directoryId(directoryId)
- *             .userName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .directoryId(((String) directoryId))
+ *             .userName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *     }

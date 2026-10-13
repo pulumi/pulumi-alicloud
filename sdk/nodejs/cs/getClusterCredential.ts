@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as std from "@pulumi/std";
  *
- * // Declare the data source
+ * // Declare the function
  * const k8s = alicloud.cs.getManagedKubernetesClusters({
  *     nameRegex: "my-cluster",
  *     enableDetails: false,
@@ -106,7 +106,7 @@ export interface GetClusterCredentialResult {
  * import * as alicloud from "@pulumi/alicloud";
  * import * as std from "@pulumi/std";
  *
- * // Declare the data source
+ * // Declare the function
  * const k8s = alicloud.cs.getManagedKubernetesClusters({
  *     nameRegex: "my-cluster",
  *     enableDetails: false,

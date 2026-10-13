@@ -59,21 +59,21 @@ import javax.annotation.Nullable;
  *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
  *             .build());
  * 
- *         for (var i = 0; i < default_.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < default_.ids().size() > 0 ? 0 : 1; i++) {
  *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
  *                 .directoryName(name)
  *                 .build());
  * 
  *         
  * }
- *         final var directoryId = default_.ids().size().applyValue(_length -> _length > 0 ? default_.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var directoryId = default_.ids().size() > 0 ? default_.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultDirectory.stream().map(element -> element.id()).collect(toList()),
  *                 "")
- *             .build()).result()[0]);
+ *             .build()).result()[0];
  * 
  *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
- *             .directoryId(directoryId)
+ *             .directoryId(((String) directoryId))
  *             .groupName(name)
  *             .description(name)
  *             .build());

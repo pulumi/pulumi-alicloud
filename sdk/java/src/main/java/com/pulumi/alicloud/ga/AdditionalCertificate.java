@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *                 .id(StdFunctions.join(JoinArgs.builder()
  *                     .separator("-")
  *                     .input(                    
- *                         defaultServiceCertificate[1].id(),
+ *                         defaultServiceCertificate.get(1).id(),
  *                         region)
  *                     .build()).applyValue(_invoke -> _invoke.result()))
  *                 .build())
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *             .certificateId(StdFunctions.join(JoinArgs.builder()
  *                 .separator("-")
  *                 .input(                
- *                     defaultServiceCertificate[1].id(),
+ *                     defaultServiceCertificate.get(1).id(),
  *                     region)
  *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .domain(domain)

@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     ///     var defaultWafRuleset = new AliCloud.Esa.WafRuleset("default", new()
     ///     {
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Phase = "http_custom",
     ///         SiteVersion = 0,
     ///     });
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Esa
     ///             Name = "111",
     ///         },
     ///         SiteVersion = 0,
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = ecrId,
         ///         InstanceRegionId = region,
         ///         InstanceId = vpcId,
-        ///         EcrOwnerAliUid = ecrOwnerUid,
+        ///         EcrOwnerAliUid = int.Parse(ecrOwnerUid, System.Globalization.CultureInfo.InvariantCulture),
         ///         InstanceType = "VPC",
         ///     });
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = ecrId,
         ///         InstanceRegionId = region,
         ///         InstanceId = vpcId,
-        ///         EcrOwnerAliUid = ecrOwnerUid,
+        ///         EcrOwnerAliUid = int.Parse(ecrOwnerUid, System.Globalization.CultureInfo.InvariantCulture),
         ///         InstanceType = "VPC",
         ///     });
         /// 
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = ecrId,
         ///         InstanceRegionId = region,
         ///         InstanceId = vpcId,
-        ///         EcrOwnerAliUid = ecrOwnerUid,
+        ///         EcrOwnerAliUid = int.Parse(ecrOwnerUid, System.Globalization.CultureInfo.InvariantCulture),
         ///         InstanceType = "VPC",
         ///     });
         /// 

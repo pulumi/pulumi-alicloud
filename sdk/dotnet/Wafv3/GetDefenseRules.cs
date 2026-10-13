@@ -133,28 +133,28 @@ namespace Pulumi.AliCloud.Wafv3
         ///                 {
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760174804000,
-        ///                         End = 1760175804000,
+        ///                         Start = (int)1760174804000,
+        ///                         End = (int)1760175804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760171804000,
-        ///                         End = 1760172804000,
+        ///                         Start = (int)1760171804000,
+        ///                         End = (int)1760172804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760176804000,
-        ///                         End = 1760177804000,
+        ///                         Start = (int)1760176804000,
+        ///                         End = (int)1760177804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760178804000,
-        ///                         End = 1760179804000,
+        ///                         Start = (int)1760178804000,
+        ///                         End = (int)1760179804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760170804000,
-        ///                         End = 1760171804000,
+        ///                         Start = (int)1760170804000,
+        ///                         End = (int)1760171804000,
         ///                     },
         ///                 },
         ///             },
@@ -308,28 +308,28 @@ namespace Pulumi.AliCloud.Wafv3
         ///                 {
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760174804000,
-        ///                         End = 1760175804000,
+        ///                         Start = (int)1760174804000,
+        ///                         End = (int)1760175804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760171804000,
-        ///                         End = 1760172804000,
+        ///                         Start = (int)1760171804000,
+        ///                         End = (int)1760172804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760176804000,
-        ///                         End = 1760177804000,
+        ///                         Start = (int)1760176804000,
+        ///                         End = (int)1760177804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760178804000,
-        ///                         End = 1760179804000,
+        ///                         Start = (int)1760178804000,
+        ///                         End = (int)1760179804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760170804000,
-        ///                         End = 1760171804000,
+        ///                         Start = (int)1760170804000,
+        ///                         End = (int)1760171804000,
         ///                     },
         ///                 },
         ///             },
@@ -483,28 +483,28 @@ namespace Pulumi.AliCloud.Wafv3
         ///                 {
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760174804000,
-        ///                         End = 1760175804000,
+        ///                         Start = (int)1760174804000,
+        ///                         End = (int)1760175804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760171804000,
-        ///                         End = 1760172804000,
+        ///                         Start = (int)1760171804000,
+        ///                         End = (int)1760172804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760176804000,
-        ///                         End = 1760177804000,
+        ///                         Start = (int)1760176804000,
+        ///                         End = (int)1760177804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760178804000,
-        ///                         End = 1760179804000,
+        ///                         Start = (int)1760178804000,
+        ///                         End = (int)1760179804000,
         ///                     },
         ///                     new AliCloud.Wafv3.Inputs.DefenseRuleConfigTimeConfigTimePeriodArgs
         ///                     {
-        ///                         Start = 1760170804000,
-        ///                         End = 1760171804000,
+        ///                         Start = (int)1760170804000,
+        ///                         End = (int)1760171804000,
         ///                     },
         ///                 },
         ///             },

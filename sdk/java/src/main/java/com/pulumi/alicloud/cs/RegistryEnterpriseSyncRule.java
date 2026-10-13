@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-source-%s", name,defaultInteger.result()))
+ *             .instanceName(String.format("%s-source-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var target = new RegistryEnterpriseInstance("target", RegistryEnterpriseInstanceArgs.builder()
@@ -85,19 +85,19 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-target-%s", name,defaultInteger.result()))
+ *             .instanceName(String.format("%s-target-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(source.id())
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
  *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(target.id())
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(source.id())
  *             .namespace(sourceRegistryEnterpriseNamespace.name())
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
  *             .build());
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(target.id())
  *             .namespace(targetRegistryEnterpriseNamespace.name())
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
  *             .build());
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()
  *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
- *             .syncRuleName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .syncRuleName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .targetInstanceId(target.id())
  *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
  *             .targetRegionId(default_.regions()[0].id())

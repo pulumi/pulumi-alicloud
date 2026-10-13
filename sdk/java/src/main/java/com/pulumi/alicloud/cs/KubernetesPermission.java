@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
- *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(Arrays.asList(        
+ *         final var vswitchCidrs = config.getObject("vswitchCidrs", com.pulumi.core.TypeShape.list(String.class)).orElse(Arrays.asList(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
  *         final var podCidr = config.get("podCidr").orElse("172.16.0.0/16");
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * }
  *         // Create a new RAM cluster.
  *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .clusterSpec("ack.pro.small")
  *             .version(default_.metadatas()[0].version())
  *             .workerVswitchIds(StdFunctions.split(SplitArgs.builder()
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new RAM user.
  *         var user = new User("user", UserArgs.builder()
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         // Create a cluster permission for user.

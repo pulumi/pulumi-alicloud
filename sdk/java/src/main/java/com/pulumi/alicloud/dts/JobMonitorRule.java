@@ -183,18 +183,18 @@ import javax.annotation.Nullable;
  *             .dtsInstanceId(exampleMigrationInstance.id())
  *             .dtsJobName(name)
  *             .sourceEndpointInstanceType("RDS")
- *             .sourceEndpointInstanceId(exampleAccountPrivilege[0].instanceId())
+ *             .sourceEndpointInstanceId(exampleAccountPrivilege.get(0).instanceId())
  *             .sourceEndpointEngineName("MySQL")
  *             .sourceEndpointRegion(example.regions()[0].id())
- *             .sourceEndpointUserName(exampleRdsAccount[0].accountName())
- *             .sourceEndpointPassword(exampleRdsAccount[0].accountPassword())
+ *             .sourceEndpointUserName(exampleRdsAccount.get(0).accountName())
+ *             .sourceEndpointPassword(exampleRdsAccount.get(0).accountPassword())
  *             .destinationEndpointInstanceType("RDS")
- *             .destinationEndpointInstanceId(exampleAccountPrivilege[1].instanceId())
+ *             .destinationEndpointInstanceId(exampleAccountPrivilege.get(1).instanceId())
  *             .destinationEndpointEngineName("MySQL")
  *             .destinationEndpointRegion(example.regions()[0].id())
- *             .destinationEndpointUserName(exampleRdsAccount[1].accountName())
- *             .destinationEndpointPassword(exampleRdsAccount[1].accountPassword())
- *             .dbList(Output.tuple(exampleDatabase[0].name(), exampleDatabase[1].name()).applyValue(values -> {
+ *             .destinationEndpointUserName(exampleRdsAccount.get(1).accountName())
+ *             .destinationEndpointPassword(exampleRdsAccount.get(1).accountPassword())
+ *             .dbList(Output.tuple(exampleDatabase.get(0).name(), exampleDatabase.get(1).name()).applyValue(values -> {
  *                 var exampleDatabaseName = values.t1;
  *                 var exampleDatabaseName1 = values.t2;
  *                 return serializeJson(

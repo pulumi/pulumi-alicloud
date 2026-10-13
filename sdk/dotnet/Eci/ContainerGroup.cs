@@ -55,8 +55,8 @@ namespace Pulumi.AliCloud.Eci
     ///     var defaultContainerGroup = new AliCloud.Eci.ContainerGroup("default", new()
     ///     {
     ///         ContainerGroupName = name,
-    ///         Cpu = 8,
-    ///         Memory = 16,
+    ///         Cpu = 8.0,
+    ///         Memory = 16.0,
     ///         RestartPolicy = "OnFailure",
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         VswitchId = defaultSwitch.Id,

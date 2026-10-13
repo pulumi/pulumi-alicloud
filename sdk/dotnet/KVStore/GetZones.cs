@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke(new()
         ///     {
         ///         InstanceChargeType = "PostPaid",
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke(new()
         ///     {
         ///         InstanceChargeType = "PostPaid",
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke(new()
         ///     {
         ///         InstanceChargeType = "PostPaid",

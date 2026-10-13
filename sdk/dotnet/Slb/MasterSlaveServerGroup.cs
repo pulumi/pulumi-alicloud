@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Slb
     ///     {
     ///         AvailabilityZone = msServerGroup.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 2,
-    ///         MemorySize = 8,
+    ///         MemorySize = 8.0,
     ///         InstanceTypeFamily = "ecs.g6",
     ///     });
     /// 

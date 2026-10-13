@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// {
         ///     var example = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke(new()
         ///     {
-        ///         Memory = 1,
+        ///         Memory = 1.0,
         ///         Bandwidth = 3,
         ///         DiskSize = 40,
         ///         Flow = 6,
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// {
         ///     var example = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke(new()
         ///     {
-        ///         Memory = 1,
+        ///         Memory = 1.0,
         ///         Bandwidth = 3,
         ///         DiskSize = 40,
         ///         Flow = 6,
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// {
         ///     var example = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke(new()
         ///     {
-        ///         Memory = 1,
+        ///         Memory = 1.0,
         ///         Bandwidth = 3,
         ///         DiskSize = 40,
         ///         Flow = 6,

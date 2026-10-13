@@ -147,8 +147,8 @@ import javax.annotation.Nullable;
  *             .virtualNetworkId(10)
  *             .trafficMirrorSessionDescription(name)
  *             .trafficMirrorSessionName(name)
- *             .trafficMirrorTargetId(defaultEcsNetworkInterfaceAttachment[0].networkInterfaceId())
- *             .trafficMirrorSourceIds(defaultEcsNetworkInterfaceAttachment[1].networkInterfaceId())
+ *             .trafficMirrorTargetId(defaultEcsNetworkInterfaceAttachment.get(0).networkInterfaceId())
+ *             .trafficMirrorSourceIds(defaultEcsNetworkInterfaceAttachment.get(1).networkInterfaceId())
  *             .trafficMirrorFilterId(defaultTrafficMirrorFilter.id())
  *             .trafficMirrorTargetType("NetworkInterface")
  *             .build());

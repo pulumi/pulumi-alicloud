@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Mse
         ///         NamespaceDesc = "description",
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var exampleGetEngineNamespaces = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
         ///     {
         ///         InstanceId = exampleEngineNamespace.InstanceId,
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Mse
         ///         NamespaceDesc = "description",
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var exampleGetEngineNamespaces = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
         ///     {
         ///         InstanceId = exampleEngineNamespace.InstanceId,
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Mse
         ///         NamespaceDesc = "description",
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var exampleGetEngineNamespaces = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
         ///     {
         ///         InstanceId = exampleEngineNamespace.InstanceId,

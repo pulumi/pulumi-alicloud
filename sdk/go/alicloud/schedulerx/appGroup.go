@@ -49,11 +49,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]string{
-//				{
+//			tmpJSON0, err := json.Marshal([]interface{}{
+//				map[string]string{
 //					"name": "contact-group-1",
 //				},
-//				{
+//				map[string]string{
 //					"name": "contact-group-2",
 //				},
 //			})

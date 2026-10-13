@@ -871,7 +871,7 @@ public final class GpdbFunctions {
      *             .databaseName(defaultPPmRVa.databaseName())
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions().get(0).id()));
      *     }
      * }
      * }
@@ -981,7 +981,7 @@ public final class GpdbFunctions {
      *             .databaseName(defaultPPmRVa.databaseName())
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions().get(0).id()));
      *     }
      * }
      * }
@@ -1091,7 +1091,7 @@ public final class GpdbFunctions {
      *             .databaseName(defaultPPmRVa.databaseName())
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions().get(0).id()));
      *     }
      * }
      * }
@@ -1201,7 +1201,7 @@ public final class GpdbFunctions {
      *             .databaseName(defaultPPmRVa.databaseName())
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions().get(0).id()));
      *     }
      * }
      * }
@@ -1311,7 +1311,7 @@ public final class GpdbFunctions {
      *             .databaseName(defaultPPmRVa.databaseName())
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions()[0].id()));
+     *         ctx.export("alicloudGpdbDbExtensionExampleId", default_.applyValue(_default_ -> _default_.extensions().get(0).id()));
      *     }
      * }
      * }
@@ -2175,7 +2175,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2224,7 +2224,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2273,7 +2273,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2322,7 +2322,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2371,7 +2371,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2420,7 +2420,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2469,7 +2469,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = GpdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 

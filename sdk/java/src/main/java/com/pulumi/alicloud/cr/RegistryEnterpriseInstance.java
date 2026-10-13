@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .renewPeriod(1)
  *             .renewalStatus("AutoRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "Test")

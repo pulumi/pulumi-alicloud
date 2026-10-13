@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
- *             .roleName(String.format("terraform-example-%s", default_.result()))
+ *             .roleName(String.format("terraform-example-%s", default_.get("result")))
  *             .assumeRolePolicyDocument("""
  *   {
  *     \"Statement\": [

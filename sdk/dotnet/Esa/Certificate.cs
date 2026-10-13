@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Esa
     ///     {
     ///         CreatedType = "free",
     ///         Domains = "101.gositecdn.cn",
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Type = "lets_encrypt",
     ///     });
     /// 

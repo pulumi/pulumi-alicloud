@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *             .isDefault(false)
  *             .description("example vpc")
  *             .cidrBlock("192.168.0.0/16")
- *             .vpcName(String.format("%s-%s", name,default_.result()))
+ *             .vpcName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultEnterpriseWorkspace = new EnterpriseWorkspace("defaultEnterpriseWorkspace", EnterpriseWorkspaceArgs.builder()
  *             .description(name)
- *             .workspaceName(String.format("%s-%s", name,default_.result()))
+ *             .workspaceName(String.format("%s-%s", name,default_.get("result")))
  *             .vpcId(vpcCreate.id())
  *             .build());
  * 

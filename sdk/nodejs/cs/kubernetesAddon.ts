@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *         disabled: false,
  *     }],
  * });
- * // data source provides the information of available addons
+ * // function provides the information of available addons
  * const defaultGetKubernetesAddons = alicloud.cs.getKubernetesAddonsOutput({
  *     clusterId: defaultManagedKubernetes.id,
  *     nameRegex: "logtail-ds",

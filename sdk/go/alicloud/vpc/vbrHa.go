@@ -87,7 +87,7 @@ import (
 //					PeeringSubnetMask:       pulumi.String("255.255.255.252"),
 //					PhysicalConnectionId:    pulumi.String(example.Connections[val0].Id),
 //					VirtualBorderRouterName: pulumi.String(invokeFormat.Result),
-//					VlanId:                  int(vlanId.Id + val0),
+//					VlanId:                  int(pulumi.Float64(vlanId.Id) + val0),
 //					MinRxInterval:           pulumi.Int(1000),
 //					MinTxInterval:           pulumi.Int(1000),
 //					DetectMultiplier:        pulumi.Int(10),

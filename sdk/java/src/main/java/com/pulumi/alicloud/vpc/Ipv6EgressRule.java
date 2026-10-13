@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()
- *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(_defaultGetIpv6Addresses -> _defaultGetIpv6Addresses.addresses()[0].id()))
+ *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(_defaultGetIpv6Addresses -> _defaultGetIpv6Addresses.addresses().get(0).id()))
  *             .ipv6GatewayId(defaultIpv6Gateway.ipv6GatewayId())
  *             .internetChargeType("PayByBandwidth")
  *             .bandwidth(20)

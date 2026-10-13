@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var exampleChartNamespace = new ChartNamespace("exampleChartNamespace", ChartNamespaceArgs.builder()
  *             .instanceId(example.id())
- *             .namespaceName(String.format("%s-%s", name,default_.result()))
+ *             .namespaceName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *     }

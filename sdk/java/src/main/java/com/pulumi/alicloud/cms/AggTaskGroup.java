@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .projectName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var defaultAggTaskGroup = new AggTaskGroup("defaultAggTaskGroup", AggTaskGroupArgs.builder()
- *             .sourcePrometheusId(defaultPrometheusInstance[0].id())
- *             .targetPrometheusId(defaultPrometheusInstance[1].id())
+ *             .sourcePrometheusId(defaultPrometheusInstance.get(0).id())
+ *             .targetPrometheusId(defaultPrometheusInstance.get(1).id())
  *             .aggTaskGroupName(name)
  *             .aggTaskGroupConfig("""
  * groups:

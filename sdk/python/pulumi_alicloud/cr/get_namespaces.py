@@ -120,7 +120,7 @@ def get_namespaces(name_regex: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     my_namespaces = alicloud.cr.get_namespaces(name_regex="my-namespace",
         output_file="my-namespace-json")
     pulumi.export("output", my_namespaces.namespaces)
@@ -159,7 +159,7 @@ def get_namespaces_output(name_regex: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     my_namespaces = alicloud.cr.get_namespaces(name_regex="my-namespace",
         output_file="my-namespace-json")
     pulumi.export("output", my_namespaces.namespaces)

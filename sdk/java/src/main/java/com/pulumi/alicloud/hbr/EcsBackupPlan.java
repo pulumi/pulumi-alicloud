@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()
- *             .vaultName(String.format("terraform-example-%s", default_.result()))
+ *             .vaultName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var exampleEcsBackupPlan = new EcsBackupPlan("exampleEcsBackupPlan", EcsBackupPlanArgs.builder()

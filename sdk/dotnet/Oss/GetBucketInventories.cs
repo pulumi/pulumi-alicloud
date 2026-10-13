@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Oss
         /// 
         ///     var defaultBucketInventory = new AliCloud.Oss.BucketInventory("default", new()
         ///     {
-        ///         Destination = null,
+        ///         Destination = new() { },
         ///         OptionalFields = new AliCloud.Oss.Inputs.BucketInventoryOptionalFieldsArgs
         ///         {
         ///             Fields = new[]
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Oss
         /// 
         ///     var defaultBucketInventory = new AliCloud.Oss.BucketInventory("default", new()
         ///     {
-        ///         Destination = null,
+        ///         Destination = new() { },
         ///         OptionalFields = new AliCloud.Oss.Inputs.BucketInventoryOptionalFieldsArgs
         ///         {
         ///             Fields = new[]
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Oss
         /// 
         ///     var defaultBucketInventory = new AliCloud.Oss.BucketInventory("default", new()
         ///     {
-        ///         Destination = null,
+        ///         Destination = new() { },
         ///         OptionalFields = new AliCloud.Oss.Inputs.BucketInventoryOptionalFieldsArgs
         ///         {
         ///             Fields = new[]

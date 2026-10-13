@@ -774,8 +774,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -820,8 +820,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -866,8 +866,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -912,8 +912,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -958,8 +958,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -1004,8 +1004,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -1050,8 +1050,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(defaultAlicloudEcsCapacityReservation.id())
-     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.get("id"))
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.get("name"))
      *             .instanceType("ecs.c6.large")
      *             .platform("linux")
      *             .build());
@@ -1438,7 +1438,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -1498,7 +1498,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -1558,7 +1558,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -1618,7 +1618,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -1678,7 +1678,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -1738,7 +1738,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -1798,7 +1798,7 @@ public final class EcsFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts()[0].id()));
+     *         ctx.export("ecsDedicatedHostId0", ids.applyValue(_ids -> _ids.hosts().get(0).id()));
      *     }
      * }
      * }
@@ -2966,7 +2966,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -3028,7 +3028,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -3090,7 +3090,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -3152,7 +3152,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -3214,7 +3214,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -3276,7 +3276,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -3338,7 +3338,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks().get(0).id()));
      *     }
      * }
      * }
@@ -4417,7 +4417,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4481,7 +4481,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4545,7 +4545,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4609,7 +4609,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4673,7 +4673,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4737,7 +4737,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4801,7 +4801,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsKeyPair.id())
      *             .build());
      * 
-     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs()[0].id()));
+     *         ctx.export("ecsKeyPairId0", ids.applyValue(_ids -> _ids.pairs().get(0).id()));
      *     }
      * }
      * }
@@ -4954,7 +4954,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -5107,7 +5107,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -5260,7 +5260,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -5413,7 +5413,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -5566,7 +5566,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -5719,7 +5719,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -5872,7 +5872,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates()[0].id()));
+     *         ctx.export("ecsLaunchTemplateId0", ids.applyValue(_ids -> _ids.templates().get(0).id()));
      *     }
      * }
      * }
@@ -7305,7 +7305,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -7451,7 +7451,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -7597,7 +7597,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -7743,7 +7743,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -7889,7 +7889,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -8035,7 +8035,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -8181,7 +8181,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsSnapshot.id())
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots()[0].id()));
+     *         ctx.export("ecsSnapshotsId0", ids.applyValue(_ids -> _ids.snapshots().get(0).id()));
      *     }
      * }
      * }
@@ -9208,7 +9208,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -9251,7 +9251,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -9294,7 +9294,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -9337,7 +9337,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -9380,7 +9380,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -9423,7 +9423,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -9466,7 +9466,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
@@ -10683,7 +10683,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -10796,7 +10796,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -10909,7 +10909,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -11022,7 +11022,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -11135,7 +11135,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -11248,7 +11248,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -11361,7 +11361,7 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .instanceTypeFamily("ecs.sn1ne")
@@ -11767,7 +11767,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -11816,7 +11816,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -11865,7 +11865,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -11914,7 +11914,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -11963,7 +11963,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -12012,7 +12012,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -12061,7 +12061,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
@@ -12184,7 +12184,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -12316,7 +12316,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -12448,7 +12448,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -12580,7 +12580,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -12712,7 +12712,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -12844,7 +12844,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -12976,7 +12976,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces().get(0).name()));
      *     }
      * }
      * }
@@ -13038,9 +13038,9 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.require("securityGroupId");
-     *         // Or get it from the alicloud_security_groups data source.
-     *         // Please note that the data source arguments must be enough to filter results to one security group.
+     *         final var securityGroupId = config.requireObject("securityGroupId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+     *         // Or get it from the alicloud_security_groups function.
+     *         // Please note that the function arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex("api")
      *             .build());
@@ -13102,9 +13102,9 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.require("securityGroupId");
-     *         // Or get it from the alicloud_security_groups data source.
-     *         // Please note that the data source arguments must be enough to filter results to one security group.
+     *         final var securityGroupId = config.requireObject("securityGroupId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+     *         // Or get it from the alicloud_security_groups function.
+     *         // Please note that the function arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex("api")
      *             .build());
@@ -13166,9 +13166,9 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.require("securityGroupId");
-     *         // Or get it from the alicloud_security_groups data source.
-     *         // Please note that the data source arguments must be enough to filter results to one security group.
+     *         final var securityGroupId = config.requireObject("securityGroupId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+     *         // Or get it from the alicloud_security_groups function.
+     *         // Please note that the function arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex("api")
      *             .build());
@@ -13230,9 +13230,9 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.require("securityGroupId");
-     *         // Or get it from the alicloud_security_groups data source.
-     *         // Please note that the data source arguments must be enough to filter results to one security group.
+     *         final var securityGroupId = config.requireObject("securityGroupId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+     *         // Or get it from the alicloud_security_groups function.
+     *         // Please note that the function arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex("api")
      *             .build());
@@ -13294,9 +13294,9 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.require("securityGroupId");
-     *         // Or get it from the alicloud_security_groups data source.
-     *         // Please note that the data source arguments must be enough to filter results to one security group.
+     *         final var securityGroupId = config.requireObject("securityGroupId", com.pulumi.core.TypeShape.map(String.class, Object.class));
+     *         // Or get it from the alicloud_security_groups function.
+     *         // Please note that the function arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex("api")
      *             .build());
@@ -13364,7 +13364,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13415,7 +13415,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13466,7 +13466,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13517,7 +13517,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13568,7 +13568,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13619,7 +13619,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -13670,7 +13670,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups().get(0).id()));
      *     }
      * }
      * }

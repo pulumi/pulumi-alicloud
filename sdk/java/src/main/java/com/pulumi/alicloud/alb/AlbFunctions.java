@@ -415,8 +415,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -461,8 +461,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -507,8 +507,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -553,8 +553,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -599,8 +599,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -645,8 +645,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -691,8 +691,8 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(defaultAlicloudAlbAscript.id())
-     *             .nameRegex(defaultAlicloudAlbAscript.name())
+     *             .ids(defaultAlicloudAlbAscript.get("id"))
+     *             .nameRegex(defaultAlicloudAlbAscript.get("name"))
      *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
@@ -1498,7 +1498,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -1634,7 +1634,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -1770,7 +1770,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -1906,7 +1906,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -2042,7 +2042,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -2178,7 +2178,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -2314,7 +2314,7 @@ public final class AlbFunctions {
      *             .ids(defaultLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers()[0].id()));
+     *         ctx.export("albLoadBalancersId0", ids.applyValue(_ids -> _ids.balancers().get(0).id()));
      *     }
      * }
      * }
@@ -2428,11 +2428,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -2494,7 +2494,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -2608,11 +2608,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -2674,7 +2674,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -2788,11 +2788,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -2854,7 +2854,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -2968,11 +2968,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -3034,7 +3034,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3148,11 +3148,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -3214,7 +3214,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3328,11 +3328,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -3394,7 +3394,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3508,11 +3508,11 @@ public final class AlbFunctions {
      *             .tags(Map.of("Created", "TF"))
      *             .zoneMappings(            
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[0].id())
+     *                     .vswitchId(defaultSwitch.get(0).id())
      *                     .zoneId(default_.zones()[0].id())
      *                     .build(),
      *                 LoadBalancerZoneMappingArgs.builder()
-     *                     .vswitchId(defaultSwitch[1].id())
+     *                     .vswitchId(defaultSwitch.get(1).id())
      *                     .zoneId(default_.zones()[1].id())
      *                     .build())
      *             .build());
@@ -3574,7 +3574,7 @@ public final class AlbFunctions {
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("albRuleId", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3987,7 +3987,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4057,7 +4057,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4127,7 +4127,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4197,7 +4197,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4267,7 +4267,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4337,7 +4337,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4407,7 +4407,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }

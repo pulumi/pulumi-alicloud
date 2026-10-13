@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *         var foo = new TrailDeprecated("foo", TrailDeprecatedArgs.builder()
  *             .name("action-trail")
  *             .eventRw("Write-test")
- *             .ossBucketName(bucket.id())
- *             .roleName(attach.roleName())
+ *             .ossBucketName(bucket.get("id"))
+ *             .roleName(attach.get("roleName"))
  *             .ossKeyPrefix("at-product-account-audit-B")
  *             .build());
  * 

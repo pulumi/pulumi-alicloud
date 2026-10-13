@@ -128,7 +128,7 @@ public final class CrFunctions {
      *             .instanceId(defaultRegistryEnterpriseInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -218,7 +218,7 @@ public final class CrFunctions {
      *             .instanceId(defaultRegistryEnterpriseInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -308,7 +308,7 @@ public final class CrFunctions {
      *             .instanceId(defaultRegistryEnterpriseInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -398,7 +398,7 @@ public final class CrFunctions {
      *             .instanceId(defaultRegistryEnterpriseInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -488,7 +488,7 @@ public final class CrFunctions {
      *             .instanceId(defaultRegistryEnterpriseInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1076,7 +1076,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.get("ids")[0]);
      *     }
      * }
      * }
@@ -1124,7 +1124,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.get("ids")[0]);
      *     }
      * }
      * }
@@ -1172,7 +1172,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.get("ids")[0]);
      *     }
      * }
      * }
@@ -1220,7 +1220,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.get("ids")[0]);
      *     }
      * }
      * }
@@ -1268,7 +1268,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.get("ids")[0]);
      *     }
      * }
      * }
@@ -2039,7 +2039,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2086,7 +2086,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2133,7 +2133,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2180,7 +2180,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2227,7 +2227,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2274,7 +2274,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2321,7 +2321,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("my-namespace")
      *             .outputFile("my-namespace-json")
@@ -2368,7 +2368,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")
@@ -2415,7 +2415,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")
@@ -2462,7 +2462,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")
@@ -2509,7 +2509,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")
@@ -2556,7 +2556,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")
@@ -2603,7 +2603,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")
@@ -2650,7 +2650,7 @@ public final class CrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
      *             .nameRegex("my-repos")
      *             .outputFile("my-repo-json")

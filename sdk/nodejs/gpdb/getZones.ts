@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const zonesIds = alicloud.gpdb.getZones({});
  * // Create an Gpdb instance with the first matched zone
  * const hbase = new alicloud.hbase.Instance("hbase", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
@@ -76,7 +76,7 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const zonesIds = alicloud.gpdb.getZones({});
  * // Create an Gpdb instance with the first matched zone
  * const hbase = new alicloud.hbase.Instance("hbase", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});

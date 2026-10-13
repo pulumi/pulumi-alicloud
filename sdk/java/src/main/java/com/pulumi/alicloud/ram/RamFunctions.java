@@ -1135,8 +1135,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1160,7 +1160,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -1213,8 +1213,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1238,7 +1238,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -1291,8 +1291,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1316,7 +1316,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -1369,8 +1369,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1394,7 +1394,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -1447,8 +1447,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1472,7 +1472,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -1525,8 +1525,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1550,7 +1550,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -1603,8 +1603,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
-     *             .policyName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .policyName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
      *   {
@@ -1628,7 +1628,7 @@ public final class RamFunctions {
      *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
      *     }
      * }
      * }
@@ -3847,7 +3847,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
      *   {
      *     \"Statement\": [
@@ -3880,7 +3880,7 @@ public final class RamFunctions {
      *             .roleName(role.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -3957,7 +3957,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
      *   {
      *     \"Statement\": [
@@ -3990,7 +3990,7 @@ public final class RamFunctions {
      *             .roleName(role.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -4067,7 +4067,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
      *   {
      *     \"Statement\": [
@@ -4100,7 +4100,7 @@ public final class RamFunctions {
      *             .roleName(role.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -4177,7 +4177,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
      *   {
      *     \"Statement\": [
@@ -4210,7 +4210,7 @@ public final class RamFunctions {
      *             .roleName(role.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -4287,7 +4287,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
+     *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
      *   {
      *     \"Statement\": [
@@ -4320,7 +4320,7 @@ public final class RamFunctions {
      *             .roleName(role.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
+     *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -4373,8 +4373,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4402,7 +4402,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -4455,8 +4455,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4484,7 +4484,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -4537,8 +4537,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4566,7 +4566,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -4619,8 +4619,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4648,7 +4648,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -4701,8 +4701,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4730,7 +4730,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -4783,8 +4783,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4812,7 +4812,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -4865,8 +4865,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
-     *             .roleName(String.format("%s-%s", name,default_.result()))
-     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .roleName(String.format("%s-%s", name,default_.get("result")))
+     *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
      *   {
@@ -4894,7 +4894,7 @@ public final class RamFunctions {
      *             .ids(defaultRole.roleId())
      *             .build());
      * 
-     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
      *     }
      * }
      * }
@@ -5637,7 +5637,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -5743,7 +5743,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -5849,7 +5849,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -5955,7 +5955,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -6061,7 +6061,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -6167,7 +6167,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -6273,7 +6273,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users().get(0).id()));
      *     }}{@code
      * }}{@code
      * }

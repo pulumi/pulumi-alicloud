@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
- *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
+ *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.get("result")))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .appDescription(name)
- *             .appName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .appName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .namespaceId(defaultNamespace.id())
  *             .imageUrl(String.format("registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0", default_.regions()[0].id()))
  *             .packageType("Image")

@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Pai
     ///         ApprovalStatus = "Pending",
     ///         FrameworkType = "PyTorch",
     ///         VersionName = "1.0.0",
-    ///         Metrics = null,
+    ///         Metrics = new() { },
     ///         Labels = new[]
     ///         {
     ///             new AliCloud.Pai.Inputs.WorkspaceModelVersionLabelArgs

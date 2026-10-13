@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         final var bucketRandom = default_.result();
+ *         final var bucketRandom = default_.get("result");
  * 
  *         var default8j4t1R = new Bucket("default8j4t1R", BucketArgs.builder()
  *             .bucket(String.format("%s-1-%s", name,bucketRandom))

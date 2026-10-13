@@ -277,7 +277,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 
@@ -321,7 +321,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 
@@ -365,7 +365,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 
@@ -409,7 +409,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 
@@ -453,7 +453,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 
@@ -497,7 +497,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 
@@ -541,7 +541,7 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(defaultAlicloudDtsInstance.id())
+     *             .ids(defaultAlicloudDtsInstance.get("id"))
      *             .resourceGroupId("example_value")
      *             .build());
      * 

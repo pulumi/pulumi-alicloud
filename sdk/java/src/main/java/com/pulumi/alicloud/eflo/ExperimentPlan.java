@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *                 .workspaceId("your_workspace_id")
  *                 .endpoint("your_endpoint")
  *                 .build())
- *             .clusterId(String.format("terraform-%s", default_.result()))
+ *             .clusterId(String.format("terraform-%s", default_.get("result")))
  *             .machineTypes(ResourceMachineTypesArgs.builder()
  *                 .memoryInfo("32x 64GB DDR4 4800 Memory")
  *                 .type("Private")

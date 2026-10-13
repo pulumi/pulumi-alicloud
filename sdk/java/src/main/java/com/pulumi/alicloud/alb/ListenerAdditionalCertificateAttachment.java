@@ -118,11 +118,11 @@ import javax.annotation.Nullable;
  *             .tags(Map.of("Created", "TF"))
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(defaultSwitch[0].id())
+ *                     .vswitchId(defaultSwitch.get(0).id())
  *                     .zoneId(default_.zones()[0].id())
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(defaultSwitch[1].id())
+ *                     .vswitchId(defaultSwitch.get(1).id())
  *                     .zoneId(default_.zones()[1].id())
  *                     .build())
  *             .build());
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *                     .separator("-")
  *                     .input(                    
  *                         name,
- *                         defaultInteger.result(),
+ *                         defaultInteger.get("result"),
  *                         range.value())
  *                     .build()).result())
  *                 .cert("""
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  *                 .certificateId(StdFunctions.join(JoinArgs.builder()
  *                     .separator("")
  *                     .input(                    
- *                         defaultServiceCertificate[0].id(),
+ *                         defaultServiceCertificate.get(0).id(),
  *                         "-cn-hangzhou")
  *                     .build()).applyValue(_invoke -> _invoke.result()))
  *                 .build())
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *             .certificateId(StdFunctions.join(JoinArgs.builder()
  *                 .separator("")
  *                 .input(                
- *                     defaultServiceCertificate[1].id(),
+ *                     defaultServiceCertificate.get(1).id(),
  *                     "-cn-hangzhou")
  *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .listenerId(defaultListener.id())

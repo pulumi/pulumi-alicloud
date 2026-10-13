@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultOSS = new Bucket("defaultOSS", BucketArgs.builder()
- *             .bucket(String.format("%s-%s", name,defaultInteger.result()))
+ *             .bucket(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *                     .bucket(defaultOSS.bucket())
  *                     .build())
  *                 .build())
- *             .vvpInstanceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vvpInstanceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(zoneId)
  *             .vswitchIds(defaultGetSwitches.ids()[0])

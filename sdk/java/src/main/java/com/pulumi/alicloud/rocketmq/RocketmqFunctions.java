@@ -77,7 +77,7 @@ public final class RocketmqFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups().get(0).groupName()));
      *     }
      * }
      * }
@@ -140,7 +140,7 @@ public final class RocketmqFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups().get(0).groupName()));
      *     }
      * }
      * }
@@ -203,7 +203,7 @@ public final class RocketmqFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups().get(0).groupName()));
      *     }
      * }
      * }
@@ -266,7 +266,7 @@ public final class RocketmqFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups().get(0).groupName()));
      *     }
      * }
      * }
@@ -329,7 +329,7 @@ public final class RocketmqFunctions {
      *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups().get(0).groupName()));
      *     }
      * }
      * }
@@ -383,7 +383,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -437,7 +437,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -491,7 +491,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -545,7 +545,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -599,7 +599,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -653,7 +653,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -707,7 +707,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1079,7 +1079,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics().get(0).topicName()));
      *     }
      * }
      * }
@@ -1143,7 +1143,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics().get(0).topicName()));
      *     }
      * }
      * }
@@ -1207,7 +1207,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics().get(0).topicName()));
      *     }
      * }
      * }
@@ -1271,7 +1271,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics().get(0).topicName()));
      *     }
      * }
      * }
@@ -1335,7 +1335,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics().get(0).topicName()));
      *     }
      * }
      * }

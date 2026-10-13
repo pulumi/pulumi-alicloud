@@ -83,7 +83,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -140,7 +140,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -197,7 +197,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -254,7 +254,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -311,7 +311,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -368,7 +368,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -425,7 +425,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("esaCacheReserveInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -498,7 +498,7 @@ public final class EsaFunctions {
      *             .siteId(defaultHttpsBasicConfiguration.siteId())
      *             .build());
      * 
-     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -571,7 +571,7 @@ public final class EsaFunctions {
      *             .siteId(defaultHttpsBasicConfiguration.siteId())
      *             .build());
      * 
-     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -644,7 +644,7 @@ public final class EsaFunctions {
      *             .siteId(defaultHttpsBasicConfiguration.siteId())
      *             .build());
      * 
-     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -717,7 +717,7 @@ public final class EsaFunctions {
      *             .siteId(defaultHttpsBasicConfiguration.siteId())
      *             .build());
      * 
-     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -790,7 +790,7 @@ public final class EsaFunctions {
      *             .siteId(defaultHttpsBasicConfiguration.siteId())
      *             .build());
      * 
-     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -848,7 +848,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -906,7 +906,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -964,7 +964,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -1022,7 +1022,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -1080,7 +1080,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -1138,7 +1138,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -1196,7 +1196,7 @@ public final class EsaFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists()[0].id()));
+     *         ctx.export("esaListsId0", ids.applyValue(_ids -> _ids.lists().get(0).id()));
      *     }
      * }
      * }
@@ -1265,7 +1265,7 @@ public final class EsaFunctions {
      *             .siteId(defaultNetworkOptimization.siteId())
      *             .build());
      * 
-     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations().get(0).id()));
      *     }
      * }
      * }
@@ -1334,7 +1334,7 @@ public final class EsaFunctions {
      *             .siteId(defaultNetworkOptimization.siteId())
      *             .build());
      * 
-     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations().get(0).id()));
      *     }
      * }
      * }
@@ -1403,7 +1403,7 @@ public final class EsaFunctions {
      *             .siteId(defaultNetworkOptimization.siteId())
      *             .build());
      * 
-     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations().get(0).id()));
      *     }
      * }
      * }
@@ -1472,7 +1472,7 @@ public final class EsaFunctions {
      *             .siteId(defaultNetworkOptimization.siteId())
      *             .build());
      * 
-     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations().get(0).id()));
      *     }
      * }
      * }
@@ -1541,7 +1541,7 @@ public final class EsaFunctions {
      *             .siteId(defaultNetworkOptimization.siteId())
      *             .build());
      * 
-     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations().get(0).id()));
      *     }
      * }
      * }
@@ -1621,7 +1621,7 @@ public final class EsaFunctions {
      *             .siteId(defaultOriginRule.siteId())
      *             .build());
      * 
-     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1701,7 +1701,7 @@ public final class EsaFunctions {
      *             .siteId(defaultOriginRule.siteId())
      *             .build());
      * 
-     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1781,7 +1781,7 @@ public final class EsaFunctions {
      *             .siteId(defaultOriginRule.siteId())
      *             .build());
      * 
-     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1861,7 +1861,7 @@ public final class EsaFunctions {
      *             .siteId(defaultOriginRule.siteId())
      *             .build());
      * 
-     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1941,7 +1941,7 @@ public final class EsaFunctions {
      *             .siteId(defaultOriginRule.siteId())
      *             .build());
      * 
-     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -2244,7 +2244,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2312,7 +2312,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2380,7 +2380,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2448,7 +2448,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2516,7 +2516,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2584,7 +2584,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2652,7 +2652,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites().get(0).id()));
      *     }
      * }
      * }
@@ -2716,7 +2716,7 @@ public final class EsaFunctions {
      *             .siteVersion(defaultWafRuleset.siteVersion())
      *             .build());
      * 
-     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets().get(0).id()));
      *     }
      * }
      * }
@@ -2780,7 +2780,7 @@ public final class EsaFunctions {
      *             .siteVersion(defaultWafRuleset.siteVersion())
      *             .build());
      * 
-     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets().get(0).id()));
      *     }
      * }
      * }
@@ -2844,7 +2844,7 @@ public final class EsaFunctions {
      *             .siteVersion(defaultWafRuleset.siteVersion())
      *             .build());
      * 
-     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets().get(0).id()));
      *     }
      * }
      * }
@@ -2908,7 +2908,7 @@ public final class EsaFunctions {
      *             .siteVersion(defaultWafRuleset.siteVersion())
      *             .build());
      * 
-     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets().get(0).id()));
      *     }
      * }
      * }
@@ -2972,7 +2972,7 @@ public final class EsaFunctions {
      *             .siteVersion(defaultWafRuleset.siteVersion())
      *             .build());
      * 
-     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
+     *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets().get(0).id()));
      *     }
      * }
      * }

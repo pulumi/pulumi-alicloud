@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Cen
     ///     var asn = config.Get("asn") ?? "4200000667";
     ///     var defaultO8Hcfx = new AliCloud.ExpressConnect.RouterExpressConnectRouter("defaultO8Hcfx", new()
     ///     {
-    ///         AlibabaSideAsn = asn,
+    ///         AlibabaSideAsn = int.Parse(asn, System.Globalization.CultureInfo.InvariantCulture),
     ///         EcrName = name,
     ///     });
     /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Cen
     ///         EcrId = defaultO8Hcfx.Id,
     ///         CenId = defaultQKBiay.Id,
     ///         TransitRouterId = defaultQa94Y1.TransitRouterId,
-    ///         TransitRouterOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         TransitRouterOwnerId = Output.Create(current.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     ///     var @default = new AliCloud.Cen.TransitRouterEcrAttachment("default", new()
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Cen
     ///         TransitRouterEcrAttachmentName = name,
     ///         TransitRouterAttachmentDescription = name,
     ///         TransitRouterId = defaultQa94Y1.TransitRouterId,
-    ///         EcrOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         EcrOwnerId = Output.Create(current.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

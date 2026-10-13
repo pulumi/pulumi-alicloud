@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
- *             .displayName(String.format("%s-%s", name,default_.result()))
+ *             .displayName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultInstanceMember = new InstanceMember("defaultInstanceMember", InstanceMemberArgs.builder()
- *             .memberDesc(String.format("%s-%s", name,default_.result()))
+ *             .memberDesc(String.format("%s-%s", name,default_.get("result")))
  *             .memberUid(defaultAccount.id())
  *             .build());
  * 

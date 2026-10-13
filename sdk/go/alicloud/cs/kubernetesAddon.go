@@ -111,7 +111,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// data source provides the information of available addons
+//			// function provides the information of available addons
 //			_ = cs.GetKubernetesAddonsOutput(ctx, cs.GetKubernetesAddonsOutputArgs{
 //				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				NameRegex: pulumi.String("logtail-ds"),

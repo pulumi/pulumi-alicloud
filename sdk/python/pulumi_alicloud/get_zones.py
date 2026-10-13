@@ -199,7 +199,7 @@ def get_zones(available_disk_category: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     zones_ds = alicloud.get_zones(available_instance_type="ecs.n4.large",
         available_disk_category="cloud_ssd")
     ```
@@ -276,7 +276,7 @@ def get_zones_output(available_disk_category: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     zones_ds = alicloud.get_zones(available_instance_type="ecs.n4.large",
         available_disk_category="cloud_ssd")
     ```

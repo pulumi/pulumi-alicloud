@@ -80,7 +80,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Declare the data source
+//			// Declare the function
 //			exampleGetEngineNamespaces := mse.GetEngineNamespacesOutput(ctx, mse.GetEngineNamespacesOutputArgs{
 //				InstanceId: exampleEngineNamespace.InstanceId,
 //			}, nil)

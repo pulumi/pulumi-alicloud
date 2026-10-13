@@ -76,15 +76,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucketSrc = new Bucket("bucketSrc", BucketArgs.builder()
- *             .bucket(String.format("example-src-%s", default_.result()))
+ *             .bucket(String.format("example-src-%s", default_.get("result")))
  *             .build());
  * 
  *         var bucketDest = new Bucket("bucketDest", BucketArgs.builder()
- *             .bucket(String.format("example-dest-%s", default_.result()))
+ *             .bucket(String.format("example-dest-%s", default_.get("result")))
  *             .build());
  * 
  *         var role = new Role("role", RoleArgs.builder()
- *             .roleName(String.format("example-role-%s", default_.result()))
+ *             .roleName(String.format("example-role-%s", default_.get("result")))
  *             .assumeRolePolicyDocument("""
  * \t\t{
  * \t\t  \"Statement\": [
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Policy("policy", PolicyArgs.builder()
- *             .policyName(String.format("example-policy-%s", default_.result()))
+ *             .policyName(String.format("example-policy-%s", default_.get("result")))
  *             .policyDocument("""
  * \t\t{
  * \t\t  \"Statement\": [

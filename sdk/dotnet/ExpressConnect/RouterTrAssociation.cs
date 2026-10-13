@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///     var asn = config.Get("asn") ?? "4200001003";
     ///     var defaultpX0KlC = new AliCloud.ExpressConnect.RouterExpressConnectRouter("defaultpX0KlC", new()
     ///     {
-    ///         AlibabaSideAsn = asn,
+    ///         AlibabaSideAsn = int.Parse(asn, System.Globalization.CultureInfo.InvariantCulture),
     ///     });
     /// 
     ///     var default418DC9 = new AliCloud.Cen.Instance("default418DC9", new()
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///     {
     ///         EcrId = defaultpX0KlC.Id,
     ///         CenId = default418DC9.Id,
-    ///         TransitRouterOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         TransitRouterOwnerId = Output.Create(current.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AllowedPrefixes = new[]
     ///         {
     ///             alowprefix1,

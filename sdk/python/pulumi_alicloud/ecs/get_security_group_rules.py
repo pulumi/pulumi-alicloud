@@ -174,8 +174,8 @@ def get_security_group_rules(direction: Optional[_builtins.str] = None,
 
     config = pulumi.Config()
     security_group_id = config.require_object("securityGroupId")
-    # Or get it from the alicloud_security_groups data source.
-    # Please note that the data source arguments must be enough to filter results to one security group.
+    # Or get it from the alicloud_security_groups function.
+    # Please note that the function arguments must be enough to filter results to one security group.
     groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
     # Filter the security group rule by group
     ingress_rules_ds = alicloud.ecs.get_security_group_rules(group_id=groups_ds.groups[0].id,
@@ -237,8 +237,8 @@ def get_security_group_rules_output(direction: pulumi.Input[Optional[Optional[_b
 
     config = pulumi.Config()
     security_group_id = config.require_object("securityGroupId")
-    # Or get it from the alicloud_security_groups data source.
-    # Please note that the data source arguments must be enough to filter results to one security group.
+    # Or get it from the alicloud_security_groups function.
+    # Please note that the function arguments must be enough to filter results to one security group.
     groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
     # Filter the security group rule by group
     ingress_rules_ds = alicloud.ecs.get_security_group_rules(group_id=groups_ds.groups[0].id,

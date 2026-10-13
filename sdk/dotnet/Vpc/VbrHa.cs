@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
     ///                     range.Value + 1,
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             VlanId = vlanId.Id + range.Value,
+    ///             VlanId = (int)(double.Parse(vlanId.Id, System.Globalization.CultureInfo.InvariantCulture) + (double)range.Value),
     ///             MinRxInterval = 1000,
     ///             MinTxInterval = 1000,
     ///             DetectMultiplier = 10,

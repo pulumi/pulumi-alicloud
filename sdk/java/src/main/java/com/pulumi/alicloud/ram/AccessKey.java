@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new RAM access key for user.
  *         var user = new User("user", UserArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .name(String.format("terraform-example-%s", default_.get("result")))
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
  *             .email("hello.uuu}{@literal @}{@code aaa.com")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new RAM access key for user.
  *         var user = new User("user", UserArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .name(String.format("terraform-example-%s", default_.get("result")))
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
  *             .email("hello.uuu}{@literal @}{@code aaa.com")

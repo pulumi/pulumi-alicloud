@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Esa
     ///         Certificate = @"-----BEGIN CERTIFICATE-----
     /// ****-----END CERTIFICATE-----",
     ///         ClientCaCertName = "example",
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         },
     ///         PrimaryVswitchIp = "172.16.3.1",
     ///         StandbyVswitchIp = "172.16.4.1",
-    ///         MemberUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         MemberUid = Output.Create(current.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

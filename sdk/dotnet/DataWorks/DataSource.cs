@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///             },
     ///         }),
     ///         ConnectionPropertiesMode = "UrlMode",
-    ///         ProjectId = defaultkguw4R.Id,
+    ///         ProjectId = defaultkguw4R.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Description = name,
     ///     });
     /// 

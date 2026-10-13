@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *         var workspace = new WorkspaceWorkspace("workspace", WorkspaceWorkspaceArgs.builder()
  *             .description("156")
  *             .displayName(name)
- *             .workspaceName(String.format("%s_%s", name,default_.result()))
+ *             .workspaceName(String.format("%s_%s", name,default_.get("result")))
  *             .envTypes("prod")
  *             .build());
  * 
  *         var defaultUser = new User("defaultUser", UserArgs.builder()
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultWorkspaceMember = new WorkspaceMember("defaultWorkspaceMember", WorkspaceMemberArgs.builder()

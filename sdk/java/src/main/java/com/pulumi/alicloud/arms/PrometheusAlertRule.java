@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
  *             .clusterType("remote-write")
- *             .clusterName(String.format("%s-%s", name,default_.result()))
+ *             .clusterName(String.format("%s-%s", name,default_.get("result")))
  *             .grafanaInstanceId("free")
  *             .build());
  * 

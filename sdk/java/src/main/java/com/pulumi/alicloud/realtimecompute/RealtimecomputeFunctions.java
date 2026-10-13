@@ -124,7 +124,7 @@ public final class RealtimecomputeFunctions {
      *             .resourceId(defaultMember.resourceId())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members()[0].id()));
+     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -237,7 +237,7 @@ public final class RealtimecomputeFunctions {
      *             .resourceId(defaultMember.resourceId())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members()[0].id()));
+     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -350,7 +350,7 @@ public final class RealtimecomputeFunctions {
      *             .resourceId(defaultMember.resourceId())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members()[0].id()));
+     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -463,7 +463,7 @@ public final class RealtimecomputeFunctions {
      *             .resourceId(defaultMember.resourceId())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members()[0].id()));
+     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -576,7 +576,7 @@ public final class RealtimecomputeFunctions {
      *             .resourceId(defaultMember.resourceId())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members()[0].id()));
+     *         ctx.export("realtimeComputeMembersId0", ids.applyValue(_ids -> _ids.members().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -926,7 +926,7 @@ public final class RealtimecomputeFunctions {
      *             .namespace(defaultVariable.namespace())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1041,7 +1041,7 @@ public final class RealtimecomputeFunctions {
      *             .namespace(defaultVariable.namespace())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1156,7 +1156,7 @@ public final class RealtimecomputeFunctions {
      *             .namespace(defaultVariable.namespace())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1271,7 +1271,7 @@ public final class RealtimecomputeFunctions {
      *             .namespace(defaultVariable.namespace())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1386,7 +1386,7 @@ public final class RealtimecomputeFunctions {
      *             .namespace(defaultVariable.namespace())
      *             .build());
      * 
-     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables()[0].id()));
+     *         ctx.export("realtimeComputeVariablesId0", ids.applyValue(_ids -> _ids.variables().get(0).id()));
      *     }}{@code
      * }}{@code
      * }

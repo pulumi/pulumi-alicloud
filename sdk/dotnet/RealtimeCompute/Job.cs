@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
     ///         RestoreStrategy = new AliCloud.RealtimeCompute.Inputs.JobRestoreStrategyArgs
     ///         {
     ///             Kind = "NONE",
-    ///             JobStartTimeInMs = 1763694521254,
+    ///             JobStartTimeInMs = (int)1763694521254,
     ///         },
     ///         Namespace = defaultVvpInstance.VvpInstanceName.Apply(vvpInstanceName =&gt; $"{vvpInstanceName}-default"),
     ///         StopStrategy = "NONE",

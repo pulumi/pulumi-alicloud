@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.CS
         ///     {
         ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
         ///         CpuCoreCount = 4,
-        ///         MemorySize = 8,
+        ///         MemorySize = 8.0,
         ///         KubernetesNodeRole = "Worker",
         ///         SystemDiskCategory = "cloud_efficiency",
         ///     });
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.CS
         ///     {
         ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
         ///         CpuCoreCount = 4,
-        ///         MemorySize = 8,
+        ///         MemorySize = 8.0,
         ///         KubernetesNodeRole = "Worker",
         ///         SystemDiskCategory = "cloud_efficiency",
         ///     });
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.CS
         ///     {
         ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
         ///         CpuCoreCount = 4,
-        ///         MemorySize = 8,
+        ///         MemorySize = 8.0,
         ///         KubernetesNodeRole = "Worker",
         ///         SystemDiskCategory = "cloud_efficiency",
         ///     });

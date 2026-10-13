@@ -2123,7 +2123,7 @@ class Kubernetes(pulumi.CustomResource):
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=vswitch_cidrs[vswitches_range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < length else 0]).zone_id))
+                zone_id=enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
         # According to the vswitch cidr blocks to launch several vswitches
         terway_vswitches: list[alicloud.vpc.Switch] = []
         for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
@@ -2131,9 +2131,9 @@ class Kubernetes(pulumi.CustomResource):
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < length else 0]).zone_id))
+                zone_id=enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
-        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=len(enhanced.zones).apply(lambda length: enhanced.zones[__index if __index < length else 0]).zone_id,
+        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=enhanced.zones[__index if __index < len(enhanced.zones) else 0].zone_id,
             cpu_core_count=4,
             memory_size=float(8),
             system_disk_category="cloud_essd") for __index in range(3)]
@@ -2394,7 +2394,7 @@ class Kubernetes(pulumi.CustomResource):
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=vswitch_cidrs[vswitches_range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < length else 0]).zone_id))
+                zone_id=enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
         # According to the vswitch cidr blocks to launch several vswitches
         terway_vswitches: list[alicloud.vpc.Switch] = []
         for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
@@ -2402,9 +2402,9 @@ class Kubernetes(pulumi.CustomResource):
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < length else 0]).zone_id))
+                zone_id=enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
-        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=len(enhanced.zones).apply(lambda length: enhanced.zones[__index if __index < length else 0]).zone_id,
+        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=enhanced.zones[__index if __index < len(enhanced.zones) else 0].zone_id,
             cpu_core_count=4,
             memory_size=float(8),
             system_disk_category="cloud_essd") for __index in range(3)]

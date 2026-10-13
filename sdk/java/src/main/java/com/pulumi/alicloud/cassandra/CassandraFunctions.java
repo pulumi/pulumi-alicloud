@@ -837,7 +837,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -888,7 +888,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -939,7 +939,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -990,7 +990,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1041,7 +1041,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1092,7 +1092,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1143,7 +1143,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = CassandraFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 

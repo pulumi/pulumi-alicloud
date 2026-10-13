@@ -85,8 +85,8 @@ namespace Pulumi.AliCloud.Ess
     ///     var defaultEciScalingConfiguration = new AliCloud.Ess.EciScalingConfiguration("default", new()
     ///     {
     ///         ScalingGroupId = defaultScalingGroup.Id,
-    ///         Cpu = 2,
-    ///         Memory = 4,
+    ///         Cpu = 2.0,
+    ///         Memory = 4.0,
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         ForceDelete = true,
     ///         Active = true,

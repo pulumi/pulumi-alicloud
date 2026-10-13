@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Edas
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 4,
-    ///         MemorySize = 8,
+    ///         MemorySize = 8.0,
     ///         KubernetesNodeRole = "Worker",
     ///     });
     /// 

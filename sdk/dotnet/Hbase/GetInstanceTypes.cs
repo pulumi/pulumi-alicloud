@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Hbase
         /// 
         ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
         ///     {
-        ///         CoreInstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///         CoreInstanceType = Output.Create(@default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///     });
         /// 
         /// });
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Hbase
         /// 
         ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
         ///     {
-        ///         CoreInstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///         CoreInstanceType = Output.Create(@default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///     });
         /// 
         /// });
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Hbase
         /// 
         ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
         ///     {
-        ///         CoreInstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///         CoreInstanceType = Output.Create(@default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///     });
         /// 
         /// });

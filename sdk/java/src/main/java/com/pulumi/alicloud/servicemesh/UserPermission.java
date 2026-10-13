@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default1 = new ServiceMesh("default1", ServiceMeshArgs.builder()
- *             .serviceMeshName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .serviceMeshName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .edition("Default")
  *             .clusterSpec("standard")
  *             .version(default_.versions()[0].version())

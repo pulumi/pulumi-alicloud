@@ -45,10 +45,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			index := len(_default.Zones).ApplyT(func(length int) (float64, error) {
-//				return length - 1, nil
-//			}).(pulumi.Float64Output)
-//			zoneId := _default.Zones[index].Id
+//			index := len(_default.Zones) - 1
+//			zoneId := index.ApplyT(func(index float64) (mongodb.GetZonesZone, error) {
+//				return _default.Zones[index].(mongodb.GetZonesZone), nil
+//			}).(mongodb.GetZonesZoneOutput).Id()
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),

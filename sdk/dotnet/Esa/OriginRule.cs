@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Esa
     ///     var defaultOriginRule = new AliCloud.Esa.OriginRule("default", new()
     ///     {
     ///         OriginSni = "origin.example.com",
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         OriginHost = "origin.example.com",
     ///         DnsRecord = "tf.example.com",
     ///         SiteVersion = 0,

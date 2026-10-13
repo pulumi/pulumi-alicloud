@@ -1789,7 +1789,7 @@ public final class ActiontrailFunctions {
      *             .instanceId(defaultSaslUser.instanceId())
      *             .build());
      * 
-     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1893,7 +1893,7 @@ public final class ActiontrailFunctions {
      *             .instanceId(defaultSaslUser.instanceId())
      *             .build());
      * 
-     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1997,7 +1997,7 @@ public final class ActiontrailFunctions {
      *             .instanceId(defaultSaslUser.instanceId())
      *             .build());
      * 
-     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -2101,7 +2101,7 @@ public final class ActiontrailFunctions {
      *             .instanceId(defaultSaslUser.instanceId())
      *             .build());
      * 
-     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -2205,7 +2205,7 @@ public final class ActiontrailFunctions {
      *             .instanceId(defaultSaslUser.instanceId())
      *             .build());
      * 
-     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }

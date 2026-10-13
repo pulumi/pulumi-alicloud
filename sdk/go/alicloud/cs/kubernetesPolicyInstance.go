@@ -83,7 +83,7 @@ import (
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("CreateVSwitch-%v", key0), &vpc.SwitchArgs{
 // VpcId: createVPC.ID().ToIDOutput().ToStringOutput(),
-// CidrBlock: pulumi.String(vswitchCidrs[val0]),
+// CidrBlock: vswitchCidrs[val0],
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
 // if err != nil {
@@ -182,12 +182,12 @@ import (
 // if err != nil {
 // return err
 // }
-// tmpJSON1, err := json.Marshal([]map[string]string{
-// {
+// tmpJSON1, err := json.Marshal([]interface{}{
+// map[string]string{
 // "key": "test",
 // "allowedRegex": "^test.*$",
 // },
-// {
+// map[string]interface{}{
 // "key": "env",
 // "allowedRegex": "^(dev|prod)$",
 // "optional": false,

@@ -412,7 +412,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -457,7 +457,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -502,7 +502,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -547,7 +547,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -592,7 +592,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -637,7 +637,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -682,7 +682,7 @@ public final class CmsFunctions {
      *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export("first-contact", this_.contacts());
+     *         ctx.export("first-contact", this_.get("contacts"));
      *     }
      * }
      * }
@@ -789,7 +789,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -896,7 +896,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1003,7 +1003,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1110,7 +1110,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1217,7 +1217,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1324,7 +1324,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1431,7 +1431,7 @@ public final class CmsFunctions {
      *             .ids(defaultAlertRuleV2.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1510,7 +1510,7 @@ public final class CmsFunctions {
      *             .ids(defaultDataset.id())
      *             .build());
      * 
-     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets().get(0).id()));
      *     }
      * }
      * }
@@ -1589,7 +1589,7 @@ public final class CmsFunctions {
      *             .ids(defaultDataset.id())
      *             .build());
      * 
-     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets().get(0).id()));
      *     }
      * }
      * }
@@ -1668,7 +1668,7 @@ public final class CmsFunctions {
      *             .ids(defaultDataset.id())
      *             .build());
      * 
-     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets().get(0).id()));
      *     }
      * }
      * }
@@ -1747,7 +1747,7 @@ public final class CmsFunctions {
      *             .ids(defaultDataset.id())
      *             .build());
      * 
-     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets().get(0).id()));
      *     }
      * }
      * }
@@ -1826,7 +1826,7 @@ public final class CmsFunctions {
      *             .ids(defaultDataset.id())
      *             .build());
      * 
-     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets()[0].id()));
+     *         ctx.export("cmsDatasetId1", default_.applyValue(_default_ -> _default_.datasets().get(0).id()));
      *     }
      * }
      * }
@@ -1893,7 +1893,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -1960,7 +1960,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2027,7 +2027,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2094,7 +2094,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2161,7 +2161,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2228,7 +2228,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2295,7 +2295,7 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups()[0].id()));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(_ids -> _ids.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2406,7 +2406,7 @@ public final class CmsFunctions {
      *             .workspace("default-workspace-cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies().get(0).id()));
      *     }
      * }
      * }
@@ -2517,7 +2517,7 @@ public final class CmsFunctions {
      *             .workspace("default-workspace-cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies().get(0).id()));
      *     }
      * }
      * }
@@ -2628,7 +2628,7 @@ public final class CmsFunctions {
      *             .workspace("default-workspace-cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies().get(0).id()));
      *     }
      * }
      * }
@@ -2739,7 +2739,7 @@ public final class CmsFunctions {
      *             .workspace("default-workspace-cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies().get(0).id()));
      *     }
      * }
      * }
@@ -2850,7 +2850,7 @@ public final class CmsFunctions {
      *             .workspace("default-workspace-cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies()[0].id()));
+     *         ctx.export("alicloudCmsEventNotifyPolicyExampleId", default_.applyValue(_default_ -> _default_.policies().get(0).id()));
      *     }
      * }
      * }
@@ -4432,12 +4432,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -4477,12 +4477,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -4522,12 +4522,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -4567,12 +4567,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -4612,12 +4612,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -4657,12 +4657,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -4702,12 +4702,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.get("id"))
      *             .category("ecs")
      *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].get("id"));
      *     }
      * }
      * }
@@ -6154,7 +6154,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6185,7 +6185,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }
@@ -6238,7 +6238,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6269,7 +6269,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }
@@ -6322,7 +6322,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6353,7 +6353,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }
@@ -6406,7 +6406,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6437,7 +6437,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }
@@ -6490,7 +6490,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6521,7 +6521,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }
@@ -6574,7 +6574,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6605,7 +6605,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }
@@ -6658,7 +6658,7 @@ public final class CmsFunctions {
      * 
      *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
      *             .address("http://www.alibabacloud.com")
-     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .taskType("HTTP")
      *             .interval("5")
      *             .ispCities(SiteMonitorIspCityArgs.builder()
@@ -6689,7 +6689,7 @@ public final class CmsFunctions {
      *             .taskType("HTTP")
      *             .build());
      * 
-     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors()[0].taskId()));
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
      *     }
      * }
      * }

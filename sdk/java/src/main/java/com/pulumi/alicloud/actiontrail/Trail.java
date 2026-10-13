@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .description("tf actiontrail example")
  *             .build());
  * 

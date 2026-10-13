@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-exampleacc-cddc-dedicated_propre_host",
  * });
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
- * defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids).length.apply(length => {
+ * defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {
  *             vpcId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.vpcId),
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-exampleacc-cddc-dedicated_propre_host",
  * });
  * const defaultEcsDeploymentSet: alicloud.ecs.EcsDeploymentSet[] = [];
- * defaultGetEcsDeploymentSets.then(defaultGetEcsDeploymentSets => defaultGetEcsDeploymentSets.ids).length.apply(length => {
+ * defaultGetEcsDeploymentSets.then(defaultGetEcsDeploymentSets => defaultGetEcsDeploymentSets.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultEcsDeploymentSet.push(new alicloud.ecs.EcsDeploymentSet(`default-${range}`, {
  *             strategy: "Availability",
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-exampleacc-cddc-dedicated_propre_host",
  * });
  * const defaultKeyPair: alicloud.ecs.KeyPair[] = [];
- * defaultGetKeyPairs.then(defaultGetKeyPairs => defaultGetKeyPairs.ids).length.apply(length => {
+ * defaultGetKeyPairs.then(defaultGetKeyPairs => defaultGetKeyPairs.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultKeyPair.push(new alicloud.ecs.KeyPair(`default-${range}`, {keyPairName: "tf-exampleacc-cddc-dedicated_propre_host"}));
  *     }
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-exampleacc-cddc-dedicated_propre_host",
  * });
  * const defaultDedicatedHostGroup: alicloud.cddc.DedicatedHostGroup[] = [];
- * defaultGetDedicatedHostGroups.then(defaultGetDedicatedHostGroups => defaultGetDedicatedHostGroups.ids).length.apply(length => {
+ * defaultGetDedicatedHostGroups.then(defaultGetDedicatedHostGroups => defaultGetDedicatedHostGroups.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultDedicatedHostGroup.push(new alicloud.cddc.DedicatedHostGroup(`default-${range}`, {
  *             engine: "MySQL",
@@ -102,37 +102,37 @@ import * as utilities from "../utilities";
  *         }));
  *     }
  * });
- * const alicloudSecurityGroupId = pulumi.all([defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids).length, defaultGetSecurityGroups, std.concat({
+ * const alicloudSecurityGroupId = Promise.all([defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids.length), defaultGetSecurityGroups, std.concat({
  *     input: [
  *         defaultSecurityGroup.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, defaultGetSecurityGroups, invoke]) => length > 0 ? defaultGetSecurityGroups.ids?.[0] : invoke.result?.[0]);
- * const alicloudEcsDeploymentSetId = pulumi.all([defaultGetEcsDeploymentSets.then(defaultGetEcsDeploymentSets => defaultGetEcsDeploymentSets.ids).length, defaultGetEcsDeploymentSets, std.concat({
+ * })]).then(([length, defaultGetSecurityGroups, invoke]) => length > 0 ? defaultGetSecurityGroups.ids?.[0] : invoke.result?.[0]);
+ * const alicloudEcsDeploymentSetId = Promise.all([defaultGetEcsDeploymentSets.then(defaultGetEcsDeploymentSets => defaultGetEcsDeploymentSets.ids.length), defaultGetEcsDeploymentSets, std.concat({
  *     input: [
  *         defaultEcsDeploymentSet.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, defaultGetEcsDeploymentSets, invoke]) => length > 0 ? defaultGetEcsDeploymentSets.sets?.[0]?.deploymentSetId : invoke.result?.[0]);
- * const alicloudKeyPairId = pulumi.all([defaultGetKeyPairs.then(defaultGetKeyPairs => defaultGetKeyPairs.ids).length, defaultGetKeyPairs, std.concat({
+ * })]).then(([length, defaultGetEcsDeploymentSets, invoke]) => length > 0 ? defaultGetEcsDeploymentSets.sets?.[0]?.deploymentSetId : invoke.result?.[0]);
+ * const alicloudKeyPairId = Promise.all([defaultGetKeyPairs.then(defaultGetKeyPairs => defaultGetKeyPairs.ids.length), defaultGetKeyPairs, std.concat({
  *     input: [
  *         defaultKeyPair.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, defaultGetKeyPairs, invoke]) => length > 0 ? defaultGetKeyPairs.ids?.[0] : invoke.result?.[0]);
- * const dedicatedHostGroupId = pulumi.all([defaultGetDedicatedHostGroups.then(defaultGetDedicatedHostGroups => defaultGetDedicatedHostGroups.ids).length, defaultGetDedicatedHostGroups, std.concat({
+ * })]).then(([length, defaultGetKeyPairs, invoke]) => length > 0 ? defaultGetKeyPairs.ids?.[0] : invoke.result?.[0]);
+ * const dedicatedHostGroupId = Promise.all([defaultGetDedicatedHostGroups.then(defaultGetDedicatedHostGroups => defaultGetDedicatedHostGroups.ids.length), defaultGetDedicatedHostGroups, std.concat({
  *     input: [
  *         defaultDedicatedHostGroup.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, defaultGetDedicatedHostGroups, invoke]) => length > 0 ? defaultGetDedicatedHostGroups.ids?.[0] : invoke.result?.[0]);
+ * })]).then(([length, defaultGetDedicatedHostGroups, invoke]) => length > 0 ? defaultGetDedicatedHostGroups.ids?.[0] : invoke.result?.[0]);
  * const defaultDedicatedPropreHost = new alicloud.cddc.DedicatedPropreHost("default", {
  *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     ecsInstanceName: "exampleTf",
- *     ecsDeploymentSetId: alicloudEcsDeploymentSetId,
+ *     ecsDeploymentSetId: String(alicloudEcsDeploymentSetId),
  *     autoRenew: "false",
- *     securityGroupId: alicloudSecurityGroupId,
- *     dedicatedHostGroupId: dedicatedHostGroupId,
+ *     securityGroupId: String(alicloudSecurityGroupId),
+ *     dedicatedHostGroupId: String(dedicatedHostGroupId),
  *     ecsHostName: "exampleTf",
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *     ecsUniqueSuffix: "false",

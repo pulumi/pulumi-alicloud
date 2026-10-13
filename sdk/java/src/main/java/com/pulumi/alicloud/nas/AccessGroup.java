@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()
- *             .accessGroupName(String.format("terraform-example-%s", default_.result()))
+ *             .accessGroupName(String.format("terraform-example-%s", default_.get("result")))
  *             .accessGroupType("Vpc")
  *             .description("terraform-example")
  *             .fileSystemType("extreme")

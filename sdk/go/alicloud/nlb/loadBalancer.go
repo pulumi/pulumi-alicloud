@@ -155,7 +155,7 @@ import (
 //					VswitchName:       pulumi.Sprintf("vsw-%v-for-nlb", val0),
 //					VpcId:             vpc2.ID().ToIDOutput().ToStringOutput(),
 //					CidrBlock:         pulumi.Sprintf("10.2.1%v.0/24", val0),
-//					ZoneId:            zone[val0],
+//					ZoneId:            zone[val0].(pulumi.String),
 //				})
 //				if err != nil {
 //					return err

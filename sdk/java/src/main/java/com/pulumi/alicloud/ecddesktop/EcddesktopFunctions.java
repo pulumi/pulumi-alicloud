@@ -107,7 +107,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -209,7 +209,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -311,7 +311,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -413,7 +413,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -515,7 +515,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -617,7 +617,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -719,7 +719,7 @@ public final class EcddesktopFunctions {
      *             .nameRegex(defaultGroup.desktopGroupName())
      *             .build());
      * 
-     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups()[0].id()));
+     *         ctx.export("alicloudEcdDesktopGroupExampleId", defaultGetGroups.applyValue(_defaultGetGroups -> _defaultGetGroups.groups().get(0).id()));
      *     }}{@code
      * }}{@code
      * }

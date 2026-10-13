@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .input("%s1%s")
  *                 .args(                
  *                     name,
- *                     default_.result())
+ *                     default_.get("result"))
  *                 .build()).result())
  *             .build());
  * 
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *                 .input("%s1%s")
  *                 .args(                
  *                     name,
- *                     default_.result())
+ *                     default_.get("result"))
  *                 .build()).result())
  *             .build());
  * 
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *                 .input("%s1%s")
  *                 .args(                
  *                     name,
- *                     default_.result())
+ *                     default_.get("result"))
  *                 .build()).result())
  *             .storageClass("Standard")
  *             .build());

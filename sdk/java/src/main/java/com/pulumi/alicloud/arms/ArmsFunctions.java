@@ -127,13 +127,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -143,7 +143,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -164,7 +164,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -176,14 +176,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -192,7 +192,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -216,7 +216,7 @@ public final class ArmsFunctions {
      *             .ids(defaultAddonRelease.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases().get(0).id()));
      *     }
      * }
      * }
@@ -293,13 +293,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -309,7 +309,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -330,7 +330,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -342,14 +342,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -358,7 +358,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -382,7 +382,7 @@ public final class ArmsFunctions {
      *             .ids(defaultAddonRelease.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases().get(0).id()));
      *     }
      * }
      * }
@@ -459,13 +459,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -475,7 +475,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -496,7 +496,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -508,14 +508,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -524,7 +524,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -548,7 +548,7 @@ public final class ArmsFunctions {
      *             .ids(defaultAddonRelease.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases().get(0).id()));
      *     }
      * }
      * }
@@ -625,13 +625,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -641,7 +641,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -662,7 +662,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -674,14 +674,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -690,7 +690,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -714,7 +714,7 @@ public final class ArmsFunctions {
      *             .ids(defaultAddonRelease.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases().get(0).id()));
      *     }
      * }
      * }
@@ -791,13 +791,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -807,7 +807,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -828,7 +828,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -840,14 +840,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -856,7 +856,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -880,7 +880,7 @@ public final class ArmsFunctions {
      *             .ids(defaultAddonRelease.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases().get(0).id()));
      *     }
      * }
      * }
@@ -1591,7 +1591,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -1644,7 +1644,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -1697,7 +1697,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -1750,7 +1750,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -1803,7 +1803,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -1856,7 +1856,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -1909,7 +1909,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots().get(0).id()));
      *     }
      * }
      * }
@@ -2014,7 +2014,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2119,7 +2119,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2224,7 +2224,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2329,7 +2329,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2434,7 +2434,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2539,7 +2539,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2644,7 +2644,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }}{@code
      * }}{@code
      * }
@@ -2706,7 +2706,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(default_.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Environment")
@@ -2716,7 +2716,7 @@ public final class ArmsFunctions {
      *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
      *             .status("run")
      *             .environmentId(defaultEnvironment.id())
-     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .configYaml("""
      * scrape_configs:
      * - job_name: job-demo1
@@ -2737,7 +2737,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvCustomJob.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs().get(0).id()));
      *     }
      * }
      * }
@@ -2799,7 +2799,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(default_.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Environment")
@@ -2809,7 +2809,7 @@ public final class ArmsFunctions {
      *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
      *             .status("run")
      *             .environmentId(defaultEnvironment.id())
-     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .configYaml("""
      * scrape_configs:
      * - job_name: job-demo1
@@ -2830,7 +2830,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvCustomJob.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs().get(0).id()));
      *     }
      * }
      * }
@@ -2892,7 +2892,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(default_.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Environment")
@@ -2902,7 +2902,7 @@ public final class ArmsFunctions {
      *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
      *             .status("run")
      *             .environmentId(defaultEnvironment.id())
-     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .configYaml("""
      * scrape_configs:
      * - job_name: job-demo1
@@ -2923,7 +2923,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvCustomJob.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs().get(0).id()));
      *     }
      * }
      * }
@@ -2985,7 +2985,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(default_.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Environment")
@@ -2995,7 +2995,7 @@ public final class ArmsFunctions {
      *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
      *             .status("run")
      *             .environmentId(defaultEnvironment.id())
-     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .configYaml("""
      * scrape_configs:
      * - job_name: job-demo1
@@ -3016,7 +3016,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvCustomJob.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs().get(0).id()));
      *     }
      * }
      * }
@@ -3078,7 +3078,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(default_.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Environment")
@@ -3088,7 +3088,7 @@ public final class ArmsFunctions {
      *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
      *             .status("run")
      *             .environmentId(defaultEnvironment.id())
-     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .configYaml("""
      * scrape_configs:
      * - job_name: job-demo1
@@ -3109,7 +3109,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvCustomJob.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs().get(0).id()));
      *     }
      * }
      * }
@@ -3187,13 +3187,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -3203,7 +3203,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -3224,7 +3224,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -3236,14 +3236,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -3252,7 +3252,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -3268,7 +3268,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvFeature.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features().get(0).id()));
      *     }
      * }
      * }
@@ -3346,13 +3346,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -3362,7 +3362,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -3383,7 +3383,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -3395,14 +3395,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -3411,7 +3411,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -3427,7 +3427,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvFeature.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features().get(0).id()));
      *     }
      * }
      * }
@@ -3505,13 +3505,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -3521,7 +3521,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -3542,7 +3542,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -3554,14 +3554,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -3570,7 +3570,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -3586,7 +3586,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvFeature.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features().get(0).id()));
      *     }
      * }
      * }
@@ -3664,13 +3664,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -3680,7 +3680,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -3701,7 +3701,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -3713,14 +3713,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -3729,7 +3729,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -3745,7 +3745,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvFeature.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features().get(0).id()));
      *     }
      * }
      * }
@@ -3823,13 +3823,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -3839,7 +3839,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -3860,7 +3860,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -3872,14 +3872,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -3888,7 +3888,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -3904,7 +3904,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvFeature.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features().get(0).id()));
      *     }
      * }
      * }
@@ -3980,15 +3980,15 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -3998,7 +3998,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -4019,7 +4019,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -4031,14 +4031,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyName())
@@ -4047,7 +4047,7 @@ public final class ArmsFunctions {
      * 
      *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -4088,7 +4088,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvPodMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -4164,15 +4164,15 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -4182,7 +4182,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -4203,7 +4203,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -4215,14 +4215,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyName())
@@ -4231,7 +4231,7 @@ public final class ArmsFunctions {
      * 
      *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -4272,7 +4272,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvPodMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -4348,15 +4348,15 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -4366,7 +4366,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -4387,7 +4387,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -4399,14 +4399,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyName())
@@ -4415,7 +4415,7 @@ public final class ArmsFunctions {
      * 
      *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -4456,7 +4456,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvPodMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -4532,15 +4532,15 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -4550,7 +4550,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -4571,7 +4571,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -4583,14 +4583,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyName())
@@ -4599,7 +4599,7 @@ public final class ArmsFunctions {
      * 
      *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -4640,7 +4640,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvPodMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -4716,15 +4716,15 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
-     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -4734,7 +4734,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -4755,7 +4755,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -4767,14 +4767,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyName())
@@ -4783,7 +4783,7 @@ public final class ArmsFunctions {
      * 
      *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -4824,7 +4824,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvPodMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -4902,13 +4902,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -4918,7 +4918,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -4939,7 +4939,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -4951,14 +4951,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -4967,7 +4967,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -5007,7 +5007,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvServiceMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -5085,13 +5085,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -5101,7 +5101,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -5122,7 +5122,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -5134,14 +5134,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -5150,7 +5150,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -5190,7 +5190,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvServiceMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -5268,13 +5268,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -5284,7 +5284,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -5305,7 +5305,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -5317,14 +5317,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -5333,7 +5333,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -5373,7 +5373,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvServiceMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -5451,13 +5451,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -5467,7 +5467,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -5488,7 +5488,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -5500,14 +5500,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -5516,7 +5516,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -5556,7 +5556,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvServiceMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -5634,13 +5634,13 @@ public final class ArmsFunctions {
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .cidrBlock("192.168.0.0/16")
-     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .description("api-resource-test1-hz")
      *             .vpcId(vpc.id())
-     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .zoneId(enhanced.zones()[0].zoneId())
      *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
      *                 .input(vpc.cidrBlock())
@@ -5650,7 +5650,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .repeatWeekdays(            
      *                 "1",
      *                 "2",
@@ -5671,7 +5671,7 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
-     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .clusterSpec("ack.pro.small")
      *             .version("1.24.6-aliyun.1")
      *             .newNatGateway(true)
@@ -5683,14 +5683,14 @@ public final class ArmsFunctions {
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
-     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
      *             .name("desired_size")
      *             .clusterId(defaultManagedKubernetes.id())
      *             .vswitchIds(vswitch.id())
-     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
      *             .systemDiskCategory("cloud_efficiency")
      *             .systemDiskSize(40)
      *             .keyName(defaultKeyPair.keyPairName())
@@ -5699,7 +5699,7 @@ public final class ArmsFunctions {
      * 
      *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
      *             .environmentType("CS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .bindResourceId(defaultNodePool.clusterId())
      *             .environmentSubType("ManagedKubernetes")
      *             .build());
@@ -5739,7 +5739,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvServiceMonitor.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors().get(0).id()));
      *     }
      * }
      * }
@@ -5807,7 +5807,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -5819,7 +5819,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -5887,7 +5887,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -5899,7 +5899,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -5967,7 +5967,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -5979,7 +5979,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -6047,7 +6047,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -6059,7 +6059,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -6127,7 +6127,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -6139,7 +6139,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -6207,7 +6207,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -6219,7 +6219,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -6287,7 +6287,7 @@ public final class ArmsFunctions {
      *             .bindResourceId(defaultGetNetworks.ids()[0])
      *             .environmentSubType("ECS")
      *             .environmentType("ECS")
-     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .resourceGroupId(default_.ids()[1])
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -6299,7 +6299,7 @@ public final class ArmsFunctions {
      *             .ids(defaultEnvironment.id())
      *             .build());
      * 
-     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments().get(0).id()));
      *     }
      * }
      * }
@@ -6621,7 +6621,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -6708,7 +6708,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -6795,7 +6795,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -6882,7 +6882,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -6969,7 +6969,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7056,7 +7056,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7143,7 +7143,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7222,7 +7222,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7301,7 +7301,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7380,7 +7380,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7459,7 +7459,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7538,7 +7538,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7617,7 +7617,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }
@@ -7696,7 +7696,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis().get(0).id()));
      *     }
      * }
      * }

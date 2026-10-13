@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var defaultDI9fsL = new WorkspaceWorkspace("defaultDI9fsL", WorkspaceWorkspaceArgs.builder()
  *             .description("802")
  *             .displayName(name)
- *             .workspaceName(String.format("%s_%s", name,default_.result()))
+ *             .workspaceName(String.format("%s_%s", name,default_.get("result")))
  *             .envTypes("prod")
  *             .build());
  * 

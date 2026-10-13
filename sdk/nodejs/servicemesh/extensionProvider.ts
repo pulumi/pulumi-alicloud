@@ -29,19 +29,19 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultNetwork: alicloud.vpc.Network[] = [];
- * defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length.apply(length => {
+ * defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultNetwork.push(new alicloud.vpc.Network(`default-${range}`, {}));
  *     }
  * });
  * const defaultGetSwitches = alicloud.vpc.getSwitchesOutput({
- *     vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
+ *     vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids.length), defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
  * });
  * const defaultSwitch: alicloud.vpc.Switch[] = [];
- * defaultGetSwitches.ids.length.apply(length => {
+ * defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultSwitch.push(new alicloud.vpc.Switch(`default-${range}`, {
- *             vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
+ *             vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids.length), defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
  *             cidrBlock: defaultGetNetworks.then(defaultGetNetworks => std.cidrsubnet({
  *                 input: defaultGetNetworks.vpcs?.[0]?.cidrBlock,
  *                 newbits: 8,
@@ -56,8 +56,8 @@ import * as utilities from "../utilities";
  *     version: "v1.21.6.103-g5ddeaef7-aliyun",
  *     edition: "Default",
  *     network: {
- *         vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
- *         vswitcheLists: [pulumi.all([defaultGetSwitches.ids.length, defaultGetSwitches, defaultSwitch[0].id]).apply(([length, defaultGetSwitches, id]) => length > 0 ? defaultGetSwitches.ids?.[0] : id)],
+ *         vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids.length), defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
+ *         vswitcheLists: [pulumi.all([defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids.length), defaultGetSwitches, defaultSwitch[0].id]).apply(([length, defaultGetSwitches, id]) => length > 0 ? defaultGetSwitches.ids?.[0] : id)],
  *     },
  * });
  * const defaultExtensionProvider = new alicloud.servicemesh.ExtensionProvider("default", {

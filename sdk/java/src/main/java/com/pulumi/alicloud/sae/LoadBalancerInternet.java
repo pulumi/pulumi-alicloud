@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
- *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
+ *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.get("result")))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .appDescription(name)
- *             .appName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .appName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .namespaceId(defaultNamespace.id())
  *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
  *             .packageType("Image")

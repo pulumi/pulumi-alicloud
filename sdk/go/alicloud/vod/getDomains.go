@@ -59,7 +59,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("vodDomain", _default.ApplyT(func(_default vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
-//				return _default.Domains[0], nil
+//				return _default.Domains[0].(vod.GetDomainsDomain), nil
 //			}).(vod.GetDomainsDomainOutput))
 //			return nil
 //		})

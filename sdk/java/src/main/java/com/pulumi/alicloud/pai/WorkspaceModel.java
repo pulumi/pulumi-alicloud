@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var defaultENuC6u = new WorkspaceWorkspace("defaultENuC6u", WorkspaceWorkspaceArgs.builder()
  *             .description("156")
  *             .displayName(name)
- *             .workspaceName(String.format("%s_%s", name,default_.result()))
+ *             .workspaceName(String.format("%s_%s", name,default_.get("result")))
  *             .envTypes("prod")
  *             .build());
  * 

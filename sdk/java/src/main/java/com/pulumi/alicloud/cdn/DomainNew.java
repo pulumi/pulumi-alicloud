@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
  *             .scope("overseas")
- *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+ *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
  *             .cdnType("web")
  *             .sources(DomainNewSourceArgs.builder()
  *                 .type("ipaddr")

@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
- *             .domainName(String.format("example-%s.com", default_.result()))
+ *             .domainName(String.format("example-%s.com", default_.get("result")))
  *             .scope("domestic")
  *             .sources(DomainSourceArgs.builder()
  *                 .sourceType("domain")

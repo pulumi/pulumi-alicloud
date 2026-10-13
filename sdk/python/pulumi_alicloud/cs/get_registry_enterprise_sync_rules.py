@@ -171,7 +171,7 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[_builtins.str]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     my_sync_rules = alicloud.cs.get_registry_enterprise_sync_rules(instance_id="cri-xxx",
         namespace_name="test-namespace",
         repo_name="test-repo",
@@ -230,7 +230,7 @@ def get_registry_enterprise_sync_rules_output(ids: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     my_sync_rules = alicloud.cs.get_registry_enterprise_sync_rules(instance_id="cri-xxx",
         namespace_name="test-namespace",
         repo_name="test-repo",

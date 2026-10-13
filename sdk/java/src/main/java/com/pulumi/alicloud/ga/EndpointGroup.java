@@ -121,12 +121,12 @@ import javax.annotation.Nullable;
  *             .acceleratorId(default_.id())
  *             .endpointConfigurations(            
  *                 EndpointGroupEndpointConfigurationArgs.builder()
- *                     .endpoint(defaultEipAddress[0].ipAddress())
+ *                     .endpoint(defaultEipAddress.get(0).ipAddress())
  *                     .type("PublicIp")
  *                     .weight(20)
  *                     .build(),
  *                 EndpointGroupEndpointConfigurationArgs.builder()
- *                     .endpoint(defaultEipAddress[1].ipAddress())
+ *                     .endpoint(defaultEipAddress.get(1).ipAddress())
  *                     .type("PublicIp")
  *                     .weight(20)
  *                     .build())

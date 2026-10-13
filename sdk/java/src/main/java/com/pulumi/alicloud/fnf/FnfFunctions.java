@@ -62,7 +62,7 @@ public final class FnfFunctions {
      *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.get("executions")[0].get("id"));
      *     }
      * }
      * }
@@ -110,7 +110,7 @@ public final class FnfFunctions {
      *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.get("executions")[0].get("id"));
      *     }
      * }
      * }
@@ -158,7 +158,7 @@ public final class FnfFunctions {
      *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.get("executions")[0].get("id"));
      *     }
      * }
      * }
@@ -206,7 +206,7 @@ public final class FnfFunctions {
      *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.get("executions")[0].get("id"));
      *     }
      * }
      * }
@@ -254,7 +254,7 @@ public final class FnfFunctions {
      *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.get("executions")[0].get("id"));
      *     }
      * }
      * }

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const example = alicloud.kvstore.getConnections({
  *     ids: "r-wer123456",
  * });
@@ -75,7 +75,7 @@ export interface GetConnectionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const example = alicloud.kvstore.getConnections({
  *     ids: "r-wer123456",
  * });

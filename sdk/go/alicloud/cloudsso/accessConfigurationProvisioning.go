@@ -54,17 +54,15 @@ import (
 // if err != nil {
 // return err
 // }
-// var defaultDirectory []*cloudsso.Directory
-// for index := 0; index < int(len(_default.Ids).ApplyT(func(length int) (int, error) {
-// var tmp0 int
-// if length > 0 {
+// var tmp0 pulumi.Int
+// if len(_default.Ids) > 0 {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
 // }
-// return tmp0, nil
+// var defaultDirectory []*cloudsso.Directory
 //
-//	}).(pulumi.IntOutput)); index++ {
+//	for index := 0; index < tmp0; index++ {
 //	    key0 := index
 //
 // __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
@@ -75,9 +73,8 @@ import (
 // }
 // defaultDirectory = append(defaultDirectory, __res)
 // }
-// directoryId := len(_default.Ids).ApplyT(func(length int) (*interface{}, error) {
-// var tmp1 *interface{}
-// if length > 0 {
+// var tmp1 pulumi.Any
+// if len(_default.Ids) > 0 {
 // tmp1 = _default.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
@@ -89,8 +86,7 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// return &tmp1, nil
-// }).(pulumi.Interface{}PtrOutput)
+// directoryId := tmp1;
 // defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 // Min: 10000,
 // Max: 99999,
@@ -99,7 +95,7 @@ import (
 // return err
 // }
 // _, err = cloudsso.NewUser(ctx, "default", &cloudsso.UserArgs{
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: directoryId,
 // UserName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // })
 // if err != nil {
@@ -107,13 +103,13 @@ import (
 // }
 // defaultAccessConfiguration, err := cloudsso.NewAccessConfiguration(ctx, "default", &cloudsso.AccessConfigurationArgs{
 // AccessConfigurationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: directoryId,
 // })
 // if err != nil {
 // return err
 // }
 // _, err = cloudsso.NewAccessConfigurationProvisioning(ctx, "default", &cloudsso.AccessConfigurationProvisioningArgs{
-// DirectoryId: pulumi.Any(directoryId),
+// DirectoryId: directoryId,
 // AccessConfigurationId: defaultAccessConfiguration.AccessConfigurationId,
 // TargetType: pulumi.String("RD-Account"),
 // TargetId: pulumi.String(defaultGetResourceDirectories.Directories[0].MasterAccountId),

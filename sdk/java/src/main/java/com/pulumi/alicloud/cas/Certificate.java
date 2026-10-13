@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
- *             .name(String.format("tf-example-%s", default_.result()))
+ *             .name(String.format("tf-example-%s", default_.get("result")))
  *             .cert("""
  * -----BEGIN CERTIFICATE-----
  * MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD

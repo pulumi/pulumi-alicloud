@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .policyClassName("ServiceTls")
  *             .policyConfig("{\"mode\":\"SIMPLE\",\"sni\":\"aaaa\",\"enable\":true}")
  *             .gatewayId(defaultGateway.id())
- *             .environmentId(defaultGateway.environments().applyValue(_environments -> _environments[0].environmentId()))
+ *             .environmentId(defaultGateway.environments().applyValue(_environments -> _environments.get(0).environmentId()))
  *             .attachResourceType("GatewayService")
  *             .attachResourceIds(defaultService.id())
  *             .build());

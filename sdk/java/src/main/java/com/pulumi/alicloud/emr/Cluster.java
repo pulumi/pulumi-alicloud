@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -215,10 +215,10 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .highAvailabilityEnable(true)
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
- *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup.get(0).id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
- *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
+ *             .vswitchId(vswitchId == "" ? vswitch.get(0).id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
  *             .masterPwd("ABCtest1234!")
@@ -316,7 +316,7 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -327,7 +327,7 @@ import javax.annotation.Nullable;
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -420,10 +420,10 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .highAvailabilityEnable(true)
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
- *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup.get(0).id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
- *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
+ *             .vswitchId(vswitchId == "" ? vswitch.get(0).id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
  *             .masterPwd("ABCtest1234!")
@@ -519,7 +519,7 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -530,7 +530,7 @@ import javax.annotation.Nullable;
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -623,10 +623,10 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .highAvailabilityEnable(true)
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
- *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup.get(0).id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
- *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
+ *             .vswitchId(vswitchId == "" ? vswitch.get(0).id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
  *             .masterPwd("ABCtest1234!")
@@ -713,7 +713,7 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -724,7 +724,7 @@ import javax.annotation.Nullable;
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
@@ -778,10 +778,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .highAvailabilityEnable(true)
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
- *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup.get(0).id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
- *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
+ *             .vswitchId(vswitchId == "" ? vswitch.get(0).id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
  *             .masterPwd("ABCtest1234!")

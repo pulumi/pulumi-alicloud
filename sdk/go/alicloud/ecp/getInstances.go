@@ -42,13 +42,9 @@ import (
 //				return err
 //			}
 //			countSize := len(_default.Zones)
-//			zoneId := countSize.ApplyT(func(countSize int) (ecp.GetZonesZone, error) {
-//				return _default.Zones[int(countSize-1)].(ecp.GetZonesZone), nil
-//			}).(ecp.GetZonesZoneOutput).ZoneId()
+//			zoneId := _default.Zones[int(countSize-1)].ZoneId()
 //			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
-//			_ = instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
-//				return defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)].(ecp.GetInstanceTypesInstanceType), nil
-//			}).(ecp.GetInstanceTypesInstanceTypeOutput).InstanceType()
+//			_ = defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)].InstanceType()
 //			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
@@ -81,11 +77,9 @@ import (
 //				VswitchId: defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (*string, error) {
 //					return &defaultGetSwitches.Ids[0], nil
 //				}).(pulumi.StringPtrOutput),
-//				ImageId: pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
-//				InstanceType: instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
-//					return defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)].(ecp.GetInstanceTypesInstanceType), nil
-//				}).(ecp.GetInstanceTypesInstanceTypeOutput).InstanceType(),
-//				PaymentType: pulumi.String("PayAsYouGo"),
+//				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
+//				InstanceType: defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)].InstanceType(),
+//				PaymentType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
 //				return err

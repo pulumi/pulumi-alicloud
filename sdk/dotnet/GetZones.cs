@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesDs = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableInstanceType = "ecs.n4.large",
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesDs = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableInstanceType = "ecs.n4.large",
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesDs = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableInstanceType = "ecs.n4.large",

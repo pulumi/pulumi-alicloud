@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()

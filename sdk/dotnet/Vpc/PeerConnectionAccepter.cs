@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         PeerConnectionName = name,
     ///         VpcId = local.Id,
-    ///         AcceptingAliUid = accepting.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         AcceptingAliUid = Output.Create(accepting.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AcceptingRegionId = acceptingRegion,
     ///         AcceptingVpcId = acceptingNetwork.Id,
     ///         Description = name,

@@ -1332,7 +1332,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1385,7 +1385,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1438,7 +1438,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1491,7 +1491,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1544,7 +1544,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1597,7 +1597,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1650,7 +1650,7 @@ public final class ExpressconnectFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers()[0].id()));
+     *         ctx.export("expressConnectRouterExpressConnectRoutersId0", ids.applyValue(_ids -> _ids.routers().get(0).id()));
      *     }
      * }
      * }
@@ -1712,7 +1712,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(default_.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -1774,7 +1774,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(default_.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -1836,7 +1836,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(default_.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -1898,7 +1898,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(default_.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -1960,7 +1960,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(default_.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterGrantAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -2000,8 +2000,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2044,8 +2044,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2088,8 +2088,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2132,8 +2132,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2176,8 +2176,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2220,8 +2220,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2264,8 +2264,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(defaultAlicloudRouterInterface.id())
-     *             .nameRegex(defaultAlicloudRouterInterface.name())
+     *             .ids(defaultAlicloudRouterInterface.get("id"))
+     *             .nameRegex(defaultAlicloudRouterInterface.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
@@ -2356,7 +2356,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterTrAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -2444,7 +2444,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterTrAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -2532,7 +2532,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterTrAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -2620,7 +2620,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterTrAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -2708,7 +2708,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterTrAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -2796,7 +2796,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVbrChildInstance.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -2884,7 +2884,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVbrChildInstance.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -2972,7 +2972,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVbrChildInstance.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -3060,7 +3060,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVbrChildInstance.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -3148,7 +3148,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVbrChildInstance.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -3229,7 +3229,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVpcAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -3310,7 +3310,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVpcAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -3391,7 +3391,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVpcAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -3472,7 +3472,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVpcAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -3553,7 +3553,7 @@ public final class ExpressconnectFunctions {
      *             .ecrId(defaultRouterVpcAssociation.ecrId())
      *             .build());
      * 
-     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations().get(0).id()));
      *     }
      * }
      * }
@@ -3594,7 +3594,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
@@ -3638,7 +3638,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
@@ -3682,7 +3682,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
@@ -3726,7 +3726,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
@@ -3770,7 +3770,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
@@ -3814,7 +3814,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
@@ -3858,7 +3858,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids("example_id")
-     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.get("vbrId"))
      *             .build());
      * 
      *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());

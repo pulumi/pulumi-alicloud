@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.CS
     ///     // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
     ///     var vpcCidr = config.Get("vpcCidr") ?? "10.0.0.0/8";
     ///     // List of existing vswitch id.
-    ///     var vswitchIds = config.GetObject&lt;string[]&gt;("vswitchIds") ?? new[] {};
+    ///     var vswitchIds = config.GetObject&lt;string[]&gt;("vswitchIds") ?? new object?[] {};
     ///     // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
     ///     var vswitchCidrs = config.GetObject&lt;string[]&gt;("vswitchCidrs") ?? new[]
     ///     {
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.CS
     ///     // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
     ///     var serviceCidr = config.Get("serviceCidr") ?? "192.168.0.0/16";
     ///     // List of existing vswitch ids for terway.
-    ///     var terwayVswitchIds = config.GetObject&lt;string[]&gt;("terwayVswitchIds") ?? new[] {};
+    ///     var terwayVswitchIds = config.GetObject&lt;string[]&gt;("terwayVswitchIds") ?? new object?[] {};
     ///     // List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
     ///     var terwayVswitchCidrs = config.GetObject&lt;string[]&gt;("terwayVswitchCidrs") ?? new[]
     ///     {
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new[] {} : Std.Split.Invoke(new()
+    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new object?[] {} : Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = Std.Join.Invoke(new()
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new[] {} : Std.Split.Invoke(new()
+    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new object?[] {} : Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = Std.Join.Invoke(new()

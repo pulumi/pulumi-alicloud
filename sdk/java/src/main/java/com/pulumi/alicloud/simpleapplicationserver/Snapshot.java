@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()
- *             .diskId(defaultGetServerDisks.applyValue(_defaultGetServerDisks -> _defaultGetServerDisks.ids()[0]))
- *             .snapshotName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .diskId(defaultGetServerDisks.applyValue(_defaultGetServerDisks -> _defaultGetServerDisks.ids().get(0)))
+ *             .snapshotName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *     }

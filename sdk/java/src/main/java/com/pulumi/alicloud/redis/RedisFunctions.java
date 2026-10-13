@@ -59,7 +59,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -113,7 +113,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -167,7 +167,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -221,7 +221,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -275,7 +275,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -329,7 +329,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -383,7 +383,7 @@ public final class RedisFunctions {
      *             .ids(defaultGlobalSecurityIpGroup.id())
      *             .build());
      * 
-     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudRedisGlobalSecurityIpGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }

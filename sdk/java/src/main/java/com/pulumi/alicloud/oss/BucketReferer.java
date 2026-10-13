@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
  *             .storageClass("Standard")
- *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .bucket(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultBucketReferer = new BucketReferer("defaultBucketReferer", BucketRefererArgs.builder()

@@ -1079,7 +1079,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }
@@ -1133,7 +1133,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }
@@ -1187,7 +1187,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }
@@ -1241,7 +1241,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }
@@ -1295,7 +1295,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }
@@ -1349,7 +1349,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }
@@ -1403,7 +1403,7 @@ public final class PrivatelinkFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services().get(0).id()));
      *     }
      * }
      * }

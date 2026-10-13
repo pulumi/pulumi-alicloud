@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Vault("example", VaultArgs.builder()
- *             .vaultName(String.format("example_value_%s", default_.result()))
+ *             .vaultName(String.format("example_value_%s", default_.get("result")))
  *             .build());
  * 
  *     }

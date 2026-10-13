@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.MaxCompute
     ///         {
     ///             Parameter = new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaParameterArgs
     ///             {
-    ///                 ElasticReservedCu = elasticReservedCu,
+    ///                 ElasticReservedCu = int.Parse(elasticReservedCu, System.Globalization.CultureInfo.InvariantCulture),
     ///             },
     ///             SubQuotaInfoLists = new[]
     ///             {
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.MaxCompute
     ///                     {
     ///                         MinCu = 0,
     ///                         MaxCu = 20,
-    ///                         ElasticReservedCu = elasticReservedCu,
+    ///                         ElasticReservedCu = int.Parse(elasticReservedCu, System.Globalization.CultureInfo.InvariantCulture),
     ///                     },
     ///                 },
     ///                 new AliCloud.MaxCompute.Inputs.QuotaPlanQuotaSubQuotaInfoListArgs

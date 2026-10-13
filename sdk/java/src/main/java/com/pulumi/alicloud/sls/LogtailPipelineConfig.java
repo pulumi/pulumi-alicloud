@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         final var name = config.get("name").orElse("terraform-example");
  *         var example = new Project("example", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .projectName(String.format("%s-%s", name,default_.get("result")))
  *             .description("terraform logtail pipeline config example")
  *             .build());
  * 
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleLogtailPipelineConfig = new LogtailPipelineConfig("exampleLogtailPipelineConfig", LogtailPipelineConfigArgs.builder()
  *             .project(example.projectName())
- *             .configName(String.format("%s-%s", name,default_.result()))
+ *             .configName(String.format("%s-%s", name,default_.get("result")))
  *             .inputs(Map.ofEntries(
  *                 Map.entry("Type", "input_file"),
  *                 Map.entry("FilePaths", "[\\\"/home/*.log\\\"]"),

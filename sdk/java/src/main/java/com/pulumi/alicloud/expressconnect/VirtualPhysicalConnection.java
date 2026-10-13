@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .orderMode("PayByPhysicalConnectionOwner")
  *             .parentPhysicalConnectionId(example.ids()[0])
  *             .spec("50M")
- *             .vlanId(vlanId.id())
+ *             .vlanId(vlanId.get("id"))
  *             .vpconnAliUid(default_.id())
  *             .build());
  * 

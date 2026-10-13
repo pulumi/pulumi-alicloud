@@ -78,7 +78,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -86,7 +86,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }
@@ -159,7 +159,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -167,7 +167,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }
@@ -240,7 +240,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -248,7 +248,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }
@@ -321,7 +321,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -329,7 +329,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }
@@ -402,7 +402,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -410,7 +410,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }
@@ -483,7 +483,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -491,7 +491,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }
@@ -564,7 +564,7 @@ public final class GovernanceFunctions {
      *                     )))
      *                 .build())
      *             .description(name)
-     *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .baselineName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .build());
      * 
      *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
@@ -572,7 +572,7 @@ public final class GovernanceFunctions {
      *             .nameRegex(defaultBaseline.baselineName())
      *             .build());
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines().get(0).baselineId()));
      *     }
      * }
      * }

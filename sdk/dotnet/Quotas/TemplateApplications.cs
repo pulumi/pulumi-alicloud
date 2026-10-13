@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Quotas
     ///         EnvLanguage = "zh",
     ///         NoticeType = 0,
     ///         QuotaCategory = "WhiteListLabel",
-    ///         DesireValue = 1,
+    ///         DesireValue = 1.0,
     ///         Reason = "example",
     ///         QuotaActionCode = "quotas.label_multi/A",
     ///         AliyunUids = new[]

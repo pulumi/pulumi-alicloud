@@ -95,9 +95,9 @@ namespace Pulumi.AliCloud.Eflo
     /// 
     ///     var defaultExperimentPlan = new AliCloud.Eflo.ExperimentPlan("default", new()
     ///     {
-    ///         ResourceId = defaultResource.ResourceId,
+    ///         ResourceId = defaultResource.ResourceId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         PlanName = name,
-    ///         TemplateId = defaultpSZN7t.Id,
+    ///         TemplateId = defaultpSZN7t.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

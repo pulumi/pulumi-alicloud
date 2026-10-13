@@ -24,8 +24,8 @@ import * as utilities from "../utilities";
  * const _default = alicloud.nas.getZones({
  *     fileSystemType: "extreme",
  * });
- * const countSize = _default.then(_default => _default.zones).length;
- * const zoneId = pulumi.all([_default, countSize]).apply(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const countSize = _default.then(_default => _default.zones.length);
+ * const zoneId = pulumi.all([_default, countSize, _default.zones[countSize - 1]]).apply(([_default, countSize, obj]) => obj.zoneId);
  * const example = new alicloud.vpc.Network("example", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",

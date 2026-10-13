@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Vpn
     ///         NetworkType = "public",
     ///         PaymentType = "Subscription",
     ///         EnableIpsec = true,
-    ///         Bandwidth = spec,
+    ///         Bandwidth = int.Parse(spec, System.Globalization.CultureInfo.InvariantCulture),
     ///     });
     /// 
     /// });

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
- *             .vaultName(String.format("terraform-example-%s", default_.result()))
+ *             .vaultName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()

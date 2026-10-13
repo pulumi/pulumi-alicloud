@@ -58,7 +58,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }
@@ -111,7 +111,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }
@@ -164,7 +164,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }
@@ -217,7 +217,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }
@@ -270,7 +270,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }
@@ -323,7 +323,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }
@@ -376,7 +376,7 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(_default_ -> _default_.configs().get(0)));
      *     }
      * }
      * }

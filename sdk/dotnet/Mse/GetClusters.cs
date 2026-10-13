@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Mse
         ///         VpcId = exampleNetwork.Id,
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var exampleGetClusters = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
         ///         EnableDetails = true,
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Mse
         ///         VpcId = exampleNetwork.Id,
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var exampleGetClusters = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
         ///         EnableDetails = true,
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Mse
         ///         VpcId = exampleNetwork.Id,
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var exampleGetClusters = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
         ///         EnableDetails = true,

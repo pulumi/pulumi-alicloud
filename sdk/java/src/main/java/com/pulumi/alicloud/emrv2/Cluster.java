@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
- *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()

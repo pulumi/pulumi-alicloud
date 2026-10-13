@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         RamRoleName = "xxxxx",
     ///         NetworkType = "vpc",
     ///         SecurityEnhancementStrategy = "Active",
-    ///         SpotPriceLimit = 5,
+    ///         SpotPriceLimit = 5.0,
     ///         SpotStrategy = "SpotWithPriceLimit",
     ///         SecurityGroupId = "sg-zxcvj0lasdf102350asdf9a",
     ///         SystemDiskCategory = "cloud_ssd",

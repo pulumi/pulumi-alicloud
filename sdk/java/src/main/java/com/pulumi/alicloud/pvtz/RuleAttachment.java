@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  * }
  *         for (var i = 0; i < 2; i++) {
  *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
- *                 .vpcId(defaultNetwork[2].id())
+ *                 .vpcId(defaultNetwork.get(2).id())
  *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
- *                     .input(defaultNetwork[2].cidrBlock())
+ *                     .input(defaultNetwork.get(2).cidrBlock())
  *                     .newbits(8)
  *                     .netnum(range.value())
  *                     .build()).applyValue(_invoke -> _invoke.result()))
@@ -107,31 +107,31 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .vpcId(defaultNetwork[2].id())
+ *             .vpcId(defaultNetwork.get(2).id())
  *             .name(name)
  *             .build());
  * 
  *         var defaultEndpoint = new Endpoint("defaultEndpoint", EndpointArgs.builder()
- *             .endpointName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .endpointName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .securityGroupId(defaultSecurityGroup.id())
- *             .vpcId(defaultNetwork[2].id())
+ *             .vpcId(defaultNetwork.get(2).id())
  *             .vpcRegionId(defaultGetRegions.regions()[0].id())
  *             .ipConfigs(            
  *                 EndpointIpConfigArgs.builder()
- *                     .zoneId(defaultSwitch[0].zoneId())
- *                     .cidrBlock(defaultSwitch[0].cidrBlock())
- *                     .vswitchId(defaultSwitch[0].id())
+ *                     .zoneId(defaultSwitch.get(0).zoneId())
+ *                     .cidrBlock(defaultSwitch.get(0).cidrBlock())
+ *                     .vswitchId(defaultSwitch.get(0).id())
  *                     .build(),
  *                 EndpointIpConfigArgs.builder()
- *                     .zoneId(defaultSwitch[1].zoneId())
- *                     .cidrBlock(defaultSwitch[1].cidrBlock())
- *                     .vswitchId(defaultSwitch[1].id())
+ *                     .zoneId(defaultSwitch.get(1).zoneId())
+ *                     .cidrBlock(defaultSwitch.get(1).cidrBlock())
+ *                     .vswitchId(defaultSwitch.get(1).id())
  *                     .build())
  *             .build());
  * 
  *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
  *             .endpointId(defaultEndpoint.id())
- *             .ruleName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .ruleName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .type("OUTBOUND")
  *             .zoneName(name)
  *             .forwardIps(RuleForwardIpArgs.builder()
@@ -145,11 +145,11 @@ import javax.annotation.Nullable;
  *             .vpcs(            
  *                 RuleAttachmentVpcArgs.builder()
  *                     .regionId(defaultGetRegions.regions()[0].id())
- *                     .vpcId(defaultNetwork[0].id())
+ *                     .vpcId(defaultNetwork.get(0).id())
  *                     .build(),
  *                 RuleAttachmentVpcArgs.builder()
  *                     .regionId(defaultGetRegions.regions()[0].id())
- *                     .vpcId(defaultNetwork[1].id())
+ *                     .vpcId(defaultNetwork.get(1).id())
  *                     .build())
  *             .build());
  * 

@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .period(1)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .instanceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         final var default = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()

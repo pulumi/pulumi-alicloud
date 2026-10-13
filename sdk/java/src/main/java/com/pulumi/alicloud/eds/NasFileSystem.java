@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/12")
  *             .enableAdminAccess(false)
  *             .desktopAccessType("Internet")
- *             .officeSiteName(String.format("%s-%s", name,default_.result()))
+ *             .officeSiteName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var example = new NasFileSystem("example", NasFileSystemArgs.builder()

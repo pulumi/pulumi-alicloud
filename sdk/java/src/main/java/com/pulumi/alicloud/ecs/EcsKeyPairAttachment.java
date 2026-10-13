@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
- *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultEcsKeyPairAttachment = new EcsKeyPairAttachment("defaultEcsKeyPairAttachment", EcsKeyPairAttachmentArgs.builder()

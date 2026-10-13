@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourceSiteHttpIncomingResponseHeaderModificationRuleExample = new Site("resourceSiteHttpIncomingResponseHeaderModificationRuleExample", SiteArgs.builder()
- *             .siteName(String.format("gositecdn%s.cn", default_.result()))
+ *             .siteName(String.format("gositecdn%s.cn", default_.get("result")))
  *             .instanceId(resourceHttpIncomingResponseHeaderModificationRuleExample.id())
  *             .coverage("overseas")
  *             .accessType("NS")

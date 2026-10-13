@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
         ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
         ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
         ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),

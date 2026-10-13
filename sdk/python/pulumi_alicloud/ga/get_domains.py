@@ -163,12 +163,8 @@ def get_domains(accelerator_id: Optional[_builtins.str] = None,
                 auto_use_coupon=True,
                 spec="1"))
 
-    len(default.accelerators).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-    accelerator_id = pulumi.Output.all(
-        length=len(default.accelerators),
-        id=default_accelerator[0].id
-    ).apply(lambda resolved_outputs: default.accelerators[0].id if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-
+    0 if len(default.accelerators) > 0 else 1.apply(create_default)
+    accelerator_id = default_accelerator[0].id.apply(lambda id: default.accelerators[0].id if len(default.accelerators) > 0 else id)
     default_get_domains = alicloud.ga.get_domains(accelerator_id=accelerator_id_locals,
         domain="your_domain")
     pulumi.export("alicloudGaDomainExampleId", default_get_domains.domains[0].id)
@@ -231,12 +227,8 @@ def get_domains_output(accelerator_id: pulumi.Input[Optional[Optional[_builtins.
                 auto_use_coupon=True,
                 spec="1"))
 
-    len(default.accelerators).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-    accelerator_id = pulumi.Output.all(
-        length=len(default.accelerators),
-        id=default_accelerator[0].id
-    ).apply(lambda resolved_outputs: default.accelerators[0].id if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-
+    0 if len(default.accelerators) > 0 else 1.apply(create_default)
+    accelerator_id = default_accelerator[0].id.apply(lambda id: default.accelerators[0].id if len(default.accelerators) > 0 else id)
     default_get_domains = alicloud.ga.get_domains(accelerator_id=accelerator_id_locals,
         domain="your_domain")
     pulumi.export("alicloudGaDomainExampleId", default_get_domains.domains[0].id)

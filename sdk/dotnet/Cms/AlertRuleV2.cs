@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Cms
     ///             Type = "UMODEL_METRICSET_CONDITION",
     ///             Severity = "CRITICAL",
     ///             DurationSecs = 60,
-    ///             Threshold = 90,
+    ///             Threshold = 90.0,
     ///         },
     ///     });
     /// 

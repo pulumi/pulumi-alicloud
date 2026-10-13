@@ -75,7 +75,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -142,7 +142,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -209,7 +209,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -276,7 +276,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -343,7 +343,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -410,7 +410,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -477,7 +477,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites().get(0).id()));
      *     }
      * }
      * }
@@ -577,7 +577,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -677,7 +677,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -777,7 +777,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -877,7 +877,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -977,7 +977,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1077,7 +1077,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1177,7 +1177,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultAlarm.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
      *     }
      * }
      * }

@@ -34,27 +34,27 @@ import * as utilities from "../utilities";
  *     max: 99999,
  * });
  * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
- * _default.then(_default => _default.ids).length.apply(length => {
+ * _default.then(_default => _default.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range}`, {directoryName: name}));
  *     }
  * });
- * const directoryId = pulumi.all([_default.then(_default => _default.ids).length, _default, std.concat({
+ * const directoryId = Promise.all([_default.then(_default => _default.ids.length), _default, std.concat({
  *     input: [
  *         defaultDirectory.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
+ * })]).then(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
  * const defaultUser = new alicloud.cloudsso.User("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     userName: `${name}-${defaultInteger.result}`,
  * });
  * const defaultAccessConfiguration = new alicloud.cloudsso.AccessConfiguration("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     accessConfigurationName: `${name}-${defaultInteger.result}`,
  * });
  * const defaultAccessManagement = new alicloud.cloudsso.AccessManagement("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     accessConfigurationId: defaultAccessConfiguration.accessConfigurationId,
  *     targetType: "RD-Account",
  *     targetId: defaultGetResourceDirectories.then(defaultGetResourceDirectories => defaultGetResourceDirectories.directories?.[0]?.masterAccountId),

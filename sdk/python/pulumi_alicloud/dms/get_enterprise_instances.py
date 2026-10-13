@@ -210,7 +210,7 @@ def get_enterprise_instances(env_type: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(net_type="CLASSIC",
         instance_type="mysql",
         env_type="test",
@@ -282,7 +282,7 @@ def get_enterprise_instances_output(env_type: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(net_type="CLASSIC",
         instance_type="mysql",
         env_type="test",

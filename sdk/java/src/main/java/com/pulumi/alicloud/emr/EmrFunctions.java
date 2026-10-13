@@ -230,7 +230,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -446,7 +446,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -662,7 +662,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -878,7 +878,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -1094,7 +1094,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -1310,7 +1310,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -1526,7 +1526,7 @@ public final class EmrFunctions {
      *             .nameRegex(defaultCluster.name())
      *             .build());
      * 
-     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters()[0].id()));
+     *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
      *     }
      * }
      * }

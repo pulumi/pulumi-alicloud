@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
     ///         CpuCoreCount = 4,
-    ///         MemorySize = 8,
+    ///         MemorySize = 8.0,
     ///         KubernetesNodeRole = "Worker",
     ///         SystemDiskCategory = "cloud_efficiency",
     ///     });
@@ -565,7 +565,7 @@ namespace Pulumi.AliCloud.CS
     ///         "cn-hangzhou-k",
     ///     };
     ///     // List of existing node vswitch ids for terway.
-    ///     var nodeVswitchIds = config.GetObject&lt;string[]&gt;("nodeVswitchIds") ?? new[] {};
+    ///     var nodeVswitchIds = config.GetObject&lt;string[]&gt;("nodeVswitchIds") ?? new object?[] {};
     ///     // List of cidr blocks used to create several new vswitches when 'node_vswitch_ids' is not specified.
     ///     var nodeVswitchCidrs = config.GetObject&lt;string[]&gt;("nodeVswitchCidrs") ?? new[]
     ///     {
@@ -574,7 +574,7 @@ namespace Pulumi.AliCloud.CS
     ///         "172.16.4.0/23",
     ///     };
     ///     // List of existing pod vswitch ids for terway.
-    ///     var terwayVswitchIds = config.GetObject&lt;string[]&gt;("terwayVswitchIds") ?? new[] {};
+    ///     var terwayVswitchIds = config.GetObject&lt;string[]&gt;("terwayVswitchIds") ?? new object?[] {};
     ///     // List of cidr blocks used to create several new vswitches when 'terway_vswitch_ids' is not specified.
     ///     var terwayVswitchCidrs = config.GetObject&lt;string[]&gt;("terwayVswitchCidrs") ?? new[]
     ///     {
@@ -584,101 +584,101 @@ namespace Pulumi.AliCloud.CS
     ///     };
     ///     var clusterAddons = config.GetObject&lt;ClusterAddons[]&gt;("clusterAddons") ?? new[]
     ///     {
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "metrics-server" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "metrics-server",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "managed-coredns" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "managed-coredns",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "managed-security-inspector" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "managed-security-inspector",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "ack-cost-exporter" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "ack-cost-exporter",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"ENITrunking\":\"true\"}" },
-    ///             { "disabled", false },
-    ///             { "name", "terway-controlplane" },
+    ///             ["config"] = "{\"ENITrunking\":\"true\"}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "terway-controlplane",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"NetworkPolicy\":\"false\",\"ENITrunking\":\"true\",\"IPVlan\":\"false\"}" },
-    ///             { "disabled", false },
-    ///             { "name", "terway-eniip" },
+    ///             ["config"] = "{\"NetworkPolicy\":\"false\",\"ENITrunking\":\"true\",\"IPVlan\":\"false\"}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "terway-eniip",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "csi-plugin" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "csi-plugin",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "managed-csiprovisioner" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "managed-csiprovisioner",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"CnfsOssEnable\":\"false\",\"CnfsNasEnable\":\"false\"}" },
-    ///             { "disabled", false },
-    ///             { "name", "storage-operator" },
+    ///             ["config"] = "{\"CnfsOssEnable\":\"false\",\"CnfsNasEnable\":\"false\"}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "storage-operator",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"IngressDashboardEnabled\":\"true\"}" },
-    ///             { "disabled", false },
-    ///             { "name", "loongcollector" },
+    ///             ["config"] = "{\"IngressDashboardEnabled\":\"true\"}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "loongcollector",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"sls_project_name\":\"\"}" },
-    ///             { "disabled", false },
-    ///             { "name", "ack-node-problem-detector" },
+    ///             ["config"] = "{\"sls_project_name\":\"\"}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "ack-node-problem-detector",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", true },
-    ///             { "name", "nginx-ingress-controller" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = true,
+    ///             ["name"] = "nginx-ingress-controller",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"albIngress\":{\"CreateDefaultALBConfig\":false}}" },
-    ///             { "disabled", false },
-    ///             { "name", "alb-ingress-controller" },
+    ///             ["config"] = "{\"albIngress\":{\"CreateDefaultALBConfig\":false}}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "alb-ingress-controller",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", "{\"prometheusMode\":\"default\"}" },
-    ///             { "disabled", false },
-    ///             { "name", "arms-prometheus" },
+    ///             ["config"] = "{\"prometheusMode\":\"default\"}",
+    ///             ["disabled"] = false,
+    ///             ["name"] = "arms-prometheus",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "alicloud-monitor-controller" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "alicloud-monitor-controller",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "config", null },
-    ///             { "disabled", false },
-    ///             { "name", "managed-aliyun-acr-credential-helper" },
+    ///             ["config"] = null,
+    ///             ["disabled"] = false,
+    ///             ["name"] = "managed-aliyun-acr-credential-helper",
     ///         },
     ///     };
     ///     // The name prefix used to create managed kubernetes cluster.
@@ -736,24 +736,24 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
     ///             {
-    ///                 Name = Std.Lookup.Invoke(new()
+    ///                 Name = Output.Create(Std.Lookup.Invoke(new()
     ///                 {
     ///                     Map = entry.Value,
     ///                     Key = "name",
     ///                     Default = clusterAddons,
-    ///                 }).Apply(invoke =&gt; invoke.Result),
-    ///                 Config = Std.Lookup.Invoke(new()
+    ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///                 Config = Output.Create(Std.Lookup.Invoke(new()
     ///                 {
     ///                     Map = entry.Value,
     ///                     Key = "config",
     ///                     Default = clusterAddons,
-    ///                 }).Apply(invoke =&gt; invoke.Result),
-    ///                 Disabled = Std.Lookup.Invoke(new()
+    ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///                 Disabled = Output.Create(Std.Lookup.Invoke(new()
     ///                 {
     ///                     Map = entry.Value,
     ///                     Key = "disabled",
     ///                     Default = clusterAddons,
-    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x == "true"),
     ///             };
     ///         }).ToList(),
     ///         Name = k8sNameTerway,
@@ -836,8 +836,8 @@ namespace Pulumi.AliCloud.CS
     ///             {
     ///                 MinCpuCores = 4,
     ///                 MaxCpuCores = 16,
-    ///                 MinMemorySize = 8,
-    ///                 MaxMemorySize = 32,
+    ///                 MinMemorySize = 8.0,
+    ///                 MaxMemorySize = 32.0,
     ///                 InstanceFamilyLevel = "EnterpriseLevel",
     ///                 InstanceTypeFamilies = new[]
     ///                 {

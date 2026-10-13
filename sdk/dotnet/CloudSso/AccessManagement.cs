@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///     });
     /// 
     ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length).Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///             DirectoryName = name,
     ///         }));
     ///     }
-    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length(), @default, Std.Concat.Invoke(new()
+    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length), @default, Std.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -75,19 +75,19 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     ///     var defaultUser = new AliCloud.CloudSso.User("default", new()
     ///     {
-    ///         DirectoryId = directoryId,
+    ///         DirectoryId = directoryId.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///         UserName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
     ///     var defaultAccessConfiguration = new AliCloud.CloudSso.AccessConfiguration("default", new()
     ///     {
-    ///         DirectoryId = directoryId,
+    ///         DirectoryId = directoryId.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///         AccessConfigurationName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
     ///     var defaultAccessManagement = new AliCloud.CloudSso.AccessManagement("default", new()
     ///     {
-    ///         DirectoryId = directoryId,
+    ///         DirectoryId = directoryId.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///         AccessConfigurationId = defaultAccessConfiguration.AccessConfigurationId,
     ///         TargetType = "RD-Account",
     ///         TargetId = defaultGetResourceDirectories.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.MasterAccountId),

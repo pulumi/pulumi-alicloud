@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new IpaDomain("example", IpaDomainArgs.builder()
- *             .domainName(String.format("example-%s.com", defaultInteger.result()))
+ *             .domainName(String.format("example-%s.com", defaultInteger.get("result")))
  *             .resourceGroupId(default_.groups()[0].id())
  *             .scope("overseas")
  *             .status("online")

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const _default = alicloud.ram.getUsers({});
  * // permissions
  * const defaultGetKubernetesPermission = _default.then(_default => alicloud.cs.getKubernetesPermission({
@@ -71,7 +71,7 @@ export interface GetKubernetesPermissionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const _default = alicloud.ram.getUsers({});
  * // permissions
  * const defaultGetKubernetesPermission = _default.then(_default => alicloud.cs.getKubernetesPermission({

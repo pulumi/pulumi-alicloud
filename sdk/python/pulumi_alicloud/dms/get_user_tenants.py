@@ -122,7 +122,7 @@ def get_user_tenants(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     default = alicloud.dms.get_user_tenants(status="ACTIVE")
     pulumi.export("tid", default.ids[0])
     ```
@@ -161,7 +161,7 @@ def get_user_tenants_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     default = alicloud.dms.get_user_tenants(status="ACTIVE")
     pulumi.export("tid", default.ids[0])
     ```

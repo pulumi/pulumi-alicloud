@@ -1199,7 +1199,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -1244,7 +1244,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -1289,7 +1289,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -1334,7 +1334,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -1379,7 +1379,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -1424,7 +1424,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -1469,7 +1469,7 @@ public final class NasFunctions {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .protocolType("NFS")
      *             .fileSystemType("standard")
-     *             .descriptionRegex(foo.description())
+     *             .descriptionRegex(foo.get("description"))
      *             .build());
      * 
      *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
@@ -2038,7 +2038,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }
@@ -2094,7 +2094,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }
@@ -2150,7 +2150,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }
@@ -2206,7 +2206,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }
@@ -2262,7 +2262,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }
@@ -2318,7 +2318,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }
@@ -2374,7 +2374,7 @@ public final class NasFunctions {
      *             .ids(defaultLogAnalysis.id())
      *             .build());
      * 
-     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses().get(0).id()));
      *     }
      * }
      * }

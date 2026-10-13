@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .vpcId(default_.ids()[0])
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .vpcId(default_.ids()[0])
  *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -87,11 +87,11 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 vswitch.stream().map(element -> element.id()).collect(toList()),
  *                 "")
- *             .build()).result()[0]);
+ *             .build()).result()[0];
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .port(6379)
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .password("123456_tf")
  *             .engineVersion("5.0")
  *             .zoneId(zoneId)
- *             .vswitchId(vswitchId)
+ *             .vswitchId(((String) vswitchId))
  *             .period("1")
  *             .instanceClass("redis.shard.small.2.ce")
  *             .build());

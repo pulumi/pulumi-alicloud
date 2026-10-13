@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
- *             .diskId(instance_attachment.diskId())
+ *             .diskId(instance_attachment.get("diskId"))
  *             .name("test-snapshot")
  *             .description("this snapshot is created for testing")
  *             .tags(Map.of("version", "1.2"))

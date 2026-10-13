@@ -35,13 +35,14 @@ namespace Pulumi.AliCloud.Nas
     ///         FileSystemType = "extreme",
     ///     });
     /// 
-    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
+    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones).Length);
     /// 
-    ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+    ///     var zoneId = Output.Tuple(@default, countSize, @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[(countSize - 1).Apply(x =&gt; (int)x)]).Apply(values =&gt;
     ///     {
     ///         var @default = values.Item1;
     ///         var countSize = values.Item2;
-    ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+    ///         var obj = values.Item3;
+    ///         return obj.ZoneId;
     ///     });
     /// 
     ///     var example = new AliCloud.Vpc.Network("example", new()

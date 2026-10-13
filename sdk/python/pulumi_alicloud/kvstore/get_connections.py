@@ -97,7 +97,7 @@ def get_connections(ids: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     example = alicloud.kvstore.get_connections(ids="r-wer123456")
     pulumi.export("connectionString", example.connections[0].connection_string)
     ```
@@ -131,7 +131,7 @@ def get_connections_output(ids: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     example = alicloud.kvstore.get_connections(ids="r-wer123456")
     pulumi.export("connectionString", example.connections[0].connection_string)
     ```

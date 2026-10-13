@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", ReadWriteSplittingConnectionArgs.builder()
  *             .instanceId(exampleReadOnlyInstance.masterDbInstanceId())
- *             .connectionPrefix(String.format("example-con-%s", default_.result()))
+ *             .connectionPrefix(String.format("example-con-%s", default_.get("result")))
  *             .distributionType("Standard")
  *             .build());
  * 

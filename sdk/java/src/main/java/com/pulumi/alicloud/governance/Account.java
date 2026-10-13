@@ -75,11 +75,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
- *             .accountNamePrefix(String.format("%s-%s", name,defaultInteger.result()))
+ *             .accountNamePrefix(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .folderId(defaultGetFolders.ids()[0])
  *             .baselineId(defaultGetBaselines.ids()[0])
  *             .payerAccountId(default_.id())
- *             .displayName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .displayName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *     }

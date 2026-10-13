@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Policy("policy", PolicyArgs.builder()
- *             .policyName(String.format("tf-example-%s", default_.result()))
+ *             .policyName(String.format("tf-example-%s", default_.get("result")))
  *             .policyDocument("""
  *   {
  *     \"Statement\": [

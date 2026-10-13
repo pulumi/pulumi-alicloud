@@ -64,7 +64,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }
@@ -123,7 +123,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }
@@ -182,7 +182,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }
@@ -241,7 +241,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }
@@ -300,7 +300,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }
@@ -359,7 +359,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }
@@ -418,7 +418,7 @@ public final class ImsFunctions {
      *             .ids(defaultOidcProvider.id())
      *             .build());
      * 
-     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers()[0].id()));
+     *         ctx.export("alicloudImsOidcProviderExampleId", default_.applyValue(_default_ -> _default_.providers().get(0).id()));
      *     }
      * }
      * }

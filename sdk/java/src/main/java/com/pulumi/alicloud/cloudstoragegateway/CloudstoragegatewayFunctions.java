@@ -1283,7 +1283,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1369,7 +1369,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1455,7 +1455,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1541,7 +1541,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1627,7 +1627,7 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1679,7 +1679,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1731,7 +1731,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1783,7 +1783,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1835,7 +1835,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1887,7 +1887,7 @@ public final class CloudstoragegatewayFunctions {
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(_nameRegex -> _nameRegex.gateways().get(0).id()));
      *     }
      * }
      * }

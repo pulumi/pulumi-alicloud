@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .name(String.format("terraform-example-%s", default_.get("result")))
  *             .description("terraform-example")
  *             .build());
  * 
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .projectName(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.get("result")))
  *             .description("terraform-example")
  *             .build());
  * 
@@ -337,7 +337,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .projectName(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.get("result")))
  *             .description("terraform-example")
  *             .build());
  * 

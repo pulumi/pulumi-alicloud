@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const names = alicloud.rds.getCharacterSetNames({
  *     engine: "MySQL",
  * });
@@ -64,7 +64,7 @@ export interface GetCharacterSetNamesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const names = alicloud.rds.getCharacterSetNames({
  *     engine: "MySQL",
  * });

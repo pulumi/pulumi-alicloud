@@ -70,11 +70,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultyk84Hc = new Vault("defaultyk84Hc", VaultArgs.builder()
  *             .vaultType("STANDARD")
- *             .vaultName(String.format("example-value-%s", default_.result()))
+ *             .vaultName(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultoqWvHQ = new Policy("defaultoqWvHQ", PolicyArgs.builder()
- *             .policyName(String.format("example-value-%s", default_.result()))
+ *             .policyName(String.format("example-value-%s", default_.get("result")))
  *             .rules(PolicyRuleArgs.builder()
  *                 .ruleType("BACKUP")
  *                 .backupType("COMPLETE")
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultKtt2XY = new Bucket("defaultKtt2XY", BucketArgs.builder()
  *             .storageClass("Standard")
- *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .bucket(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultPolicyBinding = new PolicyBinding("defaultPolicyBinding", PolicyBindingArgs.builder()
@@ -151,11 +151,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
  *             .vaultType("STANDARD")
- *             .vaultName(String.format("example-value-%s", default_.result()))
+ *             .vaultName(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
- *             .policyName(String.format("example-value-%s", default_.result()))
+ *             .policyName(String.format("example-value-%s", default_.get("result")))
  *             .rules(PolicyRuleArgs.builder()
  *                 .ruleType("BACKUP")
  *                 .backupType("COMPLETE")
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceName(String.format("example-value-%s", default_.result()))
+ *             .instanceName(String.format("example-value-%s", default_.get("result")))
  *             .instanceType("ecs.g7.large")
  *             .imageId("aliyun_2_1903_x64_7h_cor_4.0.40_alibase")
  *             .systemDisk(Arrays.asList(Map.ofEntries(

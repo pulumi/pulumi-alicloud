@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
+//			// Declare the function
 //			_default, err := ram.GetUsers(ctx, &ram.GetUsersArgs{}, nil)
 //			if err != nil {
 //				return err

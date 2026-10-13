@@ -65,14 +65,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			last := len(_default.Accounts).ApplyT(func(length int) (float64, error) {
-//				return length - 1, nil
-//			}).(pulumi.Float64Output)
+//			last := len(_default.Accounts) - 1
 //			defaultAggregator, err := cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String(_default.Accounts[last].AccountId),
-//						AccountName: pulumi.String(_default.Accounts[last].DisplayName),
+//						AccountId: last.ApplyT(func(last float64) (resourcemanager.GetAccountsAccount, error) {
+//							return _default.Accounts[last].(resourcemanager.GetAccountsAccount), nil
+//						}).(resourcemanager.GetAccountsAccountOutput).AccountId(),
+//						AccountName: last.ApplyT(func(last float64) (resourcemanager.GetAccountsAccount, error) {
+//							return _default.Accounts[last].(resourcemanager.GetAccountsAccount), nil
+//						}).(resourcemanager.GetAccountsAccountOutput).DisplayName(),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},

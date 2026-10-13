@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const _default = alicloud.waf.getInstances({});
  * const defaultInstance: alicloud.waf.Instance[] = [];
- * _default.then(_default => _default.instances).length.apply(length => {
+ * _default.then(_default => _default.instances.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultInstance.push(new alicloud.waf.Instance(`default-${range}`, {
  *             bigScreen: "0",
