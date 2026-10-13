@@ -205,7 +205,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }
@@ -311,7 +311,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }
@@ -417,7 +417,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }
@@ -523,7 +523,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }
@@ -629,7 +629,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }
@@ -735,7 +735,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }
@@ -841,7 +841,7 @@ public final class CasFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates()[0].id()));
+     *         ctx.export("sslCertificatesServiceCertificatesId0", ids.applyValue(_ids -> _ids.certificates().get(0).id()));
      *     }
      * }
      * }

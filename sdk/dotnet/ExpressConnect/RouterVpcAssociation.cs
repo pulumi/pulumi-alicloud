@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///             "172.16.2.0/24",
     ///             "172.16.1.0/24",
     ///         },
-    ///         VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         VpcOwnerId = Output.Create(current.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AssociationRegionId = "cn-hangzhou",
     ///         VpcId = default8qAtD6.Id,
     ///     });

@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         // data source provides the information of available addons
+ *         // function provides the information of available addons
  *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
  *             .clusterId(defaultManagedKubernetes.id())
  *             .nameRegex("logtail-ds")

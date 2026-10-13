@@ -974,13 +974,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -989,7 +989,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1003,7 +1003,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -1072,13 +1072,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -1087,7 +1087,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1101,7 +1101,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -1170,13 +1170,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -1185,7 +1185,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1199,7 +1199,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -1268,13 +1268,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -1283,7 +1283,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1297,7 +1297,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -1366,13 +1366,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -1381,7 +1381,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1395,7 +1395,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -1464,13 +1464,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -1479,7 +1479,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1493,7 +1493,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -1562,13 +1562,13 @@ public final class CenFunctions {
      *             .build());
      * 
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
-     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .description("terraform-example")
      *             .build());
      * 
      *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
      *             .projectName(defaultProject.projectName())
-     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .shardCount(3)
      *             .autoSplit(true)
      *             .maxSplitShardCount(60)
@@ -1577,7 +1577,7 @@ public final class CenFunctions {
      * 
      *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
      *             .projectName(defaultStore.projectName())
-     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.get("result")))
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
@@ -1591,7 +1591,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs().get(0).id()));
      *     }
      * }
      * }
@@ -2410,8 +2410,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
-     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.get("id"))
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.get("name"))
      *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
@@ -2455,8 +2455,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
-     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.get("id"))
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.get("name"))
      *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
@@ -2500,8 +2500,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
-     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.get("id"))
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.get("name"))
      *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
@@ -2545,8 +2545,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
-     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.get("id"))
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.get("name"))
      *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
@@ -2590,8 +2590,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
-     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.get("id"))
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.get("name"))
      *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
@@ -6839,7 +6839,7 @@ public final class CenFunctions {
      *             .peeringSubnetMask("255.255.255.252")
      *             .physicalConnectionId(default_.connections()[0].id())
      *             .virtualBorderRouterName(name)
-     *             .vlanId(defaultInteger.id())
+     *             .vlanId(defaultInteger.get("id"))
      *             .minRxInterval(1000)
      *             .minTxInterval(1000)
      *             .detectMultiplier(10)
@@ -6869,7 +6869,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations().get(0).id()));
      *     }
      * }
      * }
@@ -6952,7 +6952,7 @@ public final class CenFunctions {
      *             .peeringSubnetMask("255.255.255.252")
      *             .physicalConnectionId(default_.connections()[0].id())
      *             .virtualBorderRouterName(name)
-     *             .vlanId(defaultInteger.id())
+     *             .vlanId(defaultInteger.get("id"))
      *             .minRxInterval(1000)
      *             .minTxInterval(1000)
      *             .detectMultiplier(10)
@@ -6982,7 +6982,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations().get(0).id()));
      *     }
      * }
      * }
@@ -7065,7 +7065,7 @@ public final class CenFunctions {
      *             .peeringSubnetMask("255.255.255.252")
      *             .physicalConnectionId(default_.connections()[0].id())
      *             .virtualBorderRouterName(name)
-     *             .vlanId(defaultInteger.id())
+     *             .vlanId(defaultInteger.get("id"))
      *             .minRxInterval(1000)
      *             .minTxInterval(1000)
      *             .detectMultiplier(10)
@@ -7095,7 +7095,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations().get(0).id()));
      *     }
      * }
      * }
@@ -7178,7 +7178,7 @@ public final class CenFunctions {
      *             .peeringSubnetMask("255.255.255.252")
      *             .physicalConnectionId(default_.connections()[0].id())
      *             .virtualBorderRouterName(name)
-     *             .vlanId(defaultInteger.id())
+     *             .vlanId(defaultInteger.get("id"))
      *             .minRxInterval(1000)
      *             .minTxInterval(1000)
      *             .detectMultiplier(10)
@@ -7208,7 +7208,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations().get(0).id()));
      *     }
      * }
      * }
@@ -7291,7 +7291,7 @@ public final class CenFunctions {
      *             .peeringSubnetMask("255.255.255.252")
      *             .physicalConnectionId(default_.connections()[0].id())
      *             .virtualBorderRouterName(name)
-     *             .vlanId(defaultInteger.id())
+     *             .vlanId(defaultInteger.get("id"))
      *             .minRxInterval(1000)
      *             .minTxInterval(1000)
      *             .detectMultiplier(10)
@@ -7321,7 +7321,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTablePropagation.transitRouterAttachmentId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTablePropagationId0", ids.applyValue(_ids -> _ids.propagations().get(0).id()));
      *     }
      * }
      * }
@@ -7391,7 +7391,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTable.transitRouterRouteTableId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables().get(0).id()));
      *     }
      * }
      * }
@@ -7461,7 +7461,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTable.transitRouterRouteTableId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables().get(0).id()));
      *     }
      * }
      * }
@@ -7531,7 +7531,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTable.transitRouterRouteTableId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables().get(0).id()));
      *     }
      * }
      * }
@@ -7601,7 +7601,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTable.transitRouterRouteTableId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables().get(0).id()));
      *     }
      * }
      * }
@@ -7671,7 +7671,7 @@ public final class CenFunctions {
      *             .ids(defaultTransitRouterRouteTable.transitRouterRouteTableId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables()[0].id()));
+     *         ctx.export("cenTransitRouterRouteTableId0", ids.applyValue(_ids -> _ids.tables().get(0).id()));
      *     }
      * }
      * }
@@ -8297,7 +8297,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -8400,7 +8400,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -8503,7 +8503,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -8606,7 +8606,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -8709,7 +8709,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -8866,7 +8866,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -9023,7 +9023,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -9180,7 +9180,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -9337,7 +9337,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -9494,7 +9494,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -9651,7 +9651,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }
@@ -9808,7 +9808,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments().get(0).id()));
      *     }
      * }
      * }

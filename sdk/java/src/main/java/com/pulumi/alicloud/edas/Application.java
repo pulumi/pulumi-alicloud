@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
- *             .clusterName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .clusterName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .clusterType(2)
  *             .networkMode(2)
  *             .logicalRegionId(default_.regions()[0].id())
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
- *             .applicationName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .applicationName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .clusterId(defaultCluster.id())
  *             .packageType("JAR")
  *             .build());

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultMn8sVK = new BizType("defaultMn8sVK", BizTypeArgs.builder()
- *             .bizTypeName(String.format("%s%s", name,default_.result()))
+ *             .bizTypeName(String.format("%s%s", name,default_.get("result")))
  *             .citeTemplate(true)
  *             .industryInfo("社交-注册信息-昵称")
  *             .build());

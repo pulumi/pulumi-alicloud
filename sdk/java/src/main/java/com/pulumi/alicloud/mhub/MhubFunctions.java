@@ -55,7 +55,7 @@ public final class MhubFunctions {
      *         final var name = config.get("name").orElse("example_value");
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
-     *             .productId(defaultAlicloudMhubProduct.id())
+     *             .productId(defaultAlicloudMhubProduct.get("id"))
      *             .packageName("com.test.android")
      *             .type("2")
      *             .build());
@@ -115,7 +115,7 @@ public final class MhubFunctions {
      *         final var name = config.get("name").orElse("example_value");
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
-     *             .productId(defaultAlicloudMhubProduct.id())
+     *             .productId(defaultAlicloudMhubProduct.get("id"))
      *             .packageName("com.test.android")
      *             .type("2")
      *             .build());
@@ -175,7 +175,7 @@ public final class MhubFunctions {
      *         final var name = config.get("name").orElse("example_value");
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
-     *             .productId(defaultAlicloudMhubProduct.id())
+     *             .productId(defaultAlicloudMhubProduct.get("id"))
      *             .packageName("com.test.android")
      *             .type("2")
      *             .build());
@@ -235,7 +235,7 @@ public final class MhubFunctions {
      *         final var name = config.get("name").orElse("example_value");
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
-     *             .productId(defaultAlicloudMhubProduct.id())
+     *             .productId(defaultAlicloudMhubProduct.get("id"))
      *             .packageName("com.test.android")
      *             .type("2")
      *             .build());
@@ -295,7 +295,7 @@ public final class MhubFunctions {
      *         final var name = config.get("name").orElse("example_value");
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
-     *             .productId(defaultAlicloudMhubProduct.id())
+     *             .productId(defaultAlicloudMhubProduct.get("id"))
      *             .packageName("com.test.android")
      *             .type("2")
      *             .build());

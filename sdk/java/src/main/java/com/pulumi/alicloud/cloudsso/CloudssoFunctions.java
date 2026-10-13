@@ -1755,7 +1755,7 @@ public final class CloudssoFunctions {
      *             .directoryId(defaultQSrGmc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events().get(0).id()));
      *     }
      * }
      * }
@@ -1820,7 +1820,7 @@ public final class CloudssoFunctions {
      *             .directoryId(defaultQSrGmc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events().get(0).id()));
      *     }
      * }
      * }
@@ -1885,7 +1885,7 @@ public final class CloudssoFunctions {
      *             .directoryId(defaultQSrGmc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events().get(0).id()));
      *     }
      * }
      * }
@@ -1950,7 +1950,7 @@ public final class CloudssoFunctions {
      *             .directoryId(defaultQSrGmc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events().get(0).id()));
      *     }
      * }
      * }
@@ -2015,7 +2015,7 @@ public final class CloudssoFunctions {
      *             .directoryId(defaultQSrGmc.id())
      *             .build());
      * 
-     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events().get(0).id()));
      *     }
      * }
      * }

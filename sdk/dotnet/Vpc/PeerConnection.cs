@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         PeerConnectionName = "terraform-example",
     ///         VpcId = localVpc.Id,
-    ///         AcceptingAliUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         AcceptingAliUid = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AcceptingRegionId = acceptingRegion,
     ///         AcceptingVpcId = acceptingVpc.Id,
     ///         Description = "terraform-example",

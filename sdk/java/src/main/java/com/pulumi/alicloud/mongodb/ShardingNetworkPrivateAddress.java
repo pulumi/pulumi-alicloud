@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultShardingNetworkPrivateAddress = new ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress", ShardingNetworkPrivateAddressArgs.builder()
  *             .dbInstanceId(defaultShardingInstance.id())
- *             .nodeId(defaultShardingInstance.shardLists().applyValue(_shardLists -> _shardLists[0].nodeId()))
+ *             .nodeId(defaultShardingInstance.shardLists().applyValue(_shardLists -> _shardLists.get(0).nodeId()))
  *             .zoneId(defaultShardingInstance.zoneId())
  *             .accountName("example")
  *             .accountPassword("Example_123")

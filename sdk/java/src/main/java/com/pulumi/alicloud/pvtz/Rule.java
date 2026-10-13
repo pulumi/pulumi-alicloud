@@ -107,26 +107,26 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEndpoint = new Endpoint("defaultEndpoint", EndpointArgs.builder()
- *             .endpointName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .endpointName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vpcId(defaultNetwork.id())
  *             .vpcRegionId(defaultGetRegions.regions()[0].id())
  *             .ipConfigs(            
  *                 EndpointIpConfigArgs.builder()
- *                     .zoneId(defaultSwitch[0].zoneId())
- *                     .cidrBlock(defaultSwitch[0].cidrBlock())
- *                     .vswitchId(defaultSwitch[0].id())
+ *                     .zoneId(defaultSwitch.get(0).zoneId())
+ *                     .cidrBlock(defaultSwitch.get(0).cidrBlock())
+ *                     .vswitchId(defaultSwitch.get(0).id())
  *                     .build(),
  *                 EndpointIpConfigArgs.builder()
- *                     .zoneId(defaultSwitch[1].zoneId())
- *                     .cidrBlock(defaultSwitch[1].cidrBlock())
- *                     .vswitchId(defaultSwitch[1].id())
+ *                     .zoneId(defaultSwitch.get(1).zoneId())
+ *                     .cidrBlock(defaultSwitch.get(1).cidrBlock())
+ *                     .vswitchId(defaultSwitch.get(1).id())
  *                     .build())
  *             .build());
  * 
  *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
  *             .endpointId(defaultEndpoint.id())
- *             .ruleName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .ruleName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .type("OUTBOUND")
  *             .zoneName(name)
  *             .forwardIps(RuleForwardIpArgs.builder()

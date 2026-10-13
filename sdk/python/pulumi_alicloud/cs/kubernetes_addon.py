@@ -310,7 +310,7 @@ class KubernetesAddon(pulumi.CustomResource):
                 }),
                 "disabled": False,
             }])
-        # data source provides the information of available addons
+        # function provides the information of available addons
         default_get_kubernetes_addons = alicloud.cs.get_kubernetes_addons_output(cluster_id=default_managed_kubernetes.id,
             name_regex="logtail-ds")
         # Manage addon resource
@@ -400,7 +400,7 @@ class KubernetesAddon(pulumi.CustomResource):
                 }),
                 "disabled": False,
             }])
-        # data source provides the information of available addons
+        # function provides the information of available addons
         default_get_kubernetes_addons = alicloud.cs.get_kubernetes_addons_output(cluster_id=default_managed_kubernetes.id,
             name_regex="logtail-ds")
         # Manage addon resource

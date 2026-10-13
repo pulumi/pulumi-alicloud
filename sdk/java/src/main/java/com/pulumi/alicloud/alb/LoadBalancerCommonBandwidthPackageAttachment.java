@@ -108,11 +108,11 @@ import javax.annotation.Nullable;
  *             .tags(Map.of("Created", "TF"))
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(defaultSwitch[0].id())
+ *                     .vswitchId(defaultSwitch.get(0).id())
  *                     .zoneId(default_.zones()[0].id())
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(defaultSwitch[1].id())
+ *                     .vswitchId(defaultSwitch.get(1).id())
  *                     .zoneId(default_.zones()[1].id())
  *                     .build())
  *             .modificationProtectionConfig(LoadBalancerModificationProtectionConfigArgs.builder()

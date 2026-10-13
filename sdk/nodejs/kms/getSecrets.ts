@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const kmsSecretsDs = alicloud.kms.getSecrets({
  *     fetchTags: true,
  *     nameRegex: "name_regex",
@@ -119,7 +119,7 @@ export interface GetSecretsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const kmsSecretsDs = alicloud.kms.getSecrets({
  *     fetchTags: true,
  *     nameRegex: "name_regex",

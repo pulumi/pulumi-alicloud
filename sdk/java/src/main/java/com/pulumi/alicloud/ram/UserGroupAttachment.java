@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultUser = new User("defaultUser", UserArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
- *             .displayName(String.format("terraform-example-%s", default_.result()))
+ *             .name(String.format("terraform-example-%s", default_.get("result")))
+ *             .displayName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .name(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultUserGroupAttachment = new UserGroupAttachment("defaultUserGroupAttachment", UserGroupAttachmentArgs.builder()

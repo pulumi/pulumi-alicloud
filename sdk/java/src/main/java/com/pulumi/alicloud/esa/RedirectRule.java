@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourceSiteRedirectRuleExample = new Site("resourceSiteRedirectRuleExample", SiteArgs.builder()
- *             .siteName(String.format("gositecdn-%s.cn", default_.result()))
+ *             .siteName(String.format("gositecdn-%s.cn", default_.get("result")))
  *             .instanceId(resourceRedirectRuleExample.id())
  *             .coverage("overseas")
  *             .accessType("NS")

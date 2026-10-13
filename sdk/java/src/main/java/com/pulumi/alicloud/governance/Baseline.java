@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *                     )))
  *                 .build())
  *             .description(name)
- *             .baselineName(String.format("%s-%s", name,default_.result()))
+ *             .baselineName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *     }

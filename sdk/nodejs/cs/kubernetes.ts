@@ -125,7 +125,7 @@ import * as utilities from "../utilities";
  *             input: vpc.map(__item => __item.id),
  *         }).result : vpcId,
  *         cidrBlock: vswitchCidrs[range],
- *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
+ *         zoneId: Promise.all([enhanced, enhanced.then(enhanced => enhanced.zones.length)]).then(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
  *     }));
  * }
  * // According to the vswitch cidr blocks to launch several vswitches
@@ -137,14 +137,14 @@ import * as utilities from "../utilities";
  *             input: vpc.map(__item => __item.id),
  *         }).result : vpcId,
  *         cidrBlock: terwayVswitchCidrs[range],
- *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
+ *         zoneId: Promise.all([enhanced, enhanced.then(enhanced => enhanced.zones.length)]).then(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
  *     }));
  * }
  * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const cloudEssd = (new Array(3)).map((_, i) => i).map(__index => (alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[__index < length ? __index : 0].zoneId),
+ * const cloudEssd = Array.from({length: 3}, (_, i) => i).map(__index => (alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: Promise.all([enhanced, enhanced.then(enhanced => enhanced.zones.length)]).then(([enhanced, length]) => enhanced.zones[__index < length ? __index : 0].zoneId),
  *     cpuCoreCount: 4,
  *     memorySize: 8,
  *     systemDiskCategory: "cloud_essd",

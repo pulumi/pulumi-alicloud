@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourceRewriteUrlRuleSiteExample = new Site("resourceRewriteUrlRuleSiteExample", SiteArgs.builder()
- *             .siteName(String.format("gositecdn-%s.cn", default_.result()))
+ *             .siteName(String.format("gositecdn-%s.cn", default_.get("result")))
  *             .instanceId(resourceRewriteUrlRuleRatePlanInstanceExample.id())
  *             .coverage("overseas")
  *             .accessType("NS")

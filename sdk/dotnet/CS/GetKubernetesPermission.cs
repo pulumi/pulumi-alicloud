@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var @default = AliCloud.Ram.GetUsers.Invoke();
         /// 
         ///     // permissions
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var @default = AliCloud.Ram.GetUsers.Invoke();
         /// 
         ///     // permissions
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var @default = AliCloud.Ram.GetUsers.Invoke();
         /// 
         ///     // permissions

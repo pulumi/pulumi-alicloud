@@ -54,7 +54,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -107,7 +107,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -160,7 +160,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -213,7 +213,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -266,7 +266,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -319,7 +319,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -372,7 +372,7 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.id())
+     *             .ids(defaultAlicloudSagAcls.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 

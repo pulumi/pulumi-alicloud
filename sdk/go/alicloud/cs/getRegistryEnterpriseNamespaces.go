@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
+//			// Declare the function
 //			myNamespaces, err := cs.GetRegistryEnterpriseNamespaces(ctx, &cs.GetRegistryEnterpriseNamespacesArgs{
 //				InstanceId: "cri-xxx",
 //				NameRegex:  pulumi.StringRef("my-namespace"),

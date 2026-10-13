@@ -65,11 +65,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
- *             .vaultName(String.format("terraform-example-%s", default_.result()))
+ *             .vaultName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultOssBackupPlan = new OssBackupPlan("defaultOssBackupPlan", OssBackupPlanArgs.builder()

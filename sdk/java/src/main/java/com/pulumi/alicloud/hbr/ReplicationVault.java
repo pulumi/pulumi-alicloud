@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
- *             .vaultName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .vaultName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultReplicationVault = new ReplicationVault("defaultReplicationVault", ReplicationVaultArgs.builder()

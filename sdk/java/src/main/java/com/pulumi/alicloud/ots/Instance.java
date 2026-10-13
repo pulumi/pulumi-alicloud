@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .description(name)
  *             .accessedBy("Vpc")
  *             .tags(Map.ofEntries(

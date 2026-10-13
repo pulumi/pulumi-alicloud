@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var @default = new AliCloud.DataWorks.DiJob("default", new()
     ///     {
     ///         Description = name,
-    ///         ProjectId = defaultMMHL8U.Id,
+    ///         ProjectId = defaultMMHL8U.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         JobName = "zhenyuan_example_case",
     ///         MigrationType = "api_FullAndRealtimeIncremental",
     ///         SourceDataSourceSettings = new[]
@@ -103,17 +103,17 @@ namespace Pulumi.AliCloud.DataWorks
     ///         {
     ///             OfflineResourceSettings = new AliCloud.DataWorks.Inputs.DiJobResourceSettingsOfflineResourceSettingsArgs
     ///             {
-    ///                 RequestedCu = 2,
+    ///                 RequestedCu = 2.0,
     ///                 ResourceGroupIdentifier = "S_res_group_524257424564736_1716799673667",
     ///             },
     ///             RealtimeResourceSettings = new AliCloud.DataWorks.Inputs.DiJobResourceSettingsRealtimeResourceSettingsArgs
     ///             {
-    ///                 RequestedCu = 2,
+    ///                 RequestedCu = 2.0,
     ///                 ResourceGroupIdentifier = "S_res_group_524257424564736_1716799673667",
     ///             },
     ///             ScheduleResourceSettings = new AliCloud.DataWorks.Inputs.DiJobResourceSettingsScheduleResourceSettingsArgs
     ///             {
-    ///                 RequestedCu = 2,
+    ///                 RequestedCu = 2.0,
     ///                 ResourceGroupIdentifier = "S_res_group_524257424564736_1716799673667",
     ///             },
     ///         },

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyName: "keyPairDatasource"});
  * const _default = alicloud.ecs.getKeyPairsOutput({
  *     nameRegex: defaultKeyPair.keyName,
@@ -113,7 +113,7 @@ export interface GetKeyPairsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyName: "keyPairDatasource"});
  * const _default = alicloud.ecs.getKeyPairsOutput({
  *     nameRegex: defaultKeyPair.keyName,

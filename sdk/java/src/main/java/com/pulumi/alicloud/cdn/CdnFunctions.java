@@ -292,7 +292,7 @@ public final class CdnFunctions {
      *             .build());
      * 
      *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
-     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
      *             .cdnType("web")
      *             .scope("overseas")
      *             .sources(DomainNewSourceArgs.builder()
@@ -318,7 +318,7 @@ public final class CdnFunctions {
      *             .ids(defaultDomainConfig.id())
      *             .build());
      * 
-     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs().get(0).id()));
      *     }
      * }
      * }
@@ -373,7 +373,7 @@ public final class CdnFunctions {
      *             .build());
      * 
      *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
-     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
      *             .cdnType("web")
      *             .scope("overseas")
      *             .sources(DomainNewSourceArgs.builder()
@@ -399,7 +399,7 @@ public final class CdnFunctions {
      *             .ids(defaultDomainConfig.id())
      *             .build());
      * 
-     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs().get(0).id()));
      *     }
      * }
      * }
@@ -454,7 +454,7 @@ public final class CdnFunctions {
      *             .build());
      * 
      *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
-     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
      *             .cdnType("web")
      *             .scope("overseas")
      *             .sources(DomainNewSourceArgs.builder()
@@ -480,7 +480,7 @@ public final class CdnFunctions {
      *             .ids(defaultDomainConfig.id())
      *             .build());
      * 
-     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs().get(0).id()));
      *     }
      * }
      * }
@@ -535,7 +535,7 @@ public final class CdnFunctions {
      *             .build());
      * 
      *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
-     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
      *             .cdnType("web")
      *             .scope("overseas")
      *             .sources(DomainNewSourceArgs.builder()
@@ -561,7 +561,7 @@ public final class CdnFunctions {
      *             .ids(defaultDomainConfig.id())
      *             .build());
      * 
-     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs().get(0).id()));
      *     }
      * }
      * }
@@ -616,7 +616,7 @@ public final class CdnFunctions {
      *             .build());
      * 
      *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
-     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
      *             .cdnType("web")
      *             .scope("overseas")
      *             .sources(DomainNewSourceArgs.builder()
@@ -642,7 +642,7 @@ public final class CdnFunctions {
      *             .ids(defaultDomainConfig.id())
      *             .build());
      * 
-     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs().get(0).id()));
      *     }
      * }
      * }

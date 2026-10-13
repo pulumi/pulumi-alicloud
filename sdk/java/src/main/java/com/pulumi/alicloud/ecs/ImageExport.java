@@ -115,12 +115,12 @@ import javax.annotation.Nullable;
  * 
  *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
  *             .instanceId(defaultInstance.id())
- *             .imageName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .imageName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("example-value-%s", defaultInteger.result()))
+ *             .bucket(String.format("example-value-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultImageExport = new ImageExport("defaultImageExport", ImageExportArgs.builder()

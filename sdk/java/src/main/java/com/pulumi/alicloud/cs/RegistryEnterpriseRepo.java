@@ -69,12 +69,12 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *         var example = new RegistryEnterpriseRepo("example", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
  *             .namespace(defaultRegistryEnterpriseNamespace.name())
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .repoType("PUBLIC")
  *             .summary("this is summary of my new repo")
  *             .detail("this is a public repo")

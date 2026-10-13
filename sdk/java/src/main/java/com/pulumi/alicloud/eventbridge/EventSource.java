@@ -67,16 +67,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .name(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultEventBus = new EventBus("defaultEventBus", EventBusArgs.builder()
- *             .eventBusName(String.format("%s-%s", name,default_.result()))
+ *             .eventBusName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultEventSource = new EventSource("defaultEventSource", EventSourceArgs.builder()
  *             .eventBusName(defaultEventBus.eventBusName())
- *             .eventSourceName(String.format("%s-%s", name,default_.result()))
+ *             .eventSourceName(String.format("%s-%s", name,default_.get("result")))
  *             .description(name)
  *             .linkedExternalSource(true)
  *             .externalSourceType("MNS")

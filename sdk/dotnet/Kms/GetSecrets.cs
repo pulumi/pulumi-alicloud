@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var kmsSecretsDs = AliCloud.Kms.GetSecrets.Invoke(new()
         ///     {
         ///         FetchTags = true,
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var kmsSecretsDs = AliCloud.Kms.GetSecrets.Invoke(new()
         ///     {
         ///         FetchTags = true,
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var kmsSecretsDs = AliCloud.Kms.GetSecrets.Invoke(new()
         ///     {
         ///         FetchTags = true,

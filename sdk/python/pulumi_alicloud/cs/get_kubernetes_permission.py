@@ -87,7 +87,7 @@ def get_kubernetes_permission(uid: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     default = alicloud.ram.get_users()
     # permissions
     default_get_kubernetes_permission = alicloud.cs.get_kubernetes_permission(uid=default.users[0].id)
@@ -119,7 +119,7 @@ def get_kubernetes_permission_output(uid: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     default = alicloud.ram.get_users()
     # permissions
     default_get_kubernetes_permission = alicloud.cs.get_kubernetes_permission(uid=default.users[0].id)

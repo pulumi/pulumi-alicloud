@@ -146,7 +146,7 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
-    # Declare the data source
+    # Declare the function
     k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
         enable_details=False)
     auth = {str(__key): alicloud.cs.get_cluster_credential(cluster_id=str(__key),
@@ -193,7 +193,7 @@ def get_cluster_credential_output(cluster_id: pulumi.Input[Optional[_builtins.st
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
-    # Declare the data source
+    # Declare the function
     k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
         enable_details=False)
     auth = {str(__key): alicloud.cs.get_cluster_credential(cluster_id=str(__key),

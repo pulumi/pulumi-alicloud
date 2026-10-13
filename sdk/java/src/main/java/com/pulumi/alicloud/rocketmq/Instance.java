@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Instance("example", InstanceArgs.builder()
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .remark(name)
  *             .build());
  * 

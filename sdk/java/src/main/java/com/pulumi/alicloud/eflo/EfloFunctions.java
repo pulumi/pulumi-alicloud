@@ -48,7 +48,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -94,7 +94,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -140,7 +140,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -186,7 +186,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -232,7 +232,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -278,7 +278,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -324,7 +324,7 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
-     *             .nameRegex(defaultAlicloudEfloSubnet.name())
+     *             .nameRegex(defaultAlicloudEfloSubnet.get("name"))
      *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
@@ -370,8 +370,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
@@ -415,8 +415,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
@@ -460,8 +460,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
@@ -505,8 +505,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
@@ -550,8 +550,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
@@ -595,8 +595,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
@@ -640,8 +640,8 @@ public final class EfloFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
-     *             .ids(defaultAlicloudEfloVpd.id())
-     *             .nameRegex(defaultAlicloudEfloVpd.name())
+     *             .ids(defaultAlicloudEfloVpd.get("id"))
+     *             .nameRegex(defaultAlicloudEfloVpd.get("name"))
      *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 

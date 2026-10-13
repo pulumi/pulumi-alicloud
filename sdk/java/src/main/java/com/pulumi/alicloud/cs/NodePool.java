@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
- *             .namePrefix(String.format("terraform-example-%s", default_.result()))
+ *             .namePrefix(String.format("terraform-example-%s", default_.get("result")))
  *             .clusterSpec("ack.pro.small")
  *             .workerVswitchIds(defaultSwitch.id())
  *             .newNatGateway(true)
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
- *             .keyPairName(String.format("terraform-example-%s", default_.result()))
+ *             .keyPairName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()

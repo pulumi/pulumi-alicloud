@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         Retention = "1",
     ///         InstanceName = defaultInstance.Name,
     ///         CrossAccountType = "SELF_ACCOUNT",
-    ///         CrossAccountUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         CrossAccountUserId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         CrossAccountRoleName = defaultRole.Id,
     ///         OtsDetails = new[]
     ///         {

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`.
+//			// You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in pulumi. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`.
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
 //				AlarmContactName: pulumi.String("tf-example"),
 //				Describe:         pulumi.String("For example"),

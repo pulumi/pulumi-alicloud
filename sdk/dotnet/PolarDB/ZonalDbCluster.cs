@@ -31,22 +31,22 @@ namespace Pulumi.AliCloud.PolarDB
     /// {
     ///     var config = new Config();
     ///     // The advanced configuration for all nodes in the cluster except for the RW node, including db_node_class, hot_replica_mode, and imci_switch properties.
-    ///     var dbClusterNodesConfigs = config.GetObject&lt;Dictionary&lt;string, DbClusterNodesConfigs&gt;&gt;("dbClusterNodesConfigs") ?? 
+    ///     var dbClusterNodesConfigs = config.GetObject&lt;Dictionary&lt;string, DbClusterNodesConfigs&gt;&gt;("dbClusterNodesConfigs") ?? new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         { "db_node_1", 
+    ///         ["db_node_1"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "dbNodeClass", "polar.mysql.x4.medium.c" },
-    ///             { "dbNodeRole", "Writer" },
-    ///             { "hotReplicaMode", null },
-    ///             { "imciSwitch", null },
-    ///         } },
-    ///         { "db_node_2", 
+    ///             ["dbNodeClass"] = "polar.mysql.x4.medium.c",
+    ///             ["dbNodeRole"] = "Writer",
+    ///             ["hotReplicaMode"] = null,
+    ///             ["imciSwitch"] = null,
+    ///         },
+    ///         ["db_node_2"] = new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "dbNodeClass", "polar.mysql.x4.medium.c" },
-    ///             { "dbNodeRole", "Reader" },
-    ///             { "hotReplicaMode", null },
-    ///             { "imciSwitch", null },
-    ///         } },
+    ///             ["dbNodeClass"] = "polar.mysql.x4.medium.c",
+    ///             ["dbNodeRole"] = "Reader",
+    ///             ["hotReplicaMode"] = null,
+    ///             ["imciSwitch"] = null,
+    ///         },
     ///     };
     ///     var @default = new AliCloud.Ens.Network("default", new()
     ///     {

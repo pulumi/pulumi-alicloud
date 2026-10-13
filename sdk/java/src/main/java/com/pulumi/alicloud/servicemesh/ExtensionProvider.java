@@ -70,26 +70,18 @@ import javax.annotation.Nullable;
  *             .nameRegex("default-NODELETING")
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetNetworks.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetNetworks.ids().size() > 0 ? 0 : 1; i++) {
  *             new Network("defaultNetwork-" + i);
  * 
  *         
  * }
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(Output.tuple(defaultGetNetworks.ids().size(), defaultNetwork[0].id()).applyValue(values -> {
- *                 var length = values.t1;
- *                 var id = values.t2;
- *                 return length > 0 ? defaultGetNetworks.ids()[0] : id;
- *             }))
+ *             .vpcId(defaultNetwork.get(0).id().applyValue(_id -> defaultGetNetworks.ids().size() > 0 ? defaultGetNetworks.ids()[0] : _id))
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().size()).applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
- *                 .vpcId(Output.tuple(defaultGetNetworks.ids().size(), defaultNetwork[0].id()).applyValue(values -> {
- *                     var length = values.t1;
- *                     var id = values.t2;
- *                     return length > 0 ? defaultGetNetworks.ids()[0] : id;
- *                 }))
+ *                 .vpcId(defaultNetwork.get(0).id().applyValue(_id -> defaultGetNetworks.ids().size() > 0 ? defaultGetNetworks.ids()[0] : _id))
  *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
  *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
  *                     .newbits(8)
@@ -105,16 +97,12 @@ import javax.annotation.Nullable;
  *             .version("v1.21.6.103-g5ddeaef7-aliyun")
  *             .edition("Default")
  *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(Output.tuple(defaultGetNetworks.ids().size(), defaultNetwork[0].id()).applyValue(values -> {
- *                     var length = values.t1;
- *                     var id = values.t2;
- *                     return length > 0 ? defaultGetNetworks.ids()[0] : id;
- *                 }))
- *                 .vswitcheLists(Arrays.asList(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).size(), defaultGetSwitches, defaultSwitch[0].id()).applyValue(values -> {
+ *                 .vpcId(defaultNetwork.get(0).id().applyValue(_id -> defaultGetNetworks.ids().size() > 0 ? defaultGetNetworks.ids()[0] : _id))
+ *                 .vswitcheLists(Arrays.asList(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().size()), defaultGetSwitches, defaultSwitch.get(0).id()).applyValue(values -> {
  *                     var length = values.t1;
  *                     var defaultGetSwitches = values.t2;
  *                     var id = values.t3;
- *                     return length > 0 ? defaultGetSwitches.ids()[0] : id;
+ *                     return length > 0 ? defaultGetSwitches.ids().get(0) : id;
  *                 })))
  *                 .build())
  *             .build());

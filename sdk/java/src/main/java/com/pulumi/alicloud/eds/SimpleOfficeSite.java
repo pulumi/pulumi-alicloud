@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/12")
  *             .enableAdminAccess(true)
  *             .desktopAccessType("Internet")
- *             .officeSiteName(String.format("terraform-example-%s", default_.result()))
+ *             .officeSiteName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *     }

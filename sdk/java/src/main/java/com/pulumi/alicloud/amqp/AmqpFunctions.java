@@ -593,7 +593,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -655,7 +655,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -717,7 +717,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -779,7 +779,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -841,7 +841,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -903,7 +903,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -965,7 +965,7 @@ public final class AmqpFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances().get(0).id()));
      *     }
      * }
      * }
@@ -1078,7 +1078,7 @@ public final class AmqpFunctions {
      *             .instanceId(createInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts().get(0).id()));
      *     }
      * }
      * }
@@ -1191,7 +1191,7 @@ public final class AmqpFunctions {
      *             .instanceId(createInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts().get(0).id()));
      *     }
      * }
      * }
@@ -1304,7 +1304,7 @@ public final class AmqpFunctions {
      *             .instanceId(createInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts().get(0).id()));
      *     }
      * }
      * }
@@ -1417,7 +1417,7 @@ public final class AmqpFunctions {
      *             .instanceId(createInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts().get(0).id()));
      *     }
      * }
      * }
@@ -1530,7 +1530,7 @@ public final class AmqpFunctions {
      *             .instanceId(createInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts().get(0).id()));
      *     }
      * }
      * }
@@ -1646,7 +1646,7 @@ public final class AmqpFunctions {
      *             .userName(userName)
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions().get(0).id()));
      *     }
      * }
      * }
@@ -1762,7 +1762,7 @@ public final class AmqpFunctions {
      *             .userName(userName)
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions().get(0).id()));
      *     }
      * }
      * }
@@ -1878,7 +1878,7 @@ public final class AmqpFunctions {
      *             .userName(userName)
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions().get(0).id()));
      *     }
      * }
      * }
@@ -1994,7 +1994,7 @@ public final class AmqpFunctions {
      *             .userName(userName)
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions().get(0).id()));
      *     }
      * }
      * }
@@ -2110,7 +2110,7 @@ public final class AmqpFunctions {
      *             .userName(userName)
      *             .build());
      * 
-     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions().get(0).id()));
      *     }
      * }
      * }

@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Arms
         ///     {
         ///         AvailabilityZone = vswitch.ZoneId,
         ///         CpuCoreCount = 2,
-        ///         MemorySize = 4,
+        ///         MemorySize = 4.0,
         ///         KubernetesNodeRole = "Worker",
         ///         InstanceTypeFamily = "ecs.sn1ne",
         ///     });
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Arms
         ///     {
         ///         AvailabilityZone = vswitch.ZoneId,
         ///         CpuCoreCount = 2,
-        ///         MemorySize = 4,
+        ///         MemorySize = 4.0,
         ///         KubernetesNodeRole = "Worker",
         ///         InstanceTypeFamily = "ecs.sn1ne",
         ///     });
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Arms
         ///     {
         ///         AvailabilityZone = vswitch.ZoneId,
         ///         CpuCoreCount = 2,
-        ///         MemorySize = 4,
+        ///         MemorySize = 4.0,
         ///         KubernetesNodeRole = "Worker",
         ///         InstanceTypeFamily = "ecs.sn1ne",
         ///     });

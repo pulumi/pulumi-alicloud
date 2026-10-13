@@ -211,7 +211,7 @@ class Validation(pulumi.CustomResource):
                     value=default_alidns_record_range["value"].validation_value,
                     ttl=600)
 
-        default_apply.domain_validation_lists.apply(lambda resolved_outputs: create_default({v.domain: v for v in resolved_outputs['domain_validation_lists']}))
+        default_apply.domain_validation_lists.apply(lambda resolved_outputs: create_default({v.domain: v for v in resolved_outputs}))
         default_validation = alicloud.sslcertificatesservicecertificate.Validation("default",
             instance_id=default.id,
             validation_record_ids=default_alidns_record.apply(lambda default_alidns_record: [r.id for r in default_alidns_record.values()]))
@@ -311,7 +311,7 @@ class Validation(pulumi.CustomResource):
                     value=default_alidns_record_range["value"].validation_value,
                     ttl=600)
 
-        default_apply.domain_validation_lists.apply(lambda resolved_outputs: create_default({v.domain: v for v in resolved_outputs['domain_validation_lists']}))
+        default_apply.domain_validation_lists.apply(lambda resolved_outputs: create_default({v.domain: v for v in resolved_outputs}))
         default_validation = alicloud.sslcertificatesservicecertificate.Validation("default",
             instance_id=default.id,
             validation_record_ids=default_alidns_record.apply(lambda default_alidns_record: [r.id for r in default_alidns_record.values()]))

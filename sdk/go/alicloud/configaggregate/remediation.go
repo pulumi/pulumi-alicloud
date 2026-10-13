@@ -70,8 +70,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
-//				"properties": []map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]interface{}{
+//				"properties": []interface{}{
 //					map[string]interface{}{
 //						"name":          "regionId",
 //						"type":          "String",

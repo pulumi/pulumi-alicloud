@@ -74,22 +74,22 @@ namespace Pulumi.AliCloud.Sae
         ///         PackageType = "your_package_url",
         ///         Jdk = "jdk_specifications",
         ///         VswitchId = defaultAlicloudVswitches.Ids[0],
-        ///         Replicas = "your_replicas",
-        ///         Cpu = "cpu_specifications",
-        ///         Memory = "memory_specifications",
+        ///         Replicas = int.Parse("your_replicas", System.Globalization.CultureInfo.InvariantCulture),
+        ///         Cpu = int.Parse("cpu_specifications", System.Globalization.CultureInfo.InvariantCulture),
+        ///         Memory = int.Parse("memory_specifications", System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
         ///     {
         ///         SlbId = defaultLoadBalancer.Id,
         ///         NamespaceId = defaultNamespace.Id,
-        ///         ListenerPort = "your_listener_port",
+        ///         ListenerPort = int.Parse("your_listener_port", System.Globalization.CultureInfo.InvariantCulture),
         ///         Rules = new[]
         ///         {
         ///             new AliCloud.Sae.Inputs.IngressRuleArgs
         ///             {
         ///                 AppId = defaultApplication.Id,
-        ///                 ContainerPort = "your_container_port",
+        ///                 ContainerPort = int.Parse("your_container_port", System.Globalization.CultureInfo.InvariantCulture),
         ///                 Domain = "your_domain",
         ///                 AppName = "your_name",
         ///                 Path = "your_path",
@@ -178,22 +178,22 @@ namespace Pulumi.AliCloud.Sae
         ///         PackageType = "your_package_url",
         ///         Jdk = "jdk_specifications",
         ///         VswitchId = defaultAlicloudVswitches.Ids[0],
-        ///         Replicas = "your_replicas",
-        ///         Cpu = "cpu_specifications",
-        ///         Memory = "memory_specifications",
+        ///         Replicas = int.Parse("your_replicas", System.Globalization.CultureInfo.InvariantCulture),
+        ///         Cpu = int.Parse("cpu_specifications", System.Globalization.CultureInfo.InvariantCulture),
+        ///         Memory = int.Parse("memory_specifications", System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
         ///     {
         ///         SlbId = defaultLoadBalancer.Id,
         ///         NamespaceId = defaultNamespace.Id,
-        ///         ListenerPort = "your_listener_port",
+        ///         ListenerPort = int.Parse("your_listener_port", System.Globalization.CultureInfo.InvariantCulture),
         ///         Rules = new[]
         ///         {
         ///             new AliCloud.Sae.Inputs.IngressRuleArgs
         ///             {
         ///                 AppId = defaultApplication.Id,
-        ///                 ContainerPort = "your_container_port",
+        ///                 ContainerPort = int.Parse("your_container_port", System.Globalization.CultureInfo.InvariantCulture),
         ///                 Domain = "your_domain",
         ///                 AppName = "your_name",
         ///                 Path = "your_path",
@@ -282,22 +282,22 @@ namespace Pulumi.AliCloud.Sae
         ///         PackageType = "your_package_url",
         ///         Jdk = "jdk_specifications",
         ///         VswitchId = defaultAlicloudVswitches.Ids[0],
-        ///         Replicas = "your_replicas",
-        ///         Cpu = "cpu_specifications",
-        ///         Memory = "memory_specifications",
+        ///         Replicas = int.Parse("your_replicas", System.Globalization.CultureInfo.InvariantCulture),
+        ///         Cpu = int.Parse("cpu_specifications", System.Globalization.CultureInfo.InvariantCulture),
+        ///         Memory = int.Parse("memory_specifications", System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
         ///     {
         ///         SlbId = defaultLoadBalancer.Id,
         ///         NamespaceId = defaultNamespace.Id,
-        ///         ListenerPort = "your_listener_port",
+        ///         ListenerPort = int.Parse("your_listener_port", System.Globalization.CultureInfo.InvariantCulture),
         ///         Rules = new[]
         ///         {
         ///             new AliCloud.Sae.Inputs.IngressRuleArgs
         ///             {
         ///                 AppId = defaultApplication.Id,
-        ///                 ContainerPort = "your_container_port",
+        ///                 ContainerPort = int.Parse("your_container_port", System.Globalization.CultureInfo.InvariantCulture),
         ///                 Domain = "your_domain",
         ///                 AppName = "your_name",
         ///                 Path = "your_path",

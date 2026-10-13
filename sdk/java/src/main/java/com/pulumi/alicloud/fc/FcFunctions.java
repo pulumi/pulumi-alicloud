@@ -69,7 +69,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -112,7 +112,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -155,7 +155,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -198,7 +198,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -241,7 +241,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -284,7 +284,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -327,7 +327,7 @@ public final class FcFunctions {
      *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.get("domains")[0].get("domainName"));
      *     }
      * }
      * }
@@ -1749,7 +1749,7 @@ public final class FcFunctions {
      *             .functionName(functionName)
      *             .build());
      * 
-     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers().get(0).id()));
      *     }
      * }
      * }
@@ -1836,7 +1836,7 @@ public final class FcFunctions {
      *             .functionName(functionName)
      *             .build());
      * 
-     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers().get(0).id()));
      *     }
      * }
      * }
@@ -1923,7 +1923,7 @@ public final class FcFunctions {
      *             .functionName(functionName)
      *             .build());
      * 
-     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers().get(0).id()));
      *     }
      * }
      * }
@@ -2010,7 +2010,7 @@ public final class FcFunctions {
      *             .functionName(functionName)
      *             .build());
      * 
-     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers().get(0).id()));
      *     }
      * }
      * }
@@ -2097,7 +2097,7 @@ public final class FcFunctions {
      *             .functionName(functionName)
      *             .build());
      * 
-     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers()[0].id()));
+     *         ctx.export("alicloudFcv3TriggerExampleId", default_.applyValue(_default_ -> _default_.triggers().get(0).id()));
      *     }
      * }
      * }
@@ -2136,7 +2136,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2178,7 +2178,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2220,7 +2220,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2262,7 +2262,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2304,7 +2304,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2346,7 +2346,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -2388,7 +2388,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = FcFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 

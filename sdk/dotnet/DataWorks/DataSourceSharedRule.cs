@@ -99,13 +99,13 @@ namespace Pulumi.AliCloud.DataWorks
     ///                 ["key1"] = "value1",
     ///             },
     ///         }),
-    ///         ProjectId = defaultQeRfvU.Id,
+    ///         ProjectId = defaultQeRfvU.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         ConnectionPropertiesMode = "UrlMode",
     ///     });
     /// 
     ///     var defaultDataSourceSharedRule = new AliCloud.DataWorks.DataSourceSharedRule("default", new()
     ///     {
-    ///         TargetProjectId = defaultasjsH5.Id,
+    ///         TargetProjectId = defaultasjsH5.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         DataSourceId = defaultvzu0wG.DataSourceId,
     ///         EnvType = "Prod",
     ///     });

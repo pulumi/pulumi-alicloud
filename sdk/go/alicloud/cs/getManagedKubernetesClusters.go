@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
+//			// Declare the function
 //			k8sClusters, err := cs.GetManagedKubernetesClusters(ctx, &cs.GetManagedKubernetesClustersArgs{
 //				NameRegex:            pulumi.StringRef("my-first-k8s"),
 //				OutputFile:           pulumi.StringRef("my-first-k8s-json"),

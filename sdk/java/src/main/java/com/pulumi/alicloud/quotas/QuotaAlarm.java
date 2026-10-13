@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .thresholdPercent(80.0)
  *             .productCode("gws")
- *             .quotaAlarmName(String.format("%s-%s", name,default_.result()))
+ *             .quotaAlarmName(String.format("%s-%s", name,default_.get("result")))
  *             .thresholdType("used")
  *             .build());
  * 

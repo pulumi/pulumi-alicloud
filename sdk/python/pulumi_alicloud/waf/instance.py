@@ -633,7 +633,7 @@ class Instance(pulumi.CustomResource):
                     log_time="180",
                     resource_group_id="rs-abc12345"))
 
-        len(default.instances).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default.instances) > 0 else 1.apply(create_default)
         ```
 
         ### Deleting `waf.Instance` or removing it from your configuration
@@ -718,7 +718,7 @@ class Instance(pulumi.CustomResource):
                     log_time="180",
                     resource_group_id="rs-abc12345"))
 
-        len(default.instances).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(default.instances) > 0 else 1.apply(create_default)
         ```
 
         ### Deleting `waf.Instance` or removing it from your configuration

@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Alb
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         MemorySize = 2.0,
     ///     });
     /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()

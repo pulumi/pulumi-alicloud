@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
         ///     {
         ///         NameRegex = "test",
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
         ///     {
         ///         NameRegex = "test",
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
         ///     {
         ///         NameRegex = "test",

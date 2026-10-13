@@ -295,7 +295,7 @@ def get_instance_types(availability_zone: Optional[_builtins.str] = None,
     if name is None:
         name = "terraform-example"
     default = alicloud.get_zones(available_resource_creation="VSwitch")
-    # Declare the data source
+    # Declare the function
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         instance_type_family="ecs.sn1ne")
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
@@ -441,7 +441,7 @@ def get_instance_types_output(availability_zone: pulumi.Input[Optional[Optional[
     if name is None:
         name = "terraform-example"
     default = alicloud.get_zones(available_resource_creation="VSwitch")
-    # Declare the data source
+    # Declare the function
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         instance_type_family="ecs.sn1ne")
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",

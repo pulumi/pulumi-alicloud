@@ -420,7 +420,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -494,7 +494,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -568,7 +568,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -642,7 +642,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -716,7 +716,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -790,7 +790,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -864,7 +864,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions().get(0).id()));
      *     }
      * }
      * }
@@ -1438,7 +1438,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1480,7 +1480,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1522,7 +1522,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1564,7 +1564,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1606,7 +1606,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1648,7 +1648,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -1690,7 +1690,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 

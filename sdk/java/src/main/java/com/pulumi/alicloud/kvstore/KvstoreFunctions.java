@@ -287,7 +287,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
      *             .ids("r-wer123456")
      *             .build());
@@ -331,7 +331,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
      *             .ids("r-wer123456")
      *             .build());
@@ -375,7 +375,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
      *             .ids("r-wer123456")
      *             .build());
@@ -419,7 +419,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
      *             .ids("r-wer123456")
      *             .build());
@@ -463,7 +463,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
      *             .ids("r-wer123456")
      *             .build());
@@ -1660,7 +1660,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());
@@ -1703,7 +1703,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());
@@ -1746,7 +1746,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());
@@ -1789,7 +1789,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());
@@ -1832,7 +1832,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());
@@ -1875,7 +1875,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());
@@ -1918,7 +1918,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType("PostPaid")
      *             .build());

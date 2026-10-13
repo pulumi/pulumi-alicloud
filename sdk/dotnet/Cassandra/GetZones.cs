@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.Cassandra.GetZones.Invoke();
         /// 
         ///     // Create an Cassandra cluster with the first matched zone
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.Cassandra.GetZones.Invoke();
         /// 
         ///     // Create an Cassandra cluster with the first matched zone
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var zonesIds = AliCloud.Cassandra.GetZones.Invoke();
         /// 
         ///     // Create an Cassandra cluster with the first matched zone

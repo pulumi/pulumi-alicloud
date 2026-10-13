@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Redis
     ///     });
     /// 
     ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Redis
     ///             VswitchName = name,
     ///         }));
     ///     }
-    ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
+    ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Redis
     ///         Password = "123456_tf",
     ///         EngineVersion = "5.0",
     ///         ZoneId = zoneId,
-    ///         VswitchId = vswitchId,
+    ///         VswitchId = vswitchId.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///         Period = "1",
     ///         InstanceClass = "redis.shard.small.2.ce",
     ///     });

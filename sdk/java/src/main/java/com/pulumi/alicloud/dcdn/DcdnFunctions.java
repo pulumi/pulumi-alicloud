@@ -1953,7 +1953,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
@@ -1996,7 +1996,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
@@ -2039,7 +2039,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
@@ -2082,7 +2082,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
@@ -2125,7 +2125,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
@@ -2168,7 +2168,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
@@ -2211,7 +2211,7 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
-     *             .ids(defaultAlicloudDcdnWafRule.id())
+     *             .ids(defaultAlicloudDcdnWafRule.get("id"))
      *             .build());
      * 
      *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());

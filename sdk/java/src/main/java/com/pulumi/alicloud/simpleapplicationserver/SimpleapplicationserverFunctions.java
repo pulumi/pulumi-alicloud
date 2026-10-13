@@ -1614,7 +1614,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }
@@ -1663,7 +1663,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }
@@ -1712,7 +1712,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }
@@ -1761,7 +1761,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }
@@ -1810,7 +1810,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }
@@ -1859,7 +1859,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }
@@ -1908,7 +1908,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.get("plans")[0].get("id"));
      *     }
      * }
      * }

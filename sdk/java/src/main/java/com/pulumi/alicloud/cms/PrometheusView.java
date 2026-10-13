@@ -70,21 +70,21 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()
- *             .workspaceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .workspaceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .slsProject(defaultProject.projectName())
  *             .build());
  * 
  *         var defaultPrometheusInstance = new PrometheusInstance("defaultPrometheusInstance", PrometheusInstanceArgs.builder()
- *             .prometheusInstanceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .prometheusInstanceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .workspace(defaultWorkspace.id())
  *             .build());
  * 
  *         var defaultPrometheusView = new PrometheusView("defaultPrometheusView", PrometheusViewArgs.builder()
- *             .prometheusViewName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .prometheusViewName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .version("V2")
  *             .prometheusInstances(PrometheusViewPrometheusInstanceArgs.builder()
  *                 .prometheusInstanceId(defaultPrometheusInstance.id())

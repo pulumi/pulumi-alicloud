@@ -107,12 +107,12 @@ namespace Pulumi.AliCloud.FC
     ///                 EndTime = "2035-10-10T10:10:10Z",
     ///                 MinCapacity = 0,
     ///                 MaxCapacity = 1,
-    ///                 MetricTarget = 1,
+    ///                 MetricTarget = 1.0,
     ///                 MetricType = "ProvisionedConcurrencyUtilization",
     ///             },
     ///             new AliCloud.FC.Inputs.V3ProvisionConfigTargetTrackingPolicyArgs
     ///             {
-    ///                 MetricTarget = 1,
+    ///                 MetricTarget = 1.0,
     ///                 MetricType = "ProvisionedConcurrencyUtilization",
     ///                 Name = "t2",
     ///                 StartTime = "2030-10-10T10:10:10Z",
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.FC
     ///                 EndTime = "2035-10-10T10:10:10",
     ///                 MinCapacity = 0,
     ///                 MaxCapacity = 1,
-    ///                 MetricTarget = 1,
+    ///                 MetricTarget = 1.0,
     ///             },
     ///         },
     ///         ScheduledActions = new[]

@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Domain("example", DomainArgs.builder()
- *             .domainName(String.format("%s-%s", domainName,default_.result()))
+ *             .domainName(String.format("%s-%s", domainName,default_.get("result")))
  *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
  *                 .content("1.1.1.1")

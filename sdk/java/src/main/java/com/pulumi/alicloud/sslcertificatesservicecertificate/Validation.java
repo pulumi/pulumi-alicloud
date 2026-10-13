@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Listener("default", ListenerArgs.builder()
  *             .certificates(ListenerCertificatesArgs.builder()
- *                 .certificateId(defaultAlicloudSslCertificatesServiceCertificateValidation.certIdentifier())
+ *                 .certificateId(defaultAlicloudSslCertificatesServiceCertificateValidation.get("certIdentifier"))
  *                 .build())
  *             .build());
  * 

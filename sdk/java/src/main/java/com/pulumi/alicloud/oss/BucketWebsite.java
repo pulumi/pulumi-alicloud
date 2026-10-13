@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Uuid("default");
  * 
  *         var defaultnVj9x3 = new Bucket("defaultnVj9x3", BucketArgs.builder()
- *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .bucket(String.format("%s-%s", name,default_.get("result")))
  *             .storageClass("Standard")
  *             .build());
  * 

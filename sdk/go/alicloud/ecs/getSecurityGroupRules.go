@@ -35,8 +35,8 @@ import (
 //			cfg := config.New(ctx, "")
 //			var securityGroupId interface{}
 //			cfg.RequireObject("securityGroupId", &securityGroupId)
-//			// Or get it from the alicloud_security_groups data source.
-//			// Please note that the data source arguments must be enough to filter results to one security group.
+//			// Or get it from the alicloud_security_groups function.
+//			// Please note that the function arguments must be enough to filter results to one security group.
 //			groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
 //				NameRegex: pulumi.StringRef("api"),
 //			}, nil)

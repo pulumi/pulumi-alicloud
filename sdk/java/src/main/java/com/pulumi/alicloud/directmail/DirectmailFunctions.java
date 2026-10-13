@@ -67,7 +67,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }
@@ -120,7 +120,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }
@@ -173,7 +173,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }
@@ -226,7 +226,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }
@@ -279,7 +279,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }
@@ -332,7 +332,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }
@@ -385,7 +385,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains().get(0).id()));
      *     }
      * }
      * }

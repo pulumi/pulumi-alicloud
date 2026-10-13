@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultKIe4KV = new Project("defaultKIe4KV", ProjectArgs.builder()
- *             .description(String.format("%s-%s", name,default_.result()))
- *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .description(String.format("%s-%s", name,default_.get("result")))
+ *             .projectName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var default1LI9we = new Store("default1LI9we", StoreArgs.builder()
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .retentionPeriod(30)
  *             .shardCount(2)
  *             .projectName(defaultKIe4KV.projectName())
- *             .logstoreName(String.format("%s-%s", name,default_.result()))
+ *             .logstoreName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultScheduledSql = new ScheduledSql("defaultScheduledSql", ScheduledSqlArgs.builder()

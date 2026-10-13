@@ -150,7 +150,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -205,7 +205,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -266,7 +266,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -321,7 +321,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -382,7 +382,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -437,7 +437,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -498,7 +498,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -553,7 +553,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -614,7 +614,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -669,7 +669,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -730,7 +730,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -785,7 +785,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -846,7 +846,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -901,7 +901,7 @@ public final class EssFunctions {
      *             .nameRegex(name)
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", defaultGetEciScalingConfigurations.applyValue(_defaultGetEciScalingConfigurations -> _defaultGetEciScalingConfigurations.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -1489,7 +1489,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -1562,7 +1562,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -1627,7 +1627,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -1700,7 +1700,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -1765,7 +1765,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -1838,7 +1838,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -1903,7 +1903,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -1976,7 +1976,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -2041,7 +2041,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2114,7 +2114,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -2179,7 +2179,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2252,7 +2252,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -2317,7 +2317,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2390,7 +2390,7 @@ public final class EssFunctions {
      *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations()[0].id()));
+     *         ctx.export("firstScalingConfiguration", scalingconfigurationsDs.applyValue(_scalingconfigurationsDs -> _scalingconfigurationsDs.configurations().get(0).id()));
      *     }
      * }
      * }
@@ -2446,7 +2446,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2480,7 +2480,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2536,7 +2536,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2570,7 +2570,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2626,7 +2626,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2660,7 +2660,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2716,7 +2716,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2750,7 +2750,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2806,7 +2806,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2840,7 +2840,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2896,7 +2896,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -2930,7 +2930,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2986,7 +2986,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3020,7 +3020,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(_scalinggroupsDs -> _scalinggroupsDs.groups().get(0).id()));
      *     }
      * }
      * }
@@ -3078,7 +3078,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3120,7 +3120,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3178,7 +3178,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3220,7 +3220,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3278,7 +3278,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3320,7 +3320,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3378,7 +3378,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3420,7 +3420,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3478,7 +3478,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3520,7 +3520,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3578,7 +3578,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3620,7 +3620,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }
@@ -3678,7 +3678,7 @@ public final class EssFunctions {
      *             .max(99999)
      *             .build());
      * 
-     *         final var myName = String.format("%s-%s", name,defaultInteger.result());
+     *         final var myName = String.format("%s-%s", name,defaultInteger.get("result"));
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory("cloud_efficiency")
@@ -3720,7 +3720,7 @@ public final class EssFunctions {
      *             .nameRegex(myName)
      *             .build());
      * 
-     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(_scalingrulesDs -> _scalingrulesDs.rules().get(0).id()));
      *     }
      * }
      * }

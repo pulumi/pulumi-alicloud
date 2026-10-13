@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
- *             .resourceShareName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .resourceShareName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()

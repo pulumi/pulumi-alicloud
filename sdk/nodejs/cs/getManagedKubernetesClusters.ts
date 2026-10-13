@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
@@ -113,7 +113,7 @@ export interface GetManagedKubernetesClustersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",

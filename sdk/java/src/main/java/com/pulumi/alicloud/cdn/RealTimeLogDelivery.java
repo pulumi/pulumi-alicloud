@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
  *             .scope("overseas")
- *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", defaultInteger.result()))
+ *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", defaultInteger.get("result")))
  *             .cdnType("web")
  *             .sources(DomainNewSourceArgs.builder()
  *                 .type("ipaddr")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .projectName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .description("terraform-example")
  *             .build());
  * 

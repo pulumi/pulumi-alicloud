@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
- *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .name(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .clusterSpec("ack.pro.small")
  *             .version("1.24.6-aliyun.1")
  *             .newNatGateway(true)
@@ -130,14 +130,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
- *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .keyPairName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
  *             .nodePoolName("desired_size")
  *             .clusterId(defaultManagedKubernetes.id())
  *             .vswitchIds(vswitch.id())
- *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+ *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes().get(0).id()))
  *             .systemDiskCategory("cloud_efficiency")
  *             .systemDiskSize(40)
  *             .keyName(defaultKeyPair.keyPairName())
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *             .bindResourceId(defaultNodePool.clusterId())
  *             .environmentSubType("ManagedKubernetes")
  *             .environmentType("CS")
- *             .environmentName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .environmentName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .build());
  * 
  *     }

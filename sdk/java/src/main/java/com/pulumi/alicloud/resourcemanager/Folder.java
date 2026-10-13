@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Folder("example", FolderArgs.builder()
- *             .folderName(String.format("%s-%s", name,default_.result()))
+ *             .folderName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *     }

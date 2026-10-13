@@ -292,7 +292,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -340,7 +340,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -388,7 +388,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -436,7 +436,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -484,7 +484,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -532,7 +532,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -580,7 +580,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
      *             .netType("CLASSIC")
      *             .instanceType("mysql")
@@ -1041,7 +1041,7 @@ public final class DmsFunctions {
      *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses().get(0).id()));
      *     }
      * }
      * }
@@ -1094,7 +1094,7 @@ public final class DmsFunctions {
      *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses().get(0).id()));
      *     }
      * }
      * }
@@ -1147,7 +1147,7 @@ public final class DmsFunctions {
      *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses().get(0).id()));
      *     }
      * }
      * }
@@ -1200,7 +1200,7 @@ public final class DmsFunctions {
      *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses().get(0).id()));
      *     }
      * }
      * }
@@ -1253,7 +1253,7 @@ public final class DmsFunctions {
      *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses().get(0).id()));
      *     }
      * }
      * }
@@ -1292,7 +1292,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1338,7 +1338,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1384,7 +1384,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1430,7 +1430,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1476,7 +1476,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1522,7 +1522,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1568,7 +1568,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids("uid")
      *             .role("USER")
@@ -1614,7 +1614,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());
@@ -1658,7 +1658,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());
@@ -1702,7 +1702,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());
@@ -1746,7 +1746,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());
@@ -1790,7 +1790,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());
@@ -1834,7 +1834,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());
@@ -1878,7 +1878,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status("ACTIVE")
      *             .build());

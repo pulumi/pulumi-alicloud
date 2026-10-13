@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = defaultRouterExpressConnectRouter.Id,
         ///         VpcId = defaultNetwork.Id,
         ///         AssociationRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
-        ///         VpcOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         VpcOwnerId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         AllowedPrefixes = new[]
         ///         {
         ///             "172.16.1.0/24",
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = defaultRouterExpressConnectRouter.Id,
         ///         VpcId = defaultNetwork.Id,
         ///         AssociationRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
-        ///         VpcOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         VpcOwnerId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         AllowedPrefixes = new[]
         ///         {
         ///             "172.16.1.0/24",
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = defaultRouterExpressConnectRouter.Id,
         ///         VpcId = defaultNetwork.Id,
         ///         AssociationRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
-        ///         VpcOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         VpcOwnerId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         AllowedPrefixes = new[]
         ///         {
         ///             "172.16.1.0/24",

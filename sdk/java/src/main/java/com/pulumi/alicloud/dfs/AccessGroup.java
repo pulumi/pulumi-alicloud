@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()
- *             .accessGroupName(String.format("tf-example-%s", default_.result()))
+ *             .accessGroupName(String.format("tf-example-%s", default_.get("result")))
  *             .networkType("VPC")
  *             .build());
  * 

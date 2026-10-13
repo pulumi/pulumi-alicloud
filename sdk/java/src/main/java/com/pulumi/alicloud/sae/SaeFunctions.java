@@ -358,7 +358,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -450,7 +450,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -542,7 +542,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -634,7 +634,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -726,7 +726,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -818,7 +818,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -910,7 +910,7 @@ public final class SaeFunctions {
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications()[0].id()));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(_defaultGetApplications -> _defaultGetApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -979,7 +979,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps().get(0).id()));
      *     }
      * }
      * }
@@ -1048,7 +1048,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps().get(0).id()));
      *     }
      * }
      * }
@@ -1117,7 +1117,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps().get(0).id()));
      *     }
      * }
      * }
@@ -1186,7 +1186,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps().get(0).id()));
      *     }
      * }
      * }
@@ -1255,7 +1255,7 @@ public final class SaeFunctions {
      *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps()[0].id()));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(_nameRegex -> _nameRegex.maps().get(0).id()));
      *     }
      * }
      * }
@@ -1562,7 +1562,7 @@ public final class SaeFunctions {
      *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
      *             .name(name)
      *             .specification("slb.s2.small")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .build());
      * 
      *         final var desc = config.get("desc").orElse("example_value");
@@ -1580,7 +1580,7 @@ public final class SaeFunctions {
      *             .packageUrl("your_package_url")
      *             .packageType("your_package_url")
      *             .jdk("jdk_specifications")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .replicas("your_replicas")
      *             .cpu("cpu_specifications")
      *             .memory("memory_specifications")
@@ -1603,7 +1603,7 @@ public final class SaeFunctions {
      *             .ids(defaultIngress.id())
      *             .build());
      * 
-     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].get("id")));
      *     }
      * }
      * }
@@ -1680,7 +1680,7 @@ public final class SaeFunctions {
      *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
      *             .name(name)
      *             .specification("slb.s2.small")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .build());
      * 
      *         final var desc = config.get("desc").orElse("example_value");
@@ -1698,7 +1698,7 @@ public final class SaeFunctions {
      *             .packageUrl("your_package_url")
      *             .packageType("your_package_url")
      *             .jdk("jdk_specifications")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .replicas("your_replicas")
      *             .cpu("cpu_specifications")
      *             .memory("memory_specifications")
@@ -1721,7 +1721,7 @@ public final class SaeFunctions {
      *             .ids(defaultIngress.id())
      *             .build());
      * 
-     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].get("id")));
      *     }
      * }
      * }
@@ -1798,7 +1798,7 @@ public final class SaeFunctions {
      *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
      *             .name(name)
      *             .specification("slb.s2.small")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .build());
      * 
      *         final var desc = config.get("desc").orElse("example_value");
@@ -1816,7 +1816,7 @@ public final class SaeFunctions {
      *             .packageUrl("your_package_url")
      *             .packageType("your_package_url")
      *             .jdk("jdk_specifications")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .replicas("your_replicas")
      *             .cpu("cpu_specifications")
      *             .memory("memory_specifications")
@@ -1839,7 +1839,7 @@ public final class SaeFunctions {
      *             .ids(defaultIngress.id())
      *             .build());
      * 
-     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].get("id")));
      *     }
      * }
      * }
@@ -1916,7 +1916,7 @@ public final class SaeFunctions {
      *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
      *             .name(name)
      *             .specification("slb.s2.small")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .build());
      * 
      *         final var desc = config.get("desc").orElse("example_value");
@@ -1934,7 +1934,7 @@ public final class SaeFunctions {
      *             .packageUrl("your_package_url")
      *             .packageType("your_package_url")
      *             .jdk("jdk_specifications")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .replicas("your_replicas")
      *             .cpu("cpu_specifications")
      *             .memory("memory_specifications")
@@ -1957,7 +1957,7 @@ public final class SaeFunctions {
      *             .ids(defaultIngress.id())
      *             .build());
      * 
-     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].get("id")));
      *     }
      * }
      * }
@@ -2034,7 +2034,7 @@ public final class SaeFunctions {
      *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
      *             .name(name)
      *             .specification("slb.s2.small")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .build());
      * 
      *         final var desc = config.get("desc").orElse("example_value");
@@ -2052,7 +2052,7 @@ public final class SaeFunctions {
      *             .packageUrl("your_package_url")
      *             .packageType("your_package_url")
      *             .jdk("jdk_specifications")
-     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .vswitchId(defaultAlicloudVswitches.get("ids")[0])
      *             .replicas("your_replicas")
      *             .cpu("cpu_specifications")
      *             .memory("memory_specifications")
@@ -2075,7 +2075,7 @@ public final class SaeFunctions {
      *             .ids(defaultIngress.id())
      *             .build());
      * 
-     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].get("id")));
      *     }
      * }
      * }

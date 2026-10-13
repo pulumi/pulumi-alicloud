@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .name(String.format("example-value-%s", default_.result()))
+ *             .name(String.format("example-value-%s", default_.get("result")))
  *             .description("example-value")
  *             .publish(true)
  *             .build());

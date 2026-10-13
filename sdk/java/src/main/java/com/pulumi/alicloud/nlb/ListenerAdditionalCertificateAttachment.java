@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *                 .separator("-")
  *                 .input(                
  *                     name,
- *                     defaultInteger.result(),
+ *                     defaultInteger.get("result"),
  *                     0)
  *                 .build()).result())
  *             .key("""
@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *                 .separator("-")
  *                 .input(                
  *                     name,
- *                     defaultInteger.result(),
+ *                     defaultInteger.get("result"),
  *                     1)
  *                 .build()).result())
  *             .key("""

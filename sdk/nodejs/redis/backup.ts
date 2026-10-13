@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     vpcId: _default.ids?.[0],
  * }));
  * const vswitch: alicloud.vpc.Switch[] = [];
- * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *             vpcId: _default.then(_default => _default.ids?.[0]),
@@ -47,12 +47,12 @@ import * as utilities from "../utilities";
  *         }));
  *     }
  * });
- * const vswitchId = pulumi.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, std.concat({
+ * const vswitchId = Promise.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids.length), defaultGetSwitches, std.concat({
  *     input: [
  *         vswitch.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
+ * })]).then(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
  * const defaultInstance = new alicloud.kvstore.Instance("default", {
  *     port: 6379,
  *     paymentType: "PrePaid",
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     password: "123456_tf",
  *     engineVersion: "5.0",
  *     zoneId: zoneId,
- *     vswitchId: vswitchId,
+ *     vswitchId: String(vswitchId),
  *     period: "1",
  *     instanceClass: "redis.shard.small.2.ce",
  * });

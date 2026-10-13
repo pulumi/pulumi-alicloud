@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var example = AliCloud.KVStore.GetConnections.Invoke(new()
         ///     {
         ///         Ids = "r-wer123456",
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var example = AliCloud.KVStore.GetConnections.Invoke(new()
         ///     {
         ///         Ids = "r-wer123456",
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var example = AliCloud.KVStore.GetConnections.Invoke(new()
         ///     {
         ///         Ids = "r-wer123456",

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultServiceCertificate = new ServiceCertificate("defaultServiceCertificate", ServiceCertificateArgs.builder()
- *             .certificateName(String.format("terraform-example-%s", default_.result()))
+ *             .certificateName(String.format("terraform-example-%s", default_.get("result")))
  *             .cert("""
  * -----BEGIN CERTIFICATE-----
  * MIID1jCCAr6gAwIBAgIQQ7/8/QOOTbywxdgSX9aMqDANBgkqhkiG9w0BAQsFADBe

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new WafPolicy("example", WafPolicyArgs.builder()
  *             .defenseScene("waf_group")
- *             .policyName(String.format("%s_%s", name,default_.result()))
+ *             .policyName(String.format("%s_%s", name,default_.get("result")))
  *             .policyType("custom")
  *             .status("on")
  *             .build());

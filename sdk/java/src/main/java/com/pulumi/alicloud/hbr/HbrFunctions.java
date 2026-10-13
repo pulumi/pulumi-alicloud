@@ -557,8 +557,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -610,8 +610,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -663,8 +663,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -716,8 +716,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -769,8 +769,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -822,8 +822,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -875,8 +875,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
-     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.get("id"))
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.get("instanceId"))
      *             .build());
      * 
      *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
@@ -2654,7 +2654,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }
@@ -2699,7 +2699,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }
@@ -2744,7 +2744,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }
@@ -2789,7 +2789,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }
@@ -2834,7 +2834,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }
@@ -2879,7 +2879,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }
@@ -2924,7 +2924,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].get("id"));
      *     }
      * }
      * }

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .projectName(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultWorkspace = new Workspace("defaultWorkspace", WorkspaceArgs.builder()

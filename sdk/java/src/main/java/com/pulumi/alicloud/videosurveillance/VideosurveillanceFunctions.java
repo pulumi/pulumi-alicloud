@@ -385,7 +385,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }
@@ -440,7 +440,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }
@@ -495,7 +495,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }
@@ -550,7 +550,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }
@@ -605,7 +605,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }
@@ -660,7 +660,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }
@@ -715,7 +715,7 @@ public final class VideosurveillanceFunctions {
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(_default_ -> _default_.ids().get(0)));
      *     }
      * }
      * }

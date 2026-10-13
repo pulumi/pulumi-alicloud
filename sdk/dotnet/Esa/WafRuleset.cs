@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Esa
     /// 
     ///     var defaultWafRuleset = new AliCloud.Esa.WafRuleset("default", new()
     ///     {
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Phase = "http_custom",
     ///         SiteVersion = 0,
     ///         Name = name,

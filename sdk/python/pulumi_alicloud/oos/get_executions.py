@@ -274,7 +274,7 @@ def get_executions(category: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     example = alicloud.oos.get_executions(ids=["execution_id"],
         template_name="name",
         status="Success")
@@ -370,7 +370,7 @@ def get_executions_output(category: pulumi.Input[Optional[Optional[_builtins.str
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     example = alicloud.oos.get_executions(ids=["execution_id"],
         template_name="name",
         status="Success")

@@ -71,7 +71,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }
@@ -137,7 +137,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }
@@ -203,7 +203,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }
@@ -269,7 +269,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }
@@ -335,7 +335,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }
@@ -401,7 +401,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }
@@ -467,7 +467,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(_default_ -> _default_.domains().get(0)));
      *     }
      * }
      * }

@@ -261,8 +261,8 @@ class ReplicaSetRole(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
+        index = len(default.zones) - 1
+        zone_id = index.apply(lambda index: default.zones[index]).id
         default_network = alicloud.vpc.Network("default",
             cidr_block="10.0.0.0/8",
             vpc_name=name)
@@ -342,8 +342,8 @@ class ReplicaSetRole(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
+        index = len(default.zones) - 1
+        zone_id = index.apply(lambda index: default.zones[index]).id
         default_network = alicloud.vpc.Network("default",
             cidr_block="10.0.0.0/8",
             vpc_name=name)

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .status("Available")
  *             .description("tf_desc")
- *             .projectName(String.format("%s%s", name,randint.id()))
+ *             .projectName(String.format("%s%s", name,randint.get("id")))
  *             .paiTaskEnabled(false)
  *             .displayName("tf_new_api_display")
  *             .devRoleDisabled(true)

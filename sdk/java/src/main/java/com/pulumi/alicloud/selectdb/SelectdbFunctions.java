@@ -96,7 +96,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -184,7 +184,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -272,7 +272,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -360,7 +360,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -448,7 +448,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -536,7 +536,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -624,7 +624,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids()[0]));
+     *         ctx.export("dbCluster", defaultGetDbClusters.applyValue(_defaultGetDbClusters -> _defaultGetDbClusters.ids().get(0)));
      *     }
      * }
      * }
@@ -702,7 +702,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }
@@ -780,7 +780,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }
@@ -858,7 +858,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }
@@ -936,7 +936,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }
@@ -1014,7 +1014,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }
@@ -1092,7 +1092,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }
@@ -1170,7 +1170,7 @@ public final class SelectdbFunctions {
      *             .ids(defaultDbInstance.id())
      *             .build());
      * 
-     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids()[0]));
+     *         ctx.export("dbInstance", defaultGetDbInstances.applyValue(_defaultGetDbInstances -> _defaultGetDbInstances.ids().get(0)));
      *     }
      * }
      * }

@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Declare the data source
+//			// Declare the function
 //			exampleGetClusters := mse.GetClustersOutput(ctx, mse.GetClustersOutputArgs{
 //				EnableDetails: pulumi.Bool(true),
 //				Ids: pulumi.StringArray{

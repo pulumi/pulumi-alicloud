@@ -46,30 +46,30 @@ namespace Pulumi.AliCloud.CS.Inputs
         ///         {
         ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
         ///             {
-        ///                 Name = Std.Lookup.Invoke(new()
+        ///                 Name = Output.Create(Std.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "name",
         ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result),
-        ///                 Config = Std.Lookup.Invoke(new()
+        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+        ///                 Config = Output.Create(Std.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "config",
         ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result),
-        ///                 Version = Std.Lookup.Invoke(new()
+        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+        ///                 Version = Output.Create(Std.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "version",
         ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result),
-        ///                 Disabled = Std.Lookup.Invoke(new()
+        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+        ///                 Disabled = Output.Create(Std.Lookup.Invoke(new()
         ///                 {
         ///                     Map = entry.Value,
         ///                     Key = "disabled",
         ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result),
+        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x == "true"),
         ///             };
         ///         }).ToList(),
         ///     });

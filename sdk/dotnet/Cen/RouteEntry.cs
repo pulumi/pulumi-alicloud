@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cen
     ///     {
     ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         MemorySize = 2.0,
     ///     });
     /// 
     ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()

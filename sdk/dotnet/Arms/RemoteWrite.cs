@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Arms
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length()).Apply(values =&gt;
+    ///         ZoneId = Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones).Length)).Apply(values =&gt;
     ///         {
     ///             var @default = values.Item1;
     ///             var length = values.Item2;

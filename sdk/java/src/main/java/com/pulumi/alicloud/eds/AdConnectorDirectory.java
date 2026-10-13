@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultAdConnectorDirectory = new AdConnectorDirectory("defaultAdConnectorDirectory", AdConnectorDirectoryArgs.builder()
- *             .directoryName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .directoryName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .desktopAccessType("INTERNET")
  *             .dnsAddresses("127.0.0.2")
  *             .domainName("corp.example.com")

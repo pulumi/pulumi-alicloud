@@ -26,31 +26,31 @@ import * as utilities from "../utilities";
  * const _default = alicloud.cloudsso.getDirectories({});
  * const defaultGetResourceDirectories = alicloud.resourcemanager.getResourceDirectories({});
  * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
- * _default.then(_default => _default.ids).length.apply(length => {
+ * _default.then(_default => _default.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range}`, {directoryName: name}));
  *     }
  * });
- * const directoryId = pulumi.all([_default.then(_default => _default.ids).length, _default, std.concat({
+ * const directoryId = Promise.all([_default.then(_default => _default.ids.length), _default, std.concat({
  *     input: [
  *         defaultDirectory.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
+ * })]).then(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
  * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
  * const defaultUser = new alicloud.cloudsso.User("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     userName: `${name}-${defaultInteger.result}`,
  * });
  * const defaultAccessConfiguration = new alicloud.cloudsso.AccessConfiguration("default", {
  *     accessConfigurationName: `${name}-${defaultInteger.result}`,
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  * });
  * const defaultAccessConfigurationProvisioning = new alicloud.cloudsso.AccessConfigurationProvisioning("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     accessConfigurationId: defaultAccessConfiguration.accessConfigurationId,
  *     targetType: "RD-Account",
  *     targetId: defaultGetResourceDirectories.then(defaultGetResourceDirectories => defaultGetResourceDirectories.directories?.[0]?.masterAccountId),

@@ -152,7 +152,7 @@ def get_engine_namespaces(accept_language: Optional[_builtins.str] = None,
         namespace_show_name="terraform-example",
         namespace_id="terraform-example",
         namespace_desc="description")
-    # Declare the data source
+    # Declare the function
     example_get_engine_namespaces = alicloud.mse.get_engine_namespaces_output(instance_id=example_engine_namespace.instance_id)
     pulumi.export("mseEngineNamespaceIdPublic", example_get_engine_namespaces.namespaces[0].id)
     pulumi.export("mseEngineNamespaceIdExample", example_get_engine_namespaces.namespaces[1].id)
@@ -229,7 +229,7 @@ def get_engine_namespaces_output(accept_language: pulumi.Input[Optional[Optional
         namespace_show_name="terraform-example",
         namespace_id="terraform-example",
         namespace_desc="description")
-    # Declare the data source
+    # Declare the function
     example_get_engine_namespaces = alicloud.mse.get_engine_namespaces_output(instance_id=example_engine_namespace.instance_id)
     pulumi.export("mseEngineNamespaceIdPublic", example_get_engine_namespaces.namespaces[0].id)
     pulumi.export("mseEngineNamespaceIdExample", example_get_engine_namespaces.namespaces[1].id)

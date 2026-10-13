@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *         var defaultStorageBundle = new StorageBundle("defaultStorageBundle", StorageBundleArgs.builder()
  *             .storageBundleName(StdFunctions.substr(SubstrArgs.builder()
  *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
- *                     .text(defaultUuid.result())
+ *                     .text(defaultUuid.get("result"))
  *                     .search("-")
  *                     .replace("")
  *                     .build()).result()))
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(StdFunctions.substr(SubstrArgs.builder()
  *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
- *                     .text(defaultUuid.result())
+ *                     .text(defaultUuid.get("result"))
  *                     .search("-")
  *                     .replace("")
  *                     .build()).result()))
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *             .bucketName(defaultGatewayFileShare.ossBucketName())
  *             .bucketRegion(default_.regions()[0].id())
  *             .description(name)
- *             .expressSyncName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .expressSyncName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultExpressSyncShareAttachment = new ExpressSyncShareAttachment("defaultExpressSyncShareAttachment", ExpressSyncShareAttachmentArgs.builder()

@@ -31,28 +31,28 @@ import * as utilities from "../utilities";
  *     max: 99999,
  * });
  * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
- * _default.then(_default => _default.ids).length.apply(length => {
+ * _default.then(_default => _default.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range}`, {directoryName: name}));
  *     }
  * });
- * const directoryId = pulumi.all([_default.then(_default => _default.ids).length, _default, std.concat({
+ * const directoryId = Promise.all([_default.then(_default => _default.ids.length), _default, std.concat({
  *     input: [
  *         defaultDirectory.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
+ * })]).then(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
  * const defaultUser = new alicloud.cloudsso.User("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     userName: `${name}-${defaultInteger.result}`,
  * });
  * const defaultGroup = new alicloud.cloudsso.Group("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     groupName: name,
  *     description: name,
  * });
  * const defaultUserAttachment = new alicloud.cloudsso.UserAttachment("default", {
- *     directoryId: directoryId,
+ *     directoryId: String(directoryId),
  *     userId: defaultUser.userId,
  *     groupId: defaultGroup.groupId,
  * });

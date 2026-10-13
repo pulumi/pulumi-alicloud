@@ -1504,7 +1504,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -1557,7 +1557,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -1610,7 +1610,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -1663,7 +1663,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -1716,7 +1716,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -1769,7 +1769,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -1822,7 +1822,7 @@ public final class ResourcemanagerFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -3943,7 +3943,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4034,7 +4034,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4125,7 +4125,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4216,7 +4216,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4307,7 +4307,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4398,7 +4398,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4489,7 +4489,7 @@ public final class ResourcemanagerFunctions {
      *             .resourceShareId(defaultSharedResource.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources().get(0).id()));
      *     }
      * }
      * }
@@ -4553,12 +4553,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }
@@ -4622,12 +4622,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }
@@ -4691,12 +4691,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }
@@ -4760,12 +4760,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }
@@ -4829,12 +4829,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }
@@ -4898,12 +4898,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }
@@ -4967,12 +4967,12 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets()[0].id()));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(_ids -> _ids.targets().get(0).id()));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets()[0].id()));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.targets().get(0).id()));
      *     }
      * }
      * }

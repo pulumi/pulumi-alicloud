@@ -70,12 +70,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .instanceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultVpcEndpointLinkedVpc = new VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", VpcEndpointLinkedVpcArgs.builder()

@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBbc7ev = new AccessGroup("defaultBbc7ev", AccessGroupArgs.builder()
  *             .accessGroupType("Vpc")
- *             .accessGroupName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .accessGroupName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .fileSystemType("standard")
  *             .build());
  * 

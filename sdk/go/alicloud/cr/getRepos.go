@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
+//			// Declare the function
 //			myRepos, err := cr.GetRepos(ctx, &cr.GetReposArgs{
 //				NameRegex:  pulumi.StringRef("my-repos"),
 //				OutputFile: pulumi.StringRef("my-repo-json"),

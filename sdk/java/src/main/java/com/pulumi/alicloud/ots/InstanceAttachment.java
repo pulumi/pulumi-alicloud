@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .description(name)
  *             .accessedBy("Vpc")
  *             .tags(Map.ofEntries(

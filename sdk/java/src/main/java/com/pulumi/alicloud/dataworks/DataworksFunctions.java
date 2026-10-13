@@ -62,7 +62,7 @@ public final class DataworksFunctions {
      *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -116,7 +116,7 @@ public final class DataworksFunctions {
      *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -170,7 +170,7 @@ public final class DataworksFunctions {
      *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -224,7 +224,7 @@ public final class DataworksFunctions {
      *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }
@@ -278,7 +278,7 @@ public final class DataworksFunctions {
      *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders().get(0).id()));
      *     }
      * }
      * }

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const crossRegions = alicloud.rds.getCrossRegions({});
  * export const firstRdsCrossRegions = regions.ids[0];
  * ```
@@ -66,7 +66,7 @@ export interface GetCrossRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
+ * // Declare the function
  * const crossRegions = alicloud.rds.getCrossRegions({});
  * export const firstRdsCrossRegions = regions.ids[0];
  * ```

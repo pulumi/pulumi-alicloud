@@ -973,7 +973,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -1052,7 +1052,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -1131,7 +1131,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -1210,7 +1210,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -1289,7 +1289,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -1368,7 +1368,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }
@@ -1447,7 +1447,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications().get(0).id()));
      *     }
      * }
      * }

@@ -615,7 +615,7 @@ public final class AlicloudFunctions {
      *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export("fileCrc64Checksum", defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.get("checksum"));
      *     }
      * }
      * }
@@ -658,7 +658,7 @@ public final class AlicloudFunctions {
      *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export("fileCrc64Checksum", defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.get("checksum"));
      *     }
      * }
      * }
@@ -701,7 +701,7 @@ public final class AlicloudFunctions {
      *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export("fileCrc64Checksum", defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.get("checksum"));
      *     }
      * }
      * }
@@ -744,7 +744,7 @@ public final class AlicloudFunctions {
      *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export("fileCrc64Checksum", defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.get("checksum"));
      *     }
      * }
      * }
@@ -787,7 +787,7 @@ public final class AlicloudFunctions {
      *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export("fileCrc64Checksum", defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.get("checksum"));
      *     }
      * }
      * }
@@ -2374,7 +2374,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")
@@ -2418,7 +2418,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")
@@ -2462,7 +2462,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")
@@ -2506,7 +2506,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")
@@ -2550,7 +2550,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")
@@ -2594,7 +2594,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")
@@ -2638,7 +2638,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableInstanceType("ecs.n4.large")
      *             .availableDiskCategory("cloud_ssd")

@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .projectName(String.format("%s-%s", name,default_.get("result")))
  *             .description(name)
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .projectName(example.projectName())
- *             .logstoreName(String.format("%s-%s", name,default_.result()))
+ *             .logstoreName(String.format("%s-%s", name,default_.get("result")))
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)

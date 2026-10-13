@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Domain("example", DomainArgs.builder()
- *             .domainName(String.format("%s-%s", domainName,default_.result()))
+ *             .domainName(String.format("%s-%s", domainName,default_.get("result")))
  *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
  *                 .content("1.1.1.1")
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleWafPolicy = new WafPolicy("exampleWafPolicy", WafPolicyArgs.builder()
  *             .defenseScene("waf_group")
- *             .policyName(String.format("%s_%s", name,default_.result()))
+ *             .policyName(String.format("%s_%s", name,default_.get("result")))
  *             .policyType("custom")
  *             .status("on")
  *             .build());

@@ -142,7 +142,7 @@ def get_keys(description_regex: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     kms_keys_ds = alicloud.kms.get_keys(description_regex="Hello KMS",
         output_file="kms_keys.json")
     pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)
@@ -196,7 +196,7 @@ def get_keys_output(description_regex: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     kms_keys_ds = alicloud.kms.get_keys(description_regex="Hello KMS",
         output_file="kms_keys.json")
     pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)

@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Vpn
         ///     });
         /// 
         ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Vpn
         ///             VswitchName = name,
         ///         }));
         ///     }
-        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -85,13 +85,13 @@ namespace Pulumi.AliCloud.Vpn
         ///     {
         ///         VpnType = "Normal",
         ///         VpnGatewayName = name,
-        ///         VswitchId = vswitchId,
+        ///         VswitchId = vswitchId.ToString(System.Globalization.CultureInfo.InvariantCulture),
         ///         AutoPay = true,
         ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///         NetworkType = "public",
         ///         PaymentType = "Subscription",
         ///         EnableIpsec = true,
-        ///         Bandwidth = spec,
+        ///         Bandwidth = int.Parse(spec, System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Vpn
         ///     });
         /// 
         ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Vpn
         ///             VswitchName = name,
         ///         }));
         ///     }
-        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -184,13 +184,13 @@ namespace Pulumi.AliCloud.Vpn
         ///     {
         ///         VpnType = "Normal",
         ///         VpnGatewayName = name,
-        ///         VswitchId = vswitchId,
+        ///         VswitchId = vswitchId.ToString(System.Globalization.CultureInfo.InvariantCulture),
         ///         AutoPay = true,
         ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///         NetworkType = "public",
         ///         PaymentType = "Subscription",
         ///         EnableIpsec = true,
-        ///         Bandwidth = spec,
+        ///         Bandwidth = int.Parse(spec, System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Vpn
         ///     });
         /// 
         ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Vpn
         ///             VswitchName = name,
         ///         }));
         ///     }
-        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -283,13 +283,13 @@ namespace Pulumi.AliCloud.Vpn
         ///     {
         ///         VpnType = "Normal",
         ///         VpnGatewayName = name,
-        ///         VswitchId = vswitchId,
+        ///         VswitchId = vswitchId.ToString(System.Globalization.CultureInfo.InvariantCulture),
         ///         AutoPay = true,
         ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///         NetworkType = "public",
         ///         PaymentType = "Subscription",
         ///         EnableIpsec = true,
-        ///         Bandwidth = spec,
+        ///         Bandwidth = int.Parse(spec, System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()

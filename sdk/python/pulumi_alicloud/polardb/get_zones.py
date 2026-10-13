@@ -106,7 +106,7 @@ def get_zones(multi: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     zones_ids = alicloud.polardb.get_zones()
     ```
 
@@ -140,7 +140,7 @@ def get_zones_output(multi: pulumi.Input[Optional[Optional[_builtins.bool]]] = N
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     zones_ids = alicloud.polardb.get_zones()
     ```
 

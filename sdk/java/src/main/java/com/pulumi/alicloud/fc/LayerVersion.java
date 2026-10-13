@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .bucket(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new LayerVersion("example", LayerVersionArgs.builder()
- *             .layerName(String.format("terraform-example-%s", default_.result()))
+ *             .layerName(String.format("terraform-example-%s", default_.get("result")))
  *             .compatibleRuntimes("python2.7")
  *             .ossBucketName(defaultBucket.bucket())
  *             .ossObjectName(defaultBucketObject.key())

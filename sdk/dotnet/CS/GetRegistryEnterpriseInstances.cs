@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var myInstances = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
         ///         NameRegex = "my-instances",
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var myInstances = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
         ///         NameRegex = "my-instances",
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var myInstances = AliCloud.CS.GetRegistryEnterpriseInstances.Invoke(new()
         ///     {
         ///         NameRegex = "my-instances",

@@ -229,15 +229,15 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
                 zone_id="me-east-1a",
                 vswitch_name=name))
 
-    len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
-    vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+    0 if len(default_get_switches.ids) > 0 else 1.apply(create_vswitch)
+    vswitch_id = default_get_switches.ids[0] if len(default_get_switches.ids) > 0 else std.concat(input=[
         [__item.id for __item in vswitch],
         [""],
-    ]).result[0])
+    ]).result[0]
     default_gateway = alicloud.vpn.Gateway("default",
         vpn_type="Normal",
         vpn_gateway_name=name,
-        vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
+        vswitch_id=vswitch_id.apply(lambda x: str(x)),
         auto_pay=True,
         vpc_id=default_get_networks.ids[0],
         network_type="public",
@@ -335,15 +335,15 @@ def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtin
                 zone_id="me-east-1a",
                 vswitch_name=name))
 
-    len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
-    vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+    0 if len(default_get_switches.ids) > 0 else 1.apply(create_vswitch)
+    vswitch_id = default_get_switches.ids[0] if len(default_get_switches.ids) > 0 else std.concat(input=[
         [__item.id for __item in vswitch],
         [""],
-    ]).result[0])
+    ]).result[0]
     default_gateway = alicloud.vpn.Gateway("default",
         vpn_type="Normal",
         vpn_gateway_name=name,
-        vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
+        vswitch_id=vswitch_id.apply(lambda x: str(x)),
         auto_pay=True,
         vpc_id=default_get_networks.ids[0],
         network_type="public",

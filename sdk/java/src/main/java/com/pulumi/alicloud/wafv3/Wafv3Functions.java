@@ -78,7 +78,7 @@ public final class Wafv3Functions {
      *             .instanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books().get(0).id()));
      *     }
      * }
      * }
@@ -142,7 +142,7 @@ public final class Wafv3Functions {
      *             .instanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books().get(0).id()));
      *     }
      * }
      * }
@@ -206,7 +206,7 @@ public final class Wafv3Functions {
      *             .instanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books().get(0).id()));
      *     }
      * }
      * }
@@ -270,7 +270,7 @@ public final class Wafv3Functions {
      *             .instanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books().get(0).id()));
      *     }
      * }
      * }
@@ -334,7 +334,7 @@ public final class Wafv3Functions {
      *             .instanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books().get(0).id()));
      *     }
      * }
      * }
@@ -507,7 +507,7 @@ public final class Wafv3Functions {
      *             .instanceId(defaultnxb04D.id())
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -680,7 +680,7 @@ public final class Wafv3Functions {
      *             .instanceId(defaultnxb04D.id())
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -853,7 +853,7 @@ public final class Wafv3Functions {
      *             .instanceId(defaultnxb04D.id())
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1026,7 +1026,7 @@ public final class Wafv3Functions {
      *             .instanceId(defaultnxb04D.id())
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }
@@ -1199,7 +1199,7 @@ public final class Wafv3Functions {
      *             .instanceId(defaultnxb04D.id())
      *             .build());
      * 
-     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules().get(0).id()));
      *     }
      * }
      * }

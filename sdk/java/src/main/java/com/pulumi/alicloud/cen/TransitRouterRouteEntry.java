@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .peeringSubnetMask("255.255.255.252")
  *             .physicalConnectionId(example.connections()[0].id())
  *             .virtualBorderRouterName(name)
- *             .vlanId(vlanId.id())
+ *             .vlanId(vlanId.get("id"))
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)

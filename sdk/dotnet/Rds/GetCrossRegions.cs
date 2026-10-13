@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var crossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var crossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var crossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

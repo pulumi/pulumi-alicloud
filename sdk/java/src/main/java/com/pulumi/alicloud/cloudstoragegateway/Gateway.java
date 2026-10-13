@@ -70,16 +70,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultStorageBundle = new StorageBundle("defaultStorageBundle", StorageBundleArgs.builder()
- *             .storageBundleName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .storageBundleName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("192.168.192.0/24")
  *             .zoneId(default_.zones()[0].id())

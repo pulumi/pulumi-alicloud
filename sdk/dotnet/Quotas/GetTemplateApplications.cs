@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Quotas
         ///         {
         ///             @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///         },
-        ///         DesireValue = 6,
+        ///         DesireValue = 6.0,
         ///         NoticeType = 0,
         ///         EnvLanguage = "zh",
         ///         Reason = "example",
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Quotas
         ///         {
         ///             @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///         },
-        ///         DesireValue = 6,
+        ///         DesireValue = 6.0,
         ///         NoticeType = 0,
         ///         EnvLanguage = "zh",
         ///         Reason = "example",
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Quotas
         ///         {
         ///             @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///         },
-        ///         DesireValue = 6,
+        ///         DesireValue = 6.0,
         ///         NoticeType = 0,
         ///         EnvLanguage = "zh",
         ///         Reason = "example",

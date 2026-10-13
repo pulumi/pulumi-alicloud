@@ -197,42 +197,30 @@ class ExtensionProvider(pulumi.CustomResource):
             for default_network_range in [{"value": i} for i in range(0, range_body)]:
                 default_network.append(alicloud.vpc.Network(f"default-{default_network_range['value']}"))
 
-        len(default_get_networks.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_get_switches = alicloud.vpc.get_switches_output(vpc_id=pulumi.Output.all(
-            length=len(default_get_networks.ids),
-            id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        )
+        0 if len(default_get_networks.ids) > 0 else 1.apply(create_default)
+        default_get_switches = alicloud.vpc.get_switches_output(vpc_id=default_network[0].id.apply(lambda id: default_get_networks.ids[0] if len(default_get_networks.ids) > 0 else id))
         default_switch: list[alicloud.vpc.Switch] = []
         def create_default(range_body):
             for default_switch_range in [{"value": i} for i in range(0, range_body)]:
                 default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
-                    vpc_id=pulumi.Output.all(
-                        length=len(default_get_networks.ids),
-                        id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        ,
+                    vpc_id=default_network[0].id.apply(lambda id: default_get_networks.ids[0] if len(default_get_networks.ids) > 0 else id),
                     cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                         newbits=8,
                         netnum=2).result,
                     zone_id=default.zones[0].id))
 
-        len(default_get_switches.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_switches.apply(lambda default_get_switches: len(default_get_switches.ids)).apply(lambda resolved_outputs: create_default(0 if resolved_outputs > 0 else 1))
         default_service_mesh = alicloud.servicemesh.ServiceMesh("default",
             service_mesh_name="mesh-c50f3fef117ad45b6b26047cdafef65ad",
             version="v1.21.6.103-g5ddeaef7-aliyun",
             edition="Default",
             network={
-                "vpc_id": pulumi.Output.all(
-                    length=len(default_get_networks.ids),
-                    id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        ,
+                "vpc_id": default_network[0].id.apply(lambda id: default_get_networks.ids[0] if len(default_get_networks.ids) > 0 else id),
                 "vswitche_lists": [pulumi.Output.all(
-                    length=len(default_get_switches.ids),
+                    length=default_get_switches.apply(lambda default_get_switches: len(default_get_switches.ids)),
                     default_get_switches=default_get_switches,
                     id=default_switch[0].id
-        ).apply(lambda resolved_outputs: default_get_switches.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        ).apply(lambda resolved_outputs: resolved_outputs['default_get_switches'].ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
         ],
             })
         default_extension_provider = alicloud.servicemesh.ExtensionProvider("default",
@@ -294,42 +282,30 @@ class ExtensionProvider(pulumi.CustomResource):
             for default_network_range in [{"value": i} for i in range(0, range_body)]:
                 default_network.append(alicloud.vpc.Network(f"default-{default_network_range['value']}"))
 
-        len(default_get_networks.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_get_switches = alicloud.vpc.get_switches_output(vpc_id=pulumi.Output.all(
-            length=len(default_get_networks.ids),
-            id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        )
+        0 if len(default_get_networks.ids) > 0 else 1.apply(create_default)
+        default_get_switches = alicloud.vpc.get_switches_output(vpc_id=default_network[0].id.apply(lambda id: default_get_networks.ids[0] if len(default_get_networks.ids) > 0 else id))
         default_switch: list[alicloud.vpc.Switch] = []
         def create_default(range_body):
             for default_switch_range in [{"value": i} for i in range(0, range_body)]:
                 default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
-                    vpc_id=pulumi.Output.all(
-                        length=len(default_get_networks.ids),
-                        id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        ,
+                    vpc_id=default_network[0].id.apply(lambda id: default_get_networks.ids[0] if len(default_get_networks.ids) > 0 else id),
                     cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                         newbits=8,
                         netnum=2).result,
                     zone_id=default.zones[0].id))
 
-        len(default_get_switches.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_switches.apply(lambda default_get_switches: len(default_get_switches.ids)).apply(lambda resolved_outputs: create_default(0 if resolved_outputs > 0 else 1))
         default_service_mesh = alicloud.servicemesh.ServiceMesh("default",
             service_mesh_name="mesh-c50f3fef117ad45b6b26047cdafef65ad",
             version="v1.21.6.103-g5ddeaef7-aliyun",
             edition="Default",
             network={
-                "vpc_id": pulumi.Output.all(
-                    length=len(default_get_networks.ids),
-                    id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        ,
+                "vpc_id": default_network[0].id.apply(lambda id: default_get_networks.ids[0] if len(default_get_networks.ids) > 0 else id),
                 "vswitche_lists": [pulumi.Output.all(
-                    length=len(default_get_switches.ids),
+                    length=default_get_switches.apply(lambda default_get_switches: len(default_get_switches.ids)),
                     default_get_switches=default_get_switches,
                     id=default_switch[0].id
-        ).apply(lambda resolved_outputs: default_get_switches.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        ).apply(lambda resolved_outputs: resolved_outputs['default_get_switches'].ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
         ],
             })
         default_extension_provider = alicloud.servicemesh.ExtensionProvider("default",

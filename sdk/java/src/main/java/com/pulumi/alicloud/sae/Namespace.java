@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Namespace("example", NamespaceArgs.builder()
- *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
+ *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.get("result")))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)

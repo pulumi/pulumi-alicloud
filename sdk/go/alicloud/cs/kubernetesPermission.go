@@ -104,7 +104,7 @@ import (
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
 // VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
-// CidrBlock: pulumi.String(vswitchCidrs[val0]),
+// CidrBlock: vswitchCidrs[val0],
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
 // if err != nil {

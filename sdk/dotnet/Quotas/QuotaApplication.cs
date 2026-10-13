@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Quotas
     ///                 Value = "cn-hangzhou",
     ///             },
     ///         },
-    ///         DesireValue = 1001,
+    ///         DesireValue = 1001.0,
     ///         Reason = "测试",
     ///         EnvLanguage = "zh",
     ///     });

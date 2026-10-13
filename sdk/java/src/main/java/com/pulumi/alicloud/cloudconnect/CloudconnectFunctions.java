@@ -49,7 +49,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -103,7 +103,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -157,7 +157,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -211,7 +211,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -265,7 +265,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -319,7 +319,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
@@ -373,7 +373,7 @@ public final class CloudconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(defaultAlicloudCloudConnectNetworks.id())
+     *             .ids(defaultAlicloudCloudConnectNetworks.get("id"))
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 

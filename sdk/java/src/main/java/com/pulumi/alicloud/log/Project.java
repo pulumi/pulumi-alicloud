@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .projectName(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.get("result")))
  *             .description("terraform-example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var examplePolicy = new Project("examplePolicy", ProjectArgs.builder()
- *             .projectName(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.get("result")))
  *             .description("terraform-example")
  *             .policy("""
  * {

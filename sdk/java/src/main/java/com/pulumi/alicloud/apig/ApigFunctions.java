@@ -312,7 +312,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -367,7 +367,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -422,7 +422,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -477,7 +477,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -532,7 +532,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -587,7 +587,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -642,7 +642,7 @@ public final class ApigFunctions {
      *             .resourceGroupId("")
      *             .build());
      * 
-     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains().get(0).id()));
      *     }
      * }
      * }
@@ -737,7 +737,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -832,7 +832,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -927,7 +927,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1022,7 +1022,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1117,7 +1117,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1212,7 +1212,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1307,7 +1307,7 @@ public final class ApigFunctions {
      *             .gatewayName(name)
      *             .build());
      * 
-     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1363,7 +1363,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1419,7 +1419,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1475,7 +1475,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1531,7 +1531,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1587,7 +1587,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1643,7 +1643,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1699,7 +1699,7 @@ public final class ApigFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes()[0].id()));
+     *         ctx.export("apigPluginClassId0", ids.applyValue(_ids -> _ids.classes().get(0).id()));
      *     }
      * }
      * }
@@ -1803,7 +1803,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -1907,7 +1907,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -2011,7 +2011,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -2115,7 +2115,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -2219,7 +2219,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -2323,7 +2323,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -2427,7 +2427,7 @@ public final class ApigFunctions {
      *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
      *             .build());
      * 
-     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins().get(0).id()));
      *     }
      * }
      * }
@@ -2870,7 +2870,7 @@ public final class ApigFunctions {
      *             .routeName("cspec-arr-route")
      *             .build());
      * 
-     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes()[0].id()));
+     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes().get(0).id()));
      *     }
      * }
      * }
@@ -2998,7 +2998,7 @@ public final class ApigFunctions {
      *             .routeName("cspec-arr-route")
      *             .build());
      * 
-     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes()[0].id()));
+     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes().get(0).id()));
      *     }
      * }
      * }
@@ -3126,7 +3126,7 @@ public final class ApigFunctions {
      *             .routeName("cspec-arr-route")
      *             .build());
      * 
-     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes()[0].id()));
+     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes().get(0).id()));
      *     }
      * }
      * }
@@ -3254,7 +3254,7 @@ public final class ApigFunctions {
      *             .routeName("cspec-arr-route")
      *             .build());
      * 
-     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes()[0].id()));
+     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes().get(0).id()));
      *     }
      * }
      * }
@@ -3382,7 +3382,7 @@ public final class ApigFunctions {
      *             .routeName("cspec-arr-route")
      *             .build());
      * 
-     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes()[0].id()));
+     *         ctx.export("alicloudApigRouteExampleId", default_.applyValue(_default_ -> _default_.routes().get(0).id()));
      *     }
      * }
      * }
@@ -3485,7 +3485,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -3588,7 +3588,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -3691,7 +3691,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -3794,7 +3794,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -3897,7 +3897,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -4000,7 +4000,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -4103,7 +4103,7 @@ public final class ApigFunctions {
      *             .ids(defaultSecret2.id())
      *             .build());
      * 
-     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets()[0].id()));
+     *         ctx.export("apigSecretsId0", ids.applyValue(_ids -> _ids.secrets().get(0).id()));
      *     }
      * }
      * }
@@ -4212,7 +4212,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }
@@ -4321,7 +4321,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }
@@ -4430,7 +4430,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }
@@ -4539,7 +4539,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }
@@ -4648,7 +4648,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }
@@ -4757,7 +4757,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }
@@ -4866,7 +4866,7 @@ public final class ApigFunctions {
      *             .sourceType("VIP")
      *             .build());
      * 
-     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services().get(0).id()));
      *     }
      * }
      * }

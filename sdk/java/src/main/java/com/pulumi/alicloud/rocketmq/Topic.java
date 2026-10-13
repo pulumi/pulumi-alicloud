@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceName(String.format("%s-%s", name,default_.get("result")))
  *             .remark("default_ons_instance_remark")
  *             .build());
  * 

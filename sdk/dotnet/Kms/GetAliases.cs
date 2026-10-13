@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
         ///         Ids = new[]
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
         ///         Ids = new[]
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
         ///         Ids = new[]

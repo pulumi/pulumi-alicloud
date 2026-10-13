@@ -63,11 +63,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultyk84Hc = new Vault("defaultyk84Hc", VaultArgs.builder()
  *             .vaultType("STANDARD")
- *             .vaultName(String.format("example-value-%s", default_.result()))
+ *             .vaultName(String.format("example-value-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultoqWvHQ = new Policy("defaultoqWvHQ", PolicyArgs.builder()
- *             .policyName(String.format("example-value-%s", default_.result()))
+ *             .policyName(String.format("example-value-%s", default_.get("result")))
  *             .rules(PolicyRuleArgs.builder()
  *                 .ruleType("BACKUP")
  *                 .backupType("COMPLETE")

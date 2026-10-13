@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Dms
     /// 
     ///     var defaultEnterpriseAuthorityTemplate = new AliCloud.Dms.EnterpriseAuthorityTemplate("default", new()
     ///     {
-    ///         Tid = @default.Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
+    ///         Tid = Output.Create(@default.Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0]))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AuthorityTemplateName = name,
     ///         Description = name,
     ///     });

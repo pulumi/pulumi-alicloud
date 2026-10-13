@@ -730,7 +730,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -814,7 +814,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -898,7 +898,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -982,7 +982,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1066,7 +1066,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1150,7 +1150,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1234,7 +1234,7 @@ public final class VpnFunctions {
      *             .vpcId(defaulttYTx5F.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways().get(0).id()));
      *     }
      * }
      * }
@@ -1379,7 +1379,7 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.get("routes")[0].get("id"));
      *     }
      * }
      * }
@@ -1524,7 +1524,7 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.get("routes")[0].get("id"));
      *     }
      * }
      * }
@@ -1669,7 +1669,7 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.get("routes")[0].get("id"));
      *     }
      * }
      * }
@@ -1814,7 +1814,7 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.get("routes")[0].get("id"));
      *     }
      * }
      * }
@@ -1959,7 +1959,7 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.get("routes")[0].get("id"));
      *     }
      * }
      * }
@@ -2300,7 +2300,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2314,16 +2314,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")
@@ -2405,7 +2405,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2419,16 +2419,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")
@@ -2510,7 +2510,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2524,16 +2524,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")
@@ -2615,7 +2615,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2629,16 +2629,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")
@@ -2720,7 +2720,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2734,16 +2734,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")
@@ -2825,7 +2825,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2839,16 +2839,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")
@@ -2930,7 +2930,7 @@ public final class VpnFunctions {
      *             .zoneId("me-east-1a")
      *             .build());
      * 
-     *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
      *             new Switch("vswitch-" + i, SwitchArgs.builder()
      *                 .vpcId(defaultGetNetworks.ids()[0])
      *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -2944,16 +2944,16 @@ public final class VpnFunctions {
      * 
      *         
      * }
-     *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
      *             .input(            
      *                 vswitch.stream().map(element -> element.id()).collect(toList()),
      *                 "")
-     *             .build()).result()[0]);
+     *             .build()).result()[0];
      * 
      *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .vpnType("Normal")
      *             .vpnGatewayName(name)
-     *             .vswitchId(vswitchId)
+     *             .vswitchId(((String) vswitchId))
      *             .autoPay(true)
      *             .vpcId(defaultGetNetworks.ids()[0])
      *             .networkType("public")

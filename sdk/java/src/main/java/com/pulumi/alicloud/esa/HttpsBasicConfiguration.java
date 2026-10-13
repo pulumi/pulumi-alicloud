@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourceHttpBasicConfigurationSetExample = new Site("resourceHttpBasicConfigurationSetExample", SiteArgs.builder()
- *             .siteName(String.format("gositecdn-%s.cn", default_.result()))
+ *             .siteName(String.format("gositecdn-%s.cn", default_.get("result")))
  *             .instanceId(example.id())
  *             .coverage("overseas")
  *             .accessType("NS")

@@ -164,10 +164,10 @@ import javax.annotation.Nullable;
  *                 Map.entry("10", StdFunctions.join(JoinArgs.builder()
  *                     .separator(",")
  *                     .input(                    
- *                         defaultNodePool[0].scalingGroupId(),
- *                         defaultNodePool[1].scalingGroupId())
+ *                         defaultNodePool.get(0).scalingGroupId(),
+ *                         defaultNodePool.get(1).scalingGroupId())
  *                     .build()).applyValue(_invoke -> _invoke.result())),
- *                 Map.entry("20", defaultNodePool[2].scalingGroupId())
+ *                 Map.entry("20", defaultNodePool.get(2).scalingGroupId())
  *             ))
  *             .build());
  * 

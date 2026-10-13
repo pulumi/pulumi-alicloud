@@ -68,12 +68,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()
- *             .vaultName(String.format("terraform-example-%s", default_.result()))
+ *             .vaultName(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()
  *             .alertSetting("INHERITED")
- *             .hanaName(String.format("terraform-example-%s", default_.result()))
+ *             .hanaName(String.format("terraform-example-%s", default_.get("result")))
  *             .host("1.1.1.1")
  *             .instanceNumber(1)
  *             .password("YouPassword123")

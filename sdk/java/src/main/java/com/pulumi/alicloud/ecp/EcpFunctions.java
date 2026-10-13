@@ -381,11 +381,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -411,9 +411,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -475,11 +475,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -505,9 +505,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -569,11 +569,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -599,9 +599,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -663,11 +663,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -693,9 +693,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -757,11 +757,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -787,9 +787,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -851,11 +851,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -881,9 +881,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -945,11 +945,11 @@ public final class EcpFunctions {
      * 
      *         final var countSize = default_.zones().size();
      * 
-     *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+     *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
      * 
      *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
-     *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
@@ -975,9 +975,9 @@ public final class EcpFunctions {
      *             .description(name)
      *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().get(0)))
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].applyValue(_obj -> _obj.instanceType()))
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 

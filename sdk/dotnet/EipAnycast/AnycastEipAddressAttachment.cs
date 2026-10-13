@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.EipAnycast
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         MemorySize = 2.0,
     ///     });
     /// 
     ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.EipAnycast
     ///     {
     ///         AvailabilityZone = default2.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         MemorySize = 2.0,
     ///     });
     /// 
     ///     var defaultdsVsw2 = new AliCloud.Vpc.Switch("defaultdsVsw2", new()

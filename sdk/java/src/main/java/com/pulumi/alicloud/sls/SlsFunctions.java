@@ -208,7 +208,7 @@ public final class SlsFunctions {
      *             .projectName(defaultINsMgl.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts()[0].id()));
+     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts().get(0).id()));
      *     }
      * }
      * }
@@ -396,7 +396,7 @@ public final class SlsFunctions {
      *             .projectName(defaultINsMgl.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts()[0].id()));
+     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts().get(0).id()));
      *     }
      * }
      * }
@@ -584,7 +584,7 @@ public final class SlsFunctions {
      *             .projectName(defaultINsMgl.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts()[0].id()));
+     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts().get(0).id()));
      *     }
      * }
      * }
@@ -772,7 +772,7 @@ public final class SlsFunctions {
      *             .projectName(defaultINsMgl.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts()[0].id()));
+     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts().get(0).id()));
      *     }
      * }
      * }
@@ -960,7 +960,7 @@ public final class SlsFunctions {
      *             .projectName(defaultINsMgl.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts()[0].id()));
+     *         ctx.export("alicloudSlsAlertExampleId", default_.applyValue(_default_ -> _default_.alerts().get(0).id()));
      *     }
      * }
      * }
@@ -1050,7 +1050,7 @@ public final class SlsFunctions {
      *             .project(defaulthhAPo6.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls().get(0).id()));
      *     }
      * }
      * }
@@ -1140,7 +1140,7 @@ public final class SlsFunctions {
      *             .project(defaulthhAPo6.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls().get(0).id()));
      *     }
      * }
      * }
@@ -1230,7 +1230,7 @@ public final class SlsFunctions {
      *             .project(defaulthhAPo6.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls().get(0).id()));
      *     }
      * }
      * }
@@ -1320,7 +1320,7 @@ public final class SlsFunctions {
      *             .project(defaulthhAPo6.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls().get(0).id()));
      *     }
      * }
      * }
@@ -1410,7 +1410,7 @@ public final class SlsFunctions {
      *             .project(defaulthhAPo6.id())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls().get(0).id()));
      *     }
      * }
      * }
@@ -1523,7 +1523,7 @@ public final class SlsFunctions {
      *             .projectName(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
      *     }
      * }
      * }
@@ -1636,7 +1636,7 @@ public final class SlsFunctions {
      *             .projectName(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
      *     }
      * }
      * }
@@ -1749,7 +1749,7 @@ public final class SlsFunctions {
      *             .projectName(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
      *     }
      * }
      * }
@@ -1862,7 +1862,7 @@ public final class SlsFunctions {
      *             .projectName(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
      *     }
      * }
      * }
@@ -1975,7 +1975,7 @@ public final class SlsFunctions {
      *             .projectName(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
      *     }
      * }
      * }
@@ -2092,7 +2092,7 @@ public final class SlsFunctions {
      *             .size(100)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs().get(0).id()));
      *     }
      * }
      * }
@@ -2209,7 +2209,7 @@ public final class SlsFunctions {
      *             .size(100)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs().get(0).id()));
      *     }
      * }
      * }
@@ -2326,7 +2326,7 @@ public final class SlsFunctions {
      *             .size(100)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs().get(0).id()));
      *     }
      * }
      * }
@@ -2443,7 +2443,7 @@ public final class SlsFunctions {
      *             .size(100)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs().get(0).id()));
      *     }
      * }
      * }
@@ -2560,7 +2560,7 @@ public final class SlsFunctions {
      *             .size(100)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs().get(0).id()));
      *     }
      * }
      * }
@@ -2629,7 +2629,7 @@ public final class SlsFunctions {
      *             .projectName(projectName)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2698,7 +2698,7 @@ public final class SlsFunctions {
      *             .projectName(projectName)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2767,7 +2767,7 @@ public final class SlsFunctions {
      *             .projectName(projectName)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2836,7 +2836,7 @@ public final class SlsFunctions {
      *             .projectName(projectName)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }
@@ -2905,7 +2905,7 @@ public final class SlsFunctions {
      *             .projectName(projectName)
      *             .build());
      * 
-     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups().get(0).id()));
      *     }
      * }
      * }

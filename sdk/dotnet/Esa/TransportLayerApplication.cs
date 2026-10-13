@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Esa
     ///     var defaultTransportLayerApplication = new AliCloud.Esa.TransportLayerApplication("default", new()
     ///     {
     ///         RecordName = "resource2.gositecdn.cn",
-    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId)),
+    ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.SiteId))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         IpAccessRule = "off",
     ///         Ipv6 = "off",
     ///         CrossBorderOptimization = "off",

@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Cen
     ///         TransitRouterTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
     ///         NextHop = "BlackHole",
     ///         NextHopType = "BlackHole",
-    ///         OwnerUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         OwnerUid = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

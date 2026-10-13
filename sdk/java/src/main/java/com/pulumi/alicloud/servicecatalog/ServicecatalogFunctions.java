@@ -611,8 +611,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
@@ -655,8 +655,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
@@ -699,8 +699,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
@@ -743,8 +743,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
@@ -787,8 +787,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
@@ -831,8 +831,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
@@ -875,8 +875,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
-     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.get("id"))
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.get("name"))
      *             .build());
      * 
      *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());

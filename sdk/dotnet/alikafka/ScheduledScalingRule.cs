@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.alikafka
     ///         ReservedPubFlow = 200,
     ///         TimeZone = "GMT+8",
     ///         DurationMinutes = 100,
-    ///         FirstScheduledTime = 1769578000000,
+    ///         FirstScheduledTime = (int)1769578000000,
     ///         Enable = false,
     ///         RepeatType = "Weekly",
     ///         WeeklyTypes = new[]

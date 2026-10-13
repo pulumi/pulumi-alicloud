@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Esa
         /// 
         ///     var defaultHttpsBasicConfiguration = new AliCloud.Esa.HttpsBasicConfiguration("default", new()
         ///     {
-        ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+        ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         RuleEnable = "on",
         ///         RuleName = name,
         ///         Rule = "true",
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Esa
         /// 
         ///     var defaultHttpsBasicConfiguration = new AliCloud.Esa.HttpsBasicConfiguration("default", new()
         ///     {
-        ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+        ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         RuleEnable = "on",
         ///         RuleName = name,
         ///         Rule = "true",
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Esa
         /// 
         ///     var defaultHttpsBasicConfiguration = new AliCloud.Esa.HttpsBasicConfiguration("default", new()
         ///     {
-        ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
+        ///         SiteId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id))).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         RuleEnable = "on",
         ///         RuleName = name,
         ///         Rule = "true",

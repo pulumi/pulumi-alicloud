@@ -3117,22 +3117,18 @@ class Cluster(pulumi.CustomResource):
         \"\"\",
                     description="RDS使用此角色来访问您在其他云产品中的资源"))
 
-        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(roles.roles) > 0 else 1.apply(create_default)
         default_policy_attachment: list[alicloud.resourcemanager.PolicyAttachment] = []
         def create_default(range_body):
             for default_policy_attachment_range in [{"value": i} for i in range(0, range_body)]:
                 default_policy_attachment.append(alicloud.resourcemanager.PolicyAttachment(f"default-{default_policy_attachment_range['value']}",
                     policy_name="AliyunRDSInstanceEncryptionRolePolicy",
                     policy_type="System",
-                    principal_name=pulumi.Output.all(
-                        length=len(roles.roles),
-                        name=default[0].name
-        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'] > 0 else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
-        ,
+                    principal_name=default[0].name.apply(lambda name: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if len(roles.roles) > 0 else f"{name}@role.{current.id}.onaliyunservice.com"),
                     principal_type="ServiceRole",
                     resource_group_id=current.id))
 
-        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(roles.roles) > 0 else 1.apply(create_default)
         ```
 
         ### Removing polardb.Cluster from your configuration
@@ -3391,22 +3387,18 @@ class Cluster(pulumi.CustomResource):
         \"\"\",
                     description="RDS使用此角色来访问您在其他云产品中的资源"))
 
-        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(roles.roles) > 0 else 1.apply(create_default)
         default_policy_attachment: list[alicloud.resourcemanager.PolicyAttachment] = []
         def create_default(range_body):
             for default_policy_attachment_range in [{"value": i} for i in range(0, range_body)]:
                 default_policy_attachment.append(alicloud.resourcemanager.PolicyAttachment(f"default-{default_policy_attachment_range['value']}",
                     policy_name="AliyunRDSInstanceEncryptionRolePolicy",
                     policy_type="System",
-                    principal_name=pulumi.Output.all(
-                        length=len(roles.roles),
-                        name=default[0].name
-        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'] > 0 else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
-        ,
+                    principal_name=default[0].name.apply(lambda name: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if len(roles.roles) > 0 else f"{name}@role.{current.id}.onaliyunservice.com"),
                     principal_type="ServiceRole",
                     resource_group_id=current.id))
 
-        len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        0 if len(roles.roles) > 0 else 1.apply(create_default)
         ```
 
         ### Removing polardb.Cluster from your configuration

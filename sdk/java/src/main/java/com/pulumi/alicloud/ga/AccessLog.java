@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .name(String.format("terraform-example-%s", default_.get("result")))
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()

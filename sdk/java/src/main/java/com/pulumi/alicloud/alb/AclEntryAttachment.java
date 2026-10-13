@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AclEntryAttachment("default", AclEntryAttachmentArgs.builder()
- *             .aclId(defaultAlicloudAlbAcl.id())
+ *             .aclId(defaultAlicloudAlbAcl.get("id"))
  *             .entries(            
  *                 AclEntryAttachmentEntryArgs.builder()
  *                     .entry("168.10.10.0/24")

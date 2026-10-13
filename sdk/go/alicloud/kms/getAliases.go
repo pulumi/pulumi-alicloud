@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
+//			// Declare the function
 //			kmsAliases, err := kms.GetAliases(ctx, &kms.GetAliasesArgs{
 //				Ids: []string{
 //					"d89e8a53-b708-41aa-8c67-6873axxx",

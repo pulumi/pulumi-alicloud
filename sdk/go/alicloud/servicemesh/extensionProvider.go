@@ -57,16 +57,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			var tmp0 pulumi.Int
+//			if len(defaultGetNetworks.Ids) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
 //			var defaultNetwork []*vpc.Network
-//			for index := 0; index < int(len(defaultGetNetworks.Ids).ApplyT(func(length int) (int, error) {
-//				var tmp0 int
-//				if length > 0 {
-//					tmp0 = 0
-//				} else {
-//					tmp0 = 1
-//				}
-//				return tmp0, nil
-//			}).(pulumi.IntOutput)); index++ {
+//			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("default-%v", key0), nil)
 //				if err != nil {
@@ -75,17 +73,15 @@ import (
 //				defaultNetwork = append(defaultNetwork, __res)
 //			}
 //			defaultGetSwitches := vpc.GetSwitchesOutput(ctx, vpc.GetSwitchesOutputArgs{
-//				VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
-//					length := _args[0].(int)
-//					id := _args[1].(pulumi.ID)
-//					var tmp1 *string
-//					if length > 0 {
+//				VpcId: defaultNetwork[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
+//					var tmp1 pulumi.String
+//					if len(defaultGetNetworks.Ids) > 0 {
 //						tmp1 = defaultGetNetworks.Ids[0]
 //					} else {
 //						tmp1 = id
 //					}
-//					return &tmp1, nil
-//				}).(pulumi.StringPtrOutput),
+//					return pulumi.String(tmp1), nil
+//				}).(pulumi.StringOutput),
 //			}, nil)
 //			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
 //				Input:   defaultGetNetworks.Vpcs[0].CidrBlock,
@@ -96,7 +92,9 @@ import (
 //				return err
 //			}
 //			var defaultSwitch []*vpc.Switch
-//			for index := 0; index < int(len(defaultGetSwitches.Ids()).ApplyT(func(length int) (int, error) {
+//			for index := 0; index < int(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (pulumi.Int, error) {
+//				return pulumi.Int(len(defaultGetSwitches.Ids)), nil
+//			}).(pulumi.IntOutput).ApplyT(func(length int) (int, error) {
 //				var tmp3 int
 //				if length > 0 {
 //					tmp3 = 0
@@ -107,17 +105,15 @@ import (
 //			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
-//						length := _args[0].(int)
-//						id := _args[1].(pulumi.ID)
-//						var tmp2 *string
-//						if length > 0 {
+//					VpcId: defaultNetwork[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
+//						var tmp2 pulumi.String
+//						if len(defaultGetNetworks.Ids) > 0 {
 //							tmp2 = defaultGetNetworks.Ids[0]
 //						} else {
 //							tmp2 = id
 //						}
-//						return &tmp2, nil
-//					}).(pulumi.StringPtrOutput),
+//						return pulumi.String(tmp2), nil
+//					}).(pulumi.StringOutput),
 //					CidrBlock: pulumi.String(invokeCidrsubnet.Result),
 //					ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				})
@@ -131,19 +127,19 @@ import (
 //				Version:         pulumi.String("v1.21.6.103-g5ddeaef7-aliyun"),
 //				Edition:         pulumi.String("Default"),
 //				Network: &servicemesh.ServiceMeshNetworkArgs{
-//					VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
-//						length := _args[0].(int)
-//						id := _args[1].(pulumi.ID)
-//						var tmp4 *string
-//						if length > 0 {
+//					VpcId: defaultNetwork[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
+//						var tmp4 pulumi.String
+//						if len(defaultGetNetworks.Ids) > 0 {
 //							tmp4 = defaultGetNetworks.Ids[0]
 //						} else {
 //							tmp4 = id
 //						}
-//						return &tmp4, nil
-//					}).(pulumi.StringPtrOutput),
+//						return pulumi.String(tmp4), nil
+//					}).(pulumi.StringOutput),
 //					VswitcheLists: pulumi.StringArray{
-//						pulumi.All(len(defaultGetSwitches.Ids()), defaultGetSwitches, defaultSwitch[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
+//						pulumi.All(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (pulumi.Int, error) {
+//							return pulumi.Int(len(defaultGetSwitches.Ids)), nil
+//						}).(pulumi.IntOutput), defaultGetSwitches, defaultSwitch[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //							length := _args[0].(int)
 //							defaultGetSwitches := _args[1].(vpc.GetSwitchesResult)
 //							id := _args[2].(pulumi.ID)

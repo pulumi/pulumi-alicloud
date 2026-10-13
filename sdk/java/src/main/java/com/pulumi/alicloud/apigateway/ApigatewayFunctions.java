@@ -114,7 +114,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }
@@ -202,7 +202,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }
@@ -290,7 +290,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }
@@ -378,7 +378,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }
@@ -466,7 +466,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }
@@ -554,7 +554,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }
@@ -642,7 +642,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis().get(0).id()));
      *     }
      * }
      * }

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
+//			// Declare the function
 //			example, err := kvstore.GetConnections(ctx, &kvstore.GetConnectionsArgs{
 //				Ids: "r-wer123456",
 //			}, nil)

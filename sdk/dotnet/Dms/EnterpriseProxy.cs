@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Dms
     ///         EngineVersion = "8.0",
     ///         DbInstanceStorageType = "cloud_essd",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///         SecurityIps = new[]
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Dms
     /// 
     ///     var defaultEnterpriseInstance = new AliCloud.Dms.EnterpriseInstance("default", new()
     ///     {
-    ///         Tid = defaultGetUserTenants.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0]),
+    ///         Tid = Output.Create(defaultGetUserTenants.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InstanceType = "mysql",
     ///         InstanceSource = "RDS",
     ///         NetworkType = "VPC",
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Dms
     ///         DatabaseUser = defaultAccount.AccountName,
     ///         DatabasePassword = defaultAccount.AccountPassword,
     ///         InstanceName = name,
-    ///         DbaUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         DbaUid = Output.Create(current.Apply(getAccountResult =&gt; getAccountResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         SafeRule = "自由操作",
     ///         QueryTimeout = 60,
     ///         ExportTimeout = 600,

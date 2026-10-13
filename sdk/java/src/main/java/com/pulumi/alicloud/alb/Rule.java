@@ -126,11 +126,11 @@ import javax.annotation.Nullable;
  *             .tags(Map.of("Created", "TF"))
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(defaultSwitch[0].id())
+ *                     .vswitchId(defaultSwitch.get(0).id())
  *                     .zoneId(default_.zones()[0].id())
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(defaultSwitch[1].id())
+ *                     .vswitchId(defaultSwitch.get(1).id())
  *                     .zoneId(default_.zones()[1].id())
  *                     .build())
  *             .build());
@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var removeHeader = new Rule("removeHeader", RuleArgs.builder()
  *             .ruleName(String.format("%s_remove_header", name))
- *             .listenerId(defaultAlicloudAlbListener.id())
+ *             .listenerId(defaultAlicloudAlbListener.get("id"))
  *             .priority(556)
  *             .ruleConditions(RuleRuleConditionArgs.builder()
  *                 .hostConfig(RuleRuleConditionHostConfigArgs.builder()
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *                 RuleRuleActionArgs.builder()
  *                     .forwardGroupConfig(RuleRuleActionForwardGroupConfigArgs.builder()
  *                         .serverGroupTuples(RuleRuleActionForwardGroupConfigServerGroupTupleArgs.builder()
- *                             .serverGroupId(default_.id())
+ *                             .serverGroupId(default_.get("id"))
  *                             .build())
  *                         .build())
  *                     .order(9)

@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Quotas
     ///                 Value = "cn-hangzhou",
     ///             },
     ///         },
-    ///         DesireValue = 1001,
+    ///         DesireValue = 1001.0,
     ///         EnvLanguage = "zh",
     ///         QuotaCategory = "CommonQuota",
     ///     });

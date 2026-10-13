@@ -65,9 +65,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//				ZoneId: len(_default.Zones).ApplyT(func(length int) (alicloud.GetZonesZone, error) {
-//					return _default.Zones[int(length-1)].(alicloud.GetZonesZone), nil
-//				}).(alicloud.GetZonesZoneOutput).Id(),
+//				ZoneId:      _default.Zones[int(len(_default.Zones)-1)].Id(),
 //			})
 //			if err != nil {
 //				return err

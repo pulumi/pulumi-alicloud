@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Uuid("default");
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .bucket(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .cpu(0.5)
  *             .instanceConcurrency(2)
- *             .functionName(String.format("%s-%s", name,default_.result()))
+ *             .functionName(String.format("%s-%s", name,default_.get("result")))
  *             .environmentVariables(Map.of("EnvKey", "EnvVal"))
  *             .internetAccess(true)
  *             .build());

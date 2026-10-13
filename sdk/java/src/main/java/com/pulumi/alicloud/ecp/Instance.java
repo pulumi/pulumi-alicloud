@@ -77,24 +77,24 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("192.168.192.0/24")
  *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
- *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());
  * 

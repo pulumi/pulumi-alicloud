@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .resourceGroupId(default_.groups()[0].id())
- *             .applicationName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .applicationName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .description(name)
  *             .tags(Map.of("Created", "TF"))
  *             .build());

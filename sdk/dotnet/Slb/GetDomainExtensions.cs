@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Slb
         ///             "fake-de-id",
         ///         },
         ///         LoadBalancerId = "fake-lb-id",
-        ///         FrontendPort = "fake-port",
+        ///         FrontendPort = int.Parse("fake-port", System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         /// });
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Slb
         ///             "fake-de-id",
         ///         },
         ///         LoadBalancerId = "fake-lb-id",
-        ///         FrontendPort = "fake-port",
+        ///         FrontendPort = int.Parse("fake-port", System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         /// });
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Slb
         ///             "fake-de-id",
         ///         },
         ///         LoadBalancerId = "fake-lb-id",
-        ///         FrontendPort = "fake-port",
+        ///         FrontendPort = int.Parse("fake-port", System.Globalization.CultureInfo.InvariantCulture),
         ///     });
         /// 
         /// });

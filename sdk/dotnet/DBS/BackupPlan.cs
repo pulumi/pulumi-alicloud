@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.DBS
     ///         EngineVersion = "8.0",
     ///         DbInstanceStorageType = "cloud_essd",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = Output.Create(defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         VswitchId = vswitchId,
     ///         InstanceName = name,
     ///     });

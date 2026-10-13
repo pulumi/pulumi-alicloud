@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///     {
     ///         CcnId = @default.Id,
     ///         CenId = cen.Id,
-    ///         CenUid = anotherUid,
+    ///         CenUid = anotherUid.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///     });
     /// 
     /// });

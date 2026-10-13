@@ -645,11 +645,11 @@ class AggregateConfigRule(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        last = len(default.accounts).apply(lambda length: length - 1)
+        last = len(default.accounts) - 1
         default_aggregator = alicloud.cfg.Aggregator("default",
             aggregator_accounts=[{
-                "account_id": default.accounts[last].account_id,
-                "account_name": default.accounts[last].display_name,
+                "account_id": last.apply(lambda last: default.accounts[last]).account_id,
+                "account_name": last.apply(lambda last: default.accounts[last]).display_name,
                 "account_type": "ResourceDirectory",
             }],
             aggregator_name=name,
@@ -729,11 +729,11 @@ class AggregateConfigRule(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        last = len(default.accounts).apply(lambda length: length - 1)
+        last = len(default.accounts) - 1
         default_aggregator = alicloud.cfg.Aggregator("default",
             aggregator_accounts=[{
-                "account_id": default.accounts[last].account_id,
-                "account_name": default.accounts[last].display_name,
+                "account_id": last.apply(lambda last: default.accounts[last]).account_id,
+                "account_name": last.apply(lambda last: default.accounts[last]).display_name,
                 "account_type": "ResourceDirectory",
             }],
             aggregator_name=name,

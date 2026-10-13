@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultEndpointAddress = new EndpointAddress("defaultEndpointAddress", EndpointAddressArgs.builder()
  *             .dbClusterId(defaultCluster.id())
- *             .dbEndpointId(defaultGetEndpoints.applyValue(_defaultGetEndpoints -> _defaultGetEndpoints.endpoints()[0].dbEndpointId()))
+ *             .dbEndpointId(defaultGetEndpoints.applyValue(_defaultGetEndpoints -> _defaultGetEndpoints.endpoints().get(0).dbEndpointId()))
  *             .connectionPrefix("polardbexample")
  *             .netType("Public")
  *             .build());

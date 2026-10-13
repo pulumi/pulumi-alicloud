@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Pvtz
     ///     var authorizedUserId = config.GetDouble("authorizedUserId") ?? 123456789;
     ///     var example = new AliCloud.Pvtz.UserVpcAuthorization("example", new()
     ///     {
-    ///         AuthorizedUserId = authorizedUserId,
+    ///         AuthorizedUserId = authorizedUserId.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///         AuthChannel = "RESOURCE_DIRECTORY",
     ///     });
     /// 

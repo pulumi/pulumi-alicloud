@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetSwitches.ids().size() > 0 ? 0 : 1; i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .vpcId(defaultGetNetworks.ids()[0])
  *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -90,11 +90,11 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var vswitchId = defaultGetSwitches.ids().size() > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 vswitch.stream().map(element -> element.id()).collect(toList()),
  *                 "")
- *             .build()).result()[0]);
+ *             .build()).result()[0];
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceCategory("HighAvailability")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .segNodeNum(4)
  *             .storageSize(50)
  *             .vpcId(defaultGetNetworks.ids()[0])
- *             .vswitchId(vswitchId)
+ *             .vswitchId(((String) vswitchId))
  *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
  *                 .securityIpList("127.0.0.1")
  *                 .build())

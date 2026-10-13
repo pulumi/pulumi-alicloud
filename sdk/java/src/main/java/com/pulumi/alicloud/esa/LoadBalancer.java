@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var resourceSiteOriginPool = new Site("resourceSiteOriginPool", SiteArgs.builder()
- *             .siteName(String.format("%s%s.com", name,defaultInteger.result()))
+ *             .siteName(String.format("%s%s.com", name,defaultInteger.get("result")))
  *             .instanceId(default_.sites()[0].instanceId())
  *             .coverage("overseas")
  *             .accessType("NS")

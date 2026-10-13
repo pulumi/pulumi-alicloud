@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Nlb
     ///         vsw.Add(new AliCloud.Vpc.Switch($"vsw-{range.Value}", new()
     ///         {
     ///             EnableIpv6 = true,
-    ///             Ipv6CidrBlockMask = $"1{range.Value}",
+    ///             Ipv6CidrBlockMask = int.Parse($"1{range.Value}", System.Globalization.CultureInfo.InvariantCulture),
     ///             VswitchName = $"vsw-{range.Value}-for-nlb",
     ///             VpcId = vpc.Id,
     ///             CidrBlock = $"10.2.1{range.Value}.0/24",

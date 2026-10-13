@@ -108,7 +108,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "AliyunRDSInstanceEncryptionDefaultRole",
  * });
  * const _default: alicloud.ram.Role[] = [];
- * roles.then(roles => roles.roles).length.apply(length => {
+ * roles.then(roles => roles.roles.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         _default.push(new alicloud.ram.Role(`default-${range}`, {
  *             name: "AliyunRDSInstanceEncryptionDefaultRole",
@@ -132,12 +132,12 @@ import * as utilities from "../utilities";
  *     }
  * });
  * const defaultPolicyAttachment: alicloud.resourcemanager.PolicyAttachment[] = [];
- * roles.then(roles => roles.roles).length.apply(length => {
+ * roles.then(roles => roles.roles.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultPolicyAttachment.push(new alicloud.resourcemanager.PolicyAttachment(`default-${range}`, {
  *             policyName: "AliyunRDSInstanceEncryptionRolePolicy",
  *             policyType: "System",
- *             principalName: pulumi.all([roles.then(roles => roles.roles).length, roles, current, _default[0].name]).apply(([length, roles, current, name]) => length > 0 ? `${roles.roles?.[0]?.name}@role.${current.id}.onaliyunservice.com` : `${name}@role.${current.id}.onaliyunservice.com`),
+ *             principalName: pulumi.all([roles.then(roles => roles.roles.length), roles, current, _default[0].name]).apply(([length, roles, current, name]) => length > 0 ? `${roles.roles?.[0]?.name}@role.${current.id}.onaliyunservice.com` : `${name}@role.${current.id}.onaliyunservice.com`),
  *             principalType: "ServiceRole",
  *             resourceGroupId: current.then(current => current.id),
  *         }));

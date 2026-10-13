@@ -318,19 +318,19 @@ class AccessManagement(pulumi.CustomResource):
             for default_directory_range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{default_directory_range['value']}", directory_name=name))
 
-        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default.ids) > 0 else 1.apply(create_default)
+        directory_id = default.ids[0] if len(default.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_directory],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_user = alicloud.cloudsso.User("default",
-            directory_id=output(directory_id).apply(lambda x: str(x)),
+            directory_id=directory_id.apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
-            directory_id=output(directory_id).apply(lambda x: str(x)),
+            directory_id=directory_id.apply(lambda x: str(x)),
             access_configuration_name=f"{name}-{default_integer['result']}")
         default_access_management = alicloud.cloudsso.AccessManagement("default",
-            directory_id=output(directory_id).apply(lambda x: str(x)),
+            directory_id=directory_id.apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id,
@@ -402,19 +402,19 @@ class AccessManagement(pulumi.CustomResource):
             for default_directory_range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{default_directory_range['value']}", directory_name=name))
 
-        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default.ids) > 0 else 1.apply(create_default)
+        directory_id = default.ids[0] if len(default.ids) > 0 else std.concat(input=[
             [__item.id for __item in default_directory],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_user = alicloud.cloudsso.User("default",
-            directory_id=output(directory_id).apply(lambda x: str(x)),
+            directory_id=directory_id.apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
-            directory_id=output(directory_id).apply(lambda x: str(x)),
+            directory_id=directory_id.apply(lambda x: str(x)),
             access_configuration_name=f"{name}-{default_integer['result']}")
         default_access_management = alicloud.cloudsso.AccessManagement("default",
-            directory_id=output(directory_id).apply(lambda x: str(x)),
+            directory_id=directory_id.apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id,

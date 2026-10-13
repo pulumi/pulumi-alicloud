@@ -328,11 +328,11 @@ class BackupPolicy(pulumi.CustomResource):
                     zone_id=default.ids[0],
                     vswitch_name=name))
 
-        len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
-        vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default_get_switches.ids) > 0 else 1.apply(create_vswitch)
+        vswitch_id = default_get_switches.ids[0] if len(default_get_switches.ids) > 0 else std.concat(input=[
             [__item.id for __item in vswitch],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_instance = alicloud.gpdb.Instance("default",
             db_instance_category="HighAvailability",
             db_instance_class="gpdb.group.segsdx1",
@@ -348,7 +348,7 @@ class BackupPolicy(pulumi.CustomResource):
             seg_node_num=4,
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
-            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
+            vswitch_id=vswitch_id.apply(lambda x: str(x)),
             ip_whitelists=[{
                 "security_ip_list": "127.0.0.1",
             }],
@@ -445,11 +445,11 @@ class BackupPolicy(pulumi.CustomResource):
                     zone_id=default.ids[0],
                     vswitch_name=name))
 
-        len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
-        vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+        0 if len(default_get_switches.ids) > 0 else 1.apply(create_vswitch)
+        vswitch_id = default_get_switches.ids[0] if len(default_get_switches.ids) > 0 else std.concat(input=[
             [__item.id for __item in vswitch],
             [""],
-        ]).result[0])
+        ]).result[0]
         default_instance = alicloud.gpdb.Instance("default",
             db_instance_category="HighAvailability",
             db_instance_class="gpdb.group.segsdx1",
@@ -465,7 +465,7 @@ class BackupPolicy(pulumi.CustomResource):
             seg_node_num=4,
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
-            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
+            vswitch_id=vswitch_id.apply(lambda x: str(x)),
             ip_whitelists=[{
                 "security_ip_list": "127.0.0.1",
             }],

@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultKCTrB2 = new User("defaultKCTrB2", UserArgs.builder()
- *             .displayName(String.format("%s%s", name,randint.id()))
- *             .name(String.format("%s%s", name,randint.id()))
+ *             .displayName(String.format("%s%s", name,randint.get("id")))
+ *             .name(String.format("%s%s", name,randint.get("id")))
  *             .build());
  * 
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var defaultQeRfvU = new Project("defaultQeRfvU", ProjectArgs.builder()
  *             .status("Available")
  *             .description("tf_desc")
- *             .projectName(String.format("%s%s", name,randint.id()))
+ *             .projectName(String.format("%s%s", name,randint.get("id")))
  *             .paiTaskEnabled(false)
  *             .displayName("tf_new_api_display")
  *             .devRoleDisabled(true)

@@ -45,7 +45,7 @@ import (
 //				NameRegex: defaultFaceConfig.BizName,
 //			}, nil)
 //			ctx.Export("faceConfig", _default.ApplyT(func(_default cloudauth.GetFaceConfigsResult) (cloudauth.GetFaceConfigsConfig, error) {
-//				return _default.Configs[0], nil
+//				return _default.Configs[0].(cloudauth.GetFaceConfigsConfig), nil
 //			}).(cloudauth.GetFaceConfigsConfigOutput))
 //			return nil
 //		})

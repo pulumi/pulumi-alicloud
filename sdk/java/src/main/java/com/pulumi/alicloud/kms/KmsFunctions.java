@@ -68,7 +68,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -113,7 +113,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -158,7 +158,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -203,7 +203,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -248,7 +248,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -293,7 +293,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -338,7 +338,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .nameRegex("alias/tf-example")
@@ -767,7 +767,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -920,7 +920,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1073,7 +1073,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1226,7 +1226,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1379,7 +1379,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1532,7 +1532,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1685,7 +1685,7 @@ public final class KmsFunctions {
      *             .ids(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances()[0].instanceId()));
+     *         ctx.export("alicloudKmsInstanceExampleId", default_.applyValue(_default_ -> _default_.instances().get(0).instanceId()));
      *     }
      * }
      * }
@@ -1724,7 +1724,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
      *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
@@ -1769,7 +1769,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
      *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
@@ -1814,7 +1814,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
      *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
@@ -1859,7 +1859,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
      *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
@@ -1904,7 +1904,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
      *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
@@ -1951,7 +1951,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -1998,7 +1998,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -2045,7 +2045,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -2092,7 +2092,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -2139,7 +2139,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -2186,7 +2186,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -2233,7 +2233,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
      *             .descriptionRegex("Hello KMS")
      *             .outputFile("kms_keys.json")
@@ -2573,7 +2573,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
      *             .secretName("secret_name")
      *             .enableDetails(true)
@@ -2618,7 +2618,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
      *             .secretName("secret_name")
      *             .enableDetails(true)
@@ -2663,7 +2663,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
      *             .secretName("secret_name")
      *             .enableDetails(true)
@@ -2708,7 +2708,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
      *             .secretName("secret_name")
      *             .enableDetails(true)
@@ -2753,7 +2753,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
      *             .secretName("secret_name")
      *             .enableDetails(true)
@@ -2798,7 +2798,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")
@@ -2847,7 +2847,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")
@@ -2896,7 +2896,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")
@@ -2945,7 +2945,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")
@@ -2994,7 +2994,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")
@@ -3043,7 +3043,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")
@@ -3092,7 +3092,7 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
      *             .nameRegex("name_regex")

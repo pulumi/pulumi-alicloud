@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSite = new Site("defaultSite", SiteArgs.builder()
- *             .siteName(String.format("bcd%s.com", defaultInteger.result()))
+ *             .siteName(String.format("bcd%s.com", defaultInteger.get("result")))
  *             .coverage("overseas")
  *             .accessType("NS")
  *             .instanceId(defaultIEoDfU.id())

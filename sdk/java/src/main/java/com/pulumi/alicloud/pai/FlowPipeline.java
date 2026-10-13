@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *       pipelines: []
  *       volumes: []
  *   volumes: []
- * ", default_.id(),defaultInteger.result()))
+ * ", default_.id(),defaultInteger.get("result")))
  *             .build());
  * 
  *     }

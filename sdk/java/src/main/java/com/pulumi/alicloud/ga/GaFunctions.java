@@ -3784,7 +3784,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3793,11 +3793,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -3851,7 +3847,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3860,11 +3856,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -3918,7 +3910,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3927,11 +3919,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -3985,7 +3973,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3994,11 +3982,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -4052,7 +4036,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -4061,11 +4045,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -4119,7 +4099,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -4128,11 +4108,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -4186,7 +4162,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size() > 0 ? 0 : 1; i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -4195,11 +4171,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
-     *             var length = values.t1;
-     *             var id = values.t2;
-     *             return length > 0 ? default_.accelerators()[0].id() : id;
-     *         });
+     *         final var acceleratorId = defaultAccelerator.get(0).id().applyValue(_id -> default_.accelerators().size() > 0 ? default_.accelerators()[0].id() : _id);
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
@@ -4555,7 +4527,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4679,7 +4651,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4803,7 +4775,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups().get(0).id()));
      *     }
      * }
      * }
@@ -4927,7 +4899,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups().get(0).id()));
      *     }
      * }
      * }
@@ -5051,7 +5023,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups().get(0).id()));
      *     }
      * }
      * }

@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/12")
  *             .enableAdminAccess(true)
  *             .desktopAccessType("Internet")
- *             .officeSiteName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .officeSiteName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()

@@ -37,16 +37,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			var tmp0 pulumi.Int
+//			if len(_default.Accelerators) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
 //			var defaultAccelerator []*ga.Accelerator
-//			for index := 0; index < int(len(_default.Accelerators).ApplyT(func(length int) (int, error) {
-//				var tmp0 int
-//				if length > 0 {
-//					tmp0 = 0
-//				} else {
-//					tmp0 = 1
-//				}
-//				return tmp0, nil
-//			}).(pulumi.IntOutput)); index++ {
+//			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				__res, err := ga.NewAccelerator(ctx, fmt.Sprintf("default-%v", key0), &ga.AcceleratorArgs{
 //					Duration:      pulumi.Int(1),
@@ -58,17 +56,15 @@ import (
 //				}
 //				defaultAccelerator = append(defaultAccelerator, __res)
 //			}
-//			_ = pulumi.IDInput(pulumi.All(len(_default.Accelerators), defaultAccelerator[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
-//				length := _args[0].(int)
-//				id := _args[1].(pulumi.ID)
-//				var tmp1 *string
-//				if length > 0 {
+//			_ = defaultAccelerator[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
+//				var tmp1 pulumi.String
+//				if len(_default.Accelerators) > 0 {
 //					tmp1 = _default.Accelerators[0].Id
 //				} else {
 //					tmp1 = id
 //				}
-//				return &tmp1, nil
-//			}).(pulumi.StringPtrOutput))
+//				return pulumi.String(tmp1), nil
+//			}).(pulumi.StringOutput)
 //			defaultGetDomains, err := ga.GetDomains(ctx, &ga.GetDomainsArgs{
 //				AcceleratorId: pulumi.StringRef(acceleratorIdLocals),
 //				Domain:        pulumi.StringRef("your_domain"),

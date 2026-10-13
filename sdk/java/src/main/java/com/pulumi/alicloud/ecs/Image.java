@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
  *             .instanceId(defaultInstance.id())
- *             .imageName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .imageName(String.format("terraform-example-%s", defaultInteger.get("result")))
  *             .description("terraform-example")
  *             .architecture("x86_64")
  *             .resourceGroupId(defaultGetResourceGroups.ids()[0])

@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = defaultRouterExpressConnectRouter.Id,
         ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
         ///         CenId = defaultTransitRouter.CenId,
-        ///         TransitRouterOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         TransitRouterOwnerId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         AssociationRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
         ///         AllowedPrefixes = new[]
         ///         {
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = defaultRouterExpressConnectRouter.Id,
         ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
         ///         CenId = defaultTransitRouter.CenId,
-        ///         TransitRouterOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         TransitRouterOwnerId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         AssociationRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
         ///         AllowedPrefixes = new[]
         ///         {
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         EcrId = defaultRouterExpressConnectRouter.Id,
         ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
         ///         CenId = defaultTransitRouter.CenId,
-        ///         TransitRouterOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+        ///         TransitRouterOwnerId = Output.Create(@default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id))).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         AssociationRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
         ///         AllowedPrefixes = new[]
         ///         {

@@ -1425,7 +1425,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }
@@ -1467,7 +1467,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }
@@ -1509,7 +1509,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }
@@ -1551,7 +1551,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }
@@ -1593,7 +1593,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }
@@ -1635,7 +1635,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }
@@ -1677,7 +1677,7 @@ public final class CfgFunctions {
      *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
      *             .build());
      * 
-     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.get("recorders")[0].get("resourceTypes"));
      *     }
      * }
      * }

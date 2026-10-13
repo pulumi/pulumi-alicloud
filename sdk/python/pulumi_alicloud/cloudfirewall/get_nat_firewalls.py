@@ -247,7 +247,7 @@ def get_nat_firewalls(ids: Optional[Sequence[_builtins.str]] = None,
         vpc_id=default2i_r_zp_c.vpc_id)
     default_ake43g = alicloud.vpc.SnatEntry("defaultAKE43g",
         snat_ip=defaultyi_rwgs.ip_address,
-        snat_table_id=default2i_r_zp_c.snat_table_ids.apply(lambda snat_table_ids: snat_table_ids[0]).apply(lambda x: str(x)),
+        snat_table_id=default2i_r_zp_c.snat_table_ids.apply(lambda snat_table_ids: snat_table_ids[0]),
         eip_affinity=1,
         source_vswitch_id=defaultp4_o7qi.id)
     default_nat_firewall = alicloud.cloudfirewall.NatFirewall("default",
@@ -376,7 +376,7 @@ def get_nat_firewalls_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
         vpc_id=default2i_r_zp_c.vpc_id)
     default_ake43g = alicloud.vpc.SnatEntry("defaultAKE43g",
         snat_ip=defaultyi_rwgs.ip_address,
-        snat_table_id=default2i_r_zp_c.snat_table_ids.apply(lambda snat_table_ids: snat_table_ids[0]).apply(lambda x: str(x)),
+        snat_table_id=default2i_r_zp_c.snat_table_ids.apply(lambda snat_table_ids: snat_table_ids[0]),
         eip_affinity=1,
         source_vswitch_id=defaultp4_o7qi.id)
     default_nat_firewall = alicloud.cloudfirewall.NatFirewall("default",

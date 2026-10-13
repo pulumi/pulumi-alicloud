@@ -1613,7 +1613,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
@@ -1814,7 +1814,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
@@ -2015,7 +2015,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
@@ -2216,7 +2216,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
@@ -2417,7 +2417,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
@@ -2618,7 +2618,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
@@ -2819,7 +2819,7 @@ public final class Emrv2Functions {
      * 
      *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
      *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .nameRegex(defaultAlicloudEmrCluster.get("name"))
      *             .build());
      * 
      *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());

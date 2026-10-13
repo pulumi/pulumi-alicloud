@@ -68,7 +68,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -110,7 +110,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -152,7 +152,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -194,7 +194,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -236,7 +236,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -278,7 +278,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
@@ -320,7 +320,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
+     *         // Declare the function
      *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 

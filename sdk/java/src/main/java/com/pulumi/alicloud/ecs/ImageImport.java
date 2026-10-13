@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .bucket(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()

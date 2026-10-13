@@ -105,7 +105,7 @@ public final class OssFunctions {
      *             .bucket(createBucket.id())
      *             .build());
      * 
-     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories().get(0).id()));
      *     }
      * }
      * }
@@ -187,7 +187,7 @@ public final class OssFunctions {
      *             .bucket(createBucket.id())
      *             .build());
      * 
-     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories().get(0).id()));
      *     }
      * }
      * }
@@ -269,7 +269,7 @@ public final class OssFunctions {
      *             .bucket(createBucket.id())
      *             .build());
      * 
-     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories().get(0).id()));
      *     }
      * }
      * }
@@ -351,7 +351,7 @@ public final class OssFunctions {
      *             .bucket(createBucket.id())
      *             .build());
      * 
-     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories().get(0).id()));
      *     }
      * }
      * }
@@ -433,7 +433,7 @@ public final class OssFunctions {
      *             .bucket(createBucket.id())
      *             .build());
      * 
-     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories().get(0).id()));
      *     }
      * }
      * }
@@ -692,14 +692,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }
@@ -748,14 +748,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }
@@ -804,14 +804,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }
@@ -860,14 +860,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }
@@ -916,14 +916,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }
@@ -972,14 +972,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }
@@ -1028,14 +1028,14 @@ public final class OssFunctions {
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
-     *             .bucket(String.format("oss-tf-example-%s", default_.result()))
+     *             .bucket(String.format("oss-tf-example-%s", default_.get("result")))
      *             .build());
      * 
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets().get(0).name()));
      *     }
      * }
      * }

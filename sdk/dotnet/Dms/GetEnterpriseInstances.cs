@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
         ///         NetType = "CLASSIC",
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
         ///         NetType = "CLASSIC",
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Declare the data source
+        ///     // Declare the function
         ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
         ///         NetType = "CLASSIC",

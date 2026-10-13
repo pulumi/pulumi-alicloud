@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ga
     ///                 Input = new[]
     ///                 {
     ///                     name,
-    ///                     range.Value,
+    ///                     range.Value.ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///                 },
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             Cert = @"-----BEGIN CERTIFICATE-----

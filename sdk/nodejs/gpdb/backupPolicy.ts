@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     zoneId: _default.ids?.[0],
  * }));
  * const vswitch: alicloud.vpc.Switch[] = [];
- * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids.length).apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *             vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
@@ -45,12 +45,12 @@ import * as utilities from "../utilities";
  *         }));
  *     }
  * });
- * const vswitchId = pulumi.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, std.concat({
+ * const vswitchId = Promise.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids.length), defaultGetSwitches, std.concat({
  *     input: [
  *         vswitch.map(__item => __item.id),
  *         [""],
  *     ],
- * })]).apply(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
+ * })]).then(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
  * const defaultInstance = new alicloud.gpdb.Instance("default", {
  *     dbInstanceCategory: "HighAvailability",
  *     dbInstanceClass: "gpdb.group.segsdx1",
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *     segNodeNum: 4,
  *     storageSize: 50,
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
- *     vswitchId: vswitchId,
+ *     vswitchId: String(vswitchId),
  *     ipWhitelists: [{
  *         securityIpList: "127.0.0.1",
  *     }],

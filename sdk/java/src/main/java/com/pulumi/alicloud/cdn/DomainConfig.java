@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new Domain config.
  *         var domain = new DomainNew("domain", DomainNewArgs.builder()
- *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+ *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.get("result")))
  *             .cdnType("web")
  *             .scope("overseas")
  *             .sources(DomainNewSourceArgs.builder()

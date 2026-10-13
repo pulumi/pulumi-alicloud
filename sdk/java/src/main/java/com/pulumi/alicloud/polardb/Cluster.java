@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("AliyunRDSInstanceEncryptionDefaultRole")
  *             .build());
  * 
- *         for (var i = 0; i < roles.roles().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) }{{@code
+ *         for (var i = 0; i < roles.roles().size() > 0 ? 0 : 1; i++) }{{@code
  *             new Role("default-" + i, RoleArgs.builder()
  *                 .name("AliyunRDSInstanceEncryptionDefaultRole")
  *                 .document("""
@@ -233,15 +233,11 @@ import javax.annotation.Nullable;
  * 
  *         
  * }}{@code
- *         for (var i = 0; i < roles.roles().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) }{{@code
+ *         for (var i = 0; i < roles.roles().size() > 0 ? 0 : 1; i++) }{{@code
  *             new PolicyAttachment("defaultPolicyAttachment-" + i, PolicyAttachmentArgs.builder()
  *                 .policyName("AliyunRDSInstanceEncryptionRolePolicy")
  *                 .policyType("System")
- *                 .principalName(Output.tuple(roles.roles().size(), default_[0].name()).applyValue(values -> }{{@code
- *                     var length = values.t1;
- *                     var name = values.t2;
- *                     return length > 0 ? String.format("%s}{@literal @}{@code role.%s.onaliyunservice.com", roles.roles()[0].name(),current.id()) : String.format("%s}{@literal @}{@code role.%s.onaliyunservice.com", name,current.id());
- *                 }}{@code ))
+ *                 .principalName(default_.get(0).name().applyValue(_name -> roles.roles().size() > 0 ? String.format("%s}{@literal @}{@code role.%s.onaliyunservice.com", roles.roles()[0].name(),current.id()) : String.format("%s}{@literal @}{@code role.%s.onaliyunservice.com", _name,current.id())))
  *                 .principalType("ServiceRole")
  *                 .resourceGroupId(current.id())
  *                 .build());

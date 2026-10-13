@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         final var countSize = default_.zones().size();
  * 
- *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
+ *         final var zoneId = default_.zones()[countSize - 1].applyValue(_obj -> _obj.zoneId());
  * 
  *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName("terraform-example")

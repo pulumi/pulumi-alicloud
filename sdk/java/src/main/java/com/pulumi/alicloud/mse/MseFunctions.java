@@ -95,7 +95,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -103,7 +103,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -181,7 +181,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -189,7 +189,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -267,7 +267,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -275,7 +275,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -353,7 +353,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -361,7 +361,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -439,7 +439,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -447,7 +447,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -525,7 +525,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -533,7 +533,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -611,7 +611,7 @@ public final class MseFunctions {
      *             .vpcId(exampleNetwork.id())
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .enableDetails(true)
      *             .ids(exampleCluster.id())
@@ -619,7 +619,7 @@ public final class MseFunctions {
      *             .nameRegex(exampleCluster.clusterAliasName())
      *             .build());
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters().get(0).id()));
      *     }
      * }
      * }
@@ -707,13 +707,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }
@@ -801,13 +801,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }
@@ -895,13 +895,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }
@@ -989,13 +989,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }
@@ -1083,13 +1083,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }
@@ -1177,13 +1177,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }
@@ -1271,13 +1271,13 @@ public final class MseFunctions {
      *             .namespaceDesc("description")
      *             .build());
      * 
-     *         // Declare the data source
+     *         // Declare the function
      *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(0).id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces().get(1).id()));
      *     }
      * }
      * }

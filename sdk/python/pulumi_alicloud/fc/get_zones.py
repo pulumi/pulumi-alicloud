@@ -96,7 +96,7 @@ def get_zones(output_file: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     zones_ids = alicloud.fc.get_zones()
     ```
 
@@ -126,7 +126,7 @@ def get_zones_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    # Declare the data source
+    # Declare the function
     zones_ids = alicloud.fc.get_zones()
     ```
 

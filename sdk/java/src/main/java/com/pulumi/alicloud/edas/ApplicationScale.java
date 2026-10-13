@@ -151,11 +151,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplicationScale = new ApplicationScale("defaultApplicationScale", ApplicationScaleArgs.builder()
  *             .appId(defaultApplication.id())
- *             .deployGroup(defaultGetDeployGroups.applyValue(_defaultGetDeployGroups -> _defaultGetDeployGroups.groups()[0].groupId()))
+ *             .deployGroup(defaultGetDeployGroups.applyValue(_defaultGetDeployGroups -> _defaultGetDeployGroups.groups().get(0).groupId()))
  *             .ecuInfos(Output.tuple(defaultInstanceClusterAttachment.ecuMap(), defaultInstance.id()).applyValue(values -> {
  *                 var ecuMap = values.t1;
  *                 var id = values.t2;
- *                 return ecuMap[id];
+ *                 return ecuMap.get(id);
  *             }))
  *             .build());
  * 

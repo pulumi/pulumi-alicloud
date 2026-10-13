@@ -130,9 +130,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultLoadBalancerAccessLogConfigAttachment = new LoadBalancerAccessLogConfigAttachment("defaultLoadBalancerAccessLogConfigAttachment", LoadBalancerAccessLogConfigAttachmentArgs.builder()
- *             .logStore(String.format("%s-%s", name,default_.result()))
+ *             .logStore(String.format("%s-%s", name,default_.get("result")))
  *             .loadBalancerId(defaultDYswYo.id())
- *             .logProject(String.format("%s-%s", name,default_.result()))
+ *             .logProject(String.format("%s-%s", name,default_.get("result")))
  *             .build());
  * 
  *     }

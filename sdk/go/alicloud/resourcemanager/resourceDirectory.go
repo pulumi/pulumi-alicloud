@@ -39,16 +39,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			var tmp0 pulumi.Int
+//			if len(_default.Directories) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
 //			var defaultResourceDirectory []*resourcemanager.ResourceDirectory
-//			for index := 0; index < int(len(_default.Directories).ApplyT(func(length int) (int, error) {
-//				var tmp0 int
-//				if length > 0 {
-//					tmp0 = 0
-//				} else {
-//					tmp0 = 1
-//				}
-//				return tmp0, nil
-//			}).(pulumi.IntOutput)); index++ {
+//			for index := 0; index < tmp0; index++ {
 //				key0 := index
 //				__res, err := resourcemanager.NewResourceDirectory(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.ResourceDirectoryArgs{
 //					Status: pulumi.String("Enabled"),

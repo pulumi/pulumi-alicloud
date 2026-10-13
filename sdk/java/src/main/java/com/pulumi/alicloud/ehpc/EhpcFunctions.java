@@ -931,7 +931,7 @@ public final class EhpcFunctions {
      *             .clusterId(default_.clusterId())
      *             .build());
      * 
-     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1137,7 +1137,7 @@ public final class EhpcFunctions {
      *             .clusterId(default_.clusterId())
      *             .build());
      * 
-     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1343,7 +1343,7 @@ public final class EhpcFunctions {
      *             .clusterId(default_.clusterId())
      *             .build());
      * 
-     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1549,7 +1549,7 @@ public final class EhpcFunctions {
      *             .clusterId(default_.clusterId())
      *             .build());
      * 
-     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }
@@ -1755,7 +1755,7 @@ public final class EhpcFunctions {
      *             .clusterId(default_.clusterId())
      *             .build());
      * 
-     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
+     *         ctx.export("ehpcUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
      *     }
      * }
      * }

@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Edas
     ///     {
     ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         MemorySize = 2.0,
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()

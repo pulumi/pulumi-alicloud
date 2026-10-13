@@ -134,14 +134,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
- *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
  *             .nodePoolName("desired_size")
  *             .clusterId(defaultManagedKubernetes.id())
  *             .vswitchIds(vswitch.id())
- *             .instanceTypes(defaultGetInstanceTypes.applyValue(_defaultGetInstanceTypes -> _defaultGetInstanceTypes.instanceTypes()[0].id()))
+ *             .instanceTypes(defaultGetInstanceTypes.applyValue(_defaultGetInstanceTypes -> _defaultGetInstanceTypes.instanceTypes().get(0).id()))
  *             .systemDiskCategory("cloud_efficiency")
  *             .systemDiskSize(40)
  *             .keyName(defaultKeyPair.keyPairName())

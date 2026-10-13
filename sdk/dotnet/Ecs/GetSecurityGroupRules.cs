@@ -30,8 +30,8 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var config = new Config();
         ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
-        ///     // Or get it from the alicloud_security_groups data source.
-        ///     // Please note that the data source arguments must be enough to filter results to one security group.
+        ///     // Or get it from the alicloud_security_groups function.
+        ///     // Please note that the function arguments must be enough to filter results to one security group.
         ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "api",
@@ -77,8 +77,8 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var config = new Config();
         ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
-        ///     // Or get it from the alicloud_security_groups data source.
-        ///     // Please note that the data source arguments must be enough to filter results to one security group.
+        ///     // Or get it from the alicloud_security_groups function.
+        ///     // Please note that the function arguments must be enough to filter results to one security group.
         ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "api",
@@ -124,8 +124,8 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var config = new Config();
         ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
-        ///     // Or get it from the alicloud_security_groups data source.
-        ///     // Please note that the data source arguments must be enough to filter results to one security group.
+        ///     // Or get it from the alicloud_security_groups function.
+        ///     // Please note that the function arguments must be enough to filter results to one security group.
         ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "api",

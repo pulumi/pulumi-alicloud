@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSite = new Site("defaultSite", SiteArgs.builder()
- *             .siteName(String.format("gositecdn-%s.cn", defaultInteger.result()))
+ *             .siteName(String.format("gositecdn-%s.cn", defaultInteger.get("result")))
  *             .instanceId(default_.sites()[0].instanceId())
  *             .coverage("overseas")
  *             .accessType("NS")

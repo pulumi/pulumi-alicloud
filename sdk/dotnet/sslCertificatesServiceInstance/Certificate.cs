@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.sslCertificatesServiceInstance
     ///     var certificateId = config.GetDouble("certificateId") ?? 12345678;
     ///     var @default = new AliCloud.SslCertificatesServiceInstance.Certificate("default", new()
     ///     {
-    ///         CertificateId = certificateId,
+    ///         CertificateId = (int)certificateId,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;

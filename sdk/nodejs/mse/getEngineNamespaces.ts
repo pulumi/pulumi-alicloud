@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     namespaceId: "terraform-example",
  *     namespaceDesc: "description",
  * });
- * // Declare the data source
+ * // Declare the function
  * const exampleGetEngineNamespaces = alicloud.mse.getEngineNamespacesOutput({
  *     instanceId: exampleEngineNamespace.instanceId,
  * });
@@ -162,7 +162,7 @@ export interface GetEngineNamespacesResult {
  *     namespaceId: "terraform-example",
  *     namespaceDesc: "description",
  * });
- * // Declare the data source
+ * // Declare the function
  * const exampleGetEngineNamespaces = alicloud.mse.getEngineNamespacesOutput({
  *     instanceId: exampleEngineNamespace.instanceId,
  * });

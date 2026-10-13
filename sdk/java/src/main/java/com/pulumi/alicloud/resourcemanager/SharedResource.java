@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
@@ -77,11 +77,11 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[0].id())
  *             .cidrBlock("192.168.0.0/16")
  *             .vpcId(defaultNetwork.id())
- *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
- *             .resourceShareName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .resourceShareName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()

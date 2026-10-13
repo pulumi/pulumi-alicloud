@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *       }]
  *   }
  *             """)
- *             .templateName(String.format("tf-example-name-%s", default_.result()))
+ *             .templateName(String.format("tf-example-name-%s", default_.get("result")))
  *             .versionName("example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),

@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var zone = config.get("zone").orElse(Arrays.asList(        
+ *         final var zone = config.getObject("zone", com.pulumi.core.TypeShape.map(String.class, Object.class)).orElse(Arrays.asList(        
  *             "cn-beijing-i",
  *             "cn-beijing-k",
  *             "cn-beijing-l"));
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *                 .vswitchName(String.format("vsw-%s-for-nlb", range.value()))
  *                 .vpcId(vpc.id())
  *                 .cidrBlock(String.format("10.2.1%s.0/24", range.value()))
- *                 .zoneId(zone[range.value()])
+ *                 .zoneId(zone.get(range.value()))
  *                 .build());
  * 
  *         
@@ -193,11 +193,11 @@ import javax.annotation.Nullable;
  *             ))
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(vsw[0].id())
+ *                     .vswitchId(vsw.get(0).id())
  *                     .zoneId(zone[0])
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
- *                     .vswitchId(vsw[1].id())
+ *                     .vswitchId(vsw.get(1).id())
  *                     .zoneId(zone[1])
  *                     .build())
  *             .build(), CustomResourceOptions.builder()

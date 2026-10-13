@@ -77,26 +77,26 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetDirectories.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetDirectories.ids().size() > 0 ? 0 : 1; i++) {
  *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
  *                 .directoryName(name)
  *                 .build());
  * 
  *         
  * }
- *         final var directoryId = defaultGetDirectories.ids().size().applyValue(_length -> _length > 0 ? defaultGetDirectories.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var directoryId = defaultGetDirectories.ids().size() > 0 ? defaultGetDirectories.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultDirectory.stream().map(element -> element.id()).collect(toList()),
  *                 "")
- *             .build()).result()[0]);
+ *             .build()).result()[0];
  * 
  *         var defaultUser = new User("defaultUser", UserArgs.builder()
- *             .directoryId(directoryId)
- *             .userName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .directoryId(((String) directoryId))
+ *             .userName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .build());
  * 
  *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
- *             .directoryId(directoryId)
+ *             .directoryId(((String) directoryId))
  *             .groupName(name)
  *             .description(name)
  *             .build());

@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var @default = new AliCloud.Oss.BucketInventory("default", new()
     ///     {
-    ///         Destination = null,
+    ///         Destination = new() { },
     ///         OptionalFields = new AliCloud.Oss.Inputs.BucketInventoryOptionalFieldsArgs
     ///         {
     ///             Fields = new[]

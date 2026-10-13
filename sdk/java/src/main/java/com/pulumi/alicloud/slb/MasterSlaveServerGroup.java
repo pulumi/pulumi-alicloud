@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var msServerGroupEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()
- *             .instanceId(msServerGroupInstance[0].id())
+ *             .instanceId(msServerGroupInstance.get(0).id())
  *             .networkInterfaceId(msServerGroupEcsNetworkInterface.id())
  *             .build());
  * 
@@ -156,13 +156,13 @@ import javax.annotation.Nullable;
  *             .name(slbMasterSlaveServerGroup)
  *             .servers(            
  *                 MasterSlaveServerGroupServerArgs.builder()
- *                     .serverId(msServerGroupInstance[0].id())
+ *                     .serverId(msServerGroupInstance.get(0).id())
  *                     .port(100)
  *                     .weight(100)
  *                     .serverType("Master")
  *                     .build(),
  *                 MasterSlaveServerGroupServerArgs.builder()
- *                     .serverId(msServerGroupInstance[1].id())
+ *                     .serverId(msServerGroupInstance.get(1).id())
  *                     .port(100)
  *                     .weight(100)
  *                     .serverType("Slave")
