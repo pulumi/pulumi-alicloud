@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/nas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -81,7 +81,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/nas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -198,9 +198,10 @@ type FileSystem struct {
 	// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The storage type.
-	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+	// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
 	// - When FileSystemType = extreme, the value is standard or advance.
 	// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+	// - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// Label information collection.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -346,9 +347,10 @@ type fileSystemState struct {
 	// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
 	Status *string `pulumi:"status"`
 	// The storage type.
-	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+	// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
 	// - When FileSystemType = extreme, the value is standard or advance.
 	// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+	// - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
 	StorageType *string `pulumi:"storageType"`
 	// Label information collection.
 	Tags map[string]string `pulumi:"tags"`
@@ -459,9 +461,10 @@ type FileSystemState struct {
 	// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
 	Status pulumi.StringPtrInput
 	// The storage type.
-	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+	// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
 	// - When FileSystemType = extreme, the value is standard or advance.
 	// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+	// - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
 	StorageType pulumi.StringPtrInput
 	// Label information collection.
 	Tags pulumi.StringMapInput
@@ -570,9 +573,10 @@ type fileSystemArgs struct {
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The storage type.
-	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+	// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
 	// - When FileSystemType = extreme, the value is standard or advance.
 	// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+	// - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
 	StorageType string `pulumi:"storageType"`
 	// Label information collection.
 	Tags map[string]string `pulumi:"tags"`
@@ -678,9 +682,10 @@ type FileSystemArgs struct {
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId pulumi.StringPtrInput
 	// The storage type.
-	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+	// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
 	// - When FileSystemType = extreme, the value is standard or advance.
 	// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+	// - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
 	StorageType pulumi.StringInput
 	// Label information collection.
 	Tags pulumi.StringMapInput
@@ -934,9 +939,10 @@ func (o FileSystemOutput) Status() pulumi.StringOutput {
 }
 
 // The storage type.
-// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
 // - When FileSystemType = extreme, the value is standard or advance.
 // - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+// - When storageType = Agentic, the general-purpose NAS features `recycleBin`, `nfsAcl` and `smbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
 func (o FileSystemOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }

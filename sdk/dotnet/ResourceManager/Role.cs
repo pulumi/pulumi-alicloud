@@ -97,6 +97,10 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        /// _
+        /// _## Attributes Reference
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("roleName")]
         public Output<string> RoleName { get; private set; } = null!;
@@ -173,6 +177,10 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        /// _
+        /// _## Attributes Reference
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("roleName", required: true)]
         public Input<string> RoleName { get; set; } = null!;
@@ -217,6 +225,10 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        /// _
+        /// _## Attributes Reference
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }

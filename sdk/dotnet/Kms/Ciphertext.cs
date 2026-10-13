@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available since v1.63.0.
     /// 
+    /// &gt; **NOTE:** The `PlaintextWo` and `PlaintextWoVersion` arguments require Terraform v1.11.0 or later. When `PlaintextWo` is in use, `Plaintext` is empty in the state and plan.
+    /// 
     /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
     /// 
     /// ## Example Usage
@@ -66,10 +68,23 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The plaintext to be encrypted which must be encoded in Base64.
+        /// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `Plaintext` and `PlaintextWo` can be set.
         /// </summary>
         [Output("plaintext")]
-        public Output<string> Plaintext { get; private set; } = null!;
+        public Output<string?> Plaintext { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `PlaintextWoVersion`. Exactly one of `Plaintext` and `PlaintextWo` can be set.
+        /// </summary>
+        [Output("plaintextWo")]
+        public Output<string?> PlaintextWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `PlaintextWo` value.
+        /// </summary>
+        [Output("plaintextWoVersion")]
+        public Output<int?> PlaintextWoVersion { get; private set; } = null!;
 
 
         /// <summary>
@@ -97,6 +112,7 @@ namespace Pulumi.AliCloud.Kms
                 AdditionalSecretOutputs =
                 {
                     "plaintext",
+                    "plaintextWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -139,11 +155,11 @@ namespace Pulumi.AliCloud.Kms
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
 
-        [Input("plaintext", required: true)]
+        [Input("plaintext")]
         private Input<string>? _plaintext;
 
         /// <summary>
-        /// The plaintext to be encrypted which must be encoded in Base64.
+        /// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `Plaintext` and `PlaintextWo` can be set.
         /// </summary>
         public Input<string>? Plaintext
         {
@@ -154,6 +170,29 @@ namespace Pulumi.AliCloud.Kms
                 _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("plaintextWo")]
+        private Input<string>? _plaintextWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `PlaintextWoVersion`. Exactly one of `Plaintext` and `PlaintextWo` can be set.
+        /// </summary>
+        public Input<string>? PlaintextWo
+        {
+            get => _plaintextWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintextWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `PlaintextWo` value.
+        /// </summary>
+        [Input("plaintextWoVersion")]
+        public Input<int>? PlaintextWoVersion { get; set; }
 
         public CiphertextArgs()
         {
@@ -191,7 +230,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _plaintext;
 
         /// <summary>
-        /// The plaintext to be encrypted which must be encoded in Base64.
+        /// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `Plaintext` and `PlaintextWo` can be set.
         /// </summary>
         public Input<string>? Plaintext
         {
@@ -202,6 +241,29 @@ namespace Pulumi.AliCloud.Kms
                 _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("plaintextWo")]
+        private Input<string>? _plaintextWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `PlaintextWoVersion`. Exactly one of `Plaintext` and `PlaintextWo` can be set.
+        /// </summary>
+        public Input<string>? PlaintextWo
+        {
+            get => _plaintextWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintextWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `PlaintextWo` value.
+        /// </summary>
+        [Input("plaintextWoVersion")]
+        public Input<int>? PlaintextWoVersion { get; set; }
 
         public CiphertextState()
         {

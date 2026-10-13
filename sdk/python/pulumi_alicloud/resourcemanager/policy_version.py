@@ -28,6 +28,8 @@ class PolicyVersionArgs:
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         pulumi.set(__self__, "policy_document", policy_document)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -67,6 +69,8 @@ class PolicyVersionArgs:
     def is_default_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
+
+        > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         return pulumi.get(self, "is_default_version")
 
@@ -85,6 +89,8 @@ class _PolicyVersionState:
         Input properties used for looking up and filtering PolicyVersion resources.
 
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -104,6 +110,8 @@ class _PolicyVersionState:
     def is_default_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
+
+        > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         return pulumi.get(self, "is_default_version")
 
@@ -204,6 +212,8 @@ class PolicyVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -323,6 +333,8 @@ class PolicyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         :param pulumi.Input[_builtins.str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[_builtins.str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -341,6 +353,8 @@ class PolicyVersion(pulumi.CustomResource):
     def is_default_version(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
+
+        > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         return pulumi.get(self, "is_default_version")
 

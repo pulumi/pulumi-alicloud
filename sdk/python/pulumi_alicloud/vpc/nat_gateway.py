@@ -61,6 +61,10 @@ class NatGatewayArgs:
         :param pulumi.Input[_builtins.bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[_builtins.bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+               
+               > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+               
+               > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
@@ -242,6 +246,10 @@ class NatGatewayArgs:
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+
+        > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+
+        > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -430,6 +438,10 @@ class _NatGatewayState:
         :param pulumi.Input[_builtins.str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[_builtins.bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+               
+               > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+               
+               > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
@@ -621,6 +633,10 @@ class _NatGatewayState:
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+
+        > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+
+        > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -834,9 +850,6 @@ class NatGateway(pulumi.CustomResource):
         If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
         If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
 
-        > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
-        But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
-
         > **NOTE:** When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see Service-linked roles.
 
         > **NOTE:** After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
@@ -929,6 +942,10 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[_builtins.bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+               
+               > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+               
+               > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
@@ -955,9 +972,6 @@ class NatGateway(pulumi.CustomResource):
         > **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
         If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
         If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
-
-        > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
-        But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
 
         > **NOTE:** When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see Service-linked roles.
 
@@ -1162,6 +1176,10 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[_builtins.bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+               
+               > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+               
+               > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
@@ -1292,6 +1310,10 @@ class NatGateway(pulumi.CustomResource):
     def instance_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+
+        > **NOTE:** From version 1.194.0, `eip_bind_mode` can be modified. If the `eip_bind_mode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eip_bind_mode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+
+        > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         """
         return pulumi.get(self, "instance_charge_type")
 

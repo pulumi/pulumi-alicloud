@@ -772,7 +772,6 @@ class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  bind_vpcs: Sequence['outputs.GetZonesZoneBindVpcResult'],
                  create_timestamp: _builtins.int,
-                 creation_time: _builtins.str,
                  id: _builtins.str,
                  is_ptr: _builtins.bool,
                  name: _builtins.str,
@@ -781,7 +780,6 @@ class GetZonesZoneResult(dict):
                  remark: _builtins.str,
                  resource_group_id: _builtins.str,
                  slave_dns: _builtins.bool,
-                 update_time: _builtins.str,
                  update_timestamp: _builtins.int,
                  zone_id: _builtins.str,
                  zone_name: _builtins.str):
@@ -802,7 +800,6 @@ class GetZonesZoneResult(dict):
         """
         pulumi.set(__self__, "bind_vpcs", bind_vpcs)
         pulumi.set(__self__, "create_timestamp", create_timestamp)
-        pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_ptr", is_ptr)
         pulumi.set(__self__, "name", name)
@@ -811,7 +808,6 @@ class GetZonesZoneResult(dict):
         pulumi.set(__self__, "remark", remark)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "slave_dns", slave_dns)
-        pulumi.set(__self__, "update_time", update_time)
         pulumi.set(__self__, "update_timestamp", update_timestamp)
         pulumi.set(__self__, "zone_id", zone_id)
         pulumi.set(__self__, "zone_name", zone_name)
@@ -831,11 +827,6 @@ class GetZonesZoneResult(dict):
         The time when the zone was created.
         """
         return pulumi.get(self, "create_timestamp")
-
-    @_builtins.property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> _builtins.str:
-        return pulumi.get(self, "creation_time")
 
     @_builtins.property
     @pulumi.getter
@@ -900,11 +891,6 @@ class GetZonesZoneResult(dict):
         Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slave_dns` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "slave_dns")
-
-    @_builtins.property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> _builtins.str:
-        return pulumi.get(self, "update_time")
 
     @_builtins.property
     @pulumi.getter(name="updateTimestamp")

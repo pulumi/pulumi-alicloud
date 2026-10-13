@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +16,8 @@ import (
 // For information about SSL Certificates Certificate and how to use it, see [What is Certificate](https://www.alibabacloud.com/help/product/28533.html).
 //
 // > **NOTE:** Available since v1.129.0.
+//
+// > **NOTE:** The `keyWo` and `keyWoVersion` arguments require Terraform v1.11.0 or later. When `keyWo` is in use, `key` reads back empty because it is not stored in the state or plan.
 //
 // ## Example Usage
 //
@@ -26,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cas"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -129,8 +131,13 @@ type ServiceCertificate struct {
 	EncryptCert pulumi.StringPtrOutput `pulumi:"encryptCert"`
 	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey pulumi.StringPtrOutput `pulumi:"encryptPrivateKey"`
-	// The private key of a non-SM certificate in PEM format.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo pulumi.StringPtrOutput `pulumi:"keyWo"`
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion pulumi.IntPtrOutput `pulumi:"keyWoVersion"`
 	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -162,12 +169,16 @@ func NewServiceCertificate(ctx *pulumi.Context,
 	if args.Key != nil {
 		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
 	}
+	if args.KeyWo != nil {
+		args.KeyWo = pulumi.ToSecret(args.KeyWo).(pulumi.StringPtrInput)
+	}
 	if args.SignPrivateKey != nil {
 		args.SignPrivateKey = pulumi.ToSecret(args.SignPrivateKey).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"encryptPrivateKey",
 		"key",
+		"keyWo",
 		"signPrivateKey",
 	})
 	opts = append(opts, secrets)
@@ -202,8 +213,13 @@ type serviceCertificateState struct {
 	EncryptCert *string `pulumi:"encryptCert"`
 	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
-	// The private key of a non-SM certificate in PEM format.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key *string `pulumi:"key"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo *string `pulumi:"keyWo"`
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion *int `pulumi:"keyWoVersion"`
 	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -231,8 +247,13 @@ type ServiceCertificateState struct {
 	EncryptCert pulumi.StringPtrInput
 	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey pulumi.StringPtrInput
-	// The private key of a non-SM certificate in PEM format.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo pulumi.StringPtrInput
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion pulumi.IntPtrInput
 	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -264,8 +285,13 @@ type serviceCertificateArgs struct {
 	EncryptCert *string `pulumi:"encryptCert"`
 	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
-	// The private key of a non-SM certificate in PEM format.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key *string `pulumi:"key"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo *string `pulumi:"keyWo"`
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion *int `pulumi:"keyWoVersion"`
 	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -294,8 +320,13 @@ type ServiceCertificateArgs struct {
 	EncryptCert pulumi.StringPtrInput
 	// The private key of an SM encryption certificate in PEM format.
 	EncryptPrivateKey pulumi.StringPtrInput
-	// The private key of a non-SM certificate in PEM format.
+	// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 	Key pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+	KeyWo pulumi.StringPtrInput
+	// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+	KeyWoVersion pulumi.IntPtrInput
 	// Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	//
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -421,9 +452,20 @@ func (o ServiceCertificateOutput) EncryptPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringPtrOutput { return v.EncryptPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The private key of a non-SM certificate in PEM format.
+// The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
 func (o ServiceCertificateOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+func (o ServiceCertificateOutput) KeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringPtrOutput { return v.KeyWo }).(pulumi.StringPtrOutput)
+}
+
+// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+func (o ServiceCertificateOutput) KeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceCertificate) pulumi.IntPtrOutput { return v.KeyWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.

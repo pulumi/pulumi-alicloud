@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ManagedKubernetesConnections {
+public final class KubernetesConnection {
     /**
      * @return API Server Internet endpoint.
      * 
@@ -32,7 +32,7 @@ public final class ManagedKubernetesConnections {
      */
     private @Nullable String serviceDomain;
 
-    private ManagedKubernetesConnections() {}
+    private KubernetesConnection() {}
     /**
      * @return API Server Internet endpoint.
      * 
@@ -66,7 +66,7 @@ public final class ManagedKubernetesConnections {
         return new Builder();
     }
 
-    public static Builder builder(ManagedKubernetesConnections defaults) {
+    public static Builder builder(KubernetesConnection defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -76,7 +76,7 @@ public final class ManagedKubernetesConnections {
         private @Nullable String masterPublicIp;
         private @Nullable String serviceDomain;
         public Builder() {}
-        public Builder(ManagedKubernetesConnections defaults) {
+        public Builder(KubernetesConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
     	      this.apiServerIntranet = defaults.apiServerIntranet;
@@ -108,8 +108,8 @@ public final class ManagedKubernetesConnections {
             this.serviceDomain = serviceDomain;
             return this;
         }
-        public ManagedKubernetesConnections build() {
-            final var _resultValue = new ManagedKubernetesConnections();
+        public KubernetesConnection build() {
+            final var _resultValue = new KubernetesConnection();
             _resultValue.apiServerInternet = apiServerInternet;
             _resultValue.apiServerIntranet = apiServerIntranet;
             _resultValue.masterPublicIp = masterPublicIp;

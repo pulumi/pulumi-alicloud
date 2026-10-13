@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class EdgeKubernetesConnections {
+public final class ManagedKubernetesConnection {
     /**
      * @return API Server Internet endpoint.
      * 
@@ -32,7 +32,7 @@ public final class EdgeKubernetesConnections {
      */
     private @Nullable String serviceDomain;
 
-    private EdgeKubernetesConnections() {}
+    private ManagedKubernetesConnection() {}
     /**
      * @return API Server Internet endpoint.
      * 
@@ -66,7 +66,7 @@ public final class EdgeKubernetesConnections {
         return new Builder();
     }
 
-    public static Builder builder(EdgeKubernetesConnections defaults) {
+    public static Builder builder(ManagedKubernetesConnection defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -76,7 +76,7 @@ public final class EdgeKubernetesConnections {
         private @Nullable String masterPublicIp;
         private @Nullable String serviceDomain;
         public Builder() {}
-        public Builder(EdgeKubernetesConnections defaults) {
+        public Builder(ManagedKubernetesConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
     	      this.apiServerIntranet = defaults.apiServerIntranet;
@@ -108,8 +108,8 @@ public final class EdgeKubernetesConnections {
             this.serviceDomain = serviceDomain;
             return this;
         }
-        public EdgeKubernetesConnections build() {
-            final var _resultValue = new EdgeKubernetesConnections();
+        public ManagedKubernetesConnection build() {
+            final var _resultValue = new ManagedKubernetesConnection();
             _resultValue.apiServerInternet = apiServerInternet;
             _resultValue.apiServerIntranet = apiServerIntranet;
             _resultValue.masterPublicIp = masterPublicIp;

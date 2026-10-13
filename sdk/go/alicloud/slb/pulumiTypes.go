@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -420,8 +420,6 @@ func (o ListenerXForwardedForPtrOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
 }
 
 type MasterSlaveServerGroupServer struct {
-	// Determine if the server is executing. Valid value 0, 1.
-	IsBackup *int `pulumi:"isBackup"`
 	// The port used by the backend server. Valid value range: [1-65535].
 	Port int `pulumi:"port"`
 	// A list backend server ID (ECS instance ID).
@@ -446,8 +444,6 @@ type MasterSlaveServerGroupServerInput interface {
 }
 
 type MasterSlaveServerGroupServerArgs struct {
-	// Determine if the server is executing. Valid value 0, 1.
-	IsBackup pulumi.IntPtrInput `pulumi:"isBackup"`
 	// The port used by the backend server. Valid value range: [1-65535].
 	Port pulumi.IntInput `pulumi:"port"`
 	// A list backend server ID (ECS instance ID).
@@ -509,11 +505,6 @@ func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutput
 
 func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutputWithContext(ctx context.Context) MasterSlaveServerGroupServerOutput {
 	return o
-}
-
-// Determine if the server is executing. Valid value 0, 1.
-func (o MasterSlaveServerGroupServerOutput) IsBackup() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MasterSlaveServerGroupServer) *int { return v.IsBackup }).(pulumi.IntPtrOutput)
 }
 
 // The port used by the backend server. Valid value range: [1-65535].
@@ -3013,7 +3004,7 @@ type GetLoadBalancersBalancer struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -3091,7 +3082,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -3303,7 +3294,7 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -3714,7 +3705,7 @@ type GetLoadBalancersSlb struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -3777,7 +3768,7 @@ type GetLoadBalancersSlbArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -3910,7 +3901,7 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -4083,8 +4074,6 @@ func (o GetMasterSlaveServerGroupsGroupArrayOutput) Index(i pulumi.IntInput) Get
 type GetMasterSlaveServerGroupsGroupServer struct {
 	// ID of the attached ECS instance.
 	InstanceId string `pulumi:"instanceId"`
-	// (Removed from v1.63.0) Determine if the server is executing.
-	IsBackup int `pulumi:"isBackup"`
 	// The port used by the master slave server group.
 	Port int `pulumi:"port"`
 	// The server type of the attached ECS instance.
@@ -4107,8 +4096,6 @@ type GetMasterSlaveServerGroupsGroupServerInput interface {
 type GetMasterSlaveServerGroupsGroupServerArgs struct {
 	// ID of the attached ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// (Removed from v1.63.0) Determine if the server is executing.
-	IsBackup pulumi.IntInput `pulumi:"isBackup"`
 	// The port used by the master slave server group.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The server type of the attached ECS instance.
@@ -4171,11 +4158,6 @@ func (o GetMasterSlaveServerGroupsGroupServerOutput) ToGetMasterSlaveServerGroup
 // ID of the attached ECS instance.
 func (o GetMasterSlaveServerGroupsGroupServerOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) string { return v.InstanceId }).(pulumi.StringOutput)
-}
-
-// (Removed from v1.63.0) Determine if the server is executing.
-func (o GetMasterSlaveServerGroupsGroupServerOutput) IsBackup() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) int { return v.IsBackup }).(pulumi.IntOutput)
 }
 
 // The port used by the master slave server group.

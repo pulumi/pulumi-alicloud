@@ -780,7 +780,7 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of the database account. Valid values: `Normal` or `Super`.
         """

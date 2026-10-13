@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Encrypt a given plaintext with KMS. The produced ciphertext stays stable across applies. If the plaintext should be re-encrypted on each apply use the `kms.Ciphertext` data source.
 //
 // > **NOTE:** Available since v1.63.0.
+//
+// > **NOTE:** The `plaintextWo` and `plaintextWoVersion` arguments require Terraform v1.11.0 or later. When `plaintextWo` is in use, `plaintext` is empty in the state and plan.
 //
 // > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
 //
@@ -25,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,8 +65,13 @@ type Ciphertext struct {
 	EncryptionContext pulumi.StringMapOutput `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The plaintext to be encrypted which must be encoded in Base64.
-	Plaintext pulumi.StringOutput `pulumi:"plaintext"`
+	// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
+	Plaintext pulumi.StringPtrOutput `pulumi:"plaintext"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+	PlaintextWo pulumi.StringPtrOutput `pulumi:"plaintextWo"`
+	// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+	PlaintextWoVersion pulumi.IntPtrOutput `pulumi:"plaintextWoVersion"`
 }
 
 // NewCiphertext registers a new resource with the given unique name, arguments, and options.
@@ -77,14 +84,15 @@ func NewCiphertext(ctx *pulumi.Context,
 	if args.KeyId == nil {
 		return nil, errors.New("invalid value for required argument 'KeyId'")
 	}
-	if args.Plaintext == nil {
-		return nil, errors.New("invalid value for required argument 'Plaintext'")
-	}
 	if args.Plaintext != nil {
-		args.Plaintext = pulumi.ToSecret(args.Plaintext).(pulumi.StringInput)
+		args.Plaintext = pulumi.ToSecret(args.Plaintext).(pulumi.StringPtrInput)
+	}
+	if args.PlaintextWo != nil {
+		args.PlaintextWo = pulumi.ToSecret(args.PlaintextWo).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"plaintext",
+		"plaintextWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -116,8 +124,13 @@ type ciphertextState struct {
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	KeyId *string `pulumi:"keyId"`
-	// The plaintext to be encrypted which must be encoded in Base64.
+	// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
 	Plaintext *string `pulumi:"plaintext"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+	PlaintextWo *string `pulumi:"plaintextWo"`
+	// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+	PlaintextWoVersion *int `pulumi:"plaintextWoVersion"`
 }
 
 type CiphertextState struct {
@@ -127,8 +140,13 @@ type CiphertextState struct {
 	EncryptionContext pulumi.StringMapInput
 	// The globally unique ID of the CMK.
 	KeyId pulumi.StringPtrInput
-	// The plaintext to be encrypted which must be encoded in Base64.
+	// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
 	Plaintext pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+	PlaintextWo pulumi.StringPtrInput
+	// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+	PlaintextWoVersion pulumi.IntPtrInput
 }
 
 func (CiphertextState) ElementType() reflect.Type {
@@ -140,8 +158,13 @@ type ciphertextArgs struct {
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	KeyId string `pulumi:"keyId"`
-	// The plaintext to be encrypted which must be encoded in Base64.
-	Plaintext string `pulumi:"plaintext"`
+	// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
+	Plaintext *string `pulumi:"plaintext"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+	PlaintextWo *string `pulumi:"plaintextWo"`
+	// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+	PlaintextWoVersion *int `pulumi:"plaintextWoVersion"`
 }
 
 // The set of arguments for constructing a Ciphertext resource.
@@ -150,8 +173,13 @@ type CiphertextArgs struct {
 	EncryptionContext pulumi.StringMapInput
 	// The globally unique ID of the CMK.
 	KeyId pulumi.StringInput
-	// The plaintext to be encrypted which must be encoded in Base64.
-	Plaintext pulumi.StringInput
+	// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
+	Plaintext pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+	PlaintextWo pulumi.StringPtrInput
+	// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+	PlaintextWoVersion pulumi.IntPtrInput
 }
 
 func (CiphertextArgs) ElementType() reflect.Type {
@@ -256,9 +284,20 @@ func (o CiphertextOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ciphertext) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The plaintext to be encrypted which must be encoded in Base64.
-func (o CiphertextOutput) Plaintext() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ciphertext) pulumi.StringOutput { return v.Plaintext }).(pulumi.StringOutput)
+// The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
+func (o CiphertextOutput) Plaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.StringPtrOutput { return v.Plaintext }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+func (o CiphertextOutput) PlaintextWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.StringPtrOutput { return v.PlaintextWo }).(pulumi.StringPtrOutput)
+}
+
+// The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+func (o CiphertextOutput) PlaintextWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ciphertext) pulumi.IntPtrOutput { return v.PlaintextWoVersion }).(pulumi.IntPtrOutput)
 }
 
 type CiphertextArrayOutput struct{ *pulumi.OutputState }

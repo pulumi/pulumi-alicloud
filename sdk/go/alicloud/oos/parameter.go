@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,7 +16,9 @@ import (
 //
 // For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
+//
+// > **NOTE:** The `valueWo` and `valueWoVersion` arguments require Terraform v1.11.0 or later. When `valueWo` is in use, `value` reads back empty because it is not stored in the state or plan.
 //
 // ## Example Usage
 //
@@ -27,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,8 +89,13 @@ type Parameter struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the common parameter. The value must be `1` to `4096` characters in length.
+	// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
 	Value pulumi.StringOutput `pulumi:"value"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+	ValueWo pulumi.StringPtrOutput `pulumi:"valueWo"`
+	// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+	ValueWoVersion pulumi.IntPtrOutput `pulumi:"valueWoVersion"`
 }
 
 // NewParameter registers a new resource with the given unique name, arguments, and options.
@@ -104,9 +111,13 @@ func NewParameter(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	if args.Value == nil {
-		return nil, errors.New("invalid value for required argument 'Value'")
+	if args.ValueWo != nil {
+		args.ValueWo = pulumi.ToSecret(args.ValueWo).(pulumi.StringPtrInput)
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"valueWo",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Parameter
 	err := ctx.RegisterResource("alicloud:oos/parameter:Parameter", name, args, &resource, opts...)
@@ -146,8 +157,13 @@ type parameterState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type *string `pulumi:"type"`
-	// The value of the common parameter. The value must be `1` to `4096` characters in length.
+	// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
 	Value *string `pulumi:"value"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+	ValueWo *string `pulumi:"valueWo"`
+	// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+	ValueWoVersion *int `pulumi:"valueWoVersion"`
 }
 
 type ParameterState struct {
@@ -167,8 +183,13 @@ type ParameterState struct {
 	Tags pulumi.StringMapInput
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringPtrInput
-	// The value of the common parameter. The value must be `1` to `4096` characters in length.
+	// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
 	Value pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+	ValueWo pulumi.StringPtrInput
+	// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+	ValueWoVersion pulumi.IntPtrInput
 }
 
 func (ParameterState) ElementType() reflect.Type {
@@ -192,8 +213,13 @@ type parameterArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type string `pulumi:"type"`
-	// The value of the common parameter. The value must be `1` to `4096` characters in length.
-	Value string `pulumi:"value"`
+	// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
+	Value *string `pulumi:"value"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+	ValueWo *string `pulumi:"valueWo"`
+	// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+	ValueWoVersion *int `pulumi:"valueWoVersion"`
 }
 
 // The set of arguments for constructing a Parameter resource.
@@ -214,8 +240,13 @@ type ParameterArgs struct {
 	Tags pulumi.StringMapInput
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringInput
-	// The value of the common parameter. The value must be `1` to `4096` characters in length.
-	Value pulumi.StringInput
+	// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
+	Value pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+	ValueWo pulumi.StringPtrInput
+	// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+	ValueWoVersion pulumi.IntPtrInput
 }
 
 func (ParameterArgs) ElementType() reflect.Type {
@@ -339,9 +370,20 @@ func (o ParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the common parameter. The value must be `1` to `4096` characters in length.
+// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
 func (o ParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+func (o ParameterOutput) ValueWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringPtrOutput { return v.ValueWo }).(pulumi.StringPtrOutput)
+}
+
+// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+func (o ParameterOutput) ValueWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.IntPtrOutput { return v.ValueWoVersion }).(pulumi.IntPtrOutput)
 }
 
 type ParameterArrayOutput struct{ *pulumi.OutputState }

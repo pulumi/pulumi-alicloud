@@ -14,10 +14,10 @@ import java.util.Objects;
 @CustomType
 public final class GetReposRepo {
     /**
-     * @return The repository domain list.
+     * @return A list of repository domain:
      * 
      */
-    private GetReposRepoDomainList domainList;
+    private List<GetReposRepoDomainList> domainLists;
     /**
      * @return Name of container registry namespace.
      * 
@@ -46,11 +46,11 @@ public final class GetReposRepo {
 
     private GetReposRepo() {}
     /**
-     * @return The repository domain list.
+     * @return A list of repository domain:
      * 
      */
-    public GetReposRepoDomainList domainList() {
-        return this.domainList;
+    public List<GetReposRepoDomainList> domainLists() {
+        return this.domainLists;
     }
     /**
      * @return Name of container registry namespace.
@@ -97,7 +97,7 @@ public final class GetReposRepo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetReposRepoDomainList domainList;
+        private List<GetReposRepoDomainList> domainLists;
         private String name;
         private String namespace;
         private String repoType;
@@ -106,7 +106,7 @@ public final class GetReposRepo {
         public Builder() {}
         public Builder(GetReposRepo defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.domainList = defaults.domainList;
+    	      this.domainLists = defaults.domainLists;
     	      this.name = defaults.name;
     	      this.namespace = defaults.namespace;
     	      this.repoType = defaults.repoType;
@@ -115,12 +115,15 @@ public final class GetReposRepo {
         }
 
         @CustomType.Setter
-        public Builder domainList(GetReposRepoDomainList domainList) {
-            if (domainList == null) {
-              throw new MissingRequiredPropertyException("GetReposRepo", "domainList");
+        public Builder domainLists(List<GetReposRepoDomainList> domainLists) {
+            if (domainLists == null) {
+              throw new MissingRequiredPropertyException("GetReposRepo", "domainLists");
             }
-            this.domainList = domainList;
+            this.domainLists = domainLists;
             return this;
+        }
+        public Builder domainLists(GetReposRepoDomainList... domainLists) {
+            return domainLists(List.of(domainLists));
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -167,7 +170,7 @@ public final class GetReposRepo {
         }
         public GetReposRepo build() {
             final var _resultValue = new GetReposRepo();
-            _resultValue.domainList = domainList;
+            _resultValue.domainLists = domainLists;
             _resultValue.name = name;
             _resultValue.namespace = namespace;
             _resultValue.repoType = repoType;

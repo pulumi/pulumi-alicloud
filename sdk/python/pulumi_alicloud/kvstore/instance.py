@@ -1204,6 +1204,14 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[_builtins.str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[_builtins.str] connection_string: Indicates whether the address is a private endpoint.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[_builtins.str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[_builtins.str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -1587,6 +1595,14 @@ class _InstanceState:
     def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the address is a private endpoint.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "connection_string")
 
@@ -3005,6 +3021,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[_builtins.str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[_builtins.str] connection_string: Indicates whether the address is a private endpoint.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[_builtins.str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[_builtins.str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -3254,6 +3278,14 @@ class Instance(pulumi.CustomResource):
     def connection_string(self) -> pulumi.Output[_builtins.str]:
         """
         Indicates whether the address is a private endpoint.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "connection_string")
 

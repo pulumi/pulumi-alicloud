@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,10 +42,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -133,10 +133,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -234,10 +234,10 @@ type EdgeKubernetes struct {
 	Addons EdgeKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority EdgeKubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
+	CertificateAuthorities EdgeKubernetesCertificateAuthorityArrayOutput `pulumi:"certificateAuthorities"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -256,8 +256,8 @@ type EdgeKubernetes struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// (Map) Map of kubernetes cluster connection information.
-	Connections EdgeKubernetesConnectionsOutput `pulumi:"connections"`
+	// (List) A list of kubernetes cluster connection information.
+	Connections EdgeKubernetesConnectionArrayOutput `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Install cloud monitor agent on ECS. default: `true`.
@@ -301,8 +301,8 @@ type EdgeKubernetes struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
-	Runtime EdgeKubernetesRuntimePtrOutput `pulumi:"runtime"`
+	// A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+	Runtimes EdgeKubernetesRuntimeArrayOutput `pulumi:"runtimes"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -311,6 +311,7 @@ type EdgeKubernetes struct {
 	//
 	// *Network params*
 	SkipSetCertificateAuthority pulumi.BoolPtrOutput `pulumi:"skipSetCertificateAuthority"`
+	SlbId                       pulumi.StringOutput  `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -403,10 +404,10 @@ type edgeKubernetesState struct {
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority *EdgeKubernetesCertificateAuthority `pulumi:"certificateAuthority"`
+	CertificateAuthorities []EdgeKubernetesCertificateAuthority `pulumi:"certificateAuthorities"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -425,8 +426,8 @@ type edgeKubernetesState struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// (Map) Map of kubernetes cluster connection information.
-	Connections *EdgeKubernetesConnections `pulumi:"connections"`
+	// (List) A list of kubernetes cluster connection information.
+	Connections []EdgeKubernetesConnection `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Install cloud monitor agent on ECS. default: `true`.
@@ -470,8 +471,8 @@ type edgeKubernetesState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
-	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
+	// A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+	Runtimes []EdgeKubernetesRuntime `pulumi:"runtimes"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -479,7 +480,8 @@ type edgeKubernetesState struct {
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
 	// *Network params*
-	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
+	SkipSetCertificateAuthority *bool   `pulumi:"skipSetCertificateAuthority"`
+	SlbId                       *string `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -527,10 +529,10 @@ type EdgeKubernetesState struct {
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringPtrInput
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority EdgeKubernetesCertificateAuthorityPtrInput
+	CertificateAuthorities EdgeKubernetesCertificateAuthorityArrayInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -549,8 +551,8 @@ type EdgeKubernetesState struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec pulumi.StringPtrInput
-	// (Map) Map of kubernetes cluster connection information.
-	Connections EdgeKubernetesConnectionsPtrInput
+	// (List) A list of kubernetes cluster connection information.
+	Connections EdgeKubernetesConnectionArrayInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Install cloud monitor agent on ECS. default: `true`.
@@ -594,8 +596,8 @@ type EdgeKubernetesState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
-	Runtime EdgeKubernetesRuntimePtrInput
+	// A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+	Runtimes EdgeKubernetesRuntimeArrayInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -604,6 +606,7 @@ type EdgeKubernetesState struct {
 	//
 	// *Network params*
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
+	SlbId                       pulumi.StringPtrInput
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -714,8 +717,8 @@ type edgeKubernetesArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
-	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
+	// A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+	Runtimes []EdgeKubernetesRuntime `pulumi:"runtimes"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -821,8 +824,8 @@ type EdgeKubernetesArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
-	Runtime EdgeKubernetesRuntimePtrInput
+	// A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+	Runtimes EdgeKubernetesRuntimeArrayInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -960,11 +963,11 @@ func (o EdgeKubernetesOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 //
 // Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-func (o EdgeKubernetesOutput) CertificateAuthority() EdgeKubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(EdgeKubernetesCertificateAuthorityOutput)
+func (o EdgeKubernetesOutput) CertificateAuthorities() EdgeKubernetesCertificateAuthorityArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesCertificateAuthorityArrayOutput { return v.CertificateAuthorities }).(EdgeKubernetesCertificateAuthorityArrayOutput)
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -997,9 +1000,9 @@ func (o EdgeKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// (Map) Map of kubernetes cluster connection information.
-func (o EdgeKubernetesOutput) Connections() EdgeKubernetesConnectionsOutput {
-	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesConnectionsOutput { return v.Connections }).(EdgeKubernetesConnectionsOutput)
+// (List) A list of kubernetes cluster connection information.
+func (o EdgeKubernetesOutput) Connections() EdgeKubernetesConnectionArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesConnectionArrayOutput { return v.Connections }).(EdgeKubernetesConnectionArrayOutput)
 }
 
 // Whether to enable cluster deletion protection.
@@ -1099,9 +1102,9 @@ func (o EdgeKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
-func (o EdgeKubernetesOutput) Runtime() EdgeKubernetesRuntimePtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesRuntimePtrOutput { return v.Runtime }).(EdgeKubernetesRuntimePtrOutput)
+// A list of runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+func (o EdgeKubernetesOutput) Runtimes() EdgeKubernetesRuntimeArrayOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesRuntimeArrayOutput { return v.Runtimes }).(EdgeKubernetesRuntimeArrayOutput)
 }
 
 // The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -1119,6 +1122,10 @@ func (o EdgeKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 // *Network params*
 func (o EdgeKubernetesOutput) SkipSetCertificateAuthority() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.BoolPtrOutput { return v.SkipSetCertificateAuthority }).(pulumi.BoolPtrOutput)
+}
+
+func (o EdgeKubernetesOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
 }
 
 // The public ip of load balancer.

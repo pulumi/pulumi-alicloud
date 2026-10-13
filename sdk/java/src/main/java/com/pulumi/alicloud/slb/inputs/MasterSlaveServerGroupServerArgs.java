@@ -18,21 +18,6 @@ public final class MasterSlaveServerGroupServerArgs extends com.pulumi.resources
     public static final MasterSlaveServerGroupServerArgs Empty = new MasterSlaveServerGroupServerArgs();
 
     /**
-     * Determine if the server is executing. Valid value 0, 1.
-     * 
-     */
-    @Import(name="isBackup")
-    private @Nullable Output<Integer> isBackup;
-
-    /**
-     * @return Determine if the server is executing. Valid value 0, 1.
-     * 
-     */
-    public Optional<Output<Integer>> isBackup() {
-        return Optional.ofNullable(this.isBackup);
-    }
-
-    /**
      * The port used by the backend server. Valid value range: [1-65535].
      * 
      */
@@ -110,7 +95,6 @@ public final class MasterSlaveServerGroupServerArgs extends com.pulumi.resources
     private MasterSlaveServerGroupServerArgs() {}
 
     private MasterSlaveServerGroupServerArgs(MasterSlaveServerGroupServerArgs $) {
-        this.isBackup = $.isBackup;
         this.port = $.port;
         this.serverId = $.serverId;
         this.serverType = $.serverType;
@@ -134,27 +118,6 @@ public final class MasterSlaveServerGroupServerArgs extends com.pulumi.resources
 
         public Builder(MasterSlaveServerGroupServerArgs defaults) {
             $ = new MasterSlaveServerGroupServerArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param isBackup Determine if the server is executing. Valid value 0, 1.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isBackup(@Nullable Output<Integer> isBackup) {
-            $.isBackup = isBackup;
-            return this;
-        }
-
-        /**
-         * @param isBackup Determine if the server is executing. Valid value 0, 1.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isBackup(Integer isBackup) {
-            return isBackup(Output.of(isBackup));
         }
 
         /**

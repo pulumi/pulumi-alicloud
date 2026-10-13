@@ -1,5 +1,5 @@
 provider: alicloud
-major-version: 3
+major-version: 4
 lint: false
 parallel: 1
 esc:

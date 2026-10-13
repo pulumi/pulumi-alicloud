@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,8 @@ import javax.annotation.Nullable;
  * For information about GPDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/86924.htm).
  * 
  * &gt; **NOTE:** Available since v1.142.0.
+ * 
+ * &gt; **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
  * 
  * ## Example Usage
  * 
@@ -145,18 +148,48 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * AccountPassword
+     * The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
-    private Output<String> accountPassword;
+    private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return AccountPassword
+     * @return The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
      * 
      */
-    public Output<String> accountPassword() {
-        return this.accountPassword;
+    public Output<Optional<String>> accountPassword() {
+        return Codegen.optional(this.accountPassword);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+     * 
+     */
+    @Export(name="accountPasswordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+     * 
+     */
+    public Output<Optional<String>> accountPasswordWo() {
+        return Codegen.optional(this.accountPasswordWo);
+    }
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    @Export(name="accountPasswordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> accountPasswordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> accountPasswordWoVersion() {
+        return Codegen.optional(this.accountPasswordWoVersion);
     }
     /**
      * Account type. The value range is as follows:
@@ -269,7 +302,8 @@ public class Account extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "accountPassword"
+                "accountPassword",
+                "accountPasswordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

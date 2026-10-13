@@ -22,9 +22,9 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string Price;
         /// <summary>
-        /// DB Instance available storage range.
+        /// A list of DB Instance available storage range.
         /// </summary>
-        public readonly Outputs.GetInstanceClassesInstanceClassStorageRangeResult StorageRange;
+        public readonly ImmutableArray<Outputs.GetInstanceClassesInstanceClassStorageRangeResult> StorageRanges;
         /// <summary>
         /// A list of Zone to launch the DB instance.
         /// </summary>
@@ -36,13 +36,13 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string price,
 
-            Outputs.GetInstanceClassesInstanceClassStorageRangeResult storageRange,
+            ImmutableArray<Outputs.GetInstanceClassesInstanceClassStorageRangeResult> storageRanges,
 
             ImmutableArray<Outputs.GetInstanceClassesInstanceClassZoneIdResult> zoneIds)
         {
             InstanceClass = instanceClass;
             Price = price;
-            StorageRange = storageRange;
+            StorageRanges = storageRanges;
             ZoneIds = zoneIds;
         }
     }

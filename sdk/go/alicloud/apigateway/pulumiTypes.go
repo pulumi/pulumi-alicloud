@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2081,45 +2081,29 @@ func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockOutput)
 }
 
-func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
-	return i.ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockOutput).ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx)
-}
-
-// InstanceToConnectVpcIpBlockPtrInput is an input type that accepts InstanceToConnectVpcIpBlockArgs, InstanceToConnectVpcIpBlockPtr and InstanceToConnectVpcIpBlockPtrOutput values.
-// You can construct a concrete instance of `InstanceToConnectVpcIpBlockPtrInput` via:
+// InstanceToConnectVpcIpBlockArrayInput is an input type that accepts InstanceToConnectVpcIpBlockArray and InstanceToConnectVpcIpBlockArrayOutput values.
+// You can construct a concrete instance of `InstanceToConnectVpcIpBlockArrayInput` via:
 //
-//	        InstanceToConnectVpcIpBlockArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceToConnectVpcIpBlockPtrInput interface {
+//	InstanceToConnectVpcIpBlockArray{ InstanceToConnectVpcIpBlockArgs{...} }
+type InstanceToConnectVpcIpBlockArrayInput interface {
 	pulumi.Input
 
-	ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput
-	ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Context) InstanceToConnectVpcIpBlockPtrOutput
+	ToInstanceToConnectVpcIpBlockArrayOutput() InstanceToConnectVpcIpBlockArrayOutput
+	ToInstanceToConnectVpcIpBlockArrayOutputWithContext(context.Context) InstanceToConnectVpcIpBlockArrayOutput
 }
 
-type instanceToConnectVpcIpBlockPtrType InstanceToConnectVpcIpBlockArgs
+type InstanceToConnectVpcIpBlockArray []InstanceToConnectVpcIpBlockInput
 
-func InstanceToConnectVpcIpBlockPtr(v *InstanceToConnectVpcIpBlockArgs) InstanceToConnectVpcIpBlockPtrInput {
-	return (*instanceToConnectVpcIpBlockPtrType)(v)
+func (InstanceToConnectVpcIpBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceToConnectVpcIpBlock)(nil)).Elem()
 }
 
-func (*instanceToConnectVpcIpBlockPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceToConnectVpcIpBlock)(nil)).Elem()
+func (i InstanceToConnectVpcIpBlockArray) ToInstanceToConnectVpcIpBlockArrayOutput() InstanceToConnectVpcIpBlockArrayOutput {
+	return i.ToInstanceToConnectVpcIpBlockArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceToConnectVpcIpBlockPtrType) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
-	return i.ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceToConnectVpcIpBlockPtrType) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockPtrOutput)
+func (i InstanceToConnectVpcIpBlockArray) ToInstanceToConnectVpcIpBlockArrayOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockArrayOutput)
 }
 
 type InstanceToConnectVpcIpBlockOutput struct{ *pulumi.OutputState }
@@ -2134,16 +2118,6 @@ func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockOutput()
 
 func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockOutput {
 	return o
-}
-
-func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
-	return o.ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceToConnectVpcIpBlock) *InstanceToConnectVpcIpBlock {
-		return &v
-	}).(InstanceToConnectVpcIpBlockPtrOutput)
 }
 
 // The CIDR block of the VSwitch.
@@ -2166,68 +2140,24 @@ func (o InstanceToConnectVpcIpBlockOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceToConnectVpcIpBlock) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
-type InstanceToConnectVpcIpBlockPtrOutput struct{ *pulumi.OutputState }
+type InstanceToConnectVpcIpBlockArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceToConnectVpcIpBlockPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceToConnectVpcIpBlock)(nil)).Elem()
+func (InstanceToConnectVpcIpBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceToConnectVpcIpBlock)(nil)).Elem()
 }
 
-func (o InstanceToConnectVpcIpBlockPtrOutput) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
+func (o InstanceToConnectVpcIpBlockArrayOutput) ToInstanceToConnectVpcIpBlockArrayOutput() InstanceToConnectVpcIpBlockArrayOutput {
 	return o
 }
 
-func (o InstanceToConnectVpcIpBlockPtrOutput) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
+func (o InstanceToConnectVpcIpBlockArrayOutput) ToInstanceToConnectVpcIpBlockArrayOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockArrayOutput {
 	return o
 }
 
-func (o InstanceToConnectVpcIpBlockPtrOutput) Elem() InstanceToConnectVpcIpBlockOutput {
-	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) InstanceToConnectVpcIpBlock {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceToConnectVpcIpBlock
-		return ret
+func (o InstanceToConnectVpcIpBlockArrayOutput) Index(i pulumi.IntInput) InstanceToConnectVpcIpBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceToConnectVpcIpBlock {
+		return vs[0].([]InstanceToConnectVpcIpBlock)[vs[1].(int)]
 	}).(InstanceToConnectVpcIpBlockOutput)
-}
-
-// The CIDR block of the VSwitch.
-func (o InstanceToConnectVpcIpBlockPtrOutput) CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the IP block is customized.
-func (o InstanceToConnectVpcIpBlockPtrOutput) Customized() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Customized
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The VSwitch ID.
-func (o InstanceToConnectVpcIpBlockPtrOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VswitchId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The zone ID.
-func (o InstanceToConnectVpcIpBlockPtrOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ZoneId
-	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceZoneVswitchSecurityGroup struct {
@@ -3481,7 +3411,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUserLogConfigInput)(nil)).Elem(), GroupUserLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUserLogConfigPtrInput)(nil)).Elem(), GroupUserLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockPtrInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockArrayInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneVswitchSecurityGroupInput)(nil)).Elem(), InstanceZoneVswitchSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneVswitchSecurityGroupArrayInput)(nil)).Elem(), InstanceZoneVswitchSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApisApiInput)(nil)).Elem(), GetApisApiArgs{})
@@ -3519,7 +3449,7 @@ func init() {
 	pulumi.RegisterOutputType(GroupUserLogConfigOutput{})
 	pulumi.RegisterOutputType(GroupUserLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockOutput{})
-	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockPtrOutput{})
+	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZoneVswitchSecurityGroupOutput{})
 	pulumi.RegisterOutputType(InstanceZoneVswitchSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetApisApiOutput{})

@@ -94,6 +94,12 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string> DiskReplicaGroupName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable replication time control. Default value: false.
+        /// </summary>
+        [Output("enableRtc")]
+        public Output<bool> EnableRtc { get; private set; } = null!;
+
+        /// <summary>
         /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         /// </summary>
         [Output("groupName")]
@@ -131,7 +137,7 @@ namespace Pulumi.AliCloud.Ebs
         /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Output("rpo")]
-        public Output<int?> Rpo { get; private set; } = null!;
+        public Output<int> Rpo { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the region to which the production site belongs.
@@ -246,6 +252,12 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Input("diskReplicaGroupName")]
         public Input<string>? DiskReplicaGroupName { get; set; }
+
+        /// <summary>
+        /// Whether to enable replication time control. Default value: false.
+        /// </summary>
+        [Input("enableRtc")]
+        public Input<bool>? EnableRtc { get; set; }
 
         /// <summary>
         /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -374,6 +386,12 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Input("diskReplicaGroupName")]
         public Input<string>? DiskReplicaGroupName { get; set; }
+
+        /// <summary>
+        /// Whether to enable replication time control. Default value: false.
+        /// </summary>
+        [Input("enableRtc")]
+        public Input<bool>? EnableRtc { get; set; }
 
         /// <summary>
         /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.

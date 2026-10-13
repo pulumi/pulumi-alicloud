@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// The type of the database account. Valid values: `Normal` or `Super`.
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>

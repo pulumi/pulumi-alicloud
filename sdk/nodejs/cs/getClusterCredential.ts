@@ -66,9 +66,9 @@ export interface GetClusterCredentialArgs {
  */
 export interface GetClusterCredentialResult {
     /**
-     * (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+     * (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
      */
-    readonly certificateAuthority: outputs.cs.GetClusterCredentialCertificateAuthority;
+    readonly certificateAuthorities: outputs.cs.GetClusterCredentialCertificateAuthority[];
     /**
      * The id of target cluster.
      */

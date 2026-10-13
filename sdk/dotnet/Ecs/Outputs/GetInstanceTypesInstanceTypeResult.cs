@@ -18,9 +18,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AvailabilityZones;
         /// <summary>
-        /// The burstable instance attribution.
+        /// A list of the burstable instance attribution.
         /// </summary>
-        public readonly Outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult BurstableInstance;
+        public readonly ImmutableArray<Outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult> BurstableInstances;
         /// <summary>
         /// Filter the results to a specific number of cpu cores.
         /// </summary>
@@ -46,17 +46,17 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Family;
         /// <summary>
-        /// The GPU attribution of an instance type:
+        /// A list of GPU attributes of an instance type:
         /// </summary>
-        public readonly Outputs.GetInstanceTypesInstanceTypeGpuResult Gpu;
+        public readonly ImmutableArray<Outputs.GetInstanceTypesInstanceTypeGpusResult> Gpus;
         /// <summary>
         /// ID of the instance type.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Local storage of an instance type.
+        /// A list of local storage of an instance type.
         /// </summary>
-        public readonly Outputs.GetInstanceTypesInstanceTypeLocalStorageResult LocalStorage;
+        public readonly ImmutableArray<Outputs.GetInstanceTypesInstanceTypeLocalStorageResult> LocalStorages;
         /// <summary>
         /// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         private GetInstanceTypesInstanceTypeResult(
             ImmutableArray<string> availabilityZones,
 
-            Outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult burstableInstance,
+            ImmutableArray<Outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult> burstableInstances,
 
             int cpuCoreCount,
 
@@ -104,11 +104,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string family,
 
-            Outputs.GetInstanceTypesInstanceTypeGpuResult gpu,
+            ImmutableArray<Outputs.GetInstanceTypesInstanceTypeGpusResult> gpus,
 
             string id,
 
-            Outputs.GetInstanceTypesInstanceTypeLocalStorageResult localStorage,
+            ImmutableArray<Outputs.GetInstanceTypesInstanceTypeLocalStorageResult> localStorages,
 
             int maximumQueueNumberPerEni,
 
@@ -125,16 +125,16 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             int totalEniQueueQuantity)
         {
             AvailabilityZones = availabilityZones;
-            BurstableInstance = burstableInstance;
+            BurstableInstances = burstableInstances;
             CpuCoreCount = cpuCoreCount;
             EniAmount = eniAmount;
             EniIpv6AddressQuantity = eniIpv6AddressQuantity;
             EniPrivateIpAddressQuantity = eniPrivateIpAddressQuantity;
             EniQuantity = eniQuantity;
             Family = family;
-            Gpu = gpu;
+            Gpus = gpus;
             Id = id;
-            LocalStorage = localStorage;
+            LocalStorages = localStorages;
             MaximumQueueNumberPerEni = maximumQueueNumberPerEni;
             MemorySize = memorySize;
             NvmeSupport = nvmeSupport;

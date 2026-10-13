@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -257,10 +257,8 @@ type GetPoliciesPolicy struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the policy. Valid values: `System` and `Custom`.
 	Type string `pulumi:"type"`
-	// The time when the policy was modified.
+	// The time when the policy was updated.
 	UpdateDate string `pulumi:"updateDate"`
-	// The name of the RAM user.
-	UserName string `pulumi:"userName"`
 	// (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
 	VersionId string `pulumi:"versionId"`
 }
@@ -299,10 +297,8 @@ type GetPoliciesPolicyArgs struct {
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The type of the policy. Valid values: `System` and `Custom`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The time when the policy was modified.
+	// The time when the policy was updated.
 	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
-	// The name of the RAM user.
-	UserName pulumi.StringInput `pulumi:"userName"`
 	// (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
 	VersionId pulumi.StringInput `pulumi:"versionId"`
 }
@@ -413,14 +409,9 @@ func (o GetPoliciesPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The time when the policy was modified.
+// The time when the policy was updated.
 func (o GetPoliciesPolicyOutput) UpdateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
-}
-
-// The name of the RAM user.
-func (o GetPoliciesPolicyOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UserName }).(pulumi.StringOutput)
 }
 
 // (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
@@ -1402,8 +1393,6 @@ type GetUsersUser struct {
 	CreateDate string `pulumi:"createDate"`
 	// The original id is user's name, but it is user id in 1.37.0+.
 	Id string `pulumi:"id"`
-	// (Removed) Last login date of the user. Removed from version 1.79.0.
-	LastLoginDate string `pulumi:"lastLoginDate"`
 	// Name of the user.
 	Name string `pulumi:"name"`
 }
@@ -1424,8 +1413,6 @@ type GetUsersUserArgs struct {
 	CreateDate pulumi.StringInput `pulumi:"createDate"`
 	// The original id is user's name, but it is user id in 1.37.0+.
 	Id pulumi.StringInput `pulumi:"id"`
-	// (Removed) Last login date of the user. Removed from version 1.79.0.
-	LastLoginDate pulumi.StringInput `pulumi:"lastLoginDate"`
 	// Name of the user.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -1489,11 +1476,6 @@ func (o GetUsersUserOutput) CreateDate() pulumi.StringOutput {
 // The original id is user's name, but it is user id in 1.37.0+.
 func (o GetUsersUserOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// (Removed) Last login date of the user. Removed from version 1.79.0.
-func (o GetUsersUserOutput) LastLoginDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.LastLoginDate }).(pulumi.StringOutput)
 }
 
 // Name of the user.

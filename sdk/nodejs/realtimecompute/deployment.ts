@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * });
  * const createDeployment9 = new alicloud.realtimecompute.Deployment("create_Deployment9", {
  *     deploymentName: "tf-example-deployment-sql-56",
- *     engineVersion: "vvr-8.0.10-flink-1.17",
+ *     engineVersion: "vvr-8.0.11-flink-1.17",
  *     resourceId: defaultVvpInstance.resourceId,
  *     executionMode: "STREAMING",
  *     deploymentTarget: {

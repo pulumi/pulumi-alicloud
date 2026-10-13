@@ -47,10 +47,6 @@ public final class GetPoliciesResult {
      * 
      */
     private @Nullable String type;
-    /**
-     * @return (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
-     * 
-     */
     private @Nullable String userName;
 
     private GetPoliciesResult() {}
@@ -107,10 +103,6 @@ public final class GetPoliciesResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
-    /**
-     * @return (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

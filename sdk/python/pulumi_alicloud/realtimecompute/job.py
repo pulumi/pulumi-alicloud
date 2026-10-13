@@ -384,7 +384,7 @@ class Job(pulumi.CustomResource):
             zone_id=default_switch.zone_id)
         create_deployment9 = alicloud.realtimecompute.Deployment("create_Deployment9",
             deployment_name="tf-example-deployment-sql-56",
-            engine_version="vvr-8.0.10-flink-1.17",
+            engine_version="vvr-8.0.11-flink-1.17",
             resource_id=default_vvp_instance.resource_id,
             execution_mode="STREAMING",
             deployment_target={
@@ -496,7 +496,7 @@ class Job(pulumi.CustomResource):
             zone_id=default_switch.zone_id)
         create_deployment9 = alicloud.realtimecompute.Deployment("create_Deployment9",
             deployment_name="tf-example-deployment-sql-56",
-            engine_version="vvr-8.0.10-flink-1.17",
+            engine_version="vvr-8.0.11-flink-1.17",
             resource_id=default_vvp_instance.resource_id,
             execution_mode="STREAMING",
             deployment_target={

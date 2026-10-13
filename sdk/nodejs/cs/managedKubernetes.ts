@@ -416,11 +416,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public readonly autoMode: pulumi.Output<outputs.cs.ManagedKubernetesAutoMode | undefined>;
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    declare public /*out*/ readonly certificateAuthority: pulumi.Output<outputs.cs.ManagedKubernetesCertificateAuthority>;
+    declare public /*out*/ readonly certificateAuthorities: pulumi.Output<outputs.cs.ManagedKubernetesCertificateAuthority[]>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
@@ -457,9 +457,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public readonly clusterSpec: pulumi.Output<string>;
     /**
-     * Map of kubernetes cluster connection information.
+     * A list of kubernetes cluster connection information.
      */
-    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.ManagedKubernetesConnections>;
+    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.ManagedKubernetesConnection[]>;
     /**
      * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
      */
@@ -692,7 +692,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["apiAudiences"] = state?.apiAudiences;
             resourceInputs["auditLogConfig"] = state?.auditLogConfig;
             resourceInputs["autoMode"] = state?.autoMode;
-            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["certificateAuthorities"] = state?.certificateAuthorities;
             resourceInputs["clientCert"] = state?.clientCert;
             resourceInputs["clientKey"] = state?.clientKey;
             resourceInputs["clusterCaCert"] = state?.clusterCaCert;
@@ -793,7 +793,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["vswitchIds"] = args?.vswitchIds;
             resourceInputs["workerVswitchIds"] = args?.workerVswitchIds;
             resourceInputs["zoneIds"] = args?.zoneIds;
-            resourceInputs["certificateAuthority"] = undefined /*out*/;
+            resourceInputs["certificateAuthorities"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["natGatewayId"] = undefined /*out*/;
             resourceInputs["rrsaMetadata"] = undefined /*out*/;
@@ -829,11 +829,11 @@ export interface ManagedKubernetesState {
      */
     autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode | undefined>;
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    certificateAuthority?: pulumi.Input<inputs.cs.ManagedKubernetesCertificateAuthority | undefined>;
+    certificateAuthorities?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesCertificateAuthority>[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
@@ -870,9 +870,9 @@ export interface ManagedKubernetesState {
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
-     * Map of kubernetes cluster connection information.
+     * A list of kubernetes cluster connection information.
      */
-    connections?: pulumi.Input<inputs.cs.ManagedKubernetesConnections | undefined>;
+    connections?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesConnection>[] | undefined>;
     /**
      * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
      */

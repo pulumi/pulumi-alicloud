@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Sddp
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
     ///         VswitchId = defaultSwitch.Id,

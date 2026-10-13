@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,9 +27,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -105,6 +105,8 @@ type EngineNamespace struct {
 	AcceptLanguage pulumi.StringPtrOutput `pulumi:"acceptLanguage"`
 	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// (Available since v1.279.1) The current number of configurations in the namespace.
+	ConfigCount pulumi.IntOutput `pulumi:"configCount"`
 	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The description of the namespace.
@@ -115,6 +117,14 @@ type EngineNamespace struct {
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// The name of the Engine Namespace.
 	NamespaceShowName pulumi.StringOutput `pulumi:"namespaceShowName"`
+	// (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+	Quota pulumi.IntOutput `pulumi:"quota"`
+	// (Available since v1.279.1) The current number of services registered to the namespace.
+	ServiceCount pulumi.StringOutput `pulumi:"serviceCount"`
+	// (Available since v1.279.1) The source type of the namespace.
+	SourceType pulumi.StringOutput `pulumi:"sourceType"`
+	// (Available since v1.279.1) The type of the namespace.
+	Type pulumi.IntOutput `pulumi:"type"`
 }
 
 // NewEngineNamespace registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +164,8 @@ type engineNamespaceState struct {
 	AcceptLanguage *string `pulumi:"acceptLanguage"`
 	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 	ClusterId *string `pulumi:"clusterId"`
+	// (Available since v1.279.1) The current number of configurations in the namespace.
+	ConfigCount *int `pulumi:"configCount"`
 	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
 	InstanceId *string `pulumi:"instanceId"`
 	// The description of the namespace.
@@ -164,6 +176,14 @@ type engineNamespaceState struct {
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The name of the Engine Namespace.
 	NamespaceShowName *string `pulumi:"namespaceShowName"`
+	// (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+	Quota *int `pulumi:"quota"`
+	// (Available since v1.279.1) The current number of services registered to the namespace.
+	ServiceCount *string `pulumi:"serviceCount"`
+	// (Available since v1.279.1) The source type of the namespace.
+	SourceType *string `pulumi:"sourceType"`
+	// (Available since v1.279.1) The type of the namespace.
+	Type *int `pulumi:"type"`
 }
 
 type EngineNamespaceState struct {
@@ -171,6 +191,8 @@ type EngineNamespaceState struct {
 	AcceptLanguage pulumi.StringPtrInput
 	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 	ClusterId pulumi.StringPtrInput
+	// (Available since v1.279.1) The current number of configurations in the namespace.
+	ConfigCount pulumi.IntPtrInput
 	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
 	InstanceId pulumi.StringPtrInput
 	// The description of the namespace.
@@ -181,6 +203,14 @@ type EngineNamespaceState struct {
 	NamespaceId pulumi.StringPtrInput
 	// The name of the Engine Namespace.
 	NamespaceShowName pulumi.StringPtrInput
+	// (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+	Quota pulumi.IntPtrInput
+	// (Available since v1.279.1) The current number of services registered to the namespace.
+	ServiceCount pulumi.StringPtrInput
+	// (Available since v1.279.1) The source type of the namespace.
+	SourceType pulumi.StringPtrInput
+	// (Available since v1.279.1) The type of the namespace.
+	Type pulumi.IntPtrInput
 }
 
 func (EngineNamespaceState) ElementType() reflect.Type {
@@ -319,6 +349,11 @@ func (o EngineNamespaceOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// (Available since v1.279.1) The current number of configurations in the namespace.
+func (o EngineNamespaceOutput) ConfigCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.IntOutput { return v.ConfigCount }).(pulumi.IntOutput)
+}
+
 // The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
 func (o EngineNamespaceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
@@ -339,6 +374,26 @@ func (o EngineNamespaceOutput) NamespaceId() pulumi.StringOutput {
 // The name of the Engine Namespace.
 func (o EngineNamespaceOutput) NamespaceShowName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.NamespaceShowName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+func (o EngineNamespaceOutput) Quota() pulumi.IntOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.IntOutput { return v.Quota }).(pulumi.IntOutput)
+}
+
+// (Available since v1.279.1) The current number of services registered to the namespace.
+func (o EngineNamespaceOutput) ServiceCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.ServiceCount }).(pulumi.StringOutput)
+}
+
+// (Available since v1.279.1) The source type of the namespace.
+func (o EngineNamespaceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// (Available since v1.279.1) The type of the namespace.
+func (o EngineNamespaceOutput) Type() pulumi.IntOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.IntOutput { return v.Type }).(pulumi.IntOutput)
 }
 
 type EngineNamespaceArrayOutput struct{ *pulumi.OutputState }

@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
  *
- * > **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `clusterSpec`.
- *
  * > **NOTE:** From version 1.177.0+, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId` are deprecated.
  * We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
  *
@@ -257,11 +255,11 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     declare public readonly apiAudiences: pulumi.Output<string[] | undefined>;
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    declare public /*out*/ readonly certificateAuthority: pulumi.Output<outputs.cs.KubernetesCertificateAuthority>;
+    declare public /*out*/ readonly certificateAuthorities: pulumi.Output<outputs.cs.KubernetesCertificateAuthority[]>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
@@ -287,9 +285,9 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     declare public readonly clusterDomain: pulumi.Output<string | undefined>;
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      */
-    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.KubernetesConnections>;
+    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.KubernetesConnection[]>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
@@ -449,9 +447,9 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
-    declare public readonly runtime: pulumi.Output<outputs.cs.KubernetesRuntime | undefined>;
+    declare public readonly runtimes: pulumi.Output<outputs.cs.KubernetesRuntime[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -531,7 +529,7 @@ export class Kubernetes extends pulumi.CustomResource {
             const state = argsOrState as KubernetesState | undefined;
             resourceInputs["addons"] = state?.addons;
             resourceInputs["apiAudiences"] = state?.apiAudiences;
-            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["certificateAuthorities"] = state?.certificateAuthorities;
             resourceInputs["clientCert"] = state?.clientCert;
             resourceInputs["clientKey"] = state?.clientKey;
             resourceInputs["clusterCaCert"] = state?.clusterCaCert;
@@ -575,7 +573,7 @@ export class Kubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = state?.rdsInstances;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["retainResources"] = state?.retainResources;
-            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["runtimes"] = state?.runtimes;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["serviceAccountIssuer"] = state?.serviceAccountIssuer;
             resourceInputs["serviceCidr"] = state?.serviceCidr;
@@ -640,7 +638,7 @@ export class Kubernetes extends pulumi.CustomResource {
             resourceInputs["rdsInstances"] = args?.rdsInstances;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["retainResources"] = args?.retainResources;
-            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["runtimes"] = args?.runtimes;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["serviceAccountIssuer"] = args?.serviceAccountIssuer;
             resourceInputs["serviceCidr"] = args?.serviceCidr;
@@ -650,7 +648,7 @@ export class Kubernetes extends pulumi.CustomResource {
             resourceInputs["timezone"] = args?.timezone;
             resourceInputs["userCa"] = args?.userCa;
             resourceInputs["version"] = args?.version;
-            resourceInputs["certificateAuthority"] = undefined /*out*/;
+            resourceInputs["certificateAuthorities"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["masterNodes"] = undefined /*out*/;
             resourceInputs["natGatewayId"] = undefined /*out*/;
@@ -680,11 +678,11 @@ export interface KubernetesState {
      */
     apiAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    certificateAuthority?: pulumi.Input<inputs.cs.KubernetesCertificateAuthority | undefined>;
+    certificateAuthorities?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesCertificateAuthority>[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
@@ -710,9 +708,9 @@ export interface KubernetesState {
      */
     clusterDomain?: pulumi.Input<string | undefined>;
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      */
-    connections?: pulumi.Input<inputs.cs.KubernetesConnections | undefined>;
+    connections?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesConnection>[] | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
@@ -872,9 +870,9 @@ export interface KubernetesState {
      */
     retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.KubernetesRuntime | undefined>;
+    runtimes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesRuntime>[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -1127,9 +1125,9 @@ export interface KubernetesArgs {
      */
     retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.KubernetesRuntime | undefined>;
+    runtimes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesRuntime>[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */

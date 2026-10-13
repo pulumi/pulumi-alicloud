@@ -307,6 +307,14 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -1258,6 +1266,14 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }

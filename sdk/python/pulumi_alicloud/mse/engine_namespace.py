@@ -129,26 +129,38 @@ class _EngineNamespaceState:
     def __init__(__self__, *,
                  accept_language: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_desc: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 namespace_show_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 namespace_show_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EngineNamespace resources.
 
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        :param pulumi.Input[_builtins.int] config_count: (Available since v1.279.1) The current number of configurations in the namespace.
         :param pulumi.Input[_builtins.str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
         :param pulumi.Input[_builtins.str] namespace_desc: The description of the namespace.
                
                **NOTE:** You must set `cluster_id` or `instance_id` or both.
         :param pulumi.Input[_builtins.str] namespace_id: The id of Namespace.
         :param pulumi.Input[_builtins.str] namespace_show_name: The name of the Engine Namespace.
+        :param pulumi.Input[_builtins.int] quota: (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+        :param pulumi.Input[_builtins.str] service_count: (Available since v1.279.1) The current number of services registered to the namespace.
+        :param pulumi.Input[_builtins.str] source_type: (Available since v1.279.1) The source type of the namespace.
+        :param pulumi.Input[_builtins.int] type: (Available since v1.279.1) The type of the namespace.
         """
         if accept_language is not None:
             pulumi.set(__self__, "accept_language", accept_language)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if config_count is not None:
+            pulumi.set(__self__, "config_count", config_count)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if namespace_desc is not None:
@@ -157,6 +169,14 @@ class _EngineNamespaceState:
             pulumi.set(__self__, "namespace_id", namespace_id)
         if namespace_show_name is not None:
             pulumi.set(__self__, "namespace_show_name", namespace_show_name)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if service_count is not None:
+            pulumi.set(__self__, "service_count", service_count)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
@@ -181,6 +201,18 @@ class _EngineNamespaceState:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configCount")
+    def config_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Available since v1.279.1) The current number of configurations in the namespace.
+        """
+        return pulumi.get(self, "config_count")
+
+    @config_count.setter
+    def config_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "config_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -231,6 +263,54 @@ class _EngineNamespaceState:
     @namespace_show_name.setter
     def namespace_show_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_show_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "quota", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceCount")
+    def service_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.279.1) The current number of services registered to the namespace.
+        """
+        return pulumi.get(self, "service_count")
+
+    @service_count.setter
+    def service_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.279.1) The source type of the namespace.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Available since v1.279.1) The type of the namespace.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.type_token("alicloud:mse/engineNamespace:EngineNamespace")
@@ -409,6 +489,11 @@ class EngineNamespace(pulumi.CustomResource):
             if namespace_show_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_show_name'")
             __props__.__dict__["namespace_show_name"] = namespace_show_name
+            __props__.__dict__["config_count"] = None
+            __props__.__dict__["quota"] = None
+            __props__.__dict__["service_count"] = None
+            __props__.__dict__["source_type"] = None
+            __props__.__dict__["type"] = None
         super(EngineNamespace, __self__).__init__(
             'alicloud:mse/engineNamespace:EngineNamespace',
             resource_name,
@@ -421,10 +506,15 @@ class EngineNamespace(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             accept_language: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_count: pulumi.Input[Optional[_builtins.int]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_desc: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
-            namespace_show_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EngineNamespace':
+            namespace_show_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[_builtins.int]] = None,
+            service_count: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.int]] = None) -> 'EngineNamespace':
         """
         Get an existing EngineNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -434,12 +524,17 @@ class EngineNamespace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        :param pulumi.Input[_builtins.int] config_count: (Available since v1.279.1) The current number of configurations in the namespace.
         :param pulumi.Input[_builtins.str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
         :param pulumi.Input[_builtins.str] namespace_desc: The description of the namespace.
                
                **NOTE:** You must set `cluster_id` or `instance_id` or both.
         :param pulumi.Input[_builtins.str] namespace_id: The id of Namespace.
         :param pulumi.Input[_builtins.str] namespace_show_name: The name of the Engine Namespace.
+        :param pulumi.Input[_builtins.int] quota: (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+        :param pulumi.Input[_builtins.str] service_count: (Available since v1.279.1) The current number of services registered to the namespace.
+        :param pulumi.Input[_builtins.str] source_type: (Available since v1.279.1) The source type of the namespace.
+        :param pulumi.Input[_builtins.int] type: (Available since v1.279.1) The type of the namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -447,10 +542,15 @@ class EngineNamespace(pulumi.CustomResource):
 
         __props__.__dict__["accept_language"] = accept_language
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["config_count"] = config_count
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["namespace_desc"] = namespace_desc
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["namespace_show_name"] = namespace_show_name
+        __props__.__dict__["quota"] = quota
+        __props__.__dict__["service_count"] = service_count
+        __props__.__dict__["source_type"] = source_type
+        __props__.__dict__["type"] = type
         return EngineNamespace(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -468,6 +568,14 @@ class EngineNamespace(pulumi.CustomResource):
         The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         """
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="configCount")
+    def config_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.279.1) The current number of configurations in the namespace.
+        """
+        return pulumi.get(self, "config_count")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -502,4 +610,36 @@ class EngineNamespace(pulumi.CustomResource):
         The name of the Engine Namespace.
         """
         return pulumi.get(self, "namespace_show_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+        """
+        return pulumi.get(self, "quota")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceCount")
+    def service_count(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.279.1) The current number of services registered to the namespace.
+        """
+        return pulumi.get(self, "service_count")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.279.1) The source type of the namespace.
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.279.1) The type of the namespace.
+        """
+        return pulumi.get(self, "type")
 

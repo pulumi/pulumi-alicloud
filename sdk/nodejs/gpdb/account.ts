@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.142.0.
  *
+ * > **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -104,9 +106,18 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly accountName: pulumi.Output<string>;
     /**
-     * AccountPassword
+     * The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
      */
-    declare public readonly accountPassword: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+     */
+    declare public readonly accountPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    declare public readonly accountPasswordWoVersion: pulumi.Output<number | undefined>;
     /**
      * Account type. The value range is as follows:
      *
@@ -147,6 +158,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = state?.accountDescription;
             resourceInputs["accountName"] = state?.accountName;
             resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountPasswordWo"] = state?.accountPasswordWo;
+            resourceInputs["accountPasswordWoVersion"] = state?.accountPasswordWoVersion;
             resourceInputs["accountType"] = state?.accountType;
             resourceInputs["databaseName"] = state?.databaseName;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
@@ -156,22 +169,21 @@ export class Account extends pulumi.CustomResource {
             if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if (args?.accountPassword === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountPassword'");
-            }
             if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
             resourceInputs["accountDescription"] = args?.accountDescription;
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
+            resourceInputs["accountPasswordWo"] = args?.accountPasswordWo ? pulumi.secret(args.accountPasswordWo) : undefined;
+            resourceInputs["accountPasswordWoVersion"] = args?.accountPasswordWoVersion;
             resourceInputs["accountType"] = args?.accountType;
             resourceInputs["databaseName"] = args?.databaseName;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "accountPasswordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
@@ -190,9 +202,18 @@ export interface AccountState {
      */
     accountName?: pulumi.Input<string | undefined>;
     /**
-     * AccountPassword
+     * The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
      */
     accountPassword?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Account type. The value range is as follows:
      *
@@ -231,9 +252,18 @@ export interface AccountArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * AccountPassword
+     * The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
      */
-    accountPassword: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Account type. The value range is as follows:
      *

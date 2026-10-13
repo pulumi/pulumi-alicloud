@@ -736,6 +736,9 @@
             "alicloud_api_gateway_instance": {
                 "current": "alicloud:apigateway/instance:Instance",
                 "fields": {
+                    "to_connect_vpc_ip_block": {
+                        "maxItemsOne": false
+                    },
                     "zone_vswitch_security_group": {
                         "maxItemsOne": false
                     }
@@ -1730,6 +1733,9 @@
             },
             "alicloud_cloud_firewall_control_policy_order": {
                 "current": "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder"
+            },
+            "alicloud_cloud_firewall_fw_switch": {
+                "current": "alicloud:cloudfirewall/fwSwitch:FwSwitch"
             },
             "alicloud_cloud_firewall_instance": {
                 "current": "alicloud:cloudfirewall/instance:Instance"
@@ -2867,7 +2873,12 @@
                 "current": "alicloud:cr/namespace:Namespace"
             },
             "alicloud_cr_repo": {
-                "current": "alicloud:cr/repo:Repo"
+                "current": "alicloud:cr/repo:Repo",
+                "fields": {
+                    "domain_list": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_cr_scan_rule": {
                 "current": "alicloud:cr/scanRule:ScanRule",
@@ -2900,6 +2911,12 @@
                     "addons": {
                         "maxItemsOne": false
                     },
+                    "certificate_authority": {
+                        "maxItemsOne": false
+                    },
+                    "connections": {
+                        "maxItemsOne": false
+                    },
                     "log_config": {
                         "maxItemsOne": true
                     },
@@ -2907,6 +2924,9 @@
                         "maxItemsOne": false
                     },
                     "retain_resources": {
+                        "maxItemsOne": false
+                    },
+                    "runtime": {
                         "maxItemsOne": false
                     },
                     "worker_data_disks": {
@@ -2932,11 +2952,14 @@
                     "api_audiences": {
                         "maxItemsOne": false
                     },
-                    "delete_options": {
+                    "certificate_authority": {
                         "maxItemsOne": false
                     },
-                    "log_config": {
-                        "maxItemsOne": true
+                    "connections": {
+                        "maxItemsOne": false
+                    },
+                    "delete_options": {
+                        "maxItemsOne": false
                     },
                     "master_instance_types": {
                         "maxItemsOne": false
@@ -2945,9 +2968,6 @@
                         "maxItemsOne": false
                     },
                     "master_vswitch_ids": {
-                        "maxItemsOne": false
-                    },
-                    "nodes": {
                         "maxItemsOne": false
                     },
                     "pod_vswitch_ids": {
@@ -2959,25 +2979,7 @@
                     "retain_resources": {
                         "maxItemsOne": false
                     },
-                    "taints": {
-                        "maxItemsOne": false
-                    },
-                    "vswitch_ids": {
-                        "maxItemsOne": false
-                    },
-                    "worker_data_disks": {
-                        "maxItemsOne": false
-                    },
-                    "worker_instance_types": {
-                        "maxItemsOne": false
-                    },
-                    "worker_nodes": {
-                        "maxItemsOne": false
-                    },
-                    "worker_numbers": {
-                        "maxItemsOne": false
-                    },
-                    "worker_vswitch_ids": {
+                    "runtime": {
                         "maxItemsOne": false
                     }
                 }
@@ -3110,9 +3112,6 @@
                             }
                         }
                     },
-                    "rollout_policy": {
-                        "maxItemsOne": true
-                    },
                     "scaling_config": {
                         "maxItemsOne": true
                     },
@@ -3170,6 +3169,12 @@
                     "auto_mode": {
                         "maxItemsOne": true
                     },
+                    "certificate_authority": {
+                        "maxItemsOne": false
+                    },
+                    "connections": {
+                        "maxItemsOne": false
+                    },
                     "control_plane_endpoints_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -3196,9 +3201,6 @@
                     "delete_options": {
                         "maxItemsOne": false
                     },
-                    "log_config": {
-                        "maxItemsOne": true
-                    },
                     "maintenance_window": {
                         "maxItemsOne": true
                     },
@@ -3215,34 +3217,16 @@
                     "pod_vswitch_ids": {
                         "maxItemsOne": false
                     },
-                    "rds_instances": {
-                        "maxItemsOne": false
-                    },
                     "retain_resources": {
                         "maxItemsOne": false
                     },
                     "rrsa_metadata": {
                         "maxItemsOne": true
                     },
-                    "taints": {
-                        "maxItemsOne": false
-                    },
                     "upgrade_policy": {
                         "maxItemsOne": true
                     },
                     "vswitch_ids": {
-                        "maxItemsOne": false
-                    },
-                    "worker_data_disks": {
-                        "maxItemsOne": false
-                    },
-                    "worker_instance_types": {
-                        "maxItemsOne": false
-                    },
-                    "worker_nodes": {
-                        "maxItemsOne": false
-                    },
-                    "worker_numbers": {
                         "maxItemsOne": false
                     },
                     "worker_vswitch_ids": {
@@ -4585,16 +4569,6 @@
                                     "maxItemsOne": false
                                 },
                                 "searches": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "eci_security_context": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "sysctls": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -8659,9 +8633,6 @@
                 "fields": {
                     "access_mode": {
                         "maxItemsOne": true
-                    },
-                    "bandwidth_packages": {
-                        "maxItemsOne": false
                     }
                 }
             },
@@ -16959,6 +16930,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "domain_list": {
+                                    "maxItemsOne": false
+                                },
                                 "tags": {
                                     "maxItemsOne": false
                                 }
@@ -16982,7 +16956,12 @@
                 }
             },
             "alicloud_cs_cluster_credential": {
-                "current": "alicloud:cs/getClusterCredential:getClusterCredential"
+                "current": "alicloud:cs/getClusterCredential:getClusterCredential",
+                "fields": {
+                    "certificate_authority": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_cs_clusters": {
                 "current": "alicloud:cs/getClusters:getClusters",
@@ -17028,6 +17007,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "connections": {
+                                    "maxItemsOne": false
+                                },
                                 "worker_nodes": {
                                     "maxItemsOne": false
                                 }
@@ -17073,6 +17055,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "connections": {
+                                    "maxItemsOne": false
+                                },
                                 "log_config": {
                                     "maxItemsOne": false
                                 },
@@ -17221,22 +17206,13 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "log_config": {
+                                "connections": {
                                     "maxItemsOne": false
                                 },
                                 "rrsa_config": {
                                     "maxItemsOne": true
                                 },
-                                "vswitch_ids": {
-                                    "maxItemsOne": false
-                                },
-                                "worker_instance_types": {
-                                    "maxItemsOne": false
-                                },
                                 "worker_nodes": {
-                                    "maxItemsOne": false
-                                },
-                                "worker_numbers": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -17254,7 +17230,14 @@
                 "current": "alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters",
                 "fields": {
                     "clusters": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connections": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "ids": {
                         "maxItemsOne": false
@@ -17334,6 +17317,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "storage_range": {
+                                    "maxItemsOne": false
+                                },
                                 "zone_ids": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -21455,14 +21441,7 @@
                         "maxItemsOne": false
                     },
                     "zones": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "multi_zone_ids": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -21887,6 +21866,15 @@
                         "elem": {
                             "fields": {
                                 "availability_zones": {
+                                    "maxItemsOne": false
+                                },
+                                "burstable_instance": {
+                                    "maxItemsOne": false
+                                },
+                                "gpu": {
+                                    "maxItemsOne": false
+                                },
+                                "local_storage": {
                                     "maxItemsOne": false
                                 }
                             }

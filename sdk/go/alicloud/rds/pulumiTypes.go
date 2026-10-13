@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -3504,8 +3504,8 @@ type GetInstanceClassesInstanceClass struct {
 	InstanceClass string `pulumi:"instanceClass"`
 	// Unit price of instance specifications.
 	Price string `pulumi:"price"`
-	// DB Instance available storage range.
-	StorageRange GetInstanceClassesInstanceClassStorageRange `pulumi:"storageRange"`
+	// A list of DB Instance available storage range.
+	StorageRanges []GetInstanceClassesInstanceClassStorageRange `pulumi:"storageRanges"`
 	// A list of Zone to launch the DB instance.
 	ZoneIds []GetInstanceClassesInstanceClassZoneId `pulumi:"zoneIds"`
 }
@@ -3526,8 +3526,8 @@ type GetInstanceClassesInstanceClassArgs struct {
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
 	// Unit price of instance specifications.
 	Price pulumi.StringInput `pulumi:"price"`
-	// DB Instance available storage range.
-	StorageRange GetInstanceClassesInstanceClassStorageRangeInput `pulumi:"storageRange"`
+	// A list of DB Instance available storage range.
+	StorageRanges GetInstanceClassesInstanceClassStorageRangeArrayInput `pulumi:"storageRanges"`
 	// A list of Zone to launch the DB instance.
 	ZoneIds GetInstanceClassesInstanceClassZoneIdArrayInput `pulumi:"zoneIds"`
 }
@@ -3593,11 +3593,11 @@ func (o GetInstanceClassesInstanceClassOutput) Price() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceClassesInstanceClass) string { return v.Price }).(pulumi.StringOutput)
 }
 
-// DB Instance available storage range.
-func (o GetInstanceClassesInstanceClassOutput) StorageRange() GetInstanceClassesInstanceClassStorageRangeOutput {
-	return o.ApplyT(func(v GetInstanceClassesInstanceClass) GetInstanceClassesInstanceClassStorageRange {
-		return v.StorageRange
-	}).(GetInstanceClassesInstanceClassStorageRangeOutput)
+// A list of DB Instance available storage range.
+func (o GetInstanceClassesInstanceClassOutput) StorageRanges() GetInstanceClassesInstanceClassStorageRangeArrayOutput {
+	return o.ApplyT(func(v GetInstanceClassesInstanceClass) []GetInstanceClassesInstanceClassStorageRange {
+		return v.StorageRanges
+	}).(GetInstanceClassesInstanceClassStorageRangeArrayOutput)
 }
 
 // A list of Zone to launch the DB instance.
@@ -3666,6 +3666,31 @@ func (i GetInstanceClassesInstanceClassStorageRangeArgs) ToGetInstanceClassesIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassStorageRangeOutput)
 }
 
+// GetInstanceClassesInstanceClassStorageRangeArrayInput is an input type that accepts GetInstanceClassesInstanceClassStorageRangeArray and GetInstanceClassesInstanceClassStorageRangeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceClassesInstanceClassStorageRangeArrayInput` via:
+//
+//	GetInstanceClassesInstanceClassStorageRangeArray{ GetInstanceClassesInstanceClassStorageRangeArgs{...} }
+type GetInstanceClassesInstanceClassStorageRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceClassesInstanceClassStorageRangeArrayOutput() GetInstanceClassesInstanceClassStorageRangeArrayOutput
+	ToGetInstanceClassesInstanceClassStorageRangeArrayOutputWithContext(context.Context) GetInstanceClassesInstanceClassStorageRangeArrayOutput
+}
+
+type GetInstanceClassesInstanceClassStorageRangeArray []GetInstanceClassesInstanceClassStorageRangeInput
+
+func (GetInstanceClassesInstanceClassStorageRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClassesInstanceClassStorageRange)(nil)).Elem()
+}
+
+func (i GetInstanceClassesInstanceClassStorageRangeArray) ToGetInstanceClassesInstanceClassStorageRangeArrayOutput() GetInstanceClassesInstanceClassStorageRangeArrayOutput {
+	return i.ToGetInstanceClassesInstanceClassStorageRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceClassesInstanceClassStorageRangeArray) ToGetInstanceClassesInstanceClassStorageRangeArrayOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassStorageRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesInstanceClassStorageRangeArrayOutput)
+}
+
 type GetInstanceClassesInstanceClassStorageRangeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassesInstanceClassStorageRangeOutput) ElementType() reflect.Type {
@@ -3693,6 +3718,26 @@ func (o GetInstanceClassesInstanceClassStorageRangeOutput) Min() pulumi.StringOu
 // DB Instance available storage increase step.
 func (o GetInstanceClassesInstanceClassStorageRangeOutput) Step() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceClassesInstanceClassStorageRange) string { return v.Step }).(pulumi.StringOutput)
+}
+
+type GetInstanceClassesInstanceClassStorageRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceClassesInstanceClassStorageRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceClassesInstanceClassStorageRange)(nil)).Elem()
+}
+
+func (o GetInstanceClassesInstanceClassStorageRangeArrayOutput) ToGetInstanceClassesInstanceClassStorageRangeArrayOutput() GetInstanceClassesInstanceClassStorageRangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceClassesInstanceClassStorageRangeArrayOutput) ToGetInstanceClassesInstanceClassStorageRangeArrayOutputWithContext(ctx context.Context) GetInstanceClassesInstanceClassStorageRangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceClassesInstanceClassStorageRangeArrayOutput) Index(i pulumi.IntInput) GetInstanceClassesInstanceClassStorageRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceClassesInstanceClassStorageRange {
+		return vs[0].([]GetInstanceClassesInstanceClassStorageRange)[vs[1].(int)]
+	}).(GetInstanceClassesInstanceClassStorageRangeOutput)
 }
 
 type GetInstanceClassesInstanceClassZoneId struct {
@@ -6038,6 +6083,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassInput)(nil)).Elem(), GetInstanceClassesInstanceClassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassArrayInput)(nil)).Elem(), GetInstanceClassesInstanceClassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassStorageRangeInput)(nil)).Elem(), GetInstanceClassesInstanceClassStorageRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassStorageRangeArrayInput)(nil)).Elem(), GetInstanceClassesInstanceClassStorageRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassZoneIdInput)(nil)).Elem(), GetInstanceClassesInstanceClassZoneIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClassesInstanceClassZoneIdArrayInput)(nil)).Elem(), GetInstanceClassesInstanceClassZoneIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEnginesInstanceEngineInput)(nil)).Elem(), GetInstanceEnginesInstanceEngineArgs{})
@@ -6115,6 +6161,7 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassStorageRangeOutput{})
+	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassStorageRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassZoneIdOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassZoneIdArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceEnginesInstanceEngineOutput{})

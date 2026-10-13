@@ -118,6 +118,11 @@ namespace Pulumi.AliCloud.Ebs
     ///                 ParameterValue = "Ebs12345",
     ///             },
     ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "Terraform" },
+    ///             { "For", "Example" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -177,6 +182,12 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -260,6 +271,18 @@ namespace Pulumi.AliCloud.Ebs
         [Input("solutionInstanceName")]
         public Input<string>? SolutionInstanceName { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public SolutionInstanceArgs()
         {
         }
@@ -315,6 +338,18 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public SolutionInstanceState()
         {

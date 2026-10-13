@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,6 +94,21 @@ public final class SolutionInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.solutionInstanceName);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private SolutionInstanceArgs() {}
 
     private SolutionInstanceArgs(SolutionInstanceArgs $) {
@@ -101,6 +117,7 @@ public final class SolutionInstanceArgs extends com.pulumi.resources.ResourceArg
         this.resourceGroupId = $.resourceGroupId;
         this.solutionId = $.solutionId;
         this.solutionInstanceName = $.solutionInstanceName;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -234,6 +251,27 @@ public final class SolutionInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder solutionInstanceName(String solutionInstanceName) {
             return solutionInstanceName(Output.of(solutionInstanceName));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public SolutionInstanceArgs build() {

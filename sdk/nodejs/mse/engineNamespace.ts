@@ -100,6 +100,10 @@ export class EngineNamespace extends pulumi.CustomResource {
      */
     declare public readonly clusterId: pulumi.Output<string>;
     /**
+     * (Available since v1.279.1) The current number of configurations in the namespace.
+     */
+    declare public /*out*/ readonly configCount: pulumi.Output<number>;
+    /**
      * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
      */
     declare public readonly instanceId: pulumi.Output<string>;
@@ -117,6 +121,22 @@ export class EngineNamespace extends pulumi.CustomResource {
      * The name of the Engine Namespace.
      */
     declare public readonly namespaceShowName: pulumi.Output<string>;
+    /**
+     * (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+     */
+    declare public /*out*/ readonly quota: pulumi.Output<number>;
+    /**
+     * (Available since v1.279.1) The current number of services registered to the namespace.
+     */
+    declare public /*out*/ readonly serviceCount: pulumi.Output<string>;
+    /**
+     * (Available since v1.279.1) The source type of the namespace.
+     */
+    declare public /*out*/ readonly sourceType: pulumi.Output<string>;
+    /**
+     * (Available since v1.279.1) The type of the namespace.
+     */
+    declare public /*out*/ readonly type: pulumi.Output<number>;
 
     /**
      * Create a EngineNamespace resource with the given unique name, arguments, and options.
@@ -133,10 +153,15 @@ export class EngineNamespace extends pulumi.CustomResource {
             const state = argsOrState as EngineNamespaceState | undefined;
             resourceInputs["acceptLanguage"] = state?.acceptLanguage;
             resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["configCount"] = state?.configCount;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["namespaceDesc"] = state?.namespaceDesc;
             resourceInputs["namespaceId"] = state?.namespaceId;
             resourceInputs["namespaceShowName"] = state?.namespaceShowName;
+            resourceInputs["quota"] = state?.quota;
+            resourceInputs["serviceCount"] = state?.serviceCount;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as EngineNamespaceArgs | undefined;
             if (args?.namespaceShowName === undefined && !opts.urn) {
@@ -148,6 +173,11 @@ export class EngineNamespace extends pulumi.CustomResource {
             resourceInputs["namespaceDesc"] = args?.namespaceDesc;
             resourceInputs["namespaceId"] = args?.namespaceId;
             resourceInputs["namespaceShowName"] = args?.namespaceShowName;
+            resourceInputs["configCount"] = undefined /*out*/;
+            resourceInputs["quota"] = undefined /*out*/;
+            resourceInputs["serviceCount"] = undefined /*out*/;
+            resourceInputs["sourceType"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EngineNamespace.__pulumiType, name, resourceInputs, opts);
@@ -167,6 +197,10 @@ export interface EngineNamespaceState {
      */
     clusterId?: pulumi.Input<string | undefined>;
     /**
+     * (Available since v1.279.1) The current number of configurations in the namespace.
+     */
+    configCount?: pulumi.Input<number | undefined>;
+    /**
      * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
      */
     instanceId?: pulumi.Input<string | undefined>;
@@ -184,6 +218,22 @@ export interface EngineNamespaceState {
      * The name of the Engine Namespace.
      */
     namespaceShowName?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+     */
+    quota?: pulumi.Input<number | undefined>;
+    /**
+     * (Available since v1.279.1) The current number of services registered to the namespace.
+     */
+    serviceCount?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.279.1) The source type of the namespace.
+     */
+    sourceType?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.279.1) The type of the namespace.
+     */
+    type?: pulumi.Input<number | undefined>;
 }
 
 /**

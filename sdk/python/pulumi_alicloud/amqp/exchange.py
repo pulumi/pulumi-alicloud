@@ -170,7 +170,7 @@ class _ExchangeState:
     def __init__(__self__, *,
                  alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
-                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
                  exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -182,7 +182,7 @@ class _ExchangeState:
 
         :param pulumi.Input[_builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
-        :param pulumi.Input[_builtins.int] create_time: CreateTime
+        :param pulumi.Input[_builtins.str] create_time: The time when the exchange was created. Unix timestamp, to millisecond level.
         :param pulumi.Input[_builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
                
                - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
@@ -244,14 +244,14 @@ class _ExchangeState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        CreateTime
+        The time when the exchange was created. Unix timestamp, to millisecond level.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
@@ -564,7 +564,7 @@ class Exchange(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
             auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
-            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
             exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
             exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -580,7 +580,7 @@ class Exchange(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alternate_exchange: The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the exchange. Valid values:
-        :param pulumi.Input[_builtins.int] create_time: CreateTime
+        :param pulumi.Input[_builtins.str] create_time: The time when the exchange was created. Unix timestamp, to millisecond level.
         :param pulumi.Input[_builtins.str] exchange_name: The name of the exchange that you want to create. The exchange name must meet the following conventions:
                
                - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
@@ -630,9 +630,9 @@ class Exchange(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Output[_builtins.int]:
+    def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        CreateTime
+        The time when the exchange was created. Unix timestamp, to millisecond level.
         """
         return pulumi.get(self, "create_time")
 

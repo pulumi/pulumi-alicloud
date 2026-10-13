@@ -198,9 +198,9 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
-     * OrderCreateTime.
+     * The time when the order was created. Unix timestamp, to millisecond level.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The deployment architecture for Serverless instances. Valid values:
      */
@@ -432,9 +432,9 @@ export interface InstanceState {
      */
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
-     * OrderCreateTime.
+     * The time when the order was created. Unix timestamp, to millisecond level.
      */
-    createTime?: pulumi.Input<number | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The deployment architecture for Serverless instances. Valid values:
      */

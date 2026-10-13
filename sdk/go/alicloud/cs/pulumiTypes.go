@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -184,45 +184,29 @@ func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAutho
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityOutput)
 }
 
-func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
-	return i.ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i EdgeKubernetesCertificateAuthorityArgs) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityOutput).ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx)
-}
-
-// EdgeKubernetesCertificateAuthorityPtrInput is an input type that accepts EdgeKubernetesCertificateAuthorityArgs, EdgeKubernetesCertificateAuthorityPtr and EdgeKubernetesCertificateAuthorityPtrOutput values.
-// You can construct a concrete instance of `EdgeKubernetesCertificateAuthorityPtrInput` via:
+// EdgeKubernetesCertificateAuthorityArrayInput is an input type that accepts EdgeKubernetesCertificateAuthorityArray and EdgeKubernetesCertificateAuthorityArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesCertificateAuthorityArrayInput` via:
 //
-//	        EdgeKubernetesCertificateAuthorityArgs{...}
-//
-//	or:
-//
-//	        nil
-type EdgeKubernetesCertificateAuthorityPtrInput interface {
+//	EdgeKubernetesCertificateAuthorityArray{ EdgeKubernetesCertificateAuthorityArgs{...} }
+type EdgeKubernetesCertificateAuthorityArrayInput interface {
 	pulumi.Input
 
-	ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput
-	ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Context) EdgeKubernetesCertificateAuthorityPtrOutput
+	ToEdgeKubernetesCertificateAuthorityArrayOutput() EdgeKubernetesCertificateAuthorityArrayOutput
+	ToEdgeKubernetesCertificateAuthorityArrayOutputWithContext(context.Context) EdgeKubernetesCertificateAuthorityArrayOutput
 }
 
-type edgeKubernetesCertificateAuthorityPtrType EdgeKubernetesCertificateAuthorityArgs
+type EdgeKubernetesCertificateAuthorityArray []EdgeKubernetesCertificateAuthorityInput
 
-func EdgeKubernetesCertificateAuthorityPtr(v *EdgeKubernetesCertificateAuthorityArgs) EdgeKubernetesCertificateAuthorityPtrInput {
-	return (*edgeKubernetesCertificateAuthorityPtrType)(v)
+func (EdgeKubernetesCertificateAuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesCertificateAuthority)(nil)).Elem()
 }
 
-func (*edgeKubernetesCertificateAuthorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeKubernetesCertificateAuthority)(nil)).Elem()
+func (i EdgeKubernetesCertificateAuthorityArray) ToEdgeKubernetesCertificateAuthorityArrayOutput() EdgeKubernetesCertificateAuthorityArrayOutput {
+	return i.ToEdgeKubernetesCertificateAuthorityArrayOutputWithContext(context.Background())
 }
 
-func (i *edgeKubernetesCertificateAuthorityPtrType) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
-	return i.ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *edgeKubernetesCertificateAuthorityPtrType) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityPtrOutput)
+func (i EdgeKubernetesCertificateAuthorityArray) ToEdgeKubernetesCertificateAuthorityArrayOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesCertificateAuthorityArrayOutput)
 }
 
 type EdgeKubernetesCertificateAuthorityOutput struct{ *pulumi.OutputState }
@@ -237,16 +221,6 @@ func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAut
 
 func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityOutput {
 	return o
-}
-
-func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
-	return o.ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesCertificateAuthority) *EdgeKubernetesCertificateAuthority {
-		return &v
-	}).(EdgeKubernetesCertificateAuthorityPtrOutput)
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -264,61 +238,27 @@ func (o EdgeKubernetesCertificateAuthorityOutput) ClusterCert() pulumi.StringPtr
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClusterCert }).(pulumi.StringPtrOutput)
 }
 
-type EdgeKubernetesCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
+type EdgeKubernetesCertificateAuthorityArrayOutput struct{ *pulumi.OutputState }
 
-func (EdgeKubernetesCertificateAuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeKubernetesCertificateAuthority)(nil)).Elem()
+func (EdgeKubernetesCertificateAuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesCertificateAuthority)(nil)).Elem()
 }
 
-func (o EdgeKubernetesCertificateAuthorityPtrOutput) ToEdgeKubernetesCertificateAuthorityPtrOutput() EdgeKubernetesCertificateAuthorityPtrOutput {
+func (o EdgeKubernetesCertificateAuthorityArrayOutput) ToEdgeKubernetesCertificateAuthorityArrayOutput() EdgeKubernetesCertificateAuthorityArrayOutput {
 	return o
 }
 
-func (o EdgeKubernetesCertificateAuthorityPtrOutput) ToEdgeKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityPtrOutput {
+func (o EdgeKubernetesCertificateAuthorityArrayOutput) ToEdgeKubernetesCertificateAuthorityArrayOutputWithContext(ctx context.Context) EdgeKubernetesCertificateAuthorityArrayOutput {
 	return o
 }
 
-func (o EdgeKubernetesCertificateAuthorityPtrOutput) Elem() EdgeKubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) EdgeKubernetesCertificateAuthority {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeKubernetesCertificateAuthority
-		return ret
+func (o EdgeKubernetesCertificateAuthorityArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesCertificateAuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetesCertificateAuthority {
+		return vs[0].([]EdgeKubernetesCertificateAuthority)[vs[1].(int)]
 	}).(EdgeKubernetesCertificateAuthorityOutput)
 }
 
-// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
-func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientCert
-	}).(pulumi.StringPtrOutput)
-}
-
-// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
-func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
-func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterCert
-	}).(pulumi.StringPtrOutput)
-}
-
-type EdgeKubernetesConnections struct {
+type EdgeKubernetesConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -329,18 +269,18 @@ type EdgeKubernetesConnections struct {
 	ServiceDomain *string `pulumi:"serviceDomain"`
 }
 
-// EdgeKubernetesConnectionsInput is an input type that accepts EdgeKubernetesConnectionsArgs and EdgeKubernetesConnectionsOutput values.
-// You can construct a concrete instance of `EdgeKubernetesConnectionsInput` via:
+// EdgeKubernetesConnectionInput is an input type that accepts EdgeKubernetesConnectionArgs and EdgeKubernetesConnectionOutput values.
+// You can construct a concrete instance of `EdgeKubernetesConnectionInput` via:
 //
-//	EdgeKubernetesConnectionsArgs{...}
-type EdgeKubernetesConnectionsInput interface {
+//	EdgeKubernetesConnectionArgs{...}
+type EdgeKubernetesConnectionInput interface {
 	pulumi.Input
 
-	ToEdgeKubernetesConnectionsOutput() EdgeKubernetesConnectionsOutput
-	ToEdgeKubernetesConnectionsOutputWithContext(context.Context) EdgeKubernetesConnectionsOutput
+	ToEdgeKubernetesConnectionOutput() EdgeKubernetesConnectionOutput
+	ToEdgeKubernetesConnectionOutputWithContext(context.Context) EdgeKubernetesConnectionOutput
 }
 
-type EdgeKubernetesConnectionsArgs struct {
+type EdgeKubernetesConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -351,165 +291,95 @@ type EdgeKubernetesConnectionsArgs struct {
 	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
 }
 
-func (EdgeKubernetesConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeKubernetesConnections)(nil)).Elem()
+func (EdgeKubernetesConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesConnection)(nil)).Elem()
 }
 
-func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsOutput() EdgeKubernetesConnectionsOutput {
-	return i.ToEdgeKubernetesConnectionsOutputWithContext(context.Background())
+func (i EdgeKubernetesConnectionArgs) ToEdgeKubernetesConnectionOutput() EdgeKubernetesConnectionOutput {
+	return i.ToEdgeKubernetesConnectionOutputWithContext(context.Background())
 }
 
-func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionsOutput)
+func (i EdgeKubernetesConnectionArgs) ToEdgeKubernetesConnectionOutputWithContext(ctx context.Context) EdgeKubernetesConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionOutput)
 }
 
-func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
-	return i.ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Background())
-}
-
-func (i EdgeKubernetesConnectionsArgs) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionsOutput).ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx)
-}
-
-// EdgeKubernetesConnectionsPtrInput is an input type that accepts EdgeKubernetesConnectionsArgs, EdgeKubernetesConnectionsPtr and EdgeKubernetesConnectionsPtrOutput values.
-// You can construct a concrete instance of `EdgeKubernetesConnectionsPtrInput` via:
+// EdgeKubernetesConnectionArrayInput is an input type that accepts EdgeKubernetesConnectionArray and EdgeKubernetesConnectionArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesConnectionArrayInput` via:
 //
-//	        EdgeKubernetesConnectionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type EdgeKubernetesConnectionsPtrInput interface {
+//	EdgeKubernetesConnectionArray{ EdgeKubernetesConnectionArgs{...} }
+type EdgeKubernetesConnectionArrayInput interface {
 	pulumi.Input
 
-	ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput
-	ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Context) EdgeKubernetesConnectionsPtrOutput
+	ToEdgeKubernetesConnectionArrayOutput() EdgeKubernetesConnectionArrayOutput
+	ToEdgeKubernetesConnectionArrayOutputWithContext(context.Context) EdgeKubernetesConnectionArrayOutput
 }
 
-type edgeKubernetesConnectionsPtrType EdgeKubernetesConnectionsArgs
+type EdgeKubernetesConnectionArray []EdgeKubernetesConnectionInput
 
-func EdgeKubernetesConnectionsPtr(v *EdgeKubernetesConnectionsArgs) EdgeKubernetesConnectionsPtrInput {
-	return (*edgeKubernetesConnectionsPtrType)(v)
+func (EdgeKubernetesConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesConnection)(nil)).Elem()
 }
 
-func (*edgeKubernetesConnectionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeKubernetesConnections)(nil)).Elem()
+func (i EdgeKubernetesConnectionArray) ToEdgeKubernetesConnectionArrayOutput() EdgeKubernetesConnectionArrayOutput {
+	return i.ToEdgeKubernetesConnectionArrayOutputWithContext(context.Background())
 }
 
-func (i *edgeKubernetesConnectionsPtrType) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
-	return i.ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Background())
+func (i EdgeKubernetesConnectionArray) ToEdgeKubernetesConnectionArrayOutputWithContext(ctx context.Context) EdgeKubernetesConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionArrayOutput)
 }
 
-func (i *edgeKubernetesConnectionsPtrType) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesConnectionsPtrOutput)
+type EdgeKubernetesConnectionOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeKubernetesConnection)(nil)).Elem()
 }
 
-type EdgeKubernetesConnectionsOutput struct{ *pulumi.OutputState }
-
-func (EdgeKubernetesConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeKubernetesConnections)(nil)).Elem()
-}
-
-func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsOutput() EdgeKubernetesConnectionsOutput {
+func (o EdgeKubernetesConnectionOutput) ToEdgeKubernetesConnectionOutput() EdgeKubernetesConnectionOutput {
 	return o
 }
 
-func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsOutput {
+func (o EdgeKubernetesConnectionOutput) ToEdgeKubernetesConnectionOutputWithContext(ctx context.Context) EdgeKubernetesConnectionOutput {
 	return o
-}
-
-func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
-	return o.ToEdgeKubernetesConnectionsPtrOutputWithContext(context.Background())
-}
-
-func (o EdgeKubernetesConnectionsOutput) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesConnections) *EdgeKubernetesConnections {
-		return &v
-	}).(EdgeKubernetesConnectionsPtrOutput)
 }
 
 // API Server Internet endpoint.
-func (o EdgeKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+func (o EdgeKubernetesConnectionOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnection) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
-func (o EdgeKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+func (o EdgeKubernetesConnectionOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnection) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
-func (o EdgeKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+func (o EdgeKubernetesConnectionOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnection) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
-func (o EdgeKubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EdgeKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+func (o EdgeKubernetesConnectionOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesConnection) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
-type EdgeKubernetesConnectionsPtrOutput struct{ *pulumi.OutputState }
+type EdgeKubernetesConnectionArrayOutput struct{ *pulumi.OutputState }
 
-func (EdgeKubernetesConnectionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeKubernetesConnections)(nil)).Elem()
+func (EdgeKubernetesConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesConnection)(nil)).Elem()
 }
 
-func (o EdgeKubernetesConnectionsPtrOutput) ToEdgeKubernetesConnectionsPtrOutput() EdgeKubernetesConnectionsPtrOutput {
+func (o EdgeKubernetesConnectionArrayOutput) ToEdgeKubernetesConnectionArrayOutput() EdgeKubernetesConnectionArrayOutput {
 	return o
 }
 
-func (o EdgeKubernetesConnectionsPtrOutput) ToEdgeKubernetesConnectionsPtrOutputWithContext(ctx context.Context) EdgeKubernetesConnectionsPtrOutput {
+func (o EdgeKubernetesConnectionArrayOutput) ToEdgeKubernetesConnectionArrayOutputWithContext(ctx context.Context) EdgeKubernetesConnectionArrayOutput {
 	return o
 }
 
-func (o EdgeKubernetesConnectionsPtrOutput) Elem() EdgeKubernetesConnectionsOutput {
-	return o.ApplyT(func(v *EdgeKubernetesConnections) EdgeKubernetesConnections {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeKubernetesConnections
-		return ret
-	}).(EdgeKubernetesConnectionsOutput)
-}
-
-// API Server Internet endpoint.
-func (o EdgeKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerInternet
-	}).(pulumi.StringPtrOutput)
-}
-
-// API Server Intranet endpoint.
-func (o EdgeKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerIntranet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Master node SSH IP address.
-func (o EdgeKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MasterPublicIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Access Domain.
-func (o EdgeKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceDomain
-	}).(pulumi.StringPtrOutput)
+func (o EdgeKubernetesConnectionArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetesConnection {
+		return vs[0].([]EdgeKubernetesConnection)[vs[1].(int)]
+	}).(EdgeKubernetesConnectionOutput)
 }
 
 type EdgeKubernetesLogConfig struct {
@@ -709,45 +579,29 @@ func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimeOutput)
 }
 
-func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
-	return i.ToEdgeKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i EdgeKubernetesRuntimeArgs) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimeOutput).ToEdgeKubernetesRuntimePtrOutputWithContext(ctx)
-}
-
-// EdgeKubernetesRuntimePtrInput is an input type that accepts EdgeKubernetesRuntimeArgs, EdgeKubernetesRuntimePtr and EdgeKubernetesRuntimePtrOutput values.
-// You can construct a concrete instance of `EdgeKubernetesRuntimePtrInput` via:
+// EdgeKubernetesRuntimeArrayInput is an input type that accepts EdgeKubernetesRuntimeArray and EdgeKubernetesRuntimeArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesRuntimeArrayInput` via:
 //
-//	        EdgeKubernetesRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type EdgeKubernetesRuntimePtrInput interface {
+//	EdgeKubernetesRuntimeArray{ EdgeKubernetesRuntimeArgs{...} }
+type EdgeKubernetesRuntimeArrayInput interface {
 	pulumi.Input
 
-	ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput
-	ToEdgeKubernetesRuntimePtrOutputWithContext(context.Context) EdgeKubernetesRuntimePtrOutput
+	ToEdgeKubernetesRuntimeArrayOutput() EdgeKubernetesRuntimeArrayOutput
+	ToEdgeKubernetesRuntimeArrayOutputWithContext(context.Context) EdgeKubernetesRuntimeArrayOutput
 }
 
-type edgeKubernetesRuntimePtrType EdgeKubernetesRuntimeArgs
+type EdgeKubernetesRuntimeArray []EdgeKubernetesRuntimeInput
 
-func EdgeKubernetesRuntimePtr(v *EdgeKubernetesRuntimeArgs) EdgeKubernetesRuntimePtrInput {
-	return (*edgeKubernetesRuntimePtrType)(v)
+func (EdgeKubernetesRuntimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesRuntime)(nil)).Elem()
 }
 
-func (*edgeKubernetesRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeKubernetesRuntime)(nil)).Elem()
+func (i EdgeKubernetesRuntimeArray) ToEdgeKubernetesRuntimeArrayOutput() EdgeKubernetesRuntimeArrayOutput {
+	return i.ToEdgeKubernetesRuntimeArrayOutputWithContext(context.Background())
 }
 
-func (i *edgeKubernetesRuntimePtrType) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
-	return i.ToEdgeKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *edgeKubernetesRuntimePtrType) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimePtrOutput)
+func (i EdgeKubernetesRuntimeArray) ToEdgeKubernetesRuntimeArrayOutputWithContext(ctx context.Context) EdgeKubernetesRuntimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesRuntimeArrayOutput)
 }
 
 type EdgeKubernetesRuntimeOutput struct{ *pulumi.OutputState }
@@ -764,16 +618,6 @@ func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimeOutputWithContext(ct
 	return o
 }
 
-func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
-	return o.ToEdgeKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeKubernetesRuntime) *EdgeKubernetesRuntime {
-		return &v
-	}).(EdgeKubernetesRuntimePtrOutput)
-}
-
 // The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 func (o EdgeKubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -786,50 +630,24 @@ func (o EdgeKubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type EdgeKubernetesRuntimePtrOutput struct{ *pulumi.OutputState }
+type EdgeKubernetesRuntimeArrayOutput struct{ *pulumi.OutputState }
 
-func (EdgeKubernetesRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EdgeKubernetesRuntime)(nil)).Elem()
+func (EdgeKubernetesRuntimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetesRuntime)(nil)).Elem()
 }
 
-func (o EdgeKubernetesRuntimePtrOutput) ToEdgeKubernetesRuntimePtrOutput() EdgeKubernetesRuntimePtrOutput {
+func (o EdgeKubernetesRuntimeArrayOutput) ToEdgeKubernetesRuntimeArrayOutput() EdgeKubernetesRuntimeArrayOutput {
 	return o
 }
 
-func (o EdgeKubernetesRuntimePtrOutput) ToEdgeKubernetesRuntimePtrOutputWithContext(ctx context.Context) EdgeKubernetesRuntimePtrOutput {
+func (o EdgeKubernetesRuntimeArrayOutput) ToEdgeKubernetesRuntimeArrayOutputWithContext(ctx context.Context) EdgeKubernetesRuntimeArrayOutput {
 	return o
 }
 
-func (o EdgeKubernetesRuntimePtrOutput) Elem() EdgeKubernetesRuntimeOutput {
-	return o.ApplyT(func(v *EdgeKubernetesRuntime) EdgeKubernetesRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret EdgeKubernetesRuntime
-		return ret
+func (o EdgeKubernetesRuntimeArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesRuntimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetesRuntime {
+		return vs[0].([]EdgeKubernetesRuntime)[vs[1].(int)]
 	}).(EdgeKubernetesRuntimeOutput)
-}
-
-// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
-func (o EdgeKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The version of the runtime.
-//
-// The following example is the definition of runtime block:
-func (o EdgeKubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EdgeKubernetesRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type EdgeKubernetesWorkerDataDisk struct {
@@ -1402,45 +1220,29 @@ func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityOutput)
 }
 
-func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
-	return i.ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesCertificateAuthorityArgs) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityOutput).ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx)
-}
-
-// KubernetesCertificateAuthorityPtrInput is an input type that accepts KubernetesCertificateAuthorityArgs, KubernetesCertificateAuthorityPtr and KubernetesCertificateAuthorityPtrOutput values.
-// You can construct a concrete instance of `KubernetesCertificateAuthorityPtrInput` via:
+// KubernetesCertificateAuthorityArrayInput is an input type that accepts KubernetesCertificateAuthorityArray and KubernetesCertificateAuthorityArrayOutput values.
+// You can construct a concrete instance of `KubernetesCertificateAuthorityArrayInput` via:
 //
-//	        KubernetesCertificateAuthorityArgs{...}
-//
-//	or:
-//
-//	        nil
-type KubernetesCertificateAuthorityPtrInput interface {
+//	KubernetesCertificateAuthorityArray{ KubernetesCertificateAuthorityArgs{...} }
+type KubernetesCertificateAuthorityArrayInput interface {
 	pulumi.Input
 
-	ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput
-	ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Context) KubernetesCertificateAuthorityPtrOutput
+	ToKubernetesCertificateAuthorityArrayOutput() KubernetesCertificateAuthorityArrayOutput
+	ToKubernetesCertificateAuthorityArrayOutputWithContext(context.Context) KubernetesCertificateAuthorityArrayOutput
 }
 
-type kubernetesCertificateAuthorityPtrType KubernetesCertificateAuthorityArgs
+type KubernetesCertificateAuthorityArray []KubernetesCertificateAuthorityInput
 
-func KubernetesCertificateAuthorityPtr(v *KubernetesCertificateAuthorityArgs) KubernetesCertificateAuthorityPtrInput {
-	return (*kubernetesCertificateAuthorityPtrType)(v)
+func (KubernetesCertificateAuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesCertificateAuthority)(nil)).Elem()
 }
 
-func (*kubernetesCertificateAuthorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesCertificateAuthority)(nil)).Elem()
+func (i KubernetesCertificateAuthorityArray) ToKubernetesCertificateAuthorityArrayOutput() KubernetesCertificateAuthorityArrayOutput {
+	return i.ToKubernetesCertificateAuthorityArrayOutputWithContext(context.Background())
 }
 
-func (i *kubernetesCertificateAuthorityPtrType) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
-	return i.ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesCertificateAuthorityPtrType) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityPtrOutput)
+func (i KubernetesCertificateAuthorityArray) ToKubernetesCertificateAuthorityArrayOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesCertificateAuthorityArrayOutput)
 }
 
 type KubernetesCertificateAuthorityOutput struct{ *pulumi.OutputState }
@@ -1455,16 +1257,6 @@ func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityOu
 
 func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityOutput {
 	return o
-}
-
-func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
-	return o.ToKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesCertificateAuthority) *KubernetesCertificateAuthority {
-		return &v
-	}).(KubernetesCertificateAuthorityPtrOutput)
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -1482,61 +1274,27 @@ func (o KubernetesCertificateAuthorityOutput) ClusterCert() pulumi.StringPtrOutp
 	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClusterCert }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
+type KubernetesCertificateAuthorityArrayOutput struct{ *pulumi.OutputState }
 
-func (KubernetesCertificateAuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesCertificateAuthority)(nil)).Elem()
+func (KubernetesCertificateAuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesCertificateAuthority)(nil)).Elem()
 }
 
-func (o KubernetesCertificateAuthorityPtrOutput) ToKubernetesCertificateAuthorityPtrOutput() KubernetesCertificateAuthorityPtrOutput {
+func (o KubernetesCertificateAuthorityArrayOutput) ToKubernetesCertificateAuthorityArrayOutput() KubernetesCertificateAuthorityArrayOutput {
 	return o
 }
 
-func (o KubernetesCertificateAuthorityPtrOutput) ToKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityPtrOutput {
+func (o KubernetesCertificateAuthorityArrayOutput) ToKubernetesCertificateAuthorityArrayOutputWithContext(ctx context.Context) KubernetesCertificateAuthorityArrayOutput {
 	return o
 }
 
-func (o KubernetesCertificateAuthorityPtrOutput) Elem() KubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *KubernetesCertificateAuthority) KubernetesCertificateAuthority {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesCertificateAuthority
-		return ret
+func (o KubernetesCertificateAuthorityArrayOutput) Index(i pulumi.IntInput) KubernetesCertificateAuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesCertificateAuthority {
+		return vs[0].([]KubernetesCertificateAuthority)[vs[1].(int)]
 	}).(KubernetesCertificateAuthorityOutput)
 }
 
-// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
-func (o KubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientCert
-	}).(pulumi.StringPtrOutput)
-}
-
-// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
-func (o KubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
-func (o KubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterCert
-	}).(pulumi.StringPtrOutput)
-}
-
-type KubernetesConnections struct {
+type KubernetesConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -1547,18 +1305,18 @@ type KubernetesConnections struct {
 	ServiceDomain *string `pulumi:"serviceDomain"`
 }
 
-// KubernetesConnectionsInput is an input type that accepts KubernetesConnectionsArgs and KubernetesConnectionsOutput values.
-// You can construct a concrete instance of `KubernetesConnectionsInput` via:
+// KubernetesConnectionInput is an input type that accepts KubernetesConnectionArgs and KubernetesConnectionOutput values.
+// You can construct a concrete instance of `KubernetesConnectionInput` via:
 //
-//	KubernetesConnectionsArgs{...}
-type KubernetesConnectionsInput interface {
+//	KubernetesConnectionArgs{...}
+type KubernetesConnectionInput interface {
 	pulumi.Input
 
-	ToKubernetesConnectionsOutput() KubernetesConnectionsOutput
-	ToKubernetesConnectionsOutputWithContext(context.Context) KubernetesConnectionsOutput
+	ToKubernetesConnectionOutput() KubernetesConnectionOutput
+	ToKubernetesConnectionOutputWithContext(context.Context) KubernetesConnectionOutput
 }
 
-type KubernetesConnectionsArgs struct {
+type KubernetesConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -1569,165 +1327,95 @@ type KubernetesConnectionsArgs struct {
 	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
 }
 
-func (KubernetesConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesConnections)(nil)).Elem()
+func (KubernetesConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnection)(nil)).Elem()
 }
 
-func (i KubernetesConnectionsArgs) ToKubernetesConnectionsOutput() KubernetesConnectionsOutput {
-	return i.ToKubernetesConnectionsOutputWithContext(context.Background())
+func (i KubernetesConnectionArgs) ToKubernetesConnectionOutput() KubernetesConnectionOutput {
+	return i.ToKubernetesConnectionOutputWithContext(context.Background())
 }
 
-func (i KubernetesConnectionsArgs) ToKubernetesConnectionsOutputWithContext(ctx context.Context) KubernetesConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectionsOutput)
+func (i KubernetesConnectionArgs) ToKubernetesConnectionOutputWithContext(ctx context.Context) KubernetesConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectionOutput)
 }
 
-func (i KubernetesConnectionsArgs) ToKubernetesConnectionsPtrOutput() KubernetesConnectionsPtrOutput {
-	return i.ToKubernetesConnectionsPtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesConnectionsArgs) ToKubernetesConnectionsPtrOutputWithContext(ctx context.Context) KubernetesConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectionsOutput).ToKubernetesConnectionsPtrOutputWithContext(ctx)
-}
-
-// KubernetesConnectionsPtrInput is an input type that accepts KubernetesConnectionsArgs, KubernetesConnectionsPtr and KubernetesConnectionsPtrOutput values.
-// You can construct a concrete instance of `KubernetesConnectionsPtrInput` via:
+// KubernetesConnectionArrayInput is an input type that accepts KubernetesConnectionArray and KubernetesConnectionArrayOutput values.
+// You can construct a concrete instance of `KubernetesConnectionArrayInput` via:
 //
-//	        KubernetesConnectionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type KubernetesConnectionsPtrInput interface {
+//	KubernetesConnectionArray{ KubernetesConnectionArgs{...} }
+type KubernetesConnectionArrayInput interface {
 	pulumi.Input
 
-	ToKubernetesConnectionsPtrOutput() KubernetesConnectionsPtrOutput
-	ToKubernetesConnectionsPtrOutputWithContext(context.Context) KubernetesConnectionsPtrOutput
+	ToKubernetesConnectionArrayOutput() KubernetesConnectionArrayOutput
+	ToKubernetesConnectionArrayOutputWithContext(context.Context) KubernetesConnectionArrayOutput
 }
 
-type kubernetesConnectionsPtrType KubernetesConnectionsArgs
+type KubernetesConnectionArray []KubernetesConnectionInput
 
-func KubernetesConnectionsPtr(v *KubernetesConnectionsArgs) KubernetesConnectionsPtrInput {
-	return (*kubernetesConnectionsPtrType)(v)
+func (KubernetesConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesConnection)(nil)).Elem()
 }
 
-func (*kubernetesConnectionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesConnections)(nil)).Elem()
+func (i KubernetesConnectionArray) ToKubernetesConnectionArrayOutput() KubernetesConnectionArrayOutput {
+	return i.ToKubernetesConnectionArrayOutputWithContext(context.Background())
 }
 
-func (i *kubernetesConnectionsPtrType) ToKubernetesConnectionsPtrOutput() KubernetesConnectionsPtrOutput {
-	return i.ToKubernetesConnectionsPtrOutputWithContext(context.Background())
+func (i KubernetesConnectionArray) ToKubernetesConnectionArrayOutputWithContext(ctx context.Context) KubernetesConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectionArrayOutput)
 }
 
-func (i *kubernetesConnectionsPtrType) ToKubernetesConnectionsPtrOutputWithContext(ctx context.Context) KubernetesConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectionsPtrOutput)
+type KubernetesConnectionOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnection)(nil)).Elem()
 }
 
-type KubernetesConnectionsOutput struct{ *pulumi.OutputState }
-
-func (KubernetesConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesConnections)(nil)).Elem()
-}
-
-func (o KubernetesConnectionsOutput) ToKubernetesConnectionsOutput() KubernetesConnectionsOutput {
+func (o KubernetesConnectionOutput) ToKubernetesConnectionOutput() KubernetesConnectionOutput {
 	return o
 }
 
-func (o KubernetesConnectionsOutput) ToKubernetesConnectionsOutputWithContext(ctx context.Context) KubernetesConnectionsOutput {
+func (o KubernetesConnectionOutput) ToKubernetesConnectionOutputWithContext(ctx context.Context) KubernetesConnectionOutput {
 	return o
-}
-
-func (o KubernetesConnectionsOutput) ToKubernetesConnectionsPtrOutput() KubernetesConnectionsPtrOutput {
-	return o.ToKubernetesConnectionsPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesConnectionsOutput) ToKubernetesConnectionsPtrOutputWithContext(ctx context.Context) KubernetesConnectionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnections) *KubernetesConnections {
-		return &v
-	}).(KubernetesConnectionsPtrOutput)
 }
 
 // API Server Internet endpoint.
-func (o KubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+func (o KubernetesConnectionOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnection) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
-func (o KubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+func (o KubernetesConnectionOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnection) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
-func (o KubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+func (o KubernetesConnectionOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnection) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
-func (o KubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+func (o KubernetesConnectionOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnection) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesConnectionsPtrOutput struct{ *pulumi.OutputState }
+type KubernetesConnectionArrayOutput struct{ *pulumi.OutputState }
 
-func (KubernetesConnectionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesConnections)(nil)).Elem()
+func (KubernetesConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesConnection)(nil)).Elem()
 }
 
-func (o KubernetesConnectionsPtrOutput) ToKubernetesConnectionsPtrOutput() KubernetesConnectionsPtrOutput {
+func (o KubernetesConnectionArrayOutput) ToKubernetesConnectionArrayOutput() KubernetesConnectionArrayOutput {
 	return o
 }
 
-func (o KubernetesConnectionsPtrOutput) ToKubernetesConnectionsPtrOutputWithContext(ctx context.Context) KubernetesConnectionsPtrOutput {
+func (o KubernetesConnectionArrayOutput) ToKubernetesConnectionArrayOutputWithContext(ctx context.Context) KubernetesConnectionArrayOutput {
 	return o
 }
 
-func (o KubernetesConnectionsPtrOutput) Elem() KubernetesConnectionsOutput {
-	return o.ApplyT(func(v *KubernetesConnections) KubernetesConnections {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesConnections
-		return ret
-	}).(KubernetesConnectionsOutput)
-}
-
-// API Server Internet endpoint.
-func (o KubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerInternet
-	}).(pulumi.StringPtrOutput)
-}
-
-// API Server Intranet endpoint.
-func (o KubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerIntranet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Master node SSH IP address.
-func (o KubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MasterPublicIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Access Domain.
-func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceDomain
-	}).(pulumi.StringPtrOutput)
+func (o KubernetesConnectionArrayOutput) Index(i pulumi.IntInput) KubernetesConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesConnection {
+		return vs[0].([]KubernetesConnection)[vs[1].(int)]
+	}).(KubernetesConnectionOutput)
 }
 
 type KubernetesDeleteOption struct {
@@ -2146,45 +1834,29 @@ func (i KubernetesRuntimeArgs) ToKubernetesRuntimeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimeOutput)
 }
 
-func (i KubernetesRuntimeArgs) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
-	return i.ToKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesRuntimeArgs) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimeOutput).ToKubernetesRuntimePtrOutputWithContext(ctx)
-}
-
-// KubernetesRuntimePtrInput is an input type that accepts KubernetesRuntimeArgs, KubernetesRuntimePtr and KubernetesRuntimePtrOutput values.
-// You can construct a concrete instance of `KubernetesRuntimePtrInput` via:
+// KubernetesRuntimeArrayInput is an input type that accepts KubernetesRuntimeArray and KubernetesRuntimeArrayOutput values.
+// You can construct a concrete instance of `KubernetesRuntimeArrayInput` via:
 //
-//	        KubernetesRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type KubernetesRuntimePtrInput interface {
+//	KubernetesRuntimeArray{ KubernetesRuntimeArgs{...} }
+type KubernetesRuntimeArrayInput interface {
 	pulumi.Input
 
-	ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput
-	ToKubernetesRuntimePtrOutputWithContext(context.Context) KubernetesRuntimePtrOutput
+	ToKubernetesRuntimeArrayOutput() KubernetesRuntimeArrayOutput
+	ToKubernetesRuntimeArrayOutputWithContext(context.Context) KubernetesRuntimeArrayOutput
 }
 
-type kubernetesRuntimePtrType KubernetesRuntimeArgs
+type KubernetesRuntimeArray []KubernetesRuntimeInput
 
-func KubernetesRuntimePtr(v *KubernetesRuntimeArgs) KubernetesRuntimePtrInput {
-	return (*kubernetesRuntimePtrType)(v)
+func (KubernetesRuntimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesRuntime)(nil)).Elem()
 }
 
-func (*kubernetesRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesRuntime)(nil)).Elem()
+func (i KubernetesRuntimeArray) ToKubernetesRuntimeArrayOutput() KubernetesRuntimeArrayOutput {
+	return i.ToKubernetesRuntimeArrayOutputWithContext(context.Background())
 }
 
-func (i *kubernetesRuntimePtrType) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
-	return i.ToKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesRuntimePtrType) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimePtrOutput)
+func (i KubernetesRuntimeArray) ToKubernetesRuntimeArrayOutputWithContext(ctx context.Context) KubernetesRuntimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRuntimeArrayOutput)
 }
 
 type KubernetesRuntimeOutput struct{ *pulumi.OutputState }
@@ -2201,16 +1873,6 @@ func (o KubernetesRuntimeOutput) ToKubernetesRuntimeOutputWithContext(ctx contex
 	return o
 }
 
-func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
-	return o.ToKubernetesRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesRuntime) *KubernetesRuntime {
-		return &v
-	}).(KubernetesRuntimePtrOutput)
-}
-
 // The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 func (o KubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2223,50 +1885,24 @@ func (o KubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesRuntimePtrOutput struct{ *pulumi.OutputState }
+type KubernetesRuntimeArrayOutput struct{ *pulumi.OutputState }
 
-func (KubernetesRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesRuntime)(nil)).Elem()
+func (KubernetesRuntimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesRuntime)(nil)).Elem()
 }
 
-func (o KubernetesRuntimePtrOutput) ToKubernetesRuntimePtrOutput() KubernetesRuntimePtrOutput {
+func (o KubernetesRuntimeArrayOutput) ToKubernetesRuntimeArrayOutput() KubernetesRuntimeArrayOutput {
 	return o
 }
 
-func (o KubernetesRuntimePtrOutput) ToKubernetesRuntimePtrOutputWithContext(ctx context.Context) KubernetesRuntimePtrOutput {
+func (o KubernetesRuntimeArrayOutput) ToKubernetesRuntimeArrayOutputWithContext(ctx context.Context) KubernetesRuntimeArrayOutput {
 	return o
 }
 
-func (o KubernetesRuntimePtrOutput) Elem() KubernetesRuntimeOutput {
-	return o.ApplyT(func(v *KubernetesRuntime) KubernetesRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesRuntime
-		return ret
+func (o KubernetesRuntimeArrayOutput) Index(i pulumi.IntInput) KubernetesRuntimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesRuntime {
+		return vs[0].([]KubernetesRuntime)[vs[1].(int)]
 	}).(KubernetesRuntimeOutput)
-}
-
-// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
-func (o KubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The version of the runtime.
-//
-// The following example is the definition of runtime block:
-func (o KubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesAddon struct {
@@ -2763,45 +2399,29 @@ func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificat
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityOutput)
 }
 
-func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
-	return i.ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesCertificateAuthorityArgs) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityOutput).ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx)
-}
-
-// ManagedKubernetesCertificateAuthorityPtrInput is an input type that accepts ManagedKubernetesCertificateAuthorityArgs, ManagedKubernetesCertificateAuthorityPtr and ManagedKubernetesCertificateAuthorityPtrOutput values.
-// You can construct a concrete instance of `ManagedKubernetesCertificateAuthorityPtrInput` via:
+// ManagedKubernetesCertificateAuthorityArrayInput is an input type that accepts ManagedKubernetesCertificateAuthorityArray and ManagedKubernetesCertificateAuthorityArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesCertificateAuthorityArrayInput` via:
 //
-//	        ManagedKubernetesCertificateAuthorityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedKubernetesCertificateAuthorityPtrInput interface {
+//	ManagedKubernetesCertificateAuthorityArray{ ManagedKubernetesCertificateAuthorityArgs{...} }
+type ManagedKubernetesCertificateAuthorityArrayInput interface {
 	pulumi.Input
 
-	ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput
-	ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Context) ManagedKubernetesCertificateAuthorityPtrOutput
+	ToManagedKubernetesCertificateAuthorityArrayOutput() ManagedKubernetesCertificateAuthorityArrayOutput
+	ToManagedKubernetesCertificateAuthorityArrayOutputWithContext(context.Context) ManagedKubernetesCertificateAuthorityArrayOutput
 }
 
-type managedKubernetesCertificateAuthorityPtrType ManagedKubernetesCertificateAuthorityArgs
+type ManagedKubernetesCertificateAuthorityArray []ManagedKubernetesCertificateAuthorityInput
 
-func ManagedKubernetesCertificateAuthorityPtr(v *ManagedKubernetesCertificateAuthorityArgs) ManagedKubernetesCertificateAuthorityPtrInput {
-	return (*managedKubernetesCertificateAuthorityPtrType)(v)
+func (ManagedKubernetesCertificateAuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesCertificateAuthority)(nil)).Elem()
 }
 
-func (*managedKubernetesCertificateAuthorityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesCertificateAuthority)(nil)).Elem()
+func (i ManagedKubernetesCertificateAuthorityArray) ToManagedKubernetesCertificateAuthorityArrayOutput() ManagedKubernetesCertificateAuthorityArrayOutput {
+	return i.ToManagedKubernetesCertificateAuthorityArrayOutputWithContext(context.Background())
 }
 
-func (i *managedKubernetesCertificateAuthorityPtrType) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
-	return i.ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (i *managedKubernetesCertificateAuthorityPtrType) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityPtrOutput)
+func (i ManagedKubernetesCertificateAuthorityArray) ToManagedKubernetesCertificateAuthorityArrayOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesCertificateAuthorityArrayOutput)
 }
 
 type ManagedKubernetesCertificateAuthorityOutput struct{ *pulumi.OutputState }
@@ -2816,16 +2436,6 @@ func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertific
 
 func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityOutput {
 	return o
-}
-
-func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
-	return o.ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesCertificateAuthority) *ManagedKubernetesCertificateAuthority {
-		return &v
-	}).(ManagedKubernetesCertificateAuthorityPtrOutput)
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -2843,61 +2453,27 @@ func (o ManagedKubernetesCertificateAuthorityOutput) ClusterCert() pulumi.String
 	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClusterCert }).(pulumi.StringPtrOutput)
 }
 
-type ManagedKubernetesCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
+type ManagedKubernetesCertificateAuthorityArrayOutput struct{ *pulumi.OutputState }
 
-func (ManagedKubernetesCertificateAuthorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesCertificateAuthority)(nil)).Elem()
+func (ManagedKubernetesCertificateAuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesCertificateAuthority)(nil)).Elem()
 }
 
-func (o ManagedKubernetesCertificateAuthorityPtrOutput) ToManagedKubernetesCertificateAuthorityPtrOutput() ManagedKubernetesCertificateAuthorityPtrOutput {
+func (o ManagedKubernetesCertificateAuthorityArrayOutput) ToManagedKubernetesCertificateAuthorityArrayOutput() ManagedKubernetesCertificateAuthorityArrayOutput {
 	return o
 }
 
-func (o ManagedKubernetesCertificateAuthorityPtrOutput) ToManagedKubernetesCertificateAuthorityPtrOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityPtrOutput {
+func (o ManagedKubernetesCertificateAuthorityArrayOutput) ToManagedKubernetesCertificateAuthorityArrayOutputWithContext(ctx context.Context) ManagedKubernetesCertificateAuthorityArrayOutput {
 	return o
 }
 
-func (o ManagedKubernetesCertificateAuthorityPtrOutput) Elem() ManagedKubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) ManagedKubernetesCertificateAuthority {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedKubernetesCertificateAuthority
-		return ret
+func (o ManagedKubernetesCertificateAuthorityArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesCertificateAuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesCertificateAuthority {
+		return vs[0].([]ManagedKubernetesCertificateAuthority)[vs[1].(int)]
 	}).(ManagedKubernetesCertificateAuthorityOutput)
 }
 
-// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
-func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientCert
-	}).(pulumi.StringPtrOutput)
-}
-
-// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
-func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
-func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClusterCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterCert
-	}).(pulumi.StringPtrOutput)
-}
-
-type ManagedKubernetesConnections struct {
+type ManagedKubernetesConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -2908,18 +2484,18 @@ type ManagedKubernetesConnections struct {
 	ServiceDomain *string `pulumi:"serviceDomain"`
 }
 
-// ManagedKubernetesConnectionsInput is an input type that accepts ManagedKubernetesConnectionsArgs and ManagedKubernetesConnectionsOutput values.
-// You can construct a concrete instance of `ManagedKubernetesConnectionsInput` via:
+// ManagedKubernetesConnectionInput is an input type that accepts ManagedKubernetesConnectionArgs and ManagedKubernetesConnectionOutput values.
+// You can construct a concrete instance of `ManagedKubernetesConnectionInput` via:
 //
-//	ManagedKubernetesConnectionsArgs{...}
-type ManagedKubernetesConnectionsInput interface {
+//	ManagedKubernetesConnectionArgs{...}
+type ManagedKubernetesConnectionInput interface {
 	pulumi.Input
 
-	ToManagedKubernetesConnectionsOutput() ManagedKubernetesConnectionsOutput
-	ToManagedKubernetesConnectionsOutputWithContext(context.Context) ManagedKubernetesConnectionsOutput
+	ToManagedKubernetesConnectionOutput() ManagedKubernetesConnectionOutput
+	ToManagedKubernetesConnectionOutputWithContext(context.Context) ManagedKubernetesConnectionOutput
 }
 
-type ManagedKubernetesConnectionsArgs struct {
+type ManagedKubernetesConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -2930,165 +2506,95 @@ type ManagedKubernetesConnectionsArgs struct {
 	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
 }
 
-func (ManagedKubernetesConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesConnections)(nil)).Elem()
+func (ManagedKubernetesConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesConnection)(nil)).Elem()
 }
 
-func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsOutput() ManagedKubernetesConnectionsOutput {
-	return i.ToManagedKubernetesConnectionsOutputWithContext(context.Background())
+func (i ManagedKubernetesConnectionArgs) ToManagedKubernetesConnectionOutput() ManagedKubernetesConnectionOutput {
+	return i.ToManagedKubernetesConnectionOutputWithContext(context.Background())
 }
 
-func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsOutput)
+func (i ManagedKubernetesConnectionArgs) ToManagedKubernetesConnectionOutputWithContext(ctx context.Context) ManagedKubernetesConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionOutput)
 }
 
-func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
-	return i.ToManagedKubernetesConnectionsPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsOutput).ToManagedKubernetesConnectionsPtrOutputWithContext(ctx)
-}
-
-// ManagedKubernetesConnectionsPtrInput is an input type that accepts ManagedKubernetesConnectionsArgs, ManagedKubernetesConnectionsPtr and ManagedKubernetesConnectionsPtrOutput values.
-// You can construct a concrete instance of `ManagedKubernetesConnectionsPtrInput` via:
+// ManagedKubernetesConnectionArrayInput is an input type that accepts ManagedKubernetesConnectionArray and ManagedKubernetesConnectionArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesConnectionArrayInput` via:
 //
-//	        ManagedKubernetesConnectionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedKubernetesConnectionsPtrInput interface {
+//	ManagedKubernetesConnectionArray{ ManagedKubernetesConnectionArgs{...} }
+type ManagedKubernetesConnectionArrayInput interface {
 	pulumi.Input
 
-	ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput
-	ToManagedKubernetesConnectionsPtrOutputWithContext(context.Context) ManagedKubernetesConnectionsPtrOutput
+	ToManagedKubernetesConnectionArrayOutput() ManagedKubernetesConnectionArrayOutput
+	ToManagedKubernetesConnectionArrayOutputWithContext(context.Context) ManagedKubernetesConnectionArrayOutput
 }
 
-type managedKubernetesConnectionsPtrType ManagedKubernetesConnectionsArgs
+type ManagedKubernetesConnectionArray []ManagedKubernetesConnectionInput
 
-func ManagedKubernetesConnectionsPtr(v *ManagedKubernetesConnectionsArgs) ManagedKubernetesConnectionsPtrInput {
-	return (*managedKubernetesConnectionsPtrType)(v)
+func (ManagedKubernetesConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesConnection)(nil)).Elem()
 }
 
-func (*managedKubernetesConnectionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesConnections)(nil)).Elem()
+func (i ManagedKubernetesConnectionArray) ToManagedKubernetesConnectionArrayOutput() ManagedKubernetesConnectionArrayOutput {
+	return i.ToManagedKubernetesConnectionArrayOutputWithContext(context.Background())
 }
 
-func (i *managedKubernetesConnectionsPtrType) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
-	return i.ToManagedKubernetesConnectionsPtrOutputWithContext(context.Background())
+func (i ManagedKubernetesConnectionArray) ToManagedKubernetesConnectionArrayOutputWithContext(ctx context.Context) ManagedKubernetesConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionArrayOutput)
 }
 
-func (i *managedKubernetesConnectionsPtrType) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsPtrOutput)
+type ManagedKubernetesConnectionOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesConnection)(nil)).Elem()
 }
 
-type ManagedKubernetesConnectionsOutput struct{ *pulumi.OutputState }
-
-func (ManagedKubernetesConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesConnections)(nil)).Elem()
-}
-
-func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsOutput() ManagedKubernetesConnectionsOutput {
+func (o ManagedKubernetesConnectionOutput) ToManagedKubernetesConnectionOutput() ManagedKubernetesConnectionOutput {
 	return o
 }
 
-func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsOutput {
+func (o ManagedKubernetesConnectionOutput) ToManagedKubernetesConnectionOutputWithContext(ctx context.Context) ManagedKubernetesConnectionOutput {
 	return o
-}
-
-func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
-	return o.ToManagedKubernetesConnectionsPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesConnections) *ManagedKubernetesConnections {
-		return &v
-	}).(ManagedKubernetesConnectionsPtrOutput)
 }
 
 // API Server Internet endpoint.
-func (o ManagedKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+func (o ManagedKubernetesConnectionOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesConnection) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
-func (o ManagedKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+func (o ManagedKubernetesConnectionOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesConnection) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
-func (o ManagedKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+func (o ManagedKubernetesConnectionOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesConnection) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
-func (o ManagedKubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+func (o ManagedKubernetesConnectionOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesConnection) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
-type ManagedKubernetesConnectionsPtrOutput struct{ *pulumi.OutputState }
+type ManagedKubernetesConnectionArrayOutput struct{ *pulumi.OutputState }
 
-func (ManagedKubernetesConnectionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesConnections)(nil)).Elem()
+func (ManagedKubernetesConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesConnection)(nil)).Elem()
 }
 
-func (o ManagedKubernetesConnectionsPtrOutput) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
+func (o ManagedKubernetesConnectionArrayOutput) ToManagedKubernetesConnectionArrayOutput() ManagedKubernetesConnectionArrayOutput {
 	return o
 }
 
-func (o ManagedKubernetesConnectionsPtrOutput) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
+func (o ManagedKubernetesConnectionArrayOutput) ToManagedKubernetesConnectionArrayOutputWithContext(ctx context.Context) ManagedKubernetesConnectionArrayOutput {
 	return o
 }
 
-func (o ManagedKubernetesConnectionsPtrOutput) Elem() ManagedKubernetesConnectionsOutput {
-	return o.ApplyT(func(v *ManagedKubernetesConnections) ManagedKubernetesConnections {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedKubernetesConnections
-		return ret
-	}).(ManagedKubernetesConnectionsOutput)
-}
-
-// API Server Internet endpoint.
-func (o ManagedKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerInternet
-	}).(pulumi.StringPtrOutput)
-}
-
-// API Server Intranet endpoint.
-func (o ManagedKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApiServerIntranet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Master node SSH IP address.
-func (o ManagedKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MasterPublicIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Access Domain.
-func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceDomain
-	}).(pulumi.StringPtrOutput)
+func (o ManagedKubernetesConnectionArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesConnection {
+		return vs[0].([]ManagedKubernetesConnection)[vs[1].(int)]
+	}).(ManagedKubernetesConnectionOutput)
 }
 
 type ManagedKubernetesControlPlaneEndpointsConfig struct {
@@ -9845,6 +9351,31 @@ func (i GetClusterCredentialCertificateAuthorityArgs) ToGetClusterCredentialCert
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterCredentialCertificateAuthorityOutput)
 }
 
+// GetClusterCredentialCertificateAuthorityArrayInput is an input type that accepts GetClusterCredentialCertificateAuthorityArray and GetClusterCredentialCertificateAuthorityArrayOutput values.
+// You can construct a concrete instance of `GetClusterCredentialCertificateAuthorityArrayInput` via:
+//
+//	GetClusterCredentialCertificateAuthorityArray{ GetClusterCredentialCertificateAuthorityArgs{...} }
+type GetClusterCredentialCertificateAuthorityArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterCredentialCertificateAuthorityArrayOutput() GetClusterCredentialCertificateAuthorityArrayOutput
+	ToGetClusterCredentialCertificateAuthorityArrayOutputWithContext(context.Context) GetClusterCredentialCertificateAuthorityArrayOutput
+}
+
+type GetClusterCredentialCertificateAuthorityArray []GetClusterCredentialCertificateAuthorityInput
+
+func (GetClusterCredentialCertificateAuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterCredentialCertificateAuthority)(nil)).Elem()
+}
+
+func (i GetClusterCredentialCertificateAuthorityArray) ToGetClusterCredentialCertificateAuthorityArrayOutput() GetClusterCredentialCertificateAuthorityArrayOutput {
+	return i.ToGetClusterCredentialCertificateAuthorityArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterCredentialCertificateAuthorityArray) ToGetClusterCredentialCertificateAuthorityArrayOutputWithContext(ctx context.Context) GetClusterCredentialCertificateAuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterCredentialCertificateAuthorityArrayOutput)
+}
+
 type GetClusterCredentialCertificateAuthorityOutput struct{ *pulumi.OutputState }
 
 func (GetClusterCredentialCertificateAuthorityOutput) ElementType() reflect.Type {
@@ -9872,6 +9403,26 @@ func (o GetClusterCredentialCertificateAuthorityOutput) ClientKey() pulumi.Strin
 // The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kube config file for your cluster.
 func (o GetClusterCredentialCertificateAuthorityOutput) ClusterCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterCredentialCertificateAuthority) string { return v.ClusterCert }).(pulumi.StringOutput)
+}
+
+type GetClusterCredentialCertificateAuthorityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterCredentialCertificateAuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterCredentialCertificateAuthority)(nil)).Elem()
+}
+
+func (o GetClusterCredentialCertificateAuthorityArrayOutput) ToGetClusterCredentialCertificateAuthorityArrayOutput() GetClusterCredentialCertificateAuthorityArrayOutput {
+	return o
+}
+
+func (o GetClusterCredentialCertificateAuthorityArrayOutput) ToGetClusterCredentialCertificateAuthorityArrayOutputWithContext(ctx context.Context) GetClusterCredentialCertificateAuthorityArrayOutput {
+	return o
+}
+
+func (o GetClusterCredentialCertificateAuthorityArrayOutput) Index(i pulumi.IntInput) GetClusterCredentialCertificateAuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterCredentialCertificateAuthority {
+		return vs[0].([]GetClusterCredentialCertificateAuthority)[vs[1].(int)]
+	}).(GetClusterCredentialCertificateAuthorityOutput)
 }
 
 type GetClustersCluster struct {
@@ -10487,8 +10038,8 @@ func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) Enabled() pul
 type GetEdgeKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-	Connections GetEdgeKubernetesClustersClusterConnections `pulumi:"connections"`
+	// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	Connections []GetEdgeKubernetesClustersClusterConnection `pulumi:"connections"`
 	// ID of the node.
 	Id string `pulumi:"id"`
 	// Node name.
@@ -10517,8 +10068,8 @@ type GetEdgeKubernetesClustersClusterInput interface {
 type GetEdgeKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-	Connections GetEdgeKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
+	// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	Connections GetEdgeKubernetesClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// ID of the node.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Node name.
@@ -10589,11 +10140,11 @@ func (o GetEdgeKubernetesClustersClusterOutput) AvailabilityZone() pulumi.String
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-func (o GetEdgeKubernetesClustersClusterOutput) Connections() GetEdgeKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) GetEdgeKubernetesClustersClusterConnections {
+// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+func (o GetEdgeKubernetesClustersClusterOutput) Connections() GetEdgeKubernetesClustersClusterConnectionArrayOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) []GetEdgeKubernetesClustersClusterConnection {
 		return v.Connections
-	}).(GetEdgeKubernetesClustersClusterConnectionsOutput)
+	}).(GetEdgeKubernetesClustersClusterConnectionArrayOutput)
 }
 
 // ID of the node.
@@ -10648,65 +10199,110 @@ func (o GetEdgeKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetEdgeKubernetesClustersClusterOutput)
 }
 
-type GetEdgeKubernetesClustersClusterConnections struct {
+type GetEdgeKubernetesClustersClusterConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
 	ApiServerIntranet string `pulumi:"apiServerIntranet"`
 }
 
-// GetEdgeKubernetesClustersClusterConnectionsInput is an input type that accepts GetEdgeKubernetesClustersClusterConnectionsArgs and GetEdgeKubernetesClustersClusterConnectionsOutput values.
-// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterConnectionsInput` via:
+// GetEdgeKubernetesClustersClusterConnectionInput is an input type that accepts GetEdgeKubernetesClustersClusterConnectionArgs and GetEdgeKubernetesClustersClusterConnectionOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterConnectionInput` via:
 //
-//	GetEdgeKubernetesClustersClusterConnectionsArgs{...}
-type GetEdgeKubernetesClustersClusterConnectionsInput interface {
+//	GetEdgeKubernetesClustersClusterConnectionArgs{...}
+type GetEdgeKubernetesClustersClusterConnectionInput interface {
 	pulumi.Input
 
-	ToGetEdgeKubernetesClustersClusterConnectionsOutput() GetEdgeKubernetesClustersClusterConnectionsOutput
-	ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterConnectionsOutput
+	ToGetEdgeKubernetesClustersClusterConnectionOutput() GetEdgeKubernetesClustersClusterConnectionOutput
+	ToGetEdgeKubernetesClustersClusterConnectionOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterConnectionOutput
 }
 
-type GetEdgeKubernetesClustersClusterConnectionsArgs struct {
+type GetEdgeKubernetesClustersClusterConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
 	ApiServerIntranet pulumi.StringInput `pulumi:"apiServerIntranet"`
 }
 
-func (GetEdgeKubernetesClustersClusterConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnections)(nil)).Elem()
+func (GetEdgeKubernetesClustersClusterConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnection)(nil)).Elem()
 }
 
-func (i GetEdgeKubernetesClustersClusterConnectionsArgs) ToGetEdgeKubernetesClustersClusterConnectionsOutput() GetEdgeKubernetesClustersClusterConnectionsOutput {
-	return i.ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(context.Background())
+func (i GetEdgeKubernetesClustersClusterConnectionArgs) ToGetEdgeKubernetesClustersClusterConnectionOutput() GetEdgeKubernetesClustersClusterConnectionOutput {
+	return i.ToGetEdgeKubernetesClustersClusterConnectionOutputWithContext(context.Background())
 }
 
-func (i GetEdgeKubernetesClustersClusterConnectionsArgs) ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterConnectionsOutput)
+func (i GetEdgeKubernetesClustersClusterConnectionArgs) ToGetEdgeKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterConnectionOutput)
 }
 
-type GetEdgeKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
+// GetEdgeKubernetesClustersClusterConnectionArrayInput is an input type that accepts GetEdgeKubernetesClustersClusterConnectionArray and GetEdgeKubernetesClustersClusterConnectionArrayOutput values.
+// You can construct a concrete instance of `GetEdgeKubernetesClustersClusterConnectionArrayInput` via:
+//
+//	GetEdgeKubernetesClustersClusterConnectionArray{ GetEdgeKubernetesClustersClusterConnectionArgs{...} }
+type GetEdgeKubernetesClustersClusterConnectionArrayInput interface {
+	pulumi.Input
 
-func (GetEdgeKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnections)(nil)).Elem()
+	ToGetEdgeKubernetesClustersClusterConnectionArrayOutput() GetEdgeKubernetesClustersClusterConnectionArrayOutput
+	ToGetEdgeKubernetesClustersClusterConnectionArrayOutputWithContext(context.Context) GetEdgeKubernetesClustersClusterConnectionArrayOutput
 }
 
-func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ToGetEdgeKubernetesClustersClusterConnectionsOutput() GetEdgeKubernetesClustersClusterConnectionsOutput {
+type GetEdgeKubernetesClustersClusterConnectionArray []GetEdgeKubernetesClustersClusterConnectionInput
+
+func (GetEdgeKubernetesClustersClusterConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEdgeKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (i GetEdgeKubernetesClustersClusterConnectionArray) ToGetEdgeKubernetesClustersClusterConnectionArrayOutput() GetEdgeKubernetesClustersClusterConnectionArrayOutput {
+	return i.ToGetEdgeKubernetesClustersClusterConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetEdgeKubernetesClustersClusterConnectionArray) ToGetEdgeKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEdgeKubernetesClustersClusterConnectionArrayOutput)
+}
+
+type GetEdgeKubernetesClustersClusterConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterConnectionOutput) ToGetEdgeKubernetesClustersClusterConnectionOutput() GetEdgeKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
-func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ToGetEdgeKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionsOutput {
+func (o GetEdgeKubernetesClustersClusterConnectionOutput) ToGetEdgeKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
 // API Server Internet endpoint.
-func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+func (o GetEdgeKubernetesClustersClusterConnectionOutput) ApiServerInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterConnection) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
-func (o GetEdgeKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+func (o GetEdgeKubernetesClustersClusterConnectionOutput) ApiServerIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEdgeKubernetesClustersClusterConnection) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+}
+
+type GetEdgeKubernetesClustersClusterConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEdgeKubernetesClustersClusterConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEdgeKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetEdgeKubernetesClustersClusterConnectionArrayOutput) ToGetEdgeKubernetesClustersClusterConnectionArrayOutput() GetEdgeKubernetesClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterConnectionArrayOutput) ToGetEdgeKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetEdgeKubernetesClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetEdgeKubernetesClustersClusterConnectionArrayOutput) Index(i pulumi.IntInput) GetEdgeKubernetesClustersClusterConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEdgeKubernetesClustersClusterConnection {
+		return vs[0].([]GetEdgeKubernetesClustersClusterConnection)[vs[1].(int)]
+	}).(GetEdgeKubernetesClustersClusterConnectionOutput)
 }
 
 type GetEdgeKubernetesClustersClusterWorkerNode struct {
@@ -10971,8 +10567,8 @@ type GetKubernetesClustersCluster struct {
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The cluster network type.
 	ClusterNetworkType string `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information.
-	Connections GetKubernetesClustersClusterConnections `pulumi:"connections"`
+	// A list of kubernetes cluster connection information.
+	Connections []GetKubernetesClustersClusterConnection `pulumi:"connections"`
 	// ID of the node.
 	Id string `pulumi:"id"`
 	// The ID of node image.
@@ -11059,8 +10655,8 @@ type GetKubernetesClustersClusterArgs struct {
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// The cluster network type.
 	ClusterNetworkType pulumi.StringInput `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information.
-	Connections GetKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
+	// A list of kubernetes cluster connection information.
+	Connections GetKubernetesClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// ID of the node.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of node image.
@@ -11192,9 +10788,9 @@ func (o GetKubernetesClustersClusterOutput) ClusterNetworkType() pulumi.StringOu
 	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information.
-func (o GetKubernetesClustersClusterOutput) Connections() GetKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func(v GetKubernetesClustersCluster) GetKubernetesClustersClusterConnections { return v.Connections }).(GetKubernetesClustersClusterConnectionsOutput)
+// A list of kubernetes cluster connection information.
+func (o GetKubernetesClustersClusterOutput) Connections() GetKubernetesClustersClusterConnectionArrayOutput {
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []GetKubernetesClustersClusterConnection { return v.Connections }).(GetKubernetesClustersClusterConnectionArrayOutput)
 }
 
 // ID of the node.
@@ -11387,7 +10983,7 @@ func (o GetKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput) GetKub
 	}).(GetKubernetesClustersClusterOutput)
 }
 
-type GetKubernetesClustersClusterConnections struct {
+type GetKubernetesClustersClusterConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -11398,18 +10994,18 @@ type GetKubernetesClustersClusterConnections struct {
 	ServiceDomain string `pulumi:"serviceDomain"`
 }
 
-// GetKubernetesClustersClusterConnectionsInput is an input type that accepts GetKubernetesClustersClusterConnectionsArgs and GetKubernetesClustersClusterConnectionsOutput values.
-// You can construct a concrete instance of `GetKubernetesClustersClusterConnectionsInput` via:
+// GetKubernetesClustersClusterConnectionInput is an input type that accepts GetKubernetesClustersClusterConnectionArgs and GetKubernetesClustersClusterConnectionOutput values.
+// You can construct a concrete instance of `GetKubernetesClustersClusterConnectionInput` via:
 //
-//	GetKubernetesClustersClusterConnectionsArgs{...}
-type GetKubernetesClustersClusterConnectionsInput interface {
+//	GetKubernetesClustersClusterConnectionArgs{...}
+type GetKubernetesClustersClusterConnectionInput interface {
 	pulumi.Input
 
-	ToGetKubernetesClustersClusterConnectionsOutput() GetKubernetesClustersClusterConnectionsOutput
-	ToGetKubernetesClustersClusterConnectionsOutputWithContext(context.Context) GetKubernetesClustersClusterConnectionsOutput
+	ToGetKubernetesClustersClusterConnectionOutput() GetKubernetesClustersClusterConnectionOutput
+	ToGetKubernetesClustersClusterConnectionOutputWithContext(context.Context) GetKubernetesClustersClusterConnectionOutput
 }
 
-type GetKubernetesClustersClusterConnectionsArgs struct {
+type GetKubernetesClustersClusterConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -11420,50 +11016,95 @@ type GetKubernetesClustersClusterConnectionsArgs struct {
 	ServiceDomain pulumi.StringInput `pulumi:"serviceDomain"`
 }
 
-func (GetKubernetesClustersClusterConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetKubernetesClustersClusterConnections)(nil)).Elem()
+func (GetKubernetesClustersClusterConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClustersClusterConnection)(nil)).Elem()
 }
 
-func (i GetKubernetesClustersClusterConnectionsArgs) ToGetKubernetesClustersClusterConnectionsOutput() GetKubernetesClustersClusterConnectionsOutput {
-	return i.ToGetKubernetesClustersClusterConnectionsOutputWithContext(context.Background())
+func (i GetKubernetesClustersClusterConnectionArgs) ToGetKubernetesClustersClusterConnectionOutput() GetKubernetesClustersClusterConnectionOutput {
+	return i.ToGetKubernetesClustersClusterConnectionOutputWithContext(context.Background())
 }
 
-func (i GetKubernetesClustersClusterConnectionsArgs) ToGetKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetKubernetesClustersClusterConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterConnectionsOutput)
+func (i GetKubernetesClustersClusterConnectionArgs) ToGetKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetKubernetesClustersClusterConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterConnectionOutput)
 }
 
-type GetKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
+// GetKubernetesClustersClusterConnectionArrayInput is an input type that accepts GetKubernetesClustersClusterConnectionArray and GetKubernetesClustersClusterConnectionArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesClustersClusterConnectionArrayInput` via:
+//
+//	GetKubernetesClustersClusterConnectionArray{ GetKubernetesClustersClusterConnectionArgs{...} }
+type GetKubernetesClustersClusterConnectionArrayInput interface {
+	pulumi.Input
 
-func (GetKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetKubernetesClustersClusterConnections)(nil)).Elem()
+	ToGetKubernetesClustersClusterConnectionArrayOutput() GetKubernetesClustersClusterConnectionArrayOutput
+	ToGetKubernetesClustersClusterConnectionArrayOutputWithContext(context.Context) GetKubernetesClustersClusterConnectionArrayOutput
 }
 
-func (o GetKubernetesClustersClusterConnectionsOutput) ToGetKubernetesClustersClusterConnectionsOutput() GetKubernetesClustersClusterConnectionsOutput {
+type GetKubernetesClustersClusterConnectionArray []GetKubernetesClustersClusterConnectionInput
+
+func (GetKubernetesClustersClusterConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (i GetKubernetesClustersClusterConnectionArray) ToGetKubernetesClustersClusterConnectionArrayOutput() GetKubernetesClustersClusterConnectionArrayOutput {
+	return i.ToGetKubernetesClustersClusterConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClustersClusterConnectionArray) ToGetKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetKubernetesClustersClusterConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterConnectionArrayOutput)
+}
+
+type GetKubernetesClustersClusterConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClustersClusterConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetKubernetesClustersClusterConnectionOutput) ToGetKubernetesClustersClusterConnectionOutput() GetKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
-func (o GetKubernetesClustersClusterConnectionsOutput) ToGetKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetKubernetesClustersClusterConnectionsOutput {
+func (o GetKubernetesClustersClusterConnectionOutput) ToGetKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
 // API Server Internet endpoint.
-func (o GetKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+func (o GetKubernetesClustersClusterConnectionOutput) ApiServerInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnection) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
-func (o GetKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+func (o GetKubernetesClustersClusterConnectionOutput) ApiServerIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnection) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
 }
 
 // Master node SSH IP address.
-func (o GetKubernetesClustersClusterConnectionsOutput) MasterPublicIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+func (o GetKubernetesClustersClusterConnectionOutput) MasterPublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnection) string { return v.MasterPublicIp }).(pulumi.StringOutput)
 }
 
 // Service Access Domain.
-func (o GetKubernetesClustersClusterConnectionsOutput) ServiceDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
+func (o GetKubernetesClustersClusterConnectionOutput) ServiceDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnection) string { return v.ServiceDomain }).(pulumi.StringOutput)
+}
+
+type GetKubernetesClustersClusterConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClustersClusterConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetKubernetesClustersClusterConnectionArrayOutput) ToGetKubernetesClustersClusterConnectionArrayOutput() GetKubernetesClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClustersClusterConnectionArrayOutput) ToGetKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetKubernetesClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClustersClusterConnectionArrayOutput) Index(i pulumi.IntInput) GetKubernetesClustersClusterConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClustersClusterConnection {
+		return vs[0].([]GetKubernetesClustersClusterConnection)[vs[1].(int)]
+	}).(GetKubernetesClustersClusterConnectionOutput)
 }
 
 type GetKubernetesClustersClusterLogConfig struct {
@@ -14399,48 +14040,25 @@ func (o GetKubernetesVersionMetadataRuntimeArrayOutput) Index(i pulumi.IntInput)
 
 type GetManagedKubernetesClustersCluster struct {
 	// The ID of availability zone.
-	AvailabilityZone   string `pulumi:"availabilityZone"`
-	ClusterNetworkType string `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information.
-	Connections GetManagedKubernetesClustersClusterConnections `pulumi:"connections"`
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// A list of kubernetes cluster connection information.
+	Connections []GetManagedKubernetesClustersClusterConnection `pulumi:"connections"`
 	// ID of the node.
-	Id      string `pulumi:"id"`
-	ImageId string `pulumi:"imageId"`
-	// The keypair of ssh login cluster node, you have to create it first.
-	KeyName string `pulumi:"keyName"`
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfigs []GetManagedKubernetesClustersClusterLogConfig `pulumi:"logConfigs"`
+	Id string `pulumi:"id"`
 	// Node name.
 	Name string `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
-	PodCidr      string `pulumi:"podCidr"`
 	// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaConfig GetManagedKubernetesClustersClusterRrsaConfig `pulumi:"rrsaConfig"`
 	// The ID of security group where the current cluster worker node is located.
-	SecurityGroupId    string `pulumi:"securityGroupId"`
-	ServiceCidr        string `pulumi:"serviceCidr"`
-	SlbInternetEnabled bool   `pulumi:"slbInternetEnabled"`
+	SecurityGroupId string `pulumi:"securityGroupId"`
 	// (Available since v1.245.0) The state of cluster.
 	State string `pulumi:"state"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
-	// The ID of VSwitches where the current cluster is located.
-	VswitchIds               []string `pulumi:"vswitchIds"`
-	WorkerAutoRenew          bool     `pulumi:"workerAutoRenew"`
-	WorkerAutoRenewPeriod    int      `pulumi:"workerAutoRenewPeriod"`
-	WorkerDataDiskCategory   string   `pulumi:"workerDataDiskCategory"`
-	WorkerDataDiskSize       int      `pulumi:"workerDataDiskSize"`
-	WorkerDiskCategory       string   `pulumi:"workerDiskCategory"`
-	WorkerDiskSize           int      `pulumi:"workerDiskSize"`
-	WorkerInstanceChargeType string   `pulumi:"workerInstanceChargeType"`
-	WorkerInstanceTypes      []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes []GetManagedKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
-	// The ECS instance node number in the current container cluster.
-	WorkerNumbers    []int  `pulumi:"workerNumbers"`
-	WorkerPeriod     int    `pulumi:"workerPeriod"`
-	WorkerPeriodUnit string `pulumi:"workerPeriodUnit"`
 }
 
 // GetManagedKubernetesClustersClusterInput is an input type that accepts GetManagedKubernetesClustersClusterArgs and GetManagedKubernetesClustersClusterOutput values.
@@ -14456,48 +14074,25 @@ type GetManagedKubernetesClustersClusterInput interface {
 
 type GetManagedKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
-	AvailabilityZone   pulumi.StringInput `pulumi:"availabilityZone"`
-	ClusterNetworkType pulumi.StringInput `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information.
-	Connections GetManagedKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// A list of kubernetes cluster connection information.
+	Connections GetManagedKubernetesClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// ID of the node.
-	Id      pulumi.StringInput `pulumi:"id"`
-	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// The keypair of ssh login cluster node, you have to create it first.
-	KeyName pulumi.StringInput `pulumi:"keyName"`
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfigs GetManagedKubernetesClustersClusterLogConfigArrayInput `pulumi:"logConfigs"`
+	Id pulumi.StringInput `pulumi:"id"`
 	// Node name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
-	PodCidr      pulumi.StringInput `pulumi:"podCidr"`
 	// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
 	RrsaConfig GetManagedKubernetesClustersClusterRrsaConfigInput `pulumi:"rrsaConfig"`
 	// The ID of security group where the current cluster worker node is located.
-	SecurityGroupId    pulumi.StringInput `pulumi:"securityGroupId"`
-	ServiceCidr        pulumi.StringInput `pulumi:"serviceCidr"`
-	SlbInternetEnabled pulumi.BoolInput   `pulumi:"slbInternetEnabled"`
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// (Available since v1.245.0) The state of cluster.
 	State pulumi.StringInput `pulumi:"state"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The ID of VSwitches where the current cluster is located.
-	VswitchIds               pulumi.StringArrayInput `pulumi:"vswitchIds"`
-	WorkerAutoRenew          pulumi.BoolInput        `pulumi:"workerAutoRenew"`
-	WorkerAutoRenewPeriod    pulumi.IntInput         `pulumi:"workerAutoRenewPeriod"`
-	WorkerDataDiskCategory   pulumi.StringInput      `pulumi:"workerDataDiskCategory"`
-	WorkerDataDiskSize       pulumi.IntInput         `pulumi:"workerDataDiskSize"`
-	WorkerDiskCategory       pulumi.StringInput      `pulumi:"workerDiskCategory"`
-	WorkerDiskSize           pulumi.IntInput         `pulumi:"workerDiskSize"`
-	WorkerInstanceChargeType pulumi.StringInput      `pulumi:"workerInstanceChargeType"`
-	WorkerInstanceTypes      pulumi.StringArrayInput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes GetManagedKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
-	// The ECS instance node number in the current container cluster.
-	WorkerNumbers    pulumi.IntArrayInput `pulumi:"workerNumbers"`
-	WorkerPeriod     pulumi.IntInput      `pulumi:"workerPeriod"`
-	WorkerPeriodUnit pulumi.StringInput   `pulumi:"workerPeriodUnit"`
 }
 
 func (GetManagedKubernetesClustersClusterArgs) ElementType() reflect.Type {
@@ -14556,36 +14151,16 @@ func (o GetManagedKubernetesClustersClusterOutput) AvailabilityZone() pulumi.Str
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-func (o GetManagedKubernetesClustersClusterOutput) ClusterNetworkType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
-}
-
-// Map of kubernetes cluster connection information.
-func (o GetManagedKubernetesClustersClusterOutput) Connections() GetManagedKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) GetManagedKubernetesClustersClusterConnections {
+// A list of kubernetes cluster connection information.
+func (o GetManagedKubernetesClustersClusterOutput) Connections() GetManagedKubernetesClustersClusterConnectionArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterConnection {
 		return v.Connections
-	}).(GetManagedKubernetesClustersClusterConnectionsOutput)
+	}).(GetManagedKubernetesClustersClusterConnectionArrayOutput)
 }
 
 // ID of the node.
 func (o GetManagedKubernetesClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
-}
-
-// The keypair of ssh login cluster node, you have to create it first.
-func (o GetManagedKubernetesClustersClusterOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.KeyName }).(pulumi.StringOutput)
-}
-
-// A list of one element containing information about the associated log store. It contains the following attributes:
-func (o GetManagedKubernetesClustersClusterOutput) LogConfigs() GetManagedKubernetesClustersClusterLogConfigArrayOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterLogConfig {
-		return v.LogConfigs
-	}).(GetManagedKubernetesClustersClusterLogConfigArrayOutput)
 }
 
 // Node name.
@@ -14596,10 +14171,6 @@ func (o GetManagedKubernetesClustersClusterOutput) Name() pulumi.StringOutput {
 // The ID of nat gateway used to launch kubernetes cluster.
 func (o GetManagedKubernetesClustersClusterOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) PodCidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
 }
 
 // (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
@@ -14614,14 +14185,6 @@ func (o GetManagedKubernetesClustersClusterOutput) SecurityGroupId() pulumi.Stri
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-func (o GetManagedKubernetesClustersClusterOutput) ServiceCidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ServiceCidr }).(pulumi.StringOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) SlbInternetEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) bool { return v.SlbInternetEnabled }).(pulumi.BoolOutput)
-}
-
 // (Available since v1.245.0) The state of cluster.
 func (o GetManagedKubernetesClustersClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.State }).(pulumi.StringOutput)
@@ -14632,61 +14195,11 @@ func (o GetManagedKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The ID of VSwitches where the current cluster is located.
-func (o GetManagedKubernetesClustersClusterOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerAutoRenew() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) bool { return v.WorkerAutoRenew }).(pulumi.BoolOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerAutoRenewPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerAutoRenewPeriod }).(pulumi.IntOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerDataDiskCategory() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerDataDiskCategory }).(pulumi.StringOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerDataDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerDataDiskSize }).(pulumi.IntOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerDiskCategory() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerDiskCategory }).(pulumi.StringOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerDiskSize }).(pulumi.IntOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerInstanceChargeType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerInstanceChargeType }).(pulumi.StringOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerInstanceTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []string { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
-}
-
 // List of cluster worker nodes.
 func (o GetManagedKubernetesClustersClusterOutput) WorkerNodes() GetManagedKubernetesClustersClusterWorkerNodeArrayOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterWorkerNode {
 		return v.WorkerNodes
 	}).(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput)
-}
-
-// The ECS instance node number in the current container cluster.
-func (o GetManagedKubernetesClustersClusterOutput) WorkerNumbers() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []int { return v.WorkerNumbers }).(pulumi.IntArrayOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) int { return v.WorkerPeriod }).(pulumi.IntOutput)
-}
-
-func (o GetManagedKubernetesClustersClusterOutput) WorkerPeriodUnit() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.WorkerPeriodUnit }).(pulumi.StringOutput)
 }
 
 type GetManagedKubernetesClustersClusterArrayOutput struct{ *pulumi.OutputState }
@@ -14709,7 +14222,7 @@ func (o GetManagedKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput)
 	}).(GetManagedKubernetesClustersClusterOutput)
 }
 
-type GetManagedKubernetesClustersClusterConnections struct {
+type GetManagedKubernetesClustersClusterConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -14720,18 +14233,18 @@ type GetManagedKubernetesClustersClusterConnections struct {
 	ServiceDomain string `pulumi:"serviceDomain"`
 }
 
-// GetManagedKubernetesClustersClusterConnectionsInput is an input type that accepts GetManagedKubernetesClustersClusterConnectionsArgs and GetManagedKubernetesClustersClusterConnectionsOutput values.
-// You can construct a concrete instance of `GetManagedKubernetesClustersClusterConnectionsInput` via:
+// GetManagedKubernetesClustersClusterConnectionInput is an input type that accepts GetManagedKubernetesClustersClusterConnectionArgs and GetManagedKubernetesClustersClusterConnectionOutput values.
+// You can construct a concrete instance of `GetManagedKubernetesClustersClusterConnectionInput` via:
 //
-//	GetManagedKubernetesClustersClusterConnectionsArgs{...}
-type GetManagedKubernetesClustersClusterConnectionsInput interface {
+//	GetManagedKubernetesClustersClusterConnectionArgs{...}
+type GetManagedKubernetesClustersClusterConnectionInput interface {
 	pulumi.Input
 
-	ToGetManagedKubernetesClustersClusterConnectionsOutput() GetManagedKubernetesClustersClusterConnectionsOutput
-	ToGetManagedKubernetesClustersClusterConnectionsOutputWithContext(context.Context) GetManagedKubernetesClustersClusterConnectionsOutput
+	ToGetManagedKubernetesClustersClusterConnectionOutput() GetManagedKubernetesClustersClusterConnectionOutput
+	ToGetManagedKubernetesClustersClusterConnectionOutputWithContext(context.Context) GetManagedKubernetesClustersClusterConnectionOutput
 }
 
-type GetManagedKubernetesClustersClusterConnectionsArgs struct {
+type GetManagedKubernetesClustersClusterConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -14742,156 +14255,95 @@ type GetManagedKubernetesClustersClusterConnectionsArgs struct {
 	ServiceDomain pulumi.StringInput `pulumi:"serviceDomain"`
 }
 
-func (GetManagedKubernetesClustersClusterConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetManagedKubernetesClustersClusterConnections)(nil)).Elem()
+func (GetManagedKubernetesClustersClusterConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersClusterConnection)(nil)).Elem()
 }
 
-func (i GetManagedKubernetesClustersClusterConnectionsArgs) ToGetManagedKubernetesClustersClusterConnectionsOutput() GetManagedKubernetesClustersClusterConnectionsOutput {
-	return i.ToGetManagedKubernetesClustersClusterConnectionsOutputWithContext(context.Background())
+func (i GetManagedKubernetesClustersClusterConnectionArgs) ToGetManagedKubernetesClustersClusterConnectionOutput() GetManagedKubernetesClustersClusterConnectionOutput {
+	return i.ToGetManagedKubernetesClustersClusterConnectionOutputWithContext(context.Background())
 }
 
-func (i GetManagedKubernetesClustersClusterConnectionsArgs) ToGetManagedKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterConnectionsOutput)
+func (i GetManagedKubernetesClustersClusterConnectionArgs) ToGetManagedKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterConnectionOutput)
 }
 
-type GetManagedKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
+// GetManagedKubernetesClustersClusterConnectionArrayInput is an input type that accepts GetManagedKubernetesClustersClusterConnectionArray and GetManagedKubernetesClustersClusterConnectionArrayOutput values.
+// You can construct a concrete instance of `GetManagedKubernetesClustersClusterConnectionArrayInput` via:
+//
+//	GetManagedKubernetesClustersClusterConnectionArray{ GetManagedKubernetesClustersClusterConnectionArgs{...} }
+type GetManagedKubernetesClustersClusterConnectionArrayInput interface {
+	pulumi.Input
 
-func (GetManagedKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetManagedKubernetesClustersClusterConnections)(nil)).Elem()
+	ToGetManagedKubernetesClustersClusterConnectionArrayOutput() GetManagedKubernetesClustersClusterConnectionArrayOutput
+	ToGetManagedKubernetesClustersClusterConnectionArrayOutputWithContext(context.Context) GetManagedKubernetesClustersClusterConnectionArrayOutput
 }
 
-func (o GetManagedKubernetesClustersClusterConnectionsOutput) ToGetManagedKubernetesClustersClusterConnectionsOutput() GetManagedKubernetesClustersClusterConnectionsOutput {
+type GetManagedKubernetesClustersClusterConnectionArray []GetManagedKubernetesClustersClusterConnectionInput
+
+func (GetManagedKubernetesClustersClusterConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (i GetManagedKubernetesClustersClusterConnectionArray) ToGetManagedKubernetesClustersClusterConnectionArrayOutput() GetManagedKubernetesClustersClusterConnectionArrayOutput {
+	return i.ToGetManagedKubernetesClustersClusterConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagedKubernetesClustersClusterConnectionArray) ToGetManagedKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterConnectionArrayOutput)
+}
+
+type GetManagedKubernetesClustersClusterConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetManagedKubernetesClustersClusterConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetManagedKubernetesClustersClusterConnectionOutput) ToGetManagedKubernetesClustersClusterConnectionOutput() GetManagedKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
-func (o GetManagedKubernetesClustersClusterConnectionsOutput) ToGetManagedKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterConnectionsOutput {
+func (o GetManagedKubernetesClustersClusterConnectionOutput) ToGetManagedKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
 // API Server Internet endpoint.
-func (o GetManagedKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+func (o GetManagedKubernetesClustersClusterConnectionOutput) ApiServerInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnection) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
-func (o GetManagedKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+func (o GetManagedKubernetesClustersClusterConnectionOutput) ApiServerIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnection) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
 }
 
 // Master node SSH IP address.
-func (o GetManagedKubernetesClustersClusterConnectionsOutput) MasterPublicIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+func (o GetManagedKubernetesClustersClusterConnectionOutput) MasterPublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnection) string { return v.MasterPublicIp }).(pulumi.StringOutput)
 }
 
 // Service Access Domain.
-func (o GetManagedKubernetesClustersClusterConnectionsOutput) ServiceDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
+func (o GetManagedKubernetesClustersClusterConnectionOutput) ServiceDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnection) string { return v.ServiceDomain }).(pulumi.StringOutput)
 }
 
-type GetManagedKubernetesClustersClusterLogConfig struct {
-	// Log Service project name.
-	Project string `pulumi:"project"`
-	// Type of collecting logs.
-	Type string `pulumi:"type"`
+type GetManagedKubernetesClustersClusterConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagedKubernetesClustersClusterConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterConnection)(nil)).Elem()
 }
 
-// GetManagedKubernetesClustersClusterLogConfigInput is an input type that accepts GetManagedKubernetesClustersClusterLogConfigArgs and GetManagedKubernetesClustersClusterLogConfigOutput values.
-// You can construct a concrete instance of `GetManagedKubernetesClustersClusterLogConfigInput` via:
-//
-//	GetManagedKubernetesClustersClusterLogConfigArgs{...}
-type GetManagedKubernetesClustersClusterLogConfigInput interface {
-	pulumi.Input
-
-	ToGetManagedKubernetesClustersClusterLogConfigOutput() GetManagedKubernetesClustersClusterLogConfigOutput
-	ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(context.Context) GetManagedKubernetesClustersClusterLogConfigOutput
-}
-
-type GetManagedKubernetesClustersClusterLogConfigArgs struct {
-	// Log Service project name.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Type of collecting logs.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetManagedKubernetesClustersClusterLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
-}
-
-func (i GetManagedKubernetesClustersClusterLogConfigArgs) ToGetManagedKubernetesClustersClusterLogConfigOutput() GetManagedKubernetesClustersClusterLogConfigOutput {
-	return i.ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(context.Background())
-}
-
-func (i GetManagedKubernetesClustersClusterLogConfigArgs) ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterLogConfigOutput)
-}
-
-// GetManagedKubernetesClustersClusterLogConfigArrayInput is an input type that accepts GetManagedKubernetesClustersClusterLogConfigArray and GetManagedKubernetesClustersClusterLogConfigArrayOutput values.
-// You can construct a concrete instance of `GetManagedKubernetesClustersClusterLogConfigArrayInput` via:
-//
-//	GetManagedKubernetesClustersClusterLogConfigArray{ GetManagedKubernetesClustersClusterLogConfigArgs{...} }
-type GetManagedKubernetesClustersClusterLogConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetManagedKubernetesClustersClusterLogConfigArrayOutput() GetManagedKubernetesClustersClusterLogConfigArrayOutput
-	ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(context.Context) GetManagedKubernetesClustersClusterLogConfigArrayOutput
-}
-
-type GetManagedKubernetesClustersClusterLogConfigArray []GetManagedKubernetesClustersClusterLogConfigInput
-
-func (GetManagedKubernetesClustersClusterLogConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
-}
-
-func (i GetManagedKubernetesClustersClusterLogConfigArray) ToGetManagedKubernetesClustersClusterLogConfigArrayOutput() GetManagedKubernetesClustersClusterLogConfigArrayOutput {
-	return i.ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetManagedKubernetesClustersClusterLogConfigArray) ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterLogConfigArrayOutput)
-}
-
-type GetManagedKubernetesClustersClusterLogConfigOutput struct{ *pulumi.OutputState }
-
-func (GetManagedKubernetesClustersClusterLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
-}
-
-func (o GetManagedKubernetesClustersClusterLogConfigOutput) ToGetManagedKubernetesClustersClusterLogConfigOutput() GetManagedKubernetesClustersClusterLogConfigOutput {
+func (o GetManagedKubernetesClustersClusterConnectionArrayOutput) ToGetManagedKubernetesClustersClusterConnectionArrayOutput() GetManagedKubernetesClustersClusterConnectionArrayOutput {
 	return o
 }
 
-func (o GetManagedKubernetesClustersClusterLogConfigOutput) ToGetManagedKubernetesClustersClusterLogConfigOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigOutput {
+func (o GetManagedKubernetesClustersClusterConnectionArrayOutput) ToGetManagedKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterConnectionArrayOutput {
 	return o
 }
 
-// Log Service project name.
-func (o GetManagedKubernetesClustersClusterLogConfigOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersClusterLogConfig) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Type of collecting logs.
-func (o GetManagedKubernetesClustersClusterLogConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetManagedKubernetesClustersClusterLogConfig) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetManagedKubernetesClustersClusterLogConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetManagedKubernetesClustersClusterLogConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterLogConfig)(nil)).Elem()
-}
-
-func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) ToGetManagedKubernetesClustersClusterLogConfigArrayOutput() GetManagedKubernetesClustersClusterLogConfigArrayOutput {
-	return o
-}
-
-func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) ToGetManagedKubernetesClustersClusterLogConfigArrayOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterLogConfigArrayOutput {
-	return o
-}
-
-func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) Index(i pulumi.IntInput) GetManagedKubernetesClustersClusterLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedKubernetesClustersClusterLogConfig {
-		return vs[0].([]GetManagedKubernetesClustersClusterLogConfig)[vs[1].(int)]
-	}).(GetManagedKubernetesClustersClusterLogConfigOutput)
+func (o GetManagedKubernetesClustersClusterConnectionArrayOutput) Index(i pulumi.IntInput) GetManagedKubernetesClustersClusterConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedKubernetesClustersClusterConnection {
+		return vs[0].([]GetManagedKubernetesClustersClusterConnection)[vs[1].(int)]
+	}).(GetManagedKubernetesClustersClusterConnectionOutput)
 }
 
 type GetManagedKubernetesClustersClusterRrsaConfig struct {
@@ -15961,8 +15413,8 @@ func (o GetRegistryEnterpriseSyncRulesRuleArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetServerlessKubernetesClustersCluster struct {
-	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
-	Connections GetServerlessKubernetesClustersClusterConnections `pulumi:"connections"`
+	// A list of serverless cluster connection information.
+	Connections []GetServerlessKubernetesClustersClusterConnection `pulumi:"connections"`
 	// Whether the cluster support delete protection.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// Whether to create internet eip for API Server.
@@ -15995,8 +15447,8 @@ type GetServerlessKubernetesClustersClusterInput interface {
 }
 
 type GetServerlessKubernetesClustersClusterArgs struct {
-	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
-	Connections GetServerlessKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
+	// A list of serverless cluster connection information.
+	Connections GetServerlessKubernetesClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// Whether the cluster support delete protection.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// Whether to create internet eip for API Server.
@@ -16068,11 +15520,11 @@ func (o GetServerlessKubernetesClustersClusterOutput) ToGetServerlessKubernetesC
 	return o
 }
 
-// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
-func (o GetServerlessKubernetesClustersClusterOutput) Connections() GetServerlessKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) GetServerlessKubernetesClustersClusterConnections {
+// A list of serverless cluster connection information.
+func (o GetServerlessKubernetesClustersClusterOutput) Connections() GetServerlessKubernetesClustersClusterConnectionArrayOutput {
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) []GetServerlessKubernetesClustersClusterConnection {
 		return v.Connections
-	}).(GetServerlessKubernetesClustersClusterConnectionsOutput)
+	}).(GetServerlessKubernetesClustersClusterConnectionArrayOutput)
 }
 
 // Whether the cluster support delete protection.
@@ -16140,7 +15592,7 @@ func (o GetServerlessKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInp
 	}).(GetServerlessKubernetesClustersClusterOutput)
 }
 
-type GetServerlessKubernetesClustersClusterConnections struct {
+type GetServerlessKubernetesClustersClusterConnection struct {
 	// API Server Internet endpoint.
 	ApiServerInternet string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -16149,18 +15601,18 @@ type GetServerlessKubernetesClustersClusterConnections struct {
 	MasterPublicIp string `pulumi:"masterPublicIp"`
 }
 
-// GetServerlessKubernetesClustersClusterConnectionsInput is an input type that accepts GetServerlessKubernetesClustersClusterConnectionsArgs and GetServerlessKubernetesClustersClusterConnectionsOutput values.
-// You can construct a concrete instance of `GetServerlessKubernetesClustersClusterConnectionsInput` via:
+// GetServerlessKubernetesClustersClusterConnectionInput is an input type that accepts GetServerlessKubernetesClustersClusterConnectionArgs and GetServerlessKubernetesClustersClusterConnectionOutput values.
+// You can construct a concrete instance of `GetServerlessKubernetesClustersClusterConnectionInput` via:
 //
-//	GetServerlessKubernetesClustersClusterConnectionsArgs{...}
-type GetServerlessKubernetesClustersClusterConnectionsInput interface {
+//	GetServerlessKubernetesClustersClusterConnectionArgs{...}
+type GetServerlessKubernetesClustersClusterConnectionInput interface {
 	pulumi.Input
 
-	ToGetServerlessKubernetesClustersClusterConnectionsOutput() GetServerlessKubernetesClustersClusterConnectionsOutput
-	ToGetServerlessKubernetesClustersClusterConnectionsOutputWithContext(context.Context) GetServerlessKubernetesClustersClusterConnectionsOutput
+	ToGetServerlessKubernetesClustersClusterConnectionOutput() GetServerlessKubernetesClustersClusterConnectionOutput
+	ToGetServerlessKubernetesClustersClusterConnectionOutputWithContext(context.Context) GetServerlessKubernetesClustersClusterConnectionOutput
 }
 
-type GetServerlessKubernetesClustersClusterConnectionsArgs struct {
+type GetServerlessKubernetesClustersClusterConnectionArgs struct {
 	// API Server Internet endpoint.
 	ApiServerInternet pulumi.StringInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
@@ -16169,58 +15621,103 @@ type GetServerlessKubernetesClustersClusterConnectionsArgs struct {
 	MasterPublicIp pulumi.StringInput `pulumi:"masterPublicIp"`
 }
 
-func (GetServerlessKubernetesClustersClusterConnectionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnections)(nil)).Elem()
+func (GetServerlessKubernetesClustersClusterConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnection)(nil)).Elem()
 }
 
-func (i GetServerlessKubernetesClustersClusterConnectionsArgs) ToGetServerlessKubernetesClustersClusterConnectionsOutput() GetServerlessKubernetesClustersClusterConnectionsOutput {
-	return i.ToGetServerlessKubernetesClustersClusterConnectionsOutputWithContext(context.Background())
+func (i GetServerlessKubernetesClustersClusterConnectionArgs) ToGetServerlessKubernetesClustersClusterConnectionOutput() GetServerlessKubernetesClustersClusterConnectionOutput {
+	return i.ToGetServerlessKubernetesClustersClusterConnectionOutputWithContext(context.Background())
 }
 
-func (i GetServerlessKubernetesClustersClusterConnectionsArgs) ToGetServerlessKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetServerlessKubernetesClustersClusterConnectionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessKubernetesClustersClusterConnectionsOutput)
+func (i GetServerlessKubernetesClustersClusterConnectionArgs) ToGetServerlessKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetServerlessKubernetesClustersClusterConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessKubernetesClustersClusterConnectionOutput)
 }
 
-type GetServerlessKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
+// GetServerlessKubernetesClustersClusterConnectionArrayInput is an input type that accepts GetServerlessKubernetesClustersClusterConnectionArray and GetServerlessKubernetesClustersClusterConnectionArrayOutput values.
+// You can construct a concrete instance of `GetServerlessKubernetesClustersClusterConnectionArrayInput` via:
+//
+//	GetServerlessKubernetesClustersClusterConnectionArray{ GetServerlessKubernetesClustersClusterConnectionArgs{...} }
+type GetServerlessKubernetesClustersClusterConnectionArrayInput interface {
+	pulumi.Input
 
-func (GetServerlessKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnections)(nil)).Elem()
+	ToGetServerlessKubernetesClustersClusterConnectionArrayOutput() GetServerlessKubernetesClustersClusterConnectionArrayOutput
+	ToGetServerlessKubernetesClustersClusterConnectionArrayOutputWithContext(context.Context) GetServerlessKubernetesClustersClusterConnectionArrayOutput
 }
 
-func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ToGetServerlessKubernetesClustersClusterConnectionsOutput() GetServerlessKubernetesClustersClusterConnectionsOutput {
+type GetServerlessKubernetesClustersClusterConnectionArray []GetServerlessKubernetesClustersClusterConnectionInput
+
+func (GetServerlessKubernetesClustersClusterConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerlessKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (i GetServerlessKubernetesClustersClusterConnectionArray) ToGetServerlessKubernetesClustersClusterConnectionArrayOutput() GetServerlessKubernetesClustersClusterConnectionArrayOutput {
+	return i.ToGetServerlessKubernetesClustersClusterConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerlessKubernetesClustersClusterConnectionArray) ToGetServerlessKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetServerlessKubernetesClustersClusterConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessKubernetesClustersClusterConnectionArrayOutput)
+}
+
+type GetServerlessKubernetesClustersClusterConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetServerlessKubernetesClustersClusterConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetServerlessKubernetesClustersClusterConnectionOutput) ToGetServerlessKubernetesClustersClusterConnectionOutput() GetServerlessKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
-func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ToGetServerlessKubernetesClustersClusterConnectionsOutputWithContext(ctx context.Context) GetServerlessKubernetesClustersClusterConnectionsOutput {
+func (o GetServerlessKubernetesClustersClusterConnectionOutput) ToGetServerlessKubernetesClustersClusterConnectionOutputWithContext(ctx context.Context) GetServerlessKubernetesClustersClusterConnectionOutput {
 	return o
 }
 
 // API Server Internet endpoint.
-func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+func (o GetServerlessKubernetesClustersClusterConnectionOutput) ApiServerInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnection) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
-func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+func (o GetServerlessKubernetesClustersClusterConnectionOutput) ApiServerIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnection) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
 }
 
 // Master node SSH IP address.
-func (o GetServerlessKubernetesClustersClusterConnectionsOutput) MasterPublicIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+func (o GetServerlessKubernetesClustersClusterConnectionOutput) MasterPublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnection) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+}
+
+type GetServerlessKubernetesClustersClusterConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerlessKubernetesClustersClusterConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerlessKubernetesClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetServerlessKubernetesClustersClusterConnectionArrayOutput) ToGetServerlessKubernetesClustersClusterConnectionArrayOutput() GetServerlessKubernetesClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetServerlessKubernetesClustersClusterConnectionArrayOutput) ToGetServerlessKubernetesClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetServerlessKubernetesClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetServerlessKubernetesClustersClusterConnectionArrayOutput) Index(i pulumi.IntInput) GetServerlessKubernetesClustersClusterConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerlessKubernetesClustersClusterConnection {
+		return vs[0].([]GetServerlessKubernetesClustersClusterConnection)[vs[1].(int)]
+	}).(GetServerlessKubernetesClustersClusterConnectionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonInput)(nil)).Elem(), EdgeKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonArrayInput)(nil)).Elem(), EdgeKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionsInput)(nil)).Elem(), EdgeKubernetesConnectionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionsPtrInput)(nil)).Elem(), EdgeKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityArrayInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionInput)(nil)).Elem(), EdgeKubernetesConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesConnectionArrayInput)(nil)).Elem(), EdgeKubernetesConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesLogConfigInput)(nil)).Elem(), EdgeKubernetesLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesLogConfigPtrInput)(nil)).Elem(), EdgeKubernetesLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesRuntimeInput)(nil)).Elem(), EdgeKubernetesRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesRuntimePtrInput)(nil)).Elem(), EdgeKubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesRuntimeArrayInput)(nil)).Elem(), EdgeKubernetesRuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskArrayInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerNodeInput)(nil)).Elem(), EdgeKubernetesWorkerNodeArgs{})
@@ -16230,9 +15727,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAutoscalerNodepoolInput)(nil)).Elem(), KubernetesAutoscalerNodepoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAutoscalerNodepoolArrayInput)(nil)).Elem(), KubernetesAutoscalerNodepoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityInput)(nil)).Elem(), KubernetesCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityPtrInput)(nil)).Elem(), KubernetesCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionsInput)(nil)).Elem(), KubernetesConnectionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionsPtrInput)(nil)).Elem(), KubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityArrayInput)(nil)).Elem(), KubernetesCertificateAuthorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionInput)(nil)).Elem(), KubernetesConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionArrayInput)(nil)).Elem(), KubernetesConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDeleteOptionInput)(nil)).Elem(), KubernetesDeleteOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDeleteOptionArrayInput)(nil)).Elem(), KubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMasterNodeInput)(nil)).Elem(), KubernetesMasterNodeArgs{})
@@ -16240,7 +15737,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPermissionInput)(nil)).Elem(), KubernetesPermissionPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPermissionArrayInput)(nil)).Elem(), KubernetesPermissionPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimeInput)(nil)).Elem(), KubernetesRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimePtrInput)(nil)).Elem(), KubernetesRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesRuntimeArrayInput)(nil)).Elem(), KubernetesRuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonInput)(nil)).Elem(), ManagedKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonArrayInput)(nil)).Elem(), ManagedKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAuditLogConfigInput)(nil)).Elem(), ManagedKubernetesAuditLogConfigArgs{})
@@ -16248,9 +15745,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAutoModeInput)(nil)).Elem(), ManagedKubernetesAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAutoModePtrInput)(nil)).Elem(), ManagedKubernetesAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsPtrInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityArrayInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionInput)(nil)).Elem(), ManagedKubernetesConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionArrayInput)(nil)).Elem(), ManagedKubernetesConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigPtrInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{})
@@ -16326,6 +15823,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCredentialCertificateAuthorityInput)(nil)).Elem(), GetClusterCredentialCertificateAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCredentialCertificateAuthorityArrayInput)(nil)).Elem(), GetClusterCredentialCertificateAuthorityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAutoModeInput)(nil)).Elem(), GetClustersClusterAutoModeArgs{})
@@ -16334,14 +15832,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterOperationPolicyClusterAutoUpgradeInput)(nil)).Elem(), GetClustersClusterOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnectionInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnectionArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterWorkerNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterWorkerNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAddonsAddonInput)(nil)).Elem(), GetKubernetesAddonsAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAddonsAddonArrayInput)(nil)).Elem(), GetKubernetesAddonsAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterInput)(nil)).Elem(), GetKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterArrayInput)(nil)).Elem(), GetKubernetesClustersClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetKubernetesClustersClusterConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterConnectionInput)(nil)).Elem(), GetKubernetesClustersClusterConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterConnectionArrayInput)(nil)).Elem(), GetKubernetesClustersClusterConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterLogConfigInput)(nil)).Elem(), GetKubernetesClustersClusterLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterLogConfigArrayInput)(nil)).Elem(), GetKubernetesClustersClusterLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterMasterNodeInput)(nil)).Elem(), GetKubernetesClustersClusterMasterNodeArgs{})
@@ -16377,9 +15877,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesVersionMetadataRuntimeArrayInput)(nil)).Elem(), GetKubernetesVersionMetadataRuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterInput)(nil)).Elem(), GetManagedKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetManagedKubernetesClustersClusterConnectionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfigInput)(nil)).Elem(), GetManagedKubernetesClustersClusterLogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfigArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterConnectionInput)(nil)).Elem(), GetManagedKubernetesClustersClusterConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterConnectionArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterRrsaConfigInput)(nil)).Elem(), GetManagedKubernetesClustersClusterRrsaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetManagedKubernetesClustersClusterWorkerNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterWorkerNodeArray{})
@@ -16395,17 +15894,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseSyncRulesRuleArrayInput)(nil)).Elem(), GetRegistryEnterpriseSyncRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterArrayInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionArrayInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionArray{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityOutput{})
-	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityPtrOutput{})
-	pulumi.RegisterOutputType(EdgeKubernetesConnectionsOutput{})
-	pulumi.RegisterOutputType(EdgeKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityArrayOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesConnectionOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesConnectionArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesLogConfigOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesRuntimeOutput{})
-	pulumi.RegisterOutputType(EdgeKubernetesRuntimePtrOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesRuntimeArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerNodeOutput{})
@@ -16415,9 +15915,9 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesCertificateAuthorityOutput{})
-	pulumi.RegisterOutputType(KubernetesCertificateAuthorityPtrOutput{})
-	pulumi.RegisterOutputType(KubernetesConnectionsOutput{})
-	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesCertificateAuthorityArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectionOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesDeleteOptionOutput{})
 	pulumi.RegisterOutputType(KubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
@@ -16425,7 +15925,7 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesPermissionPermissionOutput{})
 	pulumi.RegisterOutputType(KubernetesPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesRuntimeOutput{})
-	pulumi.RegisterOutputType(KubernetesRuntimePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesRuntimeArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAuditLogConfigOutput{})
@@ -16433,9 +15933,9 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesAutoModeOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAutoModePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityArrayOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesConnectionOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesConnectionArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput{})
@@ -16511,6 +16011,7 @@ func init() {
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterCredentialCertificateAuthorityOutput{})
+	pulumi.RegisterOutputType(GetClusterCredentialCertificateAuthorityArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterAutoModeOutput{})
@@ -16519,14 +16020,16 @@ func init() {
 	pulumi.RegisterOutputType(GetClustersClusterOperationPolicyClusterAutoUpgradeOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterConnectionsOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterConnectionOutput{})
+	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesAddonsAddonOutput{})
 	pulumi.RegisterOutputType(GetKubernetesAddonsAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetKubernetesClustersClusterConnectionsOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClustersClusterConnectionOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClustersClusterConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterLogConfigOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterMasterNodeOutput{})
@@ -16562,9 +16065,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesVersionMetadataRuntimeArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionsOutput{})
-	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterLogConfigOutput{})
-	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionOutput{})
+	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterRrsaConfigOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput{})
@@ -16580,5 +16082,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRegistryEnterpriseSyncRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterConnectionsOutput{})
+	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterConnectionOutput{})
+	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterConnectionArrayOutput{})
 }

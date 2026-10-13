@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ import javax.annotation.Nullable;
  * For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
  * 
  * &gt; **NOTE:** Available since v1.120.0.
+ * 
+ * &gt; **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
  * 
  * ## Example Usage
  * 
@@ -94,7 +97,7 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
- *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRanges().min())
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .instanceChargeType("Postpaid")
@@ -184,24 +187,54 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * The password of the account.
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
-    private Output<String> accountPassword;
+    private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return The password of the account.
+     * @return The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
-    public Output<String> accountPassword() {
-        return this.accountPassword;
+    public Output<Optional<String>> accountPassword() {
+        return Codegen.optional(this.accountPassword);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+     * 
+     */
+    @Export(name="accountPasswordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword`, `password` and `kmsEncryptedPassword`, and one of the four password sources must be set.
+     * 
+     */
+    public Output<Optional<String>> accountPasswordWo() {
+        return Codegen.optional(this.accountPasswordWo);
+    }
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    @Export(name="accountPasswordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> accountPasswordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> accountPasswordWoVersion() {
+        return Codegen.optional(this.accountPasswordWoVersion);
     }
     /**
      * The account type. Valid values:
@@ -292,14 +325,14 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a db account. It conflicts with `accountPassword`, `password` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
@@ -338,7 +371,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
@@ -346,14 +379,14 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output<String> password;
+    private Output</* @Nullable */ String> password;
 
     /**
-     * @return The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     * @return The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
     /**
      * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
@@ -447,6 +480,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "accountPassword",
+                "accountPasswordWo",
                 "password"
             ))
             .build();

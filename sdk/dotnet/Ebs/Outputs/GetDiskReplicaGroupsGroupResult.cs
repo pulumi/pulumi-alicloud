@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Ebs.Outputs
         /// </summary>
         public readonly string DestinationZoneId;
         /// <summary>
+        /// Whether to enable replication time control.
+        /// </summary>
+        public readonly bool EnableRtc;
+        /// <summary>
         /// Consistent replication group name.
         /// </summary>
         public readonly string GroupName;
@@ -33,6 +37,9 @@ namespace Pulumi.AliCloud.Ebs.Outputs
         /// The ID of the Disk Replica Group.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The most recent recovery point time of the replication pair-consistent group.
+        /// </summary>
         public readonly string LastRecoverPoint;
         /// <summary>
         /// The initial source region of the replication group.
@@ -83,6 +90,8 @@ namespace Pulumi.AliCloud.Ebs.Outputs
 
             string destinationZoneId,
 
+            bool enableRtc,
+
             string groupName,
 
             string id,
@@ -112,6 +121,7 @@ namespace Pulumi.AliCloud.Ebs.Outputs
             Description = description;
             DestinationRegionId = destinationRegionId;
             DestinationZoneId = destinationZoneId;
+            EnableRtc = enableRtc;
             GroupName = groupName;
             Id = id;
             LastRecoverPoint = lastRecoverPoint;

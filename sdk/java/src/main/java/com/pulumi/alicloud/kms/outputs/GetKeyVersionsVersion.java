@@ -16,11 +16,6 @@ public final class GetKeyVersionsVersion {
      */
     private String createTime;
     /**
-     * @return (Removed from v1.124.4) It has been removed and using `createTime` instead.
-     * 
-     */
-    private String creationDate;
-    /**
      * @return ID of the KMS KeyVersion resource.
      * 
      */
@@ -43,13 +38,6 @@ public final class GetKeyVersionsVersion {
      */
     public String createTime() {
         return this.createTime;
-    }
-    /**
-     * @return (Removed from v1.124.4) It has been removed and using `createTime` instead.
-     * 
-     */
-    public String creationDate() {
-        return this.creationDate;
     }
     /**
      * @return ID of the KMS KeyVersion resource.
@@ -83,7 +71,6 @@ public final class GetKeyVersionsVersion {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private String creationDate;
         private String id;
         private String keyId;
         private String keyVersionId;
@@ -91,7 +78,6 @@ public final class GetKeyVersionsVersion {
         public Builder(GetKeyVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
-    	      this.creationDate = defaults.creationDate;
     	      this.id = defaults.id;
     	      this.keyId = defaults.keyId;
     	      this.keyVersionId = defaults.keyVersionId;
@@ -103,14 +89,6 @@ public final class GetKeyVersionsVersion {
               throw new MissingRequiredPropertyException("GetKeyVersionsVersion", "createTime");
             }
             this.createTime = createTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder creationDate(String creationDate) {
-            if (creationDate == null) {
-              throw new MissingRequiredPropertyException("GetKeyVersionsVersion", "creationDate");
-            }
-            this.creationDate = creationDate;
             return this;
         }
         @CustomType.Setter
@@ -140,7 +118,6 @@ public final class GetKeyVersionsVersion {
         public GetKeyVersionsVersion build() {
             final var _resultValue = new GetKeyVersionsVersion();
             _resultValue.createTime = createTime;
-            _resultValue.creationDate = creationDate;
             _resultValue.id = id;
             _resultValue.keyId = keyId;
             _resultValue.keyVersionId = keyVersionId;

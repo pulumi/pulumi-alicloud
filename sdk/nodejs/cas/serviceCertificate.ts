@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.129.0.
  *
+ * > **NOTE:** The `keyWo` and `keyWoVersion` arguments require Terraform v1.11.0 or later. When `keyWo` is in use, `key` reads back empty because it is not stored in the state or plan.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -136,9 +138,18 @@ export class ServiceCertificate extends pulumi.CustomResource {
      */
     declare public readonly encryptPrivateKey: pulumi.Output<string | undefined>;
     /**
-     * The private key of a non-SM certificate in PEM format.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      */
     declare public readonly key: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     */
+    declare public readonly keyWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     */
+    declare public readonly keyWoVersion: pulumi.Output<number | undefined>;
     /**
      * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      *
@@ -186,6 +197,8 @@ export class ServiceCertificate extends pulumi.CustomResource {
             resourceInputs["encryptCert"] = state?.encryptCert;
             resourceInputs["encryptPrivateKey"] = state?.encryptPrivateKey;
             resourceInputs["key"] = state?.key;
+            resourceInputs["keyWo"] = state?.keyWo;
+            resourceInputs["keyWoVersion"] = state?.keyWoVersion;
             resourceInputs["lang"] = state?.lang;
             resourceInputs["name"] = state?.name;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
@@ -199,6 +212,8 @@ export class ServiceCertificate extends pulumi.CustomResource {
             resourceInputs["encryptCert"] = args?.encryptCert;
             resourceInputs["encryptPrivateKey"] = args?.encryptPrivateKey ? pulumi.secret(args.encryptPrivateKey) : undefined;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
+            resourceInputs["keyWo"] = args?.keyWo ? pulumi.secret(args.keyWo) : undefined;
+            resourceInputs["keyWoVersion"] = args?.keyWoVersion;
             resourceInputs["lang"] = args?.lang;
             resourceInputs["name"] = args?.name;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
@@ -207,7 +222,7 @@ export class ServiceCertificate extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "signPrivateKey"] };
+        const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "keyWo", "signPrivateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ServiceCertificate.__pulumiType, name, resourceInputs, opts);
     }
@@ -234,9 +249,18 @@ export interface ServiceCertificateState {
      */
     encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
-     * The private key of a non-SM certificate in PEM format.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      */
     key?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     */
+    keyWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     */
+    keyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      *
@@ -288,9 +312,18 @@ export interface ServiceCertificateArgs {
      */
     encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
-     * The private key of a non-SM certificate in PEM format.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      */
     key?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     */
+    keyWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     */
+    keyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      *

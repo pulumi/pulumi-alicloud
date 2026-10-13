@@ -129,6 +129,15 @@ namespace Pulumi.AliCloud.Cas
         [Output("key")]
         public Output<string?> Key { get; private set; } = null!;
 
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        [Output("keyWo")]
+        public Output<string?> KeyWo { get; private set; } = null!;
+
+        [Output("keyWoVersion")]
+        public Output<int?> KeyWoVersion { get; private set; } = null!;
+
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
@@ -177,6 +186,7 @@ namespace Pulumi.AliCloud.Cas
                 {
                     "encryptPrivateKey",
                     "key",
+                    "keyWo",
                     "signPrivateKey",
                 },
             };
@@ -241,6 +251,25 @@ namespace Pulumi.AliCloud.Cas
                 _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("keyWo")]
+        private Input<string>? _keyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? KeyWo
+        {
+            get => _keyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("keyWoVersion")]
+        public Input<int>? KeyWoVersion { get; set; }
 
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -324,6 +353,25 @@ namespace Pulumi.AliCloud.Cas
                 _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("keyWo")]
+        private Input<string>? _keyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? KeyWo
+        {
+            get => _keyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("keyWoVersion")]
+        public Input<int>? KeyWoVersion { get; set; }
 
         [Input("lang")]
         public Input<string>? Lang { get; set; }

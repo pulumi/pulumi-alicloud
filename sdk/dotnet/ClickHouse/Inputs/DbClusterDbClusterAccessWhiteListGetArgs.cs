@@ -13,12 +13,6 @@ namespace Pulumi.AliCloud.ClickHouse.Inputs
     public sealed class DbClusterDbClusterAccessWhiteListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field `DbClusterIpArrayAttribute` has been removed from provider.
-        /// </summary>
-        [Input("dbClusterIpArrayAttribute")]
-        public Input<string>? DbClusterIpArrayAttribute { get; set; }
-
-        /// <summary>
         /// Whitelist group name.
         /// </summary>
         [Input("dbClusterIpArrayName")]

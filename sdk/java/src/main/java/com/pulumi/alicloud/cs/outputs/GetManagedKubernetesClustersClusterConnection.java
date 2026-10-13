@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetManagedKubernetesClustersClusterConnections {
+public final class GetManagedKubernetesClustersClusterConnection {
     /**
      * @return API Server Internet endpoint.
      * 
@@ -31,7 +31,7 @@ public final class GetManagedKubernetesClustersClusterConnections {
      */
     private String serviceDomain;
 
-    private GetManagedKubernetesClustersClusterConnections() {}
+    private GetManagedKubernetesClustersClusterConnection() {}
     /**
      * @return API Server Internet endpoint.
      * 
@@ -65,7 +65,7 @@ public final class GetManagedKubernetesClustersClusterConnections {
         return new Builder();
     }
 
-    public static Builder builder(GetManagedKubernetesClustersClusterConnections defaults) {
+    public static Builder builder(GetManagedKubernetesClustersClusterConnection defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -75,7 +75,7 @@ public final class GetManagedKubernetesClustersClusterConnections {
         private String masterPublicIp;
         private String serviceDomain;
         public Builder() {}
-        public Builder(GetManagedKubernetesClustersClusterConnections defaults) {
+        public Builder(GetManagedKubernetesClustersClusterConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
     	      this.apiServerIntranet = defaults.apiServerIntranet;
@@ -86,7 +86,7 @@ public final class GetManagedKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
             if (apiServerInternet == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "apiServerInternet");
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnection", "apiServerInternet");
             }
             this.apiServerInternet = apiServerInternet;
             return this;
@@ -94,7 +94,7 @@ public final class GetManagedKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
             if (apiServerIntranet == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "apiServerIntranet");
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnection", "apiServerIntranet");
             }
             this.apiServerIntranet = apiServerIntranet;
             return this;
@@ -102,7 +102,7 @@ public final class GetManagedKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder masterPublicIp(String masterPublicIp) {
             if (masterPublicIp == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "masterPublicIp");
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnection", "masterPublicIp");
             }
             this.masterPublicIp = masterPublicIp;
             return this;
@@ -110,13 +110,13 @@ public final class GetManagedKubernetesClustersClusterConnections {
         @CustomType.Setter
         public Builder serviceDomain(String serviceDomain) {
             if (serviceDomain == null) {
-              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnections", "serviceDomain");
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersClusterConnection", "serviceDomain");
             }
             this.serviceDomain = serviceDomain;
             return this;
         }
-        public GetManagedKubernetesClustersClusterConnections build() {
-            final var _resultValue = new GetManagedKubernetesClustersClusterConnections();
+        public GetManagedKubernetesClustersClusterConnection build() {
+            final var _resultValue = new GetManagedKubernetesClustersClusterConnection();
             _resultValue.apiServerInternet = apiServerInternet;
             _resultValue.apiServerIntranet = apiServerIntranet;
             _resultValue.masterPublicIp = masterPublicIp;

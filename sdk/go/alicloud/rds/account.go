@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,9 +22,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -100,12 +100,15 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	AccountDescription pulumi.StringOutput  `pulumi:"accountDescription"`
-	AccountName        pulumi.StringOutput  `pulumi:"accountName"`
-	AccountPassword    pulumi.StringOutput  `pulumi:"accountPassword"`
-	AccountType        pulumi.StringOutput  `pulumi:"accountType"`
-	CheckPolicy        pulumi.BoolPtrOutput `pulumi:"checkPolicy"`
-	DbInstanceId       pulumi.StringOutput  `pulumi:"dbInstanceId"`
+	AccountDescription pulumi.StringOutput    `pulumi:"accountDescription"`
+	AccountName        pulumi.StringOutput    `pulumi:"accountName"`
+	AccountPassword    pulumi.StringPtrOutput `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	AccountPasswordWo        pulumi.StringPtrOutput `pulumi:"accountPasswordWo"`
+	AccountPasswordWoVersion pulumi.IntPtrOutput    `pulumi:"accountPasswordWoVersion"`
+	AccountType              pulumi.StringOutput    `pulumi:"accountType"`
+	CheckPolicy              pulumi.BoolPtrOutput   `pulumi:"checkPolicy"`
+	DbInstanceId             pulumi.StringOutput    `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
@@ -125,9 +128,9 @@ type Account struct {
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password            pulumi.StringOutput  `pulumi:"password"`
-	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
-	Status              pulumi.StringOutput  `pulumi:"status"`
+	Password            pulumi.StringPtrOutput `pulumi:"password"`
+	ResetPermissionFlag pulumi.BoolPtrOutput   `pulumi:"resetPermissionFlag"`
+	Status              pulumi.StringOutput    `pulumi:"status"`
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -148,11 +151,15 @@ func NewAccount(ctx *pulumi.Context,
 	if args.AccountPassword != nil {
 		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
 	}
+	if args.AccountPasswordWo != nil {
+		args.AccountPasswordWo = pulumi.ToSecret(args.AccountPasswordWo).(pulumi.StringPtrInput)
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountPassword",
+		"accountPasswordWo",
 		"password",
 	})
 	opts = append(opts, secrets)
@@ -182,9 +189,12 @@ type accountState struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	AccountName        *string `pulumi:"accountName"`
 	AccountPassword    *string `pulumi:"accountPassword"`
-	AccountType        *string `pulumi:"accountType"`
-	CheckPolicy        *bool   `pulumi:"checkPolicy"`
-	DbInstanceId       *string `pulumi:"dbInstanceId"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	AccountPasswordWo        *string `pulumi:"accountPasswordWo"`
+	AccountPasswordWoVersion *int    `pulumi:"accountPasswordWoVersion"`
+	AccountType              *string `pulumi:"accountType"`
+	CheckPolicy              *bool   `pulumi:"checkPolicy"`
+	DbInstanceId             *string `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
@@ -221,9 +231,12 @@ type AccountState struct {
 	AccountDescription pulumi.StringPtrInput
 	AccountName        pulumi.StringPtrInput
 	AccountPassword    pulumi.StringPtrInput
-	AccountType        pulumi.StringPtrInput
-	CheckPolicy        pulumi.BoolPtrInput
-	DbInstanceId       pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	AccountPasswordWo        pulumi.StringPtrInput
+	AccountPasswordWoVersion pulumi.IntPtrInput
+	AccountType              pulumi.StringPtrInput
+	CheckPolicy              pulumi.BoolPtrInput
+	DbInstanceId             pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
@@ -264,9 +277,12 @@ type accountArgs struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	AccountName        *string `pulumi:"accountName"`
 	AccountPassword    *string `pulumi:"accountPassword"`
-	AccountType        *string `pulumi:"accountType"`
-	CheckPolicy        *bool   `pulumi:"checkPolicy"`
-	DbInstanceId       *string `pulumi:"dbInstanceId"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	AccountPasswordWo        *string `pulumi:"accountPasswordWo"`
+	AccountPasswordWoVersion *int    `pulumi:"accountPasswordWoVersion"`
+	AccountType              *string `pulumi:"accountType"`
+	CheckPolicy              *bool   `pulumi:"checkPolicy"`
+	DbInstanceId             *string `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
@@ -304,9 +320,12 @@ type AccountArgs struct {
 	AccountDescription pulumi.StringPtrInput
 	AccountName        pulumi.StringPtrInput
 	AccountPassword    pulumi.StringPtrInput
-	AccountType        pulumi.StringPtrInput
-	CheckPolicy        pulumi.BoolPtrInput
-	DbInstanceId       pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	AccountPasswordWo        pulumi.StringPtrInput
+	AccountPasswordWoVersion pulumi.IntPtrInput
+	AccountType              pulumi.StringPtrInput
+	CheckPolicy              pulumi.BoolPtrInput
+	DbInstanceId             pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
@@ -434,8 +453,17 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-func (o AccountOutput) AccountPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o AccountOutput) AccountPasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPasswordWo }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountOutput) AccountPasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.IntPtrOutput { return v.AccountPasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 func (o AccountOutput) AccountType() pulumi.StringOutput {
@@ -484,8 +512,8 @@ func (o AccountOutput) Name() pulumi.StringOutput {
 // Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 //
 // Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-func (o AccountOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+func (o AccountOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o AccountOutput) ResetPermissionFlag() pulumi.BoolPtrOutput {

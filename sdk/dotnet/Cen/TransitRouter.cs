@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Cen
         /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         /// </summary>
         [Output("supportMulticast")]
-        public Output<bool?> SupportMulticast { get; private set; } = null!;
+        public Output<bool> SupportMulticast { get; private set; } = null!;
 
         /// <summary>
         /// The tag of the resource

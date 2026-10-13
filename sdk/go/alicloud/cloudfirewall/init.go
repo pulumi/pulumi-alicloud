@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallVpcFirewallCen{}
 	case "alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy":
 		r = &FirewallVpcFirewallControlPolicy{}
+	case "alicloud:cloudfirewall/fwSwitch:FwSwitch":
+		r = &FwSwitch{}
 	case "alicloud:cloudfirewall/instance:Instance":
 		r = &Instance{}
 	case "alicloud:cloudfirewall/instanceMember:InstanceMember":
@@ -111,6 +113,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/firewallVpcFirewallControlPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/fwSwitch",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

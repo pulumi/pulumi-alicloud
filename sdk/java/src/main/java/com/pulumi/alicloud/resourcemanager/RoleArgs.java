@@ -64,6 +64,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
+     * _
+     * _## Attributes Reference
+     * 
+     * The following attributes are exported:
      * 
      */
     @Import(name="roleName", required=true)
@@ -71,6 +75,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
+     * _
+     * _## Attributes Reference
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<String> roleName() {
@@ -169,6 +177,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleName Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
+         * _
+         * _## Attributes Reference
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 
@@ -180,6 +192,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleName Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
+         * _
+         * _## Attributes Reference
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

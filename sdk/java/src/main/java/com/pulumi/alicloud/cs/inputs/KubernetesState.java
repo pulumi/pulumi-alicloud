@@ -5,7 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.alicloud.cs.inputs.KubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesCertificateAuthorityArgs;
-import com.pulumi.alicloud.cs.inputs.KubernetesConnectionsArgs;
+import com.pulumi.alicloud.cs.inputs.KubernetesConnectionArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesMasterNodeArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesRuntimeArgs;
@@ -56,26 +56,26 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    @Import(name="certificateAuthority")
-    private @Nullable Output<KubernetesCertificateAuthorityArgs> certificateAuthority;
+    @Import(name="certificateAuthorities")
+    private @Nullable Output<List<KubernetesCertificateAuthorityArgs>> certificateAuthorities;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    public Optional<Output<KubernetesCertificateAuthorityArgs>> certificateAuthority() {
-        return Optional.ofNullable(this.certificateAuthority);
+    public Optional<Output<List<KubernetesCertificateAuthorityArgs>>> certificateAuthorities() {
+        return Optional.ofNullable(this.certificateAuthorities);
     }
 
     /**
@@ -167,17 +167,17 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Map) Map of kubernetes cluster connection information.
+     * (List) A list of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
-    private @Nullable Output<KubernetesConnectionsArgs> connections;
+    private @Nullable Output<List<KubernetesConnectionArgs>> connections;
 
     /**
-     * @return (Map) Map of kubernetes cluster connection information.
+     * @return (List) A list of kubernetes cluster connection information.
      * 
      */
-    public Optional<Output<KubernetesConnectionsArgs>> connections() {
+    public Optional<Output<List<KubernetesConnectionArgs>>> connections() {
         return Optional.ofNullable(this.connections);
     }
 
@@ -772,18 +772,18 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
-    @Import(name="runtime")
-    private @Nullable Output<KubernetesRuntimeArgs> runtime;
+    @Import(name="runtimes")
+    private @Nullable Output<List<KubernetesRuntimeArgs>> runtimes;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+     * @return A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
-    public Optional<Output<KubernetesRuntimeArgs>> runtime() {
-        return Optional.ofNullable(this.runtime);
+    public Optional<Output<List<KubernetesRuntimeArgs>>> runtimes() {
+        return Optional.ofNullable(this.runtimes);
     }
 
     /**
@@ -1015,7 +1015,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private KubernetesState(KubernetesState $) {
         this.addons = $.addons;
         this.apiAudiences = $.apiAudiences;
-        this.certificateAuthority = $.certificateAuthority;
+        this.certificateAuthorities = $.certificateAuthorities;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
         this.clusterCaCert = $.clusterCaCert;
@@ -1059,7 +1059,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.retainResources = $.retainResources;
-        this.runtime = $.runtime;
+        this.runtimes = $.runtimes;
         this.securityGroupId = $.securityGroupId;
         this.serviceAccountIssuer = $.serviceAccountIssuer;
         this.serviceCidr = $.serviceCidr;
@@ -1157,7 +1157,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1166,13 +1166,13 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          * 
          */
         @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-        public Builder certificateAuthority(@Nullable Output<KubernetesCertificateAuthorityArgs> certificateAuthority) {
-            $.certificateAuthority = certificateAuthority;
+        public Builder certificateAuthorities(@Nullable Output<List<KubernetesCertificateAuthorityArgs>> certificateAuthorities) {
+            $.certificateAuthorities = certificateAuthorities;
             return this;
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1181,8 +1181,22 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          * 
          */
         @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-        public Builder certificateAuthority(KubernetesCertificateAuthorityArgs certificateAuthority) {
-            return certificateAuthority(Output.of(certificateAuthority));
+        public Builder certificateAuthorities(List<KubernetesCertificateAuthorityArgs> certificateAuthorities) {
+            return certificateAuthorities(Output.of(certificateAuthorities));
+        }
+
+        /**
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+         * 
+         */
+        @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+        public Builder certificateAuthorities(KubernetesCertificateAuthorityArgs... certificateAuthorities) {
+            return certificateAuthorities(List.of(certificateAuthorities));
         }
 
         /**
@@ -1298,24 +1312,34 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connections (Map) Map of kubernetes cluster connection information.
+         * @param connections (List) A list of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
-        public Builder connections(@Nullable Output<KubernetesConnectionsArgs> connections) {
+        public Builder connections(@Nullable Output<List<KubernetesConnectionArgs>> connections) {
             $.connections = connections;
             return this;
         }
 
         /**
-         * @param connections (Map) Map of kubernetes cluster connection information.
+         * @param connections (List) A list of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
-        public Builder connections(KubernetesConnectionsArgs connections) {
+        public Builder connections(List<KubernetesConnectionArgs> connections) {
             return connections(Output.of(connections));
+        }
+
+        /**
+         * @param connections (List) A list of kubernetes cluster connection information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connections(KubernetesConnectionArgs... connections) {
+            return connections(List.of(connections));
         }
 
         /**
@@ -2207,24 +2231,34 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+         * @param runtimes A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(@Nullable Output<KubernetesRuntimeArgs> runtime) {
-            $.runtime = runtime;
+        public Builder runtimes(@Nullable Output<List<KubernetesRuntimeArgs>> runtimes) {
+            $.runtimes = runtimes;
             return this;
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+         * @param runtimes A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
          * 
          * @return builder
          * 
          */
-        public Builder runtime(KubernetesRuntimeArgs runtime) {
-            return runtime(Output.of(runtime));
+        public Builder runtimes(List<KubernetesRuntimeArgs> runtimes) {
+            return runtimes(Output.of(runtimes));
+        }
+
+        /**
+         * @param runtimes A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtimes(KubernetesRuntimeArgs... runtimes) {
+            return runtimes(List.of(runtimes));
         }
 
         /**

@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Dts
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
     ///         VswitchId = exampleSwitch.Id,

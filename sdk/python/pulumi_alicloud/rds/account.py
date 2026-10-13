@@ -22,6 +22,8 @@ class AccountArgs:
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +39,7 @@ class AccountArgs:
         """
         The set of arguments for constructing a Account resource.
 
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -55,6 +58,10 @@ class AccountArgs:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
         if check_policy is not None:
@@ -121,6 +128,27 @@ class AccountArgs:
     @account_password.setter
     def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -267,6 +295,8 @@ class _AccountState:
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -282,6 +312,7 @@ class _AccountState:
         """
         Input properties used for looking up and filtering Account resources.
 
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -300,6 +331,10 @@ class _AccountState:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
         if check_policy is not None:
@@ -366,6 +401,27 @@ class _AccountState:
     @account_password.setter
     def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -515,6 +571,8 @@ class Account(pulumi.CustomResource):
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -581,6 +639,7 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -668,6 +727,8 @@ class Account(pulumi.CustomResource):
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -692,6 +753,8 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["account_description"] = account_description
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
+            __props__.__dict__["account_password_wo"] = None if account_password_wo is None else pulumi.Output.secret(account_password_wo)
+            __props__.__dict__["account_password_wo_version"] = account_password_wo_version
             __props__.__dict__["account_type"] = account_type
             __props__.__dict__["check_policy"] = check_policy
             __props__.__dict__["db_instance_id"] = db_instance_id
@@ -704,7 +767,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["reset_permission_flag"] = reset_permission_flag
             __props__.__dict__["status"] = status
             __props__.__dict__["type"] = type
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "accountPasswordWo", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:rds/account:Account',
@@ -719,6 +782,8 @@ class Account(pulumi.CustomResource):
             account_description: pulumi.Input[Optional[_builtins.str]] = None,
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
             db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -738,6 +803,7 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance in which account belongs.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -757,6 +823,8 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_description"] = account_description
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_password_wo"] = account_password_wo
+        __props__.__dict__["account_password_wo_version"] = account_password_wo_version
         __props__.__dict__["account_type"] = account_type
         __props__.__dict__["check_policy"] = check_policy
         __props__.__dict__["db_instance_id"] = db_instance_id
@@ -783,8 +851,21 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> pulumi.Output[_builtins.str]:
+    def account_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_password")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "account_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -847,7 +928,7 @@ class Account(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-    def password(self) -> pulumi.Output[_builtins.str]:
+    def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """

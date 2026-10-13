@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// &gt; **NOTE:** Available since v1.187.0.
         /// 
         /// ## Example Usage
         /// 
@@ -174,6 +174,9 @@ namespace Pulumi.AliCloud.Ebs
     [OutputType]
     public sealed class GetDiskReplicaGroupsResult
     {
+        /// <summary>
+        /// A list of Ebs Disk Replica Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDiskReplicaGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

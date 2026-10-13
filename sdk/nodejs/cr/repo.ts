@@ -82,9 +82,9 @@ export class Repo extends pulumi.CustomResource {
      */
     declare public readonly detail: pulumi.Output<string | undefined>;
     /**
-     * (Optional) The repository domain list.
+     * (Optional) A list of repository domain.
      */
-    declare public /*out*/ readonly domainList: pulumi.Output<outputs.cr.RepoDomainList>;
+    declare public /*out*/ readonly domainLists: pulumi.Output<outputs.cr.RepoDomainList[]>;
     /**
      * Name of container registry repository.
      */
@@ -116,7 +116,7 @@ export class Repo extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RepoState | undefined;
             resourceInputs["detail"] = state?.detail;
-            resourceInputs["domainList"] = state?.domainList;
+            resourceInputs["domainLists"] = state?.domainLists;
             resourceInputs["name"] = state?.name;
             resourceInputs["namespace"] = state?.namespace;
             resourceInputs["repoType"] = state?.repoType;
@@ -137,7 +137,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["namespace"] = args?.namespace;
             resourceInputs["repoType"] = args?.repoType;
             resourceInputs["summary"] = args?.summary;
-            resourceInputs["domainList"] = undefined /*out*/;
+            resourceInputs["domainLists"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Repo.__pulumiType, name, resourceInputs, opts);
@@ -153,9 +153,9 @@ export interface RepoState {
      */
     detail?: pulumi.Input<string | undefined>;
     /**
-     * (Optional) The repository domain list.
+     * (Optional) A list of repository domain.
      */
-    domainList?: pulumi.Input<inputs.cr.RepoDomainList | undefined>;
+    domainLists?: pulumi.Input<pulumi.Input<inputs.cr.RepoDomainList>[] | undefined>;
     /**
      * Name of container registry repository.
      */

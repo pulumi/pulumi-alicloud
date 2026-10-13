@@ -164,7 +164,7 @@ def get_studio_applications(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.192.0+.
+    > **NOTE:** Available since v1.192.0.
 
     ## Example Usage
 
@@ -225,7 +225,7 @@ def get_studio_applications_output(ids: pulumi.Input[Optional[Optional[Sequence[
     """
     This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.192.0+.
+    > **NOTE:** Available since v1.192.0.
 
     ## Example Usage
 

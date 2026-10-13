@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Rds
     ///         EngineVersion = "8.0",
     ///         DbInstanceStorageType = "cloud_essd",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///         InstanceChargeType = "Postpaid",

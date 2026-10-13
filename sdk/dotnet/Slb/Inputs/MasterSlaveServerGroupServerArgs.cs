@@ -13,12 +13,6 @@ namespace Pulumi.AliCloud.Slb.Inputs
     public sealed class MasterSlaveServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determine if the server is executing. Valid value 0, 1.
-        /// </summary>
-        [Input("isBackup")]
-        public Input<int>? IsBackup { get; set; }
-
-        /// <summary>
         /// The port used by the backend server. Valid value range: [1-65535].
         /// </summary>
         [Input("port", required: true)]

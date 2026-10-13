@@ -40,8 +40,6 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
     /// 
-    /// &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `ClusterSpec`.
-    /// 
     /// &gt; **NOTE:** From version 1.177.0+, `ExcludeAutoscalerNodes`,`WorkerNumber`,`WorkerVswitchIds`,`WorkerInstanceTypes`,`WorkerInstanceChargeType`,`WorkerPeriod`,`WorkerPeriodUnit`,`WorkerAutoRenew`,`WorkerAutoRenewPeriod`,`WorkerDiskCategory`,`WorkerDiskSize`,`WorkerDataDisks`,`NodePortRange`,`CpuPolicy`,`UserData`,`Taints`,`WorkerDiskPerformanceLevel`,`WorkerDiskSnapshotPolicyId` are deprecated.
     /// We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
     /// 
@@ -76,10 +74,10 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
-        [Output("certificateAuthority")]
-        public Output<Outputs.KubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
+        [Output("certificateAuthorities")]
+        public Output<ImmutableArray<Outputs.KubernetesCertificateAuthority>> CertificateAuthorities { get; private set; } = null!;
 
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -108,10 +106,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterDomain { get; private set; } = null!;
 
         /// <summary>
-        /// (Map) Map of kubernetes cluster connection information.
+        /// (List) A list of kubernetes cluster connection information.
         /// </summary>
         [Output("connections")]
-        public Output<Outputs.KubernetesConnections> Connections { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KubernetesConnection>> Connections { get; private set; } = null!;
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -344,10 +342,10 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
+        /// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
         /// </summary>
-        [Output("runtime")]
-        public Output<Outputs.KubernetesRuntime?> Runtime { get; private set; } = null!;
+        [Output("runtimes")]
+        public Output<ImmutableArray<Outputs.KubernetesRuntime>> Runtimes { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -810,11 +808,17 @@ namespace Pulumi.AliCloud.CS
             set => _retainResources = value;
         }
 
+        [Input("runtimes")]
+        private InputList<Inputs.KubernetesRuntimeArgs>? _runtimes;
+
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
+        /// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
         /// </summary>
-        [Input("runtime")]
-        public Input<Inputs.KubernetesRuntimeArgs>? Runtime { get; set; }
+        public InputList<Inputs.KubernetesRuntimeArgs> Runtimes
+        {
+            get => _runtimes ?? (_runtimes = new InputList<Inputs.KubernetesRuntimeArgs>());
+            set => _runtimes = value;
+        }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -915,11 +919,18 @@ namespace Pulumi.AliCloud.CS
             set => _apiAudiences = value;
         }
 
+        [Input("certificateAuthorities")]
+        private InputList<Inputs.KubernetesCertificateAuthorityGetArgs>? _certificateAuthorities;
+
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
-        [Input("certificateAuthority")]
-        public Input<Inputs.KubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
+        [Obsolete(@"Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.")]
+        public InputList<Inputs.KubernetesCertificateAuthorityGetArgs> CertificateAuthorities
+        {
+            get => _certificateAuthorities ?? (_certificateAuthorities = new InputList<Inputs.KubernetesCertificateAuthorityGetArgs>());
+            set => _certificateAuthorities = value;
+        }
 
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -947,11 +958,17 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 
-        /// <summary>
-        /// (Map) Map of kubernetes cluster connection information.
-        /// </summary>
         [Input("connections")]
-        public Input<Inputs.KubernetesConnectionsGetArgs>? Connections { get; set; }
+        private InputList<Inputs.KubernetesConnectionGetArgs>? _connections;
+
+        /// <summary>
+        /// (List) A list of kubernetes cluster connection information.
+        /// </summary>
+        public InputList<Inputs.KubernetesConnectionGetArgs> Connections
+        {
+            get => _connections ?? (_connections = new InputList<Inputs.KubernetesConnectionGetArgs>());
+            set => _connections = value;
+        }
 
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -1241,11 +1258,17 @@ namespace Pulumi.AliCloud.CS
             set => _retainResources = value;
         }
 
+        [Input("runtimes")]
+        private InputList<Inputs.KubernetesRuntimeGetArgs>? _runtimes;
+
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
+        /// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `Runtime` below.
         /// </summary>
-        [Input("runtime")]
-        public Input<Inputs.KubernetesRuntimeGetArgs>? Runtime { get; set; }
+        public InputList<Inputs.KubernetesRuntimeGetArgs> Runtimes
+        {
+            get => _runtimes ?? (_runtimes = new InputList<Inputs.KubernetesRuntimeGetArgs>());
+            set => _runtimes = value;
+        }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

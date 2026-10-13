@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 {
 
     [OutputType]
-    public sealed class GetInstanceTypesInstanceTypeGpuResult
+    public sealed class GetInstanceTypesInstanceTypeGpusResult
     {
         /// <summary>
         /// The number of local storage devices that an instance has been attached to.
@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string Category;
 
         [OutputConstructor]
-        private GetInstanceTypesInstanceTypeGpuResult(
+        private GetInstanceTypesInstanceTypeGpusResult(
             string amount,
 
             string category)

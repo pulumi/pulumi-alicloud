@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mse.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,21 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
+    }
+
+    /**
+     * (Available since v1.279.1) The current number of configurations in the namespace.
+     * 
+     */
+    @Import(name="configCount")
+    private @Nullable Output<Integer> configCount;
+
+    /**
+     * @return (Available since v1.279.1) The current number of configurations in the namespace.
+     * 
+     */
+    public Optional<Output<Integer>> configCount() {
+        return Optional.ofNullable(this.configCount);
     }
 
     /**
@@ -109,15 +125,80 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.namespaceShowName);
     }
 
+    /**
+     * (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+     * 
+     */
+    @Import(name="quota")
+    private @Nullable Output<Integer> quota;
+
+    /**
+     * @return (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+     * 
+     */
+    public Optional<Output<Integer>> quota() {
+        return Optional.ofNullable(this.quota);
+    }
+
+    /**
+     * (Available since v1.279.1) The current number of services registered to the namespace.
+     * 
+     */
+    @Import(name="serviceCount")
+    private @Nullable Output<String> serviceCount;
+
+    /**
+     * @return (Available since v1.279.1) The current number of services registered to the namespace.
+     * 
+     */
+    public Optional<Output<String>> serviceCount() {
+        return Optional.ofNullable(this.serviceCount);
+    }
+
+    /**
+     * (Available since v1.279.1) The source type of the namespace.
+     * 
+     */
+    @Import(name="sourceType")
+    private @Nullable Output<String> sourceType;
+
+    /**
+     * @return (Available since v1.279.1) The source type of the namespace.
+     * 
+     */
+    public Optional<Output<String>> sourceType() {
+        return Optional.ofNullable(this.sourceType);
+    }
+
+    /**
+     * (Available since v1.279.1) The type of the namespace.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<Integer> type;
+
+    /**
+     * @return (Available since v1.279.1) The type of the namespace.
+     * 
+     */
+    public Optional<Output<Integer>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private EngineNamespaceState() {}
 
     private EngineNamespaceState(EngineNamespaceState $) {
         this.acceptLanguage = $.acceptLanguage;
         this.clusterId = $.clusterId;
+        this.configCount = $.configCount;
         this.instanceId = $.instanceId;
         this.namespaceDesc = $.namespaceDesc;
         this.namespaceId = $.namespaceId;
         this.namespaceShowName = $.namespaceShowName;
+        this.quota = $.quota;
+        this.serviceCount = $.serviceCount;
+        this.sourceType = $.sourceType;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -178,6 +259,27 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param configCount (Available since v1.279.1) The current number of configurations in the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configCount(@Nullable Output<Integer> configCount) {
+            $.configCount = configCount;
+            return this;
+        }
+
+        /**
+         * @param configCount (Available since v1.279.1) The current number of configurations in the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configCount(Integer configCount) {
+            return configCount(Output.of(configCount));
         }
 
         /**
@@ -266,6 +368,90 @@ public final class EngineNamespaceState extends com.pulumi.resources.ResourceArg
          */
         public Builder namespaceShowName(String namespaceShowName) {
             return namespaceShowName(Output.of(namespaceShowName));
+        }
+
+        /**
+         * @param quota (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quota(@Nullable Output<Integer> quota) {
+            $.quota = quota;
+            return this;
+        }
+
+        /**
+         * @param quota (Available since v1.279.1) The maximum number of configurations allowed in the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quota(Integer quota) {
+            return quota(Output.of(quota));
+        }
+
+        /**
+         * @param serviceCount (Available since v1.279.1) The current number of services registered to the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceCount(@Nullable Output<String> serviceCount) {
+            $.serviceCount = serviceCount;
+            return this;
+        }
+
+        /**
+         * @param serviceCount (Available since v1.279.1) The current number of services registered to the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceCount(String serviceCount) {
+            return serviceCount(Output.of(serviceCount));
+        }
+
+        /**
+         * @param sourceType (Available since v1.279.1) The source type of the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceType(@Nullable Output<String> sourceType) {
+            $.sourceType = sourceType;
+            return this;
+        }
+
+        /**
+         * @param sourceType (Available since v1.279.1) The source type of the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceType(String sourceType) {
+            return sourceType(Output.of(sourceType));
+        }
+
+        /**
+         * @param type (Available since v1.279.1) The type of the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<Integer> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type (Available since v1.279.1) The type of the namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(Integer type) {
+            return type(Output.of(type));
         }
 
         public EngineNamespaceState build() {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ebs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -93,6 +93,8 @@ type DiskReplicaGroup struct {
 	DestinationZoneId pulumi.StringOutput `pulumi:"destinationZoneId"`
 	// Consistent replication group name.
 	DiskReplicaGroupName pulumi.StringOutput `pulumi:"diskReplicaGroupName"`
+	// Whether to enable replication time control. Default value: false.
+	EnableRtc pulumi.BoolOutput `pulumi:"enableRtc"`
 	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -110,7 +112,7 @@ type DiskReplicaGroup struct {
 	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
 	ReverseReplicate pulumi.BoolPtrOutput `pulumi:"reverseReplicate"`
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-	Rpo pulumi.IntPtrOutput `pulumi:"rpo"`
+	Rpo pulumi.IntOutput `pulumi:"rpo"`
 	// The ID of the region to which the production site belongs.
 	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
 	// The ID of the zone to which the production site belongs.
@@ -191,6 +193,8 @@ type diskReplicaGroupState struct {
 	DestinationZoneId *string `pulumi:"destinationZoneId"`
 	// Consistent replication group name.
 	DiskReplicaGroupName *string `pulumi:"diskReplicaGroupName"`
+	// Whether to enable replication time control. Default value: false.
+	EnableRtc *bool `pulumi:"enableRtc"`
 	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -248,6 +252,8 @@ type DiskReplicaGroupState struct {
 	DestinationZoneId pulumi.StringPtrInput
 	// Consistent replication group name.
 	DiskReplicaGroupName pulumi.StringPtrInput
+	// Whether to enable replication time control. Default value: false.
+	EnableRtc pulumi.BoolPtrInput
 	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -309,6 +315,8 @@ type diskReplicaGroupArgs struct {
 	DestinationZoneId string `pulumi:"destinationZoneId"`
 	// Consistent replication group name.
 	DiskReplicaGroupName *string `pulumi:"diskReplicaGroupName"`
+	// Whether to enable replication time control. Default value: false.
+	EnableRtc *bool `pulumi:"enableRtc"`
 	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -367,6 +375,8 @@ type DiskReplicaGroupArgs struct {
 	DestinationZoneId pulumi.StringInput
 	// Consistent replication group name.
 	DiskReplicaGroupName pulumi.StringPtrInput
+	// Whether to enable replication time control. Default value: false.
+	EnableRtc pulumi.BoolPtrInput
 	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -522,6 +532,11 @@ func (o DiskReplicaGroupOutput) DiskReplicaGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringOutput { return v.DiskReplicaGroupName }).(pulumi.StringOutput)
 }
 
+// Whether to enable replication time control. Default value: false.
+func (o DiskReplicaGroupOutput) EnableRtc() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.BoolOutput { return v.EnableRtc }).(pulumi.BoolOutput)
+}
+
 // . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
 //
 // Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
@@ -554,8 +569,8 @@ func (o DiskReplicaGroupOutput) ReverseReplicate() pulumi.BoolPtrOutput {
 }
 
 // The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-func (o DiskReplicaGroupOutput) Rpo() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.IntPtrOutput { return v.Rpo }).(pulumi.IntPtrOutput)
+func (o DiskReplicaGroupOutput) Rpo() pulumi.IntOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.IntOutput { return v.Rpo }).(pulumi.IntOutput)
 }
 
 // The ID of the region to which the production site belongs.

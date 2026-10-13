@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// <summary>
         /// Payment type. Valid values: Subscription/PayAsYouGo
         /// 
-        /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+        /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `PaymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// <summary>
         /// Payment type. Valid values: Subscription/PayAsYouGo
         /// 
-        /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+        /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `PaymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// <summary>
         /// Payment type. Valid values: Subscription/PayAsYouGo
         /// 
-        /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+        /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `PaymentType = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

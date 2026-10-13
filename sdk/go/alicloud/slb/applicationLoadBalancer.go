@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -146,6 +146,14 @@ type ApplicationLoadBalancer struct {
 	SlaveZoneId pulumi.StringOutput `pulumi:"slaveZoneId"`
 	// Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
 	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+	//
+	// > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
+	//
 	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
 	Specification pulumi.StringOutput `pulumi:"specification"`
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
@@ -230,6 +238,14 @@ type applicationLoadBalancerState struct {
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
 	// Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
 	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+	//
+	// > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
+	//
 	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
 	Specification *string `pulumi:"specification"`
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
@@ -284,6 +300,14 @@ type ApplicationLoadBalancerState struct {
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringPtrInput
 	// Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+	//
+	// > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
 	//
 	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
 	Specification pulumi.StringPtrInput
@@ -344,6 +368,14 @@ type applicationLoadBalancerArgs struct {
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
 	// Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
 	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+	//
+	// > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
+	//
 	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
 	Specification *string `pulumi:"specification"`
 	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
@@ -399,6 +431,14 @@ type ApplicationLoadBalancerArgs struct {
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringPtrInput
 	// Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+	//
+	// > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
 	//
 	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
 	Specification pulumi.StringPtrInput
@@ -591,6 +631,14 @@ func (o ApplicationLoadBalancerOutput) SlaveZoneId() pulumi.StringOutput {
 }
 
 // Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+//
+// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+//
+// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+//
+// > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+//
+// > **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
 //
 // Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
 func (o ApplicationLoadBalancerOutput) Specification() pulumi.StringOutput {

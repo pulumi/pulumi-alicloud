@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// &gt; **NOTE:** Available since v1.67.0.
     /// 
+    /// &gt; **NOTE:** The `AccountPasswordWo` and `AccountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+    /// 
     /// &gt; **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
     /// 
     /// ## Example Usage
@@ -111,7 +113,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The account password. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields. Must  meet the following requirements:
+        /// The account password. It conflicts with `KmsEncryptedPassword` and `AccountPasswordWo`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set. Must  meet the following requirements:
         /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         /// - Be 8 to 32 characters in length.
         /// - Special characters include !@#$%^&amp;*()_+-=.
@@ -124,6 +126,19 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("accountPasswordValidTime")]
         public Output<string> AccountPasswordValidTime { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword` and `KmsEncryptedPassword`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set.
+        /// </summary>
+        [Output("accountPasswordWo")]
+        public Output<string?> AccountPasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Output("accountPasswordWoVersion")]
+        public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
@@ -144,7 +159,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DynamodbAuthPassword { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. It conflicts with `AccountPassword` and `AccountPasswordWo`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -187,6 +202,7 @@ namespace Pulumi.AliCloud.PolarDB
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "accountPasswordWo",
                     "dynamodbAuthPassword",
                 },
             };
@@ -240,7 +256,7 @@ namespace Pulumi.AliCloud.PolarDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The account password. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields. Must  meet the following requirements:
+        /// The account password. It conflicts with `KmsEncryptedPassword` and `AccountPasswordWo`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set. Must  meet the following requirements:
         /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         /// - Be 8 to 32 characters in length.
         /// - Special characters include !@#$%^&amp;*()_+-=.
@@ -261,6 +277,29 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("accountPasswordValidTime")]
         public Input<string>? AccountPasswordValidTime { get; set; }
 
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword` and `KmsEncryptedPassword`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
+
         /// <summary>
         /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         /// </summary>
@@ -274,7 +313,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. It conflicts with `AccountPassword` and `AccountPasswordWo`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -327,7 +366,7 @@ namespace Pulumi.AliCloud.PolarDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The account password. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields. Must  meet the following requirements:
+        /// The account password. It conflicts with `KmsEncryptedPassword` and `AccountPasswordWo`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set. Must  meet the following requirements:
         /// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         /// - Be 8 to 32 characters in length.
         /// - Special characters include !@#$%^&amp;*()_+-=.
@@ -347,6 +386,29 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("accountPasswordValidTime")]
         public Input<string>? AccountPasswordValidTime { get; set; }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword` and `KmsEncryptedPassword`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
@@ -377,7 +439,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. It conflicts with `AccountPassword` and `AccountPasswordWo`, and one of `AccountPassword`, `KmsEncryptedPassword` and `AccountPasswordWo` must be set.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }

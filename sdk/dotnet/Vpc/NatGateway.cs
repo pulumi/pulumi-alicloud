@@ -16,9 +16,6 @@ namespace Pulumi.AliCloud.Vpc
     /// If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
     /// If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
     /// 
-    /// &gt; **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
-    /// But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
-    /// 
     /// &gt; **NOTE:** When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see Service-linked roles.
     /// 
     /// &gt; **NOTE:** After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
@@ -184,6 +181,10 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Field `InstanceChargeType` has been deprecated from provider version 1.121.0. New field `PaymentType` instead.
+        /// 
+        /// &gt; **NOTE:** From version 1.194.0, `EipBindMode` can be modified. If the `EipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `EipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+        /// 
+        /// &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -375,6 +376,10 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Field `InstanceChargeType` has been deprecated from provider version 1.121.0. New field `PaymentType` instead.
+        /// 
+        /// &gt; **NOTE:** From version 1.194.0, `EipBindMode` can be modified. If the `EipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `EipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+        /// 
+        /// &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -528,6 +533,10 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Field `InstanceChargeType` has been deprecated from provider version 1.121.0. New field `PaymentType` instead.
+        /// 
+        /// &gt; **NOTE:** From version 1.194.0, `EipBindMode` can be modified. If the `EipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `EipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+        /// 
+        /// &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }

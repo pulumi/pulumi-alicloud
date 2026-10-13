@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class MasterSlaveServerGroupServer
     {
         /// <summary>
-        /// Determine if the server is executing. Valid value 0, 1.
-        /// </summary>
-        public readonly int? IsBackup;
-        /// <summary>
         /// The port used by the backend server. Valid value range: [1-65535].
         /// </summary>
         public readonly int Port;
@@ -40,8 +36,6 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
         [OutputConstructor]
         private MasterSlaveServerGroupServer(
-            int? isBackup,
-
             int port,
 
             string serverId,
@@ -52,7 +46,6 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             int? weight)
         {
-            IsBackup = isBackup;
             Port = port;
             ServerId = serverId;
             ServerType = serverType;

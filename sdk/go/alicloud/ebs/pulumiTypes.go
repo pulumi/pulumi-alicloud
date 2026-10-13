@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1361,10 +1361,13 @@ type GetDiskReplicaGroupsGroup struct {
 	DestinationRegionId string `pulumi:"destinationRegionId"`
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId string `pulumi:"destinationZoneId"`
+	// Whether to enable replication time control.
+	EnableRtc bool `pulumi:"enableRtc"`
 	// Consistent replication group name.
 	GroupName string `pulumi:"groupName"`
 	// The ID of the Disk Replica Group.
-	Id               string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The most recent recovery point time of the replication pair-consistent group.
 	LastRecoverPoint string `pulumi:"lastRecoverPoint"`
 	// The initial source region of the replication group.
 	PrimaryRegion string `pulumi:"primaryRegion"`
@@ -1406,10 +1409,13 @@ type GetDiskReplicaGroupsGroupArgs struct {
 	DestinationRegionId pulumi.StringInput `pulumi:"destinationRegionId"`
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId pulumi.StringInput `pulumi:"destinationZoneId"`
+	// Whether to enable replication time control.
+	EnableRtc pulumi.BoolInput `pulumi:"enableRtc"`
 	// Consistent replication group name.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
 	// The ID of the Disk Replica Group.
-	Id               pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The most recent recovery point time of the replication pair-consistent group.
 	LastRecoverPoint pulumi.StringInput `pulumi:"lastRecoverPoint"`
 	// The initial source region of the replication group.
 	PrimaryRegion pulumi.StringInput `pulumi:"primaryRegion"`
@@ -1499,6 +1505,11 @@ func (o GetDiskReplicaGroupsGroupOutput) DestinationZoneId() pulumi.StringOutput
 	return o.ApplyT(func(v GetDiskReplicaGroupsGroup) string { return v.DestinationZoneId }).(pulumi.StringOutput)
 }
 
+// Whether to enable replication time control.
+func (o GetDiskReplicaGroupsGroupOutput) EnableRtc() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDiskReplicaGroupsGroup) bool { return v.EnableRtc }).(pulumi.BoolOutput)
+}
+
 // Consistent replication group name.
 func (o GetDiskReplicaGroupsGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskReplicaGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
@@ -1509,6 +1520,7 @@ func (o GetDiskReplicaGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskReplicaGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The most recent recovery point time of the replication pair-consistent group.
 func (o GetDiskReplicaGroupsGroupOutput) LastRecoverPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskReplicaGroupsGroup) string { return v.LastRecoverPoint }).(pulumi.StringOutput)
 }

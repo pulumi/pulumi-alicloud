@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
     public sealed class GetDbClustersClusterDbClusterAccessWhiteListResult
     {
         /// <summary>
-        /// Field `DbClusterIpArrayAttribute` has been removed from provider.
-        /// </summary>
-        public readonly string DbClusterIpArrayAttribute;
-        /// <summary>
         /// Whitelist group name.
         /// </summary>
         public readonly string DbClusterIpArrayName;
@@ -28,13 +24,10 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
 
         [OutputConstructor]
         private GetDbClustersClusterDbClusterAccessWhiteListResult(
-            string dbClusterIpArrayAttribute,
-
             string dbClusterIpArrayName,
 
             string securityIpList)
         {
-            DbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
             DbClusterIpArrayName = dbClusterIpArrayName;
             SecurityIpList = securityIpList;
         }

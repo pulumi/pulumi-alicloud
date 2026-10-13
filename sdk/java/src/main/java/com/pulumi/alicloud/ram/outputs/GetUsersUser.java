@@ -21,11 +21,6 @@ public final class GetUsersUser {
      */
     private String id;
     /**
-     * @return (Removed) Last login date of the user. Removed from version 1.79.0.
-     * 
-     */
-    private String lastLoginDate;
-    /**
      * @return Name of the user.
      * 
      */
@@ -47,13 +42,6 @@ public final class GetUsersUser {
         return this.id;
     }
     /**
-     * @return (Removed) Last login date of the user. Removed from version 1.79.0.
-     * 
-     */
-    public String lastLoginDate() {
-        return this.lastLoginDate;
-    }
-    /**
      * @return Name of the user.
      * 
      */
@@ -72,14 +60,12 @@ public final class GetUsersUser {
     public static final class Builder {
         private String createDate;
         private String id;
-        private String lastLoginDate;
         private String name;
         public Builder() {}
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createDate = defaults.createDate;
     	      this.id = defaults.id;
-    	      this.lastLoginDate = defaults.lastLoginDate;
     	      this.name = defaults.name;
         }
 
@@ -100,14 +86,6 @@ public final class GetUsersUser {
             return this;
         }
         @CustomType.Setter
-        public Builder lastLoginDate(String lastLoginDate) {
-            if (lastLoginDate == null) {
-              throw new MissingRequiredPropertyException("GetUsersUser", "lastLoginDate");
-            }
-            this.lastLoginDate = lastLoginDate;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetUsersUser", "name");
@@ -119,7 +97,6 @@ public final class GetUsersUser {
             final var _resultValue = new GetUsersUser();
             _resultValue.createDate = createDate;
             _resultValue.id = id;
-            _resultValue.lastLoginDate = lastLoginDate;
             _resultValue.name = name;
             return _resultValue;
         }
