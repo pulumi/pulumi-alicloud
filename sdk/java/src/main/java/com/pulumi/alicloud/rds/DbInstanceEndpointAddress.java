@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
- *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRanges().min())
  *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(defaultSwitch.id())

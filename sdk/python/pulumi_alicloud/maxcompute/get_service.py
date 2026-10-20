@@ -79,9 +79,11 @@ def get_service(enable: Optional[_builtins.str] = None,
 
     For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
 
-    > **NOTE:** Available in v1.117.0+
+    > **NOTE:** Available since v1.117.0
 
     > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `maxcompute.Quota` instead.
+
+    > **NOTE:** The `OpenMaxComputeService` API this datasource relied on has been decommissioned, so this datasource can no longer activate the MaxCompute service. Setting `enable = "On"` now only checks whether the service has been activated in the current region: it returns `Opened` when activated, and reports an error otherwise. Please activate MaxCompute in the [Alibaba Cloud console](https://www.alibabacloud.com/help/en/maxcompute/getting-started/activate-maxcompute-and-dataworks) instead.
 
     ## Example Usage
 
@@ -115,9 +117,11 @@ def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] =
 
     For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
 
-    > **NOTE:** Available in v1.117.0+
+    > **NOTE:** Available since v1.117.0
 
     > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `maxcompute.Quota` instead.
+
+    > **NOTE:** The `OpenMaxComputeService` API this datasource relied on has been decommissioned, so this datasource can no longer activate the MaxCompute service. Setting `enable = "On"` now only checks whether the service has been activated in the current region: it returns `Opened` when activated, and reports an error otherwise. Please activate MaxCompute in the [Alibaba Cloud console](https://www.alibabacloud.com/help/en/maxcompute/getting-started/activate-maxcompute-and-dataworks) instead.
 
     ## Example Usage
 

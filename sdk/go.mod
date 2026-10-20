@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-alicloud/sdk/v3
+module github.com/pulumi/pulumi-alicloud/sdk/v4
 
 go 1.26.6
 

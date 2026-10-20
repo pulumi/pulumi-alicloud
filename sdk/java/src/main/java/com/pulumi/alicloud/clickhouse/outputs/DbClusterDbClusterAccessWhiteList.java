@@ -12,11 +12,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DbClusterDbClusterAccessWhiteList {
     /**
-     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
-     * 
-     */
-    private @Nullable String dbClusterIpArrayAttribute;
-    /**
      * @return Whitelist group name.
      * 
      */
@@ -28,13 +23,6 @@ public final class DbClusterDbClusterAccessWhiteList {
     private @Nullable String securityIpList;
 
     private DbClusterDbClusterAccessWhiteList() {}
-    /**
-     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
-     * 
-     */
-    public Optional<String> dbClusterIpArrayAttribute() {
-        return Optional.ofNullable(this.dbClusterIpArrayAttribute);
-    }
     /**
      * @return Whitelist group name.
      * 
@@ -59,23 +47,15 @@ public final class DbClusterDbClusterAccessWhiteList {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String dbClusterIpArrayAttribute;
         private @Nullable String dbClusterIpArrayName;
         private @Nullable String securityIpList;
         public Builder() {}
         public Builder(DbClusterDbClusterAccessWhiteList defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.dbClusterIpArrayAttribute = defaults.dbClusterIpArrayAttribute;
     	      this.dbClusterIpArrayName = defaults.dbClusterIpArrayName;
     	      this.securityIpList = defaults.securityIpList;
         }
 
-        @CustomType.Setter
-        public Builder dbClusterIpArrayAttribute(@Nullable String dbClusterIpArrayAttribute) {
-
-            this.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
-            return this;
-        }
         @CustomType.Setter
         public Builder dbClusterIpArrayName(@Nullable String dbClusterIpArrayName) {
 
@@ -90,7 +70,6 @@ public final class DbClusterDbClusterAccessWhiteList {
         }
         public DbClusterDbClusterAccessWhiteList build() {
             final var _resultValue = new DbClusterDbClusterAccessWhiteList();
-            _resultValue.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
             _resultValue.dbClusterIpArrayName = dbClusterIpArrayName;
             _resultValue.securityIpList = securityIpList;
             return _resultValue;

@@ -11,25 +11,25 @@ namespace Pulumi.AliCloud.CS.Outputs
 {
 
     [OutputType]
-    public sealed class GetManagedKubernetesClustersClusterLogConfigResult
+    public sealed class GetEdgeKubernetesClustersClusterConnectionResult
     {
         /// <summary>
-        /// Log Service project name.
+        /// API Server Internet endpoint.
         /// </summary>
-        public readonly string Project;
+        public readonly string ApiServerInternet;
         /// <summary>
-        /// Type of collecting logs.
+        /// API Server Intranet endpoint.
         /// </summary>
-        public readonly string Type;
+        public readonly string ApiServerIntranet;
 
         [OutputConstructor]
-        private GetManagedKubernetesClustersClusterLogConfigResult(
-            string project,
+        private GetEdgeKubernetesClustersClusterConnectionResult(
+            string apiServerInternet,
 
-            string type)
+            string apiServerIntranet)
         {
-            Project = project;
-            Type = type;
+            ApiServerInternet = apiServerInternet;
+            ApiServerIntranet = apiServerIntranet;
         }
     }
 }

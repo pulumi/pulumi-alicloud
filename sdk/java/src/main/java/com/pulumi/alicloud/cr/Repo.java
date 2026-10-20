@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -101,18 +102,18 @@ public class Repo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.detail);
     }
     /**
-     * (Optional) The repository domain list.
+     * (Optional) A list of repository domain.
      * 
      */
-    @Export(name="domainList", refs={RepoDomainList.class}, tree="[0]")
-    private Output<RepoDomainList> domainList;
+    @Export(name="domainLists", refs={List.class,RepoDomainList.class}, tree="[0,1]")
+    private Output<List<RepoDomainList>> domainLists;
 
     /**
-     * @return (Optional) The repository domain list.
+     * @return (Optional) A list of repository domain.
      * 
      */
-    public Output<RepoDomainList> domainList() {
-        return this.domainList;
+    public Output<List<RepoDomainList>> domainLists() {
+        return this.domainLists;
     }
     /**
      * Name of container registry repository.

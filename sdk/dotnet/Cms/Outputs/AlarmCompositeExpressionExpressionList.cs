@@ -22,13 +22,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// The statistical period of the metric. Unit: seconds. Default value: `300`.
         /// </summary>
         public readonly string? Period;
-        /// <summary>
-        /// Field `Statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-        /// </summary>
         public readonly string? Statistics;
-        /// <summary>
-        /// Field `Threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-        /// </summary>
         public readonly string? Threshold;
 
         [OutputConstructor]

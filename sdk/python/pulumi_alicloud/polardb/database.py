@@ -523,7 +523,7 @@ class Database(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         """

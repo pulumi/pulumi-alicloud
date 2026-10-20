@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ebs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,6 +65,7 @@ type GetDiskReplicaGroupsArgs struct {
 
 // A collection of values returned by getDiskReplicaGroups.
 type GetDiskReplicaGroupsResult struct {
+	// A list of Ebs Disk Replica Groups. Each element contains the following attributes:
 	Groups []GetDiskReplicaGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
@@ -104,6 +105,7 @@ func (o GetDiskReplicaGroupsResultOutput) ToGetDiskReplicaGroupsResultOutputWith
 	return o
 }
 
+// A list of Ebs Disk Replica Groups. Each element contains the following attributes:
 func (o GetDiskReplicaGroupsResultOutput) Groups() GetDiskReplicaGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetDiskReplicaGroupsResult) []GetDiskReplicaGroupsGroup { return v.Groups }).(GetDiskReplicaGroupsGroupArrayOutput)
 }

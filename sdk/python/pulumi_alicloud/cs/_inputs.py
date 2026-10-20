@@ -19,8 +19,8 @@ __all__ = [
     'EdgeKubernetesAddonArgsDict',
     'EdgeKubernetesCertificateAuthorityArgs',
     'EdgeKubernetesCertificateAuthorityArgsDict',
-    'EdgeKubernetesConnectionsArgs',
-    'EdgeKubernetesConnectionsArgsDict',
+    'EdgeKubernetesConnectionArgs',
+    'EdgeKubernetesConnectionArgsDict',
     'EdgeKubernetesLogConfigArgs',
     'EdgeKubernetesLogConfigArgsDict',
     'EdgeKubernetesRuntimeArgs',
@@ -35,8 +35,8 @@ __all__ = [
     'KubernetesAutoscalerNodepoolArgsDict',
     'KubernetesCertificateAuthorityArgs',
     'KubernetesCertificateAuthorityArgsDict',
-    'KubernetesConnectionsArgs',
-    'KubernetesConnectionsArgsDict',
+    'KubernetesConnectionArgs',
+    'KubernetesConnectionArgsDict',
     'KubernetesDeleteOptionArgs',
     'KubernetesDeleteOptionArgsDict',
     'KubernetesMasterNodeArgs',
@@ -53,8 +53,8 @@ __all__ = [
     'ManagedKubernetesAutoModeArgsDict',
     'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesCertificateAuthorityArgsDict',
-    'ManagedKubernetesConnectionsArgs',
-    'ManagedKubernetesConnectionsArgsDict',
+    'ManagedKubernetesConnectionArgs',
+    'ManagedKubernetesConnectionArgsDict',
     'ManagedKubernetesControlPlaneEndpointsConfigArgs',
     'ManagedKubernetesControlPlaneEndpointsConfigArgsDict',
     'ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs',
@@ -328,7 +328,7 @@ class EdgeKubernetesCertificateAuthorityArgs:
         pulumi.set(self, "cluster_cert", value)
 
 
-class EdgeKubernetesConnectionsArgsDict(TypedDict):
+class EdgeKubernetesConnectionArgsDict(TypedDict):
     api_server_internet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Server Internet endpoint.
@@ -347,7 +347,7 @@ class EdgeKubernetesConnectionsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class EdgeKubernetesConnectionsArgs:
+class EdgeKubernetesConnectionArgs:
     def __init__(__self__, *,
                  api_server_internet: pulumi.Input[Optional[_builtins.str]] = None,
                  api_server_intranet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1065,7 +1065,7 @@ class KubernetesCertificateAuthorityArgs:
         pulumi.set(self, "cluster_cert", value)
 
 
-class KubernetesConnectionsArgsDict(TypedDict):
+class KubernetesConnectionArgsDict(TypedDict):
     api_server_internet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Server Internet endpoint.
@@ -1084,7 +1084,7 @@ class KubernetesConnectionsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class KubernetesConnectionsArgs:
+class KubernetesConnectionArgs:
     def __init__(__self__, *,
                  api_server_internet: pulumi.Input[Optional[_builtins.str]] = None,
                  api_server_intranet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2358,7 +2358,7 @@ class ManagedKubernetesCertificateAuthorityArgs:
         pulumi.set(self, "cluster_cert", value)
 
 
-class ManagedKubernetesConnectionsArgsDict(TypedDict):
+class ManagedKubernetesConnectionArgsDict(TypedDict):
     api_server_internet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Server Internet endpoint.
@@ -2377,7 +2377,7 @@ class ManagedKubernetesConnectionsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class ManagedKubernetesConnectionsArgs:
+class ManagedKubernetesConnectionArgs:
     def __init__(__self__, *,
                  api_server_internet: pulumi.Input[Optional[_builtins.str]] = None,
                  api_server_intranet: pulumi.Input[Optional[_builtins.str]] = None,

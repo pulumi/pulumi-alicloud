@@ -108,7 +108,7 @@ class RepoArgs:
 class _RepoState:
     def __init__(__self__, *,
                  detail: pulumi.Input[Optional[_builtins.str]] = None,
-                 domain_list: pulumi.Input[Optional['RepoDomainListArgs']] = None,
+                 domain_lists: pulumi.Input[Optional[Sequence[pulumi.Input['RepoDomainListArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -117,7 +117,7 @@ class _RepoState:
         Input properties used for looking up and filtering Repo resources.
 
         :param pulumi.Input[_builtins.str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input['RepoDomainListArgs'] domain_list: (Optional) The repository domain list.
+        :param pulumi.Input[Sequence[pulumi.Input['RepoDomainListArgs']]] domain_lists: (Optional) A list of repository domain.
         :param pulumi.Input[_builtins.str] name: Name of container registry repository.
         :param pulumi.Input[_builtins.str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[_builtins.str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
@@ -125,8 +125,8 @@ class _RepoState:
         """
         if detail is not None:
             pulumi.set(__self__, "detail", detail)
-        if domain_list is not None:
-            pulumi.set(__self__, "domain_list", domain_list)
+        if domain_lists is not None:
+            pulumi.set(__self__, "domain_lists", domain_lists)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
@@ -149,16 +149,16 @@ class _RepoState:
         pulumi.set(self, "detail", value)
 
     @_builtins.property
-    @pulumi.getter(name="domainList")
-    def domain_list(self) -> pulumi.Input[Optional['RepoDomainListArgs']]:
+    @pulumi.getter(name="domainLists")
+    def domain_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoDomainListArgs']]]]:
         """
-        (Optional) The repository domain list.
+        (Optional) A list of repository domain.
         """
-        return pulumi.get(self, "domain_list")
+        return pulumi.get(self, "domain_lists")
 
-    @domain_list.setter
-    def domain_list(self, value: pulumi.Input[Optional['RepoDomainListArgs']]):
-        pulumi.set(self, "domain_list", value)
+    @domain_lists.setter
+    def domain_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoDomainListArgs']]]]):
+        pulumi.set(self, "domain_lists", value)
 
     @_builtins.property
     @pulumi.getter
@@ -363,7 +363,7 @@ class Repo(pulumi.CustomResource):
             if summary is None and not opts.urn:
                 raise TypeError("Missing required property 'summary'")
             __props__.__dict__["summary"] = summary
-            __props__.__dict__["domain_list"] = None
+            __props__.__dict__["domain_lists"] = None
         super(Repo, __self__).__init__(
             'alicloud:cr/repo:Repo',
             resource_name,
@@ -375,7 +375,7 @@ class Repo(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             detail: pulumi.Input[Optional[_builtins.str]] = None,
-            domain_list: pulumi.Input[Optional[Union['RepoDomainListArgs', 'RepoDomainListArgsDict', 'outputs.RepoDomainList']]] = None,
+            domain_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict', 'outputs.RepoDomainList']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             repo_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -388,7 +388,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict', 'outputs.RepoDomainList']] domain_list: (Optional) The repository domain list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict', 'outputs.RepoDomainList']]]] domain_lists: (Optional) A list of repository domain.
         :param pulumi.Input[_builtins.str] name: Name of container registry repository.
         :param pulumi.Input[_builtins.str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[_builtins.str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
@@ -399,7 +399,7 @@ class Repo(pulumi.CustomResource):
         __props__ = _RepoState.__new__(_RepoState)
 
         __props__.__dict__["detail"] = detail
-        __props__.__dict__["domain_list"] = domain_list
+        __props__.__dict__["domain_lists"] = domain_lists
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["repo_type"] = repo_type
@@ -415,12 +415,12 @@ class Repo(pulumi.CustomResource):
         return pulumi.get(self, "detail")
 
     @_builtins.property
-    @pulumi.getter(name="domainList")
-    def domain_list(self) -> pulumi.Output['outputs.RepoDomainList']:
+    @pulumi.getter(name="domainLists")
+    def domain_lists(self) -> pulumi.Output[Sequence['outputs.RepoDomainList']]:
         """
-        (Optional) The repository domain list.
+        (Optional) A list of repository domain.
         """
-        return pulumi.get(self, "domain_list")
+        return pulumi.get(self, "domain_lists")
 
     @_builtins.property
     @pulumi.getter

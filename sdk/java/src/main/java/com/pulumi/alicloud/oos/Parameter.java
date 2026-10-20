@@ -10,7 +10,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,7 +22,9 @@ import javax.annotation.Nullable;
  * 
  * For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
  * 
- * &gt; **NOTE:** Available in v1.147.0+.
+ * &gt; **NOTE:** Available since v1.147.0.
+ * 
+ * &gt; **NOTE:** The `valueWo` and `valueWoVersion` arguments require Terraform v1.11.0 or later. When `valueWo` is in use, `value` reads back empty because it is not stored in the state or plan.
  * 
  * ## Example Usage
  * 
@@ -176,18 +180,48 @@ public class Parameter extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * @return The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      * 
      */
     public Output<String> value() {
         return this.value;
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     * 
+     */
+    @Export(name="valueWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> valueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     * 
+     */
+    public Output<Optional<String>> valueWo() {
+        return Codegen.optional(this.valueWo);
+    }
+    /**
+     * The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     * 
+     */
+    @Export(name="valueWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> valueWoVersion;
+
+    /**
+     * @return The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> valueWoVersion() {
+        return Codegen.optional(this.valueWoVersion);
     }
 
     /**
@@ -229,6 +263,9 @@ public class Parameter extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "valueWo"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

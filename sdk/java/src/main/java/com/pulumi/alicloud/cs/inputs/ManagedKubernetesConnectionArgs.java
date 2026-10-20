@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class KubernetesConnectionsArgs extends com.pulumi.resources.ResourceArgs {
+public final class ManagedKubernetesConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final KubernetesConnectionsArgs Empty = new KubernetesConnectionsArgs();
+    public static final ManagedKubernetesConnectionArgs Empty = new ManagedKubernetesConnectionArgs();
 
     /**
      * API Server Internet endpoint.
@@ -75,9 +75,9 @@ public final class KubernetesConnectionsArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.serviceDomain);
     }
 
-    private KubernetesConnectionsArgs() {}
+    private ManagedKubernetesConnectionArgs() {}
 
-    private KubernetesConnectionsArgs(KubernetesConnectionsArgs $) {
+    private ManagedKubernetesConnectionArgs(ManagedKubernetesConnectionArgs $) {
         this.apiServerInternet = $.apiServerInternet;
         this.apiServerIntranet = $.apiServerIntranet;
         this.masterPublicIp = $.masterPublicIp;
@@ -87,19 +87,19 @@ public final class KubernetesConnectionsArgs extends com.pulumi.resources.Resour
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(KubernetesConnectionsArgs defaults) {
+    public static Builder builder(ManagedKubernetesConnectionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private KubernetesConnectionsArgs $;
+        private ManagedKubernetesConnectionArgs $;
 
         public Builder() {
-            $ = new KubernetesConnectionsArgs();
+            $ = new ManagedKubernetesConnectionArgs();
         }
 
-        public Builder(KubernetesConnectionsArgs defaults) {
-            $ = new KubernetesConnectionsArgs(Objects.requireNonNull(defaults));
+        public Builder(ManagedKubernetesConnectionArgs defaults) {
+            $ = new ManagedKubernetesConnectionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -186,7 +186,7 @@ public final class KubernetesConnectionsArgs extends com.pulumi.resources.Resour
             return serviceDomain(Output.of(serviceDomain));
         }
 
-        public KubernetesConnectionsArgs build() {
+        public ManagedKubernetesConnectionArgs build() {
             return $;
         }
     }

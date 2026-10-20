@@ -21,17 +21,18 @@ class ParameterArgs:
     def __init__(__self__, *,
                  parameter_name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str],
                  constraints: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Parameter resource.
 
         :param pulumi.Input[_builtins.str] parameter_name: The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
         :param pulumi.Input[_builtins.str] type: The data type of the common parameter. Valid values: `String` and `StringList`.
-        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length.
         :param pulumi.Input[_builtins.str] constraints: The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
                * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
                * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
@@ -40,10 +41,13 @@ class ParameterArgs:
         :param pulumi.Input[_builtins.str] description: The description of the common parameter. The description must be `1` to `200` characters in length.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.int] value_wo_version: The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
         """
         pulumi.set(__self__, "parameter_name", parameter_name)
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
         if constraints is not None:
             pulumi.set(__self__, "constraints", constraints)
         if description is not None:
@@ -52,6 +56,12 @@ class ParameterArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_wo is not None:
+            pulumi.set(__self__, "value_wo", value_wo)
+        if value_wo_version is not None:
+            pulumi.set(__self__, "value_wo_version", value_wo_version)
 
     @_builtins.property
     @pulumi.getter(name="parameterName")
@@ -76,18 +86,6 @@ class ParameterArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        The value of the common parameter. The value must be `1` to `4096` characters in length.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter
@@ -141,6 +139,43 @@ class ParameterArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWo")
+    def value_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        """
+        return pulumi.get(self, "value_wo")
+
+    @value_wo.setter
+    def value_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWoVersion")
+    def value_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
+        """
+        return pulumi.get(self, "value_wo_version")
+
+    @value_wo_version.setter
+    def value_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "value_wo_version", value)
+
 
 @pulumi.input_type
 class _ParameterState:
@@ -151,7 +186,9 @@ class _ParameterState:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 value: pulumi.Input[Optional[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Parameter resources.
 
@@ -165,7 +202,10 @@ class _ParameterState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The data type of the common parameter. Valid values: `String` and `StringList`.
-        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length.
+        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.int] value_wo_version: The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
         """
         if constraints is not None:
             pulumi.set(__self__, "constraints", constraints)
@@ -181,6 +221,10 @@ class _ParameterState:
             pulumi.set(__self__, "type", type)
         if value is not None:
             pulumi.set(__self__, "value", value)
+        if value_wo is not None:
+            pulumi.set(__self__, "value_wo", value_wo)
+        if value_wo_version is not None:
+            pulumi.set(__self__, "value_wo_version", value_wo_version)
 
     @_builtins.property
     @pulumi.getter
@@ -262,13 +306,38 @@ class _ParameterState:
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value of the common parameter. The value must be `1` to `4096` characters in length.
+        The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
         """
         return pulumi.get(self, "value")
 
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWo")
+    def value_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        """
+        return pulumi.get(self, "value_wo")
+
+    @value_wo.setter
+    def value_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWoVersion")
+    def value_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
+        """
+        return pulumi.get(self, "value_wo_version")
+
+    @value_wo_version.setter
+    def value_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "value_wo_version", value)
 
 
 @pulumi.type_token("alicloud:oos/parameter:Parameter")
@@ -284,13 +353,17 @@ class Parameter(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a OOS Parameter resource.
 
         For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
 
-        > **NOTE:** Available in v1.147.0+.
+        > **NOTE:** Available since v1.147.0.
+
+        > **NOTE:** The `value_wo` and `value_wo_version` arguments require Terraform v1.11.0 or later. When `value_wo` is in use, `value` reads back empty because it is not stored in the state or plan.
 
         ## Example Usage
 
@@ -336,7 +409,10 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The data type of the common parameter. Valid values: `String` and `StringList`.
-        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length.
+        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.int] value_wo_version: The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
         """
         ...
     @overload
@@ -349,7 +425,9 @@ class Parameter(pulumi.CustomResource):
 
         For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
 
-        > **NOTE:** Available in v1.147.0+.
+        > **NOTE:** Available since v1.147.0.
+
+        > **NOTE:** The `value_wo` and `value_wo_version` arguments require Terraform v1.11.0 or later. When `value_wo` is in use, `value` reads back empty because it is not stored in the state or plan.
 
         ## Example Usage
 
@@ -405,6 +483,8 @@ class Parameter(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -424,9 +504,11 @@ class Parameter(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if value is None and not opts.urn:
-                raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
+            __props__.__dict__["value_wo"] = None if value_wo is None else pulumi.Output.secret(value_wo)
+            __props__.__dict__["value_wo_version"] = value_wo_version
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["valueWo"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Parameter, __self__).__init__(
             'alicloud:oos/parameter:Parameter',
             resource_name,
@@ -443,7 +525,9 @@ class Parameter(pulumi.CustomResource):
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Parameter':
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            value_wo_version: pulumi.Input[Optional[_builtins.int]] = None) -> 'Parameter':
         """
         Get an existing Parameter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -461,7 +545,10 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The data type of the common parameter. Valid values: `String` and `StringList`.
-        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length.
+        :param pulumi.Input[_builtins.str] value: The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        :param pulumi.Input[_builtins.int] value_wo_version: The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,6 +561,8 @@ class Parameter(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["value"] = value
+        __props__.__dict__["value_wo"] = value_wo
+        __props__.__dict__["value_wo_version"] = value_wo_version
         return Parameter(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -532,7 +621,24 @@ class Parameter(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[_builtins.str]:
         """
-        The value of the common parameter. The value must be `1` to `4096` characters in length.
+        The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `value_wo` can be set.
         """
         return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="valueWo")
+    def value_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `value_wo_version`. Exactly one of `value` and `value_wo` can be set.
+        """
+        return pulumi.get(self, "value_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="valueWoVersion")
+    def value_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `value_wo` changes.
+        """
+        return pulumi.get(self, "value_wo_version")
 

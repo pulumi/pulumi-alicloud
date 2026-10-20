@@ -113,7 +113,6 @@ class GetPoliciesPolicyResult(dict):
                  tags: Mapping[str, _builtins.str],
                  type: _builtins.str,
                  update_date: _builtins.str,
-                 user_name: _builtins.str,
                  version_id: _builtins.str):
         """
         :param _builtins.int attachment_count: The number of references to the policy.
@@ -127,8 +126,7 @@ class GetPoliciesPolicyResult(dict):
         :param _builtins.str policy_name: (Available since v1.114.0) The name of the policy.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param _builtins.str type: The type of the policy. Valid values: `System` and `Custom`.
-        :param _builtins.str update_date: The time when the policy was modified.
-        :param _builtins.str user_name: The name of the RAM user.
+        :param _builtins.str update_date: The time when the policy was updated.
         :param _builtins.str version_id: (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
         """
         pulumi.set(__self__, "attachment_count", attachment_count)
@@ -143,7 +141,6 @@ class GetPoliciesPolicyResult(dict):
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "update_date", update_date)
-        pulumi.set(__self__, "user_name", user_name)
         pulumi.set(__self__, "version_id", version_id)
 
     @_builtins.property
@@ -238,17 +235,9 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="updateDate")
     def update_date(self) -> _builtins.str:
         """
-        The time when the policy was modified.
+        The time when the policy was updated.
         """
         return pulumi.get(self, "update_date")
-
-    @_builtins.property
-    @pulumi.getter(name="userName")
-    def user_name(self) -> _builtins.str:
-        """
-        The name of the RAM user.
-        """
-        return pulumi.get(self, "user_name")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
@@ -724,17 +713,14 @@ class GetUsersUserResult(dict):
     def __init__(__self__, *,
                  create_date: _builtins.str,
                  id: _builtins.str,
-                 last_login_date: _builtins.str,
                  name: _builtins.str):
         """
         :param _builtins.str create_date: Creation date of the user.
         :param _builtins.str id: The original id is user's name, but it is user id in 1.37.0+.
-        :param _builtins.str last_login_date: (Removed) Last login date of the user. Removed from version 1.79.0.
         :param _builtins.str name: Name of the user.
         """
         pulumi.set(__self__, "create_date", create_date)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_login_date", last_login_date)
         pulumi.set(__self__, "name", name)
 
     @_builtins.property
@@ -752,14 +738,6 @@ class GetUsersUserResult(dict):
         The original id is user's name, but it is user id in 1.37.0+.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="lastLoginDate")
-    def last_login_date(self) -> _builtins.str:
-        """
-        (Removed) Last login date of the user. Removed from version 1.79.0.
-        """
-        return pulumi.get(self, "last_login_date")
 
     @_builtins.property
     @pulumi.getter

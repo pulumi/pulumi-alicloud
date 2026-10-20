@@ -156,14 +156,14 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="supportMulticast", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> supportMulticast;
+    private Output<Boolean> supportMulticast;
 
     /**
      * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      * 
      */
-    public Output<Optional<Boolean>> supportMulticast() {
-        return Codegen.optional(this.supportMulticast);
+    public Output<Boolean> supportMulticast() {
+        return this.supportMulticast;
     }
     /**
      * The tag of the resource

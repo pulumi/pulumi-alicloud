@@ -13,6 +13,7 @@ from .control_policy_order import *
 from .firewall_vpc_firewall import *
 from .firewall_vpc_firewall_cen import *
 from .firewall_vpc_firewall_control_policy import *
+from .fw_switch import *
 from .get_address_books import *
 from .get_control_policies import *
 from .get_instance_members import *

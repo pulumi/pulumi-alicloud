@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// &gt; **NOTE:** Available since v1.66.0.
     /// 
+    /// &gt; **NOTE:** The `AccountPasswordWo` and `AccountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -109,10 +111,23 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields.
+        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. It conflicts with `AccountPasswordWo`.
         /// </summary>
         [Output("accountPassword")]
         public Output<string?> AccountPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword` and `KmsEncryptedPassword`.
+        /// </summary>
+        [Output("accountPasswordWo")]
+        public Output<string?> AccountPasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Output("accountPasswordWoVersion")]
+        public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The privilege of account access database. Default value: `RoleReadWrite` 
@@ -143,7 +158,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `AccountPassword` is filled in, this field will be ignored. It conflicts with `AccountPasswordWo`.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -186,6 +201,7 @@ namespace Pulumi.AliCloud.KVStore
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "accountPasswordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -223,7 +239,7 @@ namespace Pulumi.AliCloud.KVStore
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields.
+        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. It conflicts with `AccountPasswordWo`.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -234,6 +250,29 @@ namespace Pulumi.AliCloud.KVStore
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword` and `KmsEncryptedPassword`.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The privilege of account access database. Default value: `RoleReadWrite` 
@@ -264,7 +303,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `AccountPassword` is filled in, this field will be ignored. It conflicts with `AccountPasswordWo`.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -302,7 +341,7 @@ namespace Pulumi.AliCloud.KVStore
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `AccountPassword` and `KmsEncryptedPassword` fields.
+        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. It conflicts with `AccountPasswordWo`.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -313,6 +352,29 @@ namespace Pulumi.AliCloud.KVStore
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. It conflicts with `AccountPassword` and `KmsEncryptedPassword`.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The privilege of account access database. Default value: `RoleReadWrite` 
@@ -343,7 +405,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `AccountPassword` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `AccountPassword` is filled in, this field will be ignored. It conflicts with `AccountPasswordWo`.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }

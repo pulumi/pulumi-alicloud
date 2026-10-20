@@ -50,9 +50,10 @@ class FileSystemArgs:
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
-               - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+               - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
                - When FileSystemType = extreme, the value is standard or advance.
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+               - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
                
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -190,9 +191,10 @@ class FileSystemArgs:
     def storage_type(self) -> pulumi.Input[_builtins.str]:
         """
         The storage type.
-        - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+        - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
         - When FileSystemType = extreme, the value is standard or advance.
         - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+        - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         """
         return pulumi.get(self, "storage_type")
 
@@ -576,9 +578,10 @@ class _FileSystemState:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
-               - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+               - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
                - When FileSystemType = extreme, the value is standard or advance.
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+               - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
                
@@ -925,9 +928,10 @@ class _FileSystemState:
     def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type.
-        - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+        - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
         - When FileSystemType = extreme, the value is standard or advance.
         - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+        - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         """
         return pulumi.get(self, "storage_type")
 
@@ -1157,9 +1161,10 @@ class FileSystem(pulumi.CustomResource):
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
-               - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+               - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
                - When FileSystemType = extreme, the value is standard or advance.
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+               - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
                
@@ -1431,9 +1436,10 @@ class FileSystem(pulumi.CustomResource):
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
         :param pulumi.Input[_builtins.str] storage_type: The storage type.
-               - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+               - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
                - When FileSystemType = extreme, the value is standard or advance.
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+               - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
                
@@ -1685,9 +1691,10 @@ class FileSystem(pulumi.CustomResource):
     def storage_type(self) -> pulumi.Output[_builtins.str]:
         """
         The storage type.
-        - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+        - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
         - When FileSystemType = extreme, the value is standard or advance.
         - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+        - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         """
         return pulumi.get(self, "storage_type")
 

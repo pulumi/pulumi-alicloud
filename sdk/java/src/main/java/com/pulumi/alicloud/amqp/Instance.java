@@ -316,17 +316,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * OrderCreateTime.
+     * The time when the order was created. Unix timestamp, to millisecond level.
      * 
      */
-    @Export(name="createTime", refs={Integer.class}, tree="[0]")
-    private Output<Integer> createTime;
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
 
     /**
-     * @return OrderCreateTime.
+     * @return The time when the order was created. Unix timestamp, to millisecond level.
      * 
      */
-    public Output<Integer> createTime() {
+    public Output<String> createTime() {
         return this.createTime;
     }
     /**

@@ -52,32 +52,16 @@ public final class AlarmCompositeExpressionExpressionListArgs extends com.pulumi
         return Optional.ofNullable(this.period);
     }
 
-    /**
-     * Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-     * 
-     */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
-    /**
-     * @return Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-     * 
-     */
     public Optional<Output<String>> statistics() {
         return Optional.ofNullable(this.statistics);
     }
 
-    /**
-     * Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-     * 
-     */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
-    /**
-     * @return Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-     * 
-     */
     public Optional<Output<String>> threshold() {
         return Optional.ofNullable(this.threshold);
     }
@@ -161,44 +145,20 @@ public final class AlarmCompositeExpressionExpressionListArgs extends com.pulumi
             return period(Output.of(period));
         }
 
-        /**
-         * @param statistics Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(@Nullable Output<String> statistics) {
             $.statistics = statistics;
             return this;
         }
 
-        /**
-         * @param statistics Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(String statistics) {
             return statistics(Output.of(statistics));
         }
 
-        /**
-         * @param threshold Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(@Nullable Output<String> threshold) {
             $.threshold = threshold;
             return this;
         }
 
-        /**
-         * @param threshold Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(String threshold) {
             return threshold(Output.of(threshold));
         }

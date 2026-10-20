@@ -99,7 +99,7 @@ __all__ = [
     'GetInstanceTypeFamiliesFamilyResult',
     'GetInstanceTypesInstanceTypeResult',
     'GetInstanceTypesInstanceTypeBurstableInstanceResult',
-    'GetInstanceTypesInstanceTypeGpuResult',
+    'GetInstanceTypesInstanceTypeGpusResult',
     'GetInstanceTypesInstanceTypeLocalStorageResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceDiskDeviceMappingResult',
@@ -9386,16 +9386,16 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
 class GetInstanceTypesInstanceTypeResult(dict):
     def __init__(__self__, *,
                  availability_zones: Sequence[_builtins.str],
-                 burstable_instance: 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult',
+                 burstable_instances: Sequence['outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult'],
                  cpu_core_count: _builtins.int,
                  eni_amount: _builtins.int,
                  eni_ipv6_address_quantity: _builtins.int,
                  eni_private_ip_address_quantity: _builtins.int,
                  eni_quantity: _builtins.int,
                  family: _builtins.str,
-                 gpu: 'outputs.GetInstanceTypesInstanceTypeGpuResult',
+                 gpus: Sequence['outputs.GetInstanceTypesInstanceTypeGpusResult'],
                  id: _builtins.str,
-                 local_storage: 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult',
+                 local_storages: Sequence['outputs.GetInstanceTypesInstanceTypeLocalStorageResult'],
                  maximum_queue_number_per_eni: _builtins.int,
                  memory_size: _builtins.float,
                  nvme_support: _builtins.str,
@@ -9405,16 +9405,16 @@ class GetInstanceTypesInstanceTypeResult(dict):
                  total_eni_queue_quantity: _builtins.int):
         """
         :param Sequence[_builtins.str] availability_zones: List of availability zones that support the instance type.
-        :param 'GetInstanceTypesInstanceTypeBurstableInstanceArgs' burstable_instance: The burstable instance attribution.
+        :param Sequence['GetInstanceTypesInstanceTypeBurstableInstanceArgs'] burstable_instances: A list of the burstable instance attribution.
         :param _builtins.int cpu_core_count: Filter the results to a specific number of cpu cores.
         :param _builtins.int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
         :param _builtins.int eni_ipv6_address_quantity: (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
         :param _builtins.int eni_private_ip_address_quantity: (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
         :param _builtins.int eni_quantity: (Available since v1.239.0) The maximum number of ENIs per instance.
         :param _builtins.str family: The instance type family.
-        :param 'GetInstanceTypesInstanceTypeGpuArgs' gpu: The GPU attribution of an instance type:
+        :param Sequence['GetInstanceTypesInstanceTypeGpusArgs'] gpus: A list of GPU attributes of an instance type:
         :param _builtins.str id: ID of the instance type.
-        :param 'GetInstanceTypesInstanceTypeLocalStorageArgs' local_storage: Local storage of an instance type.
+        :param Sequence['GetInstanceTypesInstanceTypeLocalStorageArgs'] local_storages: A list of local storage of an instance type.
         :param _builtins.int maximum_queue_number_per_eni: (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
         :param _builtins.float memory_size: Filter the results to a specific memory size in GB.
         :param _builtins.str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
@@ -9424,16 +9424,16 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param _builtins.int total_eni_queue_quantity: (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
-        pulumi.set(__self__, "burstable_instance", burstable_instance)
+        pulumi.set(__self__, "burstable_instances", burstable_instances)
         pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         pulumi.set(__self__, "eni_amount", eni_amount)
         pulumi.set(__self__, "eni_ipv6_address_quantity", eni_ipv6_address_quantity)
         pulumi.set(__self__, "eni_private_ip_address_quantity", eni_private_ip_address_quantity)
         pulumi.set(__self__, "eni_quantity", eni_quantity)
         pulumi.set(__self__, "family", family)
-        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "gpus", gpus)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_storage", local_storage)
+        pulumi.set(__self__, "local_storages", local_storages)
         pulumi.set(__self__, "maximum_queue_number_per_eni", maximum_queue_number_per_eni)
         pulumi.set(__self__, "memory_size", memory_size)
         pulumi.set(__self__, "nvme_support", nvme_support)
@@ -9451,12 +9451,12 @@ class GetInstanceTypesInstanceTypeResult(dict):
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
-    @pulumi.getter(name="burstableInstance")
-    def burstable_instance(self) -> 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult':
+    @pulumi.getter(name="burstableInstances")
+    def burstable_instances(self) -> Sequence['outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult']:
         """
-        The burstable instance attribution.
+        A list of the burstable instance attribution.
         """
-        return pulumi.get(self, "burstable_instance")
+        return pulumi.get(self, "burstable_instances")
 
     @_builtins.property
     @pulumi.getter(name="cpuCoreCount")
@@ -9508,11 +9508,11 @@ class GetInstanceTypesInstanceTypeResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> 'outputs.GetInstanceTypesInstanceTypeGpuResult':
+    def gpus(self) -> Sequence['outputs.GetInstanceTypesInstanceTypeGpusResult']:
         """
-        The GPU attribution of an instance type:
+        A list of GPU attributes of an instance type:
         """
-        return pulumi.get(self, "gpu")
+        return pulumi.get(self, "gpus")
 
     @_builtins.property
     @pulumi.getter
@@ -9523,12 +9523,12 @@ class GetInstanceTypesInstanceTypeResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter(name="localStorage")
-    def local_storage(self) -> 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult':
+    @pulumi.getter(name="localStorages")
+    def local_storages(self) -> Sequence['outputs.GetInstanceTypesInstanceTypeLocalStorageResult']:
         """
-        Local storage of an instance type.
+        A list of local storage of an instance type.
         """
-        return pulumi.get(self, "local_storage")
+        return pulumi.get(self, "local_storages")
 
     @_builtins.property
     @pulumi.getter(name="maximumQueueNumberPerEni")
@@ -9617,7 +9617,7 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTypesInstanceTypeGpuResult(dict):
+class GetInstanceTypesInstanceTypeGpusResult(dict):
     def __init__(__self__, *,
                  amount: _builtins.str,
                  category: _builtins.str):

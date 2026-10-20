@@ -3,7 +3,7 @@
 
 package com.pulumi.alicloud.cs.outputs;
 
-import com.pulumi.alicloud.cs.outputs.GetKubernetesClustersClusterConnections;
+import com.pulumi.alicloud.cs.outputs.GetKubernetesClustersClusterConnection;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesClustersClusterLogConfig;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesClustersClusterMasterNode;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesClustersClusterWorkerNode;
@@ -28,10 +28,10 @@ public final class GetKubernetesClustersCluster {
      */
     private String clusterNetworkType;
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
-    private GetKubernetesClustersClusterConnections connections;
+    private List<GetKubernetesClustersClusterConnection> connections;
     /**
      * @return ID of the node.
      * 
@@ -219,10 +219,10 @@ public final class GetKubernetesClustersCluster {
         return this.clusterNetworkType;
     }
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
-    public GetKubernetesClustersClusterConnections connections() {
+    public List<GetKubernetesClustersClusterConnection> connections() {
         return this.connections;
     }
     /**
@@ -475,7 +475,7 @@ public final class GetKubernetesClustersCluster {
     public static final class Builder {
         private String availabilityZone;
         private String clusterNetworkType;
-        private GetKubernetesClustersClusterConnections connections;
+        private List<GetKubernetesClustersClusterConnection> connections;
         private String id;
         private String imageId;
         private String keyName;
@@ -569,12 +569,15 @@ public final class GetKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder connections(GetKubernetesClustersClusterConnections connections) {
+        public Builder connections(List<GetKubernetesClustersClusterConnection> connections) {
             if (connections == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClustersCluster", "connections");
             }
             this.connections = connections;
             return this;
+        }
+        public Builder connections(GetKubernetesClustersClusterConnection... connections) {
+            return connections(List.of(connections));
         }
         @CustomType.Setter
         public Builder id(String id) {

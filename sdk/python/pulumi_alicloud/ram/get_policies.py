@@ -138,9 +138,6 @@ class GetPoliciesResult:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[_builtins.str]:
-        """
-        (Removed since v1.262.1) Field `user_name` has been removed from provider version 1.262.1.
-        """
         return pulumi.get(self, "user_name")
 
 

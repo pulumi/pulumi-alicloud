@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,9 +55,9 @@ import (
 //	"encoding/json"
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -337,8 +337,8 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -540,9 +540,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -645,10 +645,10 @@ type ManagedKubernetes struct {
 	AuditLogConfig ManagedKubernetesAuditLogConfigOutput `pulumi:"auditLogConfig"`
 	// Auto mode cluster configuration. See `autoMode` below.
 	AutoMode ManagedKubernetesAutoModePtrOutput `pulumi:"autoMode"`
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority ManagedKubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
+	CertificateAuthorities ManagedKubernetesCertificateAuthorityArrayOutput `pulumi:"certificateAuthorities"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -674,8 +674,8 @@ type ManagedKubernetes struct {
 	//
 	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information.
-	Connections ManagedKubernetesConnectionsOutput `pulumi:"connections"`
+	// A list of kubernetes cluster connection information.
+	Connections ManagedKubernetesConnectionArrayOutput `pulumi:"connections"`
 	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
 	ControlPlaneEndpointsConfig ManagedKubernetesControlPlaneEndpointsConfigOutput `pulumi:"controlPlaneEndpointsConfig"`
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -840,10 +840,10 @@ type managedKubernetesState struct {
 	AuditLogConfig *ManagedKubernetesAuditLogConfig `pulumi:"auditLogConfig"`
 	// Auto mode cluster configuration. See `autoMode` below.
 	AutoMode *ManagedKubernetesAutoMode `pulumi:"autoMode"`
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority *ManagedKubernetesCertificateAuthority `pulumi:"certificateAuthority"`
+	CertificateAuthorities []ManagedKubernetesCertificateAuthority `pulumi:"certificateAuthorities"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -869,8 +869,8 @@ type managedKubernetesState struct {
 	//
 	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information.
-	Connections *ManagedKubernetesConnections `pulumi:"connections"`
+	// A list of kubernetes cluster connection information.
+	Connections []ManagedKubernetesConnection `pulumi:"connections"`
 	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
 	ControlPlaneEndpointsConfig *ManagedKubernetesControlPlaneEndpointsConfig `pulumi:"controlPlaneEndpointsConfig"`
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -1006,10 +1006,10 @@ type ManagedKubernetesState struct {
 	AuditLogConfig ManagedKubernetesAuditLogConfigPtrInput
 	// Auto mode cluster configuration. See `autoMode` below.
 	AutoMode ManagedKubernetesAutoModePtrInput
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority ManagedKubernetesCertificateAuthorityPtrInput
+	CertificateAuthorities ManagedKubernetesCertificateAuthorityArrayInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -1035,8 +1035,8 @@ type ManagedKubernetesState struct {
 	//
 	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec pulumi.StringPtrInput
-	// Map of kubernetes cluster connection information.
-	Connections ManagedKubernetesConnectionsPtrInput
+	// A list of kubernetes cluster connection information.
+	Connections ManagedKubernetesConnectionArrayInput
 	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
 	ControlPlaneEndpointsConfig ManagedKubernetesControlPlaneEndpointsConfigPtrInput
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
@@ -1567,11 +1567,13 @@ func (o ManagedKubernetesOutput) AutoMode() ManagedKubernetesAutoModePtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesAutoModePtrOutput { return v.AutoMode }).(ManagedKubernetesAutoModePtrOutput)
 }
 
-// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 //
 // Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-func (o ManagedKubernetesOutput) CertificateAuthority() ManagedKubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(ManagedKubernetesCertificateAuthorityOutput)
+func (o ManagedKubernetesOutput) CertificateAuthorities() ManagedKubernetesCertificateAuthorityArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesCertificateAuthorityArrayOutput {
+		return v.CertificateAuthorities
+	}).(ManagedKubernetesCertificateAuthorityArrayOutput)
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -1614,9 +1616,9 @@ func (o ManagedKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information.
-func (o ManagedKubernetesOutput) Connections() ManagedKubernetesConnectionsOutput {
-	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesConnectionsOutput { return v.Connections }).(ManagedKubernetesConnectionsOutput)
+// A list of kubernetes cluster connection information.
+func (o ManagedKubernetesOutput) Connections() ManagedKubernetesConnectionArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesConnectionArrayOutput { return v.Connections }).(ManagedKubernetesConnectionArrayOutput)
 }
 
 // The cluster access configuration. See `controlPlaneEndpointsConfig` below.

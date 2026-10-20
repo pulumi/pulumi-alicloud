@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,6 +17,8 @@ import (
 // For information about GPDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/86924.htm).
 //
 // > **NOTE:** Available since v1.142.0.
+//
+// > **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
 //
 // ## Example Usage
 //
@@ -27,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gpdb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/gpdb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -114,8 +116,13 @@ type Account struct {
 	AccountDescription pulumi.StringPtrOutput `pulumi:"accountDescription"`
 	// The account name.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// AccountPassword
-	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
+	// The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPasswordWo pulumi.StringPtrOutput `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrOutput `pulumi:"accountPasswordWoVersion"`
 	// Account type. The value range is as follows:
 	//
 	// Normal: Normal account number.
@@ -143,17 +150,18 @@ func NewAccount(ctx *pulumi.Context,
 	if args.AccountName == nil {
 		return nil, errors.New("invalid value for required argument 'AccountName'")
 	}
-	if args.AccountPassword == nil {
-		return nil, errors.New("invalid value for required argument 'AccountPassword'")
-	}
 	if args.DbInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'DbInstanceId'")
 	}
 	if args.AccountPassword != nil {
-		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringInput)
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
+	}
+	if args.AccountPasswordWo != nil {
+		args.AccountPasswordWo = pulumi.ToSecret(args.AccountPasswordWo).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountPassword",
+		"accountPasswordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -183,8 +191,13 @@ type accountState struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	// The account name.
 	AccountName *string `pulumi:"accountName"`
-	// AccountPassword
+	// The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
 	AccountPassword *string `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
 	// Account type. The value range is as follows:
 	//
 	// Normal: Normal account number.
@@ -207,8 +220,13 @@ type AccountState struct {
 	AccountDescription pulumi.StringPtrInput
 	// The account name.
 	AccountName pulumi.StringPtrInput
-	// AccountPassword
+	// The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
 	AccountPassword pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrInput
 	// Account type. The value range is as follows:
 	//
 	// Normal: Normal account number.
@@ -235,8 +253,13 @@ type accountArgs struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	// The account name.
 	AccountName string `pulumi:"accountName"`
-	// AccountPassword
-	AccountPassword string `pulumi:"accountPassword"`
+	// The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPassword *string `pulumi:"accountPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
 	// Account type. The value range is as follows:
 	//
 	// Normal: Normal account number.
@@ -258,8 +281,13 @@ type AccountArgs struct {
 	AccountDescription pulumi.StringPtrInput
 	// The account name.
 	AccountName pulumi.StringInput
-	// AccountPassword
-	AccountPassword pulumi.StringInput
+	// The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPassword pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrInput
 	// Account type. The value range is as follows:
 	//
 	// Normal: Normal account number.
@@ -372,9 +400,20 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// AccountPassword
-func (o AccountOutput) AccountPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+// The password of the account. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. Exactly one of `accountPassword` and `accountPasswordWo` can be set.
+func (o AccountOutput) AccountPasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+func (o AccountOutput) AccountPasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.IntPtrOutput { return v.AccountPasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Account type. The value range is as follows:

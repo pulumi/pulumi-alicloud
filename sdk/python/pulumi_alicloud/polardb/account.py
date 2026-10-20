@@ -25,6 +25,8 @@ class AccountArgs:
                  account_lock_state: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
@@ -41,13 +43,16 @@ class AccountArgs:
         :param pulumi.Input[_builtins.str] account_lock_state: The lock status of the account. Valid values:
                - `UnLock`: The account is not locked.
                - `Lock`: The account is locked.
-        :param pulumi.Input[_builtins.str] account_password: The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        :param pulumi.Input[_builtins.str] account_password: The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
                - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                - Be 8 to 32 characters in length.
                - Special characters include !@#$%^&*()_+-=.
         :param pulumi.Input[_builtins.str] account_password_valid_time: The time when the password for the database account expires.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         pulumi.set(__self__, "account_name", account_name)
@@ -60,6 +65,10 @@ class AccountArgs:
             pulumi.set(__self__, "account_password", account_password)
         if account_password_valid_time is not None:
             pulumi.set(__self__, "account_password_valid_time", account_password_valid_time)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
         if kms_encrypted_password is not None:
@@ -125,7 +134,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
         - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         - Be 8 to 32 characters in length.
         - Special characters include !@#$%^&*()_+-=.
@@ -149,6 +158,31 @@ class AccountArgs:
         pulumi.set(self, "account_password_valid_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -164,7 +198,7 @@ class AccountArgs:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -193,6 +227,8 @@ class _AccountState:
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamodb_auth_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,15 +247,18 @@ class _AccountState:
                - Consists of lowercase letters, numbers, or underscores.
                - The length is 2 to 16 characters.
                - You cannot use some reserved usernames, such as root and admin.
-        :param pulumi.Input[_builtins.str] account_password: The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        :param pulumi.Input[_builtins.str] account_password: The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
                - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                - Be 8 to 32 characters in length.
                - Special characters include !@#$%^&*()_+-=.
         :param pulumi.Input[_builtins.str] account_password_valid_time: The time when the password for the database account expires.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID.
         :param pulumi.Input[_builtins.str] dynamodb_auth_password: (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] status: (Available since v1.265.0) The status of the database account.
         """
@@ -233,6 +272,10 @@ class _AccountState:
             pulumi.set(__self__, "account_password", account_password)
         if account_password_valid_time is not None:
             pulumi.set(__self__, "account_password_valid_time", account_password_valid_time)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
         if db_cluster_id is not None:
@@ -292,7 +335,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
         - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         - Be 8 to 32 characters in length.
         - Special characters include !@#$%^&*()_+-=.
@@ -314,6 +357,31 @@ class _AccountState:
     @account_password_valid_time.setter
     def account_password_valid_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password_valid_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -355,7 +423,7 @@ class _AccountState:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -399,6 +467,8 @@ class Account(pulumi.CustomResource):
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -412,6 +482,8 @@ class Account(pulumi.CustomResource):
         For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
 
         > **NOTE:** Available since v1.67.0.
+
+        > **NOTE:** The `account_password_wo` and `account_password_wo_version` arguments require Terraform v1.11.0 or later.
 
         > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
 
@@ -469,14 +541,17 @@ class Account(pulumi.CustomResource):
                - Consists of lowercase letters, numbers, or underscores.
                - The length is 2 to 16 characters.
                - You cannot use some reserved usernames, such as root and admin.
-        :param pulumi.Input[_builtins.str] account_password: The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        :param pulumi.Input[_builtins.str] account_password: The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
                - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                - Be 8 to 32 characters in length.
                - Special characters include !@#$%^&*()_+-=.
         :param pulumi.Input[_builtins.str] account_password_valid_time: The time when the password for the database account expires.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         ...
@@ -493,6 +568,8 @@ class Account(pulumi.CustomResource):
         For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
 
         > **NOTE:** Available since v1.67.0.
+
+        > **NOTE:** The `account_password_wo` and `account_password_wo_version` arguments require Terraform v1.11.0 or later.
 
         > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
 
@@ -559,6 +636,8 @@ class Account(pulumi.CustomResource):
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,6 +658,8 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["account_password_valid_time"] = account_password_valid_time
+            __props__.__dict__["account_password_wo"] = None if account_password_wo is None else pulumi.Output.secret(account_password_wo)
+            __props__.__dict__["account_password_wo_version"] = account_password_wo_version
             __props__.__dict__["account_type"] = account_type
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
@@ -587,7 +668,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["dynamodb_auth_password"] = None
             __props__.__dict__["status"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "dynamodbAuthPassword"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "accountPasswordWo", "dynamodbAuthPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:polardb/account:Account',
@@ -604,6 +685,8 @@ class Account(pulumi.CustomResource):
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
             account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             dynamodb_auth_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -626,15 +709,18 @@ class Account(pulumi.CustomResource):
                - Consists of lowercase letters, numbers, or underscores.
                - The length is 2 to 16 characters.
                - You cannot use some reserved usernames, such as root and admin.
-        :param pulumi.Input[_builtins.str] account_password: The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        :param pulumi.Input[_builtins.str] account_password: The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
                - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                - Be 8 to 32 characters in length.
                - Special characters include !@#$%^&*()_+-=.
         :param pulumi.Input[_builtins.str] account_password_valid_time: The time when the password for the database account expires.
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID.
         :param pulumi.Input[_builtins.str] dynamodb_auth_password: (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] status: (Available since v1.265.0) The status of the database account.
         """
@@ -647,6 +733,8 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
         __props__.__dict__["account_password_valid_time"] = account_password_valid_time
+        __props__.__dict__["account_password_wo"] = account_password_wo
+        __props__.__dict__["account_password_wo_version"] = account_password_wo_version
         __props__.__dict__["account_type"] = account_type
         __props__.__dict__["db_cluster_id"] = db_cluster_id
         __props__.__dict__["dynamodb_auth_password"] = dynamodb_auth_password
@@ -689,7 +777,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The account password. You have to specify one of `account_password` and `kms_encrypted_password` fields. Must  meet the following requirements:
+        The account password. It conflicts with `kms_encrypted_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set. Must  meet the following requirements:
         - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         - Be 8 to 32 characters in length.
         - Special characters include !@#$%^&*()_+-=.
@@ -703,6 +791,23 @@ class Account(pulumi.CustomResource):
         The time when the password for the database account expires.
         """
         return pulumi.get(self, "account_password_valid_time")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password` and `kms_encrypted_password`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -732,7 +837,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a db account. It conflicts with `account_password` and `account_password_wo`, and one of `account_password`, `kms_encrypted_password` and `account_password_wo` must be set.
         """
         return pulumi.get(self, "kms_encrypted_password")
 

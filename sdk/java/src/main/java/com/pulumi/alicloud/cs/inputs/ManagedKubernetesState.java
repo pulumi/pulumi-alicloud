@@ -7,7 +7,7 @@ import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAutoModeArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesCertificateAuthorityArgs;
-import com.pulumi.alicloud.cs.inputs.ManagedKubernetesConnectionsArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesConnectionArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesControlPlaneEndpointsConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
@@ -91,26 +91,26 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    @Import(name="certificateAuthority")
-    private @Nullable Output<ManagedKubernetesCertificateAuthorityArgs> certificateAuthority;
+    @Import(name="certificateAuthorities")
+    private @Nullable Output<List<ManagedKubernetesCertificateAuthorityArgs>> certificateAuthorities;
 
     /**
-     * @return (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+     * @return (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
      * @deprecated
      * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
     @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-    public Optional<Output<ManagedKubernetesCertificateAuthorityArgs>> certificateAuthority() {
-        return Optional.ofNullable(this.certificateAuthority);
+    public Optional<Output<List<ManagedKubernetesCertificateAuthorityArgs>>> certificateAuthorities() {
+        return Optional.ofNullable(this.certificateAuthorities);
     }
 
     /**
@@ -231,17 +231,17 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Map of kubernetes cluster connection information.
+     * A list of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
-    private @Nullable Output<ManagedKubernetesConnectionsArgs> connections;
+    private @Nullable Output<List<ManagedKubernetesConnectionArgs>> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
-    public Optional<Output<ManagedKubernetesConnectionsArgs>> connections() {
+    public Optional<Output<List<ManagedKubernetesConnectionArgs>>> connections() {
         return Optional.ofNullable(this.connections);
     }
 
@@ -1003,7 +1003,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.apiAudiences = $.apiAudiences;
         this.auditLogConfig = $.auditLogConfig;
         this.autoMode = $.autoMode;
-        this.certificateAuthority = $.certificateAuthority;
+        this.certificateAuthorities = $.certificateAuthorities;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
         this.clusterCaCert = $.clusterCaCert;
@@ -1180,7 +1180,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1189,13 +1189,13 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          * 
          */
         @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-        public Builder certificateAuthority(@Nullable Output<ManagedKubernetesCertificateAuthorityArgs> certificateAuthority) {
-            $.certificateAuthority = certificateAuthority;
+        public Builder certificateAuthorities(@Nullable Output<List<ManagedKubernetesCertificateAuthorityArgs>> certificateAuthorities) {
+            $.certificateAuthorities = certificateAuthorities;
             return this;
         }
 
         /**
-         * @param certificateAuthority (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
          * 
          * @return builder
          * 
@@ -1204,8 +1204,22 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          * 
          */
         @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
-        public Builder certificateAuthority(ManagedKubernetesCertificateAuthorityArgs certificateAuthority) {
-            return certificateAuthority(Output.of(certificateAuthority));
+        public Builder certificateAuthorities(List<ManagedKubernetesCertificateAuthorityArgs> certificateAuthorities) {
+            return certificateAuthorities(Output.of(certificateAuthorities));
+        }
+
+        /**
+         * @param certificateAuthorities (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+         * 
+         */
+        @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+        public Builder certificateAuthorities(ManagedKubernetesCertificateAuthorityArgs... certificateAuthorities) {
+            return certificateAuthorities(List.of(certificateAuthorities));
         }
 
         /**
@@ -1356,24 +1370,34 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections A list of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
-        public Builder connections(@Nullable Output<ManagedKubernetesConnectionsArgs> connections) {
+        public Builder connections(@Nullable Output<List<ManagedKubernetesConnectionArgs>> connections) {
             $.connections = connections;
             return this;
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections A list of kubernetes cluster connection information.
          * 
          * @return builder
          * 
          */
-        public Builder connections(ManagedKubernetesConnectionsArgs connections) {
+        public Builder connections(List<ManagedKubernetesConnectionArgs> connections) {
             return connections(Output.of(connections));
+        }
+
+        /**
+         * @param connections A list of kubernetes cluster connection information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connections(ManagedKubernetesConnectionArgs... connections) {
+            return connections(List.of(connections));
         }
 
         /**

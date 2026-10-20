@@ -11,34 +11,34 @@ namespace Pulumi.AliCloud.CS.Outputs
 {
 
     [OutputType]
-    public sealed class GetManagedKubernetesClustersClusterConnectionsResult
+    public sealed class ManagedKubernetesConnection
     {
         /// <summary>
         /// API Server Internet endpoint.
         /// </summary>
-        public readonly string ApiServerInternet;
+        public readonly string? ApiServerInternet;
         /// <summary>
         /// API Server Intranet endpoint.
         /// </summary>
-        public readonly string ApiServerIntranet;
+        public readonly string? ApiServerIntranet;
         /// <summary>
         /// Master node SSH IP address.
         /// </summary>
-        public readonly string MasterPublicIp;
+        public readonly string? MasterPublicIp;
         /// <summary>
         /// Service Access Domain.
         /// </summary>
-        public readonly string ServiceDomain;
+        public readonly string? ServiceDomain;
 
         [OutputConstructor]
-        private GetManagedKubernetesClustersClusterConnectionsResult(
-            string apiServerInternet,
+        private ManagedKubernetesConnection(
+            string? apiServerInternet,
 
-            string apiServerIntranet,
+            string? apiServerIntranet,
 
-            string masterPublicIp,
+            string? masterPublicIp,
 
-            string serviceDomain)
+            string? serviceDomain)
         {
             ApiServerInternet = apiServerInternet;
             ApiServerIntranet = apiServerIntranet;

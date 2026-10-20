@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +34,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cas"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -129,6 +129,9 @@ type Certificate struct {
 	EncryptPrivateKey pulumi.StringPtrOutput `pulumi:"encryptPrivateKey"`
 	// Key of the Certificate in which the Certificate will add.
 	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	KeyWo        pulumi.StringPtrOutput `pulumi:"keyWo"`
+	KeyWoVersion pulumi.IntPtrOutput    `pulumi:"keyWoVersion"`
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -154,12 +157,16 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.Key != nil {
 		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
 	}
+	if args.KeyWo != nil {
+		args.KeyWo = pulumi.ToSecret(args.KeyWo).(pulumi.StringPtrInput)
+	}
 	if args.SignPrivateKey != nil {
 		args.SignPrivateKey = pulumi.ToSecret(args.SignPrivateKey).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"encryptPrivateKey",
 		"key",
+		"keyWo",
 		"signPrivateKey",
 	})
 	opts = append(opts, secrets)
@@ -193,6 +200,9 @@ type certificateState struct {
 	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
 	// Key of the Certificate in which the Certificate will add.
 	Key *string `pulumi:"key"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	KeyWo        *string `pulumi:"keyWo"`
+	KeyWoVersion *int    `pulumi:"keyWoVersion"`
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang *string `pulumi:"lang"`
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -213,6 +223,9 @@ type CertificateState struct {
 	EncryptPrivateKey pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
 	Key pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	KeyWo        pulumi.StringPtrInput
+	KeyWoVersion pulumi.IntPtrInput
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrInput
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -237,6 +250,9 @@ type certificateArgs struct {
 	EncryptPrivateKey *string `pulumi:"encryptPrivateKey"`
 	// Key of the Certificate in which the Certificate will add.
 	Key *string `pulumi:"key"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	KeyWo        *string `pulumi:"keyWo"`
+	KeyWoVersion *int    `pulumi:"keyWoVersion"`
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang *string `pulumi:"lang"`
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -258,6 +274,9 @@ type CertificateArgs struct {
 	EncryptPrivateKey pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
 	Key pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	KeyWo        pulumi.StringPtrInput
+	KeyWoVersion pulumi.IntPtrInput
 	// Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
 	Lang pulumi.StringPtrInput
 	// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -377,6 +396,15 @@ func (o CertificateOutput) EncryptPrivateKey() pulumi.StringPtrOutput {
 // Key of the Certificate in which the Certificate will add.
 func (o CertificateOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o CertificateOutput) KeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.KeyWo }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateOutput) KeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.IntPtrOutput { return v.KeyWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Deprecated: Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.

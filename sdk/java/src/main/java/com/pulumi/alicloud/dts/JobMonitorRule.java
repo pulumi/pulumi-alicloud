@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *                 .engine("MySQL")
  *                 .engineVersion("8.0")
  *                 .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
- *                 .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *                 .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRanges().min())
  *                 .instanceChargeType("Postpaid")
  *                 .instanceName(StdFunctions.format(FormatArgs.builder()
  *                     .input(String.format("%s_%d", name))

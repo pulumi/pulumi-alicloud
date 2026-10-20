@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Rds
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = Output.Create(defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRanges?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
     ///         VswitchId = defaultSwitch.Id,

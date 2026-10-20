@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.192.0+.
+// > **NOTE:** Available since v1.192.0.
 //
 // ## Example Usage
 //
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/bp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

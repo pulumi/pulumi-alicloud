@@ -33,7 +33,7 @@ class QuotaArgs:
                - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
                
-               > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+               > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         :param pulumi.Input[_builtins.str] commodity_data: Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
                CU (minimum quota resource size is 50)
                ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
@@ -75,7 +75,7 @@ class QuotaArgs:
         """
         Payment type. Valid values: Subscription/PayAsYouGo
 
-        > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+        > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         """
         return pulumi.get(self, "payment_type")
 
@@ -152,7 +152,7 @@ class _QuotaState:
                > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
                
-               > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+               > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         :param pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]] sub_quota_info_lists: Secondary Quota list
                
                > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
@@ -218,7 +218,7 @@ class _QuotaState:
         """
         Payment type. Valid values: Subscription/PayAsYouGo
 
-        > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+        > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         """
         return pulumi.get(self, "payment_type")
 
@@ -359,7 +359,7 @@ class Quota(pulumi.CustomResource):
                > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
                
-               > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+               > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]] sub_quota_info_lists: Secondary Quota list
                
                > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
@@ -534,7 +534,7 @@ class Quota(pulumi.CustomResource):
                > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
         :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values: Subscription/PayAsYouGo
                
-               > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+               > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]] sub_quota_info_lists: Secondary Quota list
                
                > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
@@ -588,7 +588,7 @@ class Quota(pulumi.CustomResource):
         """
         Payment type. Valid values: Subscription/PayAsYouGo
 
-        > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+        > **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `payment_type = "PayAsYouGo"` adopts the existing pay-as-you-go quota of the region when it has already been opened
         """
         return pulumi.get(self, "payment_type")
 

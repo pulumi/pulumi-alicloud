@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 {
 
     [OutputType]
-    public sealed class KubernetesConnections
+    public sealed class EdgeKubernetesConnection
     {
         /// <summary>
         /// API Server Internet endpoint.
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         public readonly string? ServiceDomain;
 
         [OutputConstructor]
-        private KubernetesConnections(
+        private EdgeKubernetesConnection(
             string? apiServerInternet,
 
             string? apiServerIntranet,

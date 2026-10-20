@@ -139,7 +139,7 @@ class RdsUpgradeDbInstanceArgs:
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[_builtins.str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value:
-               * MySQL: **5.5/5.6/5.7/8.0**.
+               * MySQL: **5.5/5.6/5.7/8.0/8.4**.
                * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
                * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
                * MariaDB: **10.3**.
@@ -647,7 +647,7 @@ class RdsUpgradeDbInstanceArgs:
     def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Value:
-        * MySQL: **5.5/5.6/5.7/8.0**.
+        * MySQL: **5.5/5.6/5.7/8.0/8.4**.
         * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
         * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
         * MariaDB: **10.3**.
@@ -1115,7 +1115,7 @@ class _RdsUpgradeDbInstanceState:
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[_builtins.str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value:
-               * MySQL: **5.5/5.6/5.7/8.0**.
+               * MySQL: **5.5/5.6/5.7/8.0/8.4**.
                * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
                * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
                * MariaDB: **10.3**.
@@ -1591,7 +1591,7 @@ class _RdsUpgradeDbInstanceState:
     def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Value:
-        * MySQL: **5.5/5.6/5.7/8.0**.
+        * MySQL: **5.5/5.6/5.7/8.0/8.4**.
         * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
         * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
         * MariaDB: **10.3**.
@@ -2124,7 +2124,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             engine_version="13.0",
             db_instance_storage_type="cloud_essd",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -2201,7 +2201,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[_builtins.str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value:
-               * MySQL: **5.5/5.6/5.7/8.0**.
+               * MySQL: **5.5/5.6/5.7/8.0/8.4**.
                * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
                * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
                * MariaDB: **10.3**.
@@ -2320,7 +2320,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             engine_version="13.0",
             db_instance_storage_type="cloud_essd",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -2619,7 +2619,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[_builtins.str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value:
-               * MySQL: **5.5/5.6/5.7/8.0**.
+               * MySQL: **5.5/5.6/5.7/8.0/8.4**.
                * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
                * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
                * MariaDB: **10.3**.
@@ -2957,7 +2957,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     def engine_version(self) -> pulumi.Output[_builtins.str]:
         """
         Database version. Value:
-        * MySQL: **5.5/5.6/5.7/8.0**.
+        * MySQL: **5.5/5.6/5.7/8.0/8.4**.
         * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent/2022_web/2022_std_ha/2022_ent/2025_std/2025_ent**.
         * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
         * MariaDB: **10.3**.

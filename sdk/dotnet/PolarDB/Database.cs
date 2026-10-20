@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `AccountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         /// </summary>
         [Output("accountName")]
-        public Output<string?> AccountName { get; private set; } = null!;
+        public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
         /// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).

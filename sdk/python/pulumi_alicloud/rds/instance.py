@@ -121,7 +121,7 @@ class InstanceArgs:
                
                > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-               - MySQL: [ 5.5、5.6、5.7、8.0 ]
+               - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
@@ -617,7 +617,7 @@ class InstanceArgs:
     def engine_version(self) -> pulumi.Input[_builtins.str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-        - MySQL: [ 5.5、5.6、5.7、8.0 ]
+        - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
         - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
         - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         - MariaDB: [ 10.3 ]
@@ -2134,7 +2134,7 @@ class _InstanceState:
                
                > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-               - MySQL: [ 5.5、5.6、5.7、8.0 ]
+               - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
@@ -2982,7 +2982,7 @@ class _InstanceState:
     def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-        - MySQL: [ 5.5、5.6、5.7、8.0 ]
+        - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
         - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
         - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         - MariaDB: [ 10.3 ]
@@ -4055,7 +4055,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4096,7 +4096,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4153,7 +4153,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=std.join_output(separator=",",
@@ -4211,7 +4211,7 @@ class Instance(pulumi.CustomResource):
             engine_version="8.0",
             category="HighAvailability",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=std.join_output(separator=",",
@@ -4310,7 +4310,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="8.0",
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -4354,7 +4354,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="PostgreSQL",
             engine_version="14.0",
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -4402,7 +4402,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="SQLServer",
             engine_version="2019_std_sl",
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -4551,7 +4551,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-               - MySQL: [ 5.5、5.6、5.7、8.0 ]
+               - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
@@ -4781,7 +4781,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4822,7 +4822,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
@@ -4879,7 +4879,7 @@ class Instance(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=std.join_output(separator=",",
@@ -4937,7 +4937,7 @@ class Instance(pulumi.CustomResource):
             engine_version="8.0",
             category="HighAvailability",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=std.join_output(separator=",",
@@ -5036,7 +5036,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="8.0",
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -5080,7 +5080,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="PostgreSQL",
             engine_version="14.0",
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -5128,7 +5128,7 @@ class Instance(pulumi.CustomResource):
         example_instance = alicloud.rds.Instance("example",
             engine="SQLServer",
             engine_version="2019_std_sl",
-            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_ranges.min,
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
             instance_charge_type="Serverless",
             instance_name=name,
@@ -5620,7 +5620,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-               - MySQL: [ 5.5、5.6、5.7、8.0 ]
+               - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
@@ -6244,7 +6244,7 @@ class Instance(pulumi.CustomResource):
     def engine_version(self) -> pulumi.Output[_builtins.str]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-        - MySQL: [ 5.5、5.6、5.7、8.0 ]
+        - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
         - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
         - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         - MariaDB: [ 10.3 ]

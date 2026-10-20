@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -52,6 +52,9 @@ export interface GetDiskReplicaGroupsArgs {
  * A collection of values returned by getDiskReplicaGroups.
  */
 export interface GetDiskReplicaGroupsResult {
+    /**
+     * A list of Ebs Disk Replica Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.ebs.GetDiskReplicaGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -63,7 +66,7 @@ export interface GetDiskReplicaGroupsResult {
 /**
  * This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *

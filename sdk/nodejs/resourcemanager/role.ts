@@ -99,6 +99,10 @@ export class Role extends pulumi.CustomResource {
     declare public /*out*/ readonly roleId: pulumi.Output<string>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+     * _
+     * _## Attributes Reference
+     *
+     * The following attributes are exported:
      */
     declare public readonly roleName: pulumi.Output<string>;
     /**
@@ -173,6 +177,10 @@ export interface RoleState {
     roleId?: pulumi.Input<string | undefined>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+     * _
+     * _## Attributes Reference
+     *
+     * The following attributes are exported:
      */
     roleName?: pulumi.Input<string | undefined>;
     /**
@@ -199,6 +207,10 @@ export interface RoleArgs {
     maxSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+     * _
+     * _## Attributes Reference
+     *
+     * The following attributes are exported:
      */
     roleName: pulumi.Input<string>;
 }

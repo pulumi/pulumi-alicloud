@@ -32,9 +32,7 @@ class DbClusterDbClusterAccessWhiteList(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dbClusterIpArrayAttribute":
-            suggest = "db_cluster_ip_array_attribute"
-        elif key == "dbClusterIpArrayName":
+        if key == "dbClusterIpArrayName":
             suggest = "db_cluster_ip_array_name"
         elif key == "securityIpList":
             suggest = "security_ip_list"
@@ -51,28 +49,16 @@ class DbClusterDbClusterAccessWhiteList(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 db_cluster_ip_array_attribute: Optional[_builtins.str] = None,
                  db_cluster_ip_array_name: Optional[_builtins.str] = None,
                  security_ip_list: Optional[_builtins.str] = None):
         """
-        :param _builtins.str db_cluster_ip_array_attribute: Field `db_cluster_ip_array_attribute` has been removed from provider.
         :param _builtins.str db_cluster_ip_array_name: Whitelist group name.
         :param _builtins.str security_ip_list: The IP address list under the whitelist group.
         """
-        if db_cluster_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         if db_cluster_ip_array_name is not None:
             pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
         if security_ip_list is not None:
             pulumi.set(__self__, "security_ip_list", security_ip_list)
-
-    @_builtins.property
-    @pulumi.getter(name="dbClusterIpArrayAttribute")
-    def db_cluster_ip_array_attribute(self) -> Optional[_builtins.str]:
-        """
-        Field `db_cluster_ip_array_attribute` has been removed from provider.
-        """
-        return pulumi.get(self, "db_cluster_ip_array_attribute")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrayName")
@@ -721,25 +707,14 @@ class GetDbClustersClusterResult(dict):
 @pulumi.output_type
 class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
     def __init__(__self__, *,
-                 db_cluster_ip_array_attribute: _builtins.str,
                  db_cluster_ip_array_name: _builtins.str,
                  security_ip_list: _builtins.str):
         """
-        :param _builtins.str db_cluster_ip_array_attribute: Field `db_cluster_ip_array_attribute` has been removed from provider.
         :param _builtins.str db_cluster_ip_array_name: Whitelist group name.
         :param _builtins.str security_ip_list: The IP address list under the whitelist group.
         """
-        pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
         pulumi.set(__self__, "security_ip_list", security_ip_list)
-
-    @_builtins.property
-    @pulumi.getter(name="dbClusterIpArrayAttribute")
-    def db_cluster_ip_array_attribute(self) -> _builtins.str:
-        """
-        Field `db_cluster_ip_array_attribute` has been removed from provider.
-        """
-        return pulumi.get(self, "db_cluster_ip_array_attribute")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrayName")

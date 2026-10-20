@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,8 @@ import javax.annotation.Nullable;
  * Encrypt a given plaintext with KMS. The produced ciphertext stays stable across applies. If the plaintext should be re-encrypted on each apply use the `alicloud.kms.Ciphertext` data source.
  * 
  * &gt; **NOTE:** Available since v1.63.0.
+ * 
+ * &gt; **NOTE:** The `plaintextWo` and `plaintextWoVersion` arguments require Terraform v1.11.0 or later. When `plaintextWo` is in use, `plaintext` is empty in the state and plan.
  * 
  * &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
  * 
@@ -113,18 +116,48 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
         return this.keyId;
     }
     /**
-     * The plaintext to be encrypted which must be encoded in Base64.
+     * The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      * 
      */
     @Export(name="plaintext", refs={String.class}, tree="[0]")
-    private Output<String> plaintext;
+    private Output</* @Nullable */ String> plaintext;
 
     /**
-     * @return The plaintext to be encrypted which must be encoded in Base64.
+     * @return The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      * 
      */
-    public Output<String> plaintext() {
-        return this.plaintext;
+    public Output<Optional<String>> plaintext() {
+        return Codegen.optional(this.plaintext);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     * 
+     */
+    @Export(name="plaintextWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> plaintextWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     * 
+     */
+    public Output<Optional<String>> plaintextWo() {
+        return Codegen.optional(this.plaintextWo);
+    }
+    /**
+     * The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     * 
+     */
+    @Export(name="plaintextWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> plaintextWoVersion;
+
+    /**
+     * @return The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     * 
+     */
+    public Output<Optional<Integer>> plaintextWoVersion() {
+        return Codegen.optional(this.plaintextWoVersion);
     }
 
     /**
@@ -167,7 +200,8 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "plaintext"
+                "plaintext",
+                "plaintextWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

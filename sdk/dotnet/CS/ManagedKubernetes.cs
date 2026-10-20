@@ -516,10 +516,10 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.ManagedKubernetesAutoMode?> AutoMode { get; private set; } = null!;
 
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
-        [Output("certificateAuthority")]
-        public Output<Outputs.ManagedKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
+        [Output("certificateAuthorities")]
+        public Output<ImmutableArray<Outputs.ManagedKubernetesCertificateAuthority>> CertificateAuthorities { get; private set; } = null!;
 
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -561,10 +561,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// A list of kubernetes cluster connection information.
         /// </summary>
         [Output("connections")]
-        public Output<Outputs.ManagedKubernetesConnections> Connections { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ManagedKubernetesConnection>> Connections { get; private set; } = null!;
 
         /// <summary>
         /// The cluster access configuration. See `ControlPlaneEndpointsConfig` below.
@@ -1338,11 +1338,18 @@ namespace Pulumi.AliCloud.CS
         [Input("autoMode")]
         public Input<Inputs.ManagedKubernetesAutoModeGetArgs>? AutoMode { get; set; }
 
+        [Input("certificateAuthorities")]
+        private InputList<Inputs.ManagedKubernetesCertificateAuthorityGetArgs>? _certificateAuthorities;
+
         /// <summary>
-        /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
+        /// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute CertificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
-        [Input("certificateAuthority")]
-        public Input<Inputs.ManagedKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
+        [Obsolete(@"Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.")]
+        public InputList<Inputs.ManagedKubernetesCertificateAuthorityGetArgs> CertificateAuthorities
+        {
+            get => _certificateAuthorities ?? (_certificateAuthorities = new InputList<Inputs.ManagedKubernetesCertificateAuthorityGetArgs>());
+            set => _certificateAuthorities = value;
+        }
 
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -1383,11 +1390,17 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
-        /// <summary>
-        /// Map of kubernetes cluster connection information.
-        /// </summary>
         [Input("connections")]
-        public Input<Inputs.ManagedKubernetesConnectionsGetArgs>? Connections { get; set; }
+        private InputList<Inputs.ManagedKubernetesConnectionGetArgs>? _connections;
+
+        /// <summary>
+        /// A list of kubernetes cluster connection information.
+        /// </summary>
+        public InputList<Inputs.ManagedKubernetesConnectionGetArgs> Connections
+        {
+            get => _connections ?? (_connections = new InputList<Inputs.ManagedKubernetesConnectionGetArgs>());
+            set => _connections = value;
+        }
 
         /// <summary>
         /// The cluster access configuration. See `ControlPlaneEndpointsConfig` below.

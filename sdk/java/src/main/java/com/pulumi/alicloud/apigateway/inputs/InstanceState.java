@@ -318,18 +318,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
-    @Import(name="toConnectVpcIpBlock")
-    private @Nullable Output<InstanceToConnectVpcIpBlockArgs> toConnectVpcIpBlock;
+    @Import(name="toConnectVpcIpBlocks")
+    private @Nullable Output<List<InstanceToConnectVpcIpBlockArgs>> toConnectVpcIpBlocks;
 
     /**
-     * @return The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+     * @return A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      * 
      */
-    public Optional<Output<InstanceToConnectVpcIpBlockArgs>> toConnectVpcIpBlock() {
-        return Optional.ofNullable(this.toConnectVpcIpBlock);
+    public Optional<Output<List<InstanceToConnectVpcIpBlockArgs>>> toConnectVpcIpBlocks() {
+        return Optional.ofNullable(this.toConnectVpcIpBlocks);
     }
 
     /**
@@ -414,7 +414,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.skipWaitSwitch = $.skipWaitSwitch;
         this.status = $.status;
         this.supportIpv6 = $.supportIpv6;
-        this.toConnectVpcIpBlock = $.toConnectVpcIpBlock;
+        this.toConnectVpcIpBlocks = $.toConnectVpcIpBlocks;
         this.userVpcId = $.userVpcId;
         this.vpcSlbIntranetEnable = $.vpcSlbIntranetEnable;
         this.zoneId = $.zoneId;
@@ -851,24 +851,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+         * @param toConnectVpcIpBlocks A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
          * 
          * @return builder
          * 
          */
-        public Builder toConnectVpcIpBlock(@Nullable Output<InstanceToConnectVpcIpBlockArgs> toConnectVpcIpBlock) {
-            $.toConnectVpcIpBlock = toConnectVpcIpBlock;
+        public Builder toConnectVpcIpBlocks(@Nullable Output<List<InstanceToConnectVpcIpBlockArgs>> toConnectVpcIpBlocks) {
+            $.toConnectVpcIpBlocks = toConnectVpcIpBlocks;
             return this;
         }
 
         /**
-         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+         * @param toConnectVpcIpBlocks A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
          * 
          * @return builder
          * 
          */
-        public Builder toConnectVpcIpBlock(InstanceToConnectVpcIpBlockArgs toConnectVpcIpBlock) {
-            return toConnectVpcIpBlock(Output.of(toConnectVpcIpBlock));
+        public Builder toConnectVpcIpBlocks(List<InstanceToConnectVpcIpBlockArgs> toConnectVpcIpBlocks) {
+            return toConnectVpcIpBlocks(Output.of(toConnectVpcIpBlocks));
+        }
+
+        /**
+         * @param toConnectVpcIpBlocks A list of additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toConnectVpcIpBlocks(InstanceToConnectVpcIpBlockArgs... toConnectVpcIpBlocks) {
+            return toConnectVpcIpBlocks(List.of(toConnectVpcIpBlocks));
         }
 
         /**

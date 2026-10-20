@@ -74,7 +74,7 @@ class StaticAccountArgs:
 class _StaticAccountState:
     def __init__(__self__, *,
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  master_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -84,7 +84,7 @@ class _StaticAccountState:
         Input properties used for looking up and filtering StaticAccount resources.
 
         :param pulumi.Input[_builtins.str] access_key: Access key.
-        :param pulumi.Input[_builtins.int] create_time: The timestamp that indicates when the pair of static username and password was created.
+        :param pulumi.Input[_builtins.str] create_time: The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
         :param pulumi.Input[_builtins.str] instance_id: Amqp instance ID.
         :param pulumi.Input[_builtins.str] master_uid: The ID of the user's primary account.
         :param pulumi.Input[_builtins.str] password: The static password.
@@ -120,14 +120,14 @@ class _StaticAccountState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The timestamp that indicates when the pair of static username and password was created.
+        The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
@@ -362,7 +362,7 @@ class StaticAccount(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
-            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             master_uid: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -376,7 +376,7 @@ class StaticAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key: Access key.
-        :param pulumi.Input[_builtins.int] create_time: The timestamp that indicates when the pair of static username and password was created.
+        :param pulumi.Input[_builtins.str] create_time: The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
         :param pulumi.Input[_builtins.str] instance_id: Amqp instance ID.
         :param pulumi.Input[_builtins.str] master_uid: The ID of the user's primary account.
         :param pulumi.Input[_builtins.str] password: The static password.
@@ -406,9 +406,9 @@ class StaticAccount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Output[_builtins.int]:
+    def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The timestamp that indicates when the pair of static username and password was created.
+        The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
         """
         return pulumi.get(self, "create_time")
 

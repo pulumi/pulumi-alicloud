@@ -238,6 +238,8 @@ public class Alarm extends com.pulumi.resources.CustomResource {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
+     * 
      * @deprecated
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
@@ -248,6 +250,8 @@ public class Alarm extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
      */
     public Output<Optional<Integer>> endTime() {

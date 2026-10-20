@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// &gt; **NOTE:** Available since v1.142.0.
     /// 
+    /// &gt; **NOTE:** The `AccountPasswordWo` and `AccountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -106,10 +108,23 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// AccountPassword
+        /// The password of the account. Exactly one of `AccountPassword` and `AccountPasswordWo` can be set.
         /// </summary>
         [Output("accountPassword")]
-        public Output<string> AccountPassword { get; private set; } = null!;
+        public Output<string?> AccountPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. Exactly one of `AccountPassword` and `AccountPasswordWo` can be set.
+        /// </summary>
+        [Output("accountPasswordWo")]
+        public Output<string?> AccountPasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Output("accountPasswordWoVersion")]
+        public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Account type. The value range is as follows:
@@ -168,6 +183,7 @@ namespace Pulumi.AliCloud.Gpdb
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "accountPasswordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -204,11 +220,11 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
-        [Input("accountPassword", required: true)]
+        [Input("accountPassword")]
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// AccountPassword
+        /// The password of the account. Exactly one of `AccountPassword` and `AccountPasswordWo` can be set.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -219,6 +235,29 @@ namespace Pulumi.AliCloud.Gpdb
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. Exactly one of `AccountPassword` and `AccountPasswordWo` can be set.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// Account type. The value range is as follows:
@@ -269,7 +308,7 @@ namespace Pulumi.AliCloud.Gpdb
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// AccountPassword
+        /// The password of the account. Exactly one of `AccountPassword` and `AccountPasswordWo` can be set.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -280,6 +319,29 @@ namespace Pulumi.AliCloud.Gpdb
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `AccountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `AccountPasswordWoVersion`. Exactly one of `AccountPassword` and `AccountPasswordWo` can be set.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `AccountPasswordWo` changes.
+        /// </summary>
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
         /// Account type. The value range is as follows:

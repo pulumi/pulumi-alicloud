@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +27,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,7 +76,7 @@ import (
 //				Engine:             pulumi.String("PostgreSQL"),
 //				EngineVersion:      pulumi.String("13.0"),
 //				InstanceType:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:    pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:    rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceChargeType: pulumi.String("Postpaid"),
 //				InstanceName:       pulumi.String("terraform-example"),
 //				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),

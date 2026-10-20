@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
  *
  * For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
+ *
+ * > **NOTE:** The `valueWo` and `valueWoVersion` arguments require Terraform v1.11.0 or later. When `valueWo` is in use, `value` reads back empty because it is not stored in the state or plan.
  *
  * ## Example Usage
  *
@@ -100,9 +102,18 @@ export class Parameter extends pulumi.CustomResource {
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      */
     declare public readonly value: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     */
+    declare public readonly valueWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     */
+    declare public readonly valueWoVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a Parameter resource with the given unique name, arguments, and options.
@@ -124,6 +135,8 @@ export class Parameter extends pulumi.CustomResource {
             resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
             resourceInputs["value"] = state?.value;
+            resourceInputs["valueWo"] = state?.valueWo;
+            resourceInputs["valueWoVersion"] = state?.valueWoVersion;
         } else {
             const args = argsOrState as ParameterArgs | undefined;
             if (args?.parameterName === undefined && !opts.urn) {
@@ -132,9 +145,6 @@ export class Parameter extends pulumi.CustomResource {
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if (args?.value === undefined && !opts.urn) {
-                throw new Error("Missing required property 'value'");
-            }
             resourceInputs["constraints"] = args?.constraints;
             resourceInputs["description"] = args?.description;
             resourceInputs["parameterName"] = args?.parameterName;
@@ -142,8 +152,12 @@ export class Parameter extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["type"] = args?.type;
             resourceInputs["value"] = args?.value;
+            resourceInputs["valueWo"] = args?.valueWo ? pulumi.secret(args.valueWo) : undefined;
+            resourceInputs["valueWoVersion"] = args?.valueWoVersion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["valueWo"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Parameter.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -181,9 +195,18 @@ export interface ParameterState {
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      */
     value?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     */
+    valueWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     */
+    valueWoVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -219,7 +242,16 @@ export interface ParameterArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The value of the common parameter. The value must be `1` to `4096` characters in length.
+     * The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `value` and `valueWo` can be set.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `valueWoVersion`. Exactly one of `value` and `valueWo` can be set.
+     */
+    valueWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `valueWo` changes.
+     */
+    valueWoVersion?: pulumi.Input<number | undefined>;
 }

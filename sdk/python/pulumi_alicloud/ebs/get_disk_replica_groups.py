@@ -44,6 +44,9 @@ class GetDiskReplicaGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetDiskReplicaGroupsGroupResult']:
+        """
+        A list of Ebs Disk Replica Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -83,7 +86,7 @@ def get_disk_replica_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -118,7 +121,7 @@ def get_disk_replica_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[
     """
     This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 

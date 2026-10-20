@@ -164,19 +164,16 @@ class GetInstancesInstanceResult(dict):
 class GetKeyVersionsVersionResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
-                 creation_date: _builtins.str,
                  id: _builtins.str,
                  key_id: _builtins.str,
                  key_version_id: _builtins.str):
         """
         :param _builtins.str create_time: Date and time when the key version was created (UTC time).
-        :param _builtins.str creation_date: (Removed from v1.124.4) It has been removed and using `create_time` instead.
         :param _builtins.str id: ID of the KMS KeyVersion resource.
         :param _builtins.str key_id: The id of kms key.
         :param _builtins.str key_version_id: ID of the key version.
         """
         pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "creation_date", creation_date)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "key_version_id", key_version_id)
@@ -188,14 +185,6 @@ class GetKeyVersionsVersionResult(dict):
         Date and time when the key version was created (UTC time).
         """
         return pulumi.get(self, "create_time")
-
-    @_builtins.property
-    @pulumi.getter(name="creationDate")
-    def creation_date(self) -> _builtins.str:
-        """
-        (Removed from v1.124.4) It has been removed and using `create_time` instead.
-        """
-        return pulumi.get(self, "creation_date")
 
     @_builtins.property
     @pulumi.getter

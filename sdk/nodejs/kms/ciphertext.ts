@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.63.0.
  *
+ * > **NOTE:** The `plaintextWo` and `plaintextWoVersion` arguments require Terraform v1.11.0 or later. When `plaintextWo` is in use, `plaintext` is empty in the state and plan.
+ *
  * > **NOTE**: Using this data provider will allow you to conceal secret data within your resource definitions but does not take care of protecting that data in all Terraform logging and state output. Please take care to secure your secret data beyond just the Terraform configuration.
  *
  * ## Example Usage
@@ -71,9 +73,18 @@ export class Ciphertext extends pulumi.CustomResource {
      */
     declare public readonly keyId: pulumi.Output<string>;
     /**
-     * The plaintext to be encrypted which must be encoded in Base64.
+     * The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      */
-    declare public readonly plaintext: pulumi.Output<string>;
+    declare public readonly plaintext: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     */
+    declare public readonly plaintextWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     */
+    declare public readonly plaintextWoVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a Ciphertext resource with the given unique name, arguments, and options.
@@ -92,21 +103,22 @@ export class Ciphertext extends pulumi.CustomResource {
             resourceInputs["encryptionContext"] = state?.encryptionContext;
             resourceInputs["keyId"] = state?.keyId;
             resourceInputs["plaintext"] = state?.plaintext;
+            resourceInputs["plaintextWo"] = state?.plaintextWo;
+            resourceInputs["plaintextWoVersion"] = state?.plaintextWoVersion;
         } else {
             const args = argsOrState as CiphertextArgs | undefined;
             if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if (args?.plaintext === undefined && !opts.urn) {
-                throw new Error("Missing required property 'plaintext'");
-            }
             resourceInputs["encryptionContext"] = args?.encryptionContext;
             resourceInputs["keyId"] = args?.keyId;
             resourceInputs["plaintext"] = args?.plaintext ? pulumi.secret(args.plaintext) : undefined;
+            resourceInputs["plaintextWo"] = args?.plaintextWo ? pulumi.secret(args.plaintextWo) : undefined;
+            resourceInputs["plaintextWoVersion"] = args?.plaintextWoVersion;
             resourceInputs["ciphertextBlob"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["plaintext"] };
+        const secretOpts = { additionalSecretOutputs: ["plaintext", "plaintextWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Ciphertext.__pulumiType, name, resourceInputs, opts);
     }
@@ -129,9 +141,18 @@ export interface CiphertextState {
      */
     keyId?: pulumi.Input<string | undefined>;
     /**
-     * The plaintext to be encrypted which must be encoded in Base64.
+     * The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      */
     plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     */
+    plaintextWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     */
+    plaintextWoVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -147,7 +168,16 @@ export interface CiphertextArgs {
      */
     keyId: pulumi.Input<string>;
     /**
-     * The plaintext to be encrypted which must be encoded in Base64.
+     * The plaintext to be encrypted which must be encoded in Base64. Exactly one of `plaintext` and `plaintextWo` can be set.
      */
-    plaintext: pulumi.Input<string>;
+    plaintext?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only plaintext to be encrypted which must be encoded in Base64. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `plaintextWoVersion`. Exactly one of `plaintext` and `plaintextWo` can be set.
+     */
+    plaintextWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only plaintext. The write-only plaintext is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `plaintextWo` value.
+     */
+    plaintextWoVersion?: pulumi.Input<number | undefined>;
 }

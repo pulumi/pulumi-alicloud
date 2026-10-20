@@ -86,7 +86,12 @@ export class Account extends pulumi.CustomResource {
 
     declare public readonly accountDescription: pulumi.Output<string>;
     declare public readonly accountName: pulumi.Output<string>;
-    declare public readonly accountPassword: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    declare public readonly accountPasswordWo: pulumi.Output<string | undefined>;
+    declare public readonly accountPasswordWoVersion: pulumi.Output<number | undefined>;
     declare public readonly accountType: pulumi.Output<string>;
     declare public readonly checkPolicy: pulumi.Output<boolean | undefined>;
     declare public readonly dbInstanceId: pulumi.Output<string>;
@@ -121,7 +126,7 @@ export class Account extends pulumi.CustomResource {
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    declare public readonly password: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     declare public readonly resetPermissionFlag: pulumi.Output<boolean | undefined>;
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -151,6 +156,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = state?.accountDescription;
             resourceInputs["accountName"] = state?.accountName;
             resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountPasswordWo"] = state?.accountPasswordWo;
+            resourceInputs["accountPasswordWoVersion"] = state?.accountPasswordWoVersion;
             resourceInputs["accountType"] = state?.accountType;
             resourceInputs["checkPolicy"] = state?.checkPolicy;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
@@ -168,6 +175,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = args?.accountDescription;
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
+            resourceInputs["accountPasswordWo"] = args?.accountPasswordWo ? pulumi.secret(args.accountPasswordWo) : undefined;
+            resourceInputs["accountPasswordWoVersion"] = args?.accountPasswordWoVersion;
             resourceInputs["accountType"] = args?.accountType;
             resourceInputs["checkPolicy"] = args?.checkPolicy;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
@@ -182,7 +191,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountPassword", "password"] };
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "accountPasswordWo", "password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
@@ -195,6 +204,11 @@ export interface AccountState {
     accountDescription?: pulumi.Input<string | undefined>;
     accountName?: pulumi.Input<string | undefined>;
     accountPassword?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     accountType?: pulumi.Input<string | undefined>;
     checkPolicy?: pulumi.Input<boolean | undefined>;
     dbInstanceId?: pulumi.Input<string | undefined>;
@@ -251,6 +265,11 @@ export interface AccountArgs {
     accountDescription?: pulumi.Input<string | undefined>;
     accountName?: pulumi.Input<string | undefined>;
     accountPassword?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     accountType?: pulumi.Input<string | undefined>;
     checkPolicy?: pulumi.Input<boolean | undefined>;
     dbInstanceId?: pulumi.Input<string | undefined>;

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,9 +31,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/realtimecompute"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/realtimecompute"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -91,7 +91,7 @@ import (
 //			}
 //			_, err = realtimecompute.NewDeployment(ctx, "create_Deployment9", &realtimecompute.DeploymentArgs{
 //				DeploymentName: pulumi.String("tf-example-deployment-sql-56"),
-//				EngineVersion:  pulumi.String("vvr-8.0.10-flink-1.17"),
+//				EngineVersion:  pulumi.String("vvr-8.0.11-flink-1.17"),
 //				ResourceId:     defaultVvpInstance.ResourceId,
 //				ExecutionMode:  pulumi.String("STREAMING"),
 //				DeploymentTarget: &realtimecompute.DeploymentDeploymentTargetArgs{

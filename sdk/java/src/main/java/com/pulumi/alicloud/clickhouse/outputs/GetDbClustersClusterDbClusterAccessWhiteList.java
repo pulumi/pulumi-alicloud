@@ -11,11 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetDbClustersClusterDbClusterAccessWhiteList {
     /**
-     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
-     * 
-     */
-    private String dbClusterIpArrayAttribute;
-    /**
      * @return Whitelist group name.
      * 
      */
@@ -27,13 +22,6 @@ public final class GetDbClustersClusterDbClusterAccessWhiteList {
     private String securityIpList;
 
     private GetDbClustersClusterDbClusterAccessWhiteList() {}
-    /**
-     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
-     * 
-     */
-    public String dbClusterIpArrayAttribute() {
-        return this.dbClusterIpArrayAttribute;
-    }
     /**
      * @return Whitelist group name.
      * 
@@ -58,25 +46,15 @@ public final class GetDbClustersClusterDbClusterAccessWhiteList {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String dbClusterIpArrayAttribute;
         private String dbClusterIpArrayName;
         private String securityIpList;
         public Builder() {}
         public Builder(GetDbClustersClusterDbClusterAccessWhiteList defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.dbClusterIpArrayAttribute = defaults.dbClusterIpArrayAttribute;
     	      this.dbClusterIpArrayName = defaults.dbClusterIpArrayName;
     	      this.securityIpList = defaults.securityIpList;
         }
 
-        @CustomType.Setter
-        public Builder dbClusterIpArrayAttribute(String dbClusterIpArrayAttribute) {
-            if (dbClusterIpArrayAttribute == null) {
-              throw new MissingRequiredPropertyException("GetDbClustersClusterDbClusterAccessWhiteList", "dbClusterIpArrayAttribute");
-            }
-            this.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
-            return this;
-        }
         @CustomType.Setter
         public Builder dbClusterIpArrayName(String dbClusterIpArrayName) {
             if (dbClusterIpArrayName == null) {
@@ -95,7 +73,6 @@ public final class GetDbClustersClusterDbClusterAccessWhiteList {
         }
         public GetDbClustersClusterDbClusterAccessWhiteList build() {
             final var _resultValue = new GetDbClustersClusterDbClusterAccessWhiteList();
-            _resultValue.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
             _resultValue.dbClusterIpArrayName = dbClusterIpArrayName;
             _resultValue.securityIpList = securityIpList;
             return _resultValue;

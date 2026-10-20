@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .engineVersion("8.0")
  *             .dbInstanceStorageType("cloud_essd")
  *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
- *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRanges().min())
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .instanceChargeType("Postpaid")

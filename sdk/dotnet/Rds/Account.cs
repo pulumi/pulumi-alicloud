@@ -86,7 +86,16 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AccountName { get; private set; } = null!;
 
         [Output("accountPassword")]
-        public Output<string> AccountPassword { get; private set; } = null!;
+        public Output<string?> AccountPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        [Output("accountPasswordWo")]
+        public Output<string?> AccountPasswordWo { get; private set; } = null!;
+
+        [Output("accountPasswordWoVersion")]
+        public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
         [Output("accountType")]
         public Output<string> AccountType { get; private set; } = null!;
@@ -131,7 +140,7 @@ namespace Pulumi.AliCloud.Rds
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
 
         [Output("resetPermissionFlag")]
         public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
@@ -175,6 +184,7 @@ namespace Pulumi.AliCloud.Rds
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "accountPasswordWo",
                     "password",
                 },
             };
@@ -217,6 +227,25 @@ namespace Pulumi.AliCloud.Rds
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -321,6 +350,25 @@ namespace Pulumi.AliCloud.Rds
                 _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accountPasswordWo")]
+        private Input<string>? _accountPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? AccountPasswordWo
+        {
+            get => _accountPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accountPasswordWoVersion")]
+        public Input<int>? AccountPasswordWoVersion { get; set; }
 
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }

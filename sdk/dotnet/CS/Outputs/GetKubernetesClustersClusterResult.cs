@@ -22,9 +22,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string ClusterNetworkType;
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// A list of kubernetes cluster connection information.
         /// </summary>
-        public readonly Outputs.GetKubernetesClustersClusterConnectionsResult Connections;
+        public readonly ImmutableArray<Outputs.GetKubernetesClustersClusterConnectionResult> Connections;
         /// <summary>
         /// ID of the node.
         /// </summary>
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string clusterNetworkType,
 
-            Outputs.GetKubernetesClustersClusterConnectionsResult connections,
+            ImmutableArray<Outputs.GetKubernetesClustersClusterConnectionResult> connections,
 
             string id,
 

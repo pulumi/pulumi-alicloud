@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  *         var createDeployment9 = new Deployment("createDeployment9", DeploymentArgs.builder()
  *             .deploymentName("tf-example-deployment-sql-56")
- *             .engineVersion("vvr-8.0.10-flink-1.17")
+ *             .engineVersion("vvr-8.0.11-flink-1.17")
  *             .resourceId(defaultVvpInstance.resourceId())
  *             .executionMode("STREAMING")
  *             .deploymentTarget(DeploymentDeploymentTargetArgs.builder()

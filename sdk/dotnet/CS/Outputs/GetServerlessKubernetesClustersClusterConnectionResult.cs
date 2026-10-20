@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 {
 
     [OutputType]
-    public sealed class GetServerlessKubernetesClustersClusterConnectionsResult
+    public sealed class GetServerlessKubernetesClustersClusterConnectionResult
     {
         /// <summary>
         /// API Server Internet endpoint.
@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         public readonly string MasterPublicIp;
 
         [OutputConstructor]
-        private GetServerlessKubernetesClustersClusterConnectionsResult(
+        private GetServerlessKubernetesClustersClusterConnectionResult(
             string apiServerInternet,
 
             string apiServerIntranet,

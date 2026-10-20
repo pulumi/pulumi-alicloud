@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,9 +36,9 @@ import (
 //	"fmt"
 //	"sort"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesservicecertificate"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sslcertificatesserviceinstance"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/dns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/sslcertificatesservicecertificate"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/sslcertificatesserviceinstance"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -129,7 +129,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/alb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

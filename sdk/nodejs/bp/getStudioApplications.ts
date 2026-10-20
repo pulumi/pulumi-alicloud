@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.192.0+.
+ * > **NOTE:** Available since v1.192.0.
  *
  * ## Example Usage
  *
@@ -113,7 +113,7 @@ export interface GetStudioApplicationsResult {
 /**
  * This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.192.0+.
+ * > **NOTE:** Available since v1.192.0.
  *
  * ## Example Usage
  *

@@ -40,6 +40,11 @@ export type FirewallVpcFirewallControlPolicy = import("./firewallVpcFirewallCont
 export const FirewallVpcFirewallControlPolicy: typeof import("./firewallVpcFirewallControlPolicy").FirewallVpcFirewallControlPolicy = null as any;
 utilities.lazyLoad(exports, ["FirewallVpcFirewallControlPolicy"], () => require("./firewallVpcFirewallControlPolicy"));
 
+export { FwSwitchArgs, FwSwitchState } from "./fwSwitch";
+export type FwSwitch = import("./fwSwitch").FwSwitch;
+export const FwSwitch: typeof import("./fwSwitch").FwSwitch = null as any;
+utilities.lazyLoad(exports, ["FwSwitch"], () => require("./fwSwitch"));
+
 export { GetAddressBooksArgs, GetAddressBooksResult, GetAddressBooksOutputArgs } from "./getAddressBooks";
 export const getAddressBooks: typeof import("./getAddressBooks").getAddressBooks = null as any;
 export const getAddressBooksOutput: typeof import("./getAddressBooks").getAddressBooksOutput = null as any;
@@ -184,6 +189,8 @@ const _module = {
                 return new FirewallVpcFirewallCen(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy":
                 return new FirewallVpcFirewallControlPolicy(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/fwSwitch:FwSwitch":
+                return new FwSwitch(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/instanceMember:InstanceMember":
@@ -226,6 +233,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicyOr
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFirewallCen", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFirewallControlPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/fwSwitch", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instanceMember", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instanceV2", _module)

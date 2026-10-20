@@ -178,9 +178,9 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetClusterCredentialResult
     {
         /// <summary>
-        /// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        /// (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
         /// </summary>
-        public readonly Outputs.GetClusterCredentialCertificateAuthorityResult CertificateAuthority;
+        public readonly ImmutableArray<Outputs.GetClusterCredentialCertificateAuthorityResult> CertificateAuthorities;
         /// <summary>
         /// The id of target cluster.
         /// </summary>
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.CS
 
         [OutputConstructor]
         private GetClusterCredentialResult(
-            Outputs.GetClusterCredentialCertificateAuthorityResult certificateAuthority,
+            ImmutableArray<Outputs.GetClusterCredentialCertificateAuthorityResult> certificateAuthorities,
 
             string clusterId,
 
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.CS
 
             int? temporaryDurationMinutes)
         {
-            CertificateAuthority = certificateAuthority;
+            CertificateAuthorities = certificateAuthorities;
             ClusterId = clusterId;
             ClusterName = clusterName;
             Expiration = expiration;

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -6770,7 +6770,7 @@ type GetDisksDisk struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -6867,7 +6867,7 @@ type GetDisksDiskArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -7118,7 +7118,7 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -14917,8 +14917,8 @@ func (o GetInstanceTypeFamiliesFamilyArrayOutput) Index(i pulumi.IntInput) GetIn
 type GetInstanceTypesInstanceType struct {
 	// List of availability zones that support the instance type.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The burstable instance attribution.
-	BurstableInstance GetInstanceTypesInstanceTypeBurstableInstance `pulumi:"burstableInstance"`
+	// A list of the burstable instance attribution.
+	BurstableInstances []GetInstanceTypesInstanceTypeBurstableInstance `pulumi:"burstableInstances"`
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount int `pulumi:"cpuCoreCount"`
 	// Filter the result whose network interface number is no more than `eniAmount`.
@@ -14931,12 +14931,12 @@ type GetInstanceTypesInstanceType struct {
 	EniQuantity int `pulumi:"eniQuantity"`
 	// The instance type family.
 	Family string `pulumi:"family"`
-	// The GPU attribution of an instance type:
-	Gpu GetInstanceTypesInstanceTypeGpu `pulumi:"gpu"`
+	// A list of GPU attributes of an instance type:
+	Gpus []GetInstanceTypesInstanceTypeGpus `pulumi:"gpus"`
 	// ID of the instance type.
 	Id string `pulumi:"id"`
-	// Local storage of an instance type.
-	LocalStorage GetInstanceTypesInstanceTypeLocalStorage `pulumi:"localStorage"`
+	// A list of local storage of an instance type.
+	LocalStorages []GetInstanceTypesInstanceTypeLocalStorage `pulumi:"localStorages"`
 	// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
 	MaximumQueueNumberPerEni int `pulumi:"maximumQueueNumberPerEni"`
 	// Filter the results to a specific memory size in GB.
@@ -14967,8 +14967,8 @@ type GetInstanceTypesInstanceTypeInput interface {
 type GetInstanceTypesInstanceTypeArgs struct {
 	// List of availability zones that support the instance type.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// The burstable instance attribution.
-	BurstableInstance GetInstanceTypesInstanceTypeBurstableInstanceInput `pulumi:"burstableInstance"`
+	// A list of the burstable instance attribution.
+	BurstableInstances GetInstanceTypesInstanceTypeBurstableInstanceArrayInput `pulumi:"burstableInstances"`
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
 	// Filter the result whose network interface number is no more than `eniAmount`.
@@ -14981,12 +14981,12 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	EniQuantity pulumi.IntInput `pulumi:"eniQuantity"`
 	// The instance type family.
 	Family pulumi.StringInput `pulumi:"family"`
-	// The GPU attribution of an instance type:
-	Gpu GetInstanceTypesInstanceTypeGpuInput `pulumi:"gpu"`
+	// A list of GPU attributes of an instance type:
+	Gpus GetInstanceTypesInstanceTypeGpusArrayInput `pulumi:"gpus"`
 	// ID of the instance type.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Local storage of an instance type.
-	LocalStorage GetInstanceTypesInstanceTypeLocalStorageInput `pulumi:"localStorage"`
+	// A list of local storage of an instance type.
+	LocalStorages GetInstanceTypesInstanceTypeLocalStorageArrayInput `pulumi:"localStorages"`
 	// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
 	MaximumQueueNumberPerEni pulumi.IntInput `pulumi:"maximumQueueNumberPerEni"`
 	// Filter the results to a specific memory size in GB.
@@ -15059,11 +15059,11 @@ func (o GetInstanceTypesInstanceTypeOutput) AvailabilityZones() pulumi.StringArr
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The burstable instance attribution.
-func (o GetInstanceTypesInstanceTypeOutput) BurstableInstance() GetInstanceTypesInstanceTypeBurstableInstanceOutput {
-	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeBurstableInstance {
-		return v.BurstableInstance
-	}).(GetInstanceTypesInstanceTypeBurstableInstanceOutput)
+// A list of the burstable instance attribution.
+func (o GetInstanceTypesInstanceTypeOutput) BurstableInstances() GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) []GetInstanceTypesInstanceTypeBurstableInstance {
+		return v.BurstableInstances
+	}).(GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput)
 }
 
 // Filter the results to a specific number of cpu cores.
@@ -15096,9 +15096,9 @@ func (o GetInstanceTypesInstanceTypeOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Family }).(pulumi.StringOutput)
 }
 
-// The GPU attribution of an instance type:
-func (o GetInstanceTypesInstanceTypeOutput) Gpu() GetInstanceTypesInstanceTypeGpuOutput {
-	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeGpu { return v.Gpu }).(GetInstanceTypesInstanceTypeGpuOutput)
+// A list of GPU attributes of an instance type:
+func (o GetInstanceTypesInstanceTypeOutput) Gpus() GetInstanceTypesInstanceTypeGpusArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) []GetInstanceTypesInstanceTypeGpus { return v.Gpus }).(GetInstanceTypesInstanceTypeGpusArrayOutput)
 }
 
 // ID of the instance type.
@@ -15106,9 +15106,11 @@ func (o GetInstanceTypesInstanceTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Local storage of an instance type.
-func (o GetInstanceTypesInstanceTypeOutput) LocalStorage() GetInstanceTypesInstanceTypeLocalStorageOutput {
-	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeLocalStorage { return v.LocalStorage }).(GetInstanceTypesInstanceTypeLocalStorageOutput)
+// A list of local storage of an instance type.
+func (o GetInstanceTypesInstanceTypeOutput) LocalStorages() GetInstanceTypesInstanceTypeLocalStorageArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) []GetInstanceTypesInstanceTypeLocalStorage {
+		return v.LocalStorages
+	}).(GetInstanceTypesInstanceTypeLocalStorageArrayOutput)
 }
 
 // (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
@@ -15203,6 +15205,31 @@ func (i GetInstanceTypesInstanceTypeBurstableInstanceArgs) ToGetInstanceTypesIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeBurstableInstanceOutput)
 }
 
+// GetInstanceTypesInstanceTypeBurstableInstanceArrayInput is an input type that accepts GetInstanceTypesInstanceTypeBurstableInstanceArray and GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesInstanceTypeBurstableInstanceArrayInput` via:
+//
+//	GetInstanceTypesInstanceTypeBurstableInstanceArray{ GetInstanceTypesInstanceTypeBurstableInstanceArgs{...} }
+type GetInstanceTypesInstanceTypeBurstableInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutput() GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput
+	ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutputWithContext(context.Context) GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput
+}
+
+type GetInstanceTypesInstanceTypeBurstableInstanceArray []GetInstanceTypesInstanceTypeBurstableInstanceInput
+
+func (GetInstanceTypesInstanceTypeBurstableInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceTypeBurstableInstance)(nil)).Elem()
+}
+
+func (i GetInstanceTypesInstanceTypeBurstableInstanceArray) ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutput() GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput {
+	return i.ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesInstanceTypeBurstableInstanceArray) ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput)
+}
+
 type GetInstanceTypesInstanceTypeBurstableInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeBurstableInstanceOutput) ElementType() reflect.Type {
@@ -15227,65 +15254,130 @@ func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) InitialCredit() pul
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.InitialCredit }).(pulumi.StringOutput)
 }
 
-type GetInstanceTypesInstanceTypeGpu struct {
+type GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceTypeBurstableInstance)(nil)).Elem()
+}
+
+func (o GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput) ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutput() GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput) ToGetInstanceTypesInstanceTypeBurstableInstanceArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesInstanceTypeBurstableInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesInstanceTypeBurstableInstance {
+		return vs[0].([]GetInstanceTypesInstanceTypeBurstableInstance)[vs[1].(int)]
+	}).(GetInstanceTypesInstanceTypeBurstableInstanceOutput)
+}
+
+type GetInstanceTypesInstanceTypeGpus struct {
 	// The number of local storage devices that an instance has been attached to.
 	Amount string `pulumi:"amount"`
 	// The category of local storage that an instance has been attached to.
 	Category string `pulumi:"category"`
 }
 
-// GetInstanceTypesInstanceTypeGpuInput is an input type that accepts GetInstanceTypesInstanceTypeGpuArgs and GetInstanceTypesInstanceTypeGpuOutput values.
-// You can construct a concrete instance of `GetInstanceTypesInstanceTypeGpuInput` via:
+// GetInstanceTypesInstanceTypeGpusInput is an input type that accepts GetInstanceTypesInstanceTypeGpusArgs and GetInstanceTypesInstanceTypeGpusOutput values.
+// You can construct a concrete instance of `GetInstanceTypesInstanceTypeGpusInput` via:
 //
-//	GetInstanceTypesInstanceTypeGpuArgs{...}
-type GetInstanceTypesInstanceTypeGpuInput interface {
+//	GetInstanceTypesInstanceTypeGpusArgs{...}
+type GetInstanceTypesInstanceTypeGpusInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypesInstanceTypeGpuOutput() GetInstanceTypesInstanceTypeGpuOutput
-	ToGetInstanceTypesInstanceTypeGpuOutputWithContext(context.Context) GetInstanceTypesInstanceTypeGpuOutput
+	ToGetInstanceTypesInstanceTypeGpusOutput() GetInstanceTypesInstanceTypeGpusOutput
+	ToGetInstanceTypesInstanceTypeGpusOutputWithContext(context.Context) GetInstanceTypesInstanceTypeGpusOutput
 }
 
-type GetInstanceTypesInstanceTypeGpuArgs struct {
+type GetInstanceTypesInstanceTypeGpusArgs struct {
 	// The number of local storage devices that an instance has been attached to.
 	Amount pulumi.StringInput `pulumi:"amount"`
 	// The category of local storage that an instance has been attached to.
 	Category pulumi.StringInput `pulumi:"category"`
 }
 
-func (GetInstanceTypesInstanceTypeGpuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypesInstanceTypeGpu)(nil)).Elem()
+func (GetInstanceTypesInstanceTypeGpusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesInstanceTypeGpus)(nil)).Elem()
 }
 
-func (i GetInstanceTypesInstanceTypeGpuArgs) ToGetInstanceTypesInstanceTypeGpuOutput() GetInstanceTypesInstanceTypeGpuOutput {
-	return i.ToGetInstanceTypesInstanceTypeGpuOutputWithContext(context.Background())
+func (i GetInstanceTypesInstanceTypeGpusArgs) ToGetInstanceTypesInstanceTypeGpusOutput() GetInstanceTypesInstanceTypeGpusOutput {
+	return i.ToGetInstanceTypesInstanceTypeGpusOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypesInstanceTypeGpuArgs) ToGetInstanceTypesInstanceTypeGpuOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeGpuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeGpuOutput)
+func (i GetInstanceTypesInstanceTypeGpusArgs) ToGetInstanceTypesInstanceTypeGpusOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeGpusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeGpusOutput)
 }
 
-type GetInstanceTypesInstanceTypeGpuOutput struct{ *pulumi.OutputState }
+// GetInstanceTypesInstanceTypeGpusArrayInput is an input type that accepts GetInstanceTypesInstanceTypeGpusArray and GetInstanceTypesInstanceTypeGpusArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesInstanceTypeGpusArrayInput` via:
+//
+//	GetInstanceTypesInstanceTypeGpusArray{ GetInstanceTypesInstanceTypeGpusArgs{...} }
+type GetInstanceTypesInstanceTypeGpusArrayInput interface {
+	pulumi.Input
 
-func (GetInstanceTypesInstanceTypeGpuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypesInstanceTypeGpu)(nil)).Elem()
+	ToGetInstanceTypesInstanceTypeGpusArrayOutput() GetInstanceTypesInstanceTypeGpusArrayOutput
+	ToGetInstanceTypesInstanceTypeGpusArrayOutputWithContext(context.Context) GetInstanceTypesInstanceTypeGpusArrayOutput
 }
 
-func (o GetInstanceTypesInstanceTypeGpuOutput) ToGetInstanceTypesInstanceTypeGpuOutput() GetInstanceTypesInstanceTypeGpuOutput {
+type GetInstanceTypesInstanceTypeGpusArray []GetInstanceTypesInstanceTypeGpusInput
+
+func (GetInstanceTypesInstanceTypeGpusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceTypeGpus)(nil)).Elem()
+}
+
+func (i GetInstanceTypesInstanceTypeGpusArray) ToGetInstanceTypesInstanceTypeGpusArrayOutput() GetInstanceTypesInstanceTypeGpusArrayOutput {
+	return i.ToGetInstanceTypesInstanceTypeGpusArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesInstanceTypeGpusArray) ToGetInstanceTypesInstanceTypeGpusArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeGpusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeGpusArrayOutput)
+}
+
+type GetInstanceTypesInstanceTypeGpusOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesInstanceTypeGpusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesInstanceTypeGpus)(nil)).Elem()
+}
+
+func (o GetInstanceTypesInstanceTypeGpusOutput) ToGetInstanceTypesInstanceTypeGpusOutput() GetInstanceTypesInstanceTypeGpusOutput {
 	return o
 }
 
-func (o GetInstanceTypesInstanceTypeGpuOutput) ToGetInstanceTypesInstanceTypeGpuOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeGpuOutput {
+func (o GetInstanceTypesInstanceTypeGpusOutput) ToGetInstanceTypesInstanceTypeGpusOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeGpusOutput {
 	return o
 }
 
 // The number of local storage devices that an instance has been attached to.
-func (o GetInstanceTypesInstanceTypeGpuOutput) Amount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Amount }).(pulumi.StringOutput)
+func (o GetInstanceTypesInstanceTypeGpusOutput) Amount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpus) string { return v.Amount }).(pulumi.StringOutput)
 }
 
 // The category of local storage that an instance has been attached to.
-func (o GetInstanceTypesInstanceTypeGpuOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Category }).(pulumi.StringOutput)
+func (o GetInstanceTypesInstanceTypeGpusOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpus) string { return v.Category }).(pulumi.StringOutput)
+}
+
+type GetInstanceTypesInstanceTypeGpusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesInstanceTypeGpusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceTypeGpus)(nil)).Elem()
+}
+
+func (o GetInstanceTypesInstanceTypeGpusArrayOutput) ToGetInstanceTypesInstanceTypeGpusArrayOutput() GetInstanceTypesInstanceTypeGpusArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeGpusArrayOutput) ToGetInstanceTypesInstanceTypeGpusArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeGpusArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeGpusArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesInstanceTypeGpusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesInstanceTypeGpus {
+		return vs[0].([]GetInstanceTypesInstanceTypeGpus)[vs[1].(int)]
+	}).(GetInstanceTypesInstanceTypeGpusOutput)
 }
 
 type GetInstanceTypesInstanceTypeLocalStorage struct {
@@ -15329,6 +15421,31 @@ func (i GetInstanceTypesInstanceTypeLocalStorageArgs) ToGetInstanceTypesInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
 
+// GetInstanceTypesInstanceTypeLocalStorageArrayInput is an input type that accepts GetInstanceTypesInstanceTypeLocalStorageArray and GetInstanceTypesInstanceTypeLocalStorageArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesInstanceTypeLocalStorageArrayInput` via:
+//
+//	GetInstanceTypesInstanceTypeLocalStorageArray{ GetInstanceTypesInstanceTypeLocalStorageArgs{...} }
+type GetInstanceTypesInstanceTypeLocalStorageArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesInstanceTypeLocalStorageArrayOutput() GetInstanceTypesInstanceTypeLocalStorageArrayOutput
+	ToGetInstanceTypesInstanceTypeLocalStorageArrayOutputWithContext(context.Context) GetInstanceTypesInstanceTypeLocalStorageArrayOutput
+}
+
+type GetInstanceTypesInstanceTypeLocalStorageArray []GetInstanceTypesInstanceTypeLocalStorageInput
+
+func (GetInstanceTypesInstanceTypeLocalStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceTypeLocalStorage)(nil)).Elem()
+}
+
+func (i GetInstanceTypesInstanceTypeLocalStorageArray) ToGetInstanceTypesInstanceTypeLocalStorageArrayOutput() GetInstanceTypesInstanceTypeLocalStorageArrayOutput {
+	return i.ToGetInstanceTypesInstanceTypeLocalStorageArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesInstanceTypeLocalStorageArray) ToGetInstanceTypesInstanceTypeLocalStorageArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeLocalStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeLocalStorageArrayOutput)
+}
+
 type GetInstanceTypesInstanceTypeLocalStorageOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeLocalStorageOutput) ElementType() reflect.Type {
@@ -15356,6 +15473,26 @@ func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Capacity() pulumi.String
 // The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Category }).(pulumi.StringOutput)
+}
+
+type GetInstanceTypesInstanceTypeLocalStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesInstanceTypeLocalStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceTypeLocalStorage)(nil)).Elem()
+}
+
+func (o GetInstanceTypesInstanceTypeLocalStorageArrayOutput) ToGetInstanceTypesInstanceTypeLocalStorageArrayOutput() GetInstanceTypesInstanceTypeLocalStorageArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeLocalStorageArrayOutput) ToGetInstanceTypesInstanceTypeLocalStorageArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeLocalStorageArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeLocalStorageArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesInstanceTypeLocalStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesInstanceTypeLocalStorage {
+		return vs[0].([]GetInstanceTypesInstanceTypeLocalStorage)[vs[1].(int)]
+	}).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
 
 type GetInstancesInstance struct {
@@ -15406,7 +15543,7 @@ type GetInstancesInstance struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -15491,7 +15628,7 @@ type GetInstancesInstanceArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -15679,7 +15816,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -17156,7 +17293,7 @@ type GetSecurityGroupsGroup struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -17211,7 +17348,7 @@ type GetSecurityGroupsGroupArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -17327,7 +17464,7 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -17832,8 +17969,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeInput)(nil)).Elem(), GetInstanceTypesInstanceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeArrayInput)(nil)).Elem(), GetInstanceTypesInstanceTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeBurstableInstanceInput)(nil)).Elem(), GetInstanceTypesInstanceTypeBurstableInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeGpuInput)(nil)).Elem(), GetInstanceTypesInstanceTypeGpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeBurstableInstanceArrayInput)(nil)).Elem(), GetInstanceTypesInstanceTypeBurstableInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeGpusInput)(nil)).Elem(), GetInstanceTypesInstanceTypeGpusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeGpusArrayInput)(nil)).Elem(), GetInstanceTypesInstanceTypeGpusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeLocalStorageInput)(nil)).Elem(), GetInstanceTypesInstanceTypeLocalStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeLocalStorageArrayInput)(nil)).Elem(), GetInstanceTypesInstanceTypeLocalStorageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceDiskDeviceMappingInput)(nil)).Elem(), GetInstancesInstanceDiskDeviceMappingArgs{})
@@ -18021,8 +18161,11 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeBurstableInstanceOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeGpuOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeBurstableInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeGpusOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeGpusArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeLocalStorageOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeLocalStorageArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceDiskDeviceMappingOutput{})

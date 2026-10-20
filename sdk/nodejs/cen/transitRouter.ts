@@ -92,7 +92,7 @@ export class TransitRouter extends pulumi.CustomResource {
     /**
      * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      */
-    declare public readonly supportMulticast: pulumi.Output<boolean | undefined>;
+    declare public readonly supportMulticast: pulumi.Output<boolean>;
     /**
      * The tag of the resource
      */

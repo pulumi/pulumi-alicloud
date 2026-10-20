@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MasterSlaveServerGroupServer {
     /**
-     * @return Determine if the server is executing. Valid value 0, 1.
-     * 
-     */
-    private @Nullable Integer isBackup;
-    /**
      * @return The port used by the backend server. Valid value range: [1-65535].
      * 
      */
@@ -45,13 +40,6 @@ public final class MasterSlaveServerGroupServer {
     private @Nullable Integer weight;
 
     private MasterSlaveServerGroupServer() {}
-    /**
-     * @return Determine if the server is executing. Valid value 0, 1.
-     * 
-     */
-    public Optional<Integer> isBackup() {
-        return Optional.ofNullable(this.isBackup);
-    }
     /**
      * @return The port used by the backend server. Valid value range: [1-65535].
      * 
@@ -97,7 +85,6 @@ public final class MasterSlaveServerGroupServer {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer isBackup;
         private Integer port;
         private String serverId;
         private @Nullable String serverType;
@@ -106,7 +93,6 @@ public final class MasterSlaveServerGroupServer {
         public Builder() {}
         public Builder(MasterSlaveServerGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.isBackup = defaults.isBackup;
     	      this.port = defaults.port;
     	      this.serverId = defaults.serverId;
     	      this.serverType = defaults.serverType;
@@ -114,12 +100,6 @@ public final class MasterSlaveServerGroupServer {
     	      this.weight = defaults.weight;
         }
 
-        @CustomType.Setter
-        public Builder isBackup(@Nullable Integer isBackup) {
-
-            this.isBackup = isBackup;
-            return this;
-        }
         @CustomType.Setter
         public Builder port(Integer port) {
             if (port == null) {
@@ -156,7 +136,6 @@ public final class MasterSlaveServerGroupServer {
         }
         public MasterSlaveServerGroupServer build() {
             final var _resultValue = new MasterSlaveServerGroupServer();
-            _resultValue.isBackup = isBackup;
             _resultValue.port = port;
             _resultValue.serverId = serverId;
             _resultValue.serverType = serverType;

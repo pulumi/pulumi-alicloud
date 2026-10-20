@@ -155,6 +155,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
+     * &gt; **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+     * 
+     * &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
+     * 
      * @deprecated
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
@@ -165,6 +169,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+     * 
+     * &gt; **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+     * 
+     * &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
      * 
      * @deprecated
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
@@ -592,6 +600,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceChargeType Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
+         * &gt; **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+         * 
+         * &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -606,6 +618,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceChargeType Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+         * 
+         * &gt; **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+         * 
+         * &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
          * 
          * @return builder
          * 

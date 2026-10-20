@@ -17,11 +17,6 @@ public final class GetMasterSlaveServerGroupsGroupServer {
      */
     private String instanceId;
     /**
-     * @return (Removed from v1.63.0) Determine if the server is executing.
-     * 
-     */
-    private Integer isBackup;
-    /**
      * @return The port used by the master slave server group.
      * 
      */
@@ -44,13 +39,6 @@ public final class GetMasterSlaveServerGroupsGroupServer {
      */
     public String instanceId() {
         return this.instanceId;
-    }
-    /**
-     * @return (Removed from v1.63.0) Determine if the server is executing.
-     * 
-     */
-    public Integer isBackup() {
-        return this.isBackup;
     }
     /**
      * @return The port used by the master slave server group.
@@ -84,7 +72,6 @@ public final class GetMasterSlaveServerGroupsGroupServer {
     @CustomType.Builder
     public static final class Builder {
         private String instanceId;
-        private Integer isBackup;
         private Integer port;
         private String serverType;
         private Integer weight;
@@ -92,7 +79,6 @@ public final class GetMasterSlaveServerGroupsGroupServer {
         public Builder(GetMasterSlaveServerGroupsGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceId = defaults.instanceId;
-    	      this.isBackup = defaults.isBackup;
     	      this.port = defaults.port;
     	      this.serverType = defaults.serverType;
     	      this.weight = defaults.weight;
@@ -104,14 +90,6 @@ public final class GetMasterSlaveServerGroupsGroupServer {
               throw new MissingRequiredPropertyException("GetMasterSlaveServerGroupsGroupServer", "instanceId");
             }
             this.instanceId = instanceId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder isBackup(Integer isBackup) {
-            if (isBackup == null) {
-              throw new MissingRequiredPropertyException("GetMasterSlaveServerGroupsGroupServer", "isBackup");
-            }
-            this.isBackup = isBackup;
             return this;
         }
         @CustomType.Setter
@@ -141,7 +119,6 @@ public final class GetMasterSlaveServerGroupsGroupServer {
         public GetMasterSlaveServerGroupsGroupServer build() {
             final var _resultValue = new GetMasterSlaveServerGroupsGroupServer();
             _resultValue.instanceId = instanceId;
-            _resultValue.isBackup = isBackup;
             _resultValue.port = port;
             _resultValue.serverType = serverType;
             _resultValue.weight = weight;

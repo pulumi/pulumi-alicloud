@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,9 +17,6 @@ import (
 // > **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
 // If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
 // If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
-//
-// > **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
-// But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
 //
 // > **NOTE:** When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see Service-linked roles.
 //
@@ -38,7 +35,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -95,7 +92,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -180,6 +177,10 @@ type NatGateway struct {
 	// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
 	IcmpReplyEnabled pulumi.BoolOutput `pulumi:"icmpReplyEnabled"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+	//
+	// > **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+	//
+	// > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
 	//
 	// Deprecated: Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -275,6 +276,10 @@ type natGatewayState struct {
 	IcmpReplyEnabled *bool `pulumi:"icmpReplyEnabled"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	//
+	// > **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+	//
+	// > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
+	//
 	// Deprecated: Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
@@ -336,6 +341,10 @@ type NatGatewayState struct {
 	// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
 	IcmpReplyEnabled pulumi.BoolPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+	//
+	// > **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+	//
+	// > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
 	//
 	// Deprecated: Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -401,6 +410,10 @@ type natGatewayArgs struct {
 	IcmpReplyEnabled *bool `pulumi:"icmpReplyEnabled"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	//
+	// > **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+	//
+	// > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
+	//
 	// Deprecated: Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
@@ -457,6 +470,10 @@ type NatGatewayArgs struct {
 	// Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
 	IcmpReplyEnabled pulumi.BoolPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+	//
+	// > **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+	//
+	// > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
 	//
 	// Deprecated: Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -628,6 +645,10 @@ func (o NatGatewayOutput) IcmpReplyEnabled() pulumi.BoolOutput {
 }
 
 // Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+//
+// > **NOTE:** From version 1.194.0, `eipBindMode` can be modified. If the `eipBindMode` parameter is set to `MULTI_BINDED` when the NAT gateway is created, you can change the value of this parameter from `MULTI_BINDED` to `NAT`. If the `eipBindMode` parameter is set to `NAT` when the NAT gateway is created, you cannot change the value of this parameter from `NAT` to `MULTI_BINDED`.
+//
+// > **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
 //
 // Deprecated: Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 func (o NatGatewayOutput) InstanceChargeType() pulumi.StringOutput {

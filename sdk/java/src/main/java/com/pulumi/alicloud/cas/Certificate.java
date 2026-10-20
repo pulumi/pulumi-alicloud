@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -182,6 +183,26 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.key);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Export(name="keyWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Output<Optional<String>> keyWo() {
+        return Codegen.optional(this.keyWo);
+    }
+    @Export(name="keyWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> keyWoVersion;
+
+    public Output<Optional<Integer>> keyWoVersion() {
+        return Codegen.optional(this.keyWoVersion);
+    }
+    /**
      * @deprecated
      * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
@@ -278,6 +299,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "encryptPrivateKey",
                 "key",
+                "keyWo",
                 "signPrivateKey"
             ))
             .build();
