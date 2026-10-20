@@ -99,9 +99,9 @@ export class Exchange extends pulumi.CustomResource {
      */
     declare public readonly autoDeleteState: pulumi.Output<boolean>;
     /**
-     * CreateTime
+     * The time when the exchange was created. Unix timestamp, to millisecond level.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the exchange that you want to create. The exchange name must meet the following conventions:
      *
@@ -206,9 +206,9 @@ export interface ExchangeState {
      */
     autoDeleteState?: pulumi.Input<boolean | undefined>;
     /**
-     * CreateTime
+     * The time when the exchange was created. Unix timestamp, to millisecond level.
      */
-    createTime?: pulumi.Input<number | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the exchange that you want to create. The exchange name must meet the following conventions:
      *

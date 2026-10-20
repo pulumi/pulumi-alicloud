@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,7 +86,7 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
 //				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
@@ -112,9 +112,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -169,7 +169,7 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
 //				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
@@ -207,9 +207,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -290,7 +290,7 @@ import (
 // Engine: pulumi.String("MySQL"),
 // EngineVersion: pulumi.String("8.0"),
 // InstanceType: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-// InstanceStorage: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+// InstanceStorage: rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 // InstanceChargeType: pulumi.String("Postpaid"),
 // InstanceName: pulumi.String("terraform-example"),
 // VswitchId: std.JoinOutput(ctx, std.JoinOutputArgs{
@@ -322,9 +322,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -413,7 +413,7 @@ import (
 // EngineVersion: pulumi.String("8.0"),
 // Category: pulumi.String("HighAvailability"),
 // InstanceType: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-// InstanceStorage: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+// InstanceStorage: rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 // InstanceChargeType: pulumi.String("Postpaid"),
 // InstanceName: pulumi.String(name),
 // VswitchId: std.JoinOutput(ctx, std.JoinOutputArgs{
@@ -442,9 +442,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -558,8 +558,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -613,7 +613,7 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceChargeType:    pulumi.String("Serverless"),
 //				InstanceName:          pulumi.String(name),
@@ -646,8 +646,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -698,7 +698,7 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("PostgreSQL"),
 //				EngineVersion:         pulumi.String("14.0"),
-//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceChargeType:    pulumi.String("Serverless"),
 //				InstanceName:          pulumi.String(name),
@@ -729,8 +729,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -785,7 +785,7 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:             pulumi.String("SQLServer"),
 //				EngineVersion:      pulumi.String("2019_std_sl"),
-//				InstanceStorage:    pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceStorage:    rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceType:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceChargeType: pulumi.String("Serverless"),
 //				InstanceName:       pulumi.String(name),
@@ -979,7 +979,7 @@ type Instance struct {
 	// > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
@@ -1454,7 +1454,7 @@ type instanceState struct {
 	// > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
@@ -1857,7 +1857,7 @@ type InstanceState struct {
 	// > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
@@ -2258,7 +2258,7 @@ type instanceArgs struct {
 	// > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
 	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
@@ -2650,7 +2650,7 @@ type InstanceArgs struct {
 	// > **NOTE:** When the 'engine_version' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
 	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
@@ -3226,7 +3226,7 @@ func (o InstanceOutput) Engine() pulumi.StringOutput {
 }
 
 // Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-//   - MySQL: [ 5.5、5.6、5.7、8.0 ]
+//   - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 //   - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 //   - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 //   - MariaDB: [ 10.3 ]

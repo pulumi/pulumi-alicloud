@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,8 +40,8 @@ type GetClusterCredentialArgs struct {
 
 // A collection of values returned by getClusterCredential.
 type GetClusterCredentialResult struct {
-	// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
-	CertificateAuthority GetClusterCredentialCertificateAuthority `pulumi:"certificateAuthority"`
+	// (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
+	CertificateAuthorities []GetClusterCredentialCertificateAuthority `pulumi:"certificateAuthorities"`
 	// The id of target cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The name of target cluster.
@@ -90,11 +90,11 @@ func (o GetClusterCredentialResultOutput) ToGetClusterCredentialResultOutputWith
 	return o
 }
 
-// (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
-func (o GetClusterCredentialResultOutput) CertificateAuthority() GetClusterCredentialCertificateAuthorityOutput {
-	return o.ApplyT(func(v GetClusterCredentialResult) GetClusterCredentialCertificateAuthority {
-		return v.CertificateAuthority
-	}).(GetClusterCredentialCertificateAuthorityOutput)
+// (Available in 1.105.0+) A list of nested attribute contains the certificate authority data for your cluster.
+func (o GetClusterCredentialResultOutput) CertificateAuthorities() GetClusterCredentialCertificateAuthorityArrayOutput {
+	return o.ApplyT(func(v GetClusterCredentialResult) []GetClusterCredentialCertificateAuthority {
+		return v.CertificateAuthorities
+	}).(GetClusterCredentialCertificateAuthorityArrayOutput)
 }
 
 // The id of target cluster.

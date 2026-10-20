@@ -884,13 +884,13 @@ class _ManagedKubernetesState:
                  api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_log_config: pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']] = None,
                  auto_mode: pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']] = None,
-                 certificate_authority: pulumi.Input[Optional['ManagedKubernetesCertificateAuthorityArgs']] = None,
+                 certificate_authorities: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']]]] = None,
                  client_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
-                 connections: pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']] = None,
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesConnectionArgs']]]] = None,
                  control_plane_endpoints_config: pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']] = None,
                  control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -943,7 +943,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
         :param pulumi.Input['ManagedKubernetesAutoModeArgs'] auto_mode: Auto mode cluster configuration. See `auto_mode` below.
-        :param pulumi.Input['ManagedKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']]] certificate_authorities: (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -958,7 +958,7 @@ class _ManagedKubernetesState:
                * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
                
                ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
-        :param pulumi.Input['ManagedKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesConnectionArgs']]] connections: A list of kubernetes cluster connection information.
         :param pulumi.Input['ManagedKubernetesControlPlaneEndpointsConfigArgs'] control_plane_endpoints_config: The cluster access configuration. See `control_plane_endpoints_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -1043,11 +1043,11 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "audit_log_config", audit_log_config)
         if auto_mode is not None:
             pulumi.set(__self__, "auto_mode", auto_mode)
-        if certificate_authority is not None:
+        if certificate_authorities is not None:
             warnings.warn("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
-            pulumi.log.warn("""certificate_authority is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-        if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            pulumi.log.warn("""certificate_authorities is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
+        if certificate_authorities is not None:
+            pulumi.set(__self__, "certificate_authorities", certificate_authorities)
         if client_cert is not None:
             warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
             pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
@@ -1215,17 +1215,17 @@ class _ManagedKubernetesState:
         pulumi.set(self, "auto_mode", value)
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
+    @pulumi.getter(name="certificateAuthorities")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> pulumi.Input[Optional['ManagedKubernetesCertificateAuthorityArgs']]:
+    def certificate_authorities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']]]]:
         """
-        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
-    @certificate_authority.setter
-    def certificate_authority(self, value: pulumi.Input[Optional['ManagedKubernetesCertificateAuthorityArgs']]):
-        pulumi.set(self, "certificate_authority", value)
+    @certificate_authorities.setter
+    def certificate_authorities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']]]]):
+        pulumi.set(self, "certificate_authorities", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -1301,14 +1301,14 @@ class _ManagedKubernetesState:
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesConnectionArgs']]]]:
         """
-        Map of kubernetes cluster connection information.
+        A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
     @_builtins.property
@@ -2879,7 +2879,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
             __props__.__dict__["zone_ids"] = zone_ids
-            __props__.__dict__["certificate_authority"] = None
+            __props__.__dict__["certificate_authorities"] = None
             __props__.__dict__["connections"] = None
             __props__.__dict__["nat_gateway_id"] = None
             __props__.__dict__["rrsa_metadata"] = None
@@ -2902,13 +2902,13 @@ class ManagedKubernetes(pulumi.CustomResource):
             api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             audit_log_config: pulumi.Input[Optional[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict', 'outputs.ManagedKubernetesAuditLogConfig']]] = None,
             auto_mode: pulumi.Input[Optional[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict', 'outputs.ManagedKubernetesAutoMode']]] = None,
-            certificate_authority: pulumi.Input[Optional[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict', 'outputs.ManagedKubernetesCertificateAuthority']]] = None,
+            certificate_authorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict', 'outputs.ManagedKubernetesCertificateAuthority']]]]] = None,
             client_cert: pulumi.Input[Optional[_builtins.str]] = None,
             client_key: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
-            connections: pulumi.Input[Optional[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict', 'outputs.ManagedKubernetesConnections']]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesConnectionArgs', 'ManagedKubernetesConnectionArgsDict', 'outputs.ManagedKubernetesConnection']]]]] = None,
             control_plane_endpoints_config: pulumi.Input[Optional[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict', 'outputs.ManagedKubernetesControlPlaneEndpointsConfig']]] = None,
             control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2965,7 +2965,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict', 'outputs.ManagedKubernetesAuditLogConfig']] audit_log_config: Audit log configuration. See `audit_log_config` below.
         :param pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict', 'outputs.ManagedKubernetesAutoMode']] auto_mode: Auto mode cluster configuration. See `auto_mode` below.
-        :param pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict', 'outputs.ManagedKubernetesCertificateAuthority']] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict', 'outputs.ManagedKubernetesCertificateAuthority']]]] certificate_authorities: (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -2980,7 +2980,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
                
                ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
-        :param pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict', 'outputs.ManagedKubernetesConnections']] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesConnectionArgs', 'ManagedKubernetesConnectionArgsDict', 'outputs.ManagedKubernetesConnection']]]] connections: A list of kubernetes cluster connection information.
         :param pulumi.Input[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict', 'outputs.ManagedKubernetesControlPlaneEndpointsConfig']] control_plane_endpoints_config: The cluster access configuration. See `control_plane_endpoints_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -3065,7 +3065,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["api_audiences"] = api_audiences
         __props__.__dict__["audit_log_config"] = audit_log_config
         __props__.__dict__["auto_mode"] = auto_mode
-        __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["certificate_authorities"] = certificate_authorities
         __props__.__dict__["client_cert"] = client_cert
         __props__.__dict__["client_key"] = client_key
         __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
@@ -3152,13 +3152,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "auto_mode")
 
     @_builtins.property
-    @pulumi.getter(name="certificateAuthority")
+    @pulumi.getter(name="certificateAuthorities")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> pulumi.Output['outputs.ManagedKubernetesCertificateAuthority']:
+    def certificate_authorities(self) -> pulumi.Output[Sequence['outputs.ManagedKubernetesCertificateAuthority']]:
         """
-        (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
+        (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
-        return pulumi.get(self, "certificate_authority")
+        return pulumi.get(self, "certificate_authorities")
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -3214,9 +3214,9 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> pulumi.Output['outputs.ManagedKubernetesConnections']:
+    def connections(self) -> pulumi.Output[Sequence['outputs.ManagedKubernetesConnection']]:
         """
-        Map of kubernetes cluster connection information.
+        A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 

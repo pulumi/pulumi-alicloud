@@ -29,11 +29,6 @@ public final class GetInstancesInstance {
      */
     private String description;
     /**
-     * @return (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-     * 
-     */
-    private Integer entityQuota;
-    /**
      * @return ID of the instance.
      * 
      */
@@ -43,11 +38,6 @@ public final class GetInstancesInstance {
      * 
      */
     private String name;
-    /**
-     * @return (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-     * 
-     */
-    private String network;
     /**
      * @return (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
      * 
@@ -150,13 +140,6 @@ public final class GetInstancesInstance {
         return this.description;
     }
     /**
-     * @return (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-     * 
-     */
-    public Integer entityQuota() {
-        return this.entityQuota;
-    }
-    /**
      * @return ID of the instance.
      * 
      */
@@ -169,13 +152,6 @@ public final class GetInstancesInstance {
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-     * 
-     */
-    public String network() {
-        return this.network;
     }
     /**
      * @return (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
@@ -286,10 +262,8 @@ public final class GetInstancesInstance {
         private String clusterType;
         private String createTime;
         private String description;
-        private Integer entityQuota;
         private String id;
         private String name;
-        private String network;
         private List<String> networkSourceAcls;
         private List<String> networkTypeAcls;
         private String policy;
@@ -305,10 +279,8 @@ public final class GetInstancesInstance {
     	      this.clusterType = defaults.clusterType;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
-    	      this.entityQuota = defaults.entityQuota;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
-    	      this.network = defaults.network;
     	      this.networkSourceAcls = defaults.networkSourceAcls;
     	      this.networkTypeAcls = defaults.networkTypeAcls;
     	      this.policy = defaults.policy;
@@ -345,14 +317,6 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder entityQuota(Integer entityQuota) {
-            if (entityQuota == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstance", "entityQuota");
-            }
-            this.entityQuota = entityQuota;
-            return this;
-        }
-        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "id");
@@ -366,14 +330,6 @@ public final class GetInstancesInstance {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "name");
             }
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder network(String network) {
-            if (network == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstance", "network");
-            }
-            this.network = network;
             return this;
         }
         @CustomType.Setter
@@ -459,10 +415,8 @@ public final class GetInstancesInstance {
             _resultValue.clusterType = clusterType;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
-            _resultValue.entityQuota = entityQuota;
             _resultValue.id = id;
             _resultValue.name = name;
-            _resultValue.network = network;
             _resultValue.networkSourceAcls = networkSourceAcls;
             _resultValue.networkTypeAcls = networkTypeAcls;
             _resultValue.policy = policy;

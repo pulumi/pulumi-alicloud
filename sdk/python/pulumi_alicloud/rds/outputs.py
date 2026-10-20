@@ -1871,17 +1871,17 @@ class GetInstanceClassesInstanceClassResult(dict):
     def __init__(__self__, *,
                  instance_class: _builtins.str,
                  price: _builtins.str,
-                 storage_range: 'outputs.GetInstanceClassesInstanceClassStorageRangeResult',
+                 storage_ranges: Sequence['outputs.GetInstanceClassesInstanceClassStorageRangeResult'],
                  zone_ids: Sequence['outputs.GetInstanceClassesInstanceClassZoneIdResult']):
         """
         :param _builtins.str instance_class: DB Instance available class.
         :param _builtins.str price: Unit price of instance specifications.
-        :param 'GetInstanceClassesInstanceClassStorageRangeArgs' storage_range: DB Instance available storage range.
+        :param Sequence['GetInstanceClassesInstanceClassStorageRangeArgs'] storage_ranges: A list of DB Instance available storage range.
         :param Sequence['GetInstanceClassesInstanceClassZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
         pulumi.set(__self__, "instance_class", instance_class)
         pulumi.set(__self__, "price", price)
-        pulumi.set(__self__, "storage_range", storage_range)
+        pulumi.set(__self__, "storage_ranges", storage_ranges)
         pulumi.set(__self__, "zone_ids", zone_ids)
 
     @_builtins.property
@@ -1901,12 +1901,12 @@ class GetInstanceClassesInstanceClassResult(dict):
         return pulumi.get(self, "price")
 
     @_builtins.property
-    @pulumi.getter(name="storageRange")
-    def storage_range(self) -> 'outputs.GetInstanceClassesInstanceClassStorageRangeResult':
+    @pulumi.getter(name="storageRanges")
+    def storage_ranges(self) -> Sequence['outputs.GetInstanceClassesInstanceClassStorageRangeResult']:
         """
-        DB Instance available storage range.
+        A list of DB Instance available storage range.
         """
-        return pulumi.get(self, "storage_range")
+        return pulumi.get(self, "storage_ranges")
 
     @_builtins.property
     @pulumi.getter(name="zoneIds")

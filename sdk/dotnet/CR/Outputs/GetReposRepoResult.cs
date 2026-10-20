@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.CR.Outputs
     public sealed class GetReposRepoResult
     {
         /// <summary>
-        /// The repository domain list.
+        /// A list of repository domain:
         /// </summary>
-        public readonly Outputs.GetReposRepoDomainListResult DomainList;
+        public readonly ImmutableArray<Outputs.GetReposRepoDomainListResult> DomainLists;
         /// <summary>
         /// Name of container registry namespace.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.CR.Outputs
 
         [OutputConstructor]
         private GetReposRepoResult(
-            Outputs.GetReposRepoDomainListResult domainList,
+            ImmutableArray<Outputs.GetReposRepoDomainListResult> domainLists,
 
             string name,
 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.CR.Outputs
 
             ImmutableArray<Outputs.GetReposRepoTagResult> tags)
         {
-            DomainList = domainList;
+            DomainLists = domainLists;
             Name = name;
             Namespace = @namespace;
             RepoType = repoType;

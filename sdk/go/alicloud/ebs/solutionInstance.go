@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +27,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -120,6 +120,10 @@ import (
 //						ParameterValue: pulumi.String("Ebs12345"),
 //					},
 //				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("Terraform"),
+//					"For":     pulumi.String("Example"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -156,6 +160,8 @@ type SolutionInstance struct {
 	SolutionInstanceName pulumi.StringOutput `pulumi:"solutionInstanceName"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewSolutionInstance registers a new resource with the given unique name, arguments, and options.
@@ -205,6 +211,8 @@ type solutionInstanceState struct {
 	SolutionInstanceName *string `pulumi:"solutionInstanceName"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type SolutionInstanceState struct {
@@ -222,6 +230,8 @@ type SolutionInstanceState struct {
 	SolutionInstanceName pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (SolutionInstanceState) ElementType() reflect.Type {
@@ -239,6 +249,8 @@ type solutionInstanceArgs struct {
 	SolutionId string `pulumi:"solutionId"`
 	// Solution Instance Name.
 	SolutionInstanceName *string `pulumi:"solutionInstanceName"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a SolutionInstance resource.
@@ -253,6 +265,8 @@ type SolutionInstanceArgs struct {
 	SolutionId pulumi.StringInput
 	// Solution Instance Name.
 	SolutionInstanceName pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (SolutionInstanceArgs) ElementType() reflect.Type {
@@ -375,6 +389,11 @@ func (o SolutionInstanceOutput) SolutionInstanceName() pulumi.StringOutput {
 // The status of the resource.
 func (o SolutionInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SolutionInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o SolutionInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SolutionInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type SolutionInstanceArrayOutput struct{ *pulumi.OutputState }

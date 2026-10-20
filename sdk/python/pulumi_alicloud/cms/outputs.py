@@ -296,8 +296,6 @@ class AlarmCompositeExpressionExpressionList(dict):
         """
         :param _builtins.str metric_name: The metric that is used to monitor the cloud service.
         :param _builtins.str period: The statistical period of the metric. Unit: seconds. Default value: `300`.
-        :param _builtins.str statistics: Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-        :param _builtins.str threshold: Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -334,17 +332,11 @@ class AlarmCompositeExpressionExpressionList(dict):
     @_builtins.property
     @pulumi.getter
     def statistics(self) -> Optional[_builtins.str]:
-        """
-        Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-        """
         return pulumi.get(self, "statistics")
 
     @_builtins.property
     @pulumi.getter
     def threshold(self) -> Optional[_builtins.str]:
-        """
-        Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-        """
         return pulumi.get(self, "threshold")
 
 

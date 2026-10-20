@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.67.0.
  *
+ * > **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+ *
  * > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
  *
  * ## Example Usage
@@ -110,7 +112,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly accountName: pulumi.Output<string>;
     /**
-     * The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
      * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * - Be 8 to 32 characters in length.
      * - Special characters include !@#$%^&*()_+-=.
@@ -120,6 +122,15 @@ export class Account extends pulumi.CustomResource {
      * The time when the password for the database account expires.
      */
     declare public readonly accountPasswordValidTime: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+     */
+    declare public readonly accountPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    declare public readonly accountPasswordWoVersion: pulumi.Output<number | undefined>;
     /**
      * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      */
@@ -133,7 +144,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dynamodbAuthPassword: pulumi.Output<string>;
     /**
-     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
      */
     declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
@@ -163,6 +174,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = state?.accountName;
             resourceInputs["accountPassword"] = state?.accountPassword;
             resourceInputs["accountPasswordValidTime"] = state?.accountPasswordValidTime;
+            resourceInputs["accountPasswordWo"] = state?.accountPasswordWo;
+            resourceInputs["accountPasswordWoVersion"] = state?.accountPasswordWoVersion;
             resourceInputs["accountType"] = state?.accountType;
             resourceInputs["dbClusterId"] = state?.dbClusterId;
             resourceInputs["dynamodbAuthPassword"] = state?.dynamodbAuthPassword;
@@ -182,6 +195,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["accountPasswordValidTime"] = args?.accountPasswordValidTime;
+            resourceInputs["accountPasswordWo"] = args?.accountPasswordWo ? pulumi.secret(args.accountPasswordWo) : undefined;
+            resourceInputs["accountPasswordWoVersion"] = args?.accountPasswordWoVersion;
             resourceInputs["accountType"] = args?.accountType;
             resourceInputs["dbClusterId"] = args?.dbClusterId;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
@@ -190,7 +205,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountPassword", "dynamodbAuthPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "accountPasswordWo", "dynamodbAuthPassword"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
@@ -219,7 +234,7 @@ export interface AccountState {
      */
     accountName?: pulumi.Input<string | undefined>;
     /**
-     * The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
      * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * - Be 8 to 32 characters in length.
      * - Special characters include !@#$%^&*()_+-=.
@@ -229,6 +244,15 @@ export interface AccountState {
      * The time when the password for the database account expires.
      */
     accountPasswordValidTime?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      */
@@ -242,7 +266,7 @@ export interface AccountState {
      */
     dynamodbAuthPassword?: pulumi.Input<string | undefined>;
     /**
-     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
      */
     kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +302,7 @@ export interface AccountArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
      * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * - Be 8 to 32 characters in length.
      * - Special characters include !@#$%^&*()_+-=.
@@ -289,6 +313,15 @@ export interface AccountArgs {
      */
     accountPasswordValidTime?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      */
     accountType?: pulumi.Input<string | undefined>;
@@ -297,7 +330,7 @@ export interface AccountArgs {
      */
     dbClusterId: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
      */
     kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**

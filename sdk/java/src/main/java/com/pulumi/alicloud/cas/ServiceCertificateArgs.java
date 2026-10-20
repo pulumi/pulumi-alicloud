@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -77,18 +78,50 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The private key of a non-SM certificate in PEM format.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The private key of a non-SM certificate in PEM format.
+     * @return The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     * 
+     */
+    @Import(name="keyWo")
+    private @Nullable Output<String> keyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+     * 
+     */
+    public Optional<Output<String>> keyWo() {
+        return Optional.ofNullable(this.keyWo);
+    }
+
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
+    @Import(name="keyWoVersion")
+    private @Nullable Output<Integer> keyWoVersion;
+
+    /**
+     * @return The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
+    public Optional<Output<Integer>> keyWoVersion() {
+        return Optional.ofNullable(this.keyWoVersion);
     }
 
     /**
@@ -205,6 +238,8 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         this.encryptCert = $.encryptCert;
         this.encryptPrivateKey = $.encryptPrivateKey;
         this.key = $.key;
+        this.keyWo = $.keyWo;
+        this.keyWoVersion = $.keyWoVersion;
         this.lang = $.lang;
         this.name = $.name;
         this.resourceGroupId = $.resourceGroupId;
@@ -316,7 +351,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param key The private key of a non-SM certificate in PEM format.
+         * @param key The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
          * 
          * @return builder
          * 
@@ -327,13 +362,57 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param key The private key of a non-SM certificate in PEM format.
+         * @param key The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
          * 
          * @return builder
          * 
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param keyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyWo(@Nullable Output<String> keyWo) {
+            $.keyWo = keyWo;
+            return this;
+        }
+
+        /**
+         * @param keyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyWo(String keyWo) {
+            return keyWo(Output.of(keyWo));
+        }
+
+        /**
+         * @param keyWoVersion The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyWoVersion(@Nullable Output<Integer> keyWoVersion) {
+            $.keyWoVersion = keyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param keyWoVersion The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyWoVersion(Integer keyWoVersion) {
+            return keyWoVersion(Output.of(keyWoVersion));
         }
 
         /**

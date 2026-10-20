@@ -255,9 +255,10 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The storage type.
-        /// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+        /// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
         /// - When FileSystemType = extreme, the value is standard or advance.
         /// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+        /// - When StorageType = Agentic, the general-purpose NAS features `RecycleBin`, `NfsAcl` and `SmbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
@@ -495,9 +496,10 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The storage type.
-        /// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+        /// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
         /// - When FileSystemType = extreme, the value is standard or advance.
         /// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+        /// - When StorageType = Agentic, the general-purpose NAS features `RecycleBin`, `NfsAcl` and `SmbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
@@ -721,9 +723,10 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The storage type.
-        /// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
+        /// - When FileSystemType = standard, the values are Performance, Capacity, Premium, and Agentic.
         /// - When FileSystemType = extreme, the value is standard or advance.
         /// - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
+        /// - When StorageType = Agentic, the general-purpose NAS features `RecycleBin`, `NfsAcl` and `SmbAcl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

@@ -145,7 +145,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The type of the database account. Valid values: `Normal` or `Super`.
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.

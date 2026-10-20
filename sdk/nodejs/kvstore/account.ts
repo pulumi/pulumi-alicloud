@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.66.0.
  *
+ * > **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -106,9 +108,18 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly accountName: pulumi.Output<string>;
     /**
-     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `accountPasswordWo`.
      */
     declare public readonly accountPassword: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`.
+     */
+    declare public readonly accountPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    declare public readonly accountPasswordWoVersion: pulumi.Output<number | undefined>;
     /**
      * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
@@ -130,7 +141,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored. It conflicts with `accountPasswordWo`.
      */
     declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
@@ -157,6 +168,8 @@ export class Account extends pulumi.CustomResource {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["accountName"] = state?.accountName;
             resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountPasswordWo"] = state?.accountPasswordWo;
+            resourceInputs["accountPasswordWoVersion"] = state?.accountPasswordWoVersion;
             resourceInputs["accountPrivilege"] = state?.accountPrivilege;
             resourceInputs["accountType"] = state?.accountType;
             resourceInputs["description"] = state?.description;
@@ -174,6 +187,8 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
+            resourceInputs["accountPasswordWo"] = args?.accountPasswordWo ? pulumi.secret(args.accountPasswordWo) : undefined;
+            resourceInputs["accountPasswordWoVersion"] = args?.accountPasswordWoVersion;
             resourceInputs["accountPrivilege"] = args?.accountPrivilege;
             resourceInputs["accountType"] = args?.accountType;
             resourceInputs["description"] = args?.description;
@@ -183,7 +198,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "accountPasswordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
@@ -201,9 +216,18 @@ export interface AccountState {
      */
     accountName?: pulumi.Input<string | undefined>;
     /**
-     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `accountPasswordWo`.
      */
     accountPassword?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
@@ -225,7 +249,7 @@ export interface AccountState {
      */
     instanceId?: pulumi.Input<string | undefined>;
     /**
-     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored. It conflicts with `accountPasswordWo`.
      */
     kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
@@ -250,9 +274,18 @@ export interface AccountArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. It conflicts with `accountPasswordWo`.
      */
     accountPassword?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
@@ -274,7 +307,7 @@ export interface AccountArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored. It conflicts with `accountPasswordWo`.
      */
     kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**

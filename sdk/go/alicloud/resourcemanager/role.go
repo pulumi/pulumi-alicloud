@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,8 +24,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -94,6 +94,10 @@ type Role struct {
 	// This ID of Resource Manager role. The value is set to `roleName`.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+	// _
+	// _## Attributes Reference
+	//
+	// The following attributes are exported:
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// Role update time.
 	UpdateDate pulumi.StringOutput `pulumi:"updateDate"`
@@ -146,6 +150,10 @@ type roleState struct {
 	// This ID of Resource Manager role. The value is set to `roleName`.
 	RoleId *string `pulumi:"roleId"`
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+	// _
+	// _## Attributes Reference
+	//
+	// The following attributes are exported:
 	RoleName *string `pulumi:"roleName"`
 	// Role update time.
 	UpdateDate *string `pulumi:"updateDate"`
@@ -163,6 +171,10 @@ type RoleState struct {
 	// This ID of Resource Manager role. The value is set to `roleName`.
 	RoleId pulumi.StringPtrInput
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+	// _
+	// _## Attributes Reference
+	//
+	// The following attributes are exported:
 	RoleName pulumi.StringPtrInput
 	// Role update time.
 	UpdateDate pulumi.StringPtrInput
@@ -180,6 +192,10 @@ type roleArgs struct {
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
 	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+	// _
+	// _## Attributes Reference
+	//
+	// The following attributes are exported:
 	RoleName string `pulumi:"roleName"`
 }
 
@@ -192,6 +208,10 @@ type RoleArgs struct {
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
 	MaxSessionDuration pulumi.IntPtrInput
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+	// _
+	// _## Attributes Reference
+	//
+	// The following attributes are exported:
 	RoleName pulumi.StringInput
 }
 
@@ -308,6 +328,10 @@ func (o RoleOutput) RoleId() pulumi.StringOutput {
 }
 
 // Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+// _
+// _## Attributes Reference
+//
+// The following attributes are exported:
 func (o RoleOutput) RoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
 }

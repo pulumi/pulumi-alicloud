@@ -89,6 +89,8 @@ export class PolicyVersion extends pulumi.CustomResource {
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      *
+     * > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
     declare public readonly isDefaultVersion: pulumi.Output<boolean | undefined>;
@@ -141,6 +143,8 @@ export interface PolicyVersionState {
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      *
+     * > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
     isDefaultVersion?: pulumi.Input<boolean | undefined>;
@@ -160,6 +164,8 @@ export interface PolicyVersionState {
 export interface PolicyVersionArgs {
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
+     *
+     * > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */

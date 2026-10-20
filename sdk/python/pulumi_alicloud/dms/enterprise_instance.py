@@ -1034,7 +1034,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_ranges.min,
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -1165,7 +1165,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_ranges.min,
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[

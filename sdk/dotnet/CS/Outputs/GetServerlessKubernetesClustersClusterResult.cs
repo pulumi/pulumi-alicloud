@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetServerlessKubernetesClustersClusterResult
     {
         /// <summary>
-        /// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
+        /// A list of serverless cluster connection information.
         /// </summary>
-        public readonly Outputs.GetServerlessKubernetesClustersClusterConnectionsResult Connections;
+        public readonly ImmutableArray<Outputs.GetServerlessKubernetesClustersClusterConnectionResult> Connections;
         /// <summary>
         /// Whether the cluster support delete protection.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
         [OutputConstructor]
         private GetServerlessKubernetesClustersClusterResult(
-            Outputs.GetServerlessKubernetesClustersClusterConnectionsResult connections,
+            ImmutableArray<Outputs.GetServerlessKubernetesClustersClusterConnectionResult> connections,
 
             bool deletionProtection,
 

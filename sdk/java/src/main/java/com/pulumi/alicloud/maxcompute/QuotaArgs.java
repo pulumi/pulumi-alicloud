@@ -80,7 +80,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      * 
-     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = &#34;PayAsYouGo&#34;` adopts the existing pay-as-you-go quota of the region when it has already been opened
      * 
      */
     @Import(name="paymentType", required=true)
@@ -89,7 +89,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Payment type. Valid values: Subscription/PayAsYouGo
      * 
-     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+     * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = &#34;PayAsYouGo&#34;` adopts the existing pay-as-you-go quota of the region when it has already been opened
      * 
      */
     public Output<String> paymentType() {
@@ -225,7 +225,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param paymentType Payment type. Valid values: Subscription/PayAsYouGo
          * 
-         * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+         * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = &#34;PayAsYouGo&#34;` adopts the existing pay-as-you-go quota of the region when it has already been opened
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param paymentType Payment type. Valid values: Subscription/PayAsYouGo
          * 
-         * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
+         * &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region. Since the pay-as-you-go quota cannot be deleted, creating this resource with `paymentType = &#34;PayAsYouGo&#34;` adopts the existing pay-as-you-go quota of the region when it has already been opened
          * 
          * @return builder
          * 

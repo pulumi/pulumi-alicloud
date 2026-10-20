@@ -22,15 +22,7 @@ public final class AlarmCompositeExpressionExpressionList {
      * 
      */
     private @Nullable String period;
-    /**
-     * @return Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-     * 
-     */
     private @Nullable String statistics;
-    /**
-     * @return Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-     * 
-     */
     private @Nullable String threshold;
 
     private AlarmCompositeExpressionExpressionList() {}
@@ -51,17 +43,9 @@ public final class AlarmCompositeExpressionExpressionList {
     public Optional<String> period() {
         return Optional.ofNullable(this.period);
     }
-    /**
-     * @return Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-     * 
-     */
     public Optional<String> statistics() {
         return Optional.ofNullable(this.statistics);
     }
-    /**
-     * @return Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-     * 
-     */
     public Optional<String> threshold() {
         return Optional.ofNullable(this.threshold);
     }

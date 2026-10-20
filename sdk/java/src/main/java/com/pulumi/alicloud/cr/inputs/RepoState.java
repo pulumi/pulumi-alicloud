@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cr.inputs.RepoDomainListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,18 +33,18 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional) The repository domain list.
+     * (Optional) A list of repository domain.
      * 
      */
-    @Import(name="domainList")
-    private @Nullable Output<RepoDomainListArgs> domainList;
+    @Import(name="domainLists")
+    private @Nullable Output<List<RepoDomainListArgs>> domainLists;
 
     /**
-     * @return (Optional) The repository domain list.
+     * @return (Optional) A list of repository domain.
      * 
      */
-    public Optional<Output<RepoDomainListArgs>> domainList() {
-        return Optional.ofNullable(this.domainList);
+    public Optional<Output<List<RepoDomainListArgs>>> domainLists() {
+        return Optional.ofNullable(this.domainLists);
     }
 
     /**
@@ -110,7 +111,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
 
     private RepoState(RepoState $) {
         this.detail = $.detail;
-        this.domainList = $.domainList;
+        this.domainLists = $.domainLists;
         this.name = $.name;
         this.namespace = $.namespace;
         this.repoType = $.repoType;
@@ -157,24 +158,34 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainList (Optional) The repository domain list.
+         * @param domainLists (Optional) A list of repository domain.
          * 
          * @return builder
          * 
          */
-        public Builder domainList(@Nullable Output<RepoDomainListArgs> domainList) {
-            $.domainList = domainList;
+        public Builder domainLists(@Nullable Output<List<RepoDomainListArgs>> domainLists) {
+            $.domainLists = domainLists;
             return this;
         }
 
         /**
-         * @param domainList (Optional) The repository domain list.
+         * @param domainLists (Optional) A list of repository domain.
          * 
          * @return builder
          * 
          */
-        public Builder domainList(RepoDomainListArgs domainList) {
-            return domainList(Output.of(domainList));
+        public Builder domainLists(List<RepoDomainListArgs> domainLists) {
+            return domainLists(Output.of(domainLists));
+        }
+
+        /**
+         * @param domainLists (Optional) A list of repository domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainLists(RepoDomainListArgs... domainLists) {
+            return domainLists(List.of(domainLists));
         }
 
         /**

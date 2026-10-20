@@ -656,14 +656,11 @@ class GetInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
-                 id: _builtins.str,
-                 multi_zone_ids: Sequence[_builtins.str]):
+                 id: _builtins.str):
         """
         :param _builtins.str id: ID of the zone.
-        :param Sequence[_builtins.str] multi_zone_ids: A list of zone ids in which the multi zone. Removed from v1.99.0.
         """
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
 
     @_builtins.property
     @pulumi.getter
@@ -672,13 +669,5 @@ class GetZonesZoneResult(dict):
         ID of the zone.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="multiZoneIds")
-    def multi_zone_ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of zone ids in which the multi zone. Removed from v1.99.0.
-        """
-        return pulumi.get(self, "multi_zone_ids")
 
 

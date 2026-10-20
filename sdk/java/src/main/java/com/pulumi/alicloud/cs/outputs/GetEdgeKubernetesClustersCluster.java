@@ -3,7 +3,7 @@
 
 package com.pulumi.alicloud.cs.outputs;
 
-import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersClusterConnections;
+import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersClusterConnection;
 import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersClusterWorkerNode;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,10 +19,10 @@ public final class GetEdgeKubernetesClustersCluster {
      */
     private String availabilityZone;
     /**
-     * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      * 
      */
-    private GetEdgeKubernetesClustersClusterConnections connections;
+    private List<GetEdgeKubernetesClustersClusterConnection> connections;
     /**
      * @return ID of the node.
      * 
@@ -63,10 +63,10 @@ public final class GetEdgeKubernetesClustersCluster {
         return this.availabilityZone;
     }
     /**
-     * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      * 
      */
-    public GetEdgeKubernetesClustersClusterConnections connections() {
+    public List<GetEdgeKubernetesClustersClusterConnection> connections() {
         return this.connections;
     }
     /**
@@ -122,7 +122,7 @@ public final class GetEdgeKubernetesClustersCluster {
     @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
-        private GetEdgeKubernetesClustersClusterConnections connections;
+        private List<GetEdgeKubernetesClustersClusterConnection> connections;
         private String id;
         private String name;
         private String natGatewayId;
@@ -151,12 +151,15 @@ public final class GetEdgeKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder connections(GetEdgeKubernetesClustersClusterConnections connections) {
+        public Builder connections(List<GetEdgeKubernetesClustersClusterConnection> connections) {
             if (connections == null) {
               throw new MissingRequiredPropertyException("GetEdgeKubernetesClustersCluster", "connections");
             }
             this.connections = connections;
             return this;
+        }
+        public Builder connections(GetEdgeKubernetesClustersClusterConnection... connections) {
+            return connections(List.of(connections));
         }
         @CustomType.Setter
         public Builder id(String id) {

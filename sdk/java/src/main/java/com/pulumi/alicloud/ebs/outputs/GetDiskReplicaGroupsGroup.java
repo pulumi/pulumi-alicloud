@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ebs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -27,6 +28,11 @@ public final class GetDiskReplicaGroupsGroup {
      */
     private String destinationZoneId;
     /**
+     * @return Whether to enable replication time control.
+     * 
+     */
+    private Boolean enableRtc;
+    /**
      * @return Consistent replication group name.
      * 
      */
@@ -36,6 +42,10 @@ public final class GetDiskReplicaGroupsGroup {
      * 
      */
     private String id;
+    /**
+     * @return The most recent recovery point time of the replication pair-consistent group.
+     * 
+     */
     private String lastRecoverPoint;
     /**
      * @return The initial source region of the replication group.
@@ -111,6 +121,13 @@ public final class GetDiskReplicaGroupsGroup {
         return this.destinationZoneId;
     }
     /**
+     * @return Whether to enable replication time control.
+     * 
+     */
+    public Boolean enableRtc() {
+        return this.enableRtc;
+    }
+    /**
      * @return Consistent replication group name.
      * 
      */
@@ -124,6 +141,10 @@ public final class GetDiskReplicaGroupsGroup {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The most recent recovery point time of the replication pair-consistent group.
+     * 
+     */
     public String lastRecoverPoint() {
         return this.lastRecoverPoint;
     }
@@ -210,6 +231,7 @@ public final class GetDiskReplicaGroupsGroup {
         private String description;
         private String destinationRegionId;
         private String destinationZoneId;
+        private Boolean enableRtc;
         private String groupName;
         private String id;
         private String lastRecoverPoint;
@@ -229,6 +251,7 @@ public final class GetDiskReplicaGroupsGroup {
     	      this.description = defaults.description;
     	      this.destinationRegionId = defaults.destinationRegionId;
     	      this.destinationZoneId = defaults.destinationZoneId;
+    	      this.enableRtc = defaults.enableRtc;
     	      this.groupName = defaults.groupName;
     	      this.id = defaults.id;
     	      this.lastRecoverPoint = defaults.lastRecoverPoint;
@@ -266,6 +289,14 @@ public final class GetDiskReplicaGroupsGroup {
               throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "destinationZoneId");
             }
             this.destinationZoneId = destinationZoneId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableRtc(Boolean enableRtc) {
+            if (enableRtc == null) {
+              throw new MissingRequiredPropertyException("GetDiskReplicaGroupsGroup", "enableRtc");
+            }
+            this.enableRtc = enableRtc;
             return this;
         }
         @CustomType.Setter
@@ -377,6 +408,7 @@ public final class GetDiskReplicaGroupsGroup {
             _resultValue.description = description;
             _resultValue.destinationRegionId = destinationRegionId;
             _resultValue.destinationZoneId = destinationZoneId;
+            _resultValue.enableRtc = enableRtc;
             _resultValue.groupName = groupName;
             _resultValue.id = id;
             _resultValue.lastRecoverPoint = lastRecoverPoint;

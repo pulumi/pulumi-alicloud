@@ -100,7 +100,7 @@ class GetStudioApplicationsApplicationResult(dict):
         :param _builtins.str image_url: The image url of the Application.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param _builtins.str status: The status of the Application. Valid values: `success`, `release`.
-        :param _builtins.str topo_url: The topo url of the Application.
+        :param _builtins.str topo_url: (Deprecated) The topo url of the Application.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "application_name", application_name)
@@ -169,9 +169,10 @@ class GetStudioApplicationsApplicationResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="topoUrl")
+    @_utilities.deprecated("""Field 'topo_url' has been deprecated and it is no longer returned by the server.""")
     def topo_url(self) -> _builtins.str:
         """
-        The topo url of the Application.
+        (Deprecated) The topo url of the Application.
         """
         return pulumi.get(self, "topo_url")
 

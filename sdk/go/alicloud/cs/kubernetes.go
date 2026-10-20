@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,8 +42,6 @@ import (
 //
 // > **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
 //
-// > **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `clusterSpec`.
-//
 // > **NOTE:** From version 1.177.0+, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId` are deprecated.
 // We Suggest you using resource **`cs.NodePool`** to manage your cluster worker nodes.
 //
@@ -68,10 +66,10 @@ type Kubernetes struct {
 	Addons KubernetesAddonTypeArrayOutput `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority KubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
+	CertificateAuthorities KubernetesCertificateAuthorityArrayOutput `pulumi:"certificateAuthorities"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -88,8 +86,8 @@ type Kubernetes struct {
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrOutput `pulumi:"clusterDomain"`
-	// (Map) Map of kubernetes cluster connection information.
-	Connections KubernetesConnectionsOutput `pulumi:"connections"`
+	// (List) A list of kubernetes cluster connection information.
+	Connections KubernetesConnectionArrayOutput `pulumi:"connections"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -172,8 +170,8 @@ type Kubernetes struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
-	Runtime KubernetesRuntimePtrOutput `pulumi:"runtime"`
+	// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+	Runtimes KubernetesRuntimeArrayOutput `pulumi:"runtimes"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -258,10 +256,10 @@ type kubernetesState struct {
 	Addons []KubernetesAddonType `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences []string `pulumi:"apiAudiences"`
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority *KubernetesCertificateAuthority `pulumi:"certificateAuthority"`
+	CertificateAuthorities []KubernetesCertificateAuthority `pulumi:"certificateAuthorities"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -278,8 +276,8 @@ type kubernetesState struct {
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain *string `pulumi:"clusterDomain"`
-	// (Map) Map of kubernetes cluster connection information.
-	Connections *KubernetesConnections `pulumi:"connections"`
+	// (List) A list of kubernetes cluster connection information.
+	Connections []KubernetesConnection `pulumi:"connections"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -362,8 +360,8 @@ type kubernetesState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
-	Runtime *KubernetesRuntime `pulumi:"runtime"`
+	// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+	Runtimes []KubernetesRuntime `pulumi:"runtimes"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -406,10 +404,10 @@ type KubernetesState struct {
 	Addons KubernetesAddonTypeArrayInput
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
 	ApiAudiences pulumi.StringArrayInput
-	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+	// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-	CertificateAuthority KubernetesCertificateAuthorityPtrInput
+	CertificateAuthorities KubernetesCertificateAuthorityArrayInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -426,8 +424,8 @@ type KubernetesState struct {
 	ClusterCaCert pulumi.StringPtrInput
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrInput
-	// (Map) Map of kubernetes cluster connection information.
-	Connections KubernetesConnectionsPtrInput
+	// (List) A list of kubernetes cluster connection information.
+	Connections KubernetesConnectionArrayInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -510,8 +508,8 @@ type KubernetesState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
-	Runtime KubernetesRuntimePtrInput
+	// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+	Runtimes KubernetesRuntimeArrayInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -652,8 +650,8 @@ type kubernetesArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
-	Runtime *KubernetesRuntime `pulumi:"runtime"`
+	// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+	Runtimes []KubernetesRuntime `pulumi:"runtimes"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -781,8 +779,8 @@ type KubernetesArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
-	Runtime KubernetesRuntimePtrInput
+	// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+	Runtimes KubernetesRuntimeArrayInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -907,11 +905,11 @@ func (o KubernetesOutput) ApiAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.ApiAudiences }).(pulumi.StringArrayOutput)
 }
 
-// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
+// (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 //
 // Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
-func (o KubernetesOutput) CertificateAuthority() KubernetesCertificateAuthorityOutput {
-	return o.ApplyT(func(v *Kubernetes) KubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(KubernetesCertificateAuthorityOutput)
+func (o KubernetesOutput) CertificateAuthorities() KubernetesCertificateAuthorityArrayOutput {
+	return o.ApplyT(func(v *Kubernetes) KubernetesCertificateAuthorityArrayOutput { return v.CertificateAuthorities }).(KubernetesCertificateAuthorityArrayOutput)
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -942,9 +940,9 @@ func (o KubernetesOutput) ClusterDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.ClusterDomain }).(pulumi.StringPtrOutput)
 }
 
-// (Map) Map of kubernetes cluster connection information.
-func (o KubernetesOutput) Connections() KubernetesConnectionsOutput {
-	return o.ApplyT(func(v *Kubernetes) KubernetesConnectionsOutput { return v.Connections }).(KubernetesConnectionsOutput)
+// (List) A list of kubernetes cluster connection information.
+func (o KubernetesOutput) Connections() KubernetesConnectionArrayOutput {
+	return o.ApplyT(func(v *Kubernetes) KubernetesConnectionArrayOutput { return v.Connections }).(KubernetesConnectionArrayOutput)
 }
 
 // Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -1143,9 +1141,9 @@ func (o KubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
-func (o KubernetesOutput) Runtime() KubernetesRuntimePtrOutput {
-	return o.ApplyT(func(v *Kubernetes) KubernetesRuntimePtrOutput { return v.Runtime }).(KubernetesRuntimePtrOutput)
+// A list of runtime containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
+func (o KubernetesOutput) Runtimes() KubernetesRuntimeArrayOutput {
+	return o.ApplyT(func(v *Kubernetes) KubernetesRuntimeArrayOutput { return v.Runtimes }).(KubernetesRuntimeArrayOutput)
 }
 
 // The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.

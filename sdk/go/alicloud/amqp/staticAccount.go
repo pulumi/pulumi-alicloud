@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/amqp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -85,8 +85,8 @@ type StaticAccount struct {
 
 	// Access key.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The timestamp that indicates when the pair of static username and password was created.
-	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Amqp instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the user's primary account.
@@ -147,8 +147,8 @@ func GetStaticAccount(ctx *pulumi.Context,
 type staticAccountState struct {
 	// Access key.
 	AccessKey *string `pulumi:"accessKey"`
-	// The timestamp that indicates when the pair of static username and password was created.
-	CreateTime *int `pulumi:"createTime"`
+	// The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
+	CreateTime *string `pulumi:"createTime"`
 	// Amqp instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the user's primary account.
@@ -164,8 +164,8 @@ type staticAccountState struct {
 type StaticAccountState struct {
 	// Access key.
 	AccessKey pulumi.StringPtrInput
-	// The timestamp that indicates when the pair of static username and password was created.
-	CreateTime pulumi.IntPtrInput
+	// The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
+	CreateTime pulumi.StringPtrInput
 	// Amqp instance ID.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the user's primary account.
@@ -293,9 +293,9 @@ func (o StaticAccountOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The timestamp that indicates when the pair of static username and password was created.
-func (o StaticAccountOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func(v *StaticAccount) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+// The time when the pair of static username and password was created. Unix timestamp, to millisecond level.
+func (o StaticAccountOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Amqp instance ID.

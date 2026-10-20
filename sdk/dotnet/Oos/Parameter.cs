@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.147.0+.
+    /// &gt; **NOTE:** Available since v1.147.0.
+    /// 
+    /// &gt; **NOTE:** The `ValueWo` and `ValueWoVersion` arguments require Terraform v1.11.0 or later. When `ValueWo` is in use, `Value` reads back empty because it is not stored in the state or plan.
     /// 
     /// ## Example Usage
     /// 
@@ -101,10 +103,23 @@ namespace Pulumi.AliCloud.Oos
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the common parameter. The value must be `1` to `4096` characters in length.
+        /// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `Value` and `ValueWo` can be set.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `ValueWoVersion`. Exactly one of `Value` and `ValueWo` can be set.
+        /// </summary>
+        [Output("valueWo")]
+        public Output<string?> ValueWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `ValueWo` changes.
+        /// </summary>
+        [Output("valueWoVersion")]
+        public Output<int?> ValueWoVersion { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,6 +144,10 @@ namespace Pulumi.AliCloud.Oos
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "valueWo",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -199,10 +218,33 @@ namespace Pulumi.AliCloud.Oos
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The value of the common parameter. The value must be `1` to `4096` characters in length.
+        /// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `Value` and `ValueWo` can be set.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        [Input("valueWo")]
+        private Input<string>? _valueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `ValueWoVersion`. Exactly one of `Value` and `ValueWo` can be set.
+        /// </summary>
+        public Input<string>? ValueWo
+        {
+            get => _valueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _valueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `ValueWo` changes.
+        /// </summary>
+        [Input("valueWoVersion")]
+        public Input<int>? ValueWoVersion { get; set; }
 
         public ParameterArgs()
         {
@@ -259,10 +301,33 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The value of the common parameter. The value must be `1` to `4096` characters in length.
+        /// The value of the common parameter. The value must be `1` to `4096` characters in length. Exactly one of `Value` and `ValueWo` can be set.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
+
+        [Input("valueWo")]
+        private Input<string>? _valueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only value of the common parameter. It is only sent to the server when the resource is created or updated and is never stored in the state or plan. The value must be `1` to `4096` characters in length. It requires Terraform v1.11.0 or later and must be used together with `ValueWoVersion`. Exactly one of `Value` and `ValueWo` can be set.
+        /// </summary>
+        public Input<string>? ValueWo
+        {
+            get => _valueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _valueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only value. The write-only value is re-sent to the server only when this argument changes, so it must be changed whenever `ValueWo` changes.
+        /// </summary>
+        [Input("valueWoVersion")]
+        public Input<int>? ValueWoVersion { get; set; }
 
         public ParameterState()
         {

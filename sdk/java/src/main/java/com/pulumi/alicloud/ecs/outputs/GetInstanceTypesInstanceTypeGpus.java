@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetInstanceTypesInstanceTypeGpu {
+public final class GetInstanceTypesInstanceTypeGpus {
     /**
      * @return The number of local storage devices that an instance has been attached to.
      * 
@@ -21,7 +21,7 @@ public final class GetInstanceTypesInstanceTypeGpu {
      */
     private String category;
 
-    private GetInstanceTypesInstanceTypeGpu() {}
+    private GetInstanceTypesInstanceTypeGpus() {}
     /**
      * @return The number of local storage devices that an instance has been attached to.
      * 
@@ -41,7 +41,7 @@ public final class GetInstanceTypesInstanceTypeGpu {
         return new Builder();
     }
 
-    public static Builder builder(GetInstanceTypesInstanceTypeGpu defaults) {
+    public static Builder builder(GetInstanceTypesInstanceTypeGpus defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -49,7 +49,7 @@ public final class GetInstanceTypesInstanceTypeGpu {
         private String amount;
         private String category;
         public Builder() {}
-        public Builder(GetInstanceTypesInstanceTypeGpu defaults) {
+        public Builder(GetInstanceTypesInstanceTypeGpus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.amount = defaults.amount;
     	      this.category = defaults.category;
@@ -58,7 +58,7 @@ public final class GetInstanceTypesInstanceTypeGpu {
         @CustomType.Setter
         public Builder amount(String amount) {
             if (amount == null) {
-              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceTypeGpu", "amount");
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceTypeGpus", "amount");
             }
             this.amount = amount;
             return this;
@@ -66,13 +66,13 @@ public final class GetInstanceTypesInstanceTypeGpu {
         @CustomType.Setter
         public Builder category(String category) {
             if (category == null) {
-              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceTypeGpu", "category");
+              throw new MissingRequiredPropertyException("GetInstanceTypesInstanceTypeGpus", "category");
             }
             this.category = category;
             return this;
         }
-        public GetInstanceTypesInstanceTypeGpu build() {
-            final var _resultValue = new GetInstanceTypesInstanceTypeGpu();
+        public GetInstanceTypesInstanceTypeGpus build() {
+            final var _resultValue = new GetInstanceTypesInstanceTypeGpus();
             _resultValue.amount = amount;
             _resultValue.category = category;
             return _resultValue;

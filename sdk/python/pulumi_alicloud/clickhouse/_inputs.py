@@ -22,10 +22,6 @@ __all__ = [
 ]
 
 class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
-    db_cluster_ip_array_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Field `db_cluster_ip_array_attribute` has been removed from provider.
-    """
     db_cluster_ip_array_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whitelist group name.
@@ -38,32 +34,16 @@ class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
 @pulumi.input_type
 class DbClusterDbClusterAccessWhiteListArgs:
     def __init__(__self__, *,
-                 db_cluster_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] db_cluster_ip_array_attribute: Field `db_cluster_ip_array_attribute` has been removed from provider.
         :param pulumi.Input[_builtins.str] db_cluster_ip_array_name: Whitelist group name.
         :param pulumi.Input[_builtins.str] security_ip_list: The IP address list under the whitelist group.
         """
-        if db_cluster_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         if db_cluster_ip_array_name is not None:
             pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
         if security_ip_list is not None:
             pulumi.set(__self__, "security_ip_list", security_ip_list)
-
-    @_builtins.property
-    @pulumi.getter(name="dbClusterIpArrayAttribute")
-    def db_cluster_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Field `db_cluster_ip_array_attribute` has been removed from provider.
-        """
-        return pulumi.get(self, "db_cluster_ip_array_attribute")
-
-    @db_cluster_ip_array_attribute.setter
-    def db_cluster_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "db_cluster_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrayName")

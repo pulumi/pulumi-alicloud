@@ -28,6 +28,10 @@ class RoleArgs:
 
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[_builtins.str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+               _
+               _## Attributes Reference
+               
+               The following attributes are exported:
         :param pulumi.Input[_builtins.str] description: The description of the Resource Manager role.
         :param pulumi.Input[_builtins.int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         """
@@ -55,6 +59,10 @@ class RoleArgs:
     def role_name(self) -> pulumi.Input[_builtins.str]:
         """
         Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        _
+        _## Attributes Reference
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "role_name")
 
@@ -106,6 +114,10 @@ class _RoleState:
         :param pulumi.Input[_builtins.int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         :param pulumi.Input[_builtins.str] role_id: This ID of Resource Manager role. The value is set to `role_name`.
         :param pulumi.Input[_builtins.str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+               _
+               _## Attributes Reference
+               
+               The following attributes are exported:
         :param pulumi.Input[_builtins.str] update_date: Role update time.
         """
         if arn is not None:
@@ -188,6 +200,10 @@ class _RoleState:
     def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        _
+        _## Attributes Reference
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "role_name")
 
@@ -272,6 +288,10 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the Resource Manager role.
         :param pulumi.Input[_builtins.int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         :param pulumi.Input[_builtins.str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+               _
+               _## Attributes Reference
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -395,6 +415,10 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         :param pulumi.Input[_builtins.str] role_id: This ID of Resource Manager role. The value is set to `role_name`.
         :param pulumi.Input[_builtins.str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+               _
+               _## Attributes Reference
+               
+               The following attributes are exported:
         :param pulumi.Input[_builtins.str] update_date: Role update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -455,6 +479,10 @@ class Role(pulumi.CustomResource):
     def role_name(self) -> pulumi.Output[_builtins.str]:
         """
         Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        _
+        _## Attributes Reference
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "role_name")
 

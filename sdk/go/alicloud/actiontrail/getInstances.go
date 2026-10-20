@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,10 +22,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //

@@ -27,15 +27,9 @@ namespace Pulumi.AliCloud.Cms.Inputs
         [Input("period")]
         public Input<string>? Period { get; set; }
 
-        /// <summary>
-        /// Field `Statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
-        /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
-        /// <summary>
-        /// Field `Threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-        /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
 

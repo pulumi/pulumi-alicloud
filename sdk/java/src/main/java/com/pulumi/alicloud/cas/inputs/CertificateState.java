@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cas.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -65,6 +66,28 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Import(name="keyWo")
+    private @Nullable Output<String> keyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Optional<Output<String>> keyWo() {
+        return Optional.ofNullable(this.keyWo);
+    }
+
+    @Import(name="keyWoVersion")
+    private @Nullable Output<Integer> keyWoVersion;
+
+    public Optional<Output<Integer>> keyWoVersion() {
+        return Optional.ofNullable(this.keyWoVersion);
     }
 
     /**
@@ -145,6 +168,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         this.encryptCert = $.encryptCert;
         this.encryptPrivateKey = $.encryptPrivateKey;
         this.key = $.key;
+        this.keyWo = $.keyWo;
+        this.keyWoVersion = $.keyWoVersion;
         this.lang = $.lang;
         this.name = $.name;
         this.resourceGroupId = $.resourceGroupId;
@@ -238,6 +263,36 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param keyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyWo(@Nullable Output<String> keyWo) {
+            $.keyWo = keyWo;
+            return this;
+        }
+
+        /**
+         * @param keyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyWo(String keyWo) {
+            return keyWo(Output.of(keyWo));
+        }
+
+        public Builder keyWoVersion(@Nullable Output<Integer> keyWoVersion) {
+            $.keyWoVersion = keyWoVersion;
+            return this;
+        }
+
+        public Builder keyWoVersion(Integer keyWoVersion) {
+            return keyWoVersion(Output.of(keyWoVersion));
         }
 
         /**

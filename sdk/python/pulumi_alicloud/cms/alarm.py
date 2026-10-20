@@ -53,6 +53,8 @@ class AlarmArgs:
         :param pulumi.Input[_builtins.str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[_builtins.int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
@@ -205,6 +207,8 @@ class AlarmArgs:
     def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+
+        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "end_time")
 
@@ -391,6 +395,8 @@ class _AlarmState:
         :param pulumi.Input[_builtins.str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[_builtins.int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
@@ -527,6 +533,8 @@ class _AlarmState:
     def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+
+        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "end_time")
 
@@ -829,6 +837,8 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[_builtins.int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict', 'outputs.AlarmEscalationsCritical']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict', 'outputs.AlarmEscalationsInfo']] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict', 'outputs.AlarmEscalationsWarn']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
@@ -1043,6 +1053,8 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[_builtins.int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict', 'outputs.AlarmEscalationsCritical']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
         :param pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict', 'outputs.AlarmEscalationsInfo']] escalations_info: A configuration of critical info. See `escalations_info` below.
         :param pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict', 'outputs.AlarmEscalationsWarn']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
@@ -1134,6 +1146,8 @@ class Alarm(pulumi.CustomResource):
     def end_time(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+
+        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "end_time")
 

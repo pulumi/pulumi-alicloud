@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -143,7 +143,9 @@ type GetStudioApplicationsApplication struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The status of the Application. Valid values: `success`, `release`.
 	Status string `pulumi:"status"`
-	// The topo url of the Application.
+	// (Deprecated) The topo url of the Application.
+	//
+	// Deprecated: Field 'topo_url' has been deprecated and it is no longer returned by the server.
 	TopoUrl string `pulumi:"topoUrl"`
 }
 
@@ -173,7 +175,9 @@ type GetStudioApplicationsApplicationArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The status of the Application. Valid values: `success`, `release`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The topo url of the Application.
+	// (Deprecated) The topo url of the Application.
+	//
+	// Deprecated: Field 'topo_url' has been deprecated and it is no longer returned by the server.
 	TopoUrl pulumi.StringInput `pulumi:"topoUrl"`
 }
 
@@ -263,7 +267,9 @@ func (o GetStudioApplicationsApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStudioApplicationsApplication) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The topo url of the Application.
+// (Deprecated) The topo url of the Application.
+//
+// Deprecated: Field 'topo_url' has been deprecated and it is no longer returned by the server.
 func (o GetStudioApplicationsApplicationOutput) TopoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStudioApplicationsApplication) string { return v.TopoUrl }).(pulumi.StringOutput)
 }

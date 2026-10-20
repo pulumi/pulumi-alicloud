@@ -160,6 +160,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     }
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
+     * _
+     * _## Attributes Reference
+     * 
+     * The following attributes are exported:
      * 
      */
     @Export(name="roleName", refs={String.class}, tree="[0]")
@@ -167,6 +171,10 @@ public class Role extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots &#34;.&#34; and dashes &#34;-&#34;.
+     * _
+     * _## Attributes Reference
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<String> roleName() {

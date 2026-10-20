@@ -22,6 +22,8 @@ class RdsAccountArgs:
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -53,10 +55,13 @@ class RdsAccountArgs:
                * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
                * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
                * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        :param pulumi.Input[_builtins.str] account_password: The password of the account.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
                * The value must be 8 to 32 characters in length.
                * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Valid values:
                * Normal: standard account (default).
                * Super: privileged account.
@@ -67,10 +72,10 @@ class RdsAccountArgs:
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
-        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
@@ -83,6 +88,10 @@ class RdsAccountArgs:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
         if check_policy is not None:
@@ -165,7 +174,7 @@ class RdsAccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the account.
+        The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         * The value must be 8 to 32 characters in length.
         * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         * Special characters include ! @ # $ % ^ & * ( ) _ + - =
@@ -175,6 +184,31 @@ class RdsAccountArgs:
     @account_password.setter
     def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -247,7 +281,7 @@ class RdsAccountArgs:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -285,7 +319,7 @@ class RdsAccountArgs:
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         """
         return pulumi.get(self, "password")
 
@@ -339,6 +373,8 @@ class _RdsAccountState:
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -370,10 +406,13 @@ class _RdsAccountState:
                * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
                * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
                * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        :param pulumi.Input[_builtins.str] account_password: The password of the account.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
                * The value must be 8 to 32 characters in length.
                * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Valid values:
                * Normal: standard account (default).
                * Super: privileged account.
@@ -384,10 +423,10 @@ class _RdsAccountState:
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
-        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
@@ -400,6 +439,10 @@ class _RdsAccountState:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_password_wo is not None:
+            pulumi.set(__self__, "account_password_wo", account_password_wo)
+        if account_password_wo_version is not None:
+            pulumi.set(__self__, "account_password_wo_version", account_password_wo_version)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
         if check_policy is not None:
@@ -482,7 +525,7 @@ class _RdsAccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the account.
+        The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         * The value must be 8 to 32 characters in length.
         * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         * Special characters include ! @ # $ % ^ & * ( ) _ + - =
@@ -492,6 +535,31 @@ class _RdsAccountState:
     @account_password.setter
     def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @account_password_wo.setter
+    def account_password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
+
+    @account_password_wo_version.setter
+    def account_password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "account_password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -564,7 +632,7 @@ class _RdsAccountState:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -602,7 +670,7 @@ class _RdsAccountState:
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         """
         return pulumi.get(self, "password")
 
@@ -659,6 +727,8 @@ class RdsAccount(pulumi.CustomResource):
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -678,6 +748,8 @@ class RdsAccount(pulumi.CustomResource):
         For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
 
         > **NOTE:** Available since v1.120.0.
+
+        > **NOTE:** The `account_password_wo` and `account_password_wo_version` arguments require Terraform v1.11.0 or later.
 
         ## Example Usage
 
@@ -714,7 +786,7 @@ class RdsAccount(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_ranges.min,
             vswitch_id=default_switch.id,
             instance_name=name,
             instance_charge_type="Postpaid",
@@ -756,10 +828,13 @@ class RdsAccount(pulumi.CustomResource):
                * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
                * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
                * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        :param pulumi.Input[_builtins.str] account_password: The password of the account.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
                * The value must be 8 to 32 characters in length.
                * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Valid values:
                * Normal: standard account (default).
                * Super: privileged account.
@@ -770,10 +845,10 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
-        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
@@ -792,6 +867,8 @@ class RdsAccount(pulumi.CustomResource):
         For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
 
         > **NOTE:** Available since v1.120.0.
+
+        > **NOTE:** The `account_password_wo` and `account_password_wo_version` arguments require Terraform v1.11.0 or later.
 
         ## Example Usage
 
@@ -828,7 +905,7 @@ class RdsAccount(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_ranges.min,
             vswitch_id=default_switch.id,
             instance_name=name,
             instance_charge_type="Postpaid",
@@ -870,6 +947,8 @@ class RdsAccount(pulumi.CustomResource):
                  account_description: pulumi.Input[Optional[_builtins.str]] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
                  account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -894,6 +973,8 @@ class RdsAccount(pulumi.CustomResource):
             __props__.__dict__["account_description"] = account_description
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
+            __props__.__dict__["account_password_wo"] = None if account_password_wo is None else pulumi.Output.secret(account_password_wo)
+            __props__.__dict__["account_password_wo_version"] = account_password_wo_version
             __props__.__dict__["account_type"] = account_type
             __props__.__dict__["check_policy"] = check_policy
             __props__.__dict__["db_instance_id"] = db_instance_id
@@ -906,7 +987,7 @@ class RdsAccount(pulumi.CustomResource):
             __props__.__dict__["reset_permission_flag"] = reset_permission_flag
             __props__.__dict__["status"] = status
             __props__.__dict__["type"] = type
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "accountPasswordWo", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RdsAccount, __self__).__init__(
             'alicloud:rds/rdsAccount:RdsAccount',
@@ -921,6 +1002,8 @@ class RdsAccount(pulumi.CustomResource):
             account_description: pulumi.Input[Optional[_builtins.str]] = None,
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
             account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
             db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -956,10 +1039,13 @@ class RdsAccount(pulumi.CustomResource):
                * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
                * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
                * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        :param pulumi.Input[_builtins.str] account_password: The password of the account.
+        :param pulumi.Input[_builtins.str] account_password: The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
                * The value must be 8 to 32 characters in length.
                * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
                * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[_builtins.str] account_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        :param pulumi.Input[_builtins.int] account_password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
         :param pulumi.Input[_builtins.str] account_type: The account type. Valid values:
                * Normal: standard account (default).
                * Super: privileged account.
@@ -970,10 +1056,10 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
-        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
@@ -987,6 +1073,8 @@ class RdsAccount(pulumi.CustomResource):
         __props__.__dict__["account_description"] = account_description
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_password_wo"] = account_password_wo
+        __props__.__dict__["account_password_wo_version"] = account_password_wo_version
         __props__.__dict__["account_type"] = account_type
         __props__.__dict__["check_policy"] = check_policy
         __props__.__dict__["db_instance_id"] = db_instance_id
@@ -1033,14 +1121,31 @@ class RdsAccount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> pulumi.Output[_builtins.str]:
+    def account_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The password of the account.
+        The password of the account. It conflicts with `password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         * The value must be 8 to 32 characters in length.
         * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         * Special characters include ! @ # $ % ^ & * ( ) _ + - =
         """
         return pulumi.get(self, "account_password")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWo")
+    def account_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `account_password_wo_version` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `account_password_wo_version`. It conflicts with `account_password`, `password` and `kms_encrypted_password`, and one of the four password sources must be set.
+        """
+        return pulumi.get(self, "account_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPasswordWoVersion")
+    def account_password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `account_password_wo` changes.
+        """
+        return pulumi.get(self, "account_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="accountType")
@@ -1093,7 +1198,7 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a db account. It conflicts with `account_password`, `password` and `account_password_wo`, and one of the four password sources must be set.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -1117,9 +1222,9 @@ class RdsAccount(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-    def password(self) -> pulumi.Output[_builtins.str]:
+    def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead. It conflicts with `account_password`, `kms_encrypted_password` and `account_password_wo`, and one of the four password sources must be set.
         """
         return pulumi.get(self, "password")
 

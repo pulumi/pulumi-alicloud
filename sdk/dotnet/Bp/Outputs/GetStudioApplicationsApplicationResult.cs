@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Bp.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The topo url of the Application.
+        /// (Deprecated) The topo url of the Application.
         /// </summary>
         public readonly string TopoUrl;
 

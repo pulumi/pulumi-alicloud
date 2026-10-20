@@ -2104,6 +2104,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/fwSwitch",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/fwSwitch:FwSwitch": "FwSwitch"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/instance",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {

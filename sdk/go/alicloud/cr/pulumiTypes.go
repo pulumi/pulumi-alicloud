@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1139,45 +1139,29 @@ func (i RepoDomainListArgs) ToRepoDomainListOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListOutput)
 }
 
-func (i RepoDomainListArgs) ToRepoDomainListPtrOutput() RepoDomainListPtrOutput {
-	return i.ToRepoDomainListPtrOutputWithContext(context.Background())
-}
-
-func (i RepoDomainListArgs) ToRepoDomainListPtrOutputWithContext(ctx context.Context) RepoDomainListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListOutput).ToRepoDomainListPtrOutputWithContext(ctx)
-}
-
-// RepoDomainListPtrInput is an input type that accepts RepoDomainListArgs, RepoDomainListPtr and RepoDomainListPtrOutput values.
-// You can construct a concrete instance of `RepoDomainListPtrInput` via:
+// RepoDomainListArrayInput is an input type that accepts RepoDomainListArray and RepoDomainListArrayOutput values.
+// You can construct a concrete instance of `RepoDomainListArrayInput` via:
 //
-//	        RepoDomainListArgs{...}
-//
-//	or:
-//
-//	        nil
-type RepoDomainListPtrInput interface {
+//	RepoDomainListArray{ RepoDomainListArgs{...} }
+type RepoDomainListArrayInput interface {
 	pulumi.Input
 
-	ToRepoDomainListPtrOutput() RepoDomainListPtrOutput
-	ToRepoDomainListPtrOutputWithContext(context.Context) RepoDomainListPtrOutput
+	ToRepoDomainListArrayOutput() RepoDomainListArrayOutput
+	ToRepoDomainListArrayOutputWithContext(context.Context) RepoDomainListArrayOutput
 }
 
-type repoDomainListPtrType RepoDomainListArgs
+type RepoDomainListArray []RepoDomainListInput
 
-func RepoDomainListPtr(v *RepoDomainListArgs) RepoDomainListPtrInput {
-	return (*repoDomainListPtrType)(v)
+func (RepoDomainListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepoDomainList)(nil)).Elem()
 }
 
-func (*repoDomainListPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepoDomainList)(nil)).Elem()
+func (i RepoDomainListArray) ToRepoDomainListArrayOutput() RepoDomainListArrayOutput {
+	return i.ToRepoDomainListArrayOutputWithContext(context.Background())
 }
 
-func (i *repoDomainListPtrType) ToRepoDomainListPtrOutput() RepoDomainListPtrOutput {
-	return i.ToRepoDomainListPtrOutputWithContext(context.Background())
-}
-
-func (i *repoDomainListPtrType) ToRepoDomainListPtrOutputWithContext(ctx context.Context) RepoDomainListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListPtrOutput)
+func (i RepoDomainListArray) ToRepoDomainListArrayOutputWithContext(ctx context.Context) RepoDomainListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListArrayOutput)
 }
 
 type RepoDomainListOutput struct{ *pulumi.OutputState }
@@ -1192,16 +1176,6 @@ func (o RepoDomainListOutput) ToRepoDomainListOutput() RepoDomainListOutput {
 
 func (o RepoDomainListOutput) ToRepoDomainListOutputWithContext(ctx context.Context) RepoDomainListOutput {
 	return o
-}
-
-func (o RepoDomainListOutput) ToRepoDomainListPtrOutput() RepoDomainListPtrOutput {
-	return o.ToRepoDomainListPtrOutputWithContext(context.Background())
-}
-
-func (o RepoDomainListOutput) ToRepoDomainListPtrOutputWithContext(ctx context.Context) RepoDomainListPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoDomainList) *RepoDomainList {
-		return &v
-	}).(RepoDomainListPtrOutput)
 }
 
 // Domain of internal endpoint, only in some regions.
@@ -1219,58 +1193,24 @@ func (o RepoDomainListOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepoDomainList) *string { return v.Vpc }).(pulumi.StringPtrOutput)
 }
 
-type RepoDomainListPtrOutput struct{ *pulumi.OutputState }
+type RepoDomainListArrayOutput struct{ *pulumi.OutputState }
 
-func (RepoDomainListPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepoDomainList)(nil)).Elem()
+func (RepoDomainListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepoDomainList)(nil)).Elem()
 }
 
-func (o RepoDomainListPtrOutput) ToRepoDomainListPtrOutput() RepoDomainListPtrOutput {
+func (o RepoDomainListArrayOutput) ToRepoDomainListArrayOutput() RepoDomainListArrayOutput {
 	return o
 }
 
-func (o RepoDomainListPtrOutput) ToRepoDomainListPtrOutputWithContext(ctx context.Context) RepoDomainListPtrOutput {
+func (o RepoDomainListArrayOutput) ToRepoDomainListArrayOutputWithContext(ctx context.Context) RepoDomainListArrayOutput {
 	return o
 }
 
-func (o RepoDomainListPtrOutput) Elem() RepoDomainListOutput {
-	return o.ApplyT(func(v *RepoDomainList) RepoDomainList {
-		if v != nil {
-			return *v
-		}
-		var ret RepoDomainList
-		return ret
+func (o RepoDomainListArrayOutput) Index(i pulumi.IntInput) RepoDomainListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepoDomainList {
+		return vs[0].([]RepoDomainList)[vs[1].(int)]
 	}).(RepoDomainListOutput)
-}
-
-// Domain of internal endpoint, only in some regions.
-func (o RepoDomainListPtrOutput) Internal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoDomainList) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Internal
-	}).(pulumi.StringPtrOutput)
-}
-
-// Domain of public endpoint.
-func (o RepoDomainListPtrOutput) Public() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoDomainList) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Public
-	}).(pulumi.StringPtrOutput)
-}
-
-// Domain of vpc endpoint.
-func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoDomainList) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Vpc
-	}).(pulumi.StringPtrOutput)
 }
 
 type StorageDomainRoutingRuleRoute struct {
@@ -3422,8 +3362,8 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 type GetReposRepo struct {
-	// The repository domain list.
-	DomainList GetReposRepoDomainList `pulumi:"domainList"`
+	// A list of repository domain:
+	DomainLists []GetReposRepoDomainList `pulumi:"domainLists"`
 	// Name of container registry namespace.
 	Name string `pulumi:"name"`
 	// Name of container registry namespace where the repositories are located in.
@@ -3448,8 +3388,8 @@ type GetReposRepoInput interface {
 }
 
 type GetReposRepoArgs struct {
-	// The repository domain list.
-	DomainList GetReposRepoDomainListInput `pulumi:"domainList"`
+	// A list of repository domain:
+	DomainLists GetReposRepoDomainListArrayInput `pulumi:"domainLists"`
 	// Name of container registry namespace.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Name of container registry namespace where the repositories are located in.
@@ -3513,9 +3453,9 @@ func (o GetReposRepoOutput) ToGetReposRepoOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The repository domain list.
-func (o GetReposRepoOutput) DomainList() GetReposRepoDomainListOutput {
-	return o.ApplyT(func(v GetReposRepo) GetReposRepoDomainList { return v.DomainList }).(GetReposRepoDomainListOutput)
+// A list of repository domain:
+func (o GetReposRepoOutput) DomainLists() GetReposRepoDomainListArrayOutput {
+	return o.ApplyT(func(v GetReposRepo) []GetReposRepoDomainList { return v.DomainLists }).(GetReposRepoDomainListArrayOutput)
 }
 
 // Name of container registry namespace.
@@ -3604,6 +3544,31 @@ func (i GetReposRepoDomainListArgs) ToGetReposRepoDomainListOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoDomainListOutput)
 }
 
+// GetReposRepoDomainListArrayInput is an input type that accepts GetReposRepoDomainListArray and GetReposRepoDomainListArrayOutput values.
+// You can construct a concrete instance of `GetReposRepoDomainListArrayInput` via:
+//
+//	GetReposRepoDomainListArray{ GetReposRepoDomainListArgs{...} }
+type GetReposRepoDomainListArrayInput interface {
+	pulumi.Input
+
+	ToGetReposRepoDomainListArrayOutput() GetReposRepoDomainListArrayOutput
+	ToGetReposRepoDomainListArrayOutputWithContext(context.Context) GetReposRepoDomainListArrayOutput
+}
+
+type GetReposRepoDomainListArray []GetReposRepoDomainListInput
+
+func (GetReposRepoDomainListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReposRepoDomainList)(nil)).Elem()
+}
+
+func (i GetReposRepoDomainListArray) ToGetReposRepoDomainListArrayOutput() GetReposRepoDomainListArrayOutput {
+	return i.ToGetReposRepoDomainListArrayOutputWithContext(context.Background())
+}
+
+func (i GetReposRepoDomainListArray) ToGetReposRepoDomainListArrayOutputWithContext(ctx context.Context) GetReposRepoDomainListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoDomainListArrayOutput)
+}
+
 type GetReposRepoDomainListOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoDomainListOutput) ElementType() reflect.Type {
@@ -3631,6 +3596,26 @@ func (o GetReposRepoDomainListOutput) Public() pulumi.StringOutput {
 // Domain of vpc endpoint.
 func (o GetReposRepoDomainListOutput) Vpc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReposRepoDomainList) string { return v.Vpc }).(pulumi.StringOutput)
+}
+
+type GetReposRepoDomainListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReposRepoDomainListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReposRepoDomainList)(nil)).Elem()
+}
+
+func (o GetReposRepoDomainListArrayOutput) ToGetReposRepoDomainListArrayOutput() GetReposRepoDomainListArrayOutput {
+	return o
+}
+
+func (o GetReposRepoDomainListArrayOutput) ToGetReposRepoDomainListArrayOutputWithContext(ctx context.Context) GetReposRepoDomainListArrayOutput {
+	return o
+}
+
+func (o GetReposRepoDomainListArrayOutput) Index(i pulumi.IntInput) GetReposRepoDomainListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReposRepoDomainList {
+		return vs[0].([]GetReposRepoDomainList)[vs[1].(int)]
+	}).(GetReposRepoDomainListOutput)
 }
 
 type GetReposRepoTag struct {
@@ -3972,7 +3957,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomainInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListInput)(nil)).Elem(), RepoDomainListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListArrayInput)(nil)).Elem(), RepoDomainListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteArrayInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactLifecycleRulesRuleInput)(nil)).Elem(), GetArtifactLifecycleRulesRuleArgs{})
@@ -4008,6 +3993,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoInput)(nil)).Elem(), GetReposRepoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoArrayInput)(nil)).Elem(), GetReposRepoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoDomainListInput)(nil)).Elem(), GetReposRepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoDomainListArrayInput)(nil)).Elem(), GetReposRepoDomainListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagInput)(nil)).Elem(), GetReposRepoTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagArrayInput)(nil)).Elem(), GetReposRepoTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcInput)(nil)).Elem(), GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs{})
@@ -4033,7 +4019,7 @@ func init() {
 	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointDomainOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput{})
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
-	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
+	pulumi.RegisterOutputType(RepoDomainListArrayOutput{})
 	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteOutput{})
 	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetArtifactLifecycleRulesRuleOutput{})
@@ -4069,6 +4055,7 @@ func init() {
 	pulumi.RegisterOutputType(GetReposRepoOutput{})
 	pulumi.RegisterOutputType(GetReposRepoArrayOutput{})
 	pulumi.RegisterOutputType(GetReposRepoDomainListOutput{})
+	pulumi.RegisterOutputType(GetReposRepoDomainListArrayOutput{})
 	pulumi.RegisterOutputType(GetReposRepoTagOutput{})
 	pulumi.RegisterOutputType(GetReposRepoTagArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput{})

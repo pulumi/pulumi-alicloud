@@ -215,10 +215,6 @@ class MasterSlaveServerGroupServerArgsDict(TypedDict):
     """
     A list backend server ID (ECS instance ID).
     """
-    is_backup: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    """
-    Determine if the server is executing. Valid value 0, 1.
-    """
     server_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The server type of the backend server. Valid value Master, Slave.
@@ -237,22 +233,18 @@ class MasterSlaveServerGroupServerArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
                  server_id: pulumi.Input[_builtins.str],
-                 is_backup: pulumi.Input[Optional[_builtins.int]] = None,
                  server_type: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port used by the backend server. Valid value range: [1-65535].
         :param pulumi.Input[_builtins.str] server_id: A list backend server ID (ECS instance ID).
-        :param pulumi.Input[_builtins.int] is_backup: Determine if the server is executing. Valid value 0, 1.
         :param pulumi.Input[_builtins.str] server_type: The server type of the backend server. Valid value Master, Slave.
         :param pulumi.Input[_builtins.str] type: Type of the backend server. Valid value ecs, eni. Default to eni.
         :param pulumi.Input[_builtins.int] weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_id", server_id)
-        if is_backup is not None:
-            pulumi.set(__self__, "is_backup", is_backup)
         if server_type is not None:
             pulumi.set(__self__, "server_type", server_type)
         if type is not None:
@@ -283,18 +275,6 @@ class MasterSlaveServerGroupServerArgs:
     @server_id.setter
     def server_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "server_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isBackup")
-    def is_backup(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        Determine if the server is executing. Valid value 0, 1.
-        """
-        return pulumi.get(self, "is_backup")
-
-    @is_backup.setter
-    def is_backup(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "is_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")

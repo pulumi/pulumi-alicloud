@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -36,6 +37,28 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> accountPassword() {
         return Optional.ofNullable(this.accountPassword);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Import(name="accountPasswordWo")
+    private @Nullable Output<String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Optional<Output<String>> accountPasswordWo() {
+        return Optional.ofNullable(this.accountPasswordWo);
+    }
+
+    @Import(name="accountPasswordWoVersion")
+    private @Nullable Output<Integer> accountPasswordWoVersion;
+
+    public Optional<Output<Integer>> accountPasswordWoVersion() {
+        return Optional.ofNullable(this.accountPasswordWoVersion);
     }
 
     @Import(name="accountType")
@@ -232,6 +255,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.accountDescription = $.accountDescription;
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
+        this.accountPasswordWo = $.accountPasswordWo;
+        this.accountPasswordWoVersion = $.accountPasswordWoVersion;
         this.accountType = $.accountType;
         this.checkPolicy = $.checkPolicy;
         this.dbInstanceId = $.dbInstanceId;
@@ -289,6 +314,36 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         public Builder accountPassword(String accountPassword) {
             return accountPassword(Output.of(accountPassword));
+        }
+
+        /**
+         * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWo(@Nullable Output<String> accountPasswordWo) {
+            $.accountPasswordWo = accountPasswordWo;
+            return this;
+        }
+
+        /**
+         * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWo(String accountPasswordWo) {
+            return accountPasswordWo(Output.of(accountPasswordWo));
+        }
+
+        public Builder accountPasswordWoVersion(@Nullable Output<Integer> accountPasswordWoVersion) {
+            $.accountPasswordWoVersion = accountPasswordWoVersion;
+            return this;
+        }
+
+        public Builder accountPasswordWoVersion(Integer accountPasswordWoVersion) {
+            return accountPasswordWoVersion(Output.of(accountPasswordWoVersion));
         }
 
         public Builder accountType(@Nullable Output<String> accountType) {

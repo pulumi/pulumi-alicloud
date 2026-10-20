@@ -392,9 +392,6 @@ namespace Pulumi.AliCloud.Ram
         /// The type of the policy.
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// (Removed since v1.262.1) Field `UserName` has been removed from provider version 1.262.1.
-        /// </summary>
         public readonly string? UserName;
 
         [OutputConstructor]

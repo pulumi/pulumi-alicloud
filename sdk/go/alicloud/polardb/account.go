@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.67.0.
 //
+// > **NOTE:** The `accountPasswordWo` and `accountPasswordWoVersion` arguments require Terraform v1.11.0 or later.
+//
 // > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
 //
 // ## Example Usage
@@ -29,8 +31,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/polardb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -112,20 +114,25 @@ type Account struct {
 	// - The length is 2 to 16 characters.
 	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
 	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// - Be 8 to 32 characters in length.
 	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
 	// The time when the password for the database account expires.
 	AccountPasswordValidTime pulumi.StringOutput `pulumi:"accountPasswordValidTime"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+	AccountPasswordWo pulumi.StringPtrOutput `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrOutput `pulumi:"accountPasswordWoVersion"`
 	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// The cluster ID.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
 	// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
 	DynamodbAuthPassword pulumi.StringOutput `pulumi:"dynamodbAuthPassword"`
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
@@ -149,8 +156,12 @@ func NewAccount(ctx *pulumi.Context,
 	if args.AccountPassword != nil {
 		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
 	}
+	if args.AccountPasswordWo != nil {
+		args.AccountPasswordWo = pulumi.ToSecret(args.AccountPasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountPassword",
+		"accountPasswordWo",
 		"dynamodbAuthPassword",
 	})
 	opts = append(opts, secrets)
@@ -189,20 +200,25 @@ type accountState struct {
 	// - The length is 2 to 16 characters.
 	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName *string `pulumi:"accountName"`
-	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
 	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// - Be 8 to 32 characters in length.
 	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The time when the password for the database account expires.
 	AccountPasswordValidTime *string `pulumi:"accountPasswordValidTime"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
 	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType *string `pulumi:"accountType"`
 	// The cluster ID.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
 	DynamodbAuthPassword *string `pulumi:"dynamodbAuthPassword"`
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
@@ -223,20 +239,25 @@ type AccountState struct {
 	// - The length is 2 to 16 characters.
 	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName pulumi.StringPtrInput
-	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
 	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// - Be 8 to 32 characters in length.
 	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword pulumi.StringPtrInput
 	// The time when the password for the database account expires.
 	AccountPasswordValidTime pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrInput
 	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType pulumi.StringPtrInput
 	// The cluster ID.
 	DbClusterId pulumi.StringPtrInput
 	// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
 	DynamodbAuthPassword pulumi.StringPtrInput
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
@@ -261,18 +282,23 @@ type accountArgs struct {
 	// - The length is 2 to 16 characters.
 	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName string `pulumi:"accountName"`
-	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
 	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// - Be 8 to 32 characters in length.
 	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The time when the password for the database account expires.
 	AccountPasswordValidTime *string `pulumi:"accountPasswordValidTime"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+	AccountPasswordWo *string `pulumi:"accountPasswordWo"`
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion *int `pulumi:"accountPasswordWoVersion"`
 	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType *string `pulumi:"accountType"`
 	// The cluster ID.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
@@ -292,18 +318,23 @@ type AccountArgs struct {
 	// - The length is 2 to 16 characters.
 	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName pulumi.StringInput
-	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
 	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	// - Be 8 to 32 characters in length.
 	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword pulumi.StringPtrInput
 	// The time when the password for the database account expires.
 	AccountPasswordValidTime pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+	AccountPasswordWo pulumi.StringPtrInput
+	// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+	AccountPasswordWoVersion pulumi.IntPtrInput
 	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType pulumi.StringPtrInput
 	// The cluster ID.
 	DbClusterId pulumi.StringInput
-	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
@@ -417,7 +448,7 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+// The account password. It conflicts with `kmsEncryptedPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set. Must  meet the following requirements:
 // - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 // - Be 8 to 32 characters in length.
 // - Special characters include !@#$%^&*()_+-=.
@@ -428,6 +459,17 @@ func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
 // The time when the password for the database account expires.
 func (o AccountOutput) AccountPasswordValidTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPasswordValidTime }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `accountPasswordWoVersion`. It conflicts with `accountPassword` and `kmsEncryptedPassword`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
+func (o AccountOutput) AccountPasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+func (o AccountOutput) AccountPasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.IntPtrOutput { return v.AccountPasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
@@ -445,7 +487,7 @@ func (o AccountOutput) DynamodbAuthPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DynamodbAuthPassword }).(pulumi.StringOutput)
 }
 
-// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
+// An KMS encrypts password used to a db account. It conflicts with `accountPassword` and `accountPasswordWo`, and one of `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo` must be set.
 func (o AccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
 }

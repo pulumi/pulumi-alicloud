@@ -81,6 +81,21 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether to enable replication time control. Default value: false.
+     * 
+     */
+    @Import(name="enableRtc")
+    private @Nullable Output<Boolean> enableRtc;
+
+    /**
+     * @return Whether to enable replication time control. Default value: false.
+     * 
+     */
+    public Optional<Output<Boolean>> enableRtc() {
+        return Optional.ofNullable(this.enableRtc);
+    }
+
+    /**
      * . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
      * 
      * @deprecated
@@ -293,6 +308,7 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
         this.destinationRegionId = $.destinationRegionId;
         this.destinationZoneId = $.destinationZoneId;
         this.diskReplicaGroupName = $.diskReplicaGroupName;
+        this.enableRtc = $.enableRtc;
         this.groupName = $.groupName;
         this.oneShot = $.oneShot;
         this.pairIds = $.pairIds;
@@ -405,6 +421,27 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder diskReplicaGroupName(String diskReplicaGroupName) {
             return diskReplicaGroupName(Output.of(diskReplicaGroupName));
+        }
+
+        /**
+         * @param enableRtc Whether to enable replication time control. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRtc(@Nullable Output<Boolean> enableRtc) {
+            $.enableRtc = enableRtc;
+            return this;
+        }
+
+        /**
+         * @param enableRtc Whether to enable replication time control. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRtc(Boolean enableRtc) {
+            return enableRtc(Output.of(enableRtc));
         }
 
         /**

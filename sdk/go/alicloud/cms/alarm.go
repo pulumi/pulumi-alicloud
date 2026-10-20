@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -170,6 +170,8 @@ type Alarm struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
+	//
 	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
@@ -260,6 +262,8 @@ type alarmState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
+	//
 	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime *int `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
@@ -311,6 +315,8 @@ type AlarmState struct {
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrInput
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	//
 	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime pulumi.IntPtrInput
@@ -368,6 +374,8 @@ type alarmArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
+	//
 	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime *int `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
@@ -418,6 +426,8 @@ type AlarmArgs struct {
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrInput
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	//
 	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime pulumi.IntPtrInput
@@ -569,6 +579,8 @@ func (o AlarmOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+//
+// > **NOTE:** Each resource supports the creation of one of the following three levels.
 //
 // Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 func (o AlarmOutput) EndTime() pulumi.IntPtrOutput {

@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
     ///     var createDeployment9 = new AliCloud.RealtimeCompute.Deployment("create_Deployment9", new()
     ///     {
     ///         DeploymentName = "tf-example-deployment-sql-56",
-    ///         EngineVersion = "vvr-8.0.10-flink-1.17",
+    ///         EngineVersion = "vvr-8.0.11-flink-1.17",
     ///         ResourceId = defaultVvpInstance.ResourceId,
     ///         ExecutionMode = "STREAMING",
     ///         DeploymentTarget = new AliCloud.RealtimeCompute.Inputs.DeploymentDeploymentTargetArgs

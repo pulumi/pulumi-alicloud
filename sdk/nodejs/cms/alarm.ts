@@ -144,6 +144,8 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
+     * > **NOTE:** Each resource supports the creation of one of the following three levels.
+     *
      * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     declare public readonly endTime: pulumi.Output<number | undefined>;
@@ -312,6 +314,8 @@ export interface AlarmState {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
+     * > **NOTE:** Each resource supports the creation of one of the following three levels.
+     *
      * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     endTime?: pulumi.Input<number | undefined>;
@@ -408,6 +412,8 @@ export interface AlarmArgs {
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     *
+     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      *
      * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */

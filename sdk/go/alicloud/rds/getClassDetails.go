@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/rds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,7 +72,7 @@ type GetClassDetailsArgs struct {
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine string `pulumi:"engine"`
 	// Database version. Value options:
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]
@@ -140,7 +140,7 @@ type GetClassDetailsOutputArgs struct {
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Database version. Value options:
-	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - MySQL: [ 5.5、5.6、5.7、8.0、8.4 ]
 	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
 	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
 	// - MariaDB: [ 10.3 ]

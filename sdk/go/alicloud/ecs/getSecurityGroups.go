@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +20,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,7 +80,7 @@ type GetSecurityGroupsArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
@@ -151,7 +151,7 @@ type GetSecurityGroupsOutputArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
 	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//

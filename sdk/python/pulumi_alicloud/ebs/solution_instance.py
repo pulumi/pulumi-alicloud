@@ -25,7 +25,8 @@ class SolutionInstanceArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SolutionInstance resource.
 
@@ -34,6 +35,7 @@ class SolutionInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]] parameters: Solution Instance Creation Parameters. See `parameters` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] solution_instance_name: Solution Instance Name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "solution_id", solution_id)
         if description is not None:
@@ -44,6 +46,8 @@ class SolutionInstanceArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if solution_instance_name is not None:
             pulumi.set(__self__, "solution_instance_name", solution_instance_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="solutionId")
@@ -105,6 +109,18 @@ class SolutionInstanceArgs:
     def solution_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "solution_instance_name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _SolutionInstanceState:
@@ -115,7 +131,8 @@ class _SolutionInstanceState:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 status: pulumi.Input[Optional[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SolutionInstance resources.
 
@@ -126,6 +143,7 @@ class _SolutionInstanceState:
         :param pulumi.Input[_builtins.str] solution_id: Solution ID.
         :param pulumi.Input[_builtins.str] solution_instance_name: Solution Instance Name.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -141,6 +159,8 @@ class _SolutionInstanceState:
             pulumi.set(__self__, "solution_instance_name", solution_instance_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -226,6 +246,18 @@ class _SolutionInstanceState:
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.type_token("alicloud:ebs/solutionInstance:SolutionInstance")
 class SolutionInstance(pulumi.CustomResource):
@@ -238,6 +270,7 @@ class SolutionInstance(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a EBS Solution Instance resource.
@@ -331,7 +364,11 @@ class SolutionInstance(pulumi.CustomResource):
                     "parameter_key": "mysqlPassword",
                     "parameter_value": "Ebs12345",
                 },
-            ])
+            ],
+            tags={
+                "Created": "Terraform",
+                "For": "Example",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -352,6 +389,7 @@ class SolutionInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] solution_id: Solution ID.
         :param pulumi.Input[_builtins.str] solution_instance_name: Solution Instance Name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -451,7 +489,11 @@ class SolutionInstance(pulumi.CustomResource):
                     "parameter_key": "mysqlPassword",
                     "parameter_value": "Ebs12345",
                 },
-            ])
+            ],
+            tags={
+                "Created": "Terraform",
+                "For": "Example",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -485,6 +527,7 @@ class SolutionInstance(pulumi.CustomResource):
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -501,6 +544,7 @@ class SolutionInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'solution_id'")
             __props__.__dict__["solution_id"] = solution_id
             __props__.__dict__["solution_instance_name"] = solution_instance_name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(SolutionInstance, __self__).__init__(
@@ -519,7 +563,8 @@ class SolutionInstance(pulumi.CustomResource):
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             solution_id: pulumi.Input[Optional[_builtins.str]] = None,
             solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
-            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SolutionInstance':
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SolutionInstance':
         """
         Get an existing SolutionInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -534,6 +579,7 @@ class SolutionInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] solution_id: Solution ID.
         :param pulumi.Input[_builtins.str] solution_instance_name: Solution Instance Name.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -546,6 +592,7 @@ class SolutionInstance(pulumi.CustomResource):
         __props__.__dict__["solution_id"] = solution_id
         __props__.__dict__["solution_instance_name"] = solution_instance_name
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return SolutionInstance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -603,4 +650,12 @@ class SolutionInstance(pulumi.CustomResource):
         The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

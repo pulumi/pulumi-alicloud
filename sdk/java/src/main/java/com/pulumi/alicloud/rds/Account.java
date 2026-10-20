@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -119,10 +120,30 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
-    private Output<String> accountPassword;
+    private Output</* @Nullable */ String> accountPassword;
 
-    public Output<String> accountPassword() {
-        return this.accountPassword;
+    public Output<Optional<String>> accountPassword() {
+        return Codegen.optional(this.accountPassword);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Export(name="accountPasswordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Output<Optional<String>> accountPasswordWo() {
+        return Codegen.optional(this.accountPasswordWo);
+    }
+    @Export(name="accountPasswordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> accountPasswordWoVersion;
+
+    public Output<Optional<Integer>> accountPasswordWoVersion() {
+        return Codegen.optional(this.accountPasswordWoVersion);
     }
     @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output<String> accountType;
@@ -233,14 +254,14 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output<String> password;
+    private Output</* @Nullable */ String> password;
 
     /**
      * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
     @Export(name="resetPermissionFlag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> resetPermissionFlag;
@@ -322,6 +343,7 @@ public class Account extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "accountPassword",
+                "accountPasswordWo",
                 "password"
             ))
             .build();

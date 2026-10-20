@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cr"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -80,8 +80,8 @@ type Repo struct {
 
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail pulumi.StringPtrOutput `pulumi:"detail"`
-	// (Optional) The repository domain list.
-	DomainList RepoDomainListOutput `pulumi:"domainList"`
+	// (Optional) A list of repository domain.
+	DomainLists RepoDomainListArrayOutput `pulumi:"domainLists"`
 	// Name of container registry repository.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of container registry namespace where repository is located.
@@ -133,8 +133,8 @@ func GetRepo(ctx *pulumi.Context,
 type repoState struct {
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail *string `pulumi:"detail"`
-	// (Optional) The repository domain list.
-	DomainList *RepoDomainList `pulumi:"domainList"`
+	// (Optional) A list of repository domain.
+	DomainLists []RepoDomainList `pulumi:"domainLists"`
 	// Name of container registry repository.
 	Name *string `pulumi:"name"`
 	// Name of container registry namespace where repository is located.
@@ -148,8 +148,8 @@ type repoState struct {
 type RepoState struct {
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail pulumi.StringPtrInput
-	// (Optional) The repository domain list.
-	DomainList RepoDomainListPtrInput
+	// (Optional) A list of repository domain.
+	DomainLists RepoDomainListArrayInput
 	// Name of container registry repository.
 	Name pulumi.StringPtrInput
 	// Name of container registry namespace where repository is located.
@@ -283,9 +283,9 @@ func (o RepoOutput) Detail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringPtrOutput { return v.Detail }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) The repository domain list.
-func (o RepoOutput) DomainList() RepoDomainListOutput {
-	return o.ApplyT(func(v *Repo) RepoDomainListOutput { return v.DomainList }).(RepoDomainListOutput)
+// (Optional) A list of repository domain.
+func (o RepoOutput) DomainLists() RepoDomainListArrayOutput {
+	return o.ApplyT(func(v *Repo) RepoDomainListArrayOutput { return v.DomainLists }).(RepoDomainListArrayOutput)
 }
 
 // Name of container registry repository.

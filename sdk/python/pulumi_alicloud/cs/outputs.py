@@ -18,7 +18,7 @@ from . import outputs
 __all__ = [
     'EdgeKubernetesAddon',
     'EdgeKubernetesCertificateAuthority',
-    'EdgeKubernetesConnections',
+    'EdgeKubernetesConnection',
     'EdgeKubernetesLogConfig',
     'EdgeKubernetesRuntime',
     'EdgeKubernetesWorkerDataDisk',
@@ -26,7 +26,7 @@ __all__ = [
     'KubernetesAddon',
     'KubernetesAutoscalerNodepool',
     'KubernetesCertificateAuthority',
-    'KubernetesConnections',
+    'KubernetesConnection',
     'KubernetesDeleteOption',
     'KubernetesMasterNode',
     'KubernetesPermissionPermission',
@@ -35,7 +35,7 @@ __all__ = [
     'ManagedKubernetesAuditLogConfig',
     'ManagedKubernetesAutoMode',
     'ManagedKubernetesCertificateAuthority',
-    'ManagedKubernetesConnections',
+    'ManagedKubernetesConnection',
     'ManagedKubernetesControlPlaneEndpointsConfig',
     'ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig',
     'ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig',
@@ -80,11 +80,11 @@ __all__ = [
     'GetClustersClusterOperationPolicyResult',
     'GetClustersClusterOperationPolicyClusterAutoUpgradeResult',
     'GetEdgeKubernetesClustersClusterResult',
-    'GetEdgeKubernetesClustersClusterConnectionsResult',
+    'GetEdgeKubernetesClustersClusterConnectionResult',
     'GetEdgeKubernetesClustersClusterWorkerNodeResult',
     'GetKubernetesAddonsAddonResult',
     'GetKubernetesClustersClusterResult',
-    'GetKubernetesClustersClusterConnectionsResult',
+    'GetKubernetesClustersClusterConnectionResult',
     'GetKubernetesClustersClusterLogConfigResult',
     'GetKubernetesClustersClusterMasterNodeResult',
     'GetKubernetesClustersClusterWorkerNodeResult',
@@ -107,8 +107,7 @@ __all__ = [
     'GetKubernetesVersionMetadataResult',
     'GetKubernetesVersionMetadataRuntimeResult',
     'GetManagedKubernetesClustersClusterResult',
-    'GetManagedKubernetesClustersClusterConnectionsResult',
-    'GetManagedKubernetesClustersClusterLogConfigResult',
+    'GetManagedKubernetesClustersClusterConnectionResult',
     'GetManagedKubernetesClustersClusterRrsaConfigResult',
     'GetManagedKubernetesClustersClusterWorkerNodeResult',
     'GetRegistryEnterpriseInstancesInstanceResult',
@@ -117,7 +116,7 @@ __all__ = [
     'GetRegistryEnterpriseReposRepoTagResult',
     'GetRegistryEnterpriseSyncRulesRuleResult',
     'GetServerlessKubernetesClustersClusterResult',
-    'GetServerlessKubernetesClustersClusterConnectionsResult',
+    'GetServerlessKubernetesClustersClusterConnectionResult',
 ]
 
 @pulumi.output_type
@@ -266,7 +265,7 @@ class EdgeKubernetesCertificateAuthority(dict):
 
 
 @pulumi.output_type
-class EdgeKubernetesConnections(dict):
+class EdgeKubernetesConnection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -280,14 +279,14 @@ class EdgeKubernetesConnections(dict):
             suggest = "service_domain"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EdgeKubernetesConnections. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in EdgeKubernetesConnection. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        EdgeKubernetesConnections.__key_warning(key)
+        EdgeKubernetesConnection.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        EdgeKubernetesConnections.__key_warning(key)
+        EdgeKubernetesConnection.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -809,7 +808,7 @@ class KubernetesCertificateAuthority(dict):
 
 
 @pulumi.output_type
-class KubernetesConnections(dict):
+class KubernetesConnection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -823,14 +822,14 @@ class KubernetesConnections(dict):
             suggest = "service_domain"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnections. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnection. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        KubernetesConnections.__key_warning(key)
+        KubernetesConnection.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        KubernetesConnections.__key_warning(key)
+        KubernetesConnection.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1763,7 +1762,7 @@ class ManagedKubernetesCertificateAuthority(dict):
 
 
 @pulumi.output_type
-class ManagedKubernetesConnections(dict):
+class ManagedKubernetesConnection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1777,14 +1776,14 @@ class ManagedKubernetesConnections(dict):
             suggest = "service_domain"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesConnections. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesConnection. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ManagedKubernetesConnections.__key_warning(key)
+        ManagedKubernetesConnection.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ManagedKubernetesConnections.__key_warning(key)
+        ManagedKubernetesConnection.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -5442,7 +5441,7 @@ class GetClustersClusterOperationPolicyClusterAutoUpgradeResult(dict):
 class GetEdgeKubernetesClustersClusterResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str,
-                 connections: 'outputs.GetEdgeKubernetesClustersClusterConnectionsResult',
+                 connections: Sequence['outputs.GetEdgeKubernetesClustersClusterConnectionResult'],
                  id: _builtins.str,
                  name: _builtins.str,
                  nat_gateway_id: _builtins.str,
@@ -5451,7 +5450,7 @@ class GetEdgeKubernetesClustersClusterResult(dict):
                  worker_nodes: Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult']):
         """
         :param _builtins.str availability_zone: The ID of availability zone.
-        :param 'GetEdgeKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        :param Sequence['GetEdgeKubernetesClustersClusterConnectionArgs'] connections: A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         :param _builtins.str id: ID of the node.
         :param _builtins.str name: Node name.
         :param _builtins.str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
@@ -5478,9 +5477,9 @@ class GetEdgeKubernetesClustersClusterResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> 'outputs.GetEdgeKubernetesClustersClusterConnectionsResult':
+    def connections(self) -> Sequence['outputs.GetEdgeKubernetesClustersClusterConnectionResult']:
         """
-        Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         """
         return pulumi.get(self, "connections")
 
@@ -5534,7 +5533,7 @@ class GetEdgeKubernetesClustersClusterResult(dict):
 
 
 @pulumi.output_type
-class GetEdgeKubernetesClustersClusterConnectionsResult(dict):
+class GetEdgeKubernetesClustersClusterConnectionResult(dict):
     def __init__(__self__, *,
                  api_server_internet: _builtins.str,
                  api_server_intranet: _builtins.str):
@@ -5680,7 +5679,7 @@ class GetKubernetesClustersClusterResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str,
                  cluster_network_type: _builtins.str,
-                 connections: 'outputs.GetKubernetesClustersClusterConnectionsResult',
+                 connections: Sequence['outputs.GetKubernetesClustersClusterConnectionResult'],
                  id: _builtins.str,
                  image_id: _builtins.str,
                  key_name: _builtins.str,
@@ -5718,7 +5717,7 @@ class GetKubernetesClustersClusterResult(dict):
         """
         :param _builtins.str availability_zone: The ID of availability zone.
         :param _builtins.str cluster_network_type: The cluster network type.
-        :param 'GetKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information.
+        :param Sequence['GetKubernetesClustersClusterConnectionArgs'] connections: A list of kubernetes cluster connection information.
         :param _builtins.str id: ID of the node.
         :param _builtins.str image_id: The ID of node image.
         :param _builtins.str key_name: The keypair of ssh login cluster node, you have to create it first.
@@ -5810,9 +5809,9 @@ class GetKubernetesClustersClusterResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> 'outputs.GetKubernetesClustersClusterConnectionsResult':
+    def connections(self) -> Sequence['outputs.GetKubernetesClustersClusterConnectionResult']:
         """
-        Map of kubernetes cluster connection information.
+        A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -6090,7 +6089,7 @@ class GetKubernetesClustersClusterResult(dict):
 
 
 @pulumi.output_type
-class GetKubernetesClustersClusterConnectionsResult(dict):
+class GetKubernetesClustersClusterConnectionResult(dict):
     def __init__(__self__, *,
                  api_server_internet: _builtins.str,
                  api_server_intranet: _builtins.str,
@@ -8073,79 +8072,37 @@ class GetKubernetesVersionMetadataRuntimeResult(dict):
 class GetManagedKubernetesClustersClusterResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str,
-                 cluster_network_type: _builtins.str,
-                 connections: 'outputs.GetManagedKubernetesClustersClusterConnectionsResult',
+                 connections: Sequence['outputs.GetManagedKubernetesClustersClusterConnectionResult'],
                  id: _builtins.str,
-                 image_id: _builtins.str,
-                 key_name: _builtins.str,
-                 log_configs: Sequence['outputs.GetManagedKubernetesClustersClusterLogConfigResult'],
                  name: _builtins.str,
                  nat_gateway_id: _builtins.str,
-                 pod_cidr: _builtins.str,
                  rrsa_config: 'outputs.GetManagedKubernetesClustersClusterRrsaConfigResult',
                  security_group_id: _builtins.str,
-                 service_cidr: _builtins.str,
-                 slb_internet_enabled: _builtins.bool,
                  state: _builtins.str,
                  vpc_id: _builtins.str,
-                 vswitch_ids: Sequence[_builtins.str],
-                 worker_auto_renew: _builtins.bool,
-                 worker_auto_renew_period: _builtins.int,
-                 worker_data_disk_category: _builtins.str,
-                 worker_data_disk_size: _builtins.int,
-                 worker_disk_category: _builtins.str,
-                 worker_disk_size: _builtins.int,
-                 worker_instance_charge_type: _builtins.str,
-                 worker_instance_types: Sequence[_builtins.str],
-                 worker_nodes: Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult'],
-                 worker_numbers: Sequence[_builtins.int],
-                 worker_period: _builtins.int,
-                 worker_period_unit: _builtins.str):
+                 worker_nodes: Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']):
         """
         :param _builtins.str availability_zone: The ID of availability zone.
-        :param 'GetManagedKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information.
+        :param Sequence['GetManagedKubernetesClustersClusterConnectionArgs'] connections: A list of kubernetes cluster connection information.
         :param _builtins.str id: ID of the node.
-        :param _builtins.str key_name: The keypair of ssh login cluster node, you have to create it first.
-        :param Sequence['GetManagedKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
         :param _builtins.str name: Node name.
         :param _builtins.str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param 'GetManagedKubernetesClustersClusterRrsaConfigArgs' rrsa_config: (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
         :param _builtins.str security_group_id: The ID of security group where the current cluster worker node is located.
         :param _builtins.str state: (Available since v1.245.0) The state of cluster.
         :param _builtins.str vpc_id: The ID of VPC where the current cluster is located.
-        :param Sequence[_builtins.str] vswitch_ids: The ID of VSwitches where the current cluster is located.
         :param Sequence['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes.
-        :param Sequence[_builtins.int] worker_numbers: The ECS instance node number in the current container cluster.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "cluster_network_type", cluster_network_type)
         pulumi.set(__self__, "connections", connections)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "log_configs", log_configs)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "pod_cidr", pod_cidr)
         pulumi.set(__self__, "rrsa_config", rrsa_config)
         pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "service_cidr", service_cidr)
-        pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
-        pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
-        pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
-        pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
-        pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
-        pulumi.set(__self__, "worker_disk_category", worker_disk_category)
-        pulumi.set(__self__, "worker_disk_size", worker_disk_size)
-        pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
-        pulumi.set(__self__, "worker_instance_types", worker_instance_types)
         pulumi.set(__self__, "worker_nodes", worker_nodes)
-        pulumi.set(__self__, "worker_numbers", worker_numbers)
-        pulumi.set(__self__, "worker_period", worker_period)
-        pulumi.set(__self__, "worker_period_unit", worker_period_unit)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -8156,15 +8113,10 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
-    @pulumi.getter(name="clusterNetworkType")
-    def cluster_network_type(self) -> _builtins.str:
-        return pulumi.get(self, "cluster_network_type")
-
-    @_builtins.property
     @pulumi.getter
-    def connections(self) -> 'outputs.GetManagedKubernetesClustersClusterConnectionsResult':
+    def connections(self) -> Sequence['outputs.GetManagedKubernetesClustersClusterConnectionResult']:
         """
-        Map of kubernetes cluster connection information.
+        A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -8175,27 +8127,6 @@ class GetManagedKubernetesClustersClusterResult(dict):
         ID of the node.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="imageId")
-    def image_id(self) -> _builtins.str:
-        return pulumi.get(self, "image_id")
-
-    @_builtins.property
-    @pulumi.getter(name="keyName")
-    def key_name(self) -> _builtins.str:
-        """
-        The keypair of ssh login cluster node, you have to create it first.
-        """
-        return pulumi.get(self, "key_name")
-
-    @_builtins.property
-    @pulumi.getter(name="logConfigs")
-    def log_configs(self) -> Sequence['outputs.GetManagedKubernetesClustersClusterLogConfigResult']:
-        """
-        A list of one element containing information about the associated log store. It contains the following attributes:
-        """
-        return pulumi.get(self, "log_configs")
 
     @_builtins.property
     @pulumi.getter
@@ -8214,11 +8145,6 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "nat_gateway_id")
 
     @_builtins.property
-    @pulumi.getter(name="podCidr")
-    def pod_cidr(self) -> _builtins.str:
-        return pulumi.get(self, "pod_cidr")
-
-    @_builtins.property
     @pulumi.getter(name="rrsaConfig")
     def rrsa_config(self) -> 'outputs.GetManagedKubernetesClustersClusterRrsaConfigResult':
         """
@@ -8233,16 +8159,6 @@ class GetManagedKubernetesClustersClusterResult(dict):
         The ID of security group where the current cluster worker node is located.
         """
         return pulumi.get(self, "security_group_id")
-
-    @_builtins.property
-    @pulumi.getter(name="serviceCidr")
-    def service_cidr(self) -> _builtins.str:
-        return pulumi.get(self, "service_cidr")
-
-    @_builtins.property
-    @pulumi.getter(name="slbInternetEnabled")
-    def slb_internet_enabled(self) -> _builtins.bool:
-        return pulumi.get(self, "slb_internet_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -8261,54 +8177,6 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
-    @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Sequence[_builtins.str]:
-        """
-        The ID of VSwitches where the current cluster is located.
-        """
-        return pulumi.get(self, "vswitch_ids")
-
-    @_builtins.property
-    @pulumi.getter(name="workerAutoRenew")
-    def worker_auto_renew(self) -> _builtins.bool:
-        return pulumi.get(self, "worker_auto_renew")
-
-    @_builtins.property
-    @pulumi.getter(name="workerAutoRenewPeriod")
-    def worker_auto_renew_period(self) -> _builtins.int:
-        return pulumi.get(self, "worker_auto_renew_period")
-
-    @_builtins.property
-    @pulumi.getter(name="workerDataDiskCategory")
-    def worker_data_disk_category(self) -> _builtins.str:
-        return pulumi.get(self, "worker_data_disk_category")
-
-    @_builtins.property
-    @pulumi.getter(name="workerDataDiskSize")
-    def worker_data_disk_size(self) -> _builtins.int:
-        return pulumi.get(self, "worker_data_disk_size")
-
-    @_builtins.property
-    @pulumi.getter(name="workerDiskCategory")
-    def worker_disk_category(self) -> _builtins.str:
-        return pulumi.get(self, "worker_disk_category")
-
-    @_builtins.property
-    @pulumi.getter(name="workerDiskSize")
-    def worker_disk_size(self) -> _builtins.int:
-        return pulumi.get(self, "worker_disk_size")
-
-    @_builtins.property
-    @pulumi.getter(name="workerInstanceChargeType")
-    def worker_instance_charge_type(self) -> _builtins.str:
-        return pulumi.get(self, "worker_instance_charge_type")
-
-    @_builtins.property
-    @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> Sequence[_builtins.str]:
-        return pulumi.get(self, "worker_instance_types")
-
-    @_builtins.property
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']:
         """
@@ -8316,27 +8184,9 @@ class GetManagedKubernetesClustersClusterResult(dict):
         """
         return pulumi.get(self, "worker_nodes")
 
-    @_builtins.property
-    @pulumi.getter(name="workerNumbers")
-    def worker_numbers(self) -> Sequence[_builtins.int]:
-        """
-        The ECS instance node number in the current container cluster.
-        """
-        return pulumi.get(self, "worker_numbers")
-
-    @_builtins.property
-    @pulumi.getter(name="workerPeriod")
-    def worker_period(self) -> _builtins.int:
-        return pulumi.get(self, "worker_period")
-
-    @_builtins.property
-    @pulumi.getter(name="workerPeriodUnit")
-    def worker_period_unit(self) -> _builtins.str:
-        return pulumi.get(self, "worker_period_unit")
-
 
 @pulumi.output_type
-class GetManagedKubernetesClustersClusterConnectionsResult(dict):
+class GetManagedKubernetesClustersClusterConnectionResult(dict):
     def __init__(__self__, *,
                  api_server_internet: _builtins.str,
                  api_server_intranet: _builtins.str,
@@ -8384,35 +8234,6 @@ class GetManagedKubernetesClustersClusterConnectionsResult(dict):
         Service Access Domain.
         """
         return pulumi.get(self, "service_domain")
-
-
-@pulumi.output_type
-class GetManagedKubernetesClustersClusterLogConfigResult(dict):
-    def __init__(__self__, *,
-                 project: _builtins.str,
-                 type: _builtins.str):
-        """
-        :param _builtins.str project: Log Service project name.
-        :param _builtins.str type: Type of collecting logs.
-        """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def project(self) -> _builtins.str:
-        """
-        Log Service project name.
-        """
-        return pulumi.get(self, "project")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Type of collecting logs.
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -9072,7 +8893,7 @@ class GetRegistryEnterpriseSyncRulesRuleResult(dict):
 @pulumi.output_type
 class GetServerlessKubernetesClustersClusterResult(dict):
     def __init__(__self__, *,
-                 connections: 'outputs.GetServerlessKubernetesClustersClusterConnectionsResult',
+                 connections: Sequence['outputs.GetServerlessKubernetesClustersClusterConnectionResult'],
                  deletion_protection: _builtins.bool,
                  endpoint_public_access_enabled: _builtins.bool,
                  id: _builtins.str,
@@ -9083,7 +8904,7 @@ class GetServerlessKubernetesClustersClusterResult(dict):
                  vpc_id: _builtins.str,
                  vswitch_id: _builtins.str):
         """
-        :param 'GetServerlessKubernetesClustersClusterConnectionsArgs' connections: Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
+        :param Sequence['GetServerlessKubernetesClustersClusterConnectionArgs'] connections: A list of serverless cluster connection information.
         :param _builtins.bool deletion_protection: Whether the cluster support delete protection.
         :param _builtins.bool endpoint_public_access_enabled: Whether to create internet eip for API Server.
         :param _builtins.str id: The ID of the container cluster.
@@ -9107,9 +8928,9 @@ class GetServerlessKubernetesClustersClusterResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> 'outputs.GetServerlessKubernetesClustersClusterConnectionsResult':
+    def connections(self) -> Sequence['outputs.GetServerlessKubernetesClustersClusterConnectionResult']:
         """
-        Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
+        A list of serverless cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -9187,7 +9008,7 @@ class GetServerlessKubernetesClustersClusterResult(dict):
 
 
 @pulumi.output_type
-class GetServerlessKubernetesClustersClusterConnectionsResult(dict):
+class GetServerlessKubernetesClustersClusterConnectionResult(dict):
     def __init__(__self__, *,
                  api_server_internet: _builtins.str,
                  api_server_intranet: _builtins.str,

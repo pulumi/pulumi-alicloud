@@ -4871,10 +4871,8 @@ class GetInstancesInstanceResult(dict):
                  cluster_type: _builtins.str,
                  create_time: _builtins.str,
                  description: _builtins.str,
-                 entity_quota: _builtins.int,
                  id: _builtins.str,
                  name: _builtins.str,
-                 network: _builtins.str,
                  network_source_acls: Sequence[_builtins.str],
                  network_type_acls: Sequence[_builtins.str],
                  policy: _builtins.str,
@@ -4888,10 +4886,8 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
         :param _builtins.str create_time: The create time of the instance.
         :param _builtins.str description: The description of the instance.
-        :param _builtins.int entity_quota: (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
         :param _builtins.str id: ID of the instance.
         :param _builtins.str name: Instance name.
-        :param _builtins.str network: (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
         :param Sequence[_builtins.str] network_source_acls: (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
         :param Sequence[_builtins.str] network_type_acls: (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
         :param _builtins.str policy: (Available since v1.221.0) instance policy, json string.
@@ -4914,10 +4910,8 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "entity_quota", entity_quota)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_source_acls", network_source_acls)
         pulumi.set(__self__, "network_type_acls", network_type_acls)
         pulumi.set(__self__, "policy", policy)
@@ -4953,14 +4947,6 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "description")
 
     @_builtins.property
-    @pulumi.getter(name="entityQuota")
-    def entity_quota(self) -> _builtins.int:
-        """
-        (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-        """
-        return pulumi.get(self, "entity_quota")
-
-    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -4975,14 +4961,6 @@ class GetInstancesInstanceResult(dict):
         Instance name.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> _builtins.str:
-        """
-        (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-        """
-        return pulumi.get(self, "network")
 
     @_builtins.property
     @pulumi.getter(name="networkSourceAcls")

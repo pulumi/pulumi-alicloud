@@ -133,6 +133,11 @@ export class Certificate extends pulumi.CustomResource {
      */
     declare public readonly key: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    declare public readonly keyWo: pulumi.Output<string | undefined>;
+    declare public readonly keyWoVersion: pulumi.Output<number | undefined>;
+    /**
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
     declare public readonly lang: pulumi.Output<string | undefined>;
@@ -168,6 +173,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["encryptCert"] = state?.encryptCert;
             resourceInputs["encryptPrivateKey"] = state?.encryptPrivateKey;
             resourceInputs["key"] = state?.key;
+            resourceInputs["keyWo"] = state?.keyWo;
+            resourceInputs["keyWoVersion"] = state?.keyWoVersion;
             resourceInputs["lang"] = state?.lang;
             resourceInputs["name"] = state?.name;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
@@ -181,6 +188,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["encryptCert"] = args?.encryptCert;
             resourceInputs["encryptPrivateKey"] = args?.encryptPrivateKey ? pulumi.secret(args.encryptPrivateKey) : undefined;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
+            resourceInputs["keyWo"] = args?.keyWo ? pulumi.secret(args.keyWo) : undefined;
+            resourceInputs["keyWoVersion"] = args?.keyWoVersion;
             resourceInputs["lang"] = args?.lang;
             resourceInputs["name"] = args?.name;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
@@ -189,7 +198,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "signPrivateKey"] };
+        const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "keyWo", "signPrivateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
@@ -210,6 +219,11 @@ export interface CertificateState {
      * Key of the Certificate in which the Certificate will add.
      */
     key?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    keyWo?: pulumi.Input<string | undefined>;
+    keyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
@@ -241,6 +255,11 @@ export interface CertificateArgs {
      * Key of the Certificate in which the Certificate will add.
      */
     key?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    keyWo?: pulumi.Input<string | undefined>;
+    keyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */

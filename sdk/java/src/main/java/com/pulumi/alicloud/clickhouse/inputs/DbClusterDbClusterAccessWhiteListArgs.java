@@ -16,21 +16,6 @@ public final class DbClusterDbClusterAccessWhiteListArgs extends com.pulumi.reso
     public static final DbClusterDbClusterAccessWhiteListArgs Empty = new DbClusterDbClusterAccessWhiteListArgs();
 
     /**
-     * Field `dbClusterIpArrayAttribute` has been removed from provider.
-     * 
-     */
-    @Import(name="dbClusterIpArrayAttribute")
-    private @Nullable Output<String> dbClusterIpArrayAttribute;
-
-    /**
-     * @return Field `dbClusterIpArrayAttribute` has been removed from provider.
-     * 
-     */
-    public Optional<Output<String>> dbClusterIpArrayAttribute() {
-        return Optional.ofNullable(this.dbClusterIpArrayAttribute);
-    }
-
-    /**
      * Whitelist group name.
      * 
      */
@@ -63,7 +48,6 @@ public final class DbClusterDbClusterAccessWhiteListArgs extends com.pulumi.reso
     private DbClusterDbClusterAccessWhiteListArgs() {}
 
     private DbClusterDbClusterAccessWhiteListArgs(DbClusterDbClusterAccessWhiteListArgs $) {
-        this.dbClusterIpArrayAttribute = $.dbClusterIpArrayAttribute;
         this.dbClusterIpArrayName = $.dbClusterIpArrayName;
         this.securityIpList = $.securityIpList;
     }
@@ -84,27 +68,6 @@ public final class DbClusterDbClusterAccessWhiteListArgs extends com.pulumi.reso
 
         public Builder(DbClusterDbClusterAccessWhiteListArgs defaults) {
             $ = new DbClusterDbClusterAccessWhiteListArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param dbClusterIpArrayAttribute Field `dbClusterIpArrayAttribute` has been removed from provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dbClusterIpArrayAttribute(@Nullable Output<String> dbClusterIpArrayAttribute) {
-            $.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
-            return this;
-        }
-
-        /**
-         * @param dbClusterIpArrayAttribute Field `dbClusterIpArrayAttribute` has been removed from provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dbClusterIpArrayAttribute(String dbClusterIpArrayAttribute) {
-            return dbClusterIpArrayAttribute(Output.of(dbClusterIpArrayAttribute));
         }
 
         /**

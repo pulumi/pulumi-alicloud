@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
  *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
- *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRanges().min())
  *             .instanceChargeType("Postpaid")
  *             .instanceName("terraform-example")
  *             .vswitchId(exampleSwitch.id())

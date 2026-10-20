@@ -586,6 +586,7 @@ class GetDiskReplicaGroupsGroupResult(dict):
                  description: _builtins.str,
                  destination_region_id: _builtins.str,
                  destination_zone_id: _builtins.str,
+                 enable_rtc: _builtins.bool,
                  group_name: _builtins.str,
                  id: _builtins.str,
                  last_recover_point: _builtins.str,
@@ -603,8 +604,10 @@ class GetDiskReplicaGroupsGroupResult(dict):
         :param _builtins.str description: The description of the consistent replication group.
         :param _builtins.str destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param _builtins.str destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
+        :param _builtins.bool enable_rtc: Whether to enable replication time control.
         :param _builtins.str group_name: Consistent replication group name.
         :param _builtins.str id: The ID of the Disk Replica Group.
+        :param _builtins.str last_recover_point: The most recent recovery point time of the replication pair-consistent group.
         :param _builtins.str primary_region: The initial source region of the replication group.
         :param _builtins.str primary_zone: The initial source available area of the replication group.
         :param _builtins.str replica_group_id: The ID of the consistent replication group.
@@ -619,6 +622,7 @@ class GetDiskReplicaGroupsGroupResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destination_region_id", destination_region_id)
         pulumi.set(__self__, "destination_zone_id", destination_zone_id)
+        pulumi.set(__self__, "enable_rtc", enable_rtc)
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_recover_point", last_recover_point)
@@ -658,6 +662,14 @@ class GetDiskReplicaGroupsGroupResult(dict):
         return pulumi.get(self, "destination_zone_id")
 
     @_builtins.property
+    @pulumi.getter(name="enableRtc")
+    def enable_rtc(self) -> _builtins.bool:
+        """
+        Whether to enable replication time control.
+        """
+        return pulumi.get(self, "enable_rtc")
+
+    @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
         """
@@ -676,6 +688,9 @@ class GetDiskReplicaGroupsGroupResult(dict):
     @_builtins.property
     @pulumi.getter(name="lastRecoverPoint")
     def last_recover_point(self) -> _builtins.str:
+        """
+        The most recent recovery point time of the replication pair-consistent group.
+        """
         return pulumi.get(self, "last_recover_point")
 
     @_builtins.property

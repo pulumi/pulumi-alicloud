@@ -93,6 +93,10 @@ import * as utilities from "../utilities";
  *             parameterValue: "Ebs12345",
  *         },
  *     ],
+ *     tags: {
+ *         Created: "Terraform",
+ *         For: "Example",
+ *     },
  * });
  * ```
  *
@@ -162,6 +166,10 @@ export class SolutionInstance extends pulumi.CustomResource {
      * The status of the resource.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a SolutionInstance resource with the given unique name, arguments, and options.
@@ -183,6 +191,7 @@ export class SolutionInstance extends pulumi.CustomResource {
             resourceInputs["solutionId"] = state?.solutionId;
             resourceInputs["solutionInstanceName"] = state?.solutionInstanceName;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as SolutionInstanceArgs | undefined;
             if (args?.solutionId === undefined && !opts.urn) {
@@ -193,6 +202,7 @@ export class SolutionInstance extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["solutionId"] = args?.solutionId;
             resourceInputs["solutionInstanceName"] = args?.solutionInstanceName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -233,6 +243,10 @@ export interface SolutionInstanceState {
      * The status of the resource.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -259,4 +273,8 @@ export interface SolutionInstanceArgs {
      * Solution Instance Name.
      */
     solutionInstanceName?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

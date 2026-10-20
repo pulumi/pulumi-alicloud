@@ -246,6 +246,14 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Indicates whether the address is a private endpoint.
      *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
     declare public /*out*/ readonly connectionString: pulumi.Output<string>;
@@ -719,6 +727,14 @@ export interface InstanceState {
     connectionDomain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the address is a private endpoint.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */

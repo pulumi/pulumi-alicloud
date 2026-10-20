@@ -67,6 +67,14 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+               
+               > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+               
+               > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+               
+               > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+               
+               > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
@@ -337,6 +345,14 @@ class ApplicationLoadBalancerArgs:
     def specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+
+        > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+
+        > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+
+        > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+
+        > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         """
         return pulumi.get(self, "specification")
 
@@ -432,6 +448,14 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[_builtins.str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+               
+               > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+               
+               > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+               
+               > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+               
+               > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
@@ -702,6 +726,14 @@ class _ApplicationLoadBalancerState:
     def specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+
+        > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+
+        > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+
+        > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+
+        > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         """
         return pulumi.get(self, "specification")
 
@@ -857,6 +889,14 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+               
+               > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+               
+               > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+               
+               > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+               
+               > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
@@ -1052,6 +1092,14 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[_builtins.str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+               
+               > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+               
+               > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+               
+               > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+               
+               > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
         :param pulumi.Input[_builtins.str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
@@ -1232,6 +1280,14 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     def specification(self) -> pulumi.Output[_builtins.str]:
         """
         Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+
+        > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+
+        > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+
+        > **NOTE:** Currently, the alibaba cloud international account does not support creating a `Subscription` SLB instance.
+
+        > **NOTE:** This parameter `instance_charge_type` is only valid for China sites and only if the `payment_type` value is `PayAsYouGo`.
         """
         return pulumi.get(self, "specification")
 

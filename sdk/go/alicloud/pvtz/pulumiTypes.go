@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
+	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1544,8 +1544,7 @@ type GetZonesZone struct {
 	// The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
 	BindVpcs []GetZonesZoneBindVpc `pulumi:"bindVpcs"`
 	// The time when the zone was created.
-	CreateTimestamp int    `pulumi:"createTimestamp"`
-	CreationTime    string `pulumi:"creationTime"`
+	CreateTimestamp int `pulumi:"createTimestamp"`
 	// The ID of the Private Zone.
 	Id string `pulumi:"id"`
 	// Indicates whether the zone is a reverse lookup zone.
@@ -1561,8 +1560,7 @@ type GetZonesZone struct {
 	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
-	SlaveDns   bool   `pulumi:"slaveDns"`
-	UpdateTime string `pulumi:"updateTime"`
+	SlaveDns bool `pulumi:"slaveDns"`
 	// The time when the DNS record was updated.
 	UpdateTimestamp int `pulumi:"updateTimestamp"`
 	// The ID of the Zone.
@@ -1586,8 +1584,7 @@ type GetZonesZoneArgs struct {
 	// The VPCs associated with the zone. **Note:** `bindVpcs` takes effect only if `enableDetails` is set to `true`.
 	BindVpcs GetZonesZoneBindVpcArrayInput `pulumi:"bindVpcs"`
 	// The time when the zone was created.
-	CreateTimestamp pulumi.IntInput    `pulumi:"createTimestamp"`
-	CreationTime    pulumi.StringInput `pulumi:"creationTime"`
+	CreateTimestamp pulumi.IntInput `pulumi:"createTimestamp"`
 	// The ID of the Private Zone.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether the zone is a reverse lookup zone.
@@ -1603,8 +1600,7 @@ type GetZonesZoneArgs struct {
 	// The ID of the resource group to which the zone belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
-	SlaveDns   pulumi.BoolInput   `pulumi:"slaveDns"`
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	SlaveDns pulumi.BoolInput `pulumi:"slaveDns"`
 	// The time when the DNS record was updated.
 	UpdateTimestamp pulumi.IntInput `pulumi:"updateTimestamp"`
 	// The ID of the Zone.
@@ -1674,10 +1670,6 @@ func (o GetZonesZoneOutput) CreateTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZonesZone) int { return v.CreateTimestamp }).(pulumi.IntOutput)
 }
 
-func (o GetZonesZoneOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZonesZone) string { return v.CreationTime }).(pulumi.StringOutput)
-}
-
 // The ID of the Private Zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
@@ -1716,10 +1708,6 @@ func (o GetZonesZoneOutput) ResourceGroupId() pulumi.StringOutput {
 // Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. **Note:** `slaveDns` takes effect only if `enableDetails` is set to `true`.
 func (o GetZonesZoneOutput) SlaveDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetZonesZone) bool { return v.SlaveDns }).(pulumi.BoolOutput)
-}
-
-func (o GetZonesZoneOutput) UpdateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZonesZone) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // The time when the DNS record was updated.
