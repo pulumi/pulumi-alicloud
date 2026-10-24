@@ -175,6 +175,7 @@ export class Application extends pulumi.CustomResource {
     declare public readonly payType: pulumi.Output<string | undefined>;
     /**
      * The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
@@ -369,6 +370,7 @@ export interface ApplicationState {
     payType?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number | undefined>;
@@ -480,6 +482,7 @@ export interface ApplicationArgs {
     payType?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number | undefined>;

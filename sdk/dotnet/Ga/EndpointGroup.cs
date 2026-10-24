@@ -262,6 +262,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Default value: `Default`. Valid values: `Default`, `Virtual`.
+        /// 
         /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `Virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `Virtual` Endpoint Group, please ensure that the `Default` Endpoint Group has been created.
         /// </summary>
         [Output("endpointGroupType")]
@@ -269,6 +270,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        /// 
         /// &gt; **NOTE:** `EndpointProtocolVersion` is valid only when `EndpointRequestProtocol` is set to `HTTPS`.
         /// </summary>
         [Output("endpointProtocolVersion")]
@@ -276,6 +278,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        /// 
         /// &gt; **NOTE:** `EndpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `EndpointRequestProtocol` can only be set to `HTTP`.
         /// </summary>
         [Output("endpointRequestProtocol")]
@@ -310,6 +313,7 @@ namespace Pulumi.AliCloud.Ga
         /// - `TCP` or `Tcp`: TCP protocol.
         /// - `HTTP` or `Http`: HTTP protocol.
         /// - `HTTPS` or `Https`: HTTPS protocol.
+        /// 
         /// &gt; **NOTE:** From version 1.223.0, `HealthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Output("healthCheckProtocol")]
@@ -329,6 +333,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See `PortOverrides` below.
+        /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Output("portOverrides")]
@@ -436,6 +441,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Default value: `Default`. Valid values: `Default`, `Virtual`.
+        /// 
         /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `Virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `Virtual` Endpoint Group, please ensure that the `Default` Endpoint Group has been created.
         /// </summary>
         [Input("endpointGroupType")]
@@ -443,6 +449,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        /// 
         /// &gt; **NOTE:** `EndpointProtocolVersion` is valid only when `EndpointRequestProtocol` is set to `HTTPS`.
         /// </summary>
         [Input("endpointProtocolVersion")]
@@ -450,6 +457,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        /// 
         /// &gt; **NOTE:** `EndpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `EndpointRequestProtocol` can only be set to `HTTP`.
         /// </summary>
         [Input("endpointRequestProtocol")]
@@ -484,6 +492,7 @@ namespace Pulumi.AliCloud.Ga
         /// - `TCP` or `Tcp`: TCP protocol.
         /// - `HTTP` or `Http`: HTTP protocol.
         /// - `HTTPS` or `Https`: HTTPS protocol.
+        /// 
         /// &gt; **NOTE:** From version 1.223.0, `HealthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("healthCheckProtocol")]
@@ -503,6 +512,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See `PortOverrides` below.
+        /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Input("portOverrides")]
@@ -584,6 +594,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Default value: `Default`. Valid values: `Default`, `Virtual`.
+        /// 
         /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `Virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `Virtual` Endpoint Group, please ensure that the `Default` Endpoint Group has been created.
         /// </summary>
         [Input("endpointGroupType")]
@@ -591,6 +602,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        /// 
         /// &gt; **NOTE:** `EndpointProtocolVersion` is valid only when `EndpointRequestProtocol` is set to `HTTPS`.
         /// </summary>
         [Input("endpointProtocolVersion")]
@@ -598,6 +610,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        /// 
         /// &gt; **NOTE:** `EndpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `EndpointRequestProtocol` can only be set to `HTTP`.
         /// </summary>
         [Input("endpointRequestProtocol")]
@@ -632,6 +645,7 @@ namespace Pulumi.AliCloud.Ga
         /// - `TCP` or `Tcp`: TCP protocol.
         /// - `HTTP` or `Http`: HTTP protocol.
         /// - `HTTPS` or `Https`: HTTPS protocol.
+        /// 
         /// &gt; **NOTE:** From version 1.223.0, `HealthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("healthCheckProtocol")]
@@ -651,6 +665,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See `PortOverrides` below.
+        /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Input("portOverrides")]

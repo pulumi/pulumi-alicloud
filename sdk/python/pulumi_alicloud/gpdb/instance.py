@@ -33,6 +33,7 @@ class InstanceArgs:
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -58,6 +59,7 @@ class InstanceArgs:
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -88,6 +90,11 @@ class InstanceArgs:
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+               - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+               - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+               
+               > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -103,7 +110,8 @@ class InstanceArgs:
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+               
+               > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -128,6 +136,13 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] sql_collector_status: Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+               - `Enabled`: Enables SQL collector.
+               - `Disabled`: Disables SQL collector.
+               
+               > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+               
+               > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
         :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
@@ -173,6 +188,8 @@ class InstanceArgs:
             pulumi.set(__self__, "db_instance_class", db_instance_class)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if encryption_type is not None:
@@ -235,6 +252,8 @@ class InstanceArgs:
             pulumi.set(__self__, "serverless_mode", serverless_mode)
         if serverless_resource is not None:
             pulumi.set(__self__, "serverless_resource", serverless_resource)
+        if sql_collector_status is not None:
+            pulumi.set(__self__, "sql_collector_status", sql_collector_status)
         if src_db_instance_name is not None:
             pulumi.set(__self__, "src_db_instance_name", src_db_instance_name)
         if ssl_enabled is not None:
@@ -406,6 +425,22 @@ class InstanceArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+        - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+        - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+
+        > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -480,7 +515,8 @@ class InstanceArgs:
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+
+        > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -725,6 +761,24 @@ class InstanceArgs:
         pulumi.set(self, "serverless_resource", value)
 
     @_builtins.property
+    @pulumi.getter(name="sqlCollectorStatus")
+    def sql_collector_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+        - `Enabled`: Enables SQL collector.
+        - `Disabled`: Disables SQL collector.
+
+        > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+
+        > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
+        """
+        return pulumi.get(self, "sql_collector_status")
+
+    @sql_collector_status.setter
+    def sql_collector_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sql_collector_status", value)
+
+    @_builtins.property
     @pulumi.getter(name="srcDbInstanceName")
     def src_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -858,6 +912,7 @@ class _InstanceState:
                  db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
@@ -886,6 +941,7 @@ class _InstanceState:
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -915,6 +971,11 @@ class _InstanceState:
                
                > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+               - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+               - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+               
+               > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -932,7 +993,8 @@ class _InstanceState:
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+               
+               > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -958,6 +1020,13 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] sql_collector_status: Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+               - `Enabled`: Enables SQL collector.
+               - `Disabled`: Disables SQL collector.
+               
+               > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+               
+               > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
         :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
@@ -1004,6 +1073,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_mode", db_instance_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if encryption_type is not None:
@@ -1072,6 +1143,8 @@ class _InstanceState:
             pulumi.set(__self__, "serverless_mode", serverless_mode)
         if serverless_resource is not None:
             pulumi.set(__self__, "serverless_resource", serverless_resource)
+        if sql_collector_status is not None:
+            pulumi.set(__self__, "sql_collector_status", sql_collector_status)
         if src_db_instance_name is not None:
             pulumi.set(__self__, "src_db_instance_name", src_db_instance_name)
         if ssl_enabled is not None:
@@ -1221,6 +1294,22 @@ class _InstanceState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+        - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+        - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+
+        > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1319,7 +1408,8 @@ class _InstanceState:
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+
+        > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -1576,6 +1666,24 @@ class _InstanceState:
         pulumi.set(self, "serverless_resource", value)
 
     @_builtins.property
+    @pulumi.getter(name="sqlCollectorStatus")
+    def sql_collector_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+        - `Enabled`: Enables SQL collector.
+        - `Disabled`: Disables SQL collector.
+
+        > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+
+        > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
+        """
+        return pulumi.get(self, "sql_collector_status")
+
+    @sql_collector_status.setter
+    def sql_collector_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sql_collector_status", value)
+
+    @_builtins.property
     @pulumi.getter(name="srcDbInstanceName")
     def src_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1723,6 +1831,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1750,6 +1859,7 @@ class Instance(pulumi.CustomResource):
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1835,6 +1945,11 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+               - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+               - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+               
+               > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -1852,7 +1967,8 @@ class Instance(pulumi.CustomResource):
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+               
+               > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -1877,6 +1993,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] sql_collector_status: Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+               - `Enabled`: Enables SQL collector.
+               - `Disabled`: Disables SQL collector.
+               
+               > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+               
+               > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
         :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
@@ -1987,6 +2110,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2014,6 +2138,7 @@ class Instance(pulumi.CustomResource):
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_collector_status: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2044,6 +2169,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_instance_mode'")
             __props__.__dict__["db_instance_mode"] = db_instance_mode
             __props__.__dict__["description"] = description
+            __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["encryption_type"] = encryption_type
             if engine is None and not opts.urn:
@@ -2075,6 +2201,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["seg_storage_type"] = seg_storage_type
             __props__.__dict__["serverless_mode"] = serverless_mode
             __props__.__dict__["serverless_resource"] = serverless_resource
+            __props__.__dict__["sql_collector_status"] = sql_collector_status
             __props__.__dict__["src_db_instance_name"] = src_db_instance_name
             __props__.__dict__["ssl_enabled"] = ssl_enabled
             __props__.__dict__["status"] = status
@@ -2109,6 +2236,7 @@ class Instance(pulumi.CustomResource):
             db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
             db_instance_mode: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             engine: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2137,6 +2265,7 @@ class Instance(pulumi.CustomResource):
             seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
             serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
             serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+            sql_collector_status: pulumi.Input[Optional[_builtins.str]] = None,
             src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2170,6 +2299,11 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
+        :param pulumi.Input[_builtins.str] effective_time: The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+               - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+               - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+               
+               > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -2187,7 +2321,8 @@ class Instance(pulumi.CustomResource):
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+               
+               > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict', 'outputs.InstanceIpWhitelist']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -2213,6 +2348,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
+        :param pulumi.Input[_builtins.str] sql_collector_status: Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+               - `Enabled`: Enables SQL collector.
+               - `Disabled`: Disables SQL collector.
+               
+               > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+               
+               > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
         :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The expected status of the instance. Valid values:
@@ -2250,6 +2392,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_mode"] = db_instance_mode
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["engine"] = engine
@@ -2278,6 +2421,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["seg_storage_type"] = seg_storage_type
         __props__.__dict__["serverless_mode"] = serverless_mode
         __props__.__dict__["serverless_resource"] = serverless_resource
+        __props__.__dict__["sql_collector_status"] = sql_collector_status
         __props__.__dict__["src_db_instance_name"] = src_db_instance_name
         __props__.__dict__["ssl_enabled"] = ssl_enabled
         __props__.__dict__["status"] = status
@@ -2378,6 +2522,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minor_version`, `seg_node_num`, `master_node_num`, `instance_spec`, `storage_size`, `serverless_resource`, `cache_storage_size`, `seg_disk_performance_level`) is changed. Valid values:
+        - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+        - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintain_start_time` and `maintain_end_time`) and takes effect within it.
+
+        > **NOTE:** `effective_time` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @_builtins.property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -2448,7 +2604,8 @@ class Instance(pulumi.CustomResource):
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
+
+        > **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -2619,6 +2776,20 @@ class Instance(pulumi.CustomResource):
         The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`. The value can be modified in place for `ServerlessPro` instances.
         """
         return pulumi.get(self, "serverless_resource")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlCollectorStatus")
+    def sql_collector_status(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+        - `Enabled`: Enables SQL collector.
+        - `Disabled`: Disables SQL collector.
+
+        > **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+
+        > **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sql_collector_status = "Disabled"` explicitly to disable it.
+        """
+        return pulumi.get(self, "sql_collector_status")
 
     @_builtins.property
     @pulumi.getter(name="srcDbInstanceName")

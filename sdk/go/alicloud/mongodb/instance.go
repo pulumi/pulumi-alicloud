@@ -115,6 +115,7 @@ type Instance struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration pulumi.IntOutput `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -166,6 +167,7 @@ type Instance struct {
 	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
 	LogBackupRetentionPeriod pulumi.IntOutput `pulumi:"logBackupRetentionPeriod"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -173,11 +175,13 @@ type Instance struct {
 	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
 	// - `UPGRADE`: The specifications are upgraded.
 	// - `DOWNGRADE`: The specifications are downgraded.
+	//
 	// > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
@@ -197,6 +201,7 @@ type Instance struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// Instance data backup retention days. Available since v1.42.0.
@@ -221,6 +226,7 @@ type Instance struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction pulumi.StringPtrOutput `pulumi:"sslAction"`
 	// Status of the SSL feature.
@@ -296,6 +302,7 @@ type instanceState struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -347,6 +354,7 @@ type instanceState struct {
 	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
 	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -354,11 +362,13 @@ type instanceState struct {
 	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name *string `pulumi:"name"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
 	// - `UPGRADE`: The specifications are upgraded.
 	// - `DOWNGRADE`: The specifications are downgraded.
+	//
 	// > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
@@ -378,6 +388,7 @@ type instanceState struct {
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// Instance data backup retention days. Available since v1.42.0.
@@ -402,6 +413,7 @@ type instanceState struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction *string `pulumi:"sslAction"`
 	// Status of the SSL feature.
@@ -432,6 +444,7 @@ type InstanceState struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrInput
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration pulumi.IntPtrInput
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -483,6 +496,7 @@ type InstanceState struct {
 	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
 	LogBackupRetentionPeriod pulumi.IntPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -490,11 +504,13 @@ type InstanceState struct {
 	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name pulumi.StringPtrInput
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
 	// - `UPGRADE`: The specifications are upgraded.
 	// - `DOWNGRADE`: The specifications are downgraded.
+	//
 	// > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
@@ -514,6 +530,7 @@ type InstanceState struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime pulumi.StringPtrInput
 	// Instance data backup retention days. Available since v1.42.0.
@@ -538,6 +555,7 @@ type InstanceState struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction pulumi.StringPtrInput
 	// Status of the SSL feature.
@@ -572,6 +590,7 @@ type instanceArgs struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -621,6 +640,7 @@ type instanceArgs struct {
 	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
 	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -628,11 +648,13 @@ type instanceArgs struct {
 	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name *string `pulumi:"name"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
 	// - `UPGRADE`: The specifications are upgraded.
 	// - `DOWNGRADE`: The specifications are downgraded.
+	//
 	// > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
@@ -648,6 +670,7 @@ type instanceArgs struct {
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -670,6 +693,7 @@ type instanceArgs struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -697,6 +721,7 @@ type InstanceArgs struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrInput
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration pulumi.IntPtrInput
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -746,6 +771,7 @@ type InstanceArgs struct {
 	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
 	LogBackupRetentionPeriod pulumi.IntPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -753,11 +779,13 @@ type InstanceArgs struct {
 	// The name of DB instance. It must be 2 to 256 characters in length.
 	Name pulumi.StringPtrInput
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
 	// - `UPGRADE`: The specifications are upgraded.
 	// - `DOWNGRADE`: The specifications are downgraded.
+	//
 	// > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
@@ -773,6 +801,7 @@ type InstanceArgs struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -795,6 +824,7 @@ type InstanceArgs struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -913,6 +943,7 @@ func (o InstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
 }
 
 // The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+//
 // > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 func (o InstanceOutput) AutoRenewDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.AutoRenewDuration }).(pulumi.IntOutput)
@@ -1036,6 +1067,7 @@ func (o InstanceOutput) LogBackupRetentionPeriod() pulumi.IntOutput {
 }
 
 // The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+//
 // > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 func (o InstanceOutput) MaintainEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
@@ -1052,6 +1084,7 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 }
 
 // The network type of the instance. Valid values: `VPC`.
+//
 // > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 func (o InstanceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
@@ -1060,6 +1093,7 @@ func (o InstanceOutput) NetworkType() pulumi.StringOutput {
 // The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
 // - `UPGRADE`: The specifications are upgraded.
 // - `DOWNGRADE`: The specifications are downgraded.
+//
 // > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
@@ -1106,6 +1140,7 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+//
 // > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 func (o InstanceOutput) RestoreTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RestoreTime }).(pulumi.StringPtrOutput)
@@ -1157,6 +1192,7 @@ func (o InstanceOutput) SrcDbInstanceId() pulumi.StringPtrOutput {
 // - `Open`: turn on SSL encryption.
 // - `Close`: turn off SSL encryption.
 // - `Update`: update SSL certificate.
+//
 // > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 func (o InstanceOutput) SslAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SslAction }).(pulumi.StringPtrOutput)

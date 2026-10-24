@@ -66,7 +66,23 @@ namespace Pulumi.AliCloud.Message
         public Output<bool> EnableLogging { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `False`. Valid values:
+        /// </summary>
+        [Output("enableSse")]
+        public Output<bool> EnableSse { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `SseType` is set to `KMS`.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// . Field `LoggingEnabled` has been deprecated from provider version 1.241.0. New field `EnableLogging` instead.
+        /// 
+        /// &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `SseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+        /// 
+        /// &gt; **NOTE:** To disable SSE, you must set `EnableSse` to `False` and remove `SseType`, `SseAlgorithm`, and `KmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         /// </summary>
         [Output("loggingEnabled")]
         public Output<bool> LoggingEnabled { get; private set; } = null!;
@@ -76,6 +92,20 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Output("maxMessageSize")]
         public Output<int> MaxMessageSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        /// </summary>
+        [Output("sseAlgorithm")]
+        public Output<string> SseAlgorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of server-side encryption (SSE). Valid values:
+        /// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        /// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        /// </summary>
+        [Output("sseType")]
+        public Output<string> SseType { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -148,7 +178,23 @@ namespace Pulumi.AliCloud.Message
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `False`. Valid values:
+        /// </summary>
+        [Input("enableSse")]
+        public Input<bool>? EnableSse { get; set; }
+
+        /// <summary>
+        /// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `SseType` is set to `KMS`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// . Field `LoggingEnabled` has been deprecated from provider version 1.241.0. New field `EnableLogging` instead.
+        /// 
+        /// &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `SseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+        /// 
+        /// &gt; **NOTE:** To disable SSE, you must set `EnableSse` to `False` and remove `SseType`, `SseAlgorithm`, and `KmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
@@ -158,6 +204,20 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
+
+        /// <summary>
+        /// The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        /// </summary>
+        [Input("sseAlgorithm")]
+        public Input<string>? SseAlgorithm { get; set; }
+
+        /// <summary>
+        /// The type of server-side encryption (SSE). Valid values:
+        /// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        /// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        /// </summary>
+        [Input("sseType")]
+        public Input<string>? SseType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -204,7 +264,23 @@ namespace Pulumi.AliCloud.Message
         public Input<bool>? EnableLogging { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `False`. Valid values:
+        /// </summary>
+        [Input("enableSse")]
+        public Input<bool>? EnableSse { get; set; }
+
+        /// <summary>
+        /// The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `SseType` is set to `KMS`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// . Field `LoggingEnabled` has been deprecated from provider version 1.241.0. New field `EnableLogging` instead.
+        /// 
+        /// &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `SseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+        /// 
+        /// &gt; **NOTE:** To disable SSE, you must set `EnableSse` to `False` and remove `SseType`, `SseAlgorithm`, and `KmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
@@ -214,6 +290,20 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
+
+        /// <summary>
+        /// The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        /// </summary>
+        [Input("sseAlgorithm")]
+        public Input<string>? SseAlgorithm { get; set; }
+
+        /// <summary>
+        /// The type of server-side encryption (SSE). Valid values:
+        /// - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        /// - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        /// </summary>
+        [Input("sseType")]
+        public Input<string>? SseType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

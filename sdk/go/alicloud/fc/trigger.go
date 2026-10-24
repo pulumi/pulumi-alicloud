@@ -875,8 +875,10 @@ type Trigger struct {
 	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	//
 	// > **NOTE:** Config does not support modification when type is mns_topic.
-	// **NOTE:** type = cdn_events, available in 1.47.0+.
-	// **NOTE:** type = eventbridge, available in 1.173.0+.
+	//
+	// > **NOTE:** type = cdn_events, available in 1.47.0+.
+	//
+	// > **NOTE:** type = eventbridge, available in 1.173.0+.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -942,8 +944,10 @@ type triggerState struct {
 	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	//
 	// > **NOTE:** Config does not support modification when type is mns_topic.
-	// **NOTE:** type = cdn_events, available in 1.47.0+.
-	// **NOTE:** type = eventbridge, available in 1.173.0+.
+	//
+	// > **NOTE:** type = cdn_events, available in 1.47.0+.
+	//
+	// > **NOTE:** type = eventbridge, available in 1.173.0+.
 	Type *string `pulumi:"type"`
 }
 
@@ -971,8 +975,10 @@ type TriggerState struct {
 	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	//
 	// > **NOTE:** Config does not support modification when type is mns_topic.
-	// **NOTE:** type = cdn_events, available in 1.47.0+.
-	// **NOTE:** type = eventbridge, available in 1.173.0+.
+	//
+	// > **NOTE:** type = cdn_events, available in 1.47.0+.
+	//
+	// > **NOTE:** type = eventbridge, available in 1.173.0+.
 	Type pulumi.StringPtrInput
 }
 
@@ -1000,8 +1006,10 @@ type triggerArgs struct {
 	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	//
 	// > **NOTE:** Config does not support modification when type is mns_topic.
-	// **NOTE:** type = cdn_events, available in 1.47.0+.
-	// **NOTE:** type = eventbridge, available in 1.173.0+.
+	//
+	// > **NOTE:** type = cdn_events, available in 1.47.0+.
+	//
+	// > **NOTE:** type = eventbridge, available in 1.173.0+.
 	Type string `pulumi:"type"`
 }
 
@@ -1026,8 +1034,10 @@ type TriggerArgs struct {
 	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	//
 	// > **NOTE:** Config does not support modification when type is mns_topic.
-	// **NOTE:** type = cdn_events, available in 1.47.0+.
-	// **NOTE:** type = eventbridge, available in 1.173.0+.
+	//
+	// > **NOTE:** type = cdn_events, available in 1.47.0+.
+	//
+	// > **NOTE:** type = eventbridge, available in 1.173.0+.
 	Type pulumi.StringInput
 }
 
@@ -1171,8 +1181,10 @@ func (o TriggerOutput) TriggerId() pulumi.StringOutput {
 // The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 //
 // > **NOTE:** Config does not support modification when type is mns_topic.
-// **NOTE:** type = cdn_events, available in 1.47.0+.
-// **NOTE:** type = eventbridge, available in 1.173.0+.
+//
+// > **NOTE:** type = cdn_events, available in 1.47.0+.
+//
+// > **NOTE:** type = eventbridge, available in 1.173.0+.
 func (o TriggerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

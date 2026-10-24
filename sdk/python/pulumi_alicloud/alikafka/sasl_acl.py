@@ -58,12 +58,15 @@ class SaslAclArgs:
                - `IdempotentWrite`: idempotent write to Cluster
                - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
                - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               
                > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
                - `DENY`: deny.
                - `ALLOW`: allow.
+               
                > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] host: The host of the acl.
+               
                > **NOTE:** From version 1.270.0, `host` can be set.
         """
         pulumi.set(__self__, "acl_operation_type", acl_operation_type)
@@ -176,6 +179,7 @@ class SaslAclArgs:
         - `IdempotentWrite`: idempotent write to Cluster
         - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
         - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+
         > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         """
         return pulumi.get(self, "acl_operation_types")
@@ -191,6 +195,7 @@ class SaslAclArgs:
         Authorization method. Value:
         - `DENY`: deny.
         - `ALLOW`: allow.
+
         > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         """
         return pulumi.get(self, "acl_permission_type")
@@ -204,6 +209,7 @@ class SaslAclArgs:
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host of the acl.
+
         > **NOTE:** From version 1.270.0, `host` can be set.
         """
         return pulumi.get(self, "host")
@@ -242,10 +248,12 @@ class _SaslAclState:
                - `IdempotentWrite`: idempotent write to Cluster
                - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
                - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               
                > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
                - `DENY`: deny.
                - `ALLOW`: allow.
+               
                > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
                - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
@@ -259,6 +267,7 @@ class _SaslAclState:
                - `Cluster`: the instance.
                - `TransactionalId`: transaction ID.
         :param pulumi.Input[_builtins.str] host: The host of the acl.
+               
                > **NOTE:** From version 1.270.0, `host` can be set.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] username: The user name.
@@ -311,6 +320,7 @@ class _SaslAclState:
         - `IdempotentWrite`: idempotent write to Cluster
         - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
         - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+
         > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         """
         return pulumi.get(self, "acl_operation_types")
@@ -326,6 +336,7 @@ class _SaslAclState:
         Authorization method. Value:
         - `DENY`: deny.
         - `ALLOW`: allow.
+
         > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         """
         return pulumi.get(self, "acl_permission_type")
@@ -383,6 +394,7 @@ class _SaslAclState:
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host of the acl.
+
         > **NOTE:** From version 1.270.0, `host` can be set.
         """
         return pulumi.get(self, "host")
@@ -523,10 +535,12 @@ class SaslAcl(pulumi.CustomResource):
                - `IdempotentWrite`: idempotent write to Cluster
                - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
                - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               
                > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
                - `DENY`: deny.
                - `ALLOW`: allow.
+               
                > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
                - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
@@ -540,6 +554,7 @@ class SaslAcl(pulumi.CustomResource):
                - `Cluster`: the instance.
                - `TransactionalId`: transaction ID.
         :param pulumi.Input[_builtins.str] host: The host of the acl.
+               
                > **NOTE:** From version 1.270.0, `host` can be set.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] username: The user name.
@@ -719,10 +734,12 @@ class SaslAcl(pulumi.CustomResource):
                - `IdempotentWrite`: idempotent write to Cluster
                - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
                - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+               
                > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_permission_type: Authorization method. Value:
                - `DENY`: deny.
                - `ALLOW`: allow.
+               
                > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         :param pulumi.Input[_builtins.str] acl_resource_name: The resource name.
                - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
@@ -736,6 +753,7 @@ class SaslAcl(pulumi.CustomResource):
                - `Cluster`: the instance.
                - `TransactionalId`: transaction ID.
         :param pulumi.Input[_builtins.str] host: The host of the acl.
+               
                > **NOTE:** From version 1.270.0, `host` can be set.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] username: The user name.
@@ -780,6 +798,7 @@ class SaslAcl(pulumi.CustomResource):
         - `IdempotentWrite`: idempotent write to Cluster
         - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
         - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+
         > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
         """
         return pulumi.get(self, "acl_operation_types")
@@ -791,6 +810,7 @@ class SaslAcl(pulumi.CustomResource):
         Authorization method. Value:
         - `DENY`: deny.
         - `ALLOW`: allow.
+
         > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
         """
         return pulumi.get(self, "acl_permission_type")
@@ -832,6 +852,7 @@ class SaslAcl(pulumi.CustomResource):
     def host(self) -> pulumi.Output[_builtins.str]:
         """
         The host of the acl.
+
         > **NOTE:** From version 1.270.0, `host` can be set.
         """
         return pulumi.get(self, "host")

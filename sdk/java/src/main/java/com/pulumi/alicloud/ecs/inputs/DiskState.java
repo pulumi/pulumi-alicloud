@@ -18,15 +18,23 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
 
     public static final DiskState Empty = new DiskState();
 
+    /**
+     * The advanced features configured for the disk.
+     * 
+     */
     @Import(name="advancedFeatures")
     private @Nullable Output<String> advancedFeatures;
 
+    /**
+     * @return The advanced features configured for the disk.
+     * 
+     */
     public Optional<Output<String>> advancedFeatures() {
         return Optional.ofNullable(this.advancedFeatures);
     }
 
     /**
-     * The Zone to create the disk in.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
@@ -37,7 +45,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return The Zone to create the disk in.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
@@ -48,44 +56,60 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.availabilityZone);
     }
 
+    /**
+     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+     * 
+     */
     @Import(name="burstingEnabled")
     private @Nullable Output<Boolean> burstingEnabled;
 
+    /**
+     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+     * 
+     */
     public Optional<Output<Boolean>> burstingEnabled() {
         return Optional.ofNullable(this.burstingEnabled);
     }
 
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+     * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+     * @return The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
      * 
      */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * (Available since v1.237.0) The time when the disk was created.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return (Available since v1.237.0) The time when the disk was created.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
     /**
-     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     * Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      * 
      */
     @Import(name="deleteAutoSnapshot")
     private @Nullable Output<Boolean> deleteAutoSnapshot;
 
     /**
-     * @return Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     * @return Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> deleteAutoSnapshot() {
@@ -93,14 +117,14 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the disk is released together with the instance: Default value: false.
+     * Specifies whether to release the disk along with its associated instance. Default value: `false`.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Indicates whether the disk is released together with the instance: Default value: false.
+     * @return Specifies whether to release the disk along with its associated instance. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -108,36 +132,52 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * @return The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+     * 
+     */
     @Import(name="diskName")
     private @Nullable Output<String> diskName;
 
+    /**
+     * @return The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+     * 
+     */
     public Optional<Output<String>> diskName() {
         return Optional.ofNullable(this.diskName);
     }
 
+    /**
+     * Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+     * 
+     */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
+    /**
+     * @return Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+     * 
+     */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
 
     /**
-     * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      * @deprecated
      * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
@@ -148,7 +188,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableAutoSnapshot;
 
     /**
-     * @return Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     * @return Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      * @deprecated
      * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
@@ -159,59 +199,89 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
 
+    /**
+     * The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     @Import(name="encryptAlgorithm")
     private @Nullable Output<String> encryptAlgorithm;
 
+    /**
+     * @return The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     public Optional<Output<String>> encryptAlgorithm() {
         return Optional.ofNullable(this.encryptAlgorithm);
     }
 
     /**
-     * If true, the disk will be encrypted, conflict with `snapshotId`.
+     * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return If true, the disk will be encrypted, conflict with `snapshotId`.
+     * @return Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The ID of the instance to which the created subscription disk is automatically attached.
+     * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
+    /**
+     * @return The ID of the instance to which the created subscription disk is automatically attached.
+     * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
 
     /**
-     * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     * The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
      * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
-     * @return The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     * @return The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
+    /**
+     * Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
+     * 
+     */
     @Import(name="multiAttach")
     private @Nullable Output<String> multiAttach;
 
+    /**
+     * @return Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
+     * 
+     */
     public Optional<Output<String>> multiAttach() {
         return Optional.ofNullable(this.multiAttach);
     }
 
     /**
-     * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * 
+     * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      * @deprecated
      * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
@@ -222,7 +292,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * @return Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * 
+     * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      * @deprecated
      * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
@@ -233,59 +305,83 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
+     * 
+     */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
+    /**
+     * @return The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
+     * 
+     */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
 
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * @return Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
 
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+     * 
+     */
     @Import(name="provisionedIops")
     private @Nullable Output<Integer> provisionedIops;
 
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+     * 
+     */
     public Optional<Output<Integer>> provisionedIops() {
         return Optional.ofNullable(this.provisionedIops);
     }
 
+    /**
+     * (Available since v1.237.0) The ID of the region to which the disk belongs.
+     * 
+     */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
+    /**
+     * @return (Available since v1.237.0) The ID of the region to which the disk belongs.
+     * 
+     */
     public Optional<Output<String>> regionId() {
         return Optional.ofNullable(this.regionId);
     }
 
     /**
-     * The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * The ID of the resource group to which to add the disk.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * @return The ID of the resource group to which to add the disk.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -293,14 +389,38 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * @return The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -308,14 +428,14 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * @return The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -323,30 +443,46 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk status.
+     * The status of the disk.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The disk status.
+     * @return The status of the disk.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The ID of the storage set.
+     * 
+     */
     @Import(name="storageSetId")
     private @Nullable Output<String> storageSetId;
 
+    /**
+     * @return The ID of the storage set.
+     * 
+     */
     public Optional<Output<String>> storageSetId() {
         return Optional.ofNullable(this.storageSetId);
     }
 
+    /**
+     * The number of partitions in the storage set.
+     * 
+     */
     @Import(name="storageSetPartitionNumber")
     private @Nullable Output<Integer> storageSetPartitionNumber;
 
+    /**
+     * @return The number of partitions in the storage set.
+     * 
+     */
     public Optional<Output<Integer>> storageSetPartitionNumber() {
         return Optional.ofNullable(this.storageSetPartitionNumber);
     }
@@ -366,16 +502,32 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
+    /**
+     * @return ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -433,17 +585,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             $ = new DiskState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param advancedFeatures The advanced features configured for the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder advancedFeatures(@Nullable Output<String> advancedFeatures) {
             $.advancedFeatures = advancedFeatures;
             return this;
         }
 
+        /**
+         * @param advancedFeatures The advanced features configured for the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder advancedFeatures(String advancedFeatures) {
             return advancedFeatures(Output.of(advancedFeatures));
         }
 
         /**
-         * @param availabilityZone The Zone to create the disk in.
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
          * 
          * @return builder
          * 
@@ -458,7 +622,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone The Zone to create the disk in.
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
          * 
          * @return builder
          * 
@@ -471,17 +635,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return availabilityZone(Output.of(availabilityZone));
         }
 
+        /**
+         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
             $.burstingEnabled = burstingEnabled;
             return this;
         }
 
+        /**
+         * @param burstingEnabled Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder burstingEnabled(Boolean burstingEnabled) {
             return burstingEnabled(Output.of(burstingEnabled));
         }
 
         /**
-         * @param category Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+         * @param category The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
          * 
          * @return builder
          * 
@@ -492,7 +668,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+         * @param category The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
          * 
          * @return builder
          * 
@@ -501,17 +677,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return category(Output.of(category));
         }
 
+        /**
+         * @param createTime (Available since v1.237.0) The time when the disk was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime (Available since v1.237.0) The time when the disk was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
         /**
-         * @param deleteAutoSnapshot Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+         * @param deleteAutoSnapshot Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
          * 
          * @return builder
          * 
@@ -522,7 +710,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteAutoSnapshot Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+         * @param deleteAutoSnapshot Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
          * 
          * @return builder
          * 
@@ -532,7 +720,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteWithInstance Indicates whether the disk is released together with the instance: Default value: false.
+         * @param deleteWithInstance Specifies whether to release the disk along with its associated instance. Default value: `false`.
          * 
          * @return builder
          * 
@@ -543,7 +731,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteWithInstance Indicates whether the disk is released together with the instance: Default value: false.
+         * @param deleteWithInstance Specifies whether to release the disk along with its associated instance. Default value: `false`.
          * 
          * @return builder
          * 
@@ -553,7 +741,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -564,7 +752,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -573,26 +761,50 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param diskName The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskName(@Nullable Output<String> diskName) {
             $.diskName = diskName;
             return this;
         }
 
+        /**
+         * @param diskName The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskName(String diskName) {
             return diskName(Output.of(diskName));
         }
 
+        /**
+         * @param dryRun Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(@Nullable Output<Boolean> dryRun) {
             $.dryRun = dryRun;
             return this;
         }
 
+        /**
+         * @param dryRun Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
         }
 
         /**
-         * @param enableAutoSnapshot Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+         * @param enableAutoSnapshot Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
          * 
          * @return builder
          * 
@@ -607,7 +819,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAutoSnapshot Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+         * @param enableAutoSnapshot Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
          * 
          * @return builder
          * 
@@ -620,17 +832,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return enableAutoSnapshot(Output.of(enableAutoSnapshot));
         }
 
+        /**
+         * @param encryptAlgorithm The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptAlgorithm(@Nullable Output<String> encryptAlgorithm) {
             $.encryptAlgorithm = encryptAlgorithm;
             return this;
         }
 
+        /**
+         * @param encryptAlgorithm The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptAlgorithm(String encryptAlgorithm) {
             return encryptAlgorithm(Output.of(encryptAlgorithm));
         }
 
         /**
-         * @param encrypted If true, the disk will be encrypted, conflict with `snapshotId`.
+         * @param encrypted Specifies whether to encrypt the disk. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -641,7 +865,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encrypted If true, the disk will be encrypted, conflict with `snapshotId`.
+         * @param encrypted Specifies whether to encrypt the disk. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -650,17 +874,33 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param instanceId The ID of the instance to which the created subscription disk is automatically attached.
+         * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+         * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(@Nullable Output<String> instanceId) {
             $.instanceId = instanceId;
             return this;
         }
 
+        /**
+         * @param instanceId The ID of the instance to which the created subscription disk is automatically attached.
+         * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+         * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
         }
 
         /**
-         * @param kmsKeyId The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+         * @param kmsKeyId The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
          * 
          * @return builder
          * 
@@ -671,7 +911,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+         * @param kmsKeyId The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
          * 
          * @return builder
          * 
@@ -680,17 +920,31 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
+        /**
+         * @param multiAttach Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder multiAttach(@Nullable Output<String> multiAttach) {
             $.multiAttach = multiAttach;
             return this;
         }
 
+        /**
+         * @param multiAttach Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder multiAttach(String multiAttach) {
             return multiAttach(Output.of(multiAttach));
         }
 
         /**
-         * @param name Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+         * @param name Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+         * 
+         * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
          * 
          * @return builder
          * 
@@ -705,7 +959,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+         * @param name Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+         * 
+         * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
          * 
          * @return builder
          * 
@@ -718,20 +974,33 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param paymentType The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(@Nullable Output<String> paymentType) {
             $.paymentType = paymentType;
             return this;
         }
 
+        /**
+         * @param paymentType The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
         }
 
         /**
-         * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-         * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-         * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-         * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+         * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+         * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -742,10 +1011,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-         * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-         * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-         * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+         * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+         * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -754,27 +1024,50 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return performanceLevel(Output.of(performanceLevel));
         }
 
+        /**
+         * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
             $.provisionedIops = provisionedIops;
             return this;
         }
 
+        /**
+         * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedIops(Integer provisionedIops) {
             return provisionedIops(Output.of(provisionedIops));
         }
 
+        /**
+         * @param regionId (Available since v1.237.0) The ID of the region to which the disk belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionId(@Nullable Output<String> regionId) {
             $.regionId = regionId;
             return this;
         }
 
+        /**
+         * @param regionId (Available since v1.237.0) The ID of the region to which the disk belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionId(String regionId) {
             return regionId(Output.of(regionId));
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the disk belongs.
-         * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+         * @param resourceGroupId The ID of the resource group to which to add the disk.
          * 
          * @return builder
          * 
@@ -785,8 +1078,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the disk belongs.
-         * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+         * @param resourceGroupId The ID of the resource group to which to add the disk.
          * 
          * @return builder
          * 
@@ -796,7 +1088,19 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+         * @param size The size of the disk. Unit: GiB. This parameter is required. Valid values:
+         * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+         * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+         * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+         * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+         * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+         * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+         * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+         * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+         * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+         * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
          * 
          * @return builder
          * 
@@ -807,7 +1111,19 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+         * @param size The size of the disk. Unit: GiB. This parameter is required. Valid values:
+         * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+         * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+         * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+         * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+         * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+         * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+         * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+         * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+         * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+         * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
          * 
          * @return builder
          * 
@@ -817,7 +1133,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+         * @param snapshotId The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
          * 
          * @return builder
          * 
@@ -828,7 +1144,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+         * @param snapshotId The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
          * 
          * @return builder
          * 
@@ -838,7 +1154,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The disk status.
+         * @param status The status of the disk.
          * 
          * @return builder
          * 
@@ -849,7 +1165,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The disk status.
+         * @param status The status of the disk.
          * 
          * @return builder
          * 
@@ -858,20 +1174,44 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param storageSetId The ID of the storage set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageSetId(@Nullable Output<String> storageSetId) {
             $.storageSetId = storageSetId;
             return this;
         }
 
+        /**
+         * @param storageSetId The ID of the storage set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageSetId(String storageSetId) {
             return storageSetId(Output.of(storageSetId));
         }
 
+        /**
+         * @param storageSetPartitionNumber The number of partitions in the storage set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageSetPartitionNumber(@Nullable Output<Integer> storageSetPartitionNumber) {
             $.storageSetPartitionNumber = storageSetPartitionNumber;
             return this;
         }
 
+        /**
+         * @param storageSetPartitionNumber The number of partitions in the storage set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageSetPartitionNumber(Integer storageSetPartitionNumber) {
             return storageSetPartitionNumber(Output.of(storageSetPartitionNumber));
         }
@@ -897,20 +1237,44 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param type The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param zoneId ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
+        /**
+         * @param zoneId ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

@@ -40,8 +40,10 @@ class ListenerArgs:
 
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener. See `port_ranges` below.
+               
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The certificates of the listener. See `certificates` below.
+               
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         :param pulumi.Input[_builtins.str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
                - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
@@ -49,6 +51,7 @@ class ListenerArgs:
         :param pulumi.Input[_builtins.str] description: The description of the listener.
         :param pulumi.Input['ListenerForwardedForConfigArgs'] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[_builtins.str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[_builtins.int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
                - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
@@ -61,6 +64,7 @@ class ListenerArgs:
         :param pulumi.Input[_builtins.str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               
                > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
@@ -108,6 +112,7 @@ class ListenerArgs:
     def port_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]:
         """
         The portRanges of the listener. See `port_ranges` below.
+
         > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         """
         return pulumi.get(self, "port_ranges")
@@ -121,6 +126,7 @@ class ListenerArgs:
     def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
         The certificates of the listener. See `certificates` below.
+
         > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         """
         return pulumi.get(self, "certificates")
@@ -172,6 +178,7 @@ class ListenerArgs:
     def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+
         > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         """
         return pulumi.get(self, "http_version")
@@ -250,6 +257,7 @@ class ListenerArgs:
     def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+
         > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "request_timeout")
@@ -294,6 +302,7 @@ class _ListenerState:
 
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The certificates of the listener. See `certificates` below.
+               
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         :param pulumi.Input[_builtins.str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
                - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
@@ -301,6 +310,7 @@ class _ListenerState:
         :param pulumi.Input[_builtins.str] description: The description of the listener.
         :param pulumi.Input['ListenerForwardedForConfigArgs'] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[_builtins.str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[_builtins.int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
                - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
@@ -311,10 +321,12 @@ class _ListenerState:
                - `CustomRouting`: custom routing.
         :param pulumi.Input[_builtins.str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener. See `port_ranges` below.
+               
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[_builtins.str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               
                > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the listener.
@@ -367,6 +379,7 @@ class _ListenerState:
     def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
         The certificates of the listener. See `certificates` below.
+
         > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         """
         return pulumi.get(self, "certificates")
@@ -418,6 +431,7 @@ class _ListenerState:
     def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+
         > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         """
         return pulumi.get(self, "http_version")
@@ -472,6 +486,7 @@ class _ListenerState:
     def port_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerPortRangeArgs']]]]:
         """
         The portRanges of the listener. See `port_ranges` below.
+
         > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         """
         return pulumi.get(self, "port_ranges")
@@ -509,6 +524,7 @@ class _ListenerState:
     def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+
         > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "request_timeout")
@@ -615,6 +631,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict', 'outputs.ListenerCertificate']]]] certificates: The certificates of the listener. See `certificates` below.
+               
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         :param pulumi.Input[_builtins.str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
                - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
@@ -622,6 +639,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the listener.
         :param pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict', 'outputs.ListenerForwardedForConfig']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[_builtins.str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[_builtins.int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
                - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
@@ -632,10 +650,12 @@ class Listener(pulumi.CustomResource):
                - `CustomRouting`: custom routing.
         :param pulumi.Input[_builtins.str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict', 'outputs.ListenerPortRange']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
+               
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[_builtins.str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               
                > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
@@ -784,6 +804,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict', 'outputs.ListenerCertificate']]]] certificates: The certificates of the listener. See `certificates` below.
+               
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         :param pulumi.Input[_builtins.str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
                - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
@@ -791,6 +812,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the listener.
         :param pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict', 'outputs.ListenerForwardedForConfig']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[_builtins.str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[_builtins.int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
                - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
@@ -801,10 +823,12 @@ class Listener(pulumi.CustomResource):
                - `CustomRouting`: custom routing.
         :param pulumi.Input[_builtins.str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict', 'outputs.ListenerPortRange']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
+               
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[_builtins.str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[_builtins.bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               
                > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[_builtins.str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         :param pulumi.Input[_builtins.str] status: The status of the listener.
@@ -843,6 +867,7 @@ class Listener(pulumi.CustomResource):
     def certificates(self) -> pulumi.Output[Optional[Sequence['outputs.ListenerCertificate']]]:
         """
         The certificates of the listener. See `certificates` below.
+
         > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         """
         return pulumi.get(self, "certificates")
@@ -878,6 +903,7 @@ class Listener(pulumi.CustomResource):
     def http_version(self) -> pulumi.Output[_builtins.str]:
         """
         The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+
         > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         """
         return pulumi.get(self, "http_version")
@@ -916,6 +942,7 @@ class Listener(pulumi.CustomResource):
     def port_ranges(self) -> pulumi.Output[Sequence['outputs.ListenerPortRange']]:
         """
         The portRanges of the listener. See `port_ranges` below.
+
         > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         """
         return pulumi.get(self, "port_ranges")
@@ -941,6 +968,7 @@ class Listener(pulumi.CustomResource):
     def request_timeout(self) -> pulumi.Output[_builtins.int]:
         """
         The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+
         > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         """
         return pulumi.get(self, "request_timeout")

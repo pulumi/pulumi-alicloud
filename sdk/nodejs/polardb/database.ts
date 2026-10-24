@@ -99,11 +99,13 @@ export class Database extends pulumi.CustomResource {
     declare public readonly characterSetName: pulumi.Output<string>;
     /**
      * The language that defines the collation rules in the database.
+     *
      * > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
     declare public readonly collate: pulumi.Output<string | undefined>;
     /**
      * The language that indicates the character type of the database.
+     *
      * > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
     declare public readonly ctype: pulumi.Output<string | undefined>;
@@ -183,11 +185,13 @@ export interface DatabaseState {
     characterSetName?: pulumi.Input<string | undefined>;
     /**
      * The language that defines the collation rules in the database.
+     *
      * > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
     collate?: pulumi.Input<string | undefined>;
     /**
      * The language that indicates the character type of the database.
+     *
      * > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
     ctype?: pulumi.Input<string | undefined>;
@@ -225,11 +229,13 @@ export interface DatabaseArgs {
     characterSetName?: pulumi.Input<string | undefined>;
     /**
      * The language that defines the collation rules in the database.
+     *
      * > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
     collate?: pulumi.Input<string | undefined>;
     /**
      * The language that indicates the character type of the database.
+     *
      * > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
     ctype?: pulumi.Input<string | undefined>;

@@ -89,6 +89,7 @@ type CommonBandwithPackageAttachment struct {
 	pulumi.CustomResourceState
 
 	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	//
 	// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
 	BandwidthPackageBandwidth pulumi.StringOutput `pulumi:"bandwidthPackageBandwidth"`
 	// The ID of the Internet Shared Bandwidth instance.
@@ -146,6 +147,7 @@ func GetCommonBandwithPackageAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
 type commonBandwithPackageAttachmentState struct {
 	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	//
 	// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
 	BandwidthPackageBandwidth *string `pulumi:"bandwidthPackageBandwidth"`
 	// The ID of the Internet Shared Bandwidth instance.
@@ -168,6 +170,7 @@ type commonBandwithPackageAttachmentState struct {
 
 type CommonBandwithPackageAttachmentState struct {
 	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	//
 	// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
 	BandwidthPackageBandwidth pulumi.StringPtrInput
 	// The ID of the Internet Shared Bandwidth instance.
@@ -194,6 +197,7 @@ func (CommonBandwithPackageAttachmentState) ElementType() reflect.Type {
 
 type commonBandwithPackageAttachmentArgs struct {
 	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	//
 	// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
 	BandwidthPackageBandwidth *string `pulumi:"bandwidthPackageBandwidth"`
 	// The ID of the Internet Shared Bandwidth instance.
@@ -215,6 +219,7 @@ type commonBandwithPackageAttachmentArgs struct {
 // The set of arguments for constructing a CommonBandwithPackageAttachment resource.
 type CommonBandwithPackageAttachmentArgs struct {
 	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	//
 	// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
 	BandwidthPackageBandwidth pulumi.StringPtrInput
 	// The ID of the Internet Shared Bandwidth instance.
@@ -321,6 +326,7 @@ func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachment
 }
 
 // The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+//
 // > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
 func (o CommonBandwithPackageAttachmentOutput) BandwidthPackageBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageBandwidth }).(pulumi.StringOutput)

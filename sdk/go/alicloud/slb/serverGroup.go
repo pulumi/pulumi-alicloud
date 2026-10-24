@@ -114,6 +114,7 @@ type ServerGroup struct {
 	// The name of the vServer group. Default value: `tf-server-group`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of backend servers to be added. See `servers` below.
+	//
 	// > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	//
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
@@ -162,6 +163,7 @@ type serverGroupState struct {
 	// The name of the vServer group. Default value: `tf-server-group`.
 	Name *string `pulumi:"name"`
 	// The list of backend servers to be added. See `servers` below.
+	//
 	// > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	//
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
@@ -178,6 +180,7 @@ type ServerGroupState struct {
 	// The name of the vServer group. Default value: `tf-server-group`.
 	Name pulumi.StringPtrInput
 	// The list of backend servers to be added. See `servers` below.
+	//
 	// > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	//
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
@@ -198,6 +201,7 @@ type serverGroupArgs struct {
 	// The name of the vServer group. Default value: `tf-server-group`.
 	Name *string `pulumi:"name"`
 	// The list of backend servers to be added. See `servers` below.
+	//
 	// > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	//
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
@@ -215,6 +219,7 @@ type ServerGroupArgs struct {
 	// The name of the vServer group. Default value: `tf-server-group`.
 	Name pulumi.StringPtrInput
 	// The list of backend servers to be added. See `servers` below.
+	//
 	// > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	//
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
@@ -326,6 +331,7 @@ func (o ServerGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The list of backend servers to be added. See `servers` below.
+//
 // > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 //
 // Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.

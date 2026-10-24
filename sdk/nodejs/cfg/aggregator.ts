@@ -79,6 +79,7 @@ export class Aggregator extends pulumi.CustomResource {
 
     /**
      * The member accounts of the account group. See `aggregatorAccounts` below.
+     *
      * > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      */
     declare public readonly aggregatorAccounts: pulumi.Output<outputs.cfg.AggregatorAggregatorAccount[]>;
@@ -157,6 +158,7 @@ export class Aggregator extends pulumi.CustomResource {
 export interface AggregatorState {
     /**
      * The member accounts of the account group. See `aggregatorAccounts` below.
+     *
      * > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      */
     aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[] | undefined>;
@@ -195,6 +197,7 @@ export interface AggregatorState {
 export interface AggregatorArgs {
     /**
      * The member accounts of the account group. See `aggregatorAccounts` below.
+     *
      * > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      */
     aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[] | undefined>;

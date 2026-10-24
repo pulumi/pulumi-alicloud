@@ -29,6 +29,7 @@ class BackupPolicyArgs:
         The set of arguments for constructing a BackupPolicy resource.
 
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
+               
                > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         :param pulumi.Input[_builtins.str] preferred_backup_period: Data backup cycle. Separate multiple values with commas (,). Value Description:
                - **Monday**: Monday.
@@ -64,6 +65,7 @@ class BackupPolicyArgs:
     def db_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         The instance ID.
+
         > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         """
         return pulumi.get(self, "db_instance_id")
@@ -160,6 +162,7 @@ class _BackupPolicyState:
 
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup retention days.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
+               
                > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         :param pulumi.Input[_builtins.bool] enable_recovery_point: Whether to enable automatic recovery points. Value Description:
                - **true**: enabled.
@@ -209,6 +212,7 @@ class _BackupPolicyState:
     def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
+
         > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         """
         return pulumi.get(self, "db_instance_id")
@@ -384,6 +388,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup retention days.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
+               
                > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         :param pulumi.Input[_builtins.bool] enable_recovery_point: Whether to enable automatic recovery points. Value Description:
                - **true**: enabled.
@@ -564,6 +569,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_retention_period: Data backup retention days.
         :param pulumi.Input[_builtins.str] db_instance_id: The instance ID.
+               
                > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         :param pulumi.Input[_builtins.bool] enable_recovery_point: Whether to enable automatic recovery points. Value Description:
                - **true**: enabled.
@@ -608,6 +614,7 @@ class BackupPolicy(pulumi.CustomResource):
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         The instance ID.
+
         > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         """
         return pulumi.get(self, "db_instance_id")

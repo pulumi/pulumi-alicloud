@@ -239,6 +239,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     * 
      * &gt; **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      * 
      */
@@ -254,6 +255,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     * 
      * &gt; **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      * 
      */
@@ -262,6 +264,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     * 
      * &gt; **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      * 
      */
@@ -270,6 +273,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     * 
      * &gt; **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      * 
      */

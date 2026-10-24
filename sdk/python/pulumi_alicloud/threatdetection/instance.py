@@ -96,6 +96,7 @@ class InstanceArgs:
                - `CTDR_STORAGE`: Log Management Module.
                - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
                - Value: `0` means off, `1` means on
+               
                > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         :param pulumi.Input['InstancePostPayModuleSwitchObjArgs'] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
@@ -412,6 +413,7 @@ class InstanceArgs:
         - `CTDR_STORAGE`: Log Management Module.
         - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
         - Value: `0` means off, `1` means on
+
         > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         """
         return pulumi.get(self, "post_pay_module_switch")
@@ -839,6 +841,7 @@ class _InstanceState:
                - `CTDR_STORAGE`: Log Management Module.
                - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
                - Value: `0` means off, `1` means on
+               
                > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         :param pulumi.Input['InstancePostPayModuleSwitchObjArgs'] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
@@ -1173,6 +1176,7 @@ class _InstanceState:
         - `CTDR_STORAGE`: Log Management Module.
         - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
         - Value: `0` means off, `1` means on
+
         > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         """
         return pulumi.get(self, "post_pay_module_switch")
@@ -1670,6 +1674,7 @@ class Instance(pulumi.CustomResource):
                - `CTDR_STORAGE`: Log Management Module.
                - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
                - Value: `0` means off, `1` means on
+               
                > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
@@ -2001,6 +2006,7 @@ class Instance(pulumi.CustomResource):
                - `CTDR_STORAGE`: Log Management Module.
                - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
                - Value: `0` means off, `1` means on
+               
                > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         :param pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']] post_pay_module_switch_obj: Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         :param pulumi.Input[_builtins.str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
@@ -2248,6 +2254,7 @@ class Instance(pulumi.CustomResource):
         - `CTDR_STORAGE`: Log Management Module.
         - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
         - Value: `0` means off, `1` means on
+
         > **NOTE:** Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.
         """
         return pulumi.get(self, "post_pay_module_switch")

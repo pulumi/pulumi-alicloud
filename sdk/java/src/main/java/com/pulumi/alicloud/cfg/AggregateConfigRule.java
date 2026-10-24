@@ -153,6 +153,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The trigger type of the rule. Valid values:
      * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
      * - `ScheduledNotification`: The rule is periodically triggered.
+     * 
      * &gt; **NOTE:** Separate multiple trigger types with commas (,).
      * 
      */
@@ -163,6 +164,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * @return The trigger type of the rule. Valid values:
      * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
      * - `ScheduledNotification`: The rule is periodically triggered.
+     * 
      * &gt; **NOTE:** Separate multiple trigger types with commas (,).
      * 
      */

@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleRdsAccount = new alicloud.rds.RdsAccount("example", {
  *     dbInstanceId: exampleInstance.id,
- *     accountName: "test_mysql",
+ *     accountName: "example_mysql",
  *     accountPassword: "N1cetest",
  * });
  * const exampleDatabase = new alicloud.rds.Database("example", {
@@ -258,6 +258,10 @@ export class SubscriptionJob extends pulumi.CustomResource {
      */
     declare public readonly sourceEndpointRole: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     */
+    declare public readonly sourceEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of source database instance account.
      */
     declare public readonly sourceEndpointUserName: pulumi.Output<string | undefined>;
@@ -340,6 +344,7 @@ export class SubscriptionJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = state?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = state?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
             resourceInputs["status"] = state?.status;
             resourceInputs["subscriptionDataTypeDdl"] = state?.subscriptionDataTypeDdl;
@@ -393,6 +398,7 @@ export class SubscriptionJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = args?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = args?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
             resourceInputs["status"] = args?.status;
             resourceInputs["subscriptionDataTypeDdl"] = args?.subscriptionDataTypeDdl;
@@ -529,6 +535,10 @@ export interface SubscriptionJobState {
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of source database instance account.
      */
@@ -691,6 +701,10 @@ export interface SubscriptionJobArgs {
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of source database instance account.
      */

@@ -33,10 +33,10 @@ class InstanceV2Args:
         """
         The set of arguments for constructing a InstanceV2 resource.
 
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         :param pulumi.Input[_builtins.str] product_code: The product code. Valid values: `cfw`.
         :param pulumi.Input[_builtins.str] product_type: The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
-        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values:
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[_builtins.int] period: The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
@@ -73,7 +73,7 @@ class InstanceV2Args:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         """
         return pulumi.get(self, "payment_type")
 
@@ -109,7 +109,7 @@ class InstanceV2Args:
     @pulumi.getter
     def spec(self) -> pulumi.Input[_builtins.str]:
         """
-        The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         """
         return pulumi.get(self, "spec")
 
@@ -233,7 +233,7 @@ class _InstanceV2State:
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] end_time: The end time.
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         :param pulumi.Input[_builtins.int] period: The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
         :param pulumi.Input[_builtins.str] product_code: The product code. Valid values: `cfw`.
         :param pulumi.Input[_builtins.str] product_type: The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
@@ -247,7 +247,7 @@ class _InstanceV2State:
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.bool] sdl: Data leakage protection status. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         :param pulumi.Input[_builtins.str] status: The status of Cloud Firewall Instance.
         :param pulumi.Input[_builtins.str] user_status: The user status of Cloud Firewall Instance.
         """
@@ -336,7 +336,7 @@ class _InstanceV2State:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         """
         return pulumi.get(self, "payment_type")
 
@@ -449,7 +449,7 @@ class _InstanceV2State:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         """
         return pulumi.get(self, "spec")
 
@@ -509,6 +509,10 @@ class InstanceV2(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.269.0.
 
+        > **NOTE:** The billing method of an existing Cloud Firewall instance cannot be converted through the API or Terraform. To convert a `PayAsYouGo` instance to `Subscription`, perform the smooth conversion in the [Cloud Firewall console](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/product-overview/smoothly-change-the-billing-method-between-pay-as-you-go-and-subscription) (**Overview** > **More** > **Convert Pay-As-You-Go to Subscription**). Changing `payment_type` on an existing instance that has not been converted returns an error, and the instance is never destroyed or recreated. When `payment_type` changes together with `product_type` or `spec` (both ForceNew), the change is rejected during planning instead of planning a replacement. After the conversion, update `payment_type`, `product_type` and `spec` in the configuration to match the converted instance (the instance ID is retained), or import the converted instance with `pulumi import`, and then run `pulumi preview` to confirm that no changes are pending. Changing only `spec` or only `product_type` still replaces the instance.
+
+        > **NOTE:** Destroying an instance releases it immediately and cannot be undone. A `PayAsYouGo` instance is released through the Cloud Firewall `ReleasePostInstance` API. A `Subscription` instance is unsubscribed through the BSS `RefundInstance` API with immediate release, so the unused part of the subscription is refunded according to the [unsubscription rules](https://www.alibabacloud.com/help/en/user-center/cancel-subscription/). If the refund is rejected, for example because the instance is not eligible for a refund, the refund quota is exhausted or the instance has an unsettled order, `terraform destroy` fails and the instance is kept so that the state still matches the cloud.
+
         ## Example Usage
 
         Basic Usage
@@ -539,7 +543,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values:
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         :param pulumi.Input[_builtins.int] period: The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
         :param pulumi.Input[_builtins.str] product_code: The product code. Valid values: `cfw`.
         :param pulumi.Input[_builtins.str] product_type: The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
@@ -552,7 +556,7 @@ class InstanceV2(pulumi.CustomResource):
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.bool] sdl: Data leakage protection status. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         """
         ...
     @overload
@@ -568,6 +572,10 @@ class InstanceV2(pulumi.CustomResource):
         For information about Cloud Firewall Instance V2 and how to use it, see [What is Instance V2](https://www.alibabacloud.com/help/en/product/90174.htm).
 
         > **NOTE:** Available since v1.269.0.
+
+        > **NOTE:** The billing method of an existing Cloud Firewall instance cannot be converted through the API or Terraform. To convert a `PayAsYouGo` instance to `Subscription`, perform the smooth conversion in the [Cloud Firewall console](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/product-overview/smoothly-change-the-billing-method-between-pay-as-you-go-and-subscription) (**Overview** > **More** > **Convert Pay-As-You-Go to Subscription**). Changing `payment_type` on an existing instance that has not been converted returns an error, and the instance is never destroyed or recreated. When `payment_type` changes together with `product_type` or `spec` (both ForceNew), the change is rejected during planning instead of planning a replacement. After the conversion, update `payment_type`, `product_type` and `spec` in the configuration to match the converted instance (the instance ID is retained), or import the converted instance with `pulumi import`, and then run `pulumi preview` to confirm that no changes are pending. Changing only `spec` or only `product_type` still replaces the instance.
+
+        > **NOTE:** Destroying an instance releases it immediately and cannot be undone. A `PayAsYouGo` instance is released through the Cloud Firewall `ReleasePostInstance` API. A `Subscription` instance is unsubscribed through the BSS `RefundInstance` API with immediate release, so the unused part of the subscription is refunded according to the [unsubscription rules](https://www.alibabacloud.com/help/en/user-center/cancel-subscription/). If the refund is rejected, for example because the instance is not eligible for a refund, the refund quota is exhausted or the instance has an unsettled order, `terraform destroy` fails and the instance is kept so that the state still matches the cloud.
 
         ## Example Usage
 
@@ -691,7 +699,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time.
         :param pulumi.Input[_builtins.str] end_time: The end time.
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         :param pulumi.Input[_builtins.int] period: The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
         :param pulumi.Input[_builtins.str] product_code: The product code. Valid values: `cfw`.
         :param pulumi.Input[_builtins.str] product_type: The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
@@ -705,7 +713,7 @@ class InstanceV2(pulumi.CustomResource):
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[_builtins.bool] sdl: Data leakage protection status. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        :param pulumi.Input[_builtins.str] spec: The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         :param pulumi.Input[_builtins.str] status: The status of Cloud Firewall Instance.
         :param pulumi.Input[_builtins.str] user_status: The user status of Cloud Firewall Instance.
         """
@@ -767,7 +775,7 @@ class InstanceV2(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `product_type` or `spec` is rejected during planning, so no replacement is planned.
         """
         return pulumi.get(self, "payment_type")
 
@@ -844,7 +852,7 @@ class InstanceV2(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output[_builtins.str]:
         """
-        The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
+        The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
         """
         return pulumi.get(self, "spec")
 

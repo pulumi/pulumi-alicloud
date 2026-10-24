@@ -298,6 +298,10 @@ type Instance struct {
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
 	BusinessInfo pulumi.StringPtrOutput `pulumi:"businessInfo"`
+	// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+	CaCertCommonName pulumi.StringOutput `pulumi:"caCertCommonName"`
+	// The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+	CaCertDownloadUrl pulumi.StringOutput `pulumi:"caCertDownloadUrl"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -305,14 +309,6 @@ type Instance struct {
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
 	// Indicates whether the address is a private endpoint.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -353,6 +349,16 @@ type Instance struct {
 	GlobalInstance pulumi.BoolPtrOutput `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrOutput `pulumi:"globalInstanceId"`
+	// The list of Global Security Group Ids.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	GlobalSecurityGroupLists pulumi.StringArrayOutput `pulumi:"globalSecurityGroupLists"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -415,6 +421,7 @@ type Instance struct {
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -428,9 +435,11 @@ type Instance struct {
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	//
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount pulumi.IntPtrOutput `pulumi:"slaveReadOnlyCount"`
 	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	//
 	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
 	SlaveReplicaCount pulumi.IntOutput `pulumi:"slaveReplicaCount"`
 	// The ID of the source instance.
@@ -438,6 +447,8 @@ type Instance struct {
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable pulumi.StringOutput `pulumi:"sslEnable"`
+	// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+	SslExpiredTime pulumi.StringOutput `pulumi:"sslExpiredTime"`
 	// The status of KVStore DBInstance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -511,6 +522,10 @@ type instanceState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
 	BusinessInfo *string `pulumi:"businessInfo"`
+	// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+	CaCertCommonName *string `pulumi:"caCertCommonName"`
+	// The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+	CaCertDownloadUrl *string `pulumi:"caCertDownloadUrl"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity *int `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -518,14 +533,6 @@ type instanceState struct {
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
 	// Indicates whether the address is a private endpoint.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -566,6 +573,16 @@ type instanceState struct {
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId *string `pulumi:"globalInstanceId"`
+	// The list of Global Security Group Ids.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -628,6 +645,7 @@ type instanceState struct {
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -641,9 +659,11 @@ type instanceState struct {
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount *int `pulumi:"shardCount"`
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	//
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
 	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	//
 	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
 	SlaveReplicaCount *int `pulumi:"slaveReplicaCount"`
 	// The ID of the source instance.
@@ -651,6 +671,8 @@ type instanceState struct {
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable *string `pulumi:"sslEnable"`
+	// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+	SslExpiredTime *string `pulumi:"sslExpiredTime"`
 	// The status of KVStore DBInstance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -688,6 +710,10 @@ type InstanceState struct {
 	Bandwidth pulumi.IntPtrInput
 	// The ID of the event or the business information.
 	BusinessInfo pulumi.StringPtrInput
+	// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+	CaCertCommonName pulumi.StringPtrInput
+	// The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+	CaCertDownloadUrl pulumi.StringPtrInput
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
 	Capacity pulumi.IntPtrInput
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -695,14 +721,6 @@ type InstanceState struct {
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringPtrInput
 	// Indicates whether the address is a private endpoint.
-	//
-	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-	//
-	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-	//
-	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-	//
-	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
@@ -743,6 +761,16 @@ type InstanceState struct {
 	GlobalInstance pulumi.BoolPtrInput
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrInput
+	// The list of Global Security Group Ids.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -805,6 +833,7 @@ type InstanceState struct {
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn pulumi.StringPtrInput
 	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -818,9 +847,11 @@ type InstanceState struct {
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntPtrInput
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	//
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount pulumi.IntPtrInput
 	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	//
 	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
 	SlaveReplicaCount pulumi.IntPtrInput
 	// The ID of the source instance.
@@ -828,6 +859,8 @@ type InstanceState struct {
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
 	// **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 	SslEnable pulumi.StringPtrInput
+	// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+	SslExpiredTime pulumi.StringPtrInput
 	// The status of KVStore DBInstance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -908,6 +941,16 @@ type instanceArgs struct {
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId *string `pulumi:"globalInstanceId"`
+	// The list of Global Security Group Ids.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -968,6 +1011,7 @@ type instanceArgs struct {
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -981,9 +1025,11 @@ type instanceArgs struct {
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount *int `pulumi:"shardCount"`
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	//
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
 	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	//
 	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
 	SlaveReplicaCount *int `pulumi:"slaveReplicaCount"`
 	// The ID of the source instance.
@@ -1066,6 +1112,16 @@ type InstanceArgs struct {
 	GlobalInstance pulumi.BoolPtrInput
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrInput
+	// The list of Global Security Group Ids.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -1126,6 +1182,7 @@ type InstanceArgs struct {
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn pulumi.StringPtrInput
 	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+	//
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -1139,9 +1196,11 @@ type InstanceArgs struct {
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntPtrInput
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	//
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount pulumi.IntPtrInput
 	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	//
 	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
 	SlaveReplicaCount pulumi.IntPtrInput
 	// The ID of the source instance.
@@ -1297,6 +1356,16 @@ func (o InstanceOutput) BusinessInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.BusinessInfo }).(pulumi.StringPtrOutput)
 }
 
+// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+func (o InstanceOutput) CaCertCommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CaCertCommonName }).(pulumi.StringOutput)
+}
+
+// The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+func (o InstanceOutput) CaCertDownloadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CaCertDownloadUrl }).(pulumi.StringOutput)
+}
+
 // The storage capacity of the KVStore DBInstance. Unit: MB.
 func (o InstanceOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
@@ -1313,14 +1382,6 @@ func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
 }
 
 // Indicates whether the address is a private endpoint.
-//
-// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-//
-// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-//
-// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-//
-// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 //
 // Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
@@ -1407,6 +1468,19 @@ func (o InstanceOutput) GlobalInstance() pulumi.BoolPtrOutput {
 // The ID of distributed cache.
 func (o InstanceOutput) GlobalInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GlobalInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The list of Global Security Group Ids.
+//
+// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+//
+// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+//
+// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+//
+// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+func (o InstanceOutput) GlobalSecurityGroupLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.GlobalSecurityGroupLists }).(pulumi.StringArrayOutput)
 }
 
 // It has been deprecated from provider version 1.101.0 and `paymentType` instead.
@@ -1549,6 +1623,7 @@ func (o InstanceOutput) RoleArn() pulumi.StringOutput {
 }
 
 // The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+//
 // > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
@@ -1580,12 +1655,14 @@ func (o InstanceOutput) ShardCount() pulumi.IntOutput {
 }
 
 // The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+//
 // > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 func (o InstanceOutput) SlaveReadOnlyCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SlaveReadOnlyCount }).(pulumi.IntPtrOutput)
 }
 
 // The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+//
 // > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
 func (o InstanceOutput) SlaveReplicaCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SlaveReplicaCount }).(pulumi.IntOutput)
@@ -1600,6 +1677,11 @@ func (o InstanceOutput) SrcdbInstanceId() pulumi.StringPtrOutput {
 // **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
 func (o InstanceOutput) SslEnable() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslEnable }).(pulumi.StringOutput)
+}
+
+// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+func (o InstanceOutput) SslExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslExpiredTime }).(pulumi.StringOutput)
 }
 
 // The status of KVStore DBInstance.

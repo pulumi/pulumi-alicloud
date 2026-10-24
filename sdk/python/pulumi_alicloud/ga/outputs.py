@@ -256,10 +256,12 @@ class EndpointGroupEndpointConfiguration(dict):
                - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
                - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
         :param _builtins.int weight: The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+               
                > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         :param _builtins.bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         :param _builtins.bool enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         :param _builtins.str sub_address: The private IP address of the ENI.
+               
                > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
         :param _builtins.str vpc_id: The ID of the Virtual Private Cloud (VPC). This parameter is required only when the endpoint type is set to IpTarget.
         :param Sequence[_builtins.str] vswitch_ids: A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
@@ -309,6 +311,7 @@ class EndpointGroupEndpointConfiguration(dict):
     def weight(self) -> _builtins.int:
         """
         The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+
         > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         """
         return pulumi.get(self, "weight")
@@ -334,6 +337,7 @@ class EndpointGroupEndpointConfiguration(dict):
     def sub_address(self) -> Optional[_builtins.str]:
         """
         The private IP address of the ENI.
+
         > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
         """
         return pulumi.get(self, "sub_address")
@@ -437,6 +441,7 @@ class ForwardingRuleRuleAction(dict):
         :param _builtins.int order: Forwarding priority.
         :param _builtins.str rule_action_type: The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
         :param 'ForwardingRuleRuleActionForwardGroupConfigArgs' forward_group_config: Forwarding configuration. See `forward_group_config` below.
+               
                > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
         :param _builtins.str rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
@@ -468,6 +473,7 @@ class ForwardingRuleRuleAction(dict):
     def forward_group_config(self) -> Optional['outputs.ForwardingRuleRuleActionForwardGroupConfig']:
         """
         Forwarding configuration. See `forward_group_config` below.
+
         > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
         """
         return pulumi.get(self, "forward_group_config")
@@ -584,6 +590,7 @@ class ForwardingRuleRuleCondition(dict):
         """
         :param _builtins.str rule_condition_type: The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
         :param Sequence['ForwardingRuleRuleConditionHostConfigArgs'] host_configs: The configuration of the domain name. See `host_config` below.
+               
                > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
         :param 'ForwardingRuleRuleConditionPathConfigArgs' path_config: The configuration of the path. See `path_config` below.
         :param _builtins.str rule_condition_value: The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
@@ -609,6 +616,7 @@ class ForwardingRuleRuleCondition(dict):
     def host_configs(self) -> Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']]:
         """
         The configuration of the domain name. See `host_config` below.
+
         > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
         """
         return pulumi.get(self, "host_configs")

@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class ForwardingRuleRuleCondition {
     /**
      * @return The configuration of the domain name. See `hostConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
@@ -40,6 +41,7 @@ public final class ForwardingRuleRuleCondition {
     private ForwardingRuleRuleCondition() {}
     /**
      * @return The configuration of the domain name. See `hostConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */

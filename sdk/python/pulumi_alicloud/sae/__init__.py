@@ -9,6 +9,8 @@ import typing
 from .application import *
 from .application_scaling_rule import *
 from .config_map import *
+from .get_application_groups import *
+from .get_application_instances import *
 from .get_application_scaling_rules import *
 from .get_applications import *
 from .get_config_maps import *

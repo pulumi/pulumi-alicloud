@@ -191,6 +191,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
 
     /**
      * The ID of the custom image.
+     * 
      * &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
      * 
      */
@@ -199,6 +200,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The ID of the custom image.
+     * 
      * &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
      * 
      */
@@ -256,6 +258,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol &#39;()\&#39; ~! {@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+     * 
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
@@ -267,6 +270,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol &#39;()\&#39; ~! {@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+     * 
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
@@ -278,6 +282,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
+     * 
      * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      * 
      */
@@ -288,6 +293,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
      * @return Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
+     * 
      * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      * 
      */
@@ -734,6 +740,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
 
         /**
          * @param imageId The ID of the custom image.
+         * 
          * &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
          * 
          * @return builder
@@ -746,6 +753,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
 
         /**
          * @param imageId The ID of the custom image.
+         * 
          * &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
          * 
          * @return builder
@@ -823,6 +831,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
          * - Length is 8~30 characters.
          * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
          * - Special symbol &#39;()\&#39; ~! {@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+         * 
          * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
          * 
          * @return builder
@@ -838,6 +847,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
          * - Length is 8~30 characters.
          * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
          * - Special symbol &#39;()\&#39; ~! {@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+         * 
          * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
          * 
          * @return builder
@@ -851,6 +861,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
          * @param passwordInherit Whether to use the default password of the image.
          * - **false**: (default)Do not use
          * - **true**: Use
+         * 
          * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
          * 
          * @return builder
@@ -865,6 +876,7 @@ public final class DedicatedPropreHostArgs extends com.pulumi.resources.Resource
          * @param passwordInherit Whether to use the default password of the image.
          * - **false**: (default)Do not use
          * - **true**: Use
+         * 
          * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
          * 
          * @return builder

@@ -19,6 +19,8 @@ __all__ = [
     'WorkspaceDatasetLabelArgsDict',
     'WorkspaceDatasetversionLabelArgs',
     'WorkspaceDatasetversionLabelArgsDict',
+    'WorkspaceExperimentLabelArgs',
+    'WorkspaceExperimentLabelArgsDict',
     'WorkspaceModelLabelArgs',
     'WorkspaceModelLabelArgsDict',
     'WorkspaceModelVersionLabelArgs',
@@ -115,6 +117,55 @@ class WorkspaceDatasetversionLabelArgs:
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the tags
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class WorkspaceExperimentLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the experiment label.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the experiment label.
+    """
+
+@pulumi.input_type
+class WorkspaceExperimentLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the experiment label.
+        :param pulumi.Input[_builtins.str] value: The value of the experiment label.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the experiment label.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the experiment label.
         """
         return pulumi.get(self, "value")
 

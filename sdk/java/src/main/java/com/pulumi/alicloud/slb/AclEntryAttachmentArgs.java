@@ -3,10 +3,12 @@
 
 package com.pulumi.alicloud.slb;
 
+import com.pulumi.alicloud.slb.inputs.AclEntryAttachmentEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,14 +34,14 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The comment of the entry.
+     * The comment of the entry. Only valid when `entry` is set.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The comment of the entry.
+     * @return The comment of the entry. Only valid when `entry` is set.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -47,18 +49,41 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The CIDR blocks.
+     * One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      * 
      */
-    @Import(name="entry", required=true)
-    private Output<String> entry;
+    @Import(name="entries")
+    private @Nullable Output<List<AclEntryAttachmentEntryArgs>> entries;
 
     /**
-     * @return The CIDR blocks.
+     * @return One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      * 
      */
-    public Output<String> entry() {
-        return this.entry;
+    public Optional<Output<List<AclEntryAttachmentEntryArgs>>> entries() {
+        return Optional.ofNullable(this.entries);
+    }
+
+    /**
+     * The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+     * 
+     * @deprecated
+     * Field &#39;entry&#39; has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+     * 
+     */
+    @Deprecated /* Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'. */
+    @Import(name="entry")
+    private @Nullable Output<String> entry;
+
+    /**
+     * @return The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+     * 
+     * @deprecated
+     * Field &#39;entry&#39; has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+     * 
+     */
+    @Deprecated /* Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'. */
+    public Optional<Output<String>> entry() {
+        return Optional.ofNullable(this.entry);
     }
 
     private AclEntryAttachmentArgs() {}
@@ -66,6 +91,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
     private AclEntryAttachmentArgs(AclEntryAttachmentArgs $) {
         this.aclId = $.aclId;
         this.comment = $.comment;
+        this.entries = $.entries;
         this.entry = $.entry;
     }
 
@@ -109,7 +135,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param comment The comment of the entry.
+         * @param comment The comment of the entry. Only valid when `entry` is set.
          * 
          * @return builder
          * 
@@ -120,7 +146,7 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param comment The comment of the entry.
+         * @param comment The comment of the entry. Only valid when `entry` is set.
          * 
          * @return builder
          * 
@@ -130,22 +156,61 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param entry The CIDR blocks.
+         * @param entries One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
          * 
          * @return builder
          * 
          */
-        public Builder entry(Output<String> entry) {
+        public Builder entries(@Nullable Output<List<AclEntryAttachmentEntryArgs>> entries) {
+            $.entries = entries;
+            return this;
+        }
+
+        /**
+         * @param entries One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entries(List<AclEntryAttachmentEntryArgs> entries) {
+            return entries(Output.of(entries));
+        }
+
+        /**
+         * @param entries One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entries(AclEntryAttachmentEntryArgs... entries) {
+            return entries(List.of(entries));
+        }
+
+        /**
+         * @param entry The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;entry&#39; has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+         * 
+         */
+        @Deprecated /* Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'. */
+        public Builder entry(@Nullable Output<String> entry) {
             $.entry = entry;
             return this;
         }
 
         /**
-         * @param entry The CIDR blocks.
+         * @param entry The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;entry&#39; has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+         * 
          */
+        @Deprecated /* Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'. */
         public Builder entry(String entry) {
             return entry(Output.of(entry));
         }
@@ -153,9 +218,6 @@ public final class AclEntryAttachmentArgs extends com.pulumi.resources.ResourceA
         public AclEntryAttachmentArgs build() {
             if ($.aclId == null) {
                 throw new MissingRequiredPropertyException("AclEntryAttachmentArgs", "aclId");
-            }
-            if ($.entry == null) {
-                throw new MissingRequiredPropertyException("AclEntryAttachmentArgs", "entry");
             }
             return $;
         }

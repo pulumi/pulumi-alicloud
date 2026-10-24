@@ -86,6 +86,7 @@ type Aggregator struct {
 	pulumi.CustomResourceState
 
 	// The member accounts of the account group. See `aggregatorAccounts` below.
+	//
 	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts AggregatorAggregatorAccountArrayOutput `pulumi:"aggregatorAccounts"`
 	// The name of the account group.
@@ -142,6 +143,7 @@ func GetAggregator(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Aggregator resources.
 type aggregatorState struct {
 	// The member accounts of the account group. See `aggregatorAccounts` below.
+	//
 	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of the account group.
@@ -163,6 +165,7 @@ type aggregatorState struct {
 
 type AggregatorState struct {
 	// The member accounts of the account group. See `aggregatorAccounts` below.
+	//
 	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of the account group.
@@ -188,6 +191,7 @@ func (AggregatorState) ElementType() reflect.Type {
 
 type aggregatorArgs struct {
 	// The member accounts of the account group. See `aggregatorAccounts` below.
+	//
 	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of the account group.
@@ -206,6 +210,7 @@ type aggregatorArgs struct {
 // The set of arguments for constructing a Aggregator resource.
 type AggregatorArgs struct {
 	// The member accounts of the account group. See `aggregatorAccounts` below.
+	//
 	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of the account group.
@@ -309,6 +314,7 @@ func (o AggregatorOutput) ToAggregatorOutputWithContext(ctx context.Context) Agg
 }
 
 // The member accounts of the account group. See `aggregatorAccounts` below.
+//
 // > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 func (o AggregatorOutput) AggregatorAccounts() AggregatorAggregatorAccountArrayOutput {
 	return o.ApplyT(func(v *Aggregator) AggregatorAggregatorAccountArrayOutput { return v.AggregatorAccounts }).(AggregatorAggregatorAccountArrayOutput)

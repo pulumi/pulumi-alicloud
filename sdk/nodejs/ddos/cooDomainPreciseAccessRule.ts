@@ -99,6 +99,7 @@ export class CooDomainPreciseAccessRule extends pulumi.CustomResource {
     declare public readonly conditions: pulumi.Output<outputs.ddos.CooDomainPreciseAccessRuleCondition[]>;
     /**
      * Domain name of the website service.
+     *
      * > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
     declare public readonly domain: pulumi.Output<string>;
@@ -165,6 +166,7 @@ export interface CooDomainPreciseAccessRuleState {
     conditions?: pulumi.Input<pulumi.Input<inputs.ddos.CooDomainPreciseAccessRuleCondition>[] | undefined>;
     /**
      * Domain name of the website service.
+     *
      * > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
     domain?: pulumi.Input<string | undefined>;
@@ -192,6 +194,7 @@ export interface CooDomainPreciseAccessRuleArgs {
     conditions: pulumi.Input<pulumi.Input<inputs.ddos.CooDomainPreciseAccessRuleCondition>[]>;
     /**
      * Domain name of the website service.
+     *
      * > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
     domain: pulumi.Input<string>;

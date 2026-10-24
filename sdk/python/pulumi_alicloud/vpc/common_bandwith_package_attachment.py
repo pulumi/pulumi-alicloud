@@ -34,6 +34,7 @@ class CommonBandwithPackageAttachmentArgs:
                
                > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               
                > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         :param pulumi.Input[_builtins.str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
@@ -83,6 +84,7 @@ class CommonBandwithPackageAttachmentArgs:
     def bandwidth_package_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+
         > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
@@ -130,6 +132,7 @@ class _CommonBandwithPackageAttachmentState:
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
 
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               
                > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
@@ -162,6 +165,7 @@ class _CommonBandwithPackageAttachmentState:
     def bandwidth_package_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+
         > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
@@ -300,6 +304,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               
                > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
@@ -428,6 +433,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+               
                > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         :param pulumi.Input[_builtins.str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[_builtins.bool] cancel_common_bandwidth_package_ip_bandwidth: . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
@@ -456,6 +462,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def bandwidth_package_bandwidth(self) -> pulumi.Output[_builtins.str]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+
         > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")

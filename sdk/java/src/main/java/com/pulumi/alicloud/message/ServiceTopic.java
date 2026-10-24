@@ -105,7 +105,39 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
         return this.enableLogging;
     }
     /**
+     * Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="enableSse", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableSse;
+
+    /**
+     * @return Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Boolean> enableSse() {
+        return this.enableSse;
+    }
+    /**
+     * The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     * 
+     */
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyId;
+
+    /**
+     * @return The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyId() {
+        return Codegen.optional(this.kmsKeyId);
+    }
+    /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     * 
+     * &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     * 
+     * &gt; **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
      * 
      * @deprecated
      * Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
@@ -117,6 +149,10 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
 
     /**
      * @return . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     * 
+     * &gt; **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     * 
+     * &gt; **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
      * 
      */
     public Output<Boolean> loggingEnabled() {
@@ -135,6 +171,38 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> maxMessageSize() {
         return this.maxMessageSize;
+    }
+    /**
+     * The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+     * 
+     */
+    @Export(name="sseAlgorithm", refs={String.class}, tree="[0]")
+    private Output<String> sseAlgorithm;
+
+    /**
+     * @return The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+     * 
+     */
+    public Output<String> sseAlgorithm() {
+        return this.sseAlgorithm;
+    }
+    /**
+     * The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     * 
+     */
+    @Export(name="sseType", refs={String.class}, tree="[0]")
+    private Output<String> sseType;
+
+    /**
+     * @return The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     * 
+     */
+    public Output<String> sseType() {
+        return this.sseType;
     }
     /**
      * A mapping of tags to assign to the resource.

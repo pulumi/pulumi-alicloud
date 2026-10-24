@@ -46,6 +46,7 @@ class RouterInterfaceArgs:
                If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
         :param pulumi.Input[_builtins.str] opposite_access_point_id: It has been deprecated from version 1.11.0.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] specification: Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
         """
@@ -200,6 +201,7 @@ class RouterInterfaceArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -258,6 +260,7 @@ class _RouterInterfaceState:
         :param pulumi.Input[_builtins.str] opposite_router_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         :param pulumi.Input[_builtins.str] opposite_router_type: It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         :param pulumi.Input[_builtins.str] router_id: The Router ID.
@@ -473,6 +476,7 @@ class _RouterInterfaceState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -599,6 +603,7 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] opposite_access_point_id: It has been deprecated from version 1.11.0.
         :param pulumi.Input[_builtins.str] opposite_region: The Region of peer side.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         :param pulumi.Input[_builtins.str] router_id: The Router ID.
@@ -759,6 +764,7 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] opposite_router_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         :param pulumi.Input[_builtins.str] opposite_router_type: It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
         :param pulumi.Input[_builtins.str] router_id: The Router ID.
@@ -896,6 +902,7 @@ class RouterInterface(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

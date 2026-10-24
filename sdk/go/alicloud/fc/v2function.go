@@ -78,6 +78,7 @@ type V2Function struct {
 	// - **g1**: Same as **fc.gpu.tesla.1**.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// List of layers.
+	//
 	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 	Layers pulumi.StringArrayOutput `pulumi:"layers"`
 	// memory size needed by function.
@@ -180,6 +181,7 @@ type v2functionState struct {
 	// - **g1**: Same as **fc.gpu.tesla.1**.
 	InstanceType *string `pulumi:"instanceType"`
 	// List of layers.
+	//
 	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 	Layers []string `pulumi:"layers"`
 	// memory size needed by function.
@@ -241,6 +243,7 @@ type V2FunctionState struct {
 	// - **g1**: Same as **fc.gpu.tesla.1**.
 	InstanceType pulumi.StringPtrInput
 	// List of layers.
+	//
 	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 	Layers pulumi.StringArrayInput
 	// memory size needed by function.
@@ -302,6 +305,7 @@ type v2functionArgs struct {
 	// - **g1**: Same as **fc.gpu.tesla.1**.
 	InstanceType *string `pulumi:"instanceType"`
 	// List of layers.
+	//
 	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 	Layers []string `pulumi:"layers"`
 	// memory size needed by function.
@@ -360,6 +364,7 @@ type V2FunctionArgs struct {
 	// - **g1**: Same as **fc.gpu.tesla.1**.
 	InstanceType pulumi.StringPtrInput
 	// List of layers.
+	//
 	// > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 	Layers pulumi.StringArrayInput
 	// memory size needed by function.
@@ -570,6 +575,7 @@ func (o V2FunctionOutput) InstanceType() pulumi.StringOutput {
 }
 
 // List of layers.
+//
 // > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
 func (o V2FunctionOutput) Layers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.StringArrayOutput { return v.Layers }).(pulumi.StringArrayOutput)

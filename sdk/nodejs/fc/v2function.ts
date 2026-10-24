@@ -142,6 +142,7 @@ export class V2Function extends pulumi.CustomResource {
     declare public readonly instanceType: pulumi.Output<string>;
     /**
      * List of layers.
+     *
      * > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      */
     declare public readonly layers: pulumi.Output<string[] | undefined>;
@@ -342,6 +343,7 @@ export interface V2FunctionState {
     instanceType?: pulumi.Input<string | undefined>;
     /**
      * List of layers.
+     *
      * > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      */
     layers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -450,6 +452,7 @@ export interface V2FunctionArgs {
     instanceType?: pulumi.Input<string | undefined>;
     /**
      * List of layers.
+     *
      * > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      */
     layers?: pulumi.Input<pulumi.Input<string>[] | undefined>;

@@ -86,6 +86,8 @@ type WorkspaceExperiment struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Name is the name of the experiment, unique in a namespace
 	ExperimentName pulumi.StringOutput `pulumi:"experimentName"`
+	// Labels are tags of the experiment. See `labels` below.
+	Labels WorkspaceExperimentLabelArrayOutput `pulumi:"labels"`
 	// WorkspaceId is the workspace id which contains the experiment
 	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
@@ -137,6 +139,8 @@ type workspaceExperimentState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Name is the name of the experiment, unique in a namespace
 	ExperimentName *string `pulumi:"experimentName"`
+	// Labels are tags of the experiment. See `labels` below.
+	Labels []WorkspaceExperimentLabel `pulumi:"labels"`
 	// WorkspaceId is the workspace id which contains the experiment
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
@@ -150,6 +154,8 @@ type WorkspaceExperimentState struct {
 	CreateTime pulumi.StringPtrInput
 	// Name is the name of the experiment, unique in a namespace
 	ExperimentName pulumi.StringPtrInput
+	// Labels are tags of the experiment. See `labels` below.
+	Labels WorkspaceExperimentLabelArrayInput
 	// WorkspaceId is the workspace id which contains the experiment
 	WorkspaceId pulumi.StringPtrInput
 }
@@ -165,6 +171,8 @@ type workspaceExperimentArgs struct {
 	ArtifactUri string `pulumi:"artifactUri"`
 	// Name is the name of the experiment, unique in a namespace
 	ExperimentName string `pulumi:"experimentName"`
+	// Labels are tags of the experiment. See `labels` below.
+	Labels []WorkspaceExperimentLabel `pulumi:"labels"`
 	// WorkspaceId is the workspace id which contains the experiment
 	WorkspaceId string `pulumi:"workspaceId"`
 }
@@ -177,6 +185,8 @@ type WorkspaceExperimentArgs struct {
 	ArtifactUri pulumi.StringInput
 	// Name is the name of the experiment, unique in a namespace
 	ExperimentName pulumi.StringInput
+	// Labels are tags of the experiment. See `labels` below.
+	Labels WorkspaceExperimentLabelArrayInput
 	// WorkspaceId is the workspace id which contains the experiment
 	WorkspaceId pulumi.StringInput
 }
@@ -286,6 +296,11 @@ func (o WorkspaceExperimentOutput) CreateTime() pulumi.StringOutput {
 // Name is the name of the experiment, unique in a namespace
 func (o WorkspaceExperimentOutput) ExperimentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceExperiment) pulumi.StringOutput { return v.ExperimentName }).(pulumi.StringOutput)
+}
+
+// Labels are tags of the experiment. See `labels` below.
+func (o WorkspaceExperimentOutput) Labels() WorkspaceExperimentLabelArrayOutput {
+	return o.ApplyT(func(v *WorkspaceExperiment) WorkspaceExperimentLabelArrayOutput { return v.Labels }).(WorkspaceExperimentLabelArrayOutput)
 }
 
 // WorkspaceId is the workspace id which contains the experiment

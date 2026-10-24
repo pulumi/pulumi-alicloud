@@ -93,6 +93,7 @@ type Listener struct {
 	// The accelerator id.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
 	// The certificates of the listener. See `certificates` below.
+	//
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayOutput `pulumi:"certificates"`
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
@@ -104,6 +105,7 @@ type Listener struct {
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig ListenerForwardedForConfigPtrOutput `pulumi:"forwardedForConfig"`
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	//
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringOutput `pulumi:"httpVersion"`
 	// The timeout period of idle connections. Unit: seconds. Valid values:
@@ -118,6 +120,7 @@ type Listener struct {
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The portRanges of the listener. See `portRanges` below.
+	//
 	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges ListenerPortRangeArrayOutput `pulumi:"portRanges"`
 	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
@@ -125,6 +128,7 @@ type Listener struct {
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrOutput `pulumi:"proxyProtocol"`
 	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	//
 	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
 	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -172,6 +176,7 @@ type listenerState struct {
 	// The accelerator id.
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// The certificates of the listener. See `certificates` below.
+	//
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
@@ -183,6 +188,7 @@ type listenerState struct {
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig *ListenerForwardedForConfig `pulumi:"forwardedForConfig"`
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	//
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion *string `pulumi:"httpVersion"`
 	// The timeout period of idle connections. Unit: seconds. Valid values:
@@ -197,6 +203,7 @@ type listenerState struct {
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
 	// The portRanges of the listener. See `portRanges` below.
+	//
 	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges []ListenerPortRange `pulumi:"portRanges"`
 	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
@@ -204,6 +211,7 @@ type listenerState struct {
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
 	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	//
 	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -216,6 +224,7 @@ type ListenerState struct {
 	// The accelerator id.
 	AcceleratorId pulumi.StringPtrInput
 	// The certificates of the listener. See `certificates` below.
+	//
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayInput
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
@@ -227,6 +236,7 @@ type ListenerState struct {
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig ListenerForwardedForConfigPtrInput
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	//
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringPtrInput
 	// The timeout period of idle connections. Unit: seconds. Valid values:
@@ -241,6 +251,7 @@ type ListenerState struct {
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
 	// The portRanges of the listener. See `portRanges` below.
+	//
 	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges ListenerPortRangeArrayInput
 	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
@@ -248,6 +259,7 @@ type ListenerState struct {
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrInput
 	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	//
 	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
 	RequestTimeout pulumi.IntPtrInput
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -264,6 +276,7 @@ type listenerArgs struct {
 	// The accelerator id.
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The certificates of the listener. See `certificates` below.
+	//
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
@@ -275,6 +288,7 @@ type listenerArgs struct {
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig *ListenerForwardedForConfig `pulumi:"forwardedForConfig"`
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	//
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion *string `pulumi:"httpVersion"`
 	// The timeout period of idle connections. Unit: seconds. Valid values:
@@ -289,6 +303,7 @@ type listenerArgs struct {
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
 	// The portRanges of the listener. See `portRanges` below.
+	//
 	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges []ListenerPortRange `pulumi:"portRanges"`
 	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
@@ -296,6 +311,7 @@ type listenerArgs struct {
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
 	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	//
 	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -307,6 +323,7 @@ type ListenerArgs struct {
 	// The accelerator id.
 	AcceleratorId pulumi.StringInput
 	// The certificates of the listener. See `certificates` below.
+	//
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayInput
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
@@ -318,6 +335,7 @@ type ListenerArgs struct {
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig ListenerForwardedForConfigPtrInput
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	//
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringPtrInput
 	// The timeout period of idle connections. Unit: seconds. Valid values:
@@ -332,6 +350,7 @@ type ListenerArgs struct {
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
 	// The portRanges of the listener. See `portRanges` below.
+	//
 	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges ListenerPortRangeArrayInput
 	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
@@ -339,6 +358,7 @@ type ListenerArgs struct {
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrInput
 	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	//
 	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
 	RequestTimeout pulumi.IntPtrInput
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -438,6 +458,7 @@ func (o ListenerOutput) AcceleratorId() pulumi.StringOutput {
 }
 
 // The certificates of the listener. See `certificates` below.
+//
 // > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 func (o ListenerOutput) Certificates() ListenerCertificateArrayOutput {
 	return o.ApplyT(func(v *Listener) ListenerCertificateArrayOutput { return v.Certificates }).(ListenerCertificateArrayOutput)
@@ -461,6 +482,7 @@ func (o ListenerOutput) ForwardedForConfig() ListenerForwardedForConfigPtrOutput
 }
 
 // The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+//
 // > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 func (o ListenerOutput) HttpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.HttpVersion }).(pulumi.StringOutput)
@@ -487,6 +509,7 @@ func (o ListenerOutput) Name() pulumi.StringOutput {
 }
 
 // The portRanges of the listener. See `portRanges` below.
+//
 // > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 func (o ListenerOutput) PortRanges() ListenerPortRangeArrayOutput {
 	return o.ApplyT(func(v *Listener) ListenerPortRangeArrayOutput { return v.PortRanges }).(ListenerPortRangeArrayOutput)
@@ -503,6 +526,7 @@ func (o ListenerOutput) ProxyProtocol() pulumi.BoolPtrOutput {
 }
 
 // The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+//
 // > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
 func (o ListenerOutput) RequestTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.RequestTimeout }).(pulumi.IntOutput)

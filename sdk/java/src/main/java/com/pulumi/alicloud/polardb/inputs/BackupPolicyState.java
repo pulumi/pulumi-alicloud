@@ -79,6 +79,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -87,6 +88,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -156,6 +158,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -164,6 +167,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * 
      * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      * 
      */
@@ -233,6 +237,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     * 
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */
@@ -241,6 +246,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+     * 
      * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      * 
      */
@@ -420,6 +426,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel1BackupPeriods PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -432,6 +439,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel1BackupPeriods PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -443,6 +451,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel1BackupPeriods PolarDB Cluster of level-1 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -538,6 +547,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel2BackupPeriods PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -550,6 +560,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel2BackupPeriods PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -561,6 +572,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataLevel2BackupPeriods PolarDB Cluster of level-2 backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+         * 
          * &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
          * 
          * @return builder
@@ -656,6 +668,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logBackupAnotherRegionRetentionPeriod The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+         * 
          * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
          * 
          * @return builder
@@ -668,6 +681,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logBackupAnotherRegionRetentionPeriod The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+         * 
          * &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
          * 
          * @return builder

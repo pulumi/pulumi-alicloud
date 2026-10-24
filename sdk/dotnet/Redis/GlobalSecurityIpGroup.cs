@@ -30,8 +30,6 @@ namespace Pulumi.AliCloud.Redis
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var zoneId = config.Get("zoneId") ?? "cn-beijing-h";
-    ///     var regionId = config.Get("regionId") ?? "cn-beijing";
     ///     var @default = new AliCloud.Redis.GlobalSecurityIpGroup("default", new()
     ///     {
     ///         GlobalIpGroupName = "ggn_example_create",

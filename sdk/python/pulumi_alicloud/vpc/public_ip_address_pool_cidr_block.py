@@ -28,6 +28,7 @@ class PublicIpAddressPoolCidrBlockArgs:
         :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
         :param pulumi.Input[_builtins.int] cidr_mask: IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+               
                > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         """
         pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
@@ -65,6 +66,7 @@ class PublicIpAddressPoolCidrBlockArgs:
     def cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+
         > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         """
         return pulumi.get(self, "cidr_mask")
@@ -87,6 +89,7 @@ class _PublicIpAddressPoolCidrBlockState:
 
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
         :param pulumi.Input[_builtins.int] cidr_mask: IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+               
                > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
@@ -120,6 +123,7 @@ class _PublicIpAddressPoolCidrBlockState:
     def cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+
         > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         """
         return pulumi.get(self, "cidr_mask")
@@ -221,6 +225,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
         :param pulumi.Input[_builtins.int] cidr_mask: IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+               
                > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         """
@@ -330,6 +335,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block.
         :param pulumi.Input[_builtins.int] cidr_mask: IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+               
                > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
@@ -359,6 +365,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
     def cidr_mask(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+
         > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
         """
         return pulumi.get(self, "cidr_mask")

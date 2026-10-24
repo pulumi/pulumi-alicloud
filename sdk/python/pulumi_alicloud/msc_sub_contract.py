@@ -30,8 +30,6 @@ class MscSubContractArgs:
         :param pulumi.Input[_builtins.str] email: The User's Contact Email Address.
         :param pulumi.Input[_builtins.str] mobile: The User's Telephone.
         :param pulumi.Input[_builtins.str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-               
-               > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         pulumi.set(__self__, "contact_name", contact_name)
         pulumi.set(__self__, "email", email)
@@ -79,8 +77,6 @@ class MscSubContractArgs:
     def position(self) -> pulumi.Input[_builtins.str]:
         """
         The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-
-        > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         return pulumi.get(self, "position")
 
@@ -103,8 +99,6 @@ class _MscSubContractState:
         :param pulumi.Input[_builtins.str] email: The User's Contact Email Address.
         :param pulumi.Input[_builtins.str] mobile: The User's Telephone.
         :param pulumi.Input[_builtins.str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-               
-               > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         if contact_name is not None:
             pulumi.set(__self__, "contact_name", contact_name)
@@ -156,8 +150,6 @@ class _MscSubContractState:
     def position(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-
-        > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         return pulumi.get(self, "position")
 
@@ -181,6 +173,8 @@ class MscSubContract(pulumi.CustomResource):
         Provides a Msc Sub Contact resource.
 
         > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
 
         ## Example Usage
 
@@ -218,8 +212,6 @@ class MscSubContract(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The User's Contact Email Address.
         :param pulumi.Input[_builtins.str] mobile: The User's Telephone.
         :param pulumi.Input[_builtins.str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-               
-               > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         ...
     @overload
@@ -231,6 +223,8 @@ class MscSubContract(pulumi.CustomResource):
         Provides a Msc Sub Contact resource.
 
         > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
 
         ## Example Usage
 
@@ -327,8 +321,6 @@ class MscSubContract(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The User's Contact Email Address.
         :param pulumi.Input[_builtins.str] mobile: The User's Telephone.
         :param pulumi.Input[_builtins.str] position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-               
-               > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,8 +361,6 @@ class MscSubContract(pulumi.CustomResource):
     def position(self) -> pulumi.Output[_builtins.str]:
         """
         The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-
-        > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
         return pulumi.get(self, "position")
 

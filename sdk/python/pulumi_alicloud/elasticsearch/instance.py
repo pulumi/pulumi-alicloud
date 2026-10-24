@@ -138,6 +138,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
                - AutoRenewal: Auto-renewal.
@@ -148,7 +150,7 @@ class InstanceArgs:
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
         :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
@@ -782,6 +784,8 @@ class InstanceArgs:
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
+
+        > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         """
         return pulumi.get(self, "protocol")
 
@@ -836,7 +840,7 @@ class InstanceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group to which the instance belongs.
+        The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1102,6 +1106,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[_builtins.str] public_domain: The public endpoint of the instance.
         :param pulumi.Input[_builtins.int] public_port: The public access port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
@@ -1114,7 +1120,7 @@ class _InstanceState:
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
@@ -1833,6 +1839,8 @@ class _InstanceState:
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
+
+        > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         """
         return pulumi.get(self, "protocol")
 
@@ -1911,7 +1919,7 @@ class _InstanceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group to which the instance belongs.
+        The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -2266,6 +2274,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
                - AutoRenewal: Auto-renewal.
@@ -2276,7 +2286,7 @@ class Instance(pulumi.CustomResource):
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
         :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
@@ -2646,6 +2656,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[_builtins.str] public_domain: The public endpoint of the instance.
         :param pulumi.Input[_builtins.int] public_port: The public access port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
@@ -2658,7 +2670,7 @@ class Instance(pulumi.CustomResource):
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
@@ -3111,6 +3123,8 @@ class Instance(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[_builtins.str]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
+
+        > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         """
         return pulumi.get(self, "protocol")
 
@@ -3165,7 +3179,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group to which the instance belongs.
+        The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         """
         return pulumi.get(self, "resource_group_id")
 

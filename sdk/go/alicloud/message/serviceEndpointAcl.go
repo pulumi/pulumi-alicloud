@@ -71,6 +71,7 @@ type ServiceEndpointAcl struct {
 	// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
 	AclStrategy pulumi.StringOutput `pulumi:"aclStrategy"`
 	// The CIDR block.
+	//
 	// > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// Access point type. Value:
@@ -121,6 +122,7 @@ type serviceEndpointAclState struct {
 	// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
 	AclStrategy *string `pulumi:"aclStrategy"`
 	// The CIDR block.
+	//
 	// > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
 	Cidr *string `pulumi:"cidr"`
 	// Access point type. Value:
@@ -133,6 +135,7 @@ type ServiceEndpointAclState struct {
 	// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
 	AclStrategy pulumi.StringPtrInput
 	// The CIDR block.
+	//
 	// > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
 	Cidr pulumi.StringPtrInput
 	// Access point type. Value:
@@ -149,6 +152,7 @@ type serviceEndpointAclArgs struct {
 	// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
 	AclStrategy string `pulumi:"aclStrategy"`
 	// The CIDR block.
+	//
 	// > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
 	Cidr string `pulumi:"cidr"`
 	// Access point type. Value:
@@ -162,6 +166,7 @@ type ServiceEndpointAclArgs struct {
 	// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
 	AclStrategy pulumi.StringInput
 	// The CIDR block.
+	//
 	// > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
 	Cidr pulumi.StringInput
 	// Access point type. Value:
@@ -263,6 +268,7 @@ func (o ServiceEndpointAclOutput) AclStrategy() pulumi.StringOutput {
 }
 
 // The CIDR block.
+//
 // > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
 func (o ServiceEndpointAclOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceEndpointAcl) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)

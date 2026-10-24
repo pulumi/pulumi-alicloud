@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class ForwardingRuleRuleAction {
     /**
      * @return Forwarding configuration. See `forwardGroupConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
      * 
      */
@@ -39,6 +40,7 @@ public final class ForwardingRuleRuleAction {
     private ForwardingRuleRuleAction() {}
     /**
      * @return Forwarding configuration. See `forwardGroupConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
      * 
      */

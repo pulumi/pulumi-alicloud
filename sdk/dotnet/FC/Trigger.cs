@@ -814,7 +814,9 @@ namespace Pulumi.AliCloud.FC
         /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "MnsTopic", "CdnEvents", "eventbridge"].
         /// 
         /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+        /// 
         /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+        /// 
         /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
         /// </summary>
         [Output("type")]
@@ -918,7 +920,9 @@ namespace Pulumi.AliCloud.FC
         /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "MnsTopic", "CdnEvents", "eventbridge"].
         /// 
         /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+        /// 
         /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+        /// 
         /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
         /// </summary>
         [Input("type", required: true)]
@@ -996,7 +1000,9 @@ namespace Pulumi.AliCloud.FC
         /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "MnsTopic", "CdnEvents", "eventbridge"].
         /// 
         /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+        /// 
         /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+        /// 
         /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
         /// </summary>
         [Input("type")]

@@ -145,6 +145,7 @@ class ProjectProperties(dict):
         :param _builtins.bool enable_decimal2: Whether to turn on Decimal2.0.
         :param _builtins.bool enable_dr: Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         :param 'ProjectPropertiesEncryptionArgs' encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+               
                > **NOTE :**:
                To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
                
@@ -212,6 +213,7 @@ class ProjectProperties(dict):
     def encryption(self) -> Optional['outputs.ProjectPropertiesEncryption']:
         """
         Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+
         > **NOTE :**:
         To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 

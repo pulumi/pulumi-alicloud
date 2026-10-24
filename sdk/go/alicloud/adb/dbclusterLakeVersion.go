@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.190.0.
 //
+// > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `paymentType = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -130,6 +132,7 @@ type DBClusterLakeVersion struct {
 	// The edition of the cluster. Valid values:
 	// - `BasicVersion`: Basic Edition.
 	// - `EnterpriseVersion`: Enterprise Edition.
+	//
 	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
 	ProductVersion pulumi.StringOutput `pulumi:"productVersion"`
 	// The number of reserved resource nodes.
@@ -256,6 +259,7 @@ type dbclusterLakeVersionState struct {
 	// The edition of the cluster. Valid values:
 	// - `BasicVersion`: Basic Edition.
 	// - `EnterpriseVersion`: Enterprise Edition.
+	//
 	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
 	ProductVersion *string `pulumi:"productVersion"`
 	// The number of reserved resource nodes.
@@ -338,6 +342,7 @@ type DBClusterLakeVersionState struct {
 	// The edition of the cluster. Valid values:
 	// - `BasicVersion`: Basic Edition.
 	// - `EnterpriseVersion`: Enterprise Edition.
+	//
 	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
 	ProductVersion pulumi.StringPtrInput
 	// The number of reserved resource nodes.
@@ -404,6 +409,7 @@ type dbclusterLakeVersionArgs struct {
 	// The edition of the cluster. Valid values:
 	// - `BasicVersion`: Basic Edition.
 	// - `EnterpriseVersion`: Enterprise Edition.
+	//
 	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
 	ProductVersion *string `pulumi:"productVersion"`
 	// The number of reserved resource nodes.
@@ -465,6 +471,7 @@ type DBClusterLakeVersionArgs struct {
 	// The edition of the cluster. Valid values:
 	// - `BasicVersion`: Basic Edition.
 	// - `EnterpriseVersion`: Enterprise Edition.
+	//
 	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
 	ProductVersion pulumi.StringPtrInput
 	// The number of reserved resource nodes.
@@ -694,6 +701,7 @@ func (o DBClusterLakeVersionOutput) ProductForm() pulumi.StringOutput {
 // The edition of the cluster. Valid values:
 // - `BasicVersion`: Basic Edition.
 // - `EnterpriseVersion`: Enterprise Edition.
+//
 // > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
 func (o DBClusterLakeVersionOutput) ProductVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.ProductVersion }).(pulumi.StringOutput)

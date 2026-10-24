@@ -75,6 +75,7 @@ export class ServiceEndpointAcl extends pulumi.CustomResource {
     declare public readonly aclStrategy: pulumi.Output<string>;
     /**
      * The CIDR block.
+     *
      * > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
      */
     declare public readonly cidr: pulumi.Output<string>;
@@ -131,6 +132,7 @@ export interface ServiceEndpointAclState {
     aclStrategy?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block.
+     *
      * > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
      */
     cidr?: pulumi.Input<string | undefined>;
@@ -152,6 +154,7 @@ export interface ServiceEndpointAclArgs {
     aclStrategy: pulumi.Input<string>;
     /**
      * The CIDR block.
+     *
      * > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
      */
     cidr: pulumi.Input<string>;

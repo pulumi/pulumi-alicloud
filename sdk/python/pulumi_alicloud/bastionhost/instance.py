@@ -63,6 +63,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
                
@@ -247,6 +248,7 @@ class InstanceArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -386,6 +388,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
@@ -533,6 +536,7 @@ class _InstanceState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -842,6 +846,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLdapAuthServerArgs', 'InstanceLdapAuthServerArgsDict', 'outputs.InstanceLdapAuthServer']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
@@ -1111,6 +1116,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLdapAuthServerArgs', 'InstanceLdapAuthServerArgsDict', 'outputs.InstanceLdapAuthServer']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
         :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
@@ -1221,6 +1227,7 @@ class Instance(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

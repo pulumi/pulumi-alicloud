@@ -108,6 +108,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Output("autoRenewDuration")]
@@ -255,6 +256,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// 
         /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Output("maintainEndTime")]
@@ -274,6 +276,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The network type of the instance. Valid values: `VPC`.
+        /// 
         /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         [Output("networkType")]
@@ -283,6 +286,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
+        /// 
         /// &gt; **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Output("orderType")]
@@ -338,6 +342,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Output("restoreTime")]
@@ -398,6 +403,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Output("sslAction")]
@@ -533,6 +539,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -692,6 +699,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// 
         /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("maintainEndTime")]
@@ -711,6 +719,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The network type of the instance. Valid values: `VPC`.
+        /// 
         /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         [Input("networkType")]
@@ -720,6 +729,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
+        /// 
         /// &gt; **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
@@ -769,6 +779,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Input("restoreTime")]
@@ -835,6 +846,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Input("sslAction")]
@@ -922,6 +934,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -1093,6 +1106,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// 
         /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         /// </summary>
         [Input("maintainEndTime")]
@@ -1112,6 +1126,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The network type of the instance. Valid values: `VPC`.
+        /// 
         /// &gt; **NOTE:** From 2022.2.21, `NetworkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         /// </summary>
         [Input("networkType")]
@@ -1121,6 +1136,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         /// - `UPGRADE`: The specifications are upgraded.
         /// - `DOWNGRADE`: The specifications are downgraded.
+        /// 
         /// &gt; **NOTE:** `OrderType` is only applicable to instances when `InstanceChargeType` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
@@ -1188,6 +1204,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Input("restoreTime")]
@@ -1260,6 +1277,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Input("sslAction")]

@@ -65,6 +65,7 @@ class ServerlessKubernetesArgs:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
@@ -261,6 +262,7 @@ class ServerlessKubernetesArgs:
     def custom_san(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -653,6 +655,7 @@ class _ServerlessKubernetesState:
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
@@ -852,6 +855,7 @@ class _ServerlessKubernetesState:
     def custom_san(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -1331,6 +1335,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
@@ -1595,6 +1600,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - ack.standard: Standard serverless clusters.
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
@@ -1721,6 +1727,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def custom_san(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")

@@ -67,6 +67,7 @@ class ApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationParameterArgs']]] parameters: The parameters of the application. See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] security_ip_array_name: The name of the IP whitelist group.
@@ -333,6 +334,7 @@ class ApplicationArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -475,6 +477,7 @@ class _ApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationParameterArgs']]] parameters: The parameters of the application. See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the application.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -736,6 +739,7 @@ class _ApplicationState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -976,6 +980,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]] parameters: The parameters of the application. See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the application.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -1207,6 +1212,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]] parameters: The parameters of the application. See `parameters` below.
         :param pulumi.Input[_builtins.str] pay_type: The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[_builtins.int] period: The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the application.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -1383,6 +1389,7 @@ class Application(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The subscription duration in months. It is valid when `pay_type` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

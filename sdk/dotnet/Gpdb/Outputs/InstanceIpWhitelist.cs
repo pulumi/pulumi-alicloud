@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly string? IpGroupAttribute;
         /// <summary>
-        /// IP whitelist group name.
+        /// IP whitelist group name. Defaults to `Default`, the built-in whitelist group; a group without a name is applied to the `Default` group instead of creating a new one.
         /// </summary>
         public readonly string? IpGroupName;
         /// <summary>

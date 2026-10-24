@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.132.0.
  * 
+ * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -116,16 +118,12 @@ public class MscSubContract extends com.pulumi.resources.CustomResource {
     /**
      * The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      * 
-     * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
-     * 
      */
     @Export(name="position", refs={String.class}, tree="[0]")
     private Output<String> position;
 
     /**
      * @return The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-     * 
-     * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      * 
      */
     public Output<String> position() {

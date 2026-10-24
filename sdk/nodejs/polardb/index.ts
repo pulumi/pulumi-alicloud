@@ -80,6 +80,41 @@ export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
+export { GatewayBudgetPolicyArgs, GatewayBudgetPolicyState } from "./gatewayBudgetPolicy";
+export type GatewayBudgetPolicy = import("./gatewayBudgetPolicy").GatewayBudgetPolicy;
+export const GatewayBudgetPolicy: typeof import("./gatewayBudgetPolicy").GatewayBudgetPolicy = null as any;
+utilities.lazyLoad(exports, ["GatewayBudgetPolicy"], () => require("./gatewayBudgetPolicy"));
+
+export { GatewayConsumerArgs, GatewayConsumerState } from "./gatewayConsumer";
+export type GatewayConsumer = import("./gatewayConsumer").GatewayConsumer;
+export const GatewayConsumer: typeof import("./gatewayConsumer").GatewayConsumer = null as any;
+utilities.lazyLoad(exports, ["GatewayConsumer"], () => require("./gatewayConsumer"));
+
+export { GatewayConsumerGroupArgs, GatewayConsumerGroupState } from "./gatewayConsumerGroup";
+export type GatewayConsumerGroup = import("./gatewayConsumerGroup").GatewayConsumerGroup;
+export const GatewayConsumerGroup: typeof import("./gatewayConsumerGroup").GatewayConsumerGroup = null as any;
+utilities.lazyLoad(exports, ["GatewayConsumerGroup"], () => require("./gatewayConsumerGroup"));
+
+export { GatewayCostRuleArgs, GatewayCostRuleState } from "./gatewayCostRule";
+export type GatewayCostRule = import("./gatewayCostRule").GatewayCostRule;
+export const GatewayCostRule: typeof import("./gatewayCostRule").GatewayCostRule = null as any;
+utilities.lazyLoad(exports, ["GatewayCostRule"], () => require("./gatewayCostRule"));
+
+export { GatewayModelApiArgs, GatewayModelApiState } from "./gatewayModelApi";
+export type GatewayModelApi = import("./gatewayModelApi").GatewayModelApi;
+export const GatewayModelApi: typeof import("./gatewayModelApi").GatewayModelApi = null as any;
+utilities.lazyLoad(exports, ["GatewayModelApi"], () => require("./gatewayModelApi"));
+
+export { GatewayModelServiceArgs, GatewayModelServiceState } from "./gatewayModelService";
+export type GatewayModelService = import("./gatewayModelService").GatewayModelService;
+export const GatewayModelService: typeof import("./gatewayModelService").GatewayModelService = null as any;
+utilities.lazyLoad(exports, ["GatewayModelService"], () => require("./gatewayModelService"));
+
+export { GatewayRateLimitPolicyArgs, GatewayRateLimitPolicyState } from "./gatewayRateLimitPolicy";
+export type GatewayRateLimitPolicy = import("./gatewayRateLimitPolicy").GatewayRateLimitPolicy;
+export const GatewayRateLimitPolicy: typeof import("./gatewayRateLimitPolicy").GatewayRateLimitPolicy = null as any;
+utilities.lazyLoad(exports, ["GatewayRateLimitPolicy"], () => require("./gatewayRateLimitPolicy"));
+
 export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
 export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
@@ -100,10 +135,50 @@ export const getEndpoints: typeof import("./getEndpoints").getEndpoints = null a
 export const getEndpointsOutput: typeof import("./getEndpoints").getEndpointsOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpoints","getEndpointsOutput"], () => require("./getEndpoints"));
 
+export { GetGatewayBudgetPoliciesArgs, GetGatewayBudgetPoliciesResult, GetGatewayBudgetPoliciesOutputArgs } from "./getGatewayBudgetPolicies";
+export const getGatewayBudgetPolicies: typeof import("./getGatewayBudgetPolicies").getGatewayBudgetPolicies = null as any;
+export const getGatewayBudgetPoliciesOutput: typeof import("./getGatewayBudgetPolicies").getGatewayBudgetPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayBudgetPolicies","getGatewayBudgetPoliciesOutput"], () => require("./getGatewayBudgetPolicies"));
+
+export { GetGatewayConsumerGroupsArgs, GetGatewayConsumerGroupsResult, GetGatewayConsumerGroupsOutputArgs } from "./getGatewayConsumerGroups";
+export const getGatewayConsumerGroups: typeof import("./getGatewayConsumerGroups").getGatewayConsumerGroups = null as any;
+export const getGatewayConsumerGroupsOutput: typeof import("./getGatewayConsumerGroups").getGatewayConsumerGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayConsumerGroups","getGatewayConsumerGroupsOutput"], () => require("./getGatewayConsumerGroups"));
+
+export { GetGatewayConsumersArgs, GetGatewayConsumersResult, GetGatewayConsumersOutputArgs } from "./getGatewayConsumers";
+export const getGatewayConsumers: typeof import("./getGatewayConsumers").getGatewayConsumers = null as any;
+export const getGatewayConsumersOutput: typeof import("./getGatewayConsumers").getGatewayConsumersOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayConsumers","getGatewayConsumersOutput"], () => require("./getGatewayConsumers"));
+
+export { GetGatewayCostRulesArgs, GetGatewayCostRulesResult, GetGatewayCostRulesOutputArgs } from "./getGatewayCostRules";
+export const getGatewayCostRules: typeof import("./getGatewayCostRules").getGatewayCostRules = null as any;
+export const getGatewayCostRulesOutput: typeof import("./getGatewayCostRules").getGatewayCostRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayCostRules","getGatewayCostRulesOutput"], () => require("./getGatewayCostRules"));
+
+export { GetGatewayModelApisArgs, GetGatewayModelApisResult, GetGatewayModelApisOutputArgs } from "./getGatewayModelApis";
+export const getGatewayModelApis: typeof import("./getGatewayModelApis").getGatewayModelApis = null as any;
+export const getGatewayModelApisOutput: typeof import("./getGatewayModelApis").getGatewayModelApisOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayModelApis","getGatewayModelApisOutput"], () => require("./getGatewayModelApis"));
+
+export { GetGatewayModelServicesArgs, GetGatewayModelServicesResult, GetGatewayModelServicesOutputArgs } from "./getGatewayModelServices";
+export const getGatewayModelServices: typeof import("./getGatewayModelServices").getGatewayModelServices = null as any;
+export const getGatewayModelServicesOutput: typeof import("./getGatewayModelServices").getGatewayModelServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayModelServices","getGatewayModelServicesOutput"], () => require("./getGatewayModelServices"));
+
+export { GetGatewayRateLimitPoliciesArgs, GetGatewayRateLimitPoliciesResult, GetGatewayRateLimitPoliciesOutputArgs } from "./getGatewayRateLimitPolicies";
+export const getGatewayRateLimitPolicies: typeof import("./getGatewayRateLimitPolicies").getGatewayRateLimitPolicies = null as any;
+export const getGatewayRateLimitPoliciesOutput: typeof import("./getGatewayRateLimitPolicies").getGatewayRateLimitPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayRateLimitPolicies","getGatewayRateLimitPoliciesOutput"], () => require("./getGatewayRateLimitPolicies"));
+
 export { GetGlobalDatabaseNetworksArgs, GetGlobalDatabaseNetworksResult, GetGlobalDatabaseNetworksOutputArgs } from "./getGlobalDatabaseNetworks";
 export const getGlobalDatabaseNetworks: typeof import("./getGlobalDatabaseNetworks").getGlobalDatabaseNetworks = null as any;
 export const getGlobalDatabaseNetworksOutput: typeof import("./getGlobalDatabaseNetworks").getGlobalDatabaseNetworksOutput = null as any;
 utilities.lazyLoad(exports, ["getGlobalDatabaseNetworks","getGlobalDatabaseNetworksOutput"], () => require("./getGlobalDatabaseNetworks"));
+
+export { GetLakebaseTenantTokenArgs, GetLakebaseTenantTokenResult, GetLakebaseTenantTokenOutputArgs } from "./getLakebaseTenantToken";
+export const getLakebaseTenantToken: typeof import("./getLakebaseTenantToken").getLakebaseTenantToken = null as any;
+export const getLakebaseTenantTokenOutput: typeof import("./getLakebaseTenantToken").getLakebaseTenantTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getLakebaseTenantToken","getLakebaseTenantTokenOutput"], () => require("./getLakebaseTenantToken"));
 
 export { GetNodeClassesArgs, GetNodeClassesResult, GetNodeClassesOutputArgs } from "./getNodeClasses";
 export const getNodeClasses: typeof import("./getNodeClasses").getNodeClasses = null as any;
@@ -114,6 +189,11 @@ export { GetParameterGroupsArgs, GetParameterGroupsResult, GetParameterGroupsOut
 export const getParameterGroups: typeof import("./getParameterGroups").getParameterGroups = null as any;
 export const getParameterGroupsOutput: typeof import("./getParameterGroups").getParameterGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getParameterGroups","getParameterGroupsOutput"], () => require("./getParameterGroups"));
+
+export { GetPolarFsInstancesArgs, GetPolarFsInstancesResult, GetPolarFsInstancesOutputArgs } from "./getPolarFsInstances";
+export const getPolarFsInstances: typeof import("./getPolarFsInstances").getPolarFsInstances = null as any;
+export const getPolarFsInstancesOutput: typeof import("./getPolarFsInstances").getPolarFsInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getPolarFsInstances","getPolarFsInstancesOutput"], () => require("./getPolarFsInstances"));
 
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
@@ -134,6 +214,16 @@ export { ParameterGroupArgs, ParameterGroupState } from "./parameterGroup";
 export type ParameterGroup = import("./parameterGroup").ParameterGroup;
 export const ParameterGroup: typeof import("./parameterGroup").ParameterGroup = null as any;
 utilities.lazyLoad(exports, ["ParameterGroup"], () => require("./parameterGroup"));
+
+export { PolarFsArgs, PolarFsState } from "./polarFs";
+export type PolarFs = import("./polarFs").PolarFs;
+export const PolarFs: typeof import("./polarFs").PolarFs = null as any;
+utilities.lazyLoad(exports, ["PolarFs"], () => require("./polarFs"));
+
+export { PolarFsEndpointArgs, PolarFsEndpointState } from "./polarFsEndpoint";
+export type PolarFsEndpoint = import("./polarFsEndpoint").PolarFsEndpoint;
+export const PolarFsEndpoint: typeof import("./polarFsEndpoint").PolarFsEndpoint = null as any;
+utilities.lazyLoad(exports, ["PolarFsEndpoint"], () => require("./polarFsEndpoint"));
 
 export { PrimaryEndpointArgs, PrimaryEndpointState } from "./primaryEndpoint";
 export type PrimaryEndpoint = import("./primaryEndpoint").PrimaryEndpoint;
@@ -190,12 +280,30 @@ const _module = {
                 return new EndpointAddress(name, <any>undefined, { urn })
             case "alicloud:polardb/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayBudgetPolicy:GatewayBudgetPolicy":
+                return new GatewayBudgetPolicy(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayConsumer:GatewayConsumer":
+                return new GatewayConsumer(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayConsumerGroup:GatewayConsumerGroup":
+                return new GatewayConsumerGroup(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayCostRule:GatewayCostRule":
+                return new GatewayCostRule(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayModelApi:GatewayModelApi":
+                return new GatewayModelApi(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayModelService:GatewayModelService":
+                return new GatewayModelService(name, <any>undefined, { urn })
+            case "alicloud:polardb/gatewayRateLimitPolicy:GatewayRateLimitPolicy":
+                return new GatewayRateLimitPolicy(name, <any>undefined, { urn })
             case "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork":
                 return new GlobalDatabaseNetwork(name, <any>undefined, { urn })
             case "alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup":
                 return new GlobalSecurityIpGroup(name, <any>undefined, { urn })
             case "alicloud:polardb/parameterGroup:ParameterGroup":
                 return new ParameterGroup(name, <any>undefined, { urn })
+            case "alicloud:polardb/polarFs:PolarFs":
+                return new PolarFs(name, <any>undefined, { urn })
+            case "alicloud:polardb/polarFsEndpoint:PolarFsEndpoint":
+                return new PolarFsEndpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
                 return new PrimaryEndpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/zonalAccount:ZonalAccount":
@@ -224,9 +332,18 @@ pulumi.runtime.registerResourceModule("alicloud", "polardb/dynamoTable", _module
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpointAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayBudgetPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayConsumer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayConsumerGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayCostRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayModelApi", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayModelService", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/gatewayRateLimitPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/globalDatabaseNetwork", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/globalSecurityIpGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/parameterGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/polarFs", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/polarFsEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/primaryEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/zonalAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/zonalDbCluster", _module)

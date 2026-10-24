@@ -110,6 +110,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     *
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
     declare public readonly autoRenewDuration: pulumi.Output<number>;
@@ -209,6 +210,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly logBackupRetentionPeriod: pulumi.Output<number>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     *
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
     declare public readonly maintainEndTime: pulumi.Output<string>;
@@ -222,6 +224,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The network type of the instance. Valid values: `VPC`.
+     *
      * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      */
     declare public readonly networkType: pulumi.Output<string>;
@@ -229,6 +232,7 @@ export class Instance extends pulumi.CustomResource {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
+     *
      * > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     declare public readonly orderType: pulumi.Output<string | undefined>;
@@ -266,6 +270,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     *
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
     declare public readonly restoreTime: pulumi.Output<string | undefined>;
@@ -308,6 +313,7 @@ export class Instance extends pulumi.CustomResource {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     *
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
     declare public readonly sslAction: pulumi.Output<string | undefined>;
@@ -512,6 +518,7 @@ export interface InstanceState {
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     *
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
     autoRenewDuration?: pulumi.Input<number | undefined>;
@@ -611,6 +618,7 @@ export interface InstanceState {
     logBackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     *
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
     maintainEndTime?: pulumi.Input<string | undefined>;
@@ -624,6 +632,7 @@ export interface InstanceState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values: `VPC`.
+     *
      * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      */
     networkType?: pulumi.Input<string | undefined>;
@@ -631,6 +640,7 @@ export interface InstanceState {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
+     *
      * > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string | undefined>;
@@ -668,6 +678,7 @@ export interface InstanceState {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     *
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
     restoreTime?: pulumi.Input<string | undefined>;
@@ -710,6 +721,7 @@ export interface InstanceState {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     *
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
     sslAction?: pulumi.Input<string | undefined>;
@@ -767,6 +779,7 @@ export interface InstanceArgs {
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     *
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
     autoRenewDuration?: pulumi.Input<number | undefined>;
@@ -862,6 +875,7 @@ export interface InstanceArgs {
     logBackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     *
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
     maintainEndTime?: pulumi.Input<string | undefined>;
@@ -875,6 +889,7 @@ export interface InstanceArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values: `VPC`.
+     *
      * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      */
     networkType?: pulumi.Input<string | undefined>;
@@ -882,6 +897,7 @@ export interface InstanceArgs {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
+     *
      * > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string | undefined>;
@@ -911,6 +927,7 @@ export interface InstanceArgs {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     *
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
     restoreTime?: pulumi.Input<string | undefined>;
@@ -949,6 +966,7 @@ export interface InstanceArgs {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     *
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
     sslAction?: pulumi.Input<string | undefined>;

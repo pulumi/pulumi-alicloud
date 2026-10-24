@@ -108,6 +108,83 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Usage with Vpc Endpoint Zone
+ * 
+ * The `alicloud.privatelink.VpcEndpoint` and `alicloud.privatelink.VpcEndpointZone` resources are separate. You can use them together to add a zone to a VPC endpoint. The following example creates a VPC endpoint and then adds a zone to it by referencing the endpoint ID, a vSwitch in the same zone, and the zone ID.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.privatelink.VpcEndpoint;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointZone;
+ * import com.pulumi.alicloud.privatelink.VpcEndpointZoneArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.1.0.0/16")
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(example.zones()[0].id())
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
+ *             .serviceId("epsrv-k1apjysze8u1l9t6uyg9")
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .vpcId(exampleNetwork.id())
+ *             .vpcEndpointName(name)
+ *             .build());
+ * 
+ *         var exampleVpcEndpointZone = new VpcEndpointZone("exampleVpcEndpointZone", VpcEndpointZoneArgs.builder()
+ *             .endpointId(exampleVpcEndpoint.id())
+ *             .vswitchId(exampleSwitch.id())
+ *             .zoneId(example.zones()[0].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
@@ -254,6 +331,7 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The type of the endpoint. Valid values:
      * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
      * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
@@ -263,6 +341,7 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of the endpoint. Valid values:
      * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
      * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */

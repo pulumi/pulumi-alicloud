@@ -15,6 +15,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
     {
         /// <summary>
         /// The configuration of the domain name. See `HostConfig` below.
+        /// 
         /// &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `PathConfig` or `HostConfig`, and we recommend that you use the `RuleConditionType` and `RuleConditionValue` to configure forwarding conditions.
         /// </summary>
         public readonly ImmutableArray<Outputs.ForwardingRuleRuleConditionHostConfig> HostConfigs;

@@ -53,6 +53,9 @@ __all__ = [
     'IngressRule',
     'LoadBalancerInternetInternet',
     'LoadBalancerIntranetIntranet',
+    'GetApplicationGroupsGroupResult',
+    'GetApplicationInstancesInstanceResult',
+    'GetApplicationInstancesInstanceSidecarContainersStatusResult',
     'GetApplicationScalingRulesRuleResult',
     'GetApplicationScalingRulesRuleScalingRuleMetricResult',
     'GetApplicationScalingRulesRuleScalingRuleMetricMetricResult',
@@ -2394,6 +2397,423 @@ class LoadBalancerIntranetIntranet(dict):
         The Container port.
         """
         return pulumi.get(self, "target_port")
+
+
+@pulumi.output_type
+class GetApplicationGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 edas_container_version: _builtins.str,
+                 group_id: _builtins.str,
+                 group_name: _builtins.str,
+                 group_type: _builtins.int,
+                 id: _builtins.str,
+                 image_url: _builtins.str,
+                 jdk: _builtins.str,
+                 package_type: _builtins.str,
+                 package_url: _builtins.str,
+                 package_version: _builtins.str,
+                 package_version_id: _builtins.str,
+                 replicas: _builtins.int,
+                 running_instances: _builtins.int,
+                 web_container: _builtins.str):
+        """
+        :param _builtins.str edas_container_version: The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
+        :param _builtins.str group_id: The ID of the application group.
+        :param _builtins.str group_name: The name of the application group.
+        :param _builtins.int group_type: The type of the application group.
+        :param _builtins.str id: The ID of the Group.
+        :param _builtins.str image_url: The image URL.
+        :param _builtins.str jdk: The JDK version required by the deployment package.
+        :param _builtins.str package_type: The type of the deployment package.
+        :param _builtins.str package_url: The URL of the deployment package.
+        :param _builtins.str package_version: The deployment package version.
+        :param _builtins.str package_version_id: The ID of the deployment package version.
+        :param _builtins.int replicas: The total number of instances.
+        :param _builtins.int running_instances: The number of running instances.
+        :param _builtins.str web_container: The Tomcat container version required by the deployment package.
+        """
+        pulumi.set(__self__, "edas_container_version", edas_container_version)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_url", image_url)
+        pulumi.set(__self__, "jdk", jdk)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "package_url", package_url)
+        pulumi.set(__self__, "package_version", package_version)
+        pulumi.set(__self__, "package_version_id", package_version_id)
+        pulumi.set(__self__, "replicas", replicas)
+        pulumi.set(__self__, "running_instances", running_instances)
+        pulumi.set(__self__, "web_container", web_container)
+
+    @_builtins.property
+    @pulumi.getter(name="edasContainerVersion")
+    def edas_container_version(self) -> _builtins.str:
+        """
+        The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
+        """
+        return pulumi.get(self, "edas_container_version")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.str:
+        """
+        The ID of the application group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> _builtins.str:
+        """
+        The name of the application group.
+        """
+        return pulumi.get(self, "group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> _builtins.int:
+        """
+        The type of the application group.
+        """
+        return pulumi.get(self, "group_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> _builtins.str:
+        """
+        The image URL.
+        """
+        return pulumi.get(self, "image_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def jdk(self) -> _builtins.str:
+        """
+        The JDK version required by the deployment package.
+        """
+        return pulumi.get(self, "jdk")
+
+    @_builtins.property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> _builtins.str:
+        """
+        The type of the deployment package.
+        """
+        return pulumi.get(self, "package_type")
+
+    @_builtins.property
+    @pulumi.getter(name="packageUrl")
+    def package_url(self) -> _builtins.str:
+        """
+        The URL of the deployment package.
+        """
+        return pulumi.get(self, "package_url")
+
+    @_builtins.property
+    @pulumi.getter(name="packageVersion")
+    def package_version(self) -> _builtins.str:
+        """
+        The deployment package version.
+        """
+        return pulumi.get(self, "package_version")
+
+    @_builtins.property
+    @pulumi.getter(name="packageVersionId")
+    def package_version_id(self) -> _builtins.str:
+        """
+        The ID of the deployment package version.
+        """
+        return pulumi.get(self, "package_version_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def replicas(self) -> _builtins.int:
+        """
+        The total number of instances.
+        """
+        return pulumi.get(self, "replicas")
+
+    @_builtins.property
+    @pulumi.getter(name="runningInstances")
+    def running_instances(self) -> _builtins.int:
+        """
+        The number of running instances.
+        """
+        return pulumi.get(self, "running_instances")
+
+    @_builtins.property
+    @pulumi.getter(name="webContainer")
+    def web_container(self) -> _builtins.str:
+        """
+        The Tomcat container version required by the deployment package.
+        """
+        return pulumi.get(self, "web_container")
+
+
+@pulumi.output_type
+class GetApplicationInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 create_time_stamp: _builtins.int,
+                 debug_status: _builtins.bool,
+                 eip: _builtins.str,
+                 finish_time_stamp: _builtins.int,
+                 group_id: _builtins.str,
+                 id: _builtins.str,
+                 image_url: _builtins.str,
+                 instance_container_ip: _builtins.str,
+                 instance_container_restarts: _builtins.int,
+                 instance_container_status: _builtins.str,
+                 instance_health_status: _builtins.str,
+                 instance_id: _builtins.str,
+                 main_container_status: _builtins.str,
+                 package_version: _builtins.str,
+                 sidecar_containers_statuses: Sequence['outputs.GetApplicationInstancesInstanceSidecarContainersStatusResult'],
+                 timestamp: _builtins.int,
+                 traffic_status: _builtins.str,
+                 unhealthy_message: _builtins.str,
+                 vswitch_id: _builtins.str):
+        """
+        :param _builtins.int create_time_stamp: The time when instance creation began.
+        :param _builtins.bool debug_status: Whether the instance is being debugged.
+        :param _builtins.str eip: The elastic IP address (EIP).
+        :param _builtins.int finish_time_stamp: The time when instance creation was completed.
+        :param _builtins.str group_id: The ID of the application group. If you want to get the `group_id`, please use the data source alicloud_sae_application_groups.
+        :param _builtins.str id: The ID of the Instance.
+        :param _builtins.str image_url: The URL of the container image.
+        :param _builtins.str instance_container_ip: The internal IP address of the instance.
+        :param _builtins.int instance_container_restarts: The number of times the instance container has restarted.
+        :param _builtins.str instance_container_status: The status of the instance container.
+        :param _builtins.str instance_health_status: The health check status of the instance.
+        :param _builtins.str instance_id: The application instance ID.
+        :param _builtins.str main_container_status: The status of the main container.
+        :param _builtins.str package_version: The version of the deployment package.
+        :param Sequence['GetApplicationInstancesInstanceSidecarContainersStatusArgs'] sidecar_containers_statuses: The status of the sidecar containers.
+        :param _builtins.int timestamp: The timestamp.
+        :param _builtins.str traffic_status: The traffic status of the instance.
+        :param _builtins.str unhealthy_message: The error message for a failed health check on the application instance. This field is empty if the check is successful.
+        :param _builtins.str vswitch_id: The ID of the vSwitch where the instance is deployed.
+        """
+        pulumi.set(__self__, "create_time_stamp", create_time_stamp)
+        pulumi.set(__self__, "debug_status", debug_status)
+        pulumi.set(__self__, "eip", eip)
+        pulumi.set(__self__, "finish_time_stamp", finish_time_stamp)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_url", image_url)
+        pulumi.set(__self__, "instance_container_ip", instance_container_ip)
+        pulumi.set(__self__, "instance_container_restarts", instance_container_restarts)
+        pulumi.set(__self__, "instance_container_status", instance_container_status)
+        pulumi.set(__self__, "instance_health_status", instance_health_status)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "main_container_status", main_container_status)
+        pulumi.set(__self__, "package_version", package_version)
+        pulumi.set(__self__, "sidecar_containers_statuses", sidecar_containers_statuses)
+        pulumi.set(__self__, "timestamp", timestamp)
+        pulumi.set(__self__, "traffic_status", traffic_status)
+        pulumi.set(__self__, "unhealthy_message", unhealthy_message)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="createTimeStamp")
+    def create_time_stamp(self) -> _builtins.int:
+        """
+        The time when instance creation began.
+        """
+        return pulumi.get(self, "create_time_stamp")
+
+    @_builtins.property
+    @pulumi.getter(name="debugStatus")
+    def debug_status(self) -> _builtins.bool:
+        """
+        Whether the instance is being debugged.
+        """
+        return pulumi.get(self, "debug_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def eip(self) -> _builtins.str:
+        """
+        The elastic IP address (EIP).
+        """
+        return pulumi.get(self, "eip")
+
+    @_builtins.property
+    @pulumi.getter(name="finishTimeStamp")
+    def finish_time_stamp(self) -> _builtins.int:
+        """
+        The time when instance creation was completed.
+        """
+        return pulumi.get(self, "finish_time_stamp")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.str:
+        """
+        The ID of the application group. If you want to get the `group_id`, please use the data source alicloud_sae_application_groups.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> _builtins.str:
+        """
+        The URL of the container image.
+        """
+        return pulumi.get(self, "image_url")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceContainerIp")
+    def instance_container_ip(self) -> _builtins.str:
+        """
+        The internal IP address of the instance.
+        """
+        return pulumi.get(self, "instance_container_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceContainerRestarts")
+    def instance_container_restarts(self) -> _builtins.int:
+        """
+        The number of times the instance container has restarted.
+        """
+        return pulumi.get(self, "instance_container_restarts")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceContainerStatus")
+    def instance_container_status(self) -> _builtins.str:
+        """
+        The status of the instance container.
+        """
+        return pulumi.get(self, "instance_container_status")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceHealthStatus")
+    def instance_health_status(self) -> _builtins.str:
+        """
+        The health check status of the instance.
+        """
+        return pulumi.get(self, "instance_health_status")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The application instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mainContainerStatus")
+    def main_container_status(self) -> _builtins.str:
+        """
+        The status of the main container.
+        """
+        return pulumi.get(self, "main_container_status")
+
+    @_builtins.property
+    @pulumi.getter(name="packageVersion")
+    def package_version(self) -> _builtins.str:
+        """
+        The version of the deployment package.
+        """
+        return pulumi.get(self, "package_version")
+
+    @_builtins.property
+    @pulumi.getter(name="sidecarContainersStatuses")
+    def sidecar_containers_statuses(self) -> Sequence['outputs.GetApplicationInstancesInstanceSidecarContainersStatusResult']:
+        """
+        The status of the sidecar containers.
+        """
+        return pulumi.get(self, "sidecar_containers_statuses")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.int:
+        """
+        The timestamp.
+        """
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficStatus")
+    def traffic_status(self) -> _builtins.str:
+        """
+        The traffic status of the instance.
+        """
+        return pulumi.get(self, "traffic_status")
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyMessage")
+    def unhealthy_message(self) -> _builtins.str:
+        """
+        The error message for a failed health check on the application instance. This field is empty if the check is successful.
+        """
+        return pulumi.get(self, "unhealthy_message")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> _builtins.str:
+        """
+        The ID of the vSwitch where the instance is deployed.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetApplicationInstancesInstanceSidecarContainersStatusResult(dict):
+    def __init__(__self__, *,
+                 container_id: _builtins.str,
+                 container_status: _builtins.str,
+                 image_url: _builtins.str):
+        """
+        :param _builtins.str container_id: The ID of the sidecar container.
+        :param _builtins.str container_status: The status of the container.
+        :param _builtins.str image_url: The URL of the container image.
+        """
+        pulumi.set(__self__, "container_id", container_id)
+        pulumi.set(__self__, "container_status", container_status)
+        pulumi.set(__self__, "image_url", image_url)
+
+    @_builtins.property
+    @pulumi.getter(name="containerId")
+    def container_id(self) -> _builtins.str:
+        """
+        The ID of the sidecar container.
+        """
+        return pulumi.get(self, "container_id")
+
+    @_builtins.property
+    @pulumi.getter(name="containerStatus")
+    def container_status(self) -> _builtins.str:
+        """
+        The status of the container.
+        """
+        return pulumi.get(self, "container_status")
+
+    @_builtins.property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> _builtins.str:
+        """
+        The URL of the container image.
+        """
+        return pulumi.get(self, "image_url")
 
 
 @pulumi.output_type

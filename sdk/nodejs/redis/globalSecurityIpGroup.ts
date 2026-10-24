@@ -21,8 +21,6 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const zoneId = config.get("zoneId") || "cn-beijing-h";
- * const regionId = config.get("regionId") || "cn-beijing";
  * const _default = new alicloud.redis.GlobalSecurityIpGroup("default", {
  *     globalIpGroupName: "ggn_example_create",
  *     globalIpList: "192.168.0.1,10.10.10.10,172.16.0.1",

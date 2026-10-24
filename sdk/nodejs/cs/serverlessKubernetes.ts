@@ -139,6 +139,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     declare public readonly clusterSpec: pulumi.Output<string>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
     declare public readonly customSan: pulumi.Output<string | undefined>;
@@ -394,6 +395,7 @@ export interface ServerlessKubernetesState {
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
     customSan?: pulumi.Input<string | undefined>;
@@ -561,6 +563,7 @@ export interface ServerlessKubernetesArgs {
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
     customSan?: pulumi.Input<string | undefined>;

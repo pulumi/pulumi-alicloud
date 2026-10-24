@@ -337,6 +337,7 @@ namespace Pulumi.AliCloud.Cddc
 
         /// <summary>
         /// The ID of the custom image.
+        /// 
         /// &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
         /// </summary>
         [Output("imageId")]
@@ -365,6 +366,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
+        /// 
         /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Output("osPassword")]
@@ -374,6 +376,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to use the default password of the image.
         /// - **false**: (default)Do not use
         /// - **true**: Use
+        /// 
         /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         /// </summary>
         [Output("passwordInherit")]
@@ -562,6 +565,7 @@ namespace Pulumi.AliCloud.Cddc
 
         /// <summary>
         /// The ID of the custom image.
+        /// 
         /// &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
         /// </summary>
         [Input("imageId")]
@@ -590,6 +594,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
+        /// 
         /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Input("osPassword")]
@@ -599,6 +604,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to use the default password of the image.
         /// - **false**: (default)Do not use
         /// - **true**: Use
+        /// 
         /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         /// </summary>
         [Input("passwordInherit")]
@@ -761,6 +767,7 @@ namespace Pulumi.AliCloud.Cddc
 
         /// <summary>
         /// The ID of the custom image.
+        /// 
         /// &gt; **NOTE:**  If you need to use the default image, you do not need to fill it in.
         /// </summary>
         [Input("imageId")]
@@ -789,6 +796,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
+        /// 
         /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Input("osPassword")]
@@ -798,6 +806,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to use the default password of the image.
         /// - **false**: (default)Do not use
         /// - **true**: Use
+        /// 
         /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         /// </summary>
         [Input("passwordInherit")]

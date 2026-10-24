@@ -373,6 +373,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
@@ -381,6 +382,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
@@ -1088,6 +1090,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
          * 
          * @return builder
@@ -1100,6 +1103,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
          * 
          * @return builder

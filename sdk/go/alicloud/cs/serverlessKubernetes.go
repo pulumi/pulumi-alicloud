@@ -138,6 +138,7 @@ type ServerlessKubernetes struct {
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -263,6 +264,7 @@ type serverlessKubernetesState struct {
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -359,6 +361,7 @@ type ServerlessKubernetesState struct {
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -459,6 +462,7 @@ type serverlessKubernetesArgs struct {
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -554,6 +558,7 @@ type ServerlessKubernetesArgs struct {
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	//
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
@@ -749,6 +754,7 @@ func (o ServerlessKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 }
 
 // Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+//
 // > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 func (o ServerlessKubernetesOutput) CustomSan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
