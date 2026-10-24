@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -90,6 +92,10 @@ export class WorkspaceExperiment extends pulumi.CustomResource {
      */
     declare public readonly experimentName: pulumi.Output<string>;
     /**
+     * Labels are tags of the experiment. See `labels` below.
+     */
+    declare public readonly labels: pulumi.Output<outputs.pai.WorkspaceExperimentLabel[] | undefined>;
+    /**
      * WorkspaceId is the workspace id which contains the experiment
      */
     declare public readonly workspaceId: pulumi.Output<string>;
@@ -111,6 +117,7 @@ export class WorkspaceExperiment extends pulumi.CustomResource {
             resourceInputs["artifactUri"] = state?.artifactUri;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["experimentName"] = state?.experimentName;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceExperimentArgs | undefined;
@@ -126,6 +133,7 @@ export class WorkspaceExperiment extends pulumi.CustomResource {
             resourceInputs["accessibility"] = args?.accessibility;
             resourceInputs["artifactUri"] = args?.artifactUri;
             resourceInputs["experimentName"] = args?.experimentName;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
@@ -155,6 +163,10 @@ export interface WorkspaceExperimentState {
      */
     experimentName?: pulumi.Input<string | undefined>;
     /**
+     * Labels are tags of the experiment. See `labels` below.
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceExperimentLabel>[] | undefined>;
+    /**
      * WorkspaceId is the workspace id which contains the experiment
      */
     workspaceId?: pulumi.Input<string | undefined>;
@@ -176,6 +188,10 @@ export interface WorkspaceExperimentArgs {
      * Name is the name of the experiment, unique in a namespace
      */
     experimentName: pulumi.Input<string>;
+    /**
+     * Labels are tags of the experiment. See `labels` below.
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceExperimentLabel>[] | undefined>;
     /**
      * WorkspaceId is the workspace id which contains the experiment
      */

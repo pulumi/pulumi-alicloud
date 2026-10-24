@@ -48,6 +48,7 @@ class BandwidthPackageArgs:
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[_builtins.int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -213,6 +214,7 @@ class BandwidthPackageArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -257,6 +259,7 @@ class _BandwidthPackageState:
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[_builtins.int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] status: The association status of the bandwidth package.
         """
@@ -440,6 +443,7 @@ class _BandwidthPackageState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -535,6 +539,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[_builtins.int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         ...
@@ -678,6 +683,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[_builtins.int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] status: The association status of the bandwidth package.
         """
@@ -800,6 +806,7 @@ class BandwidthPackage(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

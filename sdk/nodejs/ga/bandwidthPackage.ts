@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.112.0.
  *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -90,6 +92,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
     declare public readonly bandwidthPackageName: pulumi.Output<string | undefined>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     *
      * > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      */
     declare public readonly bandwidthType: pulumi.Output<string | undefined>;
@@ -240,6 +243,7 @@ export interface BandwidthPackageState {
     bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     *
      * > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      */
     bandwidthType?: pulumi.Input<string | undefined>;
@@ -326,6 +330,7 @@ export interface BandwidthPackageArgs {
     bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     *
      * > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      */
     bandwidthType?: pulumi.Input<string | undefined>;

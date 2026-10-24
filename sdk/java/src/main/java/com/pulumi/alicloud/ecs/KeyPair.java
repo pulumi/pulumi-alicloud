@@ -173,6 +173,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     }
     /**
      * A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */
@@ -181,6 +182,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */

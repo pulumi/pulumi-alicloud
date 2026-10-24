@@ -33,6 +33,7 @@ class ServerGroupArgs:
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         :param pulumi.Input[_builtins.str] name: The name of the vServer group. Default value: `tf-server-group`.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The list of backend servers to be added. See `servers` below.
+               
                > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -91,6 +92,7 @@ class ServerGroupArgs:
     def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
         The list of backend servers to be added. See `servers` below.
+
         > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         """
         return pulumi.get(self, "servers")
@@ -127,6 +129,7 @@ class _ServerGroupState:
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
         :param pulumi.Input[_builtins.str] name: The name of the vServer group. Default value: `tf-server-group`.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The list of backend servers to be added. See `servers` below.
+               
                > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -186,6 +189,7 @@ class _ServerGroupState:
     def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
         The list of backend servers to be added. See `servers` below.
+
         > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         """
         return pulumi.get(self, "servers")
@@ -283,6 +287,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
         :param pulumi.Input[_builtins.str] name: The name of the vServer group. Default value: `tf-server-group`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]] servers: The list of backend servers to be added. See `servers` below.
+               
                > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -412,6 +417,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
         :param pulumi.Input[_builtins.str] name: The name of the vServer group. Default value: `tf-server-group`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]] servers: The list of backend servers to be added. See `servers` below.
+               
                > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
@@ -456,6 +462,7 @@ class ServerGroup(pulumi.CustomResource):
     def servers(self) -> pulumi.Output[Sequence['outputs.ServerGroupServer']]:
         """
         The list of backend servers to be added. See `servers` below.
+
         > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         """
         return pulumi.get(self, "servers")

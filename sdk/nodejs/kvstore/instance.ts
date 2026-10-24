@@ -232,6 +232,14 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly businessInfo: pulumi.Output<string | undefined>;
     /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    declare public /*out*/ readonly caCertCommonName: pulumi.Output<string>;
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     */
+    declare public /*out*/ readonly caCertDownloadUrl: pulumi.Output<string>;
+    /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
     declare public readonly capacity: pulumi.Output<number>;
@@ -245,14 +253,6 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly connectionDomain: pulumi.Output<string>;
     /**
      * Indicates whether the address is a private endpoint.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -324,6 +324,18 @@ export class Instance extends pulumi.CustomResource {
      * The ID of distributed cache.
      */
     declare public readonly globalInstanceId: pulumi.Output<string | undefined>;
+    /**
+     * The list of Global Security Group Ids.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    declare public readonly globalSecurityGroupLists: pulumi.Output<string[] | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
@@ -439,6 +451,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly roleArn: pulumi.Output<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
@@ -464,11 +477,13 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly shardCount: pulumi.Output<number>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     *
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     declare public readonly slaveReadOnlyCount: pulumi.Output<number | undefined>;
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     *
      * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      */
     declare public readonly slaveReplicaCount: pulumi.Output<number>;
@@ -481,6 +496,10 @@ export class Instance extends pulumi.CustomResource {
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     declare public readonly sslEnable: pulumi.Output<string>;
+    /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    declare public /*out*/ readonly sslExpiredTime: pulumi.Output<string>;
     /**
      * The status of KVStore DBInstance.
      */
@@ -530,6 +549,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupTime"] = state?.backupTime;
             resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["businessInfo"] = state?.businessInfo;
+            resourceInputs["caCertCommonName"] = state?.caCertCommonName;
+            resourceInputs["caCertDownloadUrl"] = state?.caCertDownloadUrl;
             resourceInputs["capacity"] = state?.capacity;
             resourceInputs["config"] = state?.config;
             resourceInputs["connectionDomain"] = state?.connectionDomain;
@@ -549,6 +570,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["forceUpgrade"] = state?.forceUpgrade;
             resourceInputs["globalInstance"] = state?.globalInstance;
             resourceInputs["globalInstanceId"] = state?.globalInstanceId;
+            resourceInputs["globalSecurityGroupLists"] = state?.globalSecurityGroupLists;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
             resourceInputs["instanceClass"] = state?.instanceClass;
             resourceInputs["instanceName"] = state?.instanceName;
@@ -585,6 +607,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["slaveReplicaCount"] = state?.slaveReplicaCount;
             resourceInputs["srcdbInstanceId"] = state?.srcdbInstanceId;
             resourceInputs["sslEnable"] = state?.sslEnable;
+            resourceInputs["sslExpiredTime"] = state?.sslExpiredTime;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tdeStatus"] = state?.tdeStatus;
@@ -618,6 +641,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["forceUpgrade"] = args?.forceUpgrade;
             resourceInputs["globalInstance"] = args?.globalInstance;
             resourceInputs["globalInstanceId"] = args?.globalInstanceId;
+            resourceInputs["globalSecurityGroupLists"] = args?.globalSecurityGroupLists;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
             resourceInputs["instanceClass"] = args?.instanceClass;
             resourceInputs["instanceName"] = args?.instanceName;
@@ -658,10 +682,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vpcAuthMode"] = args?.vpcAuthMode;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["caCertCommonName"] = undefined /*out*/;
+            resourceInputs["caCertDownloadUrl"] = undefined /*out*/;
             resourceInputs["connectionDomain"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["qps"] = undefined /*out*/;
+            resourceInputs["sslExpiredTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -714,6 +741,14 @@ export interface InstanceState {
      */
     businessInfo?: pulumi.Input<string | undefined>;
     /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    caCertCommonName?: pulumi.Input<string | undefined>;
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     */
+    caCertDownloadUrl?: pulumi.Input<string | undefined>;
+    /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
     capacity?: pulumi.Input<number | undefined>;
@@ -727,14 +762,6 @@ export interface InstanceState {
     connectionDomain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the address is a private endpoint.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -806,6 +833,18 @@ export interface InstanceState {
      * The ID of distributed cache.
      */
     globalInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The list of Global Security Group Ids.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
@@ -921,6 +960,7 @@ export interface InstanceState {
     roleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string | undefined>;
@@ -946,11 +986,13 @@ export interface InstanceState {
     shardCount?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     *
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     slaveReadOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     *
      * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      */
     slaveReplicaCount?: pulumi.Input<number | undefined>;
@@ -963,6 +1005,10 @@ export interface InstanceState {
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     sslEnable?: pulumi.Input<string | undefined>;
+    /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    sslExpiredTime?: pulumi.Input<string | undefined>;
     /**
      * The status of KVStore DBInstance.
      */
@@ -1105,6 +1151,18 @@ export interface InstanceArgs {
      */
     globalInstanceId?: pulumi.Input<string | undefined>;
     /**
+     * The list of Global Security Group Ids.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -1215,6 +1273,7 @@ export interface InstanceArgs {
     roleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string | undefined>;
@@ -1240,11 +1299,13 @@ export interface InstanceArgs {
     shardCount?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     *
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     slaveReadOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     *
      * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      */
     slaveReplicaCount?: pulumi.Input<number | undefined>;

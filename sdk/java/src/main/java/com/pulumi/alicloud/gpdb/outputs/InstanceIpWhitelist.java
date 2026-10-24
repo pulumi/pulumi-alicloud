@@ -18,7 +18,7 @@ public final class InstanceIpWhitelist {
      */
     private @Nullable String ipGroupAttribute;
     /**
-     * @return IP whitelist group name.
+     * @return IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
      * 
      */
     private @Nullable String ipGroupName;
@@ -38,7 +38,7 @@ public final class InstanceIpWhitelist {
         return Optional.ofNullable(this.ipGroupAttribute);
     }
     /**
-     * @return IP whitelist group name.
+     * @return IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
      * 
      */
     public Optional<String> ipGroupName() {

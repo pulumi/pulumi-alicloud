@@ -96,7 +96,7 @@ export class CapacityReservation extends pulumi.CustomResource {
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
-     * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+     * The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
      */
     declare public readonly endTime: pulumi.Output<string>;
     /**
@@ -233,7 +233,7 @@ export interface CapacityReservationState {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+     * The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
      */
     endTime?: pulumi.Input<string | undefined>;
     /**
@@ -307,7 +307,7 @@ export interface CapacityReservationArgs {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+     * The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
      */
     endTime?: pulumi.Input<string | undefined>;
     /**

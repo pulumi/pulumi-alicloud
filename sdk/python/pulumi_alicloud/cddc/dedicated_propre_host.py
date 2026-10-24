@@ -74,6 +74,7 @@ class DedicatedPropreHostArgs:
                - **false** (default): Do not add.
                  When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
+               
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
@@ -82,10 +83,12 @@ class DedicatedPropreHostArgs:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[_builtins.str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
+               
                > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[_builtins.str] period: Duration of purchase.
         :param pulumi.Input[_builtins.str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
@@ -322,6 +325,7 @@ class DedicatedPropreHostArgs:
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom image.
+
         > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         """
         return pulumi.get(self, "image_id")
@@ -374,6 +378,7 @@ class DedicatedPropreHostArgs:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+
         > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
@@ -389,6 +394,7 @@ class DedicatedPropreHostArgs:
         Whether to use the default password of the image.
         - **false**: (default)Do not use
         - **true**: Use
+
         > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         """
         return pulumi.get(self, "password_inherit")
@@ -524,6 +530,7 @@ class _DedicatedPropreHostState:
                - **mssql**
                  Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
+               
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
@@ -532,10 +539,12 @@ class _DedicatedPropreHostState:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[_builtins.str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
+               
                > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[_builtins.str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[_builtins.str] period: Duration of purchase.
@@ -749,6 +758,7 @@ class _DedicatedPropreHostState:
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom image.
+
         > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         """
         return pulumi.get(self, "image_id")
@@ -801,6 +811,7 @@ class _DedicatedPropreHostState:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+
         > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
@@ -816,6 +827,7 @@ class _DedicatedPropreHostState:
         Whether to use the default password of the image.
         - **false**: (default)Do not use
         - **true**: Use
+
         > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         """
         return pulumi.get(self, "password_inherit")
@@ -1139,6 +1151,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - **mssql**
                  Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
+               
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
@@ -1147,10 +1160,12 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[_builtins.str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
+               
                > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[_builtins.str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[_builtins.str] period: Duration of purchase.
@@ -1464,6 +1479,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - **mssql**
                  Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
+               
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
@@ -1472,10 +1488,12 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[_builtins.str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
+               
                > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[_builtins.str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[_builtins.str] period: Duration of purchase.
@@ -1623,6 +1641,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def image_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the custom image.
+
         > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         """
         return pulumi.get(self, "image_id")
@@ -1659,6 +1678,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+
         > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
@@ -1670,6 +1690,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         Whether to use the default password of the image.
         - **false**: (default)Do not use
         - **true**: Use
+
         > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         """
         return pulumi.get(self, "password_inherit")

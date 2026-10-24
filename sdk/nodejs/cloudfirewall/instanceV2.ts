@@ -13,6 +13,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.269.0.
  *
+ * > **NOTE:** The billing method of an existing Cloud Firewall instance cannot be converted through the API or Terraform. To convert a `PayAsYouGo` instance to `Subscription`, perform the smooth conversion in the [Cloud Firewall console](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/product-overview/smoothly-change-the-billing-method-between-pay-as-you-go-and-subscription) (**Overview** > **More** > **Convert Pay-As-You-Go to Subscription**). Changing `paymentType` on an existing instance that has not been converted returns an error, and the instance is never destroyed or recreated. When `paymentType` changes together with `productType` or `spec` (both ForceNew), the change is rejected during planning instead of planning a replacement. After the conversion, update `paymentType`, `productType` and `spec` in the configuration to match the converted instance (the instance ID is retained), or import the converted instance with `pulumi import`, and then run `pulumi preview` to confirm that no changes are pending. Changing only `spec` or only `productType` still replaces the instance.
+ *
+ * > **NOTE:** Destroying an instance releases it immediately and cannot be undone. A `PayAsYouGo` instance is released through the Cloud Firewall `ReleasePostInstance` API. A `Subscription` instance is unsubscribed through the BSS `RefundInstance` API with immediate release, so the unused part of the subscription is refunded according to the [unsubscription rules](https://www.alibabacloud.com/help/en/user-center/cancel-subscription/). If the refund is rejected, for example because the instance is not eligible for a refund, the refund quota is exhausted or the instance has an unsettled order, `terraform destroy` fails and the instance is kept so that the state still matches the cloud.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -84,7 +88,7 @@ export class InstanceV2 extends pulumi.CustomResource {
      */
     declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
@@ -125,7 +129,7 @@ export class InstanceV2 extends pulumi.CustomResource {
      */
     declare public readonly sdl: pulumi.Output<boolean | undefined>;
     /**
-     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
      */
     declare public readonly spec: pulumi.Output<string>;
     /**
@@ -223,7 +227,7 @@ export interface InstanceV2State {
      */
     modifyType?: pulumi.Input<string | undefined>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
@@ -264,7 +268,7 @@ export interface InstanceV2State {
      */
     sdl?: pulumi.Input<boolean | undefined>;
     /**
-     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
      */
     spec?: pulumi.Input<string | undefined>;
     /**
@@ -290,7 +294,7 @@ export interface InstanceV2Args {
      */
     modifyType?: pulumi.Input<string | undefined>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** The billing method of an existing instance cannot be converted through the API. Changing this value on an existing instance is rejected unless the instance has already been converted to the target billing method in the Cloud Firewall console; in that case the state is aligned with the converted instance without destroying or recreating it. A change of this value combined with a change of `productType` or `spec` is rejected during planning, so no replacement is planned.
      */
     paymentType: pulumi.Input<string>;
     /**
@@ -327,7 +331,7 @@ export interface InstanceV2Args {
      */
     sdl?: pulumi.Input<boolean | undefined>;
     /**
-     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
+     * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`. **NOTE:** Changing `spec` replaces the instance; an in-place edition change of an existing instance is not supported through this resource.
      */
     spec: pulumi.Input<string>;
 }

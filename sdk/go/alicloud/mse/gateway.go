@@ -14,7 +14,7 @@ import (
 
 // Provides a Microservice Engine (MSE) Gateway resource.
 //
-// For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
+// For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-addgateway).
 //
 // > **NOTE:** Available since v1.157.0.
 //
@@ -126,6 +126,8 @@ type Gateway struct {
 	InternetSlbSpec pulumi.StringPtrOutput `pulumi:"internetSlbSpec"`
 	// Number of Gateway Nodes.
 	Replica pulumi.IntOutput `pulumi:"replica"`
+	// The ID of the resource group which the gateway belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A list of gateway Slb.
 	SlbLists GatewaySlbListArrayOutput `pulumi:"slbLists"`
 	// Private network SLB specifications.
@@ -134,6 +136,8 @@ type Gateway struct {
 	Spec pulumi.StringOutput `pulumi:"spec"`
 	// The status of the gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the vpc.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the vswitch.
@@ -194,6 +198,8 @@ type gatewayState struct {
 	InternetSlbSpec *string `pulumi:"internetSlbSpec"`
 	// Number of Gateway Nodes.
 	Replica *int `pulumi:"replica"`
+	// The ID of the resource group which the gateway belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A list of gateway Slb.
 	SlbLists []GatewaySlbList `pulumi:"slbLists"`
 	// Private network SLB specifications.
@@ -202,6 +208,8 @@ type gatewayState struct {
 	Spec *string `pulumi:"spec"`
 	// The status of the gateway.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the vpc.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the vswitch.
@@ -221,6 +229,8 @@ type GatewayState struct {
 	InternetSlbSpec pulumi.StringPtrInput
 	// Number of Gateway Nodes.
 	Replica pulumi.IntPtrInput
+	// The ID of the resource group which the gateway belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A list of gateway Slb.
 	SlbLists GatewaySlbListArrayInput
 	// Private network SLB specifications.
@@ -229,6 +239,8 @@ type GatewayState struct {
 	Spec pulumi.StringPtrInput
 	// The status of the gateway.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The ID of the vpc.
 	VpcId pulumi.StringPtrInput
 	// The ID of the vswitch.
@@ -252,10 +264,14 @@ type gatewayArgs struct {
 	InternetSlbSpec *string `pulumi:"internetSlbSpec"`
 	// Number of Gateway Nodes.
 	Replica int `pulumi:"replica"`
+	// The ID of the resource group which the gateway belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Private network SLB specifications.
 	SlbSpec *string `pulumi:"slbSpec"`
 	// Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
 	Spec string `pulumi:"spec"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the vpc.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vswitch.
@@ -276,10 +292,14 @@ type GatewayArgs struct {
 	InternetSlbSpec pulumi.StringPtrInput
 	// Number of Gateway Nodes.
 	Replica pulumi.IntInput
+	// The ID of the resource group which the gateway belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// Private network SLB specifications.
 	SlbSpec pulumi.StringPtrInput
 	// Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
 	Spec pulumi.StringInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The ID of the vpc.
 	VpcId pulumi.StringInput
 	// The ID of the vswitch.
@@ -403,6 +423,11 @@ func (o GatewayOutput) Replica() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.Replica }).(pulumi.IntOutput)
 }
 
+// The ID of the resource group which the gateway belongs.
+func (o GatewayOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // A list of gateway Slb.
 func (o GatewayOutput) SlbLists() GatewaySlbListArrayOutput {
 	return o.ApplyT(func(v *Gateway) GatewaySlbListArrayOutput { return v.SlbLists }).(GatewaySlbListArrayOutput)
@@ -421,6 +446,11 @@ func (o GatewayOutput) Spec() pulumi.StringOutput {
 // The status of the gateway.
 func (o GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the vpc.

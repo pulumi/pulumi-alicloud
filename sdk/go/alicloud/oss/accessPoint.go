@@ -89,7 +89,7 @@ type AccessPoint struct {
 	// - internet: the access point can be accessed through both external and internal Endpoint.
 	NetworkOrigin pulumi.StringOutput `pulumi:"networkOrigin"`
 	// Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
-	PublicAccessBlockConfiguration AccessPointPublicAccessBlockConfigurationPtrOutput `pulumi:"publicAccessBlockConfiguration"`
+	PublicAccessBlockConfiguration AccessPointPublicAccessBlockConfigurationOutput `pulumi:"publicAccessBlockConfiguration"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
@@ -308,10 +308,10 @@ func (o AccessPointOutput) NetworkOrigin() pulumi.StringOutput {
 }
 
 // Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
-func (o AccessPointOutput) PublicAccessBlockConfiguration() AccessPointPublicAccessBlockConfigurationPtrOutput {
-	return o.ApplyT(func(v *AccessPoint) AccessPointPublicAccessBlockConfigurationPtrOutput {
+func (o AccessPointOutput) PublicAccessBlockConfiguration() AccessPointPublicAccessBlockConfigurationOutput {
+	return o.ApplyT(func(v *AccessPoint) AccessPointPublicAccessBlockConfigurationOutput {
 		return v.PublicAccessBlockConfiguration
-	}).(AccessPointPublicAccessBlockConfigurationPtrOutput)
+	}).(AccessPointPublicAccessBlockConfigurationOutput)
 }
 
 // The status of the resource

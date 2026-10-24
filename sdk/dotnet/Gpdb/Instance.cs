@@ -155,6 +155,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`MinorVersion`, `SegNodeNum`, `MasterNodeNum`, `InstanceSpec`, `StorageSize`, `ServerlessResource`, `CacheStorageSize`, `SegDiskPerformanceLevel`) is changed. Valid values:
+        /// - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+        /// - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `MaintainStartTime` and `MaintainEndTime`) and takes effect within it.
+        /// 
+        /// &gt; **NOTE:** `EffectiveTime` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+        /// </summary>
+        [Output("effectiveTime")]
+        public Output<string?> EffectiveTime { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the encryption key.
         /// 
         /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -207,6 +217,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        /// 
         /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Output("instanceSpec")]
@@ -336,6 +347,18 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Output("serverlessResource")]
         public Output<int> ServerlessResource { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+        /// - `Enabled`: Enables SQL collector.
+        /// - `Disabled`: Disables SQL collector.
+        /// 
+        /// &gt; **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+        /// 
+        /// &gt; **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `SqlCollectorStatus = "Disabled"` explicitly to disable it.
+        /// </summary>
+        [Output("sqlCollectorStatus")]
+        public Output<string?> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
         /// The source instance ID for creating an instance from a backup set. Must be set together with `BackupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
@@ -516,6 +539,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`MinorVersion`, `SegNodeNum`, `MasterNodeNum`, `InstanceSpec`, `StorageSize`, `ServerlessResource`, `CacheStorageSize`, `SegDiskPerformanceLevel`) is changed. Valid values:
+        /// - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+        /// - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `MaintainStartTime` and `MaintainEndTime`) and takes effect within it.
+        /// 
+        /// &gt; **NOTE:** `EffectiveTime` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
         /// The ID of the encryption key.
         /// 
         /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -568,6 +601,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        /// 
         /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Input("instanceSpec")]
@@ -710,6 +744,18 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("serverlessResource")]
         public Input<int>? ServerlessResource { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+        /// - `Enabled`: Enables SQL collector.
+        /// - `Disabled`: Disables SQL collector.
+        /// 
+        /// &gt; **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+        /// 
+        /// &gt; **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `SqlCollectorStatus = "Disabled"` explicitly to disable it.
+        /// </summary>
+        [Input("sqlCollectorStatus")]
+        public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
         /// The source instance ID for creating an instance from a backup set. Must be set together with `BackupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
@@ -864,6 +910,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`MinorVersion`, `SegNodeNum`, `MasterNodeNum`, `InstanceSpec`, `StorageSize`, `ServerlessResource`, `CacheStorageSize`, `SegDiskPerformanceLevel`) is changed. Valid values:
+        /// - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+        /// - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `MaintainStartTime` and `MaintainEndTime`) and takes effect within it.
+        /// 
+        /// &gt; **NOTE:** `EffectiveTime` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
         /// The ID of the encryption key.
         /// 
         /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -916,6 +972,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        /// 
         /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Input("instanceSpec")]
@@ -1064,6 +1121,18 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("serverlessResource")]
         public Input<int>? ServerlessResource { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+        /// - `Enabled`: Enables SQL collector.
+        /// - `Disabled`: Disables SQL collector.
+        /// 
+        /// &gt; **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+        /// 
+        /// &gt; **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `SqlCollectorStatus = "Disabled"` explicitly to disable it.
+        /// </summary>
+        [Input("sqlCollectorStatus")]
+        public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
         /// The source instance ID for creating an instance from a backup set. Must be set together with `BackupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).

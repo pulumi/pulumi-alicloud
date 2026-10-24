@@ -95,6 +95,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
 
         /// <summary>
         /// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        /// 
         /// &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
         /// </summary>
         [Input("maxBodySize")]

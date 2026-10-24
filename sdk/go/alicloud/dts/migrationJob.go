@@ -114,7 +114,7 @@ import (
 //					Engine:                pulumi.String("MySQL"),
 //					EngineVersion:         pulumi.String("8.0"),
 //					InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//					InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
+//					InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges[0].Min),
 //					InstanceChargeType:    pulumi.String("Postpaid"),
 //					InstanceName:          pulumi.String(invokeFormat.Result),
 //					VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
@@ -288,10 +288,12 @@ type MigrationJob struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId pulumi.StringPtrOutput `pulumi:"destPrimaryVswitchId"`
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"destSecondaryVswitchId"`
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
 	DestinationEndpointEngineName pulumi.StringOutput `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance.
 	DestinationEndpointInstanceId pulumi.StringPtrOutput `pulumi:"destinationEndpointInstanceId"`
@@ -319,7 +321,7 @@ type MigrationJob struct {
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The name of migrate the database.
 	SourceEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"sourceEndpointDatabaseName"`
-	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
 	SourceEndpointEngineName pulumi.StringOutput `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance.
 	SourceEndpointInstanceId pulumi.StringPtrOutput `pulumi:"sourceEndpointInstanceId"`
@@ -348,8 +350,6 @@ type MigrationJob struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization pulumi.BoolOutput `pulumi:"structureInitialization"`
@@ -423,10 +423,12 @@ type migrationJobState struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance.
 	DestinationEndpointInstanceId *string `pulumi:"destinationEndpointInstanceId"`
@@ -454,7 +456,7 @@ type migrationJobState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The name of migrate the database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
-	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
 	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance.
 	SourceEndpointInstanceId *string `pulumi:"sourceEndpointInstanceId"`
@@ -483,8 +485,6 @@ type migrationJobState struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status *string `pulumi:"status"`
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization *bool `pulumi:"structureInitialization"`
@@ -502,10 +502,12 @@ type MigrationJobState struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId pulumi.StringPtrInput
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
-	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The ID of destination instance.
 	DestinationEndpointInstanceId pulumi.StringPtrInput
@@ -533,7 +535,7 @@ type MigrationJobState struct {
 	InstanceClass pulumi.StringPtrInput
 	// The name of migrate the database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
-	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
 	SourceEndpointEngineName pulumi.StringPtrInput
 	// The ID of source instance.
 	SourceEndpointInstanceId pulumi.StringPtrInput
@@ -562,8 +564,6 @@ type MigrationJobState struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status pulumi.StringPtrInput
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization pulumi.BoolPtrInput
@@ -585,10 +585,12 @@ type migrationJobArgs struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
 	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance.
 	DestinationEndpointInstanceId *string `pulumi:"destinationEndpointInstanceId"`
@@ -616,7 +618,7 @@ type migrationJobArgs struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The name of migrate the database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
-	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
 	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance.
 	SourceEndpointInstanceId *string `pulumi:"sourceEndpointInstanceId"`
@@ -645,8 +647,6 @@ type migrationJobArgs struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status *string `pulumi:"status"`
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization bool `pulumi:"structureInitialization"`
@@ -665,10 +665,12 @@ type MigrationJobArgs struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId pulumi.StringPtrInput
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
-	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
 	DestinationEndpointEngineName pulumi.StringInput
 	// The ID of destination instance.
 	DestinationEndpointInstanceId pulumi.StringPtrInput
@@ -696,7 +698,7 @@ type MigrationJobArgs struct {
 	InstanceClass pulumi.StringPtrInput
 	// The name of migrate the database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
-	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
 	SourceEndpointEngineName pulumi.StringInput
 	// The ID of source instance.
 	SourceEndpointInstanceId pulumi.StringPtrInput
@@ -725,8 +727,6 @@ type MigrationJobArgs struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status pulumi.StringPtrInput
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization pulumi.BoolInput
@@ -845,6 +845,8 @@ func (o MigrationJobOutput) DestPrimaryVswitchId() pulumi.StringPtrOutput {
 }
 
 // The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+//
+// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 func (o MigrationJobOutput) DestSecondaryVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestSecondaryVswitchId }).(pulumi.StringPtrOutput)
 }
@@ -854,7 +856,7 @@ func (o MigrationJobOutput) DestinationEndpointDatabaseName() pulumi.StringPtrOu
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointDatabaseName }).(pulumi.StringPtrOutput)
 }
 
-// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
 func (o MigrationJobOutput) DestinationEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
 }
@@ -924,7 +926,7 @@ func (o MigrationJobOutput) SourceEndpointDatabaseName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointDatabaseName }).(pulumi.StringPtrOutput)
 }
 
-// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
 func (o MigrationJobOutput) SourceEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
 }
@@ -995,8 +997,6 @@ func (o MigrationJobOutput) SrcSecondaryVswitchId() pulumi.StringPtrOutput {
 }
 
 // The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-//
-// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 func (o MigrationJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

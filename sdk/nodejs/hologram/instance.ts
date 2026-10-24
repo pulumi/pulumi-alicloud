@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.213.0.
  *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -101,11 +103,13 @@ export class Instance extends pulumi.CustomResource {
      * Whether to pay automatically. The default value is true. Value:
      * - true: automatic payment
      * - false: only generate orders, not pay
+     *
      * > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      */
     declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Instance low-frequency storage space. Unit: GB.
+     *
      * > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      */
     declare public readonly coldStorageSize: pulumi.Output<number | undefined>;
@@ -117,6 +121,7 @@ export class Instance extends pulumi.CustomResource {
      * - 64 core 256 GB (number of compute nodes: 4)
      * - 96 core 384 GB (number of computing nodes: 6)
      * - 128 core 512 GB (number of compute nodes: 8)
+     *
      * > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      */
     declare public readonly cpu: pulumi.Output<number>;
@@ -169,6 +174,7 @@ export class Instance extends pulumi.CustomResource {
      * Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
+     *
      * > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
@@ -184,6 +190,7 @@ export class Instance extends pulumi.CustomResource {
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
+     *
      * > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      */
     declare public readonly scaleType: pulumi.Output<string | undefined>;
@@ -193,6 +200,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly status: pulumi.Output<string>;
     /**
      * The standard storage space of the instance. Unit: GB.
+     *
      * > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      */
     declare public readonly storageSize: pulumi.Output<number | undefined>;
@@ -288,11 +296,13 @@ export interface InstanceState {
      * Whether to pay automatically. The default value is true. Value:
      * - true: automatic payment
      * - false: only generate orders, not pay
+     *
      * > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      */
     autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Instance low-frequency storage space. Unit: GB.
+     *
      * > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      */
     coldStorageSize?: pulumi.Input<number | undefined>;
@@ -304,6 +314,7 @@ export interface InstanceState {
      * - 64 core 256 GB (number of compute nodes: 4)
      * - 96 core 384 GB (number of computing nodes: 6)
      * - 128 core 512 GB (number of compute nodes: 8)
+     *
      * > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      */
     cpu?: pulumi.Input<number | undefined>;
@@ -356,6 +367,7 @@ export interface InstanceState {
      * Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
+     *
      * > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
@@ -371,6 +383,7 @@ export interface InstanceState {
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
+     *
      * > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      */
     scaleType?: pulumi.Input<string | undefined>;
@@ -380,6 +393,7 @@ export interface InstanceState {
     status?: pulumi.Input<string | undefined>;
     /**
      * The standard storage space of the instance. Unit: GB.
+     *
      * > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      */
     storageSize?: pulumi.Input<number | undefined>;
@@ -401,11 +415,13 @@ export interface InstanceArgs {
      * Whether to pay automatically. The default value is true. Value:
      * - true: automatic payment
      * - false: only generate orders, not pay
+     *
      * > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      */
     autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Instance low-frequency storage space. Unit: GB.
+     *
      * > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      */
     coldStorageSize?: pulumi.Input<number | undefined>;
@@ -417,6 +433,7 @@ export interface InstanceArgs {
      * - 64 core 256 GB (number of compute nodes: 4)
      * - 96 core 384 GB (number of computing nodes: 6)
      * - 128 core 512 GB (number of compute nodes: 8)
+     *
      * > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      */
     cpu?: pulumi.Input<number | undefined>;
@@ -465,6 +482,7 @@ export interface InstanceArgs {
      * Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
+     *
      * > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
@@ -476,6 +494,7 @@ export interface InstanceArgs {
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
+     *
      * > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      */
     scaleType?: pulumi.Input<string | undefined>;
@@ -485,6 +504,7 @@ export interface InstanceArgs {
     status?: pulumi.Input<string | undefined>;
     /**
      * The standard storage space of the instance. Unit: GB.
+     *
      * > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      */
     storageSize?: pulumi.Input<number | undefined>;

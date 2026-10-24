@@ -148,6 +148,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The instance ID.
+        /// 
         /// &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         /// </summary>
         [Output("dbInstanceId")]
@@ -244,6 +245,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The instance ID.
+        /// 
         /// &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         /// </summary>
         [Input("dbInstanceId", required: true)]
@@ -302,6 +304,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The instance ID.
+        /// 
         /// &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
         /// </summary>
         [Input("dbInstanceId")]

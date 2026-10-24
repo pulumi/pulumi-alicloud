@@ -128,6 +128,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -136,6 +137,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
     /**
      * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -817,6 +819,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param customSan Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+         * 
          * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
          * 
          * @return builder
@@ -829,6 +832,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
 
         /**
          * @param customSan Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+         * 
          * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
          * 
          * @return builder

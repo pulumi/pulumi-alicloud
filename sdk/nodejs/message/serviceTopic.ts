@@ -75,7 +75,19 @@ export class ServiceTopic extends pulumi.CustomResource {
      */
     declare public readonly enableLogging: pulumi.Output<boolean>;
     /**
+     * Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+     */
+    declare public readonly enableSse: pulumi.Output<boolean>;
+    /**
+     * The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     */
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
+    /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     *
+     * > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     *
+     * > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
      *
      * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
@@ -84,6 +96,16 @@ export class ServiceTopic extends pulumi.CustomResource {
      * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
     declare public readonly maxMessageSize: pulumi.Output<number>;
+    /**
+     * The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+     */
+    declare public readonly sseAlgorithm: pulumi.Output<string>;
+    /**
+     * The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     */
+    declare public readonly sseType: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -112,8 +134,12 @@ export class ServiceTopic extends pulumi.CustomResource {
             const state = argsOrState as ServiceTopicState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["enableSse"] = state?.enableSse;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
             resourceInputs["loggingEnabled"] = state?.loggingEnabled;
             resourceInputs["maxMessageSize"] = state?.maxMessageSize;
+            resourceInputs["sseAlgorithm"] = state?.sseAlgorithm;
+            resourceInputs["sseType"] = state?.sseType;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["topicName"] = state?.topicName;
             resourceInputs["topicType"] = state?.topicType;
@@ -123,8 +149,12 @@ export class ServiceTopic extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topicName'");
             }
             resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["enableSse"] = args?.enableSse;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
             resourceInputs["loggingEnabled"] = args?.loggingEnabled;
             resourceInputs["maxMessageSize"] = args?.maxMessageSize;
+            resourceInputs["sseAlgorithm"] = args?.sseAlgorithm;
+            resourceInputs["sseType"] = args?.sseType;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["topicName"] = args?.topicName;
             resourceInputs["topicType"] = args?.topicType;
@@ -148,7 +178,19 @@ export interface ServiceTopicState {
      */
     enableLogging?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+     */
+    enableSse?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     */
+    kmsKeyId?: pulumi.Input<string | undefined>;
+    /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     *
+     * > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     *
+     * > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
      *
      * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
@@ -157,6 +199,16 @@ export interface ServiceTopicState {
      * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
     maxMessageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+     */
+    sseAlgorithm?: pulumi.Input<string | undefined>;
+    /**
+     * The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     */
+    sseType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -180,7 +232,19 @@ export interface ServiceTopicArgs {
      */
     enableLogging?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+     */
+    enableSse?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sseType` is set to `KMS`.
+     */
+    kmsKeyId?: pulumi.Input<string | undefined>;
+    /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
+     *
+     * > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sseType` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+     *
+     * > **NOTE:** To disable SSE, you must set `enableSse` to `false` and remove `sseType`, `sseAlgorithm`, and `kmsKeyId` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
      *
      * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
@@ -189,6 +253,16 @@ export interface ServiceTopicArgs {
      * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
     maxMessageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+     */
+    sseAlgorithm?: pulumi.Input<string | undefined>;
+    /**
+     * The type of server-side encryption (SSE). Valid values:
+     * - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+     * - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+     */
+    sseType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */

@@ -28,6 +28,7 @@ class ControlPolicyOrderArgs:
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               
                > **NOTE:** From version 1.227.1, `order` must be set.
         """
         pulumi.set(__self__, "acl_uuid", acl_uuid)
@@ -63,6 +64,7 @@ class ControlPolicyOrderArgs:
     def order(self) -> pulumi.Input[_builtins.int]:
         """
         The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+
         > **NOTE:** From version 1.227.1, `order` must be set.
         """
         return pulumi.get(self, "order")
@@ -84,6 +86,7 @@ class _ControlPolicyOrderState:
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               
                > **NOTE:** From version 1.227.1, `order` must be set.
         """
         if acl_uuid is not None:
@@ -122,6 +125,7 @@ class _ControlPolicyOrderState:
     def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+
         > **NOTE:** From version 1.227.1, `order` must be set.
         """
         return pulumi.get(self, "order")
@@ -192,6 +196,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               
                > **NOTE:** From version 1.227.1, `order` must be set.
         """
         ...
@@ -305,6 +310,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_uuid: The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               
                > **NOTE:** From version 1.227.1, `order` must be set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -337,6 +343,7 @@ class ControlPolicyOrder(pulumi.CustomResource):
     def order(self) -> pulumi.Output[_builtins.int]:
         """
         The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+
         > **NOTE:** From version 1.227.1, `order` must be set.
         """
         return pulumi.get(self, "order")

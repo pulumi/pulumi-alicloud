@@ -106,6 +106,7 @@ type RouterVpcAssociation struct {
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntOutput `pulumi:"vpcOwnerId"`
 }
@@ -164,6 +165,7 @@ type routerVpcAssociationState struct {
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 }
@@ -184,6 +186,7 @@ type RouterVpcAssociationState struct {
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntPtrInput
 }
@@ -202,6 +205,7 @@ type routerVpcAssociationArgs struct {
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 }
@@ -217,6 +221,7 @@ type RouterVpcAssociationArgs struct {
 	// The VPC ID.
 	VpcId pulumi.StringInput
 	// The ID of the Alibaba Cloud account that owns the VPC.
+	//
 	// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 	VpcOwnerId pulumi.IntPtrInput
 }
@@ -344,6 +349,7 @@ func (o RouterVpcAssociationOutput) VpcId() pulumi.StringOutput {
 }
 
 // The ID of the Alibaba Cloud account that owns the VPC.
+//
 // > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
 func (o RouterVpcAssociationOutput) VpcOwnerId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RouterVpcAssociation) pulumi.IntOutput { return v.VpcOwnerId }).(pulumi.IntOutput)

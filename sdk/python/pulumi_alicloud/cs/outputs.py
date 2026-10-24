@@ -5450,13 +5450,13 @@ class GetEdgeKubernetesClustersClusterResult(dict):
                  worker_nodes: Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult']):
         """
         :param _builtins.str availability_zone: The ID of availability zone.
-        :param Sequence['GetEdgeKubernetesClustersClusterConnectionArgs'] connections: A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        :param Sequence['GetEdgeKubernetesClustersClusterConnectionArgs'] connections: A list of kubernetes cluster connection information.
         :param _builtins.str id: ID of the node.
         :param _builtins.str name: Node name.
         :param _builtins.str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param _builtins.str security_group_id: The ID of security group where the current cluster worker node is located.
         :param _builtins.str vpc_id: The ID of VPC where the current cluster is located.
-        :param Sequence['GetEdgeKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param Sequence['GetEdgeKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "connections", connections)
@@ -5479,7 +5479,7 @@ class GetEdgeKubernetesClustersClusterResult(dict):
     @pulumi.getter
     def connections(self) -> Sequence['outputs.GetEdgeKubernetesClustersClusterConnectionResult']:
         """
-        A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        A list of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -5527,7 +5527,7 @@ class GetEdgeKubernetesClustersClusterResult(dict):
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult']:
         """
-        List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        List of cluster worker nodes.
         """
         return pulumi.get(self, "worker_nodes")
 

@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AclEntryAttachmentEntry',
     'AclEntryList',
     'BackendServerBackendServer',
     'ListenerXForwardedFor',
@@ -50,6 +51,36 @@ __all__ = [
     'GetZonesZoneResult',
     'GetZonesZoneSupportedResourceResult',
 ]
+
+@pulumi.output_type
+class AclEntryAttachmentEntry(dict):
+    def __init__(__self__, *,
+                 entry: _builtins.str,
+                 comment: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str entry: The CIDR block of the acl entry.
+        :param _builtins.str comment: The comment of the acl entry.
+        """
+        pulumi.set(__self__, "entry", entry)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @_builtins.property
+    @pulumi.getter
+    def entry(self) -> _builtins.str:
+        """
+        The CIDR block of the acl entry.
+        """
+        return pulumi.get(self, "entry")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        The comment of the acl entry.
+        """
+        return pulumi.get(self, "comment")
+
 
 @pulumi.output_type
 class AclEntryList(dict):

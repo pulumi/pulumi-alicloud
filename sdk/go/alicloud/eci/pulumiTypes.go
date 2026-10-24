@@ -3504,6 +3504,7 @@ func (o ContainerGroupSecurityContextSysctlArrayOutput) Index(i pulumi.IntInput)
 
 type ContainerGroupVolume struct {
 	// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+	//
 	// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 	ConfigFileVolumeConfigFileToPaths []ContainerGroupVolumeConfigFileVolumeConfigFileToPath `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
@@ -3541,6 +3542,7 @@ type ContainerGroupVolumeInput interface {
 
 type ContainerGroupVolumeArgs struct {
 	// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+	//
 	// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 	ConfigFileVolumeConfigFileToPaths ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
@@ -3617,6 +3619,7 @@ func (o ContainerGroupVolumeOutput) ToContainerGroupVolumeOutputWithContext(ctx 
 }
 
 // The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+//
 // > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 func (o ContainerGroupVolumeOutput) ConfigFileVolumeConfigFileToPaths() ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) []ContainerGroupVolumeConfigFileVolumeConfigFileToPath {

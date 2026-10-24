@@ -112,9 +112,11 @@ type PhysicalConnection struct {
 	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
 	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
 	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	//
 	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType pulumi.StringPtrOutput `pulumi:"portType"`
 	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	//
 	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
@@ -195,9 +197,11 @@ type physicalConnectionState struct {
 	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
 	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
 	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	//
 	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType *string `pulumi:"portType"`
 	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	//
 	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
@@ -243,9 +247,11 @@ type PhysicalConnectionState struct {
 	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
 	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
 	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	//
 	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType pulumi.StringPtrInput
 	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	//
 	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
 	PricingCycle pulumi.StringPtrInput
 	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
@@ -293,9 +299,11 @@ type physicalConnectionArgs struct {
 	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
 	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
 	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	//
 	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType *string `pulumi:"portType"`
 	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	//
 	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
@@ -340,9 +348,11 @@ type PhysicalConnectionArgs struct {
 	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
 	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
 	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	//
 	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType pulumi.StringPtrInput
 	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	//
 	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
 	PricingCycle pulumi.StringPtrInput
 	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
@@ -501,12 +511,14 @@ func (o PhysicalConnectionOutput) PhysicalConnectionName() pulumi.StringPtrOutpu
 // - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
 // - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
 // - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+//
 // > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 func (o PhysicalConnectionOutput) PortType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PortType }).(pulumi.StringPtrOutput)
 }
 
 // The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+//
 // > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
 func (o PhysicalConnectionOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)

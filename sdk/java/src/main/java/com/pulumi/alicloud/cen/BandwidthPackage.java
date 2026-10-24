@@ -257,6 +257,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     }
     /**
      * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -265,6 +266,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */

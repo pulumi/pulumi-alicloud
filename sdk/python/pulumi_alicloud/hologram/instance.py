@@ -55,8 +55,10 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
                - true: automatic payment
                - false: only generate orders, not pay
+               
                > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         :param pulumi.Input[_builtins.int] cold_storage_size: Instance low-frequency storage space. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         :param pulumi.Input[_builtins.int] cpu: Instance specifications. Value:
                - 8 cores 32 GB (number of compute nodes: 1)
@@ -65,6 +67,7 @@ class InstanceArgs:
                - 64 core 256 GB (number of compute nodes: 4)
                - 96 core 384 GB (number of computing nodes: 6)
                - 128 core 512 GB (number of compute nodes: 8)
+               
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
@@ -75,14 +78,17 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
                - Month: monthly billing
                - Hour: hourly billing
+               
                > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scale_type: Change matching type. Value:
                - UPGRADE: UPGRADE
                - DOWNGRADE: Downgrading
+               
                > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.int] storage_size: The standard storage space of the instance. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag.
         """
@@ -181,6 +187,7 @@ class InstanceArgs:
         Whether to pay automatically. The default value is true. Value:
         - true: automatic payment
         - false: only generate orders, not pay
+
         > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         """
         return pulumi.get(self, "auto_pay")
@@ -194,6 +201,7 @@ class InstanceArgs:
     def cold_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance low-frequency storage space. Unit: GB.
+
         > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         """
         return pulumi.get(self, "cold_storage_size")
@@ -213,6 +221,7 @@ class InstanceArgs:
         - 64 core 256 GB (number of compute nodes: 4)
         - 96 core 384 GB (number of computing nodes: 6)
         - 128 core 512 GB (number of compute nodes: 8)
+
         > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         """
         return pulumi.get(self, "cpu")
@@ -300,6 +309,7 @@ class InstanceArgs:
         Billing cycle. Value:
         - Month: monthly billing
         - Hour: hourly billing
+
         > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         """
         return pulumi.get(self, "pricing_cycle")
@@ -327,6 +337,7 @@ class InstanceArgs:
         Change matching type. Value:
         - UPGRADE: UPGRADE
         - DOWNGRADE: Downgrading
+
         > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         """
         return pulumi.get(self, "scale_type")
@@ -352,6 +363,7 @@ class InstanceArgs:
     def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The standard storage space of the instance. Unit: GB.
+
         > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         """
         return pulumi.get(self, "storage_size")
@@ -403,8 +415,10 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
                - true: automatic payment
                - false: only generate orders, not pay
+               
                > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         :param pulumi.Input[_builtins.int] cold_storage_size: Instance low-frequency storage space. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         :param pulumi.Input[_builtins.int] cpu: Instance specifications. Value:
                - 8 cores 32 GB (number of compute nodes: 1)
@@ -413,6 +427,7 @@ class _InstanceState:
                - 64 core 256 GB (number of compute nodes: 4)
                - 96 core 384 GB (number of computing nodes: 6)
                - 128 core 512 GB (number of compute nodes: 8)
+               
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
@@ -432,15 +447,18 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
                - Month: monthly billing
                - Hour: hourly billing
+               
                > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.259.0) The region ID.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scale_type: Change matching type. Value:
                - UPGRADE: UPGRADE
                - DOWNGRADE: Downgrading
+               
                > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.int] storage_size: The standard storage space of the instance. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag.
         :param pulumi.Input[_builtins.str] zone_id: The zone Id. Refer to "Instructions for Use".
@@ -495,6 +513,7 @@ class _InstanceState:
         Whether to pay automatically. The default value is true. Value:
         - true: automatic payment
         - false: only generate orders, not pay
+
         > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         """
         return pulumi.get(self, "auto_pay")
@@ -508,6 +527,7 @@ class _InstanceState:
     def cold_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance low-frequency storage space. Unit: GB.
+
         > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         """
         return pulumi.get(self, "cold_storage_size")
@@ -527,6 +547,7 @@ class _InstanceState:
         - 64 core 256 GB (number of compute nodes: 4)
         - 96 core 384 GB (number of computing nodes: 6)
         - 128 core 512 GB (number of compute nodes: 8)
+
         > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         """
         return pulumi.get(self, "cpu")
@@ -667,6 +688,7 @@ class _InstanceState:
         Billing cycle. Value:
         - Month: monthly billing
         - Hour: hourly billing
+
         > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         """
         return pulumi.get(self, "pricing_cycle")
@@ -706,6 +728,7 @@ class _InstanceState:
         Change matching type. Value:
         - UPGRADE: UPGRADE
         - DOWNGRADE: Downgrading
+
         > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         """
         return pulumi.get(self, "scale_type")
@@ -731,6 +754,7 @@ class _InstanceState:
     def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The standard storage space of the instance. Unit: GB.
+
         > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         """
         return pulumi.get(self, "storage_size")
@@ -797,6 +821,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.213.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -858,8 +884,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
                - true: automatic payment
                - false: only generate orders, not pay
+               
                > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         :param pulumi.Input[_builtins.int] cold_storage_size: Instance low-frequency storage space. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         :param pulumi.Input[_builtins.int] cpu: Instance specifications. Value:
                - 8 cores 32 GB (number of compute nodes: 1)
@@ -868,6 +896,7 @@ class Instance(pulumi.CustomResource):
                - 64 core 256 GB (number of compute nodes: 4)
                - 96 core 384 GB (number of computing nodes: 6)
                - 128 core 512 GB (number of compute nodes: 8)
+               
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
@@ -886,14 +915,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
                - Month: monthly billing
                - Hour: hourly billing
+               
                > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scale_type: Change matching type. Value:
                - UPGRADE: UPGRADE
                - DOWNGRADE: Downgrading
+               
                > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.int] storage_size: The standard storage space of the instance. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag.
         :param pulumi.Input[_builtins.str] zone_id: The zone Id. Refer to "Instructions for Use".
@@ -910,6 +942,8 @@ class Instance(pulumi.CustomResource):
         For information about Hologres (Hologram) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
 
         > **NOTE:** Available since v1.213.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -1080,8 +1114,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
                - true: automatic payment
                - false: only generate orders, not pay
+               
                > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         :param pulumi.Input[_builtins.int] cold_storage_size: Instance low-frequency storage space. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         :param pulumi.Input[_builtins.int] cpu: Instance specifications. Value:
                - 8 cores 32 GB (number of compute nodes: 1)
@@ -1090,6 +1126,7 @@ class Instance(pulumi.CustomResource):
                - 64 core 256 GB (number of compute nodes: 4)
                - 96 core 384 GB (number of computing nodes: 6)
                - 128 core 512 GB (number of compute nodes: 8)
+               
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
@@ -1109,15 +1146,18 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
                - Month: monthly billing
                - Hour: hourly billing
+               
                > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.259.0) The region ID.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scale_type: Change matching type. Value:
                - UPGRADE: UPGRADE
                - DOWNGRADE: Downgrading
+               
                > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.int] storage_size: The standard storage space of the instance. Unit: GB.
+               
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag.
         :param pulumi.Input[_builtins.str] zone_id: The zone Id. Refer to "Instructions for Use".
@@ -1156,6 +1196,7 @@ class Instance(pulumi.CustomResource):
         Whether to pay automatically. The default value is true. Value:
         - true: automatic payment
         - false: only generate orders, not pay
+
         > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         """
         return pulumi.get(self, "auto_pay")
@@ -1165,6 +1206,7 @@ class Instance(pulumi.CustomResource):
     def cold_storage_size(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Instance low-frequency storage space. Unit: GB.
+
         > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         """
         return pulumi.get(self, "cold_storage_size")
@@ -1180,6 +1222,7 @@ class Instance(pulumi.CustomResource):
         - 64 core 256 GB (number of compute nodes: 4)
         - 96 core 384 GB (number of computing nodes: 6)
         - 128 core 512 GB (number of compute nodes: 8)
+
         > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         """
         return pulumi.get(self, "cpu")
@@ -1276,6 +1319,7 @@ class Instance(pulumi.CustomResource):
         Billing cycle. Value:
         - Month: monthly billing
         - Hour: hourly billing
+
         > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         """
         return pulumi.get(self, "pricing_cycle")
@@ -1303,6 +1347,7 @@ class Instance(pulumi.CustomResource):
         Change matching type. Value:
         - UPGRADE: UPGRADE
         - DOWNGRADE: Downgrading
+
         > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         """
         return pulumi.get(self, "scale_type")
@@ -1320,6 +1365,7 @@ class Instance(pulumi.CustomResource):
     def storage_size(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The standard storage space of the instance. Unit: GB.
+
         > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         """
         return pulumi.get(self, "storage_size")

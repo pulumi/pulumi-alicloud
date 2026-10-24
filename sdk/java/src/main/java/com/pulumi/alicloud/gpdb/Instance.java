@@ -275,6 +275,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minorVersion`, `segNodeNum`, `masterNodeNum`, `instanceSpec`, `storageSize`, `serverlessResource`, `cacheStorageSize`, `segDiskPerformanceLevel`) is changed. Valid values:
+     * - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+     * - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintainStartTime` and `maintainEndTime`) and takes effect within it.
+     * 
+     * &gt; **NOTE:** `effectiveTime` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+     * 
+     */
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> effectiveTime;
+
+    /**
+     * @return The effective time of an in-place upgrade task. It is sent with the [UpgradeDBVersion](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbversion) and [UpgradeDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-upgradedbinstance) operations when one of the upgradable attributes (`minorVersion`, `segNodeNum`, `masterNodeNum`, `instanceSpec`, `storageSize`, `serverlessResource`, `cacheStorageSize`, `segDiskPerformanceLevel`) is changed. Valid values:
+     * - `Immediate`: The upgrade takes effect immediately. This is the API default when the attribute is not set.
+     * - `MaintainTime`: The upgrade is scheduled into the maintenance window (configured via `maintainStartTime` and `maintainEndTime`) and takes effect within it.
+     * 
+     * &gt; **NOTE:** `effectiveTime` is a per-operation modifier and is not an instance attribute, so it is not read back from the API. When `MaintainTime` is used, the upgrade executes at the next maintenance window: until the upgrade task runs, the API keeps reporting the previous values of the upgraded attributes and the provider reports a plan diff for them. The provider does not wait for the value convergence in this case and returns after the upgrade request is accepted.
+     * 
+     */
+    public Output<Optional<String>> effectiveTime() {
+        return Codegen.optional(this.effectiveTime);
+    }
+    /**
      * The ID of the encryption key.
      * 
      * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -391,7 +413,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * 
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
+     * 
+     * &gt; **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      * 
      */
     @Export(name="instanceSpec", refs={String.class}, tree="[0]")
@@ -404,7 +427,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * 
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
+     * 
+     * &gt; **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      * 
      */
     public Output<String> instanceSpec() {
@@ -711,6 +735,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> serverlessResource() {
         return this.serverlessResource;
+    }
+    /**
+     * Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+     * - `Enabled`: Enables SQL collector.
+     * - `Disabled`: Disables SQL collector.
+     * 
+     * &gt; **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+     * 
+     * &gt; **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sqlCollectorStatus = &#34;Disabled&#34;` explicitly to disable it.
+     * 
+     */
+    @Export(name="sqlCollectorStatus", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sqlCollectorStatus;
+
+    /**
+     * @return Specifies whether to enable or disable SQL explorer (SQL collector). The provider calls the [ModifySQLCollectorPolicy](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-modifysqlcollectorpolicy) operation when this attribute is set or changed. Valid values:
+     * - `Enabled`: Enables SQL collector.
+     * - `Disabled`: Disables SQL collector.
+     * 
+     * &gt; **NOTE:** The ModifySQLCollectorPolicy operation is supported only by storage-reserved instances and the Serverless auto-scheduling version. Check the product documentation for the support scope of your instance mode.
+     * 
+     * &gt; **NOTE:** The GPDB API does not provide an operation to query the SQL collector status, so this attribute is write-only: it is not read back into state during `terraform refresh` or import. Removing the attribute from the configuration does not disable SQL collector either: the provider does not call ModifySQLCollectorPolicy in that case, so the cloud-side status stays unchanged. Set `sqlCollectorStatus = &#34;Disabled&#34;` explicitly to disable it.
+     * 
+     */
+    public Output<Optional<String>> sqlCollectorStatus() {
+        return Codegen.optional(this.sqlCollectorStatus);
     }
     /**
      * The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).

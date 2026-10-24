@@ -41,6 +41,8 @@ __all__ = [
     'GatewaySecurityIpArrayArgsDict',
     'ParameterGroupParameterArgs',
     'ParameterGroupParameterArgsDict',
+    'PolarFsEndpointAddressItemArgs',
+    'PolarFsEndpointAddressItemArgsDict',
 ]
 
 class ApplicationComponentArgsDict(TypedDict):
@@ -994,5 +996,154 @@ class ParameterGroupParameterArgs:
     @param_value.setter
     def param_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param_value", value)
+
+
+class PolarFsEndpointAddressItemArgsDict(TypedDict):
+    connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The connection string.
+    """
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The IP address.
+    """
+    net_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The network type.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The port.
+    """
+    private_zone_connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The PrivateZone connection string.
+    """
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The VPC ID.
+    """
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The vSwitch ID.
+    """
+
+@pulumi.input_type
+class PolarFsEndpointAddressItemArgs:
+    def __init__(__self__, *,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_zone_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_string: (Available since v2.1.0) The connection string.
+        :param pulumi.Input[_builtins.str] ip_address: (Available since v2.1.0) The IP address.
+        :param pulumi.Input[_builtins.str] net_type: (Available since v2.1.0) The network type.
+        :param pulumi.Input[_builtins.str] port: (Available since v2.1.0) The port.
+        :param pulumi.Input[_builtins.str] private_zone_connection_string: (Available since v2.1.0) The PrivateZone connection string.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
+        """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_zone_connection_string is not None:
+            pulumi.set(__self__, "private_zone_connection_string", private_zone_connection_string)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The connection string.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The IP address.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The network type.
+        """
+        return pulumi.get(self, "net_type")
+
+    @net_type.setter
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "net_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateZoneConnectionString")
+    def private_zone_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The PrivateZone connection string.
+        """
+        return pulumi.get(self, "private_zone_connection_string")
+
+    @private_zone_connection_string.setter
+    def private_zone_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "private_zone_connection_string", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The vSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 

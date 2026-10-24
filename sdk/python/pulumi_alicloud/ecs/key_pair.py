@@ -35,6 +35,7 @@ class KeyPairArgs:
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               
                > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         if key_file is not None:
@@ -130,6 +131,7 @@ class KeyPairArgs:
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
+
         > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         return pulumi.get(self, "tags")
@@ -160,6 +162,7 @@ class _KeyPairState:
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               
                > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         if create_time is not None:
@@ -277,6 +280,7 @@ class _KeyPairState:
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
+
         > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         return pulumi.get(self, "tags")
@@ -341,6 +345,7 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               
                > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         ...
@@ -454,6 +459,7 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+               
                > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -532,6 +538,7 @@ class KeyPair(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         A mapping of tags to assign to the resource.
+
         > **NOTE:** If `key_name` and `key_name_prefix` are not set, terraform will produce a specified ID to replace.
         """
         return pulumi.get(self, "tags")

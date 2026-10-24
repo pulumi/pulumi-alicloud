@@ -170,6 +170,7 @@ export class ZonalDbCluster extends pulumi.CustomResource {
     declare public /*out*/ readonly storagePayType: pulumi.Output<string>;
     /**
      * Storage space charged by space (monthly package). Unit: GB.
+     *
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
      */
     declare public readonly storageSpace: pulumi.Output<number | undefined>;
@@ -183,6 +184,7 @@ export class ZonalDbCluster extends pulumi.CustomResource {
     declare public readonly targetMinorVersion: pulumi.Output<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
     declare public readonly usedTime: pulumi.Output<number | undefined>;
@@ -357,6 +359,7 @@ export interface ZonalDbClusterState {
     storagePayType?: pulumi.Input<string | undefined>;
     /**
      * Storage space charged by space (monthly package). Unit: GB.
+     *
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
      */
     storageSpace?: pulumi.Input<number | undefined>;
@@ -370,6 +373,7 @@ export interface ZonalDbClusterState {
     targetMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
     usedTime?: pulumi.Input<number | undefined>;
@@ -437,6 +441,7 @@ export interface ZonalDbClusterArgs {
     renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Storage space charged by space (monthly package). Unit: GB.
+     *
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
      */
     storageSpace?: pulumi.Input<number | undefined>;
@@ -450,6 +455,7 @@ export interface ZonalDbClusterArgs {
     targetMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
     usedTime?: pulumi.Input<number | undefined>;

@@ -47,6 +47,7 @@ class VpcEndpointArgs:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
                - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
                - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -161,6 +162,7 @@ class VpcEndpointArgs:
         """
         The type of the endpoint. Valid values:
         - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
         - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
@@ -334,6 +336,7 @@ class _VpcEndpointState:
         :param pulumi.Input[_builtins.str] endpoint_domain: The domain name of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
                - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
                - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -514,6 +517,7 @@ class _VpcEndpointState:
         """
         The type of the endpoint. Valid values:
         - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
         - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
@@ -758,6 +762,41 @@ class VpcEndpoint(pulumi.CustomResource):
             protected_enabled=False)
         ```
 
+        Usage with Vpc Endpoint Zone
+
+        The `privatelink.VpcEndpoint` and `privatelink.VpcEndpointZone` resources are separate. You can use them together to add a zone to a VPC endpoint. The following example creates a VPC endpoint and then adds a zone to it by referencing the endpoint ID, a vSwitch in the same zone, and the zone ID.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=example_network.id,
+            zone_id=example.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
+            service_id="epsrv-k1apjysze8u1l9t6uyg9",
+            security_group_ids=[example_security_group.id],
+            vpc_id=example_network.id,
+            vpc_endpoint_name=name)
+        example_vpc_endpoint_zone = alicloud.privatelink.VpcEndpointZone("example",
+            endpoint_id=example_vpc_endpoint.id,
+            vswitch_id=example_switch.id,
+            zone_id=example.zones[0].id)
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -779,6 +818,7 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
                - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
                - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -852,6 +892,41 @@ class VpcEndpoint(pulumi.CustomResource):
             security_group_ids=[default1_ft_fr_p.id],
             service_id="epsrv-k1apjysze8u1l9t6uyg9",
             protected_enabled=False)
+        ```
+
+        Usage with Vpc Endpoint Zone
+
+        The `privatelink.VpcEndpoint` and `privatelink.VpcEndpointZone` resources are separate. You can use them together to add a zone to a VPC endpoint. The following example creates a VPC endpoint and then adds a zone to it by referencing the endpoint ID, a vSwitch in the same zone, and the zone ID.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=example_network.id,
+            zone_id=example.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
+            service_id="epsrv-k1apjysze8u1l9t6uyg9",
+            security_group_ids=[example_security_group.id],
+            vpc_id=example_network.id,
+            vpc_endpoint_name=name)
+        example_vpc_endpoint_zone = alicloud.privatelink.VpcEndpointZone("example",
+            endpoint_id=example_vpc_endpoint.id,
+            vswitch_id=example_switch.id,
+            zone_id=example.zones[0].id)
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -983,6 +1058,7 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint_domain: The domain name of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
                - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
                - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -1109,6 +1185,7 @@ class VpcEndpoint(pulumi.CustomResource):
         """
         The type of the endpoint. Valid values:
         - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
         - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")

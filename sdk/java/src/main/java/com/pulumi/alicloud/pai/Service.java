@@ -109,14 +109,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Whether to enter the development mode.
+     * Specifies whether to enter development mode. Valid values: `true`, `false`.
      * 
      */
     @Export(name="develop", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> develop;
 
     /**
-     * @return Whether to enter the development mode.
+     * @return Specifies whether to enter development mode. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<String>> develop() {
@@ -137,18 +137,32 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.regionId;
     }
     /**
-     * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      * 
      */
     @Export(name="serviceConfig", refs={String.class}, tree="[0]")
     private Output<String> serviceConfig;
 
     /**
-     * @return Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * @return Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      * 
      */
     public Output<String> serviceConfig() {
         return this.serviceConfig;
+    }
+    /**
+     * (Available since v2.1.0) Unique Service ID
+     * 
+     */
+    @Export(name="serviceUid", refs={String.class}, tree="[0]")
+    private Output<String> serviceUid;
+
+    /**
+     * @return (Available since v2.1.0) Unique Service ID
+     * 
+     */
+    public Output<String> serviceUid() {
+        return this.serviceUid;
     }
     /**
      * Service Current Status.
@@ -165,28 +179,28 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The custom label.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The custom label.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Workspace id
+     * The workspace ID.
      * 
      */
     @Export(name="workspaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workspaceId;
 
     /**
-     * @return Workspace id
+     * @return The workspace ID.
      * 
      */
     public Output<Optional<String>> workspaceId() {

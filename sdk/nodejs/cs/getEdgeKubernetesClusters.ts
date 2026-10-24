@@ -43,7 +43,7 @@ export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, 
  */
 export interface GetEdgeKubernetesClustersArgs {
     /**
-     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `vpcId`, `securityGroupId`, `connections`. See full list in attributes.
      */
     enableDetails?: boolean;
     /**
@@ -65,7 +65,7 @@ export interface GetEdgeKubernetesClustersArgs {
  */
 export interface GetEdgeKubernetesClustersResult {
     /**
-     * A list of matched Kubernetes clusters. Each element contains the following attributes:
+     * A list of matched Kubernetes clusters.
      */
     readonly clusters: outputs.cs.GetEdgeKubernetesClustersCluster[];
     readonly enableDetails?: boolean;
@@ -121,7 +121,7 @@ export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClusters
  */
 export interface GetEdgeKubernetesClustersOutputArgs {
     /**
-     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `vpcId`, `securityGroupId`, `connections`. See full list in attributes.
      */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**

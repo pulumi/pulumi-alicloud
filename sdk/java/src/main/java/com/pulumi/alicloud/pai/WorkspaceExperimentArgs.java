@@ -3,10 +3,12 @@
 
 package com.pulumi.alicloud.pai;
 
+import com.pulumi.alicloud.pai.inputs.WorkspaceExperimentLabelArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,6 +64,21 @@ public final class WorkspaceExperimentArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Labels are tags of the experiment. See `labels` below.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<List<WorkspaceExperimentLabelArgs>> labels;
+
+    /**
+     * @return Labels are tags of the experiment. See `labels` below.
+     * 
+     */
+    public Optional<Output<List<WorkspaceExperimentLabelArgs>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * WorkspaceId is the workspace id which contains the experiment
      * 
      */
@@ -82,6 +99,7 @@ public final class WorkspaceExperimentArgs extends com.pulumi.resources.Resource
         this.accessibility = $.accessibility;
         this.artifactUri = $.artifactUri;
         this.experimentName = $.experimentName;
+        this.labels = $.labels;
         this.workspaceId = $.workspaceId;
     }
 
@@ -164,6 +182,37 @@ public final class WorkspaceExperimentArgs extends com.pulumi.resources.Resource
          */
         public Builder experimentName(String experimentName) {
             return experimentName(Output.of(experimentName));
+        }
+
+        /**
+         * @param labels Labels are tags of the experiment. See `labels` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<List<WorkspaceExperimentLabelArgs>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels are tags of the experiment. See `labels` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(List<WorkspaceExperimentLabelArgs> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
+         * @param labels Labels are tags of the experiment. See `labels` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(WorkspaceExperimentLabelArgs... labels) {
+            return labels(List.of(labels));
         }
 
         /**

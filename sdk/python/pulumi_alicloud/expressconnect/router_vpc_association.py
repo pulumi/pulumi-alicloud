@@ -32,6 +32,7 @@ class RouterVpcAssociationArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         pulumi.set(__self__, "association_region_id", association_region_id)
@@ -95,6 +96,7 @@ class RouterVpcAssociationArgs:
     def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
+
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         return pulumi.get(self, "vpc_owner_id")
@@ -126,6 +128,7 @@ class _RouterVpcAssociationState:
         :param pulumi.Input[_builtins.str] status: The deployment state of the associated resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         if allowed_prefixes is not None:
@@ -234,6 +237,7 @@ class _RouterVpcAssociationState:
     def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
+
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         return pulumi.get(self, "vpc_owner_id")
@@ -308,6 +312,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ecr_id: The ECR ID.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         ...
@@ -438,6 +443,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: The deployment state of the associated resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -515,6 +521,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
     def vpc_owner_id(self) -> pulumi.Output[_builtins.int]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
+
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         return pulumi.get(self, "vpc_owner_id")

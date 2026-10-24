@@ -106,6 +106,7 @@ export class RouterVpcAssociation extends pulumi.CustomResource {
     declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
+     *
      * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
     declare public readonly vpcOwnerId: pulumi.Output<number>;
@@ -190,6 +191,7 @@ export interface RouterVpcAssociationState {
     vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
+     *
      * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
     vpcOwnerId?: pulumi.Input<number | undefined>;
@@ -217,6 +219,7 @@ export interface RouterVpcAssociationArgs {
     vpcId: pulumi.Input<string>;
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
+     *
      * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
     vpcOwnerId?: pulumi.Input<number | undefined>;

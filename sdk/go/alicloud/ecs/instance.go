@@ -147,6 +147,10 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+	//
+	// > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+	AdditionalAttributes pulumi.StringArrayOutput `pulumi:"additionalAttributes"`
 	// Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 	//
 	// Deprecated: Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
@@ -168,6 +172,7 @@ type Instance struct {
 	// (Available since v1.232.0) The time when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	//
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringOutput `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
@@ -246,6 +251,7 @@ type Instance struct {
 	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	//
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -267,6 +273,10 @@ type Instance struct {
 	MaintenanceNotify pulumi.BoolPtrOutput `pulumi:"maintenanceNotify"`
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime InstanceMaintenanceTimePtrOutput `pulumi:"maintenanceTime"`
+	// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+	//
+	// > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+	ManagedHostId pulumi.StringPtrOutput `pulumi:"managedHostId"`
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntOutput `pulumi:"memory"`
 	// The index of the network card for Primary ENI.
@@ -460,6 +470,10 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+	//
+	// > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+	AdditionalAttributes []string `pulumi:"additionalAttributes"`
 	// Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 	//
 	// Deprecated: Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
@@ -481,6 +495,7 @@ type instanceState struct {
 	// (Available since v1.232.0) The time when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	//
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
@@ -559,6 +574,7 @@ type instanceState struct {
 	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	//
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -580,6 +596,10 @@ type instanceState struct {
 	MaintenanceNotify *bool `pulumi:"maintenanceNotify"`
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
+	// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+	//
+	// > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+	ManagedHostId *string `pulumi:"managedHostId"`
 	// The memory size of the instance. Unit: MiB.
 	Memory *int `pulumi:"memory"`
 	// The index of the network card for Primary ENI.
@@ -737,6 +757,10 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+	//
+	// > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+	AdditionalAttributes pulumi.StringArrayInput
 	// Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 	//
 	// Deprecated: Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
@@ -758,6 +782,7 @@ type InstanceState struct {
 	// (Available since v1.232.0) The time when the instance was created.
 	CreateTime pulumi.StringPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	//
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
@@ -836,6 +861,7 @@ type InstanceState struct {
 	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated pulumi.BoolPtrInput
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	//
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -857,6 +883,10 @@ type InstanceState struct {
 	MaintenanceNotify pulumi.BoolPtrInput
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime InstanceMaintenanceTimePtrInput
+	// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+	//
+	// > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+	ManagedHostId pulumi.StringPtrInput
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntPtrInput
 	// The index of the network card for Primary ENI.
@@ -1018,6 +1048,10 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+	//
+	// > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+	AdditionalAttributes []string `pulumi:"additionalAttributes"`
 	// Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 	//
 	// Deprecated: Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
@@ -1035,6 +1069,7 @@ type instanceArgs struct {
 	// The options of cpu. See `cpuOptions` below.
 	CpuOptions *InstanceCpuOptions `pulumi:"cpuOptions"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	//
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
@@ -1109,6 +1144,7 @@ type instanceArgs struct {
 	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	//
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -1130,6 +1166,10 @@ type instanceArgs struct {
 	MaintenanceNotify *bool `pulumi:"maintenanceNotify"`
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
+	// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+	//
+	// > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+	ManagedHostId *string `pulumi:"managedHostId"`
 	// The index of the network card for Primary ENI.
 	NetworkCardIndex *int `pulumi:"networkCardIndex"`
 	// The ID of the Primary ENI.
@@ -1274,6 +1314,10 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+	//
+	// > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+	AdditionalAttributes pulumi.StringArrayInput
 	// Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 	//
 	// Deprecated: Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
@@ -1291,6 +1335,7 @@ type InstanceArgs struct {
 	// The options of cpu. See `cpuOptions` below.
 	CpuOptions InstanceCpuOptionsPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	//
 	// > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance. **Note: The parameter is immutable after resource creation.** This resource only configures these disks during instance creation; it does not update or refresh the inline disk settings. See `dataDisks` below.
@@ -1365,6 +1410,7 @@ type InstanceArgs struct {
 	// Whether to use outdated instance type. **Note: The parameter is immutable after resource creation.** It only controls the I/O optimization option sent when creating the instance.
 	IsOutdated pulumi.BoolPtrInput
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+	//
 	// > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -1386,6 +1432,10 @@ type InstanceArgs struct {
 	MaintenanceNotify pulumi.BoolPtrInput
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime InstanceMaintenanceTimePtrInput
+	// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+	//
+	// > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+	ManagedHostId pulumi.StringPtrInput
 	// The index of the network card for Primary ENI.
 	NetworkCardIndex pulumi.IntPtrInput
 	// The ID of the Primary ENI.
@@ -1615,6 +1665,13 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+//
+// > **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+func (o InstanceOutput) AdditionalAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AdditionalAttributes }).(pulumi.StringArrayOutput)
+}
+
 // Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 //
 // Deprecated: Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
@@ -1657,6 +1714,7 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+//
 // > **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
 func (o InstanceOutput) CreditSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreditSpecification }).(pulumi.StringOutput)
@@ -1828,6 +1886,7 @@ func (o InstanceOutput) IsOutdated() pulumi.BoolPtrOutput {
 }
 
 // The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+//
 // > **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
 func (o InstanceOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
@@ -1874,6 +1933,13 @@ func (o InstanceOutput) MaintenanceNotify() pulumi.BoolPtrOutput {
 // The time of maintenance. See `maintenanceTime` below.
 func (o InstanceOutput) MaintenanceTime() InstanceMaintenanceTimePtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceMaintenanceTimePtrOutput { return v.MaintenanceTime }).(InstanceMaintenanceTimePtrOutput)
+}
+
+// The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+//
+// > **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+func (o InstanceOutput) ManagedHostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ManagedHostId }).(pulumi.StringPtrOutput)
 }
 
 // The memory size of the instance. Unit: MiB.

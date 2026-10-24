@@ -5753,6 +5753,596 @@ func (o LoadBalancerIntranetIntranetArrayOutput) Index(i pulumi.IntInput) LoadBa
 	}).(LoadBalancerIntranetIntranetOutput)
 }
 
+type GetApplicationGroupsGroup struct {
+	// The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
+	EdasContainerVersion string `pulumi:"edasContainerVersion"`
+	// The ID of the application group.
+	GroupId string `pulumi:"groupId"`
+	// The name of the application group.
+	GroupName string `pulumi:"groupName"`
+	// The type of the application group.
+	GroupType int `pulumi:"groupType"`
+	// The ID of the Group.
+	Id string `pulumi:"id"`
+	// The image URL.
+	ImageUrl string `pulumi:"imageUrl"`
+	// The JDK version required by the deployment package.
+	Jdk string `pulumi:"jdk"`
+	// The type of the deployment package.
+	PackageType string `pulumi:"packageType"`
+	// The URL of the deployment package.
+	PackageUrl string `pulumi:"packageUrl"`
+	// The deployment package version.
+	PackageVersion string `pulumi:"packageVersion"`
+	// The ID of the deployment package version.
+	PackageVersionId string `pulumi:"packageVersionId"`
+	// The total number of instances.
+	Replicas int `pulumi:"replicas"`
+	// The number of running instances.
+	RunningInstances int `pulumi:"runningInstances"`
+	// The Tomcat container version required by the deployment package.
+	WebContainer string `pulumi:"webContainer"`
+}
+
+// GetApplicationGroupsGroupInput is an input type that accepts GetApplicationGroupsGroupArgs and GetApplicationGroupsGroupOutput values.
+// You can construct a concrete instance of `GetApplicationGroupsGroupInput` via:
+//
+//	GetApplicationGroupsGroupArgs{...}
+type GetApplicationGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetApplicationGroupsGroupOutput() GetApplicationGroupsGroupOutput
+	ToGetApplicationGroupsGroupOutputWithContext(context.Context) GetApplicationGroupsGroupOutput
+}
+
+type GetApplicationGroupsGroupArgs struct {
+	// The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
+	EdasContainerVersion pulumi.StringInput `pulumi:"edasContainerVersion"`
+	// The ID of the application group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The name of the application group.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The type of the application group.
+	GroupType pulumi.IntInput `pulumi:"groupType"`
+	// The ID of the Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The image URL.
+	ImageUrl pulumi.StringInput `pulumi:"imageUrl"`
+	// The JDK version required by the deployment package.
+	Jdk pulumi.StringInput `pulumi:"jdk"`
+	// The type of the deployment package.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// The URL of the deployment package.
+	PackageUrl pulumi.StringInput `pulumi:"packageUrl"`
+	// The deployment package version.
+	PackageVersion pulumi.StringInput `pulumi:"packageVersion"`
+	// The ID of the deployment package version.
+	PackageVersionId pulumi.StringInput `pulumi:"packageVersionId"`
+	// The total number of instances.
+	Replicas pulumi.IntInput `pulumi:"replicas"`
+	// The number of running instances.
+	RunningInstances pulumi.IntInput `pulumi:"runningInstances"`
+	// The Tomcat container version required by the deployment package.
+	WebContainer pulumi.StringInput `pulumi:"webContainer"`
+}
+
+func (GetApplicationGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (i GetApplicationGroupsGroupArgs) ToGetApplicationGroupsGroupOutput() GetApplicationGroupsGroupOutput {
+	return i.ToGetApplicationGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetApplicationGroupsGroupArgs) ToGetApplicationGroupsGroupOutputWithContext(ctx context.Context) GetApplicationGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationGroupsGroupOutput)
+}
+
+// GetApplicationGroupsGroupArrayInput is an input type that accepts GetApplicationGroupsGroupArray and GetApplicationGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetApplicationGroupsGroupArrayInput` via:
+//
+//	GetApplicationGroupsGroupArray{ GetApplicationGroupsGroupArgs{...} }
+type GetApplicationGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationGroupsGroupArrayOutput() GetApplicationGroupsGroupArrayOutput
+	ToGetApplicationGroupsGroupArrayOutputWithContext(context.Context) GetApplicationGroupsGroupArrayOutput
+}
+
+type GetApplicationGroupsGroupArray []GetApplicationGroupsGroupInput
+
+func (GetApplicationGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (i GetApplicationGroupsGroupArray) ToGetApplicationGroupsGroupArrayOutput() GetApplicationGroupsGroupArrayOutput {
+	return i.ToGetApplicationGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationGroupsGroupArray) ToGetApplicationGroupsGroupArrayOutputWithContext(ctx context.Context) GetApplicationGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationGroupsGroupArrayOutput)
+}
+
+type GetApplicationGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (o GetApplicationGroupsGroupOutput) ToGetApplicationGroupsGroupOutput() GetApplicationGroupsGroupOutput {
+	return o
+}
+
+func (o GetApplicationGroupsGroupOutput) ToGetApplicationGroupsGroupOutputWithContext(ctx context.Context) GetApplicationGroupsGroupOutput {
+	return o
+}
+
+// The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
+func (o GetApplicationGroupsGroupOutput) EdasContainerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.EdasContainerVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the application group.
+func (o GetApplicationGroupsGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The name of the application group.
+func (o GetApplicationGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The type of the application group.
+func (o GetApplicationGroupsGroupOutput) GroupType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) int { return v.GroupType }).(pulumi.IntOutput)
+}
+
+// The ID of the Group.
+func (o GetApplicationGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The image URL.
+func (o GetApplicationGroupsGroupOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+// The JDK version required by the deployment package.
+func (o GetApplicationGroupsGroupOutput) Jdk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.Jdk }).(pulumi.StringOutput)
+}
+
+// The type of the deployment package.
+func (o GetApplicationGroupsGroupOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The URL of the deployment package.
+func (o GetApplicationGroupsGroupOutput) PackageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.PackageUrl }).(pulumi.StringOutput)
+}
+
+// The deployment package version.
+func (o GetApplicationGroupsGroupOutput) PackageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.PackageVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the deployment package version.
+func (o GetApplicationGroupsGroupOutput) PackageVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.PackageVersionId }).(pulumi.StringOutput)
+}
+
+// The total number of instances.
+func (o GetApplicationGroupsGroupOutput) Replicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) int { return v.Replicas }).(pulumi.IntOutput)
+}
+
+// The number of running instances.
+func (o GetApplicationGroupsGroupOutput) RunningInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) int { return v.RunningInstances }).(pulumi.IntOutput)
+}
+
+// The Tomcat container version required by the deployment package.
+func (o GetApplicationGroupsGroupOutput) WebContainer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.WebContainer }).(pulumi.StringOutput)
+}
+
+type GetApplicationGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (o GetApplicationGroupsGroupArrayOutput) ToGetApplicationGroupsGroupArrayOutput() GetApplicationGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetApplicationGroupsGroupArrayOutput) ToGetApplicationGroupsGroupArrayOutputWithContext(ctx context.Context) GetApplicationGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetApplicationGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetApplicationGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationGroupsGroup {
+		return vs[0].([]GetApplicationGroupsGroup)[vs[1].(int)]
+	}).(GetApplicationGroupsGroupOutput)
+}
+
+type GetApplicationInstancesInstance struct {
+	// The time when instance creation began.
+	CreateTimeStamp int `pulumi:"createTimeStamp"`
+	// Whether the instance is being debugged.
+	DebugStatus bool `pulumi:"debugStatus"`
+	// The elastic IP address (EIP).
+	Eip string `pulumi:"eip"`
+	// The time when instance creation was completed.
+	FinishTimeStamp int `pulumi:"finishTimeStamp"`
+	// The ID of the application group. If you want to get the `groupId`, please use the data source alicloud_sae_application_groups.
+	GroupId string `pulumi:"groupId"`
+	// The ID of the Instance.
+	Id string `pulumi:"id"`
+	// The URL of the container image.
+	ImageUrl string `pulumi:"imageUrl"`
+	// The internal IP address of the instance.
+	InstanceContainerIp string `pulumi:"instanceContainerIp"`
+	// The number of times the instance container has restarted.
+	InstanceContainerRestarts int `pulumi:"instanceContainerRestarts"`
+	// The status of the instance container.
+	InstanceContainerStatus string `pulumi:"instanceContainerStatus"`
+	// The health check status of the instance.
+	InstanceHealthStatus string `pulumi:"instanceHealthStatus"`
+	// The application instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// The status of the main container.
+	MainContainerStatus string `pulumi:"mainContainerStatus"`
+	// The version of the deployment package.
+	PackageVersion string `pulumi:"packageVersion"`
+	// The status of the sidecar containers.
+	SidecarContainersStatuses []GetApplicationInstancesInstanceSidecarContainersStatus `pulumi:"sidecarContainersStatuses"`
+	// The timestamp.
+	Timestamp int `pulumi:"timestamp"`
+	// The traffic status of the instance.
+	TrafficStatus string `pulumi:"trafficStatus"`
+	// The error message for a failed health check on the application instance. This field is empty if the check is successful.
+	UnhealthyMessage string `pulumi:"unhealthyMessage"`
+	// The ID of the vSwitch where the instance is deployed.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetApplicationInstancesInstanceInput is an input type that accepts GetApplicationInstancesInstanceArgs and GetApplicationInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetApplicationInstancesInstanceInput` via:
+//
+//	GetApplicationInstancesInstanceArgs{...}
+type GetApplicationInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetApplicationInstancesInstanceOutput() GetApplicationInstancesInstanceOutput
+	ToGetApplicationInstancesInstanceOutputWithContext(context.Context) GetApplicationInstancesInstanceOutput
+}
+
+type GetApplicationInstancesInstanceArgs struct {
+	// The time when instance creation began.
+	CreateTimeStamp pulumi.IntInput `pulumi:"createTimeStamp"`
+	// Whether the instance is being debugged.
+	DebugStatus pulumi.BoolInput `pulumi:"debugStatus"`
+	// The elastic IP address (EIP).
+	Eip pulumi.StringInput `pulumi:"eip"`
+	// The time when instance creation was completed.
+	FinishTimeStamp pulumi.IntInput `pulumi:"finishTimeStamp"`
+	// The ID of the application group. If you want to get the `groupId`, please use the data source alicloud_sae_application_groups.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The ID of the Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The URL of the container image.
+	ImageUrl pulumi.StringInput `pulumi:"imageUrl"`
+	// The internal IP address of the instance.
+	InstanceContainerIp pulumi.StringInput `pulumi:"instanceContainerIp"`
+	// The number of times the instance container has restarted.
+	InstanceContainerRestarts pulumi.IntInput `pulumi:"instanceContainerRestarts"`
+	// The status of the instance container.
+	InstanceContainerStatus pulumi.StringInput `pulumi:"instanceContainerStatus"`
+	// The health check status of the instance.
+	InstanceHealthStatus pulumi.StringInput `pulumi:"instanceHealthStatus"`
+	// The application instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The status of the main container.
+	MainContainerStatus pulumi.StringInput `pulumi:"mainContainerStatus"`
+	// The version of the deployment package.
+	PackageVersion pulumi.StringInput `pulumi:"packageVersion"`
+	// The status of the sidecar containers.
+	SidecarContainersStatuses GetApplicationInstancesInstanceSidecarContainersStatusArrayInput `pulumi:"sidecarContainersStatuses"`
+	// The timestamp.
+	Timestamp pulumi.IntInput `pulumi:"timestamp"`
+	// The traffic status of the instance.
+	TrafficStatus pulumi.StringInput `pulumi:"trafficStatus"`
+	// The error message for a failed health check on the application instance. This field is empty if the check is successful.
+	UnhealthyMessage pulumi.StringInput `pulumi:"unhealthyMessage"`
+	// The ID of the vSwitch where the instance is deployed.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetApplicationInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInstancesInstance)(nil)).Elem()
+}
+
+func (i GetApplicationInstancesInstanceArgs) ToGetApplicationInstancesInstanceOutput() GetApplicationInstancesInstanceOutput {
+	return i.ToGetApplicationInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInstancesInstanceArgs) ToGetApplicationInstancesInstanceOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInstancesInstanceOutput)
+}
+
+// GetApplicationInstancesInstanceArrayInput is an input type that accepts GetApplicationInstancesInstanceArray and GetApplicationInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetApplicationInstancesInstanceArrayInput` via:
+//
+//	GetApplicationInstancesInstanceArray{ GetApplicationInstancesInstanceArgs{...} }
+type GetApplicationInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationInstancesInstanceArrayOutput() GetApplicationInstancesInstanceArrayOutput
+	ToGetApplicationInstancesInstanceArrayOutputWithContext(context.Context) GetApplicationInstancesInstanceArrayOutput
+}
+
+type GetApplicationInstancesInstanceArray []GetApplicationInstancesInstanceInput
+
+func (GetApplicationInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInstancesInstance)(nil)).Elem()
+}
+
+func (i GetApplicationInstancesInstanceArray) ToGetApplicationInstancesInstanceArrayOutput() GetApplicationInstancesInstanceArrayOutput {
+	return i.ToGetApplicationInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInstancesInstanceArray) ToGetApplicationInstancesInstanceArrayOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInstancesInstanceArrayOutput)
+}
+
+type GetApplicationInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInstancesInstance)(nil)).Elem()
+}
+
+func (o GetApplicationInstancesInstanceOutput) ToGetApplicationInstancesInstanceOutput() GetApplicationInstancesInstanceOutput {
+	return o
+}
+
+func (o GetApplicationInstancesInstanceOutput) ToGetApplicationInstancesInstanceOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceOutput {
+	return o
+}
+
+// The time when instance creation began.
+func (o GetApplicationInstancesInstanceOutput) CreateTimeStamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) int { return v.CreateTimeStamp }).(pulumi.IntOutput)
+}
+
+// Whether the instance is being debugged.
+func (o GetApplicationInstancesInstanceOutput) DebugStatus() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) bool { return v.DebugStatus }).(pulumi.BoolOutput)
+}
+
+// The elastic IP address (EIP).
+func (o GetApplicationInstancesInstanceOutput) Eip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.Eip }).(pulumi.StringOutput)
+}
+
+// The time when instance creation was completed.
+func (o GetApplicationInstancesInstanceOutput) FinishTimeStamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) int { return v.FinishTimeStamp }).(pulumi.IntOutput)
+}
+
+// The ID of the application group. If you want to get the `groupId`, please use the data source alicloud_sae_application_groups.
+func (o GetApplicationInstancesInstanceOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Instance.
+func (o GetApplicationInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The URL of the container image.
+func (o GetApplicationInstancesInstanceOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+// The internal IP address of the instance.
+func (o GetApplicationInstancesInstanceOutput) InstanceContainerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.InstanceContainerIp }).(pulumi.StringOutput)
+}
+
+// The number of times the instance container has restarted.
+func (o GetApplicationInstancesInstanceOutput) InstanceContainerRestarts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) int { return v.InstanceContainerRestarts }).(pulumi.IntOutput)
+}
+
+// The status of the instance container.
+func (o GetApplicationInstancesInstanceOutput) InstanceContainerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.InstanceContainerStatus }).(pulumi.StringOutput)
+}
+
+// The health check status of the instance.
+func (o GetApplicationInstancesInstanceOutput) InstanceHealthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.InstanceHealthStatus }).(pulumi.StringOutput)
+}
+
+// The application instance ID.
+func (o GetApplicationInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The status of the main container.
+func (o GetApplicationInstancesInstanceOutput) MainContainerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.MainContainerStatus }).(pulumi.StringOutput)
+}
+
+// The version of the deployment package.
+func (o GetApplicationInstancesInstanceOutput) PackageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.PackageVersion }).(pulumi.StringOutput)
+}
+
+// The status of the sidecar containers.
+func (o GetApplicationInstancesInstanceOutput) SidecarContainersStatuses() GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) []GetApplicationInstancesInstanceSidecarContainersStatus {
+		return v.SidecarContainersStatuses
+	}).(GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput)
+}
+
+// The timestamp.
+func (o GetApplicationInstancesInstanceOutput) Timestamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) int { return v.Timestamp }).(pulumi.IntOutput)
+}
+
+// The traffic status of the instance.
+func (o GetApplicationInstancesInstanceOutput) TrafficStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.TrafficStatus }).(pulumi.StringOutput)
+}
+
+// The error message for a failed health check on the application instance. This field is empty if the check is successful.
+func (o GetApplicationInstancesInstanceOutput) UnhealthyMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.UnhealthyMessage }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch where the instance is deployed.
+func (o GetApplicationInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetApplicationInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInstancesInstance)(nil)).Elem()
+}
+
+func (o GetApplicationInstancesInstanceArrayOutput) ToGetApplicationInstancesInstanceArrayOutput() GetApplicationInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetApplicationInstancesInstanceArrayOutput) ToGetApplicationInstancesInstanceArrayOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetApplicationInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetApplicationInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInstancesInstance {
+		return vs[0].([]GetApplicationInstancesInstance)[vs[1].(int)]
+	}).(GetApplicationInstancesInstanceOutput)
+}
+
+type GetApplicationInstancesInstanceSidecarContainersStatus struct {
+	// The ID of the sidecar container.
+	ContainerId string `pulumi:"containerId"`
+	// The status of the container.
+	ContainerStatus string `pulumi:"containerStatus"`
+	// The URL of the container image.
+	ImageUrl string `pulumi:"imageUrl"`
+}
+
+// GetApplicationInstancesInstanceSidecarContainersStatusInput is an input type that accepts GetApplicationInstancesInstanceSidecarContainersStatusArgs and GetApplicationInstancesInstanceSidecarContainersStatusOutput values.
+// You can construct a concrete instance of `GetApplicationInstancesInstanceSidecarContainersStatusInput` via:
+//
+//	GetApplicationInstancesInstanceSidecarContainersStatusArgs{...}
+type GetApplicationInstancesInstanceSidecarContainersStatusInput interface {
+	pulumi.Input
+
+	ToGetApplicationInstancesInstanceSidecarContainersStatusOutput() GetApplicationInstancesInstanceSidecarContainersStatusOutput
+	ToGetApplicationInstancesInstanceSidecarContainersStatusOutputWithContext(context.Context) GetApplicationInstancesInstanceSidecarContainersStatusOutput
+}
+
+type GetApplicationInstancesInstanceSidecarContainersStatusArgs struct {
+	// The ID of the sidecar container.
+	ContainerId pulumi.StringInput `pulumi:"containerId"`
+	// The status of the container.
+	ContainerStatus pulumi.StringInput `pulumi:"containerStatus"`
+	// The URL of the container image.
+	ImageUrl pulumi.StringInput `pulumi:"imageUrl"`
+}
+
+func (GetApplicationInstancesInstanceSidecarContainersStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInstancesInstanceSidecarContainersStatus)(nil)).Elem()
+}
+
+func (i GetApplicationInstancesInstanceSidecarContainersStatusArgs) ToGetApplicationInstancesInstanceSidecarContainersStatusOutput() GetApplicationInstancesInstanceSidecarContainersStatusOutput {
+	return i.ToGetApplicationInstancesInstanceSidecarContainersStatusOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInstancesInstanceSidecarContainersStatusArgs) ToGetApplicationInstancesInstanceSidecarContainersStatusOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceSidecarContainersStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInstancesInstanceSidecarContainersStatusOutput)
+}
+
+// GetApplicationInstancesInstanceSidecarContainersStatusArrayInput is an input type that accepts GetApplicationInstancesInstanceSidecarContainersStatusArray and GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput values.
+// You can construct a concrete instance of `GetApplicationInstancesInstanceSidecarContainersStatusArrayInput` via:
+//
+//	GetApplicationInstancesInstanceSidecarContainersStatusArray{ GetApplicationInstancesInstanceSidecarContainersStatusArgs{...} }
+type GetApplicationInstancesInstanceSidecarContainersStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutput() GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput
+	ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutputWithContext(context.Context) GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput
+}
+
+type GetApplicationInstancesInstanceSidecarContainersStatusArray []GetApplicationInstancesInstanceSidecarContainersStatusInput
+
+func (GetApplicationInstancesInstanceSidecarContainersStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInstancesInstanceSidecarContainersStatus)(nil)).Elem()
+}
+
+func (i GetApplicationInstancesInstanceSidecarContainersStatusArray) ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutput() GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput {
+	return i.ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInstancesInstanceSidecarContainersStatusArray) ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput)
+}
+
+type GetApplicationInstancesInstanceSidecarContainersStatusOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInstancesInstanceSidecarContainersStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInstancesInstanceSidecarContainersStatus)(nil)).Elem()
+}
+
+func (o GetApplicationInstancesInstanceSidecarContainersStatusOutput) ToGetApplicationInstancesInstanceSidecarContainersStatusOutput() GetApplicationInstancesInstanceSidecarContainersStatusOutput {
+	return o
+}
+
+func (o GetApplicationInstancesInstanceSidecarContainersStatusOutput) ToGetApplicationInstancesInstanceSidecarContainersStatusOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceSidecarContainersStatusOutput {
+	return o
+}
+
+// The ID of the sidecar container.
+func (o GetApplicationInstancesInstanceSidecarContainersStatusOutput) ContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstanceSidecarContainersStatus) string { return v.ContainerId }).(pulumi.StringOutput)
+}
+
+// The status of the container.
+func (o GetApplicationInstancesInstanceSidecarContainersStatusOutput) ContainerStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstanceSidecarContainersStatus) string { return v.ContainerStatus }).(pulumi.StringOutput)
+}
+
+// The URL of the container image.
+func (o GetApplicationInstancesInstanceSidecarContainersStatusOutput) ImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInstancesInstanceSidecarContainersStatus) string { return v.ImageUrl }).(pulumi.StringOutput)
+}
+
+type GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInstancesInstanceSidecarContainersStatus)(nil)).Elem()
+}
+
+func (o GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput) ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutput() GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput {
+	return o
+}
+
+func (o GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput) ToGetApplicationInstancesInstanceSidecarContainersStatusArrayOutputWithContext(ctx context.Context) GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput {
+	return o
+}
+
+func (o GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput) Index(i pulumi.IntInput) GetApplicationInstancesInstanceSidecarContainersStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInstancesInstanceSidecarContainersStatus {
+		return vs[0].([]GetApplicationInstancesInstanceSidecarContainersStatus)[vs[1].(int)]
+	}).(GetApplicationInstancesInstanceSidecarContainersStatusOutput)
+}
+
 type GetApplicationScalingRulesRule struct {
 	// The ID of the Application.
 	AppId string `pulumi:"appId"`
@@ -9176,6 +9766,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerInternetInternetArrayInput)(nil)).Elem(), LoadBalancerInternetInternetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerIntranetIntranetInput)(nil)).Elem(), LoadBalancerIntranetIntranetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerIntranetIntranetArrayInput)(nil)).Elem(), LoadBalancerIntranetIntranetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationGroupsGroupInput)(nil)).Elem(), GetApplicationGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationGroupsGroupArrayInput)(nil)).Elem(), GetApplicationGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInstancesInstanceInput)(nil)).Elem(), GetApplicationInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInstancesInstanceArrayInput)(nil)).Elem(), GetApplicationInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInstancesInstanceSidecarContainersStatusInput)(nil)).Elem(), GetApplicationInstancesInstanceSidecarContainersStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInstancesInstanceSidecarContainersStatusArrayInput)(nil)).Elem(), GetApplicationInstancesInstanceSidecarContainersStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleInput)(nil)).Elem(), GetApplicationScalingRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricArgs{})
@@ -9294,6 +9890,12 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerInternetInternetArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerIntranetIntranetOutput{})
 	pulumi.RegisterOutputType(LoadBalancerIntranetIntranetArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetApplicationGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetApplicationInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationInstancesInstanceSidecarContainersStatusOutput{})
+	pulumi.RegisterOutputType(GetApplicationInstancesInstanceSidecarContainersStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricOutput{})
