@@ -106,7 +106,7 @@ import (
 //			_, err = eflo.NewExperimentPlan(ctx, "default", &eflo.ExperimentPlanArgs{
 //				ResourceId: defaultResource.ResourceId,
 //				PlanName:   pulumi.String(name),
-//				TemplateId: defaultpSZN7t.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				TemplateId: defaultpSZN7t.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

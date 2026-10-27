@@ -59,13 +59,13 @@ import (
 //				CidrBlock:   pulumi.String("10.0.8.0/24"),
 //				VswitchName: pulumi.String(name),
 //				EnsRegionId: defaultObbrL7.EnsRegionId,
-//				NetworkId:   defaultObbrL7.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId:   defaultObbrL7.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ens.NewNatGateway(ctx, "default", &ens.NatGatewayArgs{
-//				VswitchId:    defaulteFw783.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:    defaulteFw783.ID(),
 //				EnsRegionId:  defaulteFw783.EnsRegionId,
 //				NetworkId:    defaulteFw783.NetworkId,
 //				InstanceType: pulumi.String("enat.default"),

@@ -105,7 +105,7 @@ import (
 //				ProjectName:         exampleProject.ProjectName,
 //				ResourceType:        pulumi.String("VPC"),
 //				ResourceGroupId:     pulumi.String(_default.Ids[0]),
-//				ResourceId:          example.ID().ToIDOutput().ToStringOutput(),
+//				ResourceId:          example.ID(),
 //				AggregationInterval: pulumi.String("1"),
 //				TrafficType:         pulumi.String("All"),
 //			})

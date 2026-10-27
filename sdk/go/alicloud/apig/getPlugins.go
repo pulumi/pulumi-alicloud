@@ -46,7 +46,7 @@ import (
 //			}
 //			pluginVswitchPre, err := vpc.NewSwitch(ctx, "plugin_vswitch_pre", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       pluginVpcPre.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       pluginVpcPre.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String("plugin-example-vswitch"),
@@ -59,13 +59,13 @@ import (
 //					Type: pulumi.String("Internet"),
 //				},
 //				Vswitch: &apig.GatewayVswitchArgs{
-//					VswitchId: pluginVswitchPre.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId: pluginVswitchPre.ID(),
 //				},
 //				ZoneConfig: &apig.GatewayZoneConfigArgs{
 //					SelectOption: pulumi.String("Auto"),
 //				},
 //				Vpc: &apig.GatewayVpcArgs{
-//					VpcId: pluginVpcPre.ID().ToIDOutput().ToStringOutput(),
+//					VpcId: pluginVpcPre.ID(),
 //				},
 //				GatewayType: pulumi.String("API"),
 //				PaymentType: pulumi.String("PayAsYouGo"),
@@ -82,16 +82,16 @@ import (
 //			}
 //			defaultPlugin, err := apig.NewPlugin(ctx, "default", &apig.PluginArgs{
 //				PluginClassId: pulumi.String("pls-crpqb35lhtgo800k2m86"),
-//				GatewayId:     pluginGatewayPre.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:     pluginGatewayPre.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default := apig.GetPluginsOutput(ctx, apig.GetPluginsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultPlugin.ID().ToIDOutput().ToStringOutput(),
+//					defaultPlugin.ID(),
 //				},
-//				GatewayId:     pluginGatewayPre.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:     pluginGatewayPre.ID(),
 //				PluginClassId: pulumi.String("pls-crpqb35lhtgo800k2m86"),
 //			}, nil)
 //			ctx.Export("alicloudApigPluginExampleId", _default.ApplyT(func(_default apig.GetPluginsResult) (*string, error) {

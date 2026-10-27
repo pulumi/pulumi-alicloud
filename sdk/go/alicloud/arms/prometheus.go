@@ -62,7 +62,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      _default.Zones[int(len(_default.Zones)-1)].Id(),
 //			})
 //			if err != nil {
@@ -70,7 +70,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,9 +82,9 @@ import (
 //			_, err = arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				SecurityGroupId:   defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
+//				VswitchId:         defaultSwitch.ID(),
+//				SecurityGroupId:   defaultSecurityGroup.ID(),
 //				ClusterName: defaultNetwork.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("%v-%v", name, id), nil
 //				}).(pulumi.StringOutput),

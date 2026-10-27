@@ -65,7 +65,7 @@ import (
 //			}
 //			ids := esa.GetHttpsBasicConfigurationsOutput(ctx, esa.GetHttpsBasicConfigurationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultHttpsBasicConfiguration.ID().ToIDOutput().ToStringOutput(),
+//					defaultHttpsBasicConfiguration.ID(),
 //				},
 //				SiteId: defaultHttpsBasicConfiguration.SiteId,
 //			}, nil)

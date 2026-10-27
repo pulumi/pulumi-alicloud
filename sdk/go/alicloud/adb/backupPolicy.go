@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = adb.NewBackupPolicy(ctx, "default", &adb.BackupPolicyArgs{
-//				DbClusterId: cluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId: cluster.ID(),
 //				PreferredBackupPeriods: pulumi.StringArray{
 //					pulumi.String("Tuesday"),
 //					pulumi.String("Wednesday"),

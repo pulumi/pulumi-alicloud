@@ -67,7 +67,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -75,7 +75,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,9 +84,9 @@ import (
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
-//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:               defaultSwitch.ID(),
 //				InstanceType:            pulumi.String(defaultGetInstanceTypes.Ids[0]),
 //				ImageId:                 pulumi.String(defaultGetImages.Ids[0]),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
@@ -95,7 +95,7 @@ import (
 //				return err
 //			}
 //			defaultImage, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
-//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  defaultInstance.ID(),
 //				ImageName:   pulumi.String("terraform-example"),
 //				Description: pulumi.String("terraform-example"),
 //			})
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewImageCopy(ctx, "default", &ecs.ImageCopyArgs{
-//				SourceImageId:  defaultImage.ID().ToIDOutput().ToStringOutput(),
+//				SourceImageId:  defaultImage.ID(),
 //				SourceRegionId: pulumi.String("cn-hangzhou"),
 //				ImageName:      pulumi.String("terraform-example"),
 //				Description:    pulumi.String("terraform-example"),

@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			defaultKey, err := kms.NewKey(ctx, "default", &kms.KeyArgs{
-//				DkmsInstanceId:      defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DkmsInstanceId:      defaultInstance.ID(),
 //				PendingWindowInDays: pulumi.Int(7),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //				SecretName:                 pulumi.String(name),
 //				VersionId:                  pulumi.String("v1"),
 //				DkmsInstanceId:             defaultKey.DkmsInstanceId,
-//				EncryptionKeyId:            defaultKey.ID().ToIDOutput().ToStringOutput(),
+//				EncryptionKeyId:            defaultKey.ID(),
 //				ForceDeleteWithoutRecovery: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //			}
 //			ids := apig.GetSecretsOutput(ctx, apig.GetSecretsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultSecret2.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecret2.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("apigSecretsId0", ids.ApplyT(func(ids apig.GetSecretsResult) (*string, error) {

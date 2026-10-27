@@ -12,6 +12,18 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.86.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getPolicies({
+ *     nameRegex: "tftest",
+ *     descriptionRegex: "tftest_policy",
+ *     policyType: "Custom",
+ * });
+ * export const firstPolicyId = example.then(example => example.policies?.[0]?.id);
+ * ```
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
@@ -79,6 +91,18 @@ export interface GetPoliciesResult {
  * > **NOTE:**  Available in 1.86.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getPolicies({
+ *     nameRegex: "tftest",
+ *     descriptionRegex: "tftest_policy",
+ *     policyType: "Custom",
+ * });
+ * export const firstPolicyId = example.then(example => example.policies?.[0]?.id);
+ * ```
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoliciesResult> {
     args = args || {};

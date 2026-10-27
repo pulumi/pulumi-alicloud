@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewListener(ctx, "listener", &slb.ListenerArgs{
-//				LoadBalancerId:         listener.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId:         listener.ID(),
 //				BackendPort:            pulumi.Int(80),
 //				FrontendPort:           pulumi.Int(80),
 //				Protocol:               pulumi.String("http"),
@@ -97,7 +97,7 @@ import (
 //				AclStatus: pulumi.String("on"),
 //				AclType:   pulumi.String("white"),
 //				AclIds: pulumi.StringArray{
-//					listenerAcl.ID().ToIDOutput().ToStringOutput(),
+//					listenerAcl.ID(),
 //				},
 //				RequestTimeout: pulumi.Int(80),
 //				IdleTimeout:    pulumi.Int(30),
@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewAclEntryAttachment(ctx, "first", &slb.AclEntryAttachmentArgs{
-//				AclId:   listenerAcl.ID().ToIDOutput().ToStringOutput(),
+//				AclId:   listenerAcl.ID(),
 //				Entry:   pulumi.String("10.10.10.0/24"),
 //				Comment: pulumi.String("first"),
 //			})
@@ -114,7 +114,7 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewAclEntryAttachment(ctx, "second", &slb.AclEntryAttachmentArgs{
-//				AclId:   listenerAcl.ID().ToIDOutput().ToStringOutput(),
+//				AclId:   listenerAcl.ID(),
 //				Entry:   pulumi.String("168.10.10.0/24"),
 //				Comment: pulumi.String("second"),
 //			})

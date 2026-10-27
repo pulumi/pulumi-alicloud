@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			defaultRYcjsc, err := cen.NewTransitRouter(ctx, "defaultRYcjsc", &cen.TransitRouterArgs{
-//				CenId: default418DC9.ID().ToIDOutput().ToStringOutput(),
+//				CenId: default418DC9.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -85,8 +85,8 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewRouterTrAssociation(ctx, "default", &expressconnect.RouterTrAssociationArgs{
-//				EcrId:                defaultpX0KlC.ID().ToIDOutput().ToStringOutput(),
-//				CenId:                default418DC9.ID().ToIDOutput().ToStringOutput(),
+//				EcrId:                defaultpX0KlC.ID(),
+//				CenId:                default418DC9.ID(),
 //				TransitRouterOwnerId: pulumi.String(current.Id),
 //				AllowedPrefixes: pulumi.StringArray{
 //					pulumi.String(alowprefix1),

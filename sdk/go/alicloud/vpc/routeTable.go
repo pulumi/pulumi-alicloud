@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = vpc.NewRouteTable(ctx, "default", &vpc.RouteTableArgs{
 //				Description:    pulumi.String("test-description"),
-//				VpcId:          defaultVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          defaultVpc.ID(),
 //				RouteTableName: pulumi.String(name),
 //				AssociateType:  pulumi.String("VSwitch"),
 //			})

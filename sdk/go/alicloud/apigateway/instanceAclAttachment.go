@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewAclEntryAttachment(ctx, "default", &apigateway.AclEntryAttachmentArgs{
-//				AclId:   defaultAccessControlList.ID().ToIDOutput().ToStringOutput(),
+//				AclId:   defaultAccessControlList.ID(),
 //				Entry:   pulumi.String("128.0.0.1/32"),
 //				Comment: pulumi.String("test comment"),
 //			})
@@ -65,8 +65,8 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewInstanceAclAttachment(ctx, "default", &apigateway.InstanceAclAttachmentArgs{
-//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
-//				AclId:      defaultAccessControlList.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: _default.ID(),
+//				AclId:      defaultAccessControlList.ID(),
 //				AclType:    pulumi.String("white"),
 //			})
 //			if err != nil {

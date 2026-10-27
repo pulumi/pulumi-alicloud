@@ -82,7 +82,7 @@ import (
 //				ZoneId:                   pulumi.String("cn-hangzhou-h"),
 //				WorkerServerlessReplicas: pulumi.Int(0),
 //				Description:              pulumi.String("terraform-example"),
-//				SecurityGroupId:          securityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:          securityGroup.ID(),
 //				RequirementFile:          pulumi.String("default/requirements.txt"),
 //				AirflowName:              pulumi.String("tfaccdms6513"),
 //				PluginsDir:               pulumi.String("default/plugins"),
@@ -90,7 +90,7 @@ import (
 //				AppSpec:                  pulumi.String("SMALL"),
 //				OssBucketName:            pulumi.String("hansheng"),
 //				VswitchId:                pulumi.String(defaultGetSwitches.Ids[0]),
-//				WorkspaceId:              workspace.ID().ToIDOutput().ToStringOutput(),
+//				WorkspaceId:              workspace.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -80,7 +80,7 @@ import (
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					defaultSwitch.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //			}
 //			scalinggroupsDs := ess.GetScalingGroupsOutput(ctx, ess.GetScalingGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultScalingGroup.ID(),
 //				},
 //				NameRegex: pulumi.String(myName),
 //			}, nil)

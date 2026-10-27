@@ -44,7 +44,7 @@ import (
 //			defaultAlertContactGroup, err := arms.NewAlertContactGroup(ctx, "default", &arms.AlertContactGroupArgs{
 //				AlertContactGroupName: pulumi.String("example_value"),
 //				ContactIds: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -82,12 +82,12 @@ import (
 //					&arms.DispatchRuleNotifyRuleArgs{
 //						NotifyObjects: arms.DispatchRuleNotifyRuleNotifyObjectArray{
 //							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
-//								NotifyObjectId: _default.ID().ToIDOutput().ToStringOutput(),
+//								NotifyObjectId: _default.ID(),
 //								NotifyType:     pulumi.String("ARMS_CONTACT"),
 //								Name:           pulumi.String("example_value"),
 //							},
 //							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
-//								NotifyObjectId: defaultAlertContactGroup.ID().ToIDOutput().ToStringOutput(),
+//								NotifyObjectId: defaultAlertContactGroup.ID(),
 //								NotifyType:     pulumi.String("ARMS_CONTACT_GROUP"),
 //								Name:           pulumi.String("example_value"),
 //							},

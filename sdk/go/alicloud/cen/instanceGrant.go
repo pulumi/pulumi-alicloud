@@ -73,8 +73,8 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewInstanceGrant(ctx, "child_account", &cen.InstanceGrantArgs{
-//				CenId:           example.ID().ToIDOutput().ToStringOutput(),
-//				ChildInstanceId: childAccountNetwork.ID().ToIDOutput().ToStringOutput(),
+//				CenId:           example.ID(),
+//				ChildInstanceId: childAccountNetwork.ID(),
 //				CenOwnerId:      pulumi.String(yourAccount.Id),
 //			})
 //			if err != nil {

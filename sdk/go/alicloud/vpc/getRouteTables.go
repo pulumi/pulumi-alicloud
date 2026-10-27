@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
-//				VpcId:          fooNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          fooNetwork.ID(),
 //				RouteTableName: pulumi.String(name),
 //				Description:    pulumi.String(name),
 //			})
@@ -52,7 +52,7 @@ import (
 //			}
 //			foo := vpc.GetRouteTablesOutput(ctx, vpc.GetRouteTablesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					fooRouteTable.ID().ToIDOutput().ToStringOutput(),
+//					fooRouteTable.ID(),
 //				},
 //				RouteTableType: pulumi.String("Custom"),
 //			}, nil)

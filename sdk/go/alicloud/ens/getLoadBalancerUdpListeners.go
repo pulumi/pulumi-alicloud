@@ -51,14 +51,14 @@ import (
 //				CidrBlock:   pulumi.String("10.0.6.0/24"),
 //				VswitchName: pulumi.String(name),
 //				EnsRegionId: defaultNetwork.EnsRegionId,
-//				NetworkId:   defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId:   defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultLoadBalancer, err := ens.NewLoadBalancer(ctx, "default", &ens.LoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultVswitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        defaultVswitch.ID(),
 //				PaymentType:      pulumi.String("PayAsYouGo"),
 //				EnsRegionId:      defaultVswitch.EnsRegionId,
 //				NetworkId:        defaultVswitch.NetworkId,
@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			defaultLoadBalancerUdpListener, err := ens.NewLoadBalancerUdpListener(ctx, "default", &ens.LoadBalancerUdpListenerArgs{
-//				LoadBalancerId:    defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId:    defaultLoadBalancer.ID(),
 //				ListenerPort:      pulumi.Int(53),
 //				BackendServerPort: pulumi.Int(53),
 //				Description:       pulumi.String("example-udp-listener"),
@@ -78,9 +78,9 @@ import (
 //				return err
 //			}
 //			_default := ens.GetLoadBalancerUdpListenersOutput(ctx, ens.GetLoadBalancerUdpListenersOutputArgs{
-//				LoadBalancerId: defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: defaultLoadBalancer.ID(),
 //				Ids: pulumi.StringArray{
-//					defaultLoadBalancerUdpListener.ID().ToIDOutput().ToStringOutput(),
+//					defaultLoadBalancerUdpListener.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("udpListenerId", _default.ApplyT(func(_default ens.GetLoadBalancerUdpListenersResult) (*string, error) {

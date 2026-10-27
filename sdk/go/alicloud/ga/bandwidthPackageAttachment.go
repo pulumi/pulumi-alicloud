@@ -54,8 +54,8 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      _default.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err

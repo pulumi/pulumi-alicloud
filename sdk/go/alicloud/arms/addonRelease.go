@@ -68,7 +68,7 @@ import (
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String(name),
-//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       vpc2.ID(),
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
@@ -114,7 +114,7 @@ import (
 //				ServiceCidr:   pulumi.String("172.23.0.0/16"),
 //				PodCidr:       pulumi.String("10.95.0.0/16"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					vswitch.ID().ToIDOutput().ToStringOutput(),
+//					vswitch.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -128,9 +128,9 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("desired_size"),
-//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:    defaultManagedKubernetes.ID(),
 //				VswitchIds: pulumi.StringArray{
-//					vswitch.ID().ToIDOutput().ToStringOutput(),
+//					vswitch.ID(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
@@ -167,7 +167,7 @@ import (
 //			_, err = arms.NewAddonRelease(ctx, "default", &arms.AddonReleaseArgs{
 //				AliyunLang:    pulumi.String("zh"),
 //				AddonName:     pulumi.String("mysql"),
-//				EnvironmentId: defaultEnvironment.ID().ToIDOutput().ToStringOutput(),
+//				EnvironmentId: defaultEnvironment.ID(),
 //				AddonVersion:  pulumi.String("0.0.1"),
 //				Values:        pulumi.String(json0),
 //			})

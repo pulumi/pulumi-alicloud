@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			vsw1, err := vpc.NewSwitch(ctx, "vsw1", &vpc.SwitchArgs{
-//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       vpc2.ID(),
 //				ZoneId:      pulumi.String("cn-beijing-l"),
 //				CidrBlock:   pulumi.String("10.0.1.0/24"),
 //				VswitchName: pulumi.String("tf-exampleacc-41"),
@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			vsw2, err := vpc.NewSwitch(ctx, "vsw2", &vpc.SwitchArgs{
-//				VpcId:             vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             vpc2.ID(),
 //				ZoneId:            pulumi.String("cn-beijing-k"),
 //				CidrBlock:         pulumi.String("10.0.2.0/24"),
 //				VswitchName:       pulumi.String("tf-exampleacc-301"),
@@ -74,15 +74,15 @@ import (
 //			nlb2, err := nlb.NewLoadBalancer(ctx, "nlb", &nlb.LoadBalancerArgs{
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: vsw1.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: vsw1.ID(),
 //						ZoneId:    vsw1.ZoneId,
 //					},
 //					&nlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: vsw2.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: vsw2.ID(),
 //						ZoneId:    vsw2.ZoneId,
 //					},
 //				},
-//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       vpc2.ID(),
 //				AddressType: pulumi.String("Intranet"),
 //			})
 //			if err != nil {
@@ -90,8 +90,8 @@ import (
 //			}
 //			_, err = nlb.NewLoadBalancerZoneShiftedAttachment(ctx, "default", &nlb.LoadBalancerZoneShiftedAttachmentArgs{
 //				ZoneId:         vsw1.ZoneId,
-//				VswitchId:      vsw1.ID().ToIDOutput().ToStringOutput(),
-//				LoadBalancerId: nlb2.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      vsw1.ID(),
+//				LoadBalancerId: nlb2.ID(),
 //			})
 //			if err != nil {
 //				return err

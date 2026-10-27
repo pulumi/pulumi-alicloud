@@ -61,7 +61,7 @@ import (
 //				ServerGroupType:        pulumi.String("Ip"),
 //				ConnectionDrainTimeout: pulumi.Int(10),
 //				ConnectionDrainEnabled: pulumi.Bool(true),
-//				VpcId:                  defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                  defaultNetwork.ID(),
 //				Scheduler:              pulumi.String("Wrr"),
 //				Protocol:               pulumi.String("TCP"),
 //				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
@@ -77,7 +77,7 @@ import (
 //				ServerId:      pulumi.String("10.0.0.0"),
 //				Description:   pulumi.String(name),
 //				Port:          pulumi.Int(80),
-//				ServerGroupId: defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
+//				ServerGroupId: defaultServerGroup.ID(),
 //				Weight:        pulumi.Int(100),
 //				ServerIp:      pulumi.String("10.0.0.0"),
 //			})

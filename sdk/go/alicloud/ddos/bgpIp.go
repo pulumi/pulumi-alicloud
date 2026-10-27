@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			_, err = ddos.NewBgpIp(ctx, "default", &ddos.BgpIpArgs{
-//				InstanceId: defaultDdosBgpInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultDdosBgpInstance.ID(),
 //				Ip:         defaultEipAddress.IpAddress,
 //				MemberUid:  pulumi.String(_default.Id),
 //			})

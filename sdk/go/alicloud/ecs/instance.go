@@ -59,7 +59,7 @@ import (
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 // SecurityGroupName: pulumi.String(name),
 // Description: pulumi.String("foo"),
-// VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
+// VpcId: vpc2.ID(),
 // })
 // if err != nil {
 // return err
@@ -81,7 +81,7 @@ import (
 // return err
 // }
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
+// VpcId: vpc2.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
@@ -102,7 +102,7 @@ import (
 // SystemDiskDescription: pulumi.String("test_foo_system_disk_description"),
 // ImageId: pulumi.String(imageId),
 // InstanceName: pulumi.String(name),
-// VswitchId: vswitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: vswitch.ID(),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // DataDisks: ecs.InstanceDataDiskArray{
 // &ecs.InstanceDataDiskArgs{
@@ -111,7 +111,7 @@ import (
 // Category: pulumi.String("cloud_efficiency"),
 // Description: pulumi.String("disk2"),
 // Encrypted: pulumi.Bool(true),
-// KmsKeyId: key.ID().ToIDOutput().ToStringOutput(),
+// KmsKeyId: key.ID(),
 // },
 // },
 // })

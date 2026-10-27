@@ -608,6 +608,44 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases() {
         return getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.Empty, InvokeOptions.Empty);
@@ -620,6 +658,44 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain() {
@@ -634,6 +710,44 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args) {
         return getEnterpriseLogicDatabases(args, InvokeOptions.Empty);
@@ -646,6 +760,44 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args) {
@@ -660,6 +812,44 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
@@ -673,6 +863,44 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
@@ -685,6 +913,44 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.instances()[0].instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args, InvokeOptions options) {

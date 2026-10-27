@@ -59,7 +59,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = apigateway.NewBackendModel(ctx, "default", &apigateway.BackendModelArgs{
-//				BackendId:        _default.ID().ToIDOutput().ToStringOutput(),
+//				BackendId:        _default.ID(),
 //				BackendType:      pulumi.String("HTTP"),
 //				StageName:        pulumi.String("RELEASE"),
 //				Description:      pulumi.String(name),

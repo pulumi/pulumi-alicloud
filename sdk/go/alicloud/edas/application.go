@@ -66,14 +66,14 @@ import (
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
 //				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
-//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = edas.NewApplication(ctx, "default", &edas.ApplicationArgs{
 //				ApplicationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				ClusterId:       defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:       defaultCluster.ID(),
 //				PackageType:     pulumi.String("JAR"),
 //			})
 //			if err != nil {

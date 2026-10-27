@@ -60,7 +60,7 @@ import (
 //			env_ecs, err := arms.NewEnvironment(ctx, "env-ecs", &arms.EnvironmentArgs{
 //				EnvironmentType:    pulumi.String("ECS"),
 //				EnvironmentName:    pulumi.Sprintf("terraform-example-%v", _default.Result),
-//				BindResourceId:     vpc2.ID().ToIDOutput().ToStringOutput(),
+//				BindResourceId:     vpc2.ID(),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //			})
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //			}
 //			_, err = arms.NewEnvCustomJob(ctx, "default", &arms.EnvCustomJobArgs{
 //				Status:           pulumi.String("run"),
-//				EnvironmentId:    env_ecs.ID().ToIDOutput().ToStringOutput(),
+//				EnvironmentId:    env_ecs.ID(),
 //				EnvCustomJobName: pulumi.String(name),
 //				ConfigYaml: pulumi.String(`scrape_configs:
 //   - job_name: job-demo1

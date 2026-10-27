@@ -53,7 +53,7 @@ import (
 //			}
 //			_default := sslcertificatesservice.GetCompaniesOutput(ctx, sslcertificatesservice.GetCompaniesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultCompany.ID().ToIDOutput().ToStringOutput(),
+//					defaultCompany.ID(),
 //				},
 //				NameRegex: defaultCompany.CompanyName,
 //			}, nil)

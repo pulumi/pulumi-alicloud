@@ -55,7 +55,7 @@ import (
 //			}
 //			defaultUW8inp, err := dataworks.NewDiJob(ctx, "defaultUW8inp", &dataworks.DiJobArgs{
 //				Description:          pulumi.String("xxxx"),
-//				ProjectId:            defaulteNv8bu.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ProjectId:            defaulteNv8bu.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				JobName:              pulumi.String("xxx"),
 //				MigrationType:        pulumi.String("api_xxx"),
 //				SourceDataSourceType: pulumi.String("xxx"),

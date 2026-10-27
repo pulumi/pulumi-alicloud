@@ -50,7 +50,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-vsw", name),
-//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       _default.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-b"),
 //				CidrBlock:   pulumi.String("192.168.15.0/24"),
 //			})
@@ -66,10 +66,10 @@ import (
 //					Type: pulumi.String("Intranet"),
 //				},
 //				Vpc: &apig.GatewayVpcArgs{
-//					VpcId: _default.ID().ToIDOutput().ToStringOutput(),
+//					VpcId: _default.ID(),
 //				},
 //				Vswitch: &apig.GatewayVswitchArgs{
-//					VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId: defaultSwitch.ID(),
 //				},
 //				ZoneConfig: &apig.GatewayZoneConfigArgs{
 //					SelectOption: pulumi.String("Auto"),
@@ -81,7 +81,7 @@ import (
 //			defaultService, err := apig.NewService(ctx, "default", &apig.ServiceArgs{
 //				ServiceName: pulumi.Sprintf("%v-svc", name),
 //				SourceType:  pulumi.String("DNS"),
-//				GatewayId:   defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:   defaultGateway.ID(),
 //				Addresses: pulumi.StringArray{
 //					pulumi.String("httpbin.org:8080"),
 //				},
@@ -93,13 +93,13 @@ import (
 //				PolicyName:      pulumi.String(name),
 //				PolicyClassName: pulumi.String("ServiceTls"),
 //				PolicyConfig:    pulumi.String("{\"mode\":\"SIMPLE\",\"sni\":\"aaaa\",\"enable\":true}"),
-//				GatewayId:       defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:       defaultGateway.ID(),
 //				EnvironmentId: defaultGateway.Environments.ApplyT(func(environments []apig.GatewayEnvironment) (*string, error) {
 //					return environments[0].EnvironmentId, nil
 //				}).(pulumi.StringPtrOutput),
 //				AttachResourceType: pulumi.String("GatewayService"),
 //				AttachResourceIds: pulumi.StringArray{
-//					defaultService.ID().ToIDOutput().ToStringOutput(),
+//					defaultService.ID(),
 //				},
 //			})
 //			if err != nil {

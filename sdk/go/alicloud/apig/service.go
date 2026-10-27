@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultvswitch, err := vpc.NewSwitch(ctx, "defaultvswitch", &vpc.SwitchArgs{
-//				VpcId:       defaultvpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultvpc.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-g"),
 //				CidrBlock:   pulumi.String("172.32.100.0/24"),
 //				VswitchName: pulumi.String("zhenyuan-example"),
@@ -73,14 +73,14 @@ import (
 //					Type: pulumi.String("Intranet"),
 //				},
 //				Vswitch: &apig.GatewayVswitchArgs{
-//					VswitchId: defaultvswitch.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId: defaultvswitch.ID(),
 //					Name:      defaultvswitch.VswitchName,
 //				},
 //				ZoneConfig: &apig.GatewayZoneConfigArgs{
 //					SelectOption: pulumi.String("Auto"),
 //				},
 //				Vpc: &apig.GatewayVpcArgs{
-//					VpcId: defaultvpc.ID().ToIDOutput().ToStringOutput(),
+//					VpcId: defaultvpc.ID(),
 //				},
 //				PaymentType: pulumi.String("PayAsYouGo"),
 //				GatewayName: pulumi.String("zhenyuanexample"),
@@ -100,7 +100,7 @@ import (
 //				},
 //				ServiceName: pulumi.String("1784264562"),
 //				SourceType:  pulumi.String("VIP"),
-//				GatewayId:   defaultFsRKYn.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:   defaultFsRKYn.ID(),
 //				Namespace:   pulumi.String("default"),
 //			})
 //			if err != nil {

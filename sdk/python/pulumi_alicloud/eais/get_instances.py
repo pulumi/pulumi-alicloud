@@ -130,6 +130,16 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
 
     Basic Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eais.get_instances(id=["example_id"])
+    pulumi.export("eaisInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.eais.get_instances(name_regex="^my-Instance")
+    pulumi.export("eaisInstanceId2", name_regex.instances[0].id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
     :param _builtins.str instance_type: EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
@@ -171,6 +181,16 @@ def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     ## Example Usage
 
     Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eais.get_instances(id=["example_id"])
+    pulumi.export("eaisInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.eais.get_instances(name_regex="^my-Instance")
+    pulumi.export("eaisInstanceId2", name_regex.instances[0].id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.

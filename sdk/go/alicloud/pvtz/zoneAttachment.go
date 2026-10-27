@@ -56,10 +56,10 @@ import (
 //				return err
 //			}
 //			_, err = pvtz.NewZoneAttachment(ctx, "zone-attachment", &pvtz.ZoneAttachmentArgs{
-//				ZoneId: zone.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId: zone.ID(),
 //				VpcIds: pulumi.StringArray{
-//					first.ID().ToIDOutput().ToStringOutput(),
-//					second.ID().ToIDOutput().ToStringOutput(),
+//					first.ID(),
+//					second.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -107,13 +107,13 @@ import (
 //				return err
 //			}
 //			_, err = pvtz.NewZoneAttachment(ctx, "zone-attachment", &pvtz.ZoneAttachmentArgs{
-//				ZoneId: zone.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId: zone.ID(),
 //				Vpcs: pvtz.ZoneAttachmentVpcArray{
 //					&pvtz.ZoneAttachmentVpcArgs{
-//						VpcId: first.ID().ToIDOutput().ToStringOutput(),
+//						VpcId: first.ID(),
 //					},
 //					&pvtz.ZoneAttachmentVpcArgs{
-//						VpcId: second.ID().ToIDOutput().ToStringOutput(),
+//						VpcId: second.ID(),
 //					},
 //				},
 //			})
@@ -169,17 +169,17 @@ import (
 //				return err
 //			}
 //			_, err = pvtz.NewZoneAttachment(ctx, "zone-attachment", &pvtz.ZoneAttachmentArgs{
-//				ZoneId: zone.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId: zone.ID(),
 //				Vpcs: pvtz.ZoneAttachmentVpcArray{
 //					&pvtz.ZoneAttachmentVpcArgs{
-//						VpcId: first.ID().ToIDOutput().ToStringOutput(),
+//						VpcId: first.ID(),
 //					},
 //					&pvtz.ZoneAttachmentVpcArgs{
-//						VpcId: second.ID().ToIDOutput().ToStringOutput(),
+//						VpcId: second.ID(),
 //					},
 //					&pvtz.ZoneAttachmentVpcArgs{
 //						RegionId: pulumi.String("eu-central-1"),
-//						VpcId:    third.ID().ToIDOutput().ToStringOutput(),
+//						VpcId:    third.ID(),
 //					},
 //				},
 //			})

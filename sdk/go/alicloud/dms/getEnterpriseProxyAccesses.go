@@ -40,7 +40,7 @@ import (
 //			}
 //			_default := dms.GetEnterpriseProxyAccessesOutput(ctx, dms.GetEnterpriseProxyAccessesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultEnterpriseProxyAccess.ID().ToIDOutput().ToStringOutput(),
+//					defaultEnterpriseProxyAccess.ID(),
 //				},
 //				ProxyId: pulumi.String("1881"),
 //			}, nil)

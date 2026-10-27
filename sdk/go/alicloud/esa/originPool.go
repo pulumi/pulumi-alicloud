@@ -103,7 +103,7 @@ import (
 //						Name:   pulumi.String("origin3"),
 //					},
 //				},
-//				SiteId:         defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:         defaultSite.ID(),
 //				OriginPoolName: pulumi.String("exampleoriginpool"),
 //				Enabled:        pulumi.Bool(true),
 //			})

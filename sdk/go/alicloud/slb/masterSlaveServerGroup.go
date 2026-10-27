@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			mainSwitch, err := vpc.NewSwitch(ctx, "main", &vpc.SwitchArgs{
-//				VpcId:       main.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       main.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //				ZoneId:      pulumi.String(msServerGroup.Zones[0].Id),
 //				VswitchName: pulumi.String(slbMasterSlaveServerGroup),
@@ -95,7 +95,7 @@ import (
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(slbMasterSlaveServerGroup),
-//				VpcId:             main.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             main.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -108,14 +108,14 @@ import (
 //					InstanceType: pulumi.String(msServerGroupGetInstanceTypes.InstanceTypes[0].Id),
 //					InstanceName: pulumi.String(slbMasterSlaveServerGroup),
 //					SecurityGroups: pulumi.StringArray{
-//						group.ID().ToIDOutput().ToStringOutput(),
+//						group.ID(),
 //					},
 //					InternetChargeType:      pulumi.String("PayByTraffic"),
 //					InternetMaxBandwidthOut: pulumi.Int(10),
 //					AvailabilityZone:        pulumi.String(msServerGroup.Zones[0].Id),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
 //					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//					VswitchId:               mainSwitch.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId:               mainSwitch.ID(),
 //				})
 //				if err != nil {
 //					return err
@@ -124,7 +124,7 @@ import (
 //			}
 //			msServerGroupApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "ms_server_group", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(slbMasterSlaveServerGroup),
-//				VswitchId:        mainSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        mainSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //			})
 //			if err != nil {
@@ -132,33 +132,33 @@ import (
 //			}
 //			msServerGroupEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "ms_server_group", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(slbMasterSlaveServerGroup),
-//				VswitchId:            mainSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:            mainSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					group.ID().ToIDOutput().ToStringOutput(),
+//					group.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "ms_server_group", &ecs.EcsNetworkInterfaceAttachmentArgs{
-//				InstanceId:         msServerGroupInstance[0].ID().ToIDOutput().ToStringOutput(),
-//				NetworkInterfaceId: msServerGroupEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:         msServerGroupInstance[0].ID(),
+//				NetworkInterfaceId: msServerGroupEcsNetworkInterface.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			groupMasterSlaveServerGroup, err := slb.NewMasterSlaveServerGroup(ctx, "group", &slb.MasterSlaveServerGroupArgs{
-//				LoadBalancerId: msServerGroupApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: msServerGroupApplicationLoadBalancer.ID(),
 //				Name:           pulumi.String(slbMasterSlaveServerGroup),
 //				Servers: slb.MasterSlaveServerGroupServerArray{
 //					&slb.MasterSlaveServerGroupServerArgs{
-//						ServerId:   msServerGroupInstance[0].ID().ToIDOutput().ToStringOutput(),
+//						ServerId:   msServerGroupInstance[0].ID(),
 //						Port:       pulumi.Int(100),
 //						Weight:     pulumi.Int(100),
 //						ServerType: pulumi.String("Master"),
 //					},
 //					&slb.MasterSlaveServerGroupServerArgs{
-//						ServerId:   msServerGroupInstance[1].ID().ToIDOutput().ToStringOutput(),
+//						ServerId:   msServerGroupInstance[1].ID(),
 //						Port:       pulumi.Int(100),
 //						Weight:     pulumi.Int(100),
 //						ServerType: pulumi.String("Slave"),
@@ -169,8 +169,8 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
-//				LoadBalancerId:           msServerGroupApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
-//				MasterSlaveServerGroupId: groupMasterSlaveServerGroup.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId:           msServerGroupApplicationLoadBalancer.ID(),
+//				MasterSlaveServerGroupId: groupMasterSlaveServerGroup.ID(),
 //				FrontendPort:             pulumi.Int(22),
 //				Protocol:                 pulumi.String("tcp"),
 //				Bandwidth:                pulumi.Int(10),

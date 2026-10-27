@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = nas.NewLogAnalysis(ctx, "default", &nas.LogAnalysisArgs{
-//				FileSystemId: _default.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId: _default.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -76,7 +76,7 @@ import (
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
@@ -85,7 +85,7 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -103,7 +103,7 @@ import (
 // AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // InstanceName: pulumi.String(name),
 // Description: pulumi.String(name),
 // })
@@ -112,8 +112,8 @@ import (
 // }
 // _, err = apigateway.NewVpcAccess(ctx, "default", &apigateway.VpcAccessArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-// InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
+// InstanceId: defaultInstance.ID(),
 // Port: pulumi.Int(8080),
 // VpcTargetHostName: pulumi.String("www.example.com"),
 // })

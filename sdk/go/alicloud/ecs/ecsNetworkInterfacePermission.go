@@ -62,7 +62,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -70,16 +70,16 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String("terraform-example"),
-//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:            defaultSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
 //				Description: pulumi.String("terraform-example"),
 //				PrimaryIpAddress: std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
@@ -97,7 +97,7 @@ import (
 //			}
 //			_, err = ecs.NewEcsNetworkInterfacePermission(ctx, "example", &ecs.EcsNetworkInterfacePermissionArgs{
 //				AccountId:          pulumi.String(defaultGetAccount.Id),
-//				NetworkInterfaceId: defaultEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+//				NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
 //				Permission:         pulumi.String("InstanceAttach"),
 //				Force:              pulumi.Bool(true),
 //			})

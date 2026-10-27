@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = fc.NewV3VpcBinding(ctx, "default", &fc.V3VpcBindingArgs{
 //				FunctionName: function.FunctionName,
-//				VpcId:        vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:        vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err

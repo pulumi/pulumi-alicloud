@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = nas.NewSnapshot(ctx, "default", &nas.SnapshotArgs{
-//				FileSystemId:  defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:  defaultFileSystem.ID(),
 //				Description:   pulumi.String(name),
 //				RetentionDays: pulumi.Int(20),
 //				SnapshotName:  pulumi.String(name),

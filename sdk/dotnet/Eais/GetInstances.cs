@@ -21,6 +21,35 @@ namespace Pulumi.AliCloud.Eais
         /// ## Example Usage
         /// 
         /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eais.GetInstances.Invoke(new()
+        ///     {
+        ///         Id = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eais.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eaisInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["eaisInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -35,6 +64,35 @@ namespace Pulumi.AliCloud.Eais
         /// ## Example Usage
         /// 
         /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eais.GetInstances.Invoke(new()
+        ///     {
+        ///         Id = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eais.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eaisInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["eaisInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -49,6 +107,35 @@ namespace Pulumi.AliCloud.Eais
         /// ## Example Usage
         /// 
         /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Eais.GetInstances.Invoke(new()
+        ///     {
+        ///         Id = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eais.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["eaisInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["eaisInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

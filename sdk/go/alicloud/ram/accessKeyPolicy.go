@@ -80,7 +80,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = ram.NewAccessKeyPolicy(ctx, "default", &ram.AccessKeyPolicyArgs{
-//				UserAccessKeyId: defaultAccessKey.ID().ToIDOutput().ToStringOutput(),
+//				UserAccessKeyId: defaultAccessKey.ID(),
 //				UserPrincipalName: defaultUser.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("%v@%v.onaliyun.com", name, _default.Id), nil
 //				}).(pulumi.StringOutput),

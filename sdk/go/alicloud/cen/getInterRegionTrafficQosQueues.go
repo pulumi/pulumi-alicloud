@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := cen.GetInterRegionTrafficQosQueues(ctx, &cen.GetInterRegionTrafficQosQueuesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudCenInterRegionTrafficQosQueue.Id,
 //				},
 //				NameRegex:          pulumi.StringRef(defaultAlicloudCenInterRegionTrafficQosQueue.Name),

@@ -16,6 +16,37 @@ import (
 // > **NOTE:** Available in 1.196.0+
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := expressconnect.GetVirtualPhysicalConnections(ctx, &expressconnect.GetVirtualPhysicalConnectionsArgs{
+//				Ids: []string{
+//					defaultAlicloudExpressConnectVirtualPhysicalConnection.Id,
+//				},
+//				NameRegex:                  pulumi.StringRef(defaultAlicloudExpressConnectVirtualPhysicalConnection.Name),
+//				ParentPhysicalConnectionId: pulumi.StringRef(defaultAlicloudExpressConnectVirtualPhysicalConnection.ParentPhysicalConnectionId),
+//				VlanId:                     789,
+//				VpconnAliUid:               pulumi.StringRef("1234567890"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", _default.Connections[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVirtualPhysicalConnections(ctx *pulumi.Context, args *GetVirtualPhysicalConnectionsArgs, opts ...pulumi.InvokeOption) (*GetVirtualPhysicalConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualPhysicalConnectionsResult

@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = adb.NewAccount(ctx, "default", &adb.AccountArgs{
-//				DbClusterId:        cluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId:        cluster.ID(),
 //				AccountName:        pulumi.String(name),
 //				AccountPassword:    pulumi.String("tf_example123"),
 //				AccountDescription: pulumi.String(name),

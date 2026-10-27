@@ -39,10 +39,10 @@ import (
 //			}
 //			_, err = hbr.GetRestoreJobs(ctx, &hbr.GetRestoreJobsArgs{
 //				RestoreType: "ECS_FILE",
-//				VaultIds: pulumi.StringArray{
+//				VaultIds: []string{
 //					_default.Plans[0].VaultId,
 //				},
-//				TargetInstanceIds: pulumi.StringArray{
+//				TargetInstanceIds: []string{
 //					_default.Plans[0].InstanceId,
 //				},
 //			}, nil)

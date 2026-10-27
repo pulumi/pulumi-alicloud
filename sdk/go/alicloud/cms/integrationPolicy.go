@@ -67,7 +67,7 @@ import (
 //			_, err = cms.NewIntegrationPolicy(ctx, "default", &cms.IntegrationPolicyArgs{
 //				PolicyType:            pulumi.String("ECS"),
 //				IntegrationPolicyName: pulumi.String(name),
-//				Workspace:             defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				Workspace:             defaultWorkspace.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -63,16 +63,16 @@ import (
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
 //				CidrBlock:   pulumi.String("10.10.0.0/20"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
-//				VpcId:          defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          defaultNetwork.ID(),
 //				NatGatewayName: pulumi.String(name),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
-//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      defaultSwitch.ID(),
 //				NatType:        pulumi.String("Enhanced"),
 //			})
 //			if err != nil {
@@ -120,15 +120,15 @@ import (
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
 //				CidrBlock:   pulumi.String("10.10.0.0/20"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
-//				VpcId:          defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          defaultNetwork.ID(),
 //				NatGatewayName: pulumi.String(name),
-//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      defaultSwitch.ID(),
 //				NatType:        pulumi.String("Enhanced"),
 //			})
 //			if err != nil {

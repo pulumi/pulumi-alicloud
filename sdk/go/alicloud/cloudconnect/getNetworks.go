@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudconnect.GetNetworks(ctx, &cloudconnect.GetNetworksArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudCloudConnectNetworks.Id,
 //				},
 //				NameRegex: pulumi.StringRef("^tf-testAcc.*"),

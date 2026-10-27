@@ -66,7 +66,7 @@ import (
 //						Schedule:    pulumi.String("I|1631685600|P1D"),
 //						Retention:   pulumi.Int(7),
 //						ArchiveDays: pulumi.Int(0),
-//						VaultId:     defaultyk84Hc.ID().ToIDOutput().ToStringOutput(),
+//						VaultId:     defaultyk84Hc.ID(),
 //					},
 //				},
 //				PolicyDescription: pulumi.String("policy example"),
@@ -84,7 +84,7 @@ import (
 //			_, err = hbr.NewPolicyBinding(ctx, "default", &hbr.PolicyBindingArgs{
 //				SourceType:               pulumi.String("OSS"),
 //				Disabled:                 pulumi.Bool(false),
-//				PolicyId:                 defaultoqWvHQ.ID().ToIDOutput().ToStringOutput(),
+//				PolicyId:                 defaultoqWvHQ.ID(),
 //				DataSourceId:             defaultKtt2XY.Bucket,
 //				PolicyBindingDescription: pulumi.String("policy binding example (update)"),
 //				Source:                   pulumi.String("prefix-example-update/"),
@@ -145,7 +145,7 @@ import (
 //						Schedule:    pulumi.String("I|1631685600|P1D"),
 //						Retention:   pulumi.Int(7),
 //						ArchiveDays: pulumi.Int(0),
-//						VaultId:     defaultVault.ID().ToIDOutput().ToStringOutput(),
+//						VaultId:     defaultVault.ID(),
 //					},
 //				},
 //				PolicyDescription: pulumi.String("policy example"),
@@ -169,8 +169,8 @@ import (
 //			}
 //			_, err = hbr.NewPolicyBinding(ctx, "default", &hbr.PolicyBindingArgs{
 //				SourceType:   pulumi.String("UDM_ECS"),
-//				PolicyId:     defaultPolicy.ID().ToIDOutput().ToStringOutput(),
-//				DataSourceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				PolicyId:     defaultPolicy.ID(),
+//				DataSourceId: defaultInstance.ID(),
 //				Disabled:     pulumi.Bool(false),
 //				AdvancedOptions: &hbr.PolicyBindingAdvancedOptionsArgs{
 //					UdmDetail: &hbr.PolicyBindingAdvancedOptionsUdmDetailArgs{

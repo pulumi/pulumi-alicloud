@@ -103,7 +103,7 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-// VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
+// VpcId: vpc2.ID(),
 // CidrBlock: vswitchCidrs[val0],
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
@@ -141,10 +141,10 @@ import (
 // }
 // // Create a cluster permission for user.
 // _, err = cs.NewKubernetesPermission(ctx, "default", &cs.KubernetesPermissionArgs{
-// Uid: user.ID().ToIDOutput().ToStringOutput(),
+// Uid: user.ID(),
 // Permissions: cs.KubernetesPermissionPermissionArray{
 // &cs.KubernetesPermissionPermissionArgs{
-// Cluster: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
+// Cluster: defaultManagedKubernetes.ID(),
 // RoleType: pulumi.String("cluster"),
 // RoleName: pulumi.String("admin"),
 // Namespace: pulumi.String(""),
@@ -157,10 +157,10 @@ import (
 // return err
 // }
 // _, err = cs.NewKubernetesPermission(ctx, "attach", &cs.KubernetesPermissionArgs{
-// Uid: user.ID().ToIDOutput().ToStringOutput(),
+// Uid: user.ID(),
 // Permissions: cs.KubernetesPermissionPermissionArray{
 // &cs.KubernetesPermissionPermissionArgs{
-// Cluster: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
+// Cluster: defaultManagedKubernetes.ID(),
 // RoleType: pulumi.String("namespace"),
 // RoleName: pulumi.String("cs:dev"),
 // Namespace: pulumi.String("default"),

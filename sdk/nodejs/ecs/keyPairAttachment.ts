@@ -15,6 +15,63 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_ssd",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const type = alicloud.ecs.getInstanceTypes({
+ *     avaiabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * });
+ * const images = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "keyPairAttachmentName";
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "10.1.0.0/21",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     vpcId: vpc.id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     description: "New security group",
+ *     vpcId: vpc.id,
+ * });
+ * const instance: alicloud.ecs.Instance[] = [];
+ * for (let range = 0; range < 2; range++) {
+ *     instance.push(new alicloud.ecs.Instance(`instance-${range}`, {
+ *         instanceName: `${name}-${range + 1}`,
+ *         imageId: images.then(images => images.images?.[0]?.id),
+ *         instanceType: type.then(type => type.instanceTypes?.[0]?.id),
+ *         securityGroups: [group.id],
+ *         vswitchId: vswitch.id,
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 5,
+ *         password: "Test12345",
+ *         instanceChargeType: "PostPaid",
+ *         systemDiskCategory: "cloud_ssd",
+ *     }));
+ * }
+ * const pair = new alicloud.ecs.KeyPair("pair", {keyName: name});
+ * const attachment = new alicloud.ecs.KeyPairAttachment("attachment", {
+ *     keyName: pair.id,
+ *     instanceIds: instance.map(__item => __item.id),
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class KeyPairAttachment extends pulumi.CustomResource {

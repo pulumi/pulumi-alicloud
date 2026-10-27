@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -66,10 +66,10 @@ import (
 //				return err
 //			}
 //			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
-//				VpcId:          defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          defaultNetwork.ID(),
 //				NatGatewayName: pulumi.String(name),
 //				NatType:        pulumi.String("Enhanced"),
-//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      defaultSwitch.ID(),
 //				NetworkType:    pulumi.String("intranet"),
 //			})
 //			if err != nil {
@@ -78,7 +78,7 @@ import (
 //			defaultNatIp, err := vpc.NewNatIp(ctx, "default", &vpc.NatIpArgs{
 //				NatIp:        pulumi.String("172.16.0.66"),
 //				NatIpName:    pulumi.String(name),
-//				NatGatewayId: defaultNatGateway.ID().ToIDOutput().ToStringOutput(),
+//				NatGatewayId: defaultNatGateway.ID(),
 //				NatIpCidr:    defaultSwitch.CidrBlock,
 //			})
 //			if err != nil {

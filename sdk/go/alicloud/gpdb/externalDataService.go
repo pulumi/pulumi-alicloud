@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			defaultnYWSkl, err := vpc.NewSwitch(ctx, "defaultnYWSkl", &vpc.SwitchArgs{
-//				VpcId:     defaultrple4a.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultrple4a.ID(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -75,10 +75,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultnYWSkl.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:           defaultnYWSkl.ID(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               defaultrple4a.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:               defaultrple4a.ID(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //			})
@@ -87,7 +87,7 @@ import (
 //			}
 //			_, err = gpdb.NewExternalDataService(ctx, "default", &gpdb.ExternalDataServiceArgs{
 //				ServiceName:        pulumi.String("example6"),
-//				DbInstanceId:       defaultZ7DPgB.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:       defaultZ7DPgB.ID(),
 //				ServiceDescription: pulumi.String("example"),
 //				ServiceSpec:        pulumi.String("8"),
 //			})

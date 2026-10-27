@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -60,19 +60,19 @@ import (
 //				return err
 //			}
 //			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
-//				VpcId:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:              defaultNetwork.ID(),
 //				InternetChargeType: pulumi.String("PayByLcu"),
 //				NatGatewayName:     pulumi.String("terraform-example"),
 //				Description:        pulumi.String("terraform-example"),
 //				NatType:            pulumi.String("Enhanced"),
-//				VswitchId:          defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:          defaultSwitch.ID(),
 //				NetworkType:        pulumi.String("intranet"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewNatIpCidr(ctx, "default", &vpc.NatIpCidrArgs{
-//				NatGatewayId:  defaultNatGateway.ID().ToIDOutput().ToStringOutput(),
+//				NatGatewayId:  defaultNatGateway.ID(),
 //				NatIpCidrName: pulumi.String("terraform-example"),
 //				NatIpCidr:     pulumi.String("192.168.0.0/16"),
 //			})

@@ -71,7 +71,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -79,7 +79,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -89,11 +89,11 @@ import (
 //				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				AvailabilityZone: pulumi.String(example.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					exampleSecurityGroup.ID(),
 //				},
 //				InstanceName:       pulumi.String("terraform-example"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:          exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -121,13 +121,13 @@ import (
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),
 //				ValidateCertificate: pulumi.Bool(false),
-//				VaultId:             exampleVault.ID().ToIDOutput().ToStringOutput(),
+//				VaultId:             exampleVault.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewHanaBackupClient(ctx, "default", &hbr.HanaBackupClientArgs{
-//				VaultId: exampleVault.ID().ToIDOutput().ToStringOutput(),
+//				VaultId: exampleVault.ID(),
 //				ClientInfo: pulumi.All(exampleInstance.ID(), exampleHanaInstance.HanaInstanceId).ApplyT(func(_args []interface{}) (string, error) {
 //					id := _args[0].(pulumi.ID)
 //					hanaInstanceId := _args[1].(string)

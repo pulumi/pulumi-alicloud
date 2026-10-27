@@ -102,11 +102,11 @@ import (
 //				return err
 //			}
 //			_, err = servicemesh.NewUserPermission(ctx, "default", &servicemesh.UserPermissionArgs{
-//				SubAccountUserId: defaultUser.ID().ToIDOutput().ToStringOutput(),
+//				SubAccountUserId: defaultUser.ID(),
 //				Permissions: servicemesh.UserPermissionPermissionArray{
 //					&servicemesh.UserPermissionPermissionArgs{
 //						RoleName:      pulumi.String("istio-ops"),
-//						ServiceMeshId: default1.ID().ToIDOutput().ToStringOutput(),
+//						ServiceMeshId: default1.ID(),
 //						RoleType:      pulumi.String("custom"),
 //						IsCustom:      pulumi.Bool(true),
 //					},

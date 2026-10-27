@@ -54,7 +54,7 @@ import (
 //			}
 //			queueMinimalExampleVswitch, err := vpc.NewSwitch(ctx, "queue_minimal_example_vswitch", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       queueMinimalExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       queueMinimalExampleVpc.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String("example-cluster-vsw"),
@@ -86,18 +86,18 @@ import (
 //				return err
 //			}
 //			queueMinimalExampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "queue_minimal_example_security_group", &ecs.SecurityGroupArgs{
-//				VpcId:             queueMinimalExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             queueMinimalExampleVpc.ID(),
 //				SecurityGroupType: pulumi.String("normal"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			queueMinimalExampleMountDomain, err := nas.NewMountTarget(ctx, "queue_minimal_example_mount_domain", &nas.MountTargetArgs{
-//				VpcId:           queueMinimalExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           queueMinimalExampleVpc.ID(),
 //				NetworkType:     pulumi.String("Vpc"),
 //				AccessGroupName: queueMinimalExampleAccessGroup.AccessGroupName,
-//				VswitchId:       queueMinimalExampleVswitch.ID().ToIDOutput().ToStringOutput(),
-//				FileSystemId:    queueMinimalExampleNas.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       queueMinimalExampleVswitch.ID(),
+//				FileSystemId:    queueMinimalExampleNas.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -115,10 +115,10 @@ import (
 //				ClusterCredentials: &ehpc.ClusterV2ClusterCredentialsArgs{
 //					Password: pulumi.String("aliHPC123"),
 //				},
-//				ClusterVpcId:    queueMinimalExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				ClusterVpcId:    queueMinimalExampleVpc.ID(),
 //				ClusterCategory: pulumi.String("Standard"),
 //				ClusterMode:     pulumi.String("Integrated"),
-//				SecurityGroupId: queueMinimalExampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: queueMinimalExampleSecurityGroup.ID(),
 //				Addons: ehpc.ClusterV2AddonArray{
 //					&ehpc.ClusterV2AddonArgs{
 //						Version: pulumi.String("1.0"),
@@ -199,7 +199,7 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: queueMinimalExampleMountDomain.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      queueMinimalExampleNas.ID().ToIDOutput().ToStringOutput(),
+//						FileSystemId:      queueMinimalExampleNas.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
@@ -207,7 +207,7 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: queueMinimalExampleMountDomain.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      queueMinimalExampleNas.ID().ToIDOutput().ToStringOutput(),
+//						FileSystemId:      queueMinimalExampleNas.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
@@ -215,11 +215,11 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: queueMinimalExampleMountDomain.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      queueMinimalExampleNas.ID().ToIDOutput().ToStringOutput(),
+//						FileSystemId:      queueMinimalExampleNas.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //				},
-//				ClusterVswitchId: queueMinimalExampleVswitch.ID().ToIDOutput().ToStringOutput(),
+//				ClusterVswitchId: queueMinimalExampleVswitch.ID(),
 //				Manager: &ehpc.ClusterV2ManagerArgs{
 //					ManagerNode: &ehpc.ClusterV2ManagerManagerNodeArgs{
 //						SystemDisk: &ehpc.ClusterV2ManagerManagerNodeSystemDiskArgs{
@@ -253,7 +253,7 @@ import (
 //				return err
 //			}
 //			_, err = ehpc.NewQueue(ctx, "default", &ehpc.QueueArgs{
-//				ClusterId: queueMinimalClusterExample.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: queueMinimalClusterExample.ID(),
 //				QueueName: pulumi.String("autoque1"),
 //			})
 //			if err != nil {

@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = esa.NewOriginProtection(ctx, "default", &esa.OriginProtectionArgs{
 //				OriginConverge: pulumi.String("on"),
-//				SiteId:         defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:         defaultSite.ID(),
 //			})
 //			if err != nil {
 //				return err

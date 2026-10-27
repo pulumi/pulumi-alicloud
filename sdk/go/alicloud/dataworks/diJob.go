@@ -55,7 +55,7 @@ import (
 //			}
 //			_, err = dataworks.NewDiJob(ctx, "default", &dataworks.DiJobArgs{
 //				Description:   pulumi.String(name),
-//				ProjectId:     defaultMMHL8U.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ProjectId:     defaultMMHL8U.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				JobName:       pulumi.String("zhenyuan_example_case"),
 //				MigrationType: pulumi.String("api_FullAndRealtimeIncremental"),
 //				SourceDataSourceSettings: dataworks.DiJobSourceDataSourceSettingArray{

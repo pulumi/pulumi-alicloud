@@ -41,14 +41,14 @@ import (
 //			}
 //			defaultNetworkPackage, err := eds.NewNetworkPackage(ctx, "default", &eds.NetworkPackageArgs{
 //				Bandwidth:    pulumi.Int(10),
-//				OfficeSiteId: defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
+//				OfficeSiteId: defaultSimpleOfficeSite.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default := eds.GetNetworkPackagesOutput(ctx, eds.GetNetworkPackagesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultNetworkPackage.ID().ToIDOutput().ToStringOutput(),
+//					defaultNetworkPackage.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("ecdNetworkPackageId1", _default.ApplyT(func(_default eds.GetNetworkPackagesResult) (*string, error) {

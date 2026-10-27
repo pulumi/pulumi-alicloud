@@ -59,23 +59,23 @@ import (
 //				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
-//				VpcId:     vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewNetworkInterface(ctx, "default", &vpc.NetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
-//				VswitchId:            vswitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:            vswitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					group.ID().ToIDOutput().ToStringOutput(),
+//					group.ID(),
 //				},
 //				PrivateIp:       pulumi.String("192.168.0.2"),
 //				PrivateIpsCount: pulumi.Int(3),

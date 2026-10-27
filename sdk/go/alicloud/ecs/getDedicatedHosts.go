@@ -52,7 +52,7 @@ import (
 //			}
 //			ids := ecs.GetDedicatedHostsOutput(ctx, ecs.GetDedicatedHostsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("ecsDedicatedHostId0", ids.ApplyT(func(ids ecs.GetDedicatedHostsResult) (*string, error) {

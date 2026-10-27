@@ -50,14 +50,14 @@ import (
 //			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
 //				MonitorGroupName: pulumi.String(name),
 //				ContactGroups: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewGroupMetricRule(ctx, "this", &cms.GroupMetricRuleArgs{
-//				GroupId:             defaultMonitorGroup.ID().ToIDOutput().ToStringOutput(),
+//				GroupId:             defaultMonitorGroup.ID(),
 //				GroupMetricRuleName: pulumi.String(name),
 //				Category:            pulumi.String("ecs"),
 //				MetricName:          pulumi.String("cpu_total"),

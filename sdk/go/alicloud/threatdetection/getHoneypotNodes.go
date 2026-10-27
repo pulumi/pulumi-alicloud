@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := threatdetection.GetHoneypotNodes(ctx, &threatdetection.GetHoneypotNodesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudThreatDetectionHoneypotNode.Id,
 //				},
 //			}, nil)

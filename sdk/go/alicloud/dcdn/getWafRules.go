@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := dcdn.GetWafRules(ctx, &dcdn.GetWafRulesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudDcdnWafRule.Id,
 //				},
 //			}, nil)

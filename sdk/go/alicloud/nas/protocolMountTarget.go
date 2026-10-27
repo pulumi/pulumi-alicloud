@@ -52,7 +52,7 @@ import (
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       example.ID(),
 //				ZoneId:      pulumi.String("cn-beijing-i"),
 //				CidrBlock:   pulumi.String("192.168.3.0/24"),
 //				VswitchName: pulumi.String("nas-examplee1223-vsw2sdw-C"),
@@ -64,22 +64,22 @@ import (
 //				Description:    pulumi.String(name),
 //				StorageType:    pulumi.String("advance_100"),
 //				ZoneId:         pulumi.String("cn-beijing-i"),
-//				VpcId:          example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          example.ID(),
 //				Capacity:       pulumi.Int(3600),
 //				ProtocolType:   pulumi.String("cpfs"),
-//				VswitchId:      exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      exampleSwitch.ID(),
 //				FileSystemType: pulumi.String("cpfs"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleProtocolService, err := nas.NewProtocolService(ctx, "example", &nas.ProtocolServiceArgs{
-//				VpcId:        example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:        example.ID(),
 //				ProtocolType: pulumi.String("NFS"),
 //				ProtocolSpec: pulumi.String("General"),
-//				VswitchId:    exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:    exampleSwitch.ID(),
 //				DryRun:       pulumi.Bool(false),
-//				FileSystemId: exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId: exampleFileSystem.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -87,7 +87,7 @@ import (
 //			exampleFileset, err := nas.NewFileset(ctx, "example", &nas.FilesetArgs{
 //				FileSystemPath: pulumi.String("/examplefileset/"),
 //				Description:    pulumi.String("cpfs-LRS-filesetexample-wyf"),
-//				FileSystemId:   exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:   exampleFileSystem.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,11 +95,11 @@ import (
 //			_, err = nas.NewProtocolMountTarget(ctx, "default", &nas.ProtocolMountTargetArgs{
 //				FsetId:            exampleFileset.FilesetId,
 //				Description:       pulumi.String(name),
-//				VpcId:             example.ID().ToIDOutput().ToStringOutput(),
-//				VswitchId:         exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             example.ID(),
+//				VswitchId:         exampleSwitch.ID(),
 //				AccessGroupName:   pulumi.String("DEFAULT_VPC_GROUP_NAME"),
 //				DryRun:            pulumi.Bool(false),
-//				FileSystemId:      exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:      exampleFileSystem.ID(),
 //				ProtocolServiceId: exampleProtocolService.ProtocolServiceId,
 //			})
 //			if err != nil {

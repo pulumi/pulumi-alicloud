@@ -62,7 +62,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -70,7 +70,7 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				AddressType:      pulumi.String("intranet"),
-//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerName: pulumi.String(name),
 //				LoadBalancerSpec: pulumi.String("slb.s1.small"),
 //				MasterZoneId:     pulumi.String(_default.Zones[0].Id),
@@ -92,10 +92,10 @@ import (
 //				return err
 //			}
 //			_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "default", &eipanycast.AnycastEipAddressAttachmentArgs{
-//				BindInstanceId:       defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				BindInstanceId:       defaultApplicationLoadBalancer.ID(),
 //				BindInstanceType:     pulumi.String("SlbInstance"),
 //				BindInstanceRegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
-//				AnycastId:            defaultAnycastEipAddress.ID().ToIDOutput().ToStringOutput(),
+//				AnycastId:            defaultAnycastEipAddress.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -162,7 +162,7 @@ import (
 //				return err
 //			}
 //			defaultVsw, err := vpc.NewSwitch(ctx, "defaultVsw", &vpc.SwitchArgs{
-//				VpcId:     defaultVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultVpc.ID(),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
@@ -170,7 +170,7 @@ import (
 //				return err
 //			}
 //			defaultuBsECI, err := ecs.NewSecurityGroup(ctx, "defaultuBsECI", &ecs.SecurityGroupArgs{
-//				VpcId: defaultVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultVpc.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -180,12 +180,12 @@ import (
 //				InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				InstanceName: pulumi.String(name),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultuBsECI.ID().ToIDOutput().ToStringOutput(),
+//					defaultuBsECI.ID(),
 //				},
 //				AvailabilityZone:   defaultVsw.ZoneId,
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				VswitchId:          defaultVsw.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:          defaultVsw.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -227,7 +227,7 @@ import (
 //				return err
 //			}
 //			defaultdsVsw2, err := vpc.NewSwitch(ctx, "defaultdsVsw2", &vpc.SwitchArgs{
-//				VpcId:     defaultVpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultVpc2.ID(),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //				ZoneId:    pulumi.String(default2.Zones[1].Id),
 //			})
@@ -235,7 +235,7 @@ import (
 //				return err
 //			}
 //			defaultuBsECI2, err := ecs.NewSecurityGroup(ctx, "defaultuBsECI2", &ecs.SecurityGroupArgs{
-//				VpcId: defaultVpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultVpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -245,12 +245,12 @@ import (
 //				InstanceType: pulumi.String(default2GetInstanceTypes.InstanceTypes[0].Id),
 //				InstanceName: pulumi.String(name),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultuBsECI2.ID().ToIDOutput().ToStringOutput(),
+//					defaultuBsECI2.ID(),
 //				},
 //				AvailabilityZone:   defaultdsVsw2.ZoneId,
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				VswitchId:          defaultdsVsw2.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:          defaultdsVsw2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -259,7 +259,7 @@ import (
 //				BindInstanceId:       default9KDlN7.NetworkInterfaceId,
 //				BindInstanceType:     pulumi.String("NetworkInterface"),
 //				BindInstanceRegionId: pulumi.String("cn-beijing"),
-//				AnycastId:            defaultXkpFRs.ID().ToIDOutput().ToStringOutput(),
+//				AnycastId:            defaultXkpFRs.ID(),
 //				AssociationMode:      pulumi.String("Default"),
 //			})
 //			if err != nil {

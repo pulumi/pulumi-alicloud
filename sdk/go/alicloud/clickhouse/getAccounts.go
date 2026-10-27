@@ -62,7 +62,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Regions[0].ZoneIds[0].ZoneId),
 //			})
 //			if err != nil {
@@ -78,14 +78,14 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:                defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:            defaultSwitch.ID(),
+//				VpcId:                defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAccount, err := clickhouse.NewAccount(ctx, "default", &clickhouse.AccountArgs{
-//				DbClusterId:        defaultDbCluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId:        defaultDbCluster.ID(),
 //				AccountDescription: pulumi.String("your_description"),
 //				AccountName:        pulumi.String(name),
 //				AccountPassword:    pulumi.String(pwd),
@@ -96,9 +96,9 @@ import (
 //			}
 //			defaultGetAccounts := clickhouse.GetAccountsOutput(ctx, clickhouse.GetAccountsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAccount.ID().ToIDOutput().ToStringOutput(),
+//					defaultAccount.ID(),
 //				},
-//				DbClusterId: defaultDbCluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId: defaultDbCluster.ID(),
 //			}, nil)
 //			ctx.Export("accountId", defaultGetAccounts.ApplyT(func(defaultGetAccounts clickhouse.GetAccountsResult) (*string, error) {
 //				return &defaultGetAccounts.Ids[0], nil

@@ -57,7 +57,7 @@ import (
 //				ResourceGroupId:        pulumi.String(_default.Ids[0]),
 //				ServerGroupName:        pulumi.String(name),
 //				ServerGroupType:        pulumi.String("Instance"),
-//				VpcId:                  defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                  defaultNetwork.ID(),
 //				Scheduler:              pulumi.String("Wrr"),
 //				Protocol:               pulumi.String("TCP"),
 //				ConnectionDrainEnabled: pulumi.Bool(true),

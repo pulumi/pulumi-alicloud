@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = tag.NewPolicyAttachment(ctx, "example", &tag.PolicyAttachmentArgs{
-//				PolicyId:   example.ID().ToIDOutput().ToStringOutput(),
+//				PolicyId:   example.ID(),
 //				TargetId:   pulumi.String(_default.Id),
 //				TargetType: pulumi.String("USER"),
 //			})

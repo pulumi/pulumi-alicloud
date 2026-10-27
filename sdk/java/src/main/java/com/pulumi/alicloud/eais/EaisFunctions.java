@@ -26,6 +26,43 @@ public final class EaisFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
@@ -40,6 +77,43 @@ public final class EaisFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -56,6 +130,43 @@ public final class EaisFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
@@ -70,6 +181,43 @@ public final class EaisFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -86,6 +234,43 @@ public final class EaisFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eais/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -101,6 +286,43 @@ public final class EaisFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:eais/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
@@ -115,6 +337,43 @@ public final class EaisFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eais.EaisFunctions;
+     * import com.pulumi.alicloud.eais.inputs.GetInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .id(Arrays.asList("example_id"))
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId1", ids.instances()[0].id());
+     *         final var nameRegex = EaisFunctions.getInstances(GetInstancesArgs.builder()
+     *             .nameRegex("^my-Instance")
+     *             .build());
+     * 
+     *         ctx.export("eaisInstanceId2", nameRegex.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {

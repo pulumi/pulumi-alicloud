@@ -74,14 +74,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleHaVipv2, err := vpc.NewHaVipv2(ctx, "example", &vpc.HaVipv2Args{
-//				VswitchId:   exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:   exampleSwitch.ID(),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -90,21 +90,21 @@ import (
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
 //				Description:       pulumi.String(name),
-//				VpcId:             exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
 //				AvailabilityZone:        pulumi.String(_default.Zones[0].Id),
-//				VswitchId:               exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:               exampleSwitch.ID(),
 //				ImageId:                 pulumi.String(example.Images[0].Id),
 //				InstanceType:            pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					exampleSecurityGroup.ID(),
 //				},
 //				InstanceName:       pulumi.String(name),
 //				UserData:           pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
@@ -114,8 +114,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewHAVipAttachment(ctx, "example", &vpc.HAVipAttachmentArgs{
-//				HaVipId:    exampleHaVipv2.ID().ToIDOutput().ToStringOutput(),
-//				InstanceId: exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//				HaVipId:    exampleHaVipv2.ID(),
+//				InstanceId: exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err

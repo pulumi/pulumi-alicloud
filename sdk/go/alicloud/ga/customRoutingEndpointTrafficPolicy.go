@@ -66,7 +66,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
 //				ZoneId:      pulumi.String(_default.Ids[0]),
 //			})
@@ -92,7 +92,7 @@ import (
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
 //				AcceleratorId:      pulumi.String(defaultGetAccelerators.Accelerators[1].Id),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ import (
 //			}
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
-//				ListenerId:                     defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:                     defaultListener.ID(),
 //				EndpointGroupRegion:            pulumi.String(defaultGetRegions.Regions[0].Id),
 //				CustomRoutingEndpointGroupName: pulumi.String(name),
 //				Description:                    pulumi.String(name),
@@ -121,7 +121,7 @@ import (
 //				return err
 //			}
 //			defaultCustomRoutingEndpointGroupDestination, err := ga.NewCustomRoutingEndpointGroupDestination(ctx, "default", &ga.CustomRoutingEndpointGroupDestinationArgs{
-//				EndpointGroupId: defaultCustomRoutingEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//				EndpointGroupId: defaultCustomRoutingEndpointGroup.ID(),
 //				Protocols: pulumi.StringArray{
 //					pulumi.String("TCP"),
 //				},
@@ -133,7 +133,7 @@ import (
 //			}
 //			defaultCustomRoutingEndpoint, err := ga.NewCustomRoutingEndpoint(ctx, "default", &ga.CustomRoutingEndpointArgs{
 //				EndpointGroupId:         defaultCustomRoutingEndpointGroupDestination.EndpointGroupId,
-//				Endpoint:                defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				Endpoint:                defaultSwitch.ID(),
 //				Type:                    pulumi.String("PrivateSubNet"),
 //				TrafficToEndpointPolicy: pulumi.String("AllowAll"),
 //			})

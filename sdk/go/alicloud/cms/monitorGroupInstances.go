@@ -62,10 +62,10 @@ import (
 //				return err
 //			}
 //			_, err = cms.NewMonitorGroupInstances(ctx, "example", &cms.MonitorGroupInstancesArgs{
-//				GroupId: defaultMonitorGroup.ID().ToIDOutput().ToStringOutput(),
+//				GroupId: defaultMonitorGroup.ID(),
 //				Instances: cms.MonitorGroupInstancesInstanceArray{
 //					&cms.MonitorGroupInstancesInstanceArgs{
-//						InstanceId:   defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//						InstanceId:   defaultNetwork.ID(),
 //						InstanceName: pulumi.String(name),
 //						RegionId:     pulumi.String(_default.Regions[0].Id),
 //						Category:     pulumi.String("vpc"),

@@ -86,7 +86,7 @@ import (
 //				ClientIpPool:    pulumi.String("10.0.0.0/24"),
 //				IpsecServerName: pulumi.String(name),
 //				LocalSubnet:     pulumi.String("192.168.0.0/24"),
-//				VpnGatewayId:    defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				VpnGatewayId:    defaultGateway.ID(),
 //				PskEnabled:      pulumi.Bool(true),
 //			})
 //			if err != nil {

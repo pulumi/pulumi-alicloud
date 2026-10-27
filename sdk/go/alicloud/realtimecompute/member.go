@@ -59,7 +59,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -84,9 +84,9 @@ import (
 //						Bucket: pulumi.String(_default.Buckets[0].Name),
 //					},
 //				},
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					defaultSwitch.ID(),
 //				},
 //				ResourceSpec: &realtimecompute.VvpInstanceResourceSpecArgs{
 //					Cpu:      pulumi.Int(8),
@@ -99,7 +99,7 @@ import (
 //				return err
 //			}
 //			_, err = realtimecompute.NewMember(ctx, "default", &realtimecompute.MemberArgs{
-//				Member: defaultUser.ID().ToIDOutput().ToStringOutput(),
+//				Member: defaultUser.ID(),
 //				Namespace: defaultVvpInstance.VvpInstanceName.ApplyT(func(vvpInstanceName string) (string, error) {
 //					return fmt.Sprintf("%v-default", vvpInstanceName), nil
 //				}).(pulumi.StringOutput),

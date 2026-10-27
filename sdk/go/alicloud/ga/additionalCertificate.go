@@ -70,7 +70,7 @@ import (
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
 //				AcceleratorId:      pulumi.String(_default.Ids[0]),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -168,7 +168,7 @@ import (
 //						Id: std.JoinOutput(ctx, std.JoinOutputArgs{
 //							Separator: pulumi.String("-"),
 //							Input: pulumi.StringArray{
-//								defaultServiceCertificate[1].ID().ToIDOutput().ToStringOutput(),
+//								defaultServiceCertificate[1].ID(),
 //								pulumi.String(region),
 //							},
 //						}, nil).Result(),
@@ -183,13 +183,13 @@ import (
 //				CertificateId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String("-"),
 //					Input: pulumi.StringArray{
-//						defaultServiceCertificate[1].ID().ToIDOutput().ToStringOutput(),
+//						defaultServiceCertificate[1].ID(),
 //						pulumi.String(region),
 //					},
 //				}, nil).Result(),
 //				Domain:        pulumi.String(domain),
 //				AcceleratorId: defaultListener.AcceleratorId,
-//				ListenerId:    defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:    defaultListener.ID(),
 //			})
 //			if err != nil {
 //				return err

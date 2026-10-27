@@ -83,8 +83,8 @@ import (
 //				return err
 //			}
 //			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "default", &resourcemanager.ControlPolicyAttachmentArgs{
-//				PolicyId: defaultControlPolicy.ID().ToIDOutput().ToStringOutput(),
-//				TargetId: defaultFolder.ID().ToIDOutput().ToStringOutput(),
+//				PolicyId: defaultControlPolicy.ID(),
+//				TargetId: defaultFolder.ID(),
 //			})
 //			if err != nil {
 //				return err

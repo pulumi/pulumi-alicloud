@@ -83,8 +83,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      defaultAccelerator.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -122,15 +122,15 @@ import (
 //					},
 //				},
 //				EndpointGroupRegion: pulumi.String(region),
-//				ListenerId:          defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:          defaultListener.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ga.NewAccessLog(ctx, "default", &ga.AccessLogArgs{
-//				AcceleratorId:   defaultAccelerator.ID().ToIDOutput().ToStringOutput(),
-//				ListenerId:      defaultListener.ID().ToIDOutput().ToStringOutput(),
-//				EndpointGroupId: defaultEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:   defaultAccelerator.ID(),
+//				ListenerId:      defaultListener.ID(),
+//				EndpointGroupId: defaultEndpointGroup.ID(),
 //				SlsProjectName:  defaultProject.Name,
 //				SlsLogStoreName: defaultStore.Name,
 //				SlsRegionId:     pulumi.String(region),

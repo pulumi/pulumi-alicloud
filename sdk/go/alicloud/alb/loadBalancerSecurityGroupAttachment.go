@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			createVsw1, err := vpc.NewSwitch(ctx, "create_vsw_1", &vpc.SwitchArgs{
-//				VpcId:       createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       createVpc.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			createVsw2, err := vpc.NewSwitch(ctx, "create_vsw_2", &vpc.SwitchArgs{
-//				VpcId:       createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       createVpc.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[1].Id),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -78,7 +78,7 @@ import (
 //			}
 //			createSecurityGroup, err := ecs.NewSecurityGroup(ctx, "create_security_group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: createVpc.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,7 @@ import (
 //			createAlb, err := alb.NewLoadBalancer(ctx, "create_alb", &alb.LoadBalancerArgs{
 //				LoadBalancerName:    pulumi.String(name),
 //				LoadBalancerEdition: pulumi.String("Standard"),
-//				VpcId:               createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:               createVpc.ID(),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
 //					PayType: pulumi.String("PayAsYouGo"),
 //				},
@@ -94,11 +94,11 @@ import (
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: createVsw2.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: createVsw2.ID(),
 //						ZoneId:    createVsw2.ZoneId,
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: createVsw1.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: createVsw1.ID(),
 //						ZoneId:    createVsw1.ZoneId,
 //					},
 //				},
@@ -107,8 +107,8 @@ import (
 //				return err
 //			}
 //			_, err = alb.NewLoadBalancerSecurityGroupAttachment(ctx, "default", &alb.LoadBalancerSecurityGroupAttachmentArgs{
-//				SecurityGroupId: createSecurityGroup.ID().ToIDOutput().ToStringOutput(),
-//				LoadBalancerId:  createAlb.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: createSecurityGroup.ID(),
+//				LoadBalancerId:  createAlb.ID(),
 //			})
 //			if err != nil {
 //				return err

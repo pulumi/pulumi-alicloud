@@ -40,10 +40,10 @@ import (
 //				return err
 //			}
 //			ids, err := hbr.GetEcsBackupClients(ctx, &hbr.GetEcsBackupClientsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudHbrEcsBackupClient.Id,
 //				},
-//				InstanceIds: pulumi.StringArray{
+//				InstanceIds: []string{
 //					defaultAlicloudHbrEcsBackupClient.InstanceId,
 //				},
 //			}, nil)

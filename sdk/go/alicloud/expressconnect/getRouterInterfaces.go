@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := expressconnect.GetRouterInterfaces(ctx, &expressconnect.GetRouterInterfacesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudRouterInterface.Id,
 //				},
 //				NameRegex: pulumi.StringRef(defaultAlicloudRouterInterface.Name),

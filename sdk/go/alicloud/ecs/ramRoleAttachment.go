@@ -104,7 +104,7 @@ import (
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
@@ -112,7 +112,7 @@ import (
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -130,15 +130,15 @@ import (
 // AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // InstanceName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = ecs.NewRamRoleAttachment(ctx, "default", &ecs.RamRoleAttachmentArgs{
-// RamRoleName: defaultRole.ID().ToIDOutput().ToStringOutput(),
-// InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// RamRoleName: defaultRole.ID(),
+// InstanceId: defaultInstance.ID(),
 // })
 // if err != nil {
 // return err

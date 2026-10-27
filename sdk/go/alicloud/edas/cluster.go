@@ -58,7 +58,7 @@ import (
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
 //				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
-//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err

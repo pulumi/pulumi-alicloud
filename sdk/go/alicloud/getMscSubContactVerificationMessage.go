@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_ = alicloud.GetMscSubContactVerificationMessageOutput(ctx, alicloud.GetMscSubContactVerificationMessageOutputArgs{
-//				ContactId: defaultMscSubContract.ID().ToIDOutput().ToStringOutput(),
+//				ContactId: defaultMscSubContract.ID(),
 //				Type:      pulumi.Int(1),
 //			}, nil)
 //			return nil

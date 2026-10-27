@@ -65,14 +65,14 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "default", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         _default.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:         _default.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
-//				CenId:            _default.ID().ToIDOutput().ToStringOutput(),
+//				CenId:            _default.ID(),
 //				SupportMulticast: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ import (
 //				return err
 //			}
 //			defaultTransitRouterPeerAttachment, err := cen.NewTransitRouterPeerAttachment(ctx, "default", &cen.TransitRouterPeerAttachmentArgs{
-//				CenId:                              _default.ID().ToIDOutput().ToStringOutput(),
+//				CenId:                              _default.ID(),
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
 //				PeerTransitRouterRegionId:          pulumi.String(peerRegion),
 //				PeerTransitRouterId:                peer.TransitRouterId,
@@ -109,7 +109,7 @@ import (
 //			}
 //			_, err = cen.NewInterRegionTrafficQosQueue(ctx, "default", &cen.InterRegionTrafficQosQueueArgs{
 //				RemainBandwidthPercent: pulumi.Int(20),
-//				TrafficQosPolicyId:     defaultInterRegionTrafficQosPolicy.ID().ToIDOutput().ToStringOutput(),
+//				TrafficQosPolicyId:     defaultInterRegionTrafficQosPolicy.ID(),
 //				Dscps: pulumi.IntArray{
 //					pulumi.Int(1),
 //					pulumi.Int(2),

@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultNetwork.ID(),
 //				ZoneId:    pulumi.String(zoneId),
 //				CidrBlock: pulumi.String(cidrBlock),
 //			})
@@ -62,9 +62,9 @@ import (
 //			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
 //				EngineVersion:     pulumi.String("5.0"),
 //				StorageType:       pulumi.String("cloud_essd1"),
-//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:         defaultSwitch.ID(),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
@@ -77,7 +77,7 @@ import (
 //			}
 //			defaultBackup, err := mongodb.NewBackup(ctx, "default", &mongodb.BackupArgs{
 //				BackupMethod:          pulumi.String("Snapshot"),
-//				DbInstanceId:          defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:          defaultInstance.ID(),
 //				BackupRetentionPeriod: pulumi.Int(7),
 //			})
 //			if err != nil {
@@ -85,9 +85,9 @@ import (
 //			}
 //			_default := mongodb.GetBackupsOutput(ctx, mongodb.GetBackupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultBackup.ID().ToIDOutput().ToStringOutput(),
+//					defaultBackup.ID(),
 //				},
-//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId: defaultInstance.ID(),
 //			}, nil)
 //			ctx.Export("alicloudMongodbBackupExampleId", _default.ApplyT(func(_default mongodb.GetBackupsResult) (*string, error) {
 //				return _default.Backups[0].Id, nil

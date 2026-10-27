@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			fooNatGateway, err := vpc.NewNatGateway(ctx, "foo", &vpc.NatGatewayArgs{
-//				VpcId:          fooNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          fooNetwork.ID(),
 //				Specification:  pulumi.String("Small"),
 //				NatGatewayName: pulumi.String(name),
 //			})
@@ -58,10 +58,10 @@ import (
 //				return err
 //			}
 //			_ = vpc.GetNatGatewaysOutput(ctx, vpc.GetNatGatewaysOutputArgs{
-//				VpcId:     fooNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     fooNetwork.ID(),
 //				NameRegex: fooNatGateway.Name,
 //				Ids: pulumi.StringArray{
-//					fooNatGateway.ID().ToIDOutput().ToStringOutput(),
+//					fooNatGateway.ID(),
 //				},
 //			}, nil)
 //			return nil

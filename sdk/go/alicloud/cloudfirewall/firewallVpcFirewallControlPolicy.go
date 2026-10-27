@@ -78,7 +78,7 @@ import (
 //				Proto:           pulumi.String("TCP"),
 //				Release:         pulumi.String("true"),
 //				MemberUid:       pulumi.String(_default.Id),
-//				VpcFirewallId:   defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				VpcFirewallId:   defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err

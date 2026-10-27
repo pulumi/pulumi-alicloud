@@ -143,15 +143,15 @@ import (
 //				Remark:                pulumi.String("terraform-example-remark"),
 //				HealthTasks: alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArray{
 //					&alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArgs{
-//						TemplateId: ping.ID().ToIDOutput().ToStringOutput(),
+//						TemplateId: ping.ID(),
 //					},
 //					&alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArgs{
 //						Port:       pulumi.Int(53),
-//						TemplateId: tcp.ID().ToIDOutput().ToStringOutput(),
+//						TemplateId: tcp.ID(),
 //					},
 //					&alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArgs{
 //						Port:       pulumi.Int(443),
-//						TemplateId: https.ID().ToIDOutput().ToStringOutput(),
+//						TemplateId: https.ID(),
 //					},
 //				},
 //			})

@@ -16,6 +16,20 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eais.getInstances({
+ *     id: ["example_id"],
+ * });
+ * export const eaisInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * const nameRegex = alicloud.eais.getInstances({
+ *     nameRegex: "^my-Instance",
+ * });
+ * export const eaisInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
+ * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -81,6 +95,20 @@ export interface GetInstancesResult {
  * ## Example Usage
  *
  * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eais.getInstances({
+ *     id: ["example_id"],
+ * });
+ * export const eaisInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
+ * const nameRegex = alicloud.eais.getInstances({
+ *     nameRegex: "^my-Instance",
+ * });
+ * export const eaisInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
+ * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};

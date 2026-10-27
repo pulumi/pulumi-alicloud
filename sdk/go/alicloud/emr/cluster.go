@@ -97,7 +97,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -127,7 +127,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -180,50 +180,50 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp8 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp8 = pulumi.String("160")
 //			}
 //			var tmp9 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp9 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp9 = pulumi.String("160")
 //			}
 //			var tmp10 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp10 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp10 = pulumi.String("160")
 //			}
 //			var tmp11 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp11 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp11 = pulumi.String("160")
 //			}
 //			var tmp12 pulumi.String
 //			if securityGroupId == "" {
-//				tmp12 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
+//				tmp12 = defaultSecurityGroup[0].ID()
 //			} else {
 //				tmp12 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp13 pulumi.String
 //			if vswitchId == "" {
-//				tmp13 = vswitch[0].ID().ToIDOutput().ToStringOutput()
+//				tmp13 = vswitch[0].ID()
 //			} else {
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
@@ -370,7 +370,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -400,7 +400,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -453,50 +453,50 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp8 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp8 = pulumi.String("160")
 //			}
 //			var tmp9 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp9 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp9 = pulumi.String("160")
 //			}
 //			var tmp10 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp10 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp10 = pulumi.String("160")
 //			}
 //			var tmp11 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp11 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp11 = pulumi.String("160")
 //			}
 //			var tmp12 pulumi.String
 //			if securityGroupId == "" {
-//				tmp12 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
+//				tmp12 = defaultSecurityGroup[0].ID()
 //			} else {
 //				tmp12 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp13 pulumi.String
 //			if vswitchId == "" {
-//				tmp13 = vswitch[0].ID().ToIDOutput().ToStringOutput()
+//				tmp13 = vswitch[0].ID()
 //			} else {
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
@@ -641,7 +641,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -671,7 +671,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -724,50 +724,50 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp8 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp8 = pulumi.String("160")
 //			}
 //			var tmp9 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp9 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp9 = pulumi.String("160")
 //			}
 //			var tmp10 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp10 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp10 = pulumi.String("160")
 //			}
 //			var tmp11 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp11 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp11 = pulumi.String("160")
 //			}
 //			var tmp12 pulumi.String
 //			if securityGroupId == "" {
-//				tmp12 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
+//				tmp12 = defaultSecurityGroup[0].ID()
 //			} else {
 //				tmp12 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp13 pulumi.String
 //			if vswitchId == "" {
-//				tmp13 = vswitch[0].ID().ToIDOutput().ToStringOutput()
+//				tmp13 = vswitch[0].ID()
 //			} else {
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
@@ -904,7 +904,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp1 = vpc2[0].ID()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -934,7 +934,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
+//				tmp4 = vpc2[0].ID()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -987,26 +987,26 @@ import (
 //				return err
 //			}
 //			var tmp6 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp6 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp6 = pulumi.String("160")
 //			}
 //			var tmp7 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp7 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp7 = pulumi.String("160")
 //			}
 //			var tmp8 pulumi.String
 //			if securityGroupId == "" {
-//				tmp8 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
+//				tmp8 = defaultSecurityGroup[0].ID()
 //			} else {
 //				tmp8 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp9 pulumi.String
 //			if vswitchId == "" {
-//				tmp9 = vswitch[0].ID().ToIDOutput().ToStringOutput()
+//				tmp9 = vswitch[0].ID()
 //			} else {
 //				tmp9 = pulumi.Any(vswitchId)
 //			}

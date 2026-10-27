@@ -72,7 +72,7 @@ import (
 //			ids := cdn.GetDomainConfigsOutput(ctx, cdn.GetDomainConfigsOutputArgs{
 //				DomainName: defaultDomainConfig.DomainName,
 //				Ids: pulumi.StringArray{
-//					defaultDomainConfig.ID().ToIDOutput().ToStringOutput(),
+//					defaultDomainConfig.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("cdnDomainConfigsId0", ids.ApplyT(func(ids cdn.GetDomainConfigsResult) (*string, error) {

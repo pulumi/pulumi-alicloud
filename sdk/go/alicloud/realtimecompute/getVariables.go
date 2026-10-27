@@ -56,7 +56,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -81,9 +81,9 @@ import (
 //						Bucket: pulumi.String(_default.Buckets[0].Name),
 //					},
 //				},
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					defaultSwitch.ID(),
 //				},
 //				ResourceSpec: &realtimecompute.VvpInstanceResourceSpecArgs{
 //					Cpu:      pulumi.Int(8),
@@ -110,7 +110,7 @@ import (
 //			}
 //			ids := realtimecompute.GetVariablesOutput(ctx, realtimecompute.GetVariablesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultVariable.ID().ToIDOutput().ToStringOutput(),
+//					defaultVariable.ID(),
 //				},
 //				Workspace: defaultVariable.Workspace,
 //				Namespace: defaultVariable.Namespace,

@@ -50,13 +50,13 @@ import (
 //			}
 //			_, err = oss.NewBucketVersioning(ctx, "defaultosxikW", &oss.BucketVersioningArgs{
 //				Status: pulumi.String("Enabled"),
-//				Bucket: defaultQf8G0L.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: defaultQf8G0L.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucketObjectWormConfiguration(ctx, "default", &oss.BucketObjectWormConfigurationArgs{
-//				BucketName:        defaultQf8G0L.ID().ToIDOutput().ToStringOutput(),
+//				BucketName:        defaultQf8G0L.ID(),
 //				ObjectWormEnabled: pulumi.String("Enabled"),
 //				Rule: &oss.BucketObjectWormConfigurationRuleArgs{
 //					DefaultRetention: &oss.BucketObjectWormConfigurationRuleDefaultRetentionArgs{

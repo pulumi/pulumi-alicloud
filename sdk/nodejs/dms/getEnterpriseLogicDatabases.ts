@@ -14,6 +14,20 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dmsEnterpriseInstancesDs = alicloud.dms.getEnterpriseInstances({
+ *     instanceType: "mysql",
+ *     searchKey: "tf-test-no-deleting",
+ * });
+ * const _default = alicloud.dms.getEnterpriseLogicDatabases({
+ *     instanceId: dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId),
+ * });
+ * export const alicloudDmsEnterpriseLogicDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
+ * ```
  */
 export function getEnterpriseLogicDatabases(args?: GetEnterpriseLogicDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseLogicDatabasesResult> {
     args = args || {};
@@ -64,6 +78,20 @@ export interface GetEnterpriseLogicDatabasesResult {
  * ## Example Usage
  *
  * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dmsEnterpriseInstancesDs = alicloud.dms.getEnterpriseInstances({
+ *     instanceType: "mysql",
+ *     searchKey: "tf-test-no-deleting",
+ * });
+ * const _default = alicloud.dms.getEnterpriseLogicDatabases({
+ *     instanceId: dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId),
+ * });
+ * export const alicloudDmsEnterpriseLogicDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
+ * ```
  */
 export function getEnterpriseLogicDatabasesOutput(args?: GetEnterpriseLogicDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseLogicDatabasesResult> {
     args = args || {};

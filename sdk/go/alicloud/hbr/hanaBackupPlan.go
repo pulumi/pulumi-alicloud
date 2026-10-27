@@ -66,7 +66,7 @@ import (
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),
 //				ValidateCertificate: pulumi.Bool(false),
-//				VaultId:             exampleVault.ID().ToIDOutput().ToStringOutput(),
+//				VaultId:             exampleVault.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -75,7 +75,7 @@ import (
 //			}
 //			ids := arms.GetEnvironmentsOutput(ctx, arms.GetEnvironmentsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultEnvironment.ID().ToIDOutput().ToStringOutput(),
+//					defaultEnvironment.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvironmentsId0", ids.ApplyT(func(ids arms.GetEnvironmentsResult) (*string, error) {

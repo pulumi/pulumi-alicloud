@@ -128,6 +128,14 @@ def get_images(ids: Optional[Sequence[_builtins.str]] = None,
 
     Basic Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_image_type = alicloud.simpleapplicationserver.get_images(instance_image_type="system")
+    pulumi.export("simpleApplicationServerImageId1", ids["images"][0]["id"])
+    ```
+
     The following arguments are supported:
 
     * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -168,6 +176,14 @@ def get_images_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     ## Example Usage
 
     Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_image_type = alicloud.simpleapplicationserver.get_images(instance_image_type="system")
+    pulumi.export("simpleApplicationServerImageId1", ids["images"][0]["id"])
+    ```
 
     The following arguments are supported:
 

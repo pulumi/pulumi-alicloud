@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("10.0.0.0/20"),
 //				VswitchName: pulumi.Sprintf("%v1", name),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
@@ -65,7 +65,7 @@ import (
 //			}
 //			_, err = vpc.NewVswitchCidrReservation(ctx, "default", &vpc.VswitchCidrReservationArgs{
 //				IpVersion:                  pulumi.String("IPv4"),
-//				VswitchId:                  defaultVSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:                  defaultVSwitch.ID(),
 //				CidrReservationDescription: pulumi.String(name),
 //				CidrReservationCidr:        pulumi.String("10.0.10.0/24"),
 //				VswitchCidrReservationName: pulumi.String(name),

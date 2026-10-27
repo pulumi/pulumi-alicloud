@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultGetServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
-//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultInstance.ID(),
 //			}, nil)
 //			defaultSnapshot, err := simpleapplicationserver.NewSnapshot(ctx, "default", &simpleapplicationserver.SnapshotArgs{
 //				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
@@ -73,8 +73,8 @@ import (
 //			}
 //			_, err = simpleapplicationserver.NewCustomImage(ctx, "default", &simpleapplicationserver.CustomImageArgs{
 //				CustomImageName:  pulumi.String(name),
-//				InstanceId:       defaultInstance.ID().ToIDOutput().ToStringOutput(),
-//				SystemSnapshotId: defaultSnapshot.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:       defaultInstance.ID(),
+//				SystemSnapshotId: defaultSnapshot.ID(),
 //				Status:           pulumi.String("Share"),
 //				Description:      pulumi.String(name),
 //			})

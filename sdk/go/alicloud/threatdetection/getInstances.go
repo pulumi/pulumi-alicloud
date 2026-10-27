@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := threatdetection.GetInstances(ctx, &threatdetection.GetInstancesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudThreatDetectionInstance.Id,
 //				},
 //			}, nil)

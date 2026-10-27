@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "default", &actiontrail.HistoryDeliveryJobArgs{
-//				TrailName: defaultTrail.ID().ToIDOutput().ToStringOutput(),
+//				TrailName: defaultTrail.ID(),
 //			})
 //			if err != nil {
 //				return err

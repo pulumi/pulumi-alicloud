@@ -39,7 +39,18 @@ namespace Pulumi.AliCloud.CS
         ///     var auth = Std.Toset.Invoke(new()
         ///     {
         ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
-        ///     }).Apply(invoke =&gt; );
+        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __key = item.Key;
+        ///         return AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///         {
+        ///             ClusterId = __key.ToString(System.Globalization.CultureInfo.InvariantCulture),
+        ///             TemporaryDurationMinutes = 60,
+        ///             OutputFile = "my-auth-json",
+        ///         });
+        ///     }));
         /// 
         /// });
         /// ```
@@ -75,7 +86,18 @@ namespace Pulumi.AliCloud.CS
         ///     var auth = Std.Toset.Invoke(new()
         ///     {
         ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
-        ///     }).Apply(invoke =&gt; );
+        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __key = item.Key;
+        ///         return AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///         {
+        ///             ClusterId = __key.ToString(System.Globalization.CultureInfo.InvariantCulture),
+        ///             TemporaryDurationMinutes = 60,
+        ///             OutputFile = "my-auth-json",
+        ///         });
+        ///     }));
         /// 
         /// });
         /// ```
@@ -111,7 +133,18 @@ namespace Pulumi.AliCloud.CS
         ///     var auth = Std.Toset.Invoke(new()
         ///     {
         ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
-        ///     }).Apply(invoke =&gt; );
+        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __key = item.Key;
+        ///         return AliCloud.CS.GetClusterCredential.Invoke(new()
+        ///         {
+        ///             ClusterId = __key.ToString(System.Globalization.CultureInfo.InvariantCulture),
+        ///             TemporaryDurationMinutes = 60,
+        ///             OutputFile = "my-auth-json",
+        ///         });
+        ///     }));
         /// 
         /// });
         /// ```

@@ -42,6 +42,38 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * The following arguments are supported:
      * 
      * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -62,6 +94,38 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * The following arguments are supported:
      * 
@@ -84,6 +148,38 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * The following arguments are supported:
      * 
      * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -104,6 +200,38 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * The following arguments are supported:
      * 
@@ -126,6 +254,38 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * The following arguments are supported:
      * 
      * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -147,6 +307,38 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * The following arguments are supported:
      * 
      * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -167,6 +359,38 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType("system")
+     *             .build());
+     * 
+     *         ctx.export("simpleApplicationServerImageId1", ids.get("images")[0].get("id"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * The following arguments are supported:
      * 

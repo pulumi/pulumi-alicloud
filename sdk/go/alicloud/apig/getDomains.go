@@ -45,7 +45,7 @@ import (
 //			}
 //			_default := apig.GetDomainsOutput(ctx, apig.GetDomainsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDomain.ID().ToIDOutput().ToStringOutput(),
+//					defaultDomain.ID(),
 //				},
 //				NameRegex:       defaultDomain.DomainName,
 //				ResourceGroupId: pulumi.String(""),

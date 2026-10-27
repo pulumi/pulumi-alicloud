@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
-//				VpcId:       foo.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       foo.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
-//				VpcId:          foo.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          foo.ID(),
 //				RouteTableName: pulumi.String(name),
 //				Description:    pulumi.String("route_table_attachment"),
 //			})
@@ -72,8 +72,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewRouteTableAttachment(ctx, "foo", &vpc.RouteTableAttachmentArgs{
-//				VswitchId:    fooSwitch.ID().ToIDOutput().ToStringOutput(),
-//				RouteTableId: fooRouteTable.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:    fooSwitch.ID(),
+//				RouteTableId: fooRouteTable.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -128,6 +128,16 @@ def get_policies(ids: Optional[Sequence[_builtins.str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_policies(name_regex="tftest",
+        description_regex="tftest_policy",
+        policy_type="Custom")
+    pulumi.export("firstPolicyId", example.policies[0].id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of Resource Manager Policy IDs.
     :param _builtins.str name_regex: A regex string to filter results by policy name.
@@ -161,6 +171,16 @@ def get_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     > **NOTE:**  Available in 1.86.0+.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_policies(name_regex="tftest",
+        description_regex="tftest_policy",
+        policy_type="Custom")
+    pulumi.export("firstPolicyId", example.policies[0].id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of Resource Manager Policy IDs.

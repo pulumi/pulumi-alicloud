@@ -62,8 +62,8 @@ import (
 //				return err
 //			}
 //			defaultRouterVpcAssociation, err := expressconnect.NewRouterVpcAssociation(ctx, "default", &expressconnect.RouterVpcAssociationArgs{
-//				EcrId:               defaultRouterExpressConnectRouter.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:               defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				EcrId:               defaultRouterExpressConnectRouter.ID(),
+//				VpcId:               defaultNetwork.ID(),
 //				AssociationRegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
 //				VpcOwnerId:          pulumi.String(_default.Id),
 //				AllowedPrefixes: pulumi.StringArray{
@@ -77,7 +77,7 @@ import (
 //			}
 //			ids := expressconnect.GetRouterVpcAssociationsOutput(ctx, expressconnect.GetRouterVpcAssociationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultRouterVpcAssociation.ID().ToIDOutput().ToStringOutput(),
+//					defaultRouterVpcAssociation.ID(),
 //				},
 //				EcrId: defaultRouterVpcAssociation.EcrId,
 //			}, nil)

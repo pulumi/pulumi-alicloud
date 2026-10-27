@@ -51,7 +51,7 @@ import (
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("1/65535"),
 //				Priority:        pulumi.Int(1),
-//				SecurityGroupId: _default.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: _default.ID(),
 //				CidrIp:          pulumi.String("0.0.0.0/0"),
 //			})
 //			if err != nil {

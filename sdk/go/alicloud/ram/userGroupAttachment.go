@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewUserGroupAttachment(ctx, "default", &ram.UserGroupAttachmentArgs{
-//				GroupName: defaultGroup.ID().ToIDOutput().ToStringOutput(),
+//				GroupName: defaultGroup.ID(),
 //				UserName:  defaultUser.Name,
 //			})
 //			if err != nil {

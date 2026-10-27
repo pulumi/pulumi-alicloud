@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			vswitch1, err := vpc.NewSwitch(ctx, "vswitch_1", &vpc.SwitchArgs{
-//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       vpc2.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //				VswitchName: pulumi.Sprintf("%v_1", name),
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			vswitch2, err := vpc.NewSwitch(ctx, "vswitch_2", &vpc.SwitchArgs{
-//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       vpc2.ID(),
 //				CidrBlock:   pulumi.String("172.17.0.0/16"),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
 //				VswitchName: pulumi.Sprintf("%v_2", name),
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			securityGroup, err := ecs.NewSecurityGroup(ctx, "security_group", &ecs.SecurityGroupArgs{
-//				VpcId:             vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             vpc2.ID(),
 //				SecurityGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -115,20 +115,20 @@ import (
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				InstanceType: pulumi.String("vpc_connect"),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
-//				UserVpcId:    vpc2.ID().ToIDOutput().ToStringOutput(),
+//				UserVpcId:    vpc2.ID(),
 //				InstanceCidr: pulumi.String("192.168.0.0/16"),
 //				ZoneVswitchSecurityGroups: apigateway.InstanceZoneVswitchSecurityGroupArray{
 //					&apigateway.InstanceZoneVswitchSecurityGroupArgs{
 //						ZoneId:        vswitch1.ZoneId,
-//						VswitchId:     vswitch1.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId:     vswitch1.ID(),
 //						CidrBlock:     vswitch1.CidrBlock,
-//						SecurityGroup: securityGroup.ID().ToIDOutput().ToStringOutput(),
+//						SecurityGroup: securityGroup.ID(),
 //					},
 //					&apigateway.InstanceZoneVswitchSecurityGroupArgs{
 //						ZoneId:        vswitch2.ZoneId,
-//						VswitchId:     vswitch2.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId:     vswitch2.ID(),
 //						CidrBlock:     vswitch2.CidrBlock,
-//						SecurityGroup: securityGroup.ID().ToIDOutput().ToStringOutput(),
+//						SecurityGroup: securityGroup.ID(),
 //					},
 //				},
 //			})

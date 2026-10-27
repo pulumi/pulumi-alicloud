@@ -52,7 +52,7 @@ import (
 //			}
 //			ids := cloudfirewall.GetAddressBooksOutput(ctx, cloudfirewall.GetAddressBooksOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("cloudFirewallAddressBookId1", ids.ApplyT(func(ids cloudfirewall.GetAddressBooksResult) (*string, error) {

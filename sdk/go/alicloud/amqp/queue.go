@@ -64,14 +64,14 @@ import (
 //				return err
 //			}
 //			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
-//				InstanceId:      defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:      defaultInstance.ID(),
 //				VirtualHostName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = amqp.NewQueue(ctx, "default", &amqp.QueueArgs{
-//				InstanceId:      defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:      defaultInstance.ID(),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //				QueueName:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})

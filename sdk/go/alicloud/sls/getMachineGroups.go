@@ -64,7 +64,7 @@ import (
 //			}
 //			_default := sls.GetMachineGroupsOutput(ctx, sls.GetMachineGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultMachineGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultMachineGroup.ID(),
 //				},
 //				GroupName:   pulumi.String("group1"),
 //				ProjectName: pulumi.String(projectName),

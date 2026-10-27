@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     ///     }
     ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length() &gt; 0 ? defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]) : defaultNetwork[0].Id,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length &gt; 0 ? defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]) : defaultNetwork[0].Id,
     ///     });
     /// 
     ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();

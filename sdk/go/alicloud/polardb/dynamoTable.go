@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
 //				VswitchName: pulumi.String(name),
@@ -80,18 +80,18 @@ import (
 //				DbVersion:      pulumi.String("16"),
 //				DbNodeClass:    pulumi.String("polar.pg.x4.medium"),
 //				PayType:        pulumi.String("PostPaid"),
-//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      defaultSwitch.ID(),
 //				Description:    pulumi.String(name),
 //				EnableDynamodb: pulumi.Bool(true),
 //				GlobalSecurityGroupLists: pulumi.StringArray{
-//					defaultGlobalSecurityIpGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultGlobalSecurityIpGroup.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			dynamo, err := polardb.NewAccount(ctx, "dynamo", &polardb.AccountArgs{
-//				DbClusterId:     defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId:     defaultCluster.ID(),
 //				AccountName:     pulumi.String("tf_dynamo_acc"),
 //				AccountPassword: pulumi.String("Example1234!"),
 //				AccountType:     pulumi.String("DynamoDB"),
@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			dynamoPublic, err := polardb.NewEndpointAddress(ctx, "dynamo_public", &polardb.EndpointAddressArgs{
-//				DbClusterId:  defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId:  defaultCluster.ID(),
 //				DbEndpointId: dynamoEndpoint.DbEndpointId,
 //				NetType:      pulumi.String("Public"),
 //			})
@@ -119,7 +119,7 @@ import (
 //				Endpoint: dynamoPublic.ConnectionString.ApplyT(func(connectionString string) (string, error) {
 //					return fmt.Sprintf("http://%v:5432", connectionString), nil
 //				}).(pulumi.StringOutput),
-//				DbClusterId: defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				DbClusterId: defaultCluster.ID(),
 //				AccountName: dynamo.AccountName,
 //				AccountAuth: dynamo.DynamodbAuthPassword,
 //				TableName:   pulumi.String(name),

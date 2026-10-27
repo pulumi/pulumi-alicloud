@@ -74,7 +74,7 @@ import (
 //						Name:    pulumi.String("origin1"),
 //					},
 //				},
-//				SiteId:         resourceSiteOriginPool.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:         resourceSiteOriginPool.ID(),
 //				OriginPoolName: pulumi.String("originpool1"),
 //				Enabled:        pulumi.Bool(true),
 //			})
@@ -84,7 +84,7 @@ import (
 //			_, err = esa.NewLoadBalancer(ctx, "default", &esa.LoadBalancerArgs{
 //				LoadBalancerName: pulumi.String("lb.exampleloadbalancer.top"),
 //				FallbackPool:     resourceOriginPoolLoadBalancer11.OriginPoolId,
-//				SiteId:           resourceSiteOriginPool.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:           resourceSiteOriginPool.ID(),
 //				Description:      pulumi.String(name),
 //				DefaultPools: pulumi.StringArray{
 //					resourceOriginPoolLoadBalancer11.OriginPoolId,

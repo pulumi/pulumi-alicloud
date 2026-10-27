@@ -89,16 +89,16 @@ import (
 //				return err
 //			}
 //			barRouterInterfaceConnection, err := vpc.NewRouterInterfaceConnection(ctx, "bar", &vpc.RouterInterfaceConnectionArgs{
-//				InterfaceId:         opposite.ID().ToIDOutput().ToStringOutput(),
-//				OppositeInterfaceId: initiate.ID().ToIDOutput().ToStringOutput(),
+//				InterfaceId:         opposite.ID(),
+//				OppositeInterfaceId: initiate.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
 //			_, err = vpc.NewRouterInterfaceConnection(ctx, "foo", &vpc.RouterInterfaceConnectionArgs{
-//				InterfaceId:         initiate.ID().ToIDOutput().ToStringOutput(),
-//				OppositeInterfaceId: opposite.ID().ToIDOutput().ToStringOutput(),
+//				InterfaceId:         initiate.ID(),
+//				OppositeInterfaceId: opposite.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				barRouterInterfaceConnection,
 //			}))

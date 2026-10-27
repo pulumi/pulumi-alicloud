@@ -57,7 +57,7 @@ import (
 //			}
 //			defaultIpamPoolCidr, err := vpc.NewIpamIpamPoolCidr(ctx, "defaultIpamPoolCidr", &vpc.IpamIpamPoolCidrArgs{
 //				Cidr:       pulumi.String("10.0.0.0/8"),
-//				IpamPoolId: defaultIpamPool.ID().ToIDOutput().ToStringOutput(),
+//				IpamPoolId: defaultIpamPool.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +73,7 @@ import (
 //			}
 //			defaultGetIpamIpamPoolAllocations := vpc.GetIpamIpamPoolAllocationsOutput(ctx, vpc.GetIpamIpamPoolAllocationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultIpamIpamPoolAllocation.ID().ToIDOutput().ToStringOutput(),
+//					defaultIpamIpamPoolAllocation.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.ApplyT(func(defaultGetIpamIpamPoolAllocations vpc.GetIpamIpamPoolAllocationsResult) (*string, error) {

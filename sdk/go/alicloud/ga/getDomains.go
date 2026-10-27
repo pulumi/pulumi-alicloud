@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			var tmp0 pulumi.Int
-//			if len(_default.Accelerators) > 0 {
+//			if bool(len(_default.Accelerators) > 0) {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
@@ -58,7 +58,7 @@ import (
 //			}
 //			_ = defaultAccelerator[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
 //				var tmp1 pulumi.String
-//				if len(_default.Accelerators) > 0 {
+//				if bool(len(_default.Accelerators) > 0) {
 //					tmp1 = _default.Accelerators[0].Id
 //				} else {
 //					tmp1 = id

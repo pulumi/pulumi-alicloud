@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = cr.NewInstanceCustomizedDomain(ctx, "default", &cr.InstanceCustomizedDomainArgs{
-//				InstanceId:   defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   defaultRegistryEnterpriseInstance.ID(),
 //				ModuleName:   pulumi.String("Registry"),
 //				Domain:       pulumi.String("alicloud-provider.cn"),
 //				CertId:       pulumi.String(_default.Certificates[0].Id),

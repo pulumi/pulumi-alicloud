@@ -79,8 +79,8 @@ import (
 //				return err
 //			}
 //			exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "example", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      example.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: exampleBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      example.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			virtual, err := ga.NewEndpointGroup(ctx, "virtual", &ga.EndpointGroupArgs{
-//				AcceleratorId: example.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId: example.ID(),
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
 //						Endpoint:                   exampleEipAddress.IpAddress,
@@ -120,7 +120,7 @@ import (
 //					},
 //				},
 //				EndpointGroupRegion:        pulumi.String(_default.Regions[0].Id),
-//				ListenerId:                 exampleListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:                 exampleListener.ID(),
 //				Description:                pulumi.String(name),
 //				EndpointGroupType:          pulumi.String("virtual"),
 //				EndpointRequestProtocol:    pulumi.String("HTTPS"),
@@ -138,8 +138,8 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewForwardingRule(ctx, "example", &ga.ForwardingRuleArgs{
-//				AcceleratorId: example.ID().ToIDOutput().ToStringOutput(),
-//				ListenerId:    exampleListener.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId: example.ID(),
+//				ListenerId:    exampleListener.ID(),
 //				RuleConditions: ga.ForwardingRuleRuleConditionArray{
 //					&ga.ForwardingRuleRuleConditionArgs{
 //						RuleConditionType: pulumi.String("Path"),
@@ -167,7 +167,7 @@ import (
 //						ForwardGroupConfig: &ga.ForwardingRuleRuleActionForwardGroupConfigArgs{
 //							ServerGroupTuples: ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{
 //								&ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{
-//									EndpointGroupId: virtual.ID().ToIDOutput().ToStringOutput(),
+//									EndpointGroupId: virtual.ID(),
 //								},
 //							},
 //						},

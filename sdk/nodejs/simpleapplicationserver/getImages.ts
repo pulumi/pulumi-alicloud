@@ -15,6 +15,16 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceImageType = alicloud.simpleapplicationserver.getImages({
+ *     instanceImageType: "system",
+ * });
+ * export const simpleApplicationServerImageId1 = ids.images[0].id;
+ * ```
+ *
  * The following arguments are supported:
  *
  * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -70,6 +80,16 @@ export interface GetImagesResult {
  * ## Example Usage
  *
  * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceImageType = alicloud.simpleapplicationserver.getImages({
+ *     instanceImageType: "system",
+ * });
+ * export const simpleApplicationServerImageId1 = ids.images[0].id;
+ * ```
  *
  * The following arguments are supported:
  *

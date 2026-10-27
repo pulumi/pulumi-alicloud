@@ -54,7 +54,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       _default.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //			})
@@ -68,10 +68,10 @@ import (
 //				GatewayType:    pulumi.String("API"),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
 //				Vpc: &apig.GatewayVpcArgs{
-//					VpcId: _default.ID().ToIDOutput().ToStringOutput(),
+//					VpcId: _default.ID(),
 //				},
 //				Vswitch: &apig.GatewayVswitchArgs{
-//					VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId: defaultSwitch.ID(),
 //				},
 //				NetworkAccessConfig: &apig.GatewayNetworkAccessConfigArgs{
 //					Type: pulumi.String("Internet"),
@@ -90,7 +90,7 @@ import (
 //			}
 //			_, err = apig.NewSource(ctx, "default", &apig.SourceArgs{
 //				Type:      pulumi.String("K8S"),
-//				GatewayId: defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId: defaultGateway.ID(),
 //				K8sSourceInfo: &apig.SourceK8sSourceInfoArgs{
 //					ClusterId: pulumi.String(clusterId),
 //				},

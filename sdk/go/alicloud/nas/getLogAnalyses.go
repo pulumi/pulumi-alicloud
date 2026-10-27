@@ -37,14 +37,14 @@ import (
 //				return err
 //			}
 //			defaultLogAnalysis, err := nas.NewLogAnalysis(ctx, "default", &nas.LogAnalysisArgs{
-//				FileSystemId: defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId: defaultFileSystem.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default := nas.GetLogAnalysesOutput(ctx, nas.GetLogAnalysesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultLogAnalysis.ID().ToIDOutput().ToStringOutput(),
+//					defaultLogAnalysis.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudNasLogAnalysisExampleId", _default.ApplyT(func(_default nas.GetLogAnalysesResult) (*string, error) {

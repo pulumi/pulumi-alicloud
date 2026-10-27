@@ -60,7 +60,7 @@ import (
 //				HoneypotImageName: pulumi.String(_default.Images[0].HoneypotImageName),
 //				HoneypotImageId:   pulumi.String(_default.Images[0].HoneypotImageId),
 //				HoneypotName:      pulumi.String(name),
-//				NodeId:            defaultHoneypotNode.ID().ToIDOutput().ToStringOutput(),
+//				NodeId:            defaultHoneypotNode.ID(),
 //			})
 //			if err != nil {
 //				return err

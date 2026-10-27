@@ -183,6 +183,54 @@ class KeyPairAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        from typing import Any
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_zones(available_disk_category="cloud_ssd",
+            available_resource_creation="VSwitch")
+        type = alicloud.ecs.get_instance_types(avaiability_zone=default.zones[0].id,
+            cpu_core_count=1,
+            memory_size=float(2))
+        images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "keyPairAttachmentName"
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        group = alicloud.ecs.SecurityGroup("group",
+            name=name,
+            description="New security group",
+            vpc_id=vpc.id)
+        instance: list[alicloud.ecs.Instance] = []
+        for instance_range in [{"value": i} for i in range(0, 2)]:
+            instance.append(alicloud.ecs.Instance(f"instance-{instance_range['value']}",
+                instance_name=f"{name}-{instance_range['value'] + 1}",
+                image_id=images.images[0].id,
+                instance_type=type.instance_types[0].id,
+                security_groups=[group.id],
+                vswitch_id=vswitch.id,
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=5,
+                password="Test12345",
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_ssd"))
+        pair = alicloud.ecs.KeyPair("pair", key_name=name)
+        attachment = alicloud.ecs.KeyPairAttachment("attachment",
+            key_name=pair.id,
+            instance_ids=[__item.id for __item in instance])
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
 
@@ -208,6 +256,54 @@ class KeyPairAttachment(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        from typing import Any
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_zones(available_disk_category="cloud_ssd",
+            available_resource_creation="VSwitch")
+        type = alicloud.ecs.get_instance_types(avaiability_zone=default.zones[0].id,
+            cpu_core_count=1,
+            memory_size=float(2))
+        images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "keyPairAttachmentName"
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        group = alicloud.ecs.SecurityGroup("group",
+            name=name,
+            description="New security group",
+            vpc_id=vpc.id)
+        instance: list[alicloud.ecs.Instance] = []
+        for instance_range in [{"value": i} for i in range(0, 2)]:
+            instance.append(alicloud.ecs.Instance(f"instance-{instance_range['value']}",
+                instance_name=f"{name}-{instance_range['value'] + 1}",
+                image_id=images.images[0].id,
+                instance_type=type.instance_types[0].id,
+                security_groups=[group.id],
+                vswitch_id=vswitch.id,
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=5,
+                password="Test12345",
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_ssd"))
+        pair = alicloud.ecs.KeyPair("pair", key_name=name)
+        attachment = alicloud.ecs.KeyPairAttachment("attachment",
+            key_name=pair.id,
+            instance_ids=[__item.id for __item in instance])
+        ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
 

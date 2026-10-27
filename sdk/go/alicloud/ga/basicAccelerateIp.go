@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "default", &ga.BasicIpSetArgs{
-//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      _default.ID(),
 //				AccelerateRegionId: pulumi.String(region),
 //				IspType:            pulumi.String("BGP"),
 //				Bandwidth:          pulumi.Int(5),
@@ -61,8 +61,8 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewBasicAccelerateIp(ctx, "default", &ga.BasicAccelerateIpArgs{
-//				AcceleratorId: _default.ID().ToIDOutput().ToStringOutput(),
-//				IpSetId:       defaultBasicIpSet.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId: _default.ID(),
+//				IpSetId:       defaultBasicIpSet.ID(),
 //			})
 //			if err != nil {
 //				return err

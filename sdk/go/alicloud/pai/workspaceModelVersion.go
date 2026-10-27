@@ -61,7 +61,7 @@ import (
 //			}
 //			defaultsHptEL, err := pai.NewWorkspaceModel(ctx, "defaultsHptEL", &pai.WorkspaceModelArgs{
 //				ModelName:        pulumi.String(name),
-//				WorkspaceId:      defaultDI9fsL.ID().ToIDOutput().ToStringOutput(),
+//				WorkspaceId:      defaultDI9fsL.ID(),
 //				Origin:           pulumi.String("Civitai"),
 //				Task:             pulumi.String("text-to-image-synthesis"),
 //				Accessibility:    pulumi.String("PRIVATE"),
@@ -97,7 +97,7 @@ import (
 //				InferenceSpec: pulumi.StringMap{
 //					"test": pulumi.String("InferenceSpec"),
 //				},
-//				ModelId:        defaultsHptEL.ID().ToIDOutput().ToStringOutput(),
+//				ModelId:        defaultsHptEL.ID(),
 //				FormatType:     pulumi.String("SavedModel"),
 //				ApprovalStatus: pulumi.String("Pending"),
 //				FrameworkType:  pulumi.String("PyTorch"),

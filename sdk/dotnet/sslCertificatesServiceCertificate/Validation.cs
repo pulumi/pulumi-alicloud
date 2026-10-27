@@ -67,21 +67,23 @@ namespace Pulumi.AliCloud.sslCertificatesServiceCertificate
     ///     });
     /// 
     ///     var defaultAlidnsRecord = new List&lt;AliCloud.Dns.AlidnsRecord&gt;();
-    ///     domainValidationLists.Apply(rangeBody =&gt;
+    ///     foreach (var range in defaultApply.DomainValidationLists.Apply(domainValidationLists =&gt; domainValidationLists.ToDictionary(item =&gt; {
+    ///         var v = item.Value;
+    ///         return v.Domain;
+    ///     }, item =&gt; {
+    ///         var v = item.Value;
+    ///         return v;
+    ///     })).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         foreach (var range in rangeBody.Select(pair =&gt; new { pair.Key, pair.Value }))
+    ///         defaultAlidnsRecord.Add(new AliCloud.Dns.AlidnsRecord($"default-{range.Key}", new()
     ///         {
-    ///             defaultAlidnsRecord.Add(new AliCloud.Dns.AlidnsRecord($"default-{range.Key}", new()
-    ///             {
-    ///                 DomainName = range.Value.RootDomain,
-    ///                 Rr = range.Value.ValidationKey,
-    ///                 Type = range.Value.ValidationType,
-    ///                 Value = range.Value.ValidationValue,
-    ///                 Ttl = 600,
-    ///             }));
-    ///         }
-    ///         return 0;
-    ///     });
+    ///             DomainName = range.Value.RootDomain,
+    ///             Rr = range.Value.ValidationKey,
+    ///             Type = range.Value.ValidationType,
+    ///             Value = range.Value.ValidationValue,
+    ///             Ttl = 600,
+    ///         }));
+    ///     }
     ///     var defaultValidation = new AliCloud.SslCertificatesServiceCertificate.Validation("default", new()
     ///     {
     ///         InstanceId = @default.Id,

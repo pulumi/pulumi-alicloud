@@ -62,7 +62,7 @@ import (
 //			}
 //			resourceSiteHttpIncomingRequestHeaderModificationRuleExample, err := esa.NewSite(ctx, "resource_Site_HttpIncomingRequestHeaderModificationRule_example", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn%v.cn", _default.Result),
-//				InstanceId: resourceHttpIncomingRequestHeaderModificationRuleExample.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: resourceHttpIncomingRequestHeaderModificationRuleExample.ID(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewHttpIncomingRequestHeaderModificationRule(ctx, "default", &esa.HttpIncomingRequestHeaderModificationRuleArgs{
-//				SiteId:      resourceSiteHttpIncomingRequestHeaderModificationRuleExample.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:      resourceSiteHttpIncomingRequestHeaderModificationRuleExample.ID(),
 //				RuleEnable:  pulumi.String("on"),
 //				Rule:        pulumi.String("(http.host eq \"video.example.com\")"),
 //				Sequence:    pulumi.Int(1),

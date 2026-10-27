@@ -567,6 +567,40 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId("xxx")
+     *             .ids(Arrays.asList("xxx"))
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groups.groups()[0].groupName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args) {
         return getDeployGroups(args, InvokeOptions.Empty);
@@ -577,6 +611,40 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId("xxx")
+     *             .ids(Arrays.asList("xxx"))
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groups.groups()[0].groupName());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args) {
@@ -589,6 +657,40 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId("xxx")
+     *             .ids(Arrays.asList("xxx"))
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groups.groups()[0].groupName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
@@ -600,6 +702,40 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId("xxx")
+     *             .ids(Arrays.asList("xxx"))
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groups.groups()[0].groupName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:edas/getDeployGroups:getDeployGroups", TypeShape.of(GetDeployGroupsResult.class), args, Utilities.withVersion(options));
@@ -610,6 +746,40 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.edas.EdasFunctions;
+     * import com.pulumi.alicloud.edas.inputs.GetDeployGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+     *             .appId("xxx")
+     *             .ids(Arrays.asList("xxx"))
+     *             .outputFile("groups.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstGroupName", groups.groups()[0].groupName());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args, InvokeOptions options) {

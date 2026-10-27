@@ -43,14 +43,14 @@ import (
 //					{
 //						Key:      pulumi.StringRef("VaultId"),
 //						Operator: pulumi.StringRef("IN"),
-//						Values: pulumi.StringArray{
+//						Values: []string{
 //							_default.Plans[0].VaultId,
 //						},
 //					},
 //					{
 //						Key:      pulumi.StringRef("InstanceId"),
 //						Operator: pulumi.StringRef("IN"),
-//						Values: pulumi.StringArray{
+//						Values: []string{
 //							_default.Plans[0].InstanceId,
 //						},
 //					},
@@ -74,14 +74,14 @@ import (
 //					{
 //						Key:      pulumi.StringRef("VaultId"),
 //						Operator: pulumi.StringRef("IN"),
-//						Values: pulumi.StringArray{
+//						Values: []string{
 //							_default.Plans[0].VaultId,
 //						},
 //					},
 //					{
 //						Key:      pulumi.StringRef("InstanceId"),
 //						Operator: pulumi.StringRef("IN"),
-//						Values: pulumi.StringArray{
+//						Values: []string{
 //							_default.Plans[0].InstanceId,
 //						},
 //					},

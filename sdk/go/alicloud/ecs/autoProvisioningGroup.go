@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -63,7 +63,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -80,20 +80,20 @@ import (
 //				LaunchTemplateName: pulumi.String(name),
 //				ImageId:            pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:       pulumi.String("ecs.n1.tiny"),
-//				SecurityGroupId:    defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewAutoProvisioningGroup(ctx, "default", &ecs.AutoProvisioningGroupArgs{
-//				LaunchTemplateId:         template.ID().ToIDOutput().ToStringOutput(),
+//				LaunchTemplateId:         template.ID(),
 //				TotalTargetCapacity:      pulumi.String("4"),
 //				PayAsYouGoTargetCapacity: pulumi.String("1"),
 //				SpotTargetCapacity:       pulumi.String("2"),
 //				LaunchTemplateConfigs: ecs.AutoProvisioningGroupLaunchTemplateConfigArray{
 //					&ecs.AutoProvisioningGroupLaunchTemplateConfigArgs{
 //						InstanceType:     pulumi.String("ecs.n1.small"),
-//						VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId:        defaultSwitch.ID(),
 //						WeightedCapacity: pulumi.String("2"),
 //						MaxPrice:         pulumi.String("2"),
 //					},

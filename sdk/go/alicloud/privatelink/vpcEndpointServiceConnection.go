@@ -70,7 +70,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -78,14 +78,14 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "example", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        exampleSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),
 //			})
@@ -93,8 +93,8 @@ import (
 //				return err
 //			}
 //			exampleVpcEndpointServiceResource, err := privatelink.NewVpcEndpointServiceResource(ctx, "example", &privatelink.VpcEndpointServiceResourceArgs{
-//				ServiceId:    exampleVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
-//				ResourceId:   exampleApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				ServiceId:    exampleVpcEndpointService.ID(),
+//				ResourceId:   exampleApplicationLoadBalancer.ID(),
 //				ResourceType: pulumi.String("slb"),
 //			})
 //			if err != nil {
@@ -103,16 +103,16 @@ import (
 //			exampleVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "example", &privatelink.VpcEndpointArgs{
 //				ServiceId: exampleVpcEndpointServiceResource.ServiceId,
 //				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					exampleSecurityGroup.ID(),
 //				},
-//				VpcId:           exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           exampleNetwork.ID(),
 //				VpcEndpointName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpointServiceConnection(ctx, "example", &privatelink.VpcEndpointServiceConnectionArgs{
-//				EndpointId: exampleVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+//				EndpointId: exampleVpcEndpoint.ID(),
 //				ServiceId:  exampleVpcEndpoint.ServiceId,
 //				Bandwidth:  pulumi.Int(1024),
 //			})

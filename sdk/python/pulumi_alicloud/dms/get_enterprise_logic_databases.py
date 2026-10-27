@@ -95,6 +95,16 @@ def get_enterprise_logic_databases(ids: Optional[Sequence[_builtins.str]] = None
 
     Basic Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(instance_type="mysql",
+        search_key="tf-test-no-deleting")
+    default = alicloud.dms.get_enterprise_logic_databases(instance_id=dms_enterprise_instances_ds.instances[0].instance_id)
+    pulumi.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default.databases[0].id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of Logic Database IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -121,6 +131,16 @@ def get_enterprise_logic_databases_output(ids: pulumi.Input[Optional[Optional[Se
     ## Example Usage
 
     Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(instance_type="mysql",
+        search_key="tf-test-no-deleting")
+    default = alicloud.dms.get_enterprise_logic_databases(instance_id=dms_enterprise_instances_ds.instances[0].instance_id)
+    pulumi.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default.databases[0].id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of Logic Database IDs.

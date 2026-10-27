@@ -19,6 +19,31 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := simpleapplicationserver.GetImages(ctx, &simpleapplicationserver.GetImagesArgs{
+//				InstanceImageType: "system",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("simpleApplicationServerImageId1", pulumi.Any(ids.Images[0].Id))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // The following arguments are supported:
 //
 // * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.

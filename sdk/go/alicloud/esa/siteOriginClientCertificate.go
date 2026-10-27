@@ -75,7 +75,7 @@ import (
 // -----END CERTIFICATE-----
 // `),
 //
-//	SiteId: defaultSite.ID().ToIDOutput().ToStringOutput(),
+//	SiteId: defaultSite.ID(),
 //	PrivateKey: pulumi.String(`-----BEGIN RSA PRIVATE KEY-----
 //
 // MIICXAIBAAKBgQC+7dgpkQifIqzOU6KNkFRjZtMZOoN7/ihNf/BrYcPhLQSkcPOf

@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			defaultPlruct, err := vpc.NewSwitch(ctx, "defaultPlruct", &vpc.SwitchArgs{
-//				VpcId:     defaultiYyNGW.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultiYyNGW.ID(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -61,10 +61,10 @@ import (
 //				EngineVersion:       pulumi.String("6.0"),
 //				Engine:              pulumi.String("gpdb"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultPlruct.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:           defaultPlruct.ID(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               defaultiYyNGW.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:               defaultiYyNGW.ID(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //			})
 //			if err != nil {
@@ -74,7 +74,7 @@ import (
 //				AccountName:        pulumi.String("tf_example"),
 //				AccountPassword:    pulumi.String("Example1234"),
 //				AccountDescription: pulumi.String("tf_example"),
-//				DbInstanceId:       defaultqsmpIy.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:       defaultqsmpIy.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +82,7 @@ import (
 //			defaultPPmRVa, err := gpdb.NewDatabase(ctx, "defaultPPmRVa", &gpdb.DatabaseArgs{
 //				Owner:            defaultOwner.AccountName,
 //				DatabaseName:     pulumi.String("seagull"),
-//				DbInstanceId:     defaultqsmpIy.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:     defaultqsmpIy.ID(),
 //				CharacterSetName: pulumi.String("UTF8"),
 //				Collate:          pulumi.String("en_US.utf8"),
 //				Ctype:            pulumi.String("en_US.utf8"),
@@ -92,7 +92,7 @@ import (
 //			}
 //			defaultDbExtension, err := gpdb.NewDbExtension(ctx, "default", &gpdb.DbExtensionArgs{
 //				ExtensionName:   pulumi.String("uuid-ossp"),
-//				DbInstanceId:    defaultqsmpIy.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:    defaultqsmpIy.ID(),
 //				DatabaseName:    defaultPPmRVa.DatabaseName,
 //				IsLatestVersion: pulumi.Bool(true),
 //			})
@@ -101,9 +101,9 @@ import (
 //			}
 //			_default := gpdb.GetDbExtensionsOutput(ctx, gpdb.GetDbExtensionsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDbExtension.ID().ToIDOutput().ToStringOutput(),
+//					defaultDbExtension.ID(),
 //				},
-//				DbInstanceId: defaultqsmpIy.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId: defaultqsmpIy.ID(),
 //				DatabaseName: defaultPPmRVa.DatabaseName,
 //			}, nil)
 //			ctx.Export("alicloudGpdbDbExtensionExampleId", _default.ApplyT(func(_default gpdb.GetDbExtensionsResult) (*string, error) {

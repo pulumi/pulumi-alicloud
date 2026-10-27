@@ -57,7 +57,7 @@ import (
 //			}
 //			_default := sslcertificatesservice.GetInstancesOutput(ctx, sslcertificatesservice.GetInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultSslCertificatesServiceInstance.ID().ToIDOutput().ToStringOutput(),
+//					defaultSslCertificatesServiceInstance.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudSslCertificatesServiceInstanceExampleId", _default.ApplyT(func(_default sslcertificatesservice.GetInstancesResult) (*string, error) {

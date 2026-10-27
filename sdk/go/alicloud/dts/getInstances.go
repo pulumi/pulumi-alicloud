@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := dts.GetInstances(ctx, &dts.GetInstancesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudDtsInstance.Id,
 //				},
 //				ResourceGroupId: pulumi.StringRef("example_value"),

@@ -62,7 +62,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,8 +91,8 @@ import (
 //				IoMax:          pulumi.Int(20),
 //				SpecType:       pulumi.String("professional"),
 //				ServiceVersion: pulumi.String("2.2.0"),
-//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				SecurityGroup:  defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      defaultSwitch.ID(),
+//				SecurityGroup:  defaultSecurityGroup.ID(),
 //				Config:         pulumi.String(json0),
 //			})
 //			if err != nil {
@@ -110,7 +110,7 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = alikafka.NewTopic(ctx, "default", &alikafka.TopicArgs{
-//				InstanceId:   defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   defaultInstance.ID(),
 //				Topic:        pulumi.String(name),
 //				Remark:       pulumi.String(name),
 //				LocalTopic:   pulumi.Bool(true),

@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			defaultIpv6PoolCidr, err := vpc.NewIpamIpamPoolCidr(ctx, "defaultIpv6PoolCidr", &vpc.IpamIpamPoolCidrArgs{
-//				IpamPoolId: defaultIpv6Pool.ID().ToIDOutput().ToStringOutput(),
+//				IpamPoolId: defaultIpv6Pool.ID(),
 //				Cidr:       pulumi.String("fd03:d00:a000::/48"),
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //			}
 //			defaultIpv6CidrBlock, err := vpc.NewIpv6CidrBlock(ctx, "default", &vpc.Ipv6CidrBlockArgs{
 //				Ipv6IpamPoolId: defaultIpv6PoolCidr.IpamPoolId,
-//				VpcId:          defaultVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          defaultVpc.ID(),
 //				Ipv6CidrBlock:  pulumi.String("fd03:d00:a000::/60"),
 //			})
 //			if err != nil {
@@ -75,9 +75,9 @@ import (
 //			}
 //			_default := vpc.GetIpv6CidrBlocksOutput(ctx, vpc.GetIpv6CidrBlocksOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultIpv6CidrBlock.ID().ToIDOutput().ToStringOutput(),
+//					defaultIpv6CidrBlock.ID(),
 //				},
-//				VpcId: defaultVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultVpc.ID(),
 //			}, nil)
 //			ctx.Export("alicloudVpcIpv6CidrBlockExampleId", _default.ApplyT(func(_default vpc.GetIpv6CidrBlocksResult) (*string, error) {
 //				return _default.Blocks[0].Id, nil

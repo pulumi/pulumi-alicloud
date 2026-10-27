@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := ebs.GetDiskReplicaPairs(ctx, &ebs.GetDiskReplicaPairsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudEbsDiskReplicaPair.Id,
 //				},
 //			}, nil)

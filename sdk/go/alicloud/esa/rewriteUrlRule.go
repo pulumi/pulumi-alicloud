@@ -62,7 +62,7 @@ import (
 //			}
 //			resourceRewriteUrlRuleSiteExample, err := esa.NewSite(ctx, "resource_RewriteUrlRule_Site_example", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", _default.Result),
-//				InstanceId: resourceRewriteUrlRuleRatePlanInstanceExample.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: resourceRewriteUrlRuleRatePlanInstanceExample.ID(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -72,7 +72,7 @@ import (
 //			_, err = esa.NewRewriteUrlRule(ctx, "default", &esa.RewriteUrlRuleArgs{
 //				RewriteUriType:         pulumi.String("static"),
 //				RewriteQueryStringType: pulumi.String("static"),
-//				SiteId:                 resourceRewriteUrlRuleSiteExample.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:                 resourceRewriteUrlRuleSiteExample.ID(),
 //				RuleName:               pulumi.String("example"),
 //				RuleEnable:             pulumi.String("on"),
 //				QueryString:            pulumi.String("example=123"),

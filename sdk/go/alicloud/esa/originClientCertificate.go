@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewOriginClientCertificate(ctx, "default", &esa.OriginClientCertificateArgs{
-//				SiteId: resourceSiteOriginClientCertificateExample.ID().ToIDOutput().ToStringOutput(),
+//				SiteId: resourceSiteOriginClientCertificateExample.ID(),
 //				PrivateKey: pulumi.String(`-----BEGIN RSA PRIVATE KEY-----
 //
 // MIICXAIBAAKBgQC+7dgpkQifIqzOU6KNkFRjZtMZOoN7/ihNf/BrYcPhLQSkcPOf

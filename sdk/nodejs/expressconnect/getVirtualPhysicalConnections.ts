@@ -12,6 +12,20 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.196.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.expressconnect.getVirtualPhysicalConnections({
+ *     ids: [defaultAlicloudExpressConnectVirtualPhysicalConnection.id],
+ *     nameRegex: defaultAlicloudExpressConnectVirtualPhysicalConnection.name,
+ *     parentPhysicalConnectionId: defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId,
+ *     vlanId: 789,
+ *     vpconnAliUid: "1234567890",
+ * });
+ * export const alicloudExpressConnectVirtualPhysicalConnectionExampleId = _default.then(_default => _default.connections?.[0]?.id);
+ * ```
  */
 export function getVirtualPhysicalConnections(args?: GetVirtualPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualPhysicalConnectionsResult> {
     args = args || {};
@@ -127,6 +141,20 @@ export interface GetVirtualPhysicalConnectionsResult {
  * > **NOTE:** Available in 1.196.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.expressconnect.getVirtualPhysicalConnections({
+ *     ids: [defaultAlicloudExpressConnectVirtualPhysicalConnection.id],
+ *     nameRegex: defaultAlicloudExpressConnectVirtualPhysicalConnection.name,
+ *     parentPhysicalConnectionId: defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId,
+ *     vlanId: 789,
+ *     vpconnAliUid: "1234567890",
+ * });
+ * export const alicloudExpressConnectVirtualPhysicalConnectionExampleId = _default.then(_default => _default.connections?.[0]?.id);
+ * ```
  */
 export function getVirtualPhysicalConnectionsOutput(args?: GetVirtualPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualPhysicalConnectionsResult> {
     args = args || {};

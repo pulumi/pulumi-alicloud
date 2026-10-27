@@ -73,7 +73,7 @@ import (
 //				Accessibility:  pulumi.String("PRIVATE"),
 //				SourceType:     pulumi.String("USER"),
 //				DataType:       pulumi.String("PIC"),
-//				WorkspaceId:    defaultAiWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				WorkspaceId:    defaultAiWorkspace.ID(),
 //				Options:        pulumi.String(json0),
 //				Description:    pulumi.String(name),
 //				SourceId:       pulumi.String("d-xxxxx_v1"),
@@ -109,7 +109,7 @@ import (
 //				},
 //				Uri:       pulumi.String("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/"),
 //				Property:  pulumi.String("DIRECTORY"),
-//				DatasetId: defaultDataset.ID().ToIDOutput().ToStringOutput(),
+//				DatasetId: defaultDataset.ID(),
 //			})
 //			if err != nil {
 //				return err

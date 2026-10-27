@@ -79,7 +79,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/16"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -99,16 +99,16 @@ import (
 //				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					exampleSecurityGroup.ID(),
 //				},
-//				VswitchId: exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId: exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alb.NewServerGroup(ctx, "example", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
-//				VpcId:           exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           exampleNetwork.ID(),
 //				ServerGroupName: pulumi.String(name),
 //				ResourceGroupId: pulumi.String(example.Groups[0].Id),
 //				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
@@ -138,7 +138,7 @@ import (
 //					&alb.ServerGroupServerArgs{
 //						Description: pulumi.String(name),
 //						Port:        pulumi.Int(80),
-//						ServerId:    exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//						ServerId:    exampleInstance.ID(),
 //						ServerIp:    exampleInstance.PrivateIp,
 //						ServerType:  pulumi.String("Ecs"),
 //						Weight:      pulumi.Int(10),

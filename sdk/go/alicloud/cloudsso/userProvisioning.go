@@ -64,7 +64,7 @@ import (
 // return err
 // }
 // var tmp0 pulumi.Int
-// if len(defaultGetDirectories.Ids) > 0 {
+// if bool(len(defaultGetDirectories.Ids) > 0) {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
@@ -83,7 +83,7 @@ import (
 // defaultDirectory = append(defaultDirectory, __res)
 // }
 // var tmp1 pulumi.Any
-// if len(defaultGetDirectories.Ids) > 0 {
+// if bool(len(defaultGetDirectories.Ids) > 0) {
 // tmp1 = defaultGetDirectories.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{

@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucketArchiveDirectRead(ctx, "default", &oss.BucketArchiveDirectReadArgs{
-//				Bucket:  createBucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:  createBucket.ID(),
 //				Enabled: pulumi.Bool(true),
 //			})
 //			if err != nil {

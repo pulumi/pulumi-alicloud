@@ -94,11 +94,11 @@ import (
 //			}
 //			_, err = ecddesktop.NewGroup(ctx, "default", &ecddesktop.GroupArgs{
 //				DesktopGroupName: pulumi.String(name),
-//				OfficeSiteId:     defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
-//				PolicyGroupId:    defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
+//				OfficeSiteId:     defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId:    defaultEcdPolicyGroup.ID(),
 //				BundleId:         pulumi.String(_default.Bundles[0].Id),
 //				EndUserIds: pulumi.StringArray{
-//					defaultUser.ID().ToIDOutput().ToStringOutput(),
+//					defaultUser.ID(),
 //				},
 //				AllowBufferCount: pulumi.Int(1),
 //				Comments:         pulumi.String(name),

@@ -48,7 +48,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -64,8 +64,8 @@ import (
 //				ConnectionType:       pulumi.String("slb"),
 //				ClusterAliasName:     pulumi.String("terraform-example"),
 //				MseVersion:           pulumi.String("mse_pro"),
-//				VswitchId:            exampleSwitch.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:                exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:            exampleSwitch.ID(),
+//				VpcId:                exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //			exampleGetClusters := mse.GetClustersOutput(ctx, mse.GetClustersOutputArgs{
 //				EnableDetails: pulumi.Bool(true),
 //				Ids: pulumi.StringArray{
-//					exampleCluster.ID().ToIDOutput().ToStringOutput(),
+//					exampleCluster.ID(),
 //				},
 //				Status:    pulumi.String("INIT_SUCCESS"),
 //				NameRegex: exampleCluster.ClusterAliasName,

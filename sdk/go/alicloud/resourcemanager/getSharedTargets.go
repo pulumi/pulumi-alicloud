@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "default", &resourcemanager.SharedTargetArgs{
-//				ResourceShareId: defaultResourceShare.ID().ToIDOutput().ToStringOutput(),
+//				ResourceShareId: defaultResourceShare.ID(),
 //				TargetId:        pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {

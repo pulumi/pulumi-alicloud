@@ -17,6 +17,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "tftest",
+        ///         DescriptionRegex = "tftest_policy",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyId"] = example.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithDefaults());
@@ -27,6 +49,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "tftest",
+        ///         DescriptionRegex = "tftest_policy",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyId"] = example.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());
@@ -37,6 +81,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.ResourceManager.GetPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "tftest",
+        ///         DescriptionRegex = "tftest_policy",
+        ///         PolicyType = "Custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyId"] = example.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());

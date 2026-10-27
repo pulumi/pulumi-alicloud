@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := threatdetection.GetHoneypotPresets(ctx, &threatdetection.GetHoneypotPresetsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudThreatDetectionHoneypotPreset.Id,
 //				},
 //				HoneypotImageName: pulumi.StringRef("shiro"),

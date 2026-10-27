@@ -81,7 +81,7 @@ import (
 //			}
 //			defaultGetGateways := apig.GetGatewaysOutput(ctx, apig.GetGatewaysOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//					defaultGateway.ID(),
 //				},
 //				NameRegex:   defaultGateway.GatewayName,
 //				GatewayName: pulumi.String(name),

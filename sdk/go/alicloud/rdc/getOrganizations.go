@@ -48,7 +48,7 @@ import (
 //			}
 //			ids := rdc.GetOrganizationsOutput(ctx, rdc.GetOrganizationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("rdcOrganizationId1", ids.Id())

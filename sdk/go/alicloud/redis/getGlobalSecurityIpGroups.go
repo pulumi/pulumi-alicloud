@@ -52,7 +52,7 @@ import (
 //			}
 //			_default := redis.GetGlobalSecurityIpGroupsOutput(ctx, redis.GetGlobalSecurityIpGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultGlobalSecurityIpGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultGlobalSecurityIpGroup.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudRedisGlobalSecurityIpGroupExampleId", _default.ApplyT(func(_default redis.GetGlobalSecurityIpGroupsResult) (*string, error) {

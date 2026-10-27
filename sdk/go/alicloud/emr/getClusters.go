@@ -134,37 +134,37 @@ import (
 //				return err
 //			}
 //			var tmp0 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp0 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp0 = pulumi.String("160")
 //			}
 //			var tmp1 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp1 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp1 = pulumi.String("160")
 //			}
 //			var tmp2 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp2 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp2 = pulumi.String("160")
 //			}
 //			var tmp3 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp3 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp3 = pulumi.String("160")
 //			}
 //			var tmp4 pulumi.String
-//			if pulumi.Float64(dataDisk.Types[0].Min) > 160 {
+//			if bool(dataDisk.Types[0].Min > 160) {
 //				tmp4 = pulumi.Int(dataDisk.Types[0].Min)
 //			} else {
 //				tmp4 = pulumi.String("160")
 //			}
 //			var tmp5 pulumi.String
-//			if pulumi.Float64(systemDisk.Types[0].Min) > 160 {
+//			if bool(systemDisk.Types[0].Min > 160) {
 //				tmp5 = pulumi.Int(systemDisk.Types[0].Min)
 //			} else {
 //				tmp5 = pulumi.String("160")
@@ -210,7 +210,7 @@ import (
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
 //				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
-//				SecurityGroupId:        defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:        defaultSecurityGroup.ID(),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
 //				VswitchId:              pulumi.String(defaultGetSwitches.Ids[0]),

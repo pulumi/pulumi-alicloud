@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := alb.GetAscripts(ctx, &alb.GetAscriptsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudAlbAscript.Id,
 //				},
 //				NameRegex:   pulumi.StringRef(defaultAlicloudAlbAscript.Name),

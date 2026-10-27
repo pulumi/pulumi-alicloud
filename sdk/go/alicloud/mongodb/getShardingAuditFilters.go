@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			defaultShardingAuditFilter, err := mongodb.NewShardingAuditFilter(ctx, "default", &mongodb.ShardingAuditFilterArgs{
-//				DbInstanceId: defaultShardingInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId: defaultShardingInstance.ID(),
 //				AuditStatus:  pulumi.String("enable"),
 //				Filter:       pulumi.String("admin,slow"),
 //			})

@@ -19,6 +19,32 @@ namespace Pulumi.AliCloud.Dms
         /// ## Example Usage
         /// 
         /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
+        ///     {
+        ///         InstanceType = "mysql",
+        ///         SearchKey = "tf-test-no-deleting",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Dms.GetEnterpriseLogicDatabases.Invoke(new()
+        ///     {
+        ///         InstanceId = dmsEnterpriseInstancesDs.Apply(getEnterpriseInstancesResult =&gt; getEnterpriseInstancesResult.Instances[0]?.InstanceId),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudDmsEnterpriseLogicDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseLogicDatabasesResult =&gt; getEnterpriseLogicDatabasesResult.Databases[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEnterpriseLogicDatabasesResult> InvokeAsync(GetEnterpriseLogicDatabasesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesArgs(), options.WithDefaults());
@@ -31,6 +57,32 @@ namespace Pulumi.AliCloud.Dms
         /// ## Example Usage
         /// 
         /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
+        ///     {
+        ///         InstanceType = "mysql",
+        ///         SearchKey = "tf-test-no-deleting",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Dms.GetEnterpriseLogicDatabases.Invoke(new()
+        ///     {
+        ///         InstanceId = dmsEnterpriseInstancesDs.Apply(getEnterpriseInstancesResult =&gt; getEnterpriseInstancesResult.Instances[0]?.InstanceId),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudDmsEnterpriseLogicDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseLogicDatabasesResult =&gt; getEnterpriseLogicDatabasesResult.Databases[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnterpriseLogicDatabasesResult> Invoke(GetEnterpriseLogicDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesInvokeArgs(), options.WithDefaults());
@@ -43,6 +95,32 @@ namespace Pulumi.AliCloud.Dms
         /// ## Example Usage
         /// 
         /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
+        ///     {
+        ///         InstanceType = "mysql",
+        ///         SearchKey = "tf-test-no-deleting",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Dms.GetEnterpriseLogicDatabases.Invoke(new()
+        ///     {
+        ///         InstanceId = dmsEnterpriseInstancesDs.Apply(getEnterpriseInstancesResult =&gt; getEnterpriseInstancesResult.Instances[0]?.InstanceId),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudDmsEnterpriseLogicDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseLogicDatabasesResult =&gt; getEnterpriseLogicDatabasesResult.Databases[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnterpriseLogicDatabasesResult> Invoke(GetEnterpriseLogicDatabasesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseLogicDatabasesResult>("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", args ?? new GetEnterpriseLogicDatabasesInvokeArgs(), options.WithDefaults());

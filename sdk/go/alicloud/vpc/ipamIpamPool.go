@@ -72,7 +72,7 @@ import (
 //				IpamScopeId:      defaultIpam.PrivateDefaultScopeId,
 //				PoolRegionId:     parentIpamPool.PoolRegionId,
 //				IpamPoolName:     pulumi.String(name),
-//				SourceIpamPoolId: parentIpamPool.ID().ToIDOutput().ToStringOutput(),
+//				SourceIpamPoolId: parentIpamPool.ID(),
 //				IpVersion:        pulumi.String("IPv4"),
 //			})
 //			if err != nil {

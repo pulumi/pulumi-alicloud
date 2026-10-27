@@ -45,7 +45,7 @@ import (
 //			}
 //			_default := sslcertificatesservice.GetContactsOutput(ctx, sslcertificatesservice.GetContactsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultContact.ID().ToIDOutput().ToStringOutput(),
+//					defaultContact.ID(),
 //				},
 //				Name: pulumi.String(name),
 //			}, nil)

@@ -85,11 +85,11 @@ import (
 //			}
 //			defaultGroup, err := ecddesktop.NewGroup(ctx, "default", &ecddesktop.GroupArgs{
 //				DesktopGroupName: pulumi.String(name),
-//				OfficeSiteId:     defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
-//				PolicyGroupId:    defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
+//				OfficeSiteId:     defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId:    defaultEcdPolicyGroup.ID(),
 //				BundleId:         pulumi.String(_default.Bundles[0].Id),
 //				EndUserIds: pulumi.StringArray{
-//					defaultUser.ID().ToIDOutput().ToStringOutput(),
+//					defaultUser.ID(),
 //				},
 //				AllowBufferCount: pulumi.Int(1),
 //			})
@@ -98,7 +98,7 @@ import (
 //			}
 //			defaultGetGroups := ecddesktop.GetGroupsOutput(ctx, ecddesktop.GetGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultGroup.ID(),
 //				},
 //				NameRegex: defaultGroup.DesktopGroupName,
 //			}, nil)

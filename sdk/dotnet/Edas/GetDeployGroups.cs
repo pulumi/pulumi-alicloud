@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = AliCloud.Edas.GetDeployGroups.Invoke(new()
+        ///     {
+        ///         AppId = "xxx",
+        ///         Ids = new[]
+        ///         {
+        ///             "xxx",
+        ///         },
+        ///         OutputFile = "groups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groups.Apply(getDeployGroupsResult =&gt; getDeployGroupsResult.Groups[0]?.GroupName),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDeployGroupsResult> InvokeAsync(GetDeployGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsArgs(), options.WithDefaults());
@@ -27,6 +52,31 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = AliCloud.Edas.GetDeployGroups.Invoke(new()
+        ///     {
+        ///         AppId = "xxx",
+        ///         Ids = new[]
+        ///         {
+        ///             "xxx",
+        ///         },
+        ///         OutputFile = "groups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groups.Apply(getDeployGroupsResult =&gt; getDeployGroupsResult.Groups[0]?.GroupName),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDeployGroupsResult> Invoke(GetDeployGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithDefaults());
@@ -37,6 +87,31 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = AliCloud.Edas.GetDeployGroups.Invoke(new()
+        ///     {
+        ///         AppId = "xxx",
+        ///         Ids = new[]
+        ///         {
+        ///             "xxx",
+        ///         },
+        ///         OutputFile = "groups.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groups.Apply(getDeployGroupsResult =&gt; getDeployGroupsResult.Groups[0]?.GroupName),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDeployGroupsResult> Invoke(GetDeployGroupsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithDefaults());

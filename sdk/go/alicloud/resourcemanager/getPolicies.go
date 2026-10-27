@@ -16,6 +16,33 @@ import (
 // > **NOTE:**  Available in 1.86.0+.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := resourcemanager.GetPolicies(ctx, &resourcemanager.GetPoliciesArgs{
+//				NameRegex:        pulumi.StringRef("tftest"),
+//				DescriptionRegex: "tftest_policy",
+//				PolicyType:       pulumi.StringRef("Custom"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstPolicyId", example.Policies[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPolicies(ctx *pulumi.Context, args *GetPoliciesArgs, opts ...pulumi.InvokeOption) (*GetPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPoliciesResult

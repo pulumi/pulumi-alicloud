@@ -67,13 +67,13 @@ import (
 //			defaultIntegrationPolicy, err := cms.NewIntegrationPolicy(ctx, "default", &cms.IntegrationPolicyArgs{
 //				PolicyType:            pulumi.String("Cloud"),
 //				IntegrationPolicyName: pulumi.String(name),
-//				Workspace:             defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				Workspace:             defaultWorkspace.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewAddonRelease(ctx, "default", &cms.AddonReleaseArgs{
-//				IntegrationPolicyId: defaultIntegrationPolicy.ID().ToIDOutput().ToStringOutput(),
+//				IntegrationPolicyId: defaultIntegrationPolicy.ID(),
 //				AddonName:           pulumi.String("cloud-acs-ecs"),
 //				AddonVersion:        pulumi.String("2.0.7"),
 //				Workspace:           defaultIntegrationPolicy.Workspace,

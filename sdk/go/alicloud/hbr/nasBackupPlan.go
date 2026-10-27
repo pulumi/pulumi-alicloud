@@ -64,10 +64,10 @@ import (
 //			}
 //			_, err = hbr.NewNasBackupPlan(ctx, "default", &hbr.NasBackupPlanArgs{
 //				NasBackupPlanName: pulumi.String("terraform-example"),
-//				FileSystemId:      defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:      defaultFileSystem.ID(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),
-//				VaultId:           defaultVault.ID().ToIDOutput().ToStringOutput(),
+//				VaultId:           defaultVault.ID(),
 //				Retention:         pulumi.String("2"),
 //				Paths: pulumi.StringArray{
 //					pulumi.String("/"),

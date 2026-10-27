@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -74,7 +74,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(myName),
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -88,7 +88,7 @@ import (
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					defaultSwitch.ID(),
 //				},
 //				GroupType: pulumi.String("ECI"),
 //			})
@@ -96,10 +96,10 @@ import (
 //				return err
 //			}
 //			defaultEciScalingConfiguration, err := ess.NewEciScalingConfiguration(ctx, "default", &ess.EciScalingConfigurationArgs{
-//				ScalingGroupId:     defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
+//				ScalingGroupId:     defaultScalingGroup.ID(),
 //				Cpu:                pulumi.Float64(2),
 //				Memory:             pulumi.Float64(4),
-//				SecurityGroupId:    defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
 //				ForceDelete:        pulumi.Bool(true),
 //				Active:             pulumi.Bool(true),
 //				ContainerGroupName: pulumi.String(myName),
@@ -114,9 +114,9 @@ import (
 //				return err
 //			}
 //			defaultGetEciScalingConfigurations := ess.GetEciScalingConfigurationsOutput(ctx, ess.GetEciScalingConfigurationsOutputArgs{
-//				ScalingGroupId: defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
+//				ScalingGroupId: defaultScalingGroup.ID(),
 //				Ids: pulumi.StringArray{
-//					defaultEciScalingConfiguration.ID().ToIDOutput().ToStringOutput(),
+//					defaultEciScalingConfiguration.ID(),
 //				},
 //				NameRegex: pulumi.String(name),
 //			}, nil)

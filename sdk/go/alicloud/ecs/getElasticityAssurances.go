@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := ecs.GetElasticityAssurances(ctx, &ecs.GetElasticityAssurancesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudEcsElasticityAssurance.Id,
 //				},
 //			}, nil)

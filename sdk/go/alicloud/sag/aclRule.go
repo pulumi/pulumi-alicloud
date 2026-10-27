@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = sag.NewAclRule(ctx, "default", &sag.AclRuleArgs{
-//				AclId:           _default.ID().ToIDOutput().ToStringOutput(),
+//				AclId:           _default.ID(),
 //				Description:     pulumi.String(name),
 //				Policy:          pulumi.String("accept"),
 //				IpProtocol:      pulumi.String("ALL"),

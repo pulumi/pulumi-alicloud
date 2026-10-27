@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = eds.NewNasFileSystem(ctx, "example", &eds.NasFileSystemArgs{
 //				NasFileSystemName: pulumi.String(name),
-//				OfficeSiteId:      defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
+//				OfficeSiteId:      defaultSimpleOfficeSite.ID(),
 //				Description:       pulumi.String(name),
 //			})
 //			if err != nil {

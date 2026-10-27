@@ -67,7 +67,7 @@ import (
 //			}
 //			createVSwitch, err := vpc.NewSwitch(ctx, "createVSwitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("example"),
-//				VpcId:       createVPC.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       createVPC.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
@@ -102,10 +102,10 @@ import (
 //				SeriesCode: pulumi.String("ultimate"),
 //				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
 //					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
-//						VpcId: createVPC.ID().ToIDOutput().ToStringOutput(),
+//						VpcId: createVPC.ID(),
 //						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
 //							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
-//								VswitchId: createVSwitch.ID().ToIDOutput().ToStringOutput(),
+//								VswitchId: createVSwitch.ID(),
 //							},
 //						},
 //					},

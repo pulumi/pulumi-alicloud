@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_default, err := cloudfirewall.GetTlsInspectCaCertificates(ctx, &cloudfirewall.GetTlsInspectCaCertificatesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultCloudFirewallTlsInspectCaCertificate.Id,
 //				},
 //			}, nil)

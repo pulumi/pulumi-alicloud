@@ -101,7 +101,7 @@ import (
 //				key0 := index
 //				__res, err := dns.NewAddressPool(ctx, fmt.Sprintf("default-%v", key0), &dns.AddressPoolArgs{
 //					AddressPoolName: pulumi.String(invokeFormat.Result),
-//					InstanceId:      defaultGtmInstance.ID().ToIDOutput().ToStringOutput(),
+//					InstanceId:      defaultGtmInstance.ID(),
 //					LbaStrategy:     pulumi.String("RATIO"),
 //					Type:            pulumi.String("IPV4"),
 //					Addresses: dns.AddressPoolAddressArray{
@@ -122,14 +122,14 @@ import (
 //			_, err = dns.NewAccessStrategy(ctx, "default", &dns.AccessStrategyArgs{
 //				StrategyName:               pulumi.String(name),
 //				StrategyMode:               pulumi.String("GEO"),
-//				InstanceId:                 defaultGtmInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:                 defaultGtmInstance.ID(),
 //				DefaultAddrPoolType:        pulumi.String("IPV4"),
 //				DefaultLbaStrategy:         pulumi.String("RATIO"),
 //				DefaultMinAvailableAddrNum: pulumi.Int(1),
 //				DefaultAddrPools: dns.AccessStrategyDefaultAddrPoolArray{
 //					&dns.AccessStrategyDefaultAddrPoolArgs{
 //						LbaWeight:  pulumi.Int(1),
-//						AddrPoolId: defaultAddressPool[0].ID().ToIDOutput().ToStringOutput(),
+//						AddrPoolId: defaultAddressPool[0].ID(),
 //					},
 //				},
 //				FailoverAddrPoolType:        pulumi.String("IPV4"),
@@ -138,7 +138,7 @@ import (
 //				FailoverAddrPools: dns.AccessStrategyFailoverAddrPoolArray{
 //					&dns.AccessStrategyFailoverAddrPoolArgs{
 //						LbaWeight:  pulumi.Int(1),
-//						AddrPoolId: defaultAddressPool[1].ID().ToIDOutput().ToStringOutput(),
+//						AddrPoolId: defaultAddressPool[1].ID(),
 //					},
 //				},
 //				Lines: dns.AccessStrategyLineArray{

@@ -57,14 +57,14 @@ import (
 //				return err
 //			}
 //			defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "default", &vpc.NetworkAclArgs{
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/21"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				Name:      pulumi.String(name),
@@ -73,10 +73,10 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewNetworkAclAttachment(ctx, "default", &vpc.NetworkAclAttachmentArgs{
-//				NetworkAclId: defaultNetworkAcl.ID().ToIDOutput().ToStringOutput(),
+//				NetworkAclId: defaultNetworkAcl.ID(),
 //				Resources: vpc.NetworkAclAttachmentResourceArray{
 //					&vpc.NetworkAclAttachmentResourceArgs{
-//						ResourceId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//						ResourceId:   defaultSwitch.ID(),
 //						ResourceType: pulumi.String("VSwitch"),
 //					},
 //				},
@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewNetworkAclEntries(ctx, "default", &vpc.NetworkAclEntriesArgs{
-//				NetworkAclId: defaultNetworkAcl.ID().ToIDOutput().ToStringOutput(),
+//				NetworkAclId: defaultNetworkAcl.ID(),
 //				Ingresses: vpc.NetworkAclEntriesIngressArray{
 //					&vpc.NetworkAclEntriesIngressArgs{
 //						Protocol:     pulumi.String("all"),

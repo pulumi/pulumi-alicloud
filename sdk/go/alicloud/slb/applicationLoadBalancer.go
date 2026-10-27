@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			loadBalancerSwitch, err := vpc.NewSwitch(ctx, "load_balancer", &vpc.SwitchArgs{
-//				VpcId:       loadBalancerNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       loadBalancerNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(loadBalancer.Zones[0].Id),
 //				VswitchName: pulumi.String(slbLoadBalancerName),
@@ -69,7 +69,7 @@ import (
 //				LoadBalancerName: pulumi.String(slbLoadBalancerName),
 //				AddressType:      pulumi.String("intranet"),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
-//				VswitchId:        loadBalancerSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        loadBalancerSwitch.ID(),
 //				Tags: pulumi.StringMap{
 //					"info": pulumi.String("create for internet"),
 //				},

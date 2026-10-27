@@ -69,7 +69,7 @@ import (
 //			}
 //			_, err = cfg.NewAggregateConfigRule(ctx, "default", &cfg.AggregateConfigRuleArgs{
 //				AggregateConfigRuleName: pulumi.String("contains-tag"),
-//				AggregatorId:            defaultAggregator.ID().ToIDOutput().ToStringOutput(),
+//				AggregatorId:            defaultAggregator.ID(),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
 //				SourceOwner:             pulumi.String("ALIYUN"),
 //				SourceIdentifier:        pulumi.String("contains-tag"),

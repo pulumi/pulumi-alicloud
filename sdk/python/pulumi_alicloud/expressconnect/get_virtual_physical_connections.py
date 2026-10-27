@@ -197,6 +197,18 @@ def get_virtual_physical_connections(business_status: Optional[_builtins.str] = 
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.expressconnect.get_virtual_physical_connections(ids=[default_alicloud_express_connect_virtual_physical_connection["id"]],
+        name_regex=default_alicloud_express_connect_virtual_physical_connection["name"],
+        parent_physical_connection_id=default_alicloud_express_connect_virtual_physical_connection["parentPhysicalConnectionId"],
+        vlan_id=789,
+        vpconn_ali_uid="1234567890")
+    pulumi.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default.connections[0].id)
+    ```
+
 
     :param _builtins.str business_status: The commercial status of the physical line. Value:
            - **Normal**: activated.
@@ -259,6 +271,18 @@ def get_virtual_physical_connections_output(business_status: pulumi.Input[Option
     > **NOTE:** Available in 1.196.0+
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.expressconnect.get_virtual_physical_connections(ids=[default_alicloud_express_connect_virtual_physical_connection["id"]],
+        name_regex=default_alicloud_express_connect_virtual_physical_connection["name"],
+        parent_physical_connection_id=default_alicloud_express_connect_virtual_physical_connection["parentPhysicalConnectionId"],
+        vlan_id=789,
+        vpconn_ali_uid="1234567890")
+    pulumi.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default.connections[0].id)
+    ```
 
 
     :param _builtins.str business_status: The commercial status of the physical line. Value:

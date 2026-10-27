@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			_, err = dfs.NewVscMountPoint(ctx, "DefaultFsForRMCVscMp", &dfs.VscMountPointArgs{
-//				FileSystemId: defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId: defaultFileSystem.ID(),
 //				AliasPrefix:  pulumi.String(name),
 //				Description:  pulumi.String(name),
 //			})

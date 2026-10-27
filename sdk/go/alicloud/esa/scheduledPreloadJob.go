@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = esa.NewScheduledPreloadJob(ctx, "default", &esa.ScheduledPreloadJobArgs{
 //				InsertWay:               pulumi.String("textBox"),
-//				SiteId:                  defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:                  defaultSite.ID(),
 //				ScheduledPreloadJobName: pulumi.String("example_scheduledpreloadexecution_job"),
 //				UrlList:                 pulumi.String("http://example.gositecdn.cn/example/example.txt"),
 //			})
