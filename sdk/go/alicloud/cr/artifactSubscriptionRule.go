@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			exampleRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "example", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        example.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:        example.ID(),
 //				Name:              pulumi.String("tf-demo-cr-namespace"),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PRIVATE"),
@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			exampleRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "example", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: example.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: example.ID(),
 //				Namespace:  exampleRegistryEnterpriseNamespace.Name,
 //				Name:       pulumi.String("tf-demo-cr-repo"),
 //				RepoType:   pulumi.String("PRIVATE"),
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			_, err = cr.NewArtifactSubscriptionRule(ctx, "example", &cr.ArtifactSubscriptionRuleArgs{
-//				InstanceId:          example.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:          example.ID(),
 //				SourceProvider:      pulumi.String("DOCKER_HUB"),
 //				SourceNamespaceName: pulumi.String("library"),
 //				SourceRepoName:      pulumi.String("alpine"),

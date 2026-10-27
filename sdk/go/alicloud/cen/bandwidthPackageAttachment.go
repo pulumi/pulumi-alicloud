@@ -49,8 +49,8 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewBandwidthPackageAttachment(ctx, "example", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         example.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: exampleBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:         example.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err

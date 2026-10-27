@@ -22,6 +22,129 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_ssd"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_type, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvaiabilityZone: _default.Zones[0].Id,
+//				CpuCoreCount:    pulumi.IntRef(1),
+//				MemorySize:      pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			name := "keyPairAttachmentName"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+//				VpcId:       vpc2.ID(),
+//				CidrBlock:   pulumi.String("10.1.1.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Name:        pulumi.String(name),
+//				Description: pulumi.String("New security group"),
+//				VpcId:       vpc2.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var instance []*ecs.Instance
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("instance-%v", key0), &ecs.InstanceArgs{
+//					InstanceName: pulumi.Sprintf("%v-%v", name, val0+1),
+//					ImageId:      pulumi.String(images.Images[0].Id),
+//					InstanceType: pulumi.String(_type.InstanceTypes[0].Id),
+//					SecurityGroups: pulumi.StringArray{
+//						group.ID(),
+//					},
+//					VswitchId:               vswitch.ID(),
+//					InternetChargeType:      pulumi.String("PayByTraffic"),
+//					InternetMaxBandwidthOut: pulumi.Int(5),
+//					Password:                pulumi.String("Test12345"),
+//					InstanceChargeType:      pulumi.String("PostPaid"),
+//					SystemDiskCategory:      pulumi.String("cloud_ssd"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				instance = append(instance, __res)
+//			}
+//			pair, err := ecs.NewKeyPair(ctx, "pair", &ecs.KeyPairArgs{
+//				KeyName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 pulumi.IDArray
+//			for _, val0 := range instance {
+//				splat0 = append(splat0, val0.ID())
+//			}
+//			_, err = ecs.NewKeyPairAttachment(ctx, "attachment", &ecs.KeyPairAttachmentArgs{
+//				KeyName:     pair.ID(),
+//				InstanceIds: toPulumiIDArray(splat0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+//	func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+//		var pulumiArr pulumi.IDArray
+//		for _, v := range arr {
+//			pulumiArr = append(pulumiArr, pulumi.ID(v))
+//		}
+//		return pulumiArr
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 type KeyPairAttachment struct {
 	pulumi.CustomResourceState

@@ -53,7 +53,7 @@ import (
 //			}
 //			ids := ecs.GetEcsDisksOutput(ctx, ecs.GetEcsDisksOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultEcsDisk.ID().ToIDOutput().ToStringOutput(),
+//					defaultEcsDisk.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("ecsDiskId0", ids.ApplyT(func(ids ecs.GetEcsDisksResult) (*string, error) {

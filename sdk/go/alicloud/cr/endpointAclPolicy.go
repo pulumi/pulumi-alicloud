@@ -61,7 +61,7 @@ import (
 //			_default := cr.GetEndpointAclServiceOutput(ctx, cr.GetEndpointAclServiceOutputArgs{
 //				EndpointType: pulumi.String("internet"),
 //				Enable:       pulumi.Bool(true),
-//				InstanceId:   defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   defaultRegistryEnterpriseInstance.ID(),
 //				ModuleName:   pulumi.String("Registry"),
 //			}, nil)
 //			_, err = cr.NewEndpointAclPolicy(ctx, "default", &cr.EndpointAclPolicyArgs{

@@ -54,7 +54,7 @@ import (
 //			}
 //			ids := amqp.GetInstancesOutput(ctx, amqp.GetInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("amqpInstanceId0", ids.ApplyT(func(ids amqp.GetInstancesResult) (*string, error) {

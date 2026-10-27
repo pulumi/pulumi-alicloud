@@ -63,7 +63,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String("terraform-example"),
-//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),
 //			})
@@ -90,10 +90,10 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewBasicEndpointGroup(ctx, "default", &ga.BasicEndpointGroupArgs{
-//				AcceleratorId:          defaultBasicAccelerator.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:          defaultBasicAccelerator.ID(),
 //				EndpointGroupRegion:    pulumi.String(endpointGroupRegion),
 //				EndpointType:           pulumi.String("SLB"),
-//				EndpointAddress:        defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				EndpointAddress:        defaultApplicationLoadBalancer.ID(),
 //				EndpointSubAddress:     pulumi.String("192.168.0.1"),
 //				BasicEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:            pulumi.String("terraform-example"),

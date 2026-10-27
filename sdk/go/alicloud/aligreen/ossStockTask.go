@@ -206,7 +206,7 @@ import (
 //				ImageLiveFreezeConfig:          pulumi.String(json1),
 //				VideoTerrorismFreezeConfig:     pulumi.String(json2),
 //				ImageTerrorismFreezeConfig:     pulumi.String(json3),
-//				CallbackId:                     defaultJnW8Na.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				CallbackId:                     defaultJnW8Na.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				ImageAdFreezeConfig:            pulumi.String(json4),
 //				BizType:                        pulumi.String("recommend_massmedia_template_01"),
 //				AudioScenes:                    pulumi.String(json5),

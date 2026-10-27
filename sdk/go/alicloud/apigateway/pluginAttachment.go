@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			exampleApi, err := apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
-//				GroupId:         example.ID().ToIDOutput().ToStringOutput(),
+//				GroupId:         example.ID(),
 //				Name:            pulumi.String(name),
 //				Description:     pulumi.String(name),
 //				AuthType:        pulumi.String("APP"),
@@ -112,8 +112,8 @@ import (
 //			}
 //			_, err = apigateway.NewPluginAttachment(ctx, "example", &apigateway.PluginAttachmentArgs{
 //				ApiId:     exampleApi.ApiId,
-//				GroupId:   example.ID().ToIDOutput().ToStringOutput(),
-//				PluginId:  examplePlugin.ID().ToIDOutput().ToStringOutput(),
+//				GroupId:   example.ID(),
+//				PluginId:  examplePlugin.ID(),
 //				StageName: pulumi.String("RELEASE"),
 //			})
 //			if err != nil {

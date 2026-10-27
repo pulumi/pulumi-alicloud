@@ -51,7 +51,7 @@ import (
 //			}
 //			ids := esa.GetListsOutput(ctx, esa.GetListsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("esaListsId0", ids.ApplyT(func(ids esa.GetListsResult) (*string, error) {

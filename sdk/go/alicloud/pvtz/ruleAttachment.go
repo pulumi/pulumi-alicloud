@@ -83,7 +83,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId: defaultNetwork[2].ID().ToIDOutput().ToStringOutput(),
+//					VpcId: defaultNetwork[2].ID(),
 //					CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //						Input:   defaultNetwork[2].CidrBlock,
 //						Newbits: pulumi.Int(8),
@@ -97,7 +97,7 @@ import (
 //				defaultSwitch = append(defaultSwitch, __res)
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork[2].ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork[2].ID(),
 //				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
@@ -105,19 +105,19 @@ import (
 //			}
 //			defaultEndpoint, err := pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
 //				EndpointName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:           defaultNetwork[2].ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VpcId:           defaultNetwork[2].ID(),
 //				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
 //				IpConfigs: pvtz.EndpointIpConfigArray{
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[0].ZoneId,
 //						CidrBlock: defaultSwitch[0].CidrBlock,
-//						VswitchId: defaultSwitch[0].ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSwitch[0].ID(),
 //					},
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[1].ZoneId,
 //						CidrBlock: defaultSwitch[1].CidrBlock,
-//						VswitchId: defaultSwitch[1].ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSwitch[1].ID(),
 //					},
 //				},
 //			})
@@ -125,7 +125,7 @@ import (
 //				return err
 //			}
 //			defaultRule, err := pvtz.NewRule(ctx, "default", &pvtz.RuleArgs{
-//				EndpointId: defaultEndpoint.ID().ToIDOutput().ToStringOutput(),
+//				EndpointId: defaultEndpoint.ID(),
 //				RuleName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Type:       pulumi.String("OUTBOUND"),
 //				ZoneName:   pulumi.String(name),
@@ -140,15 +140,15 @@ import (
 //				return err
 //			}
 //			_, err = pvtz.NewRuleAttachment(ctx, "default", &pvtz.RuleAttachmentArgs{
-//				RuleId: defaultRule.ID().ToIDOutput().ToStringOutput(),
+//				RuleId: defaultRule.ID(),
 //				Vpcs: pvtz.RuleAttachmentVpcArray{
 //					&pvtz.RuleAttachmentVpcArgs{
 //						RegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
-//						VpcId:    defaultNetwork[0].ID().ToIDOutput().ToStringOutput(),
+//						VpcId:    defaultNetwork[0].ID(),
 //					},
 //					&pvtz.RuleAttachmentVpcArgs{
 //						RegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
-//						VpcId:    defaultNetwork[1].ID().ToIDOutput().ToStringOutput(),
+//						VpcId:    defaultNetwork[1].ID(),
 //					},
 //				},
 //			})

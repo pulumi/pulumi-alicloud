@@ -63,8 +63,8 @@ import (
 //			}
 //			_, err = eflo.NewVpdGrantRule(ctx, "default", &eflo.VpdGrantRuleArgs{
 //				GrantTenantId: pulumi.String(_default.Id),
-//				ErId:          defaultEr.ID().ToIDOutput().ToStringOutput(),
-//				InstanceId:    defaultVpd.ID().ToIDOutput().ToStringOutput(),
+//				ErId:          defaultEr.ID(),
+//				InstanceId:    defaultVpd.ID(),
 //			})
 //			if err != nil {
 //				return err

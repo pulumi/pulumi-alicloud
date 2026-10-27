@@ -17,7 +17,39 @@ import (
 //
 // ## Example Usage
 //
-// Basic Usage
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/dms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dmsEnterpriseInstancesDs, err := dms.GetEnterpriseInstances(ctx, &dms.GetEnterpriseInstancesArgs{
+//				InstanceType: pulumi.StringRef("mysql"),
+//				SearchKey:    pulumi.StringRef("tf-test-no-deleting"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := dms.GetEnterpriseLogicDatabases(ctx, &dms.GetEnterpriseLogicDatabasesArgs{
+//				InstanceId: dmsEnterpriseInstancesDs.Instances[0].InstanceId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudDmsEnterpriseLogicDatabaseExampleId", _default.Databases[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEnterpriseLogicDatabases(ctx *pulumi.Context, args *GetEnterpriseLogicDatabasesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseLogicDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseLogicDatabasesResult

@@ -105,7 +105,7 @@ import (
 // }
 // _, err = databasefilesystem.NewInstanceAttachment(ctx, "default", &databasefilesystem.InstanceAttachmentArgs{
 // InstanceId: pulumi.String(_default.Instances[0].Id),
-// EcsId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// EcsId: defaultInstance.ID(),
 // })
 // if err != nil {
 // return err

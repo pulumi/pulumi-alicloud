@@ -51,7 +51,7 @@ import (
 //			}
 //			defaultWaitingRoom, err := esa.NewWaitingRoom(ctx, "default", &esa.WaitingRoomArgs{
 //				Status:                      pulumi.String("off"),
-//				SiteId:                      defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:                      defaultSite.ID(),
 //				JsonResponseEnable:          pulumi.String("off"),
 //				Description:                 pulumi.String("example"),
 //				WaitingRoomType:             pulumi.String("default"),
@@ -82,7 +82,7 @@ import (
 //				WaitingRoomId: defaultWaitingRoom.WaitingRoomId,
 //				RuleName:      pulumi.String("WaitingRoomRule_example1"),
 //				Status:        pulumi.String("off"),
-//				SiteId:        defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:        defaultSite.ID(),
 //			})
 //			if err != nil {
 //				return err

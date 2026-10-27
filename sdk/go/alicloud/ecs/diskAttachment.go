@@ -55,7 +55,7 @@ import (
 //				InstanceType:     pulumi.String("ecs.n4.small"),
 //				AvailabilityZone: pulumi.String("cn-beijing-a"),
 //				SecurityGroups: pulumi.StringArray{
-//					ecsSg.ID().ToIDOutput().ToStringOutput(),
+//					ecsSg.ID(),
 //				},
 //				InstanceName:       pulumi.String("Hello"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
@@ -67,8 +67,8 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewDiskAttachment(ctx, "ecs_disk_att", &ecs.DiskAttachmentArgs{
-//				DiskId:     ecsDisk.ID().ToIDOutput().ToStringOutput(),
-//				InstanceId: ecsInstance.ID().ToIDOutput().ToStringOutput(),
+//				DiskId:     ecsDisk.ID(),
+//				InstanceId: ecsInstance.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -43,7 +43,7 @@ import (
 //				Filters: []hbr.GetServerBackupPlansFilter{
 //					{
 //						Key: pulumi.StringRef("instanceId"),
-//						Values: pulumi.StringArray{
+//						Values: []string{
 //							_default.Instances[0].Id,
 //						},
 //					},

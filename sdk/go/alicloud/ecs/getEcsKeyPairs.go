@@ -56,7 +56,7 @@ import (
 //			}
 //			ids := ecs.GetEcsKeyPairsOutput(ctx, ecs.GetEcsKeyPairsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultEcsKeyPair.ID().ToIDOutput().ToStringOutput(),
+//					defaultEcsKeyPair.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("ecsKeyPairId0", ids.ApplyT(func(ids ecs.GetEcsKeyPairsResult) (*string, error) {

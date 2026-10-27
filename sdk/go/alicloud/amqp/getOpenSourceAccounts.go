@@ -59,7 +59,7 @@ import (
 //			defaultB, err := vpc.NewSwitch(ctx, "default_b", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-b", name),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-b"),
 //			})
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //			defaultG, err := vpc.NewSwitch(ctx, "default_g", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-g", name),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-g"),
 //			})
 //			if err != nil {
@@ -76,7 +76,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -97,12 +97,12 @@ import (
 //				InstanceType:        pulumi.String("enterprise"),
 //				QueueCapacity:       pulumi.String("200"),
 //				MaxEipTps:           pulumi.String("128"),
-//				VpcId:               defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:               defaultNetwork.ID(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultB.ID().ToIDOutput().ToStringOutput(),
-//					defaultG.ID().ToIDOutput().ToStringOutput(),
+//					defaultB.ID(),
+//					defaultG.ID(),
 //				},
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -111,16 +111,16 @@ import (
 //				UserName:    pulumi.String(userName),
 //				Description: pulumi.String(userName),
 //				Password:    pulumi.String(userName),
-//				InstanceId:  createInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  createInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default := amqp.GetOpenSourceAccountsOutput(ctx, amqp.GetOpenSourceAccountsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultOpenSourceAccount.ID().ToIDOutput().ToStringOutput(),
+//					defaultOpenSourceAccount.ID(),
 //				},
-//				InstanceId: createInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: createInstance.ID(),
 //			}, nil)
 //			ctx.Export("alicloudAmqpOpenSourceAccountExampleId", _default.ApplyT(func(_default amqp.GetOpenSourceAccountsResult) (*string, error) {
 //				return _default.Accounts[0].Id, nil

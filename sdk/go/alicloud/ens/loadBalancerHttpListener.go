@@ -56,7 +56,7 @@ import (
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VswitchName: pulumi.String(name),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
-//				NetworkId:   network.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId:   network.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -66,14 +66,14 @@ import (
 //				PaymentType:      pulumi.String("PayAsYouGo"),
 //				EnsRegionId:      pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //				LoadBalancerSpec: pulumi.String("elb.s1.small"),
-//				VswitchId:        _switch.ID().ToIDOutput().ToStringOutput(),
-//				NetworkId:        network.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        _switch.ID(),
+//				NetworkId:        network.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ens.NewLoadBalancerHttpListener(ctx, "default", &ens.LoadBalancerHttpListenerArgs{
-//				LoadBalancerId: _default.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: _default.ID(),
 //				ListenerPort:   pulumi.Int(80),
 //				HealthCheck:    pulumi.String("on"),
 //				HealthCheckUri: pulumi.String("/"),

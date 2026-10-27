@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
 //				CidrBlock:         pulumi.String("172.16.0.0/21"),
 //				ZoneId:            pulumi.String(_default.Zones[0].Id),
 //				VswitchName:       pulumi.String(name),
@@ -86,7 +86,7 @@ import (
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -98,10 +98,10 @@ import (
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceName:            pulumi.String(name),
-//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:               defaultSwitch.ID(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -109,13 +109,13 @@ import (
 //			}
 //			defaultIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
 //				Ipv6GatewayName: pulumi.String(name),
-//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGetIpv6Addresses := vpc.GetIpv6AddressesOutput(ctx, vpc.GetIpv6AddressesOutputArgs{
-//				AssociatedInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				AssociatedInstanceId: defaultInstance.ID(),
 //				Status:               pulumi.String("Available"),
 //			}, nil)
 //			defaultIpv6InternetBandwidth, err := vpc.NewIpv6InternetBandwidth(ctx, "default", &vpc.Ipv6InternetBandwidthArgs{

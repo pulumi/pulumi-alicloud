@@ -77,7 +77,7 @@ import (
 //				},
 //				Description: pulumi.String("array route description"),
 //				RouteName:   pulumi.String("cspec-arr-route"),
-//				HttpApiId:   routeHttpapiArr.ID().ToIDOutput().ToStringOutput(),
+//				HttpApiId:   routeHttpapiArr.ID(),
 //				Match: &apig.RouteMatchArgs{
 //					Path: &apig.RouteMatchPathArgs{
 //						Type:  pulumi.String("Prefix"),

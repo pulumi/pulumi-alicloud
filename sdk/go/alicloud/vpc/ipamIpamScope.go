@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = vpc.NewIpamIpamScope(ctx, "default", &vpc.IpamIpamScopeArgs{
 //				IpamScopeName:        pulumi.String(name),
-//				IpamId:               defaultIpam.ID().ToIDOutput().ToStringOutput(),
+//				IpamId:               defaultIpam.ID(),
 //				IpamScopeDescription: pulumi.String("This is a ipam scope."),
 //				IpamScopeType:        pulumi.String("private"),
 //			})

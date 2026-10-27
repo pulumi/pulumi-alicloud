@@ -72,7 +72,7 @@ import (
 // return err
 // }
 // defaultApply, err := sslcertificatesservicecertificate.NewApply(ctx, "default", &sslcertificatesservicecertificate.ApplyArgs{
-// InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
+// InstanceId: _default.ID(),
 // Domain: _default.Domain,
 // ValidationMethod: _default.ValidationMethod,
 // })
@@ -111,7 +111,7 @@ import (
 // forResult1 = append(forResult1, r.Id)
 // }
 // _, err = sslcertificatesservicecertificate.NewValidation(ctx, "default", &sslcertificatesservicecertificate.ValidationArgs{
-// InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
+// InstanceId: _default.ID(),
 // ValidationRecordIds: pulumi.StringArray(defaultAlidnsRecord.ApplyT(func(%!v(PANIC=Format method: fatal: An assertion has failed: tok: )).(pulumi.IDArrayOutput)),
 // })
 // if err != nil {

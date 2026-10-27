@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -65,7 +65,7 @@ import (
 //				DbVersion:   pulumi.String("8.0"),
 //				DbNodeClass: pulumi.String(_default.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				PayType:     pulumi.String("PostPaid"),
-//				VswitchId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:   defaultSwitch.ID(),
 //				Description: pulumi.String("terraform-example"),
 //				DbClusterIpArrays: polardb.ClusterDbClusterIpArrayArray{
 //					&polardb.ClusterDbClusterIpArrayArgs{
@@ -124,7 +124,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -140,8 +140,8 @@ import (
 //				DnNodeClass: pulumi.String("polar.pg.x4.medium"),
 //				CnNodeNum:   pulumi.Int(1),
 //				DnNodeNum:   pulumi.Int(2),
-//				VswitchId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:   defaultSwitch.ID(),
+//				VpcId:       defaultNetwork.ID(),
 //				Description: pulumi.String("terraform-example-distributed"),
 //			})
 //			if err != nil {
@@ -183,7 +183,7 @@ import (
 //				return err
 //			}
 //			var tmp0 pulumi.Int
-//			if len(roles.Roles) > 0 {
+//			if bool(len(roles.Roles) > 0) {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
@@ -218,7 +218,7 @@ import (
 //				_default = append(_default, __res)
 //			}
 //			var tmp1 pulumi.Int
-//			if len(roles.Roles) > 0 {
+//			if bool(len(roles.Roles) > 0) {
 //				tmp1 = 0
 //			} else {
 //				tmp1 = 1
@@ -230,8 +230,8 @@ import (
 //					PolicyName: pulumi.String("AliyunRDSInstanceEncryptionRolePolicy"),
 //					PolicyType: pulumi.String("System"),
 //					PrincipalName: _default[0].Name.ApplyT(func(name string) (pulumi.String, error) {
-//						var tmp2 pulumi.String
-//						if len(roles.Roles) > 0 {
+//						var tmp2 string
+//						if bool(len(roles.Roles) > 0) {
 //							tmp2 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", roles.Roles[0].Name, current.Id)
 //						} else {
 //							tmp2 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", name, current.Id)

@@ -72,7 +72,7 @@ import (
 //			}
 //			ids := esa.GetOriginRulesOutput(ctx, esa.GetOriginRulesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultOriginRule.ID().ToIDOutput().ToStringOutput(),
+//					defaultOriginRule.ID(),
 //				},
 //				SiteId: defaultOriginRule.SiteId,
 //			}, nil)

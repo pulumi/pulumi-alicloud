@@ -66,7 +66,7 @@ import (
 //			defaultB, err := vpc.NewSwitch(ctx, "default_b", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-b", name),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       _default.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-b"),
 //			})
 //			if err != nil {
@@ -75,7 +75,7 @@ import (
 //			defaultG, err := vpc.NewSwitch(ctx, "default_g", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-g", name),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
-//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       _default.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-g"),
 //			})
 //			if err != nil {
@@ -83,7 +83,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
-//				VpcId:             _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,12 +104,12 @@ import (
 //				InstanceType:        pulumi.String("enterprise"),
 //				QueueCapacity:       pulumi.String("200"),
 //				MaxEipTps:           pulumi.String("128"),
-//				VpcId:               _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:               _default.ID(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultB.ID().ToIDOutput().ToStringOutput(),
-//					defaultG.ID().ToIDOutput().ToStringOutput(),
+//					defaultB.ID(),
+//					defaultG.ID(),
 //				},
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -119,7 +119,7 @@ import (
 //				Read:       pulumi.String(".*"),
 //				Vhost:      pulumi.String(vhost),
 //				UserName:   pulumi.String(userName),
-//				InstanceId: createInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: createInstance.ID(),
 //				Configure:  pulumi.String(".*"),
 //			})
 //			if err != nil {

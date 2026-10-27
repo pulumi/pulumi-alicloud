@@ -52,7 +52,7 @@ import (
 //			}
 //			_default := opensearch.GetAppGroupsOutput(ctx, opensearch.GetAppGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAppGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultAppGroup.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("appGroups", _default.ApplyT(func(_default opensearch.GetAppGroupsResult) ([]opensearch.GetAppGroupsGroup, error) {

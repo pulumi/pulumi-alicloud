@@ -94,7 +94,7 @@ import (
 //			}
 //			defaultSslVpnServer, err := vpn.NewSslVpnServer(ctx, "default", &vpn.SslVpnServerArgs{
 //				Name:         pulumi.String(name),
-//				VpnGatewayId: defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				VpnGatewayId: defaultGateway.ID(),
 //				ClientIpPool: pulumi.String("192.168.0.0/16"),
 //				LocalSubnet:  pulumi.String(invokeCidrsubnet.Result),
 //				Protocol:     pulumi.String("UDP"),
@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			_, err = vpn.NewSslVpnClientCert(ctx, "default", &vpn.SslVpnClientCertArgs{
-//				SslVpnServerId: defaultSslVpnServer.ID().ToIDOutput().ToStringOutput(),
+//				SslVpnServerId: defaultSslVpnServer.ID(),
 //				Name:           pulumi.String(name),
 //			})
 //			if err != nil {

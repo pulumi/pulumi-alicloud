@@ -75,7 +75,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -89,9 +89,9 @@ import (
 //				return err
 //			}
 //			defaultMountTarget, err := nas.NewMountTarget(ctx, "default", &nas.MountTargetArgs{
-//				FileSystemId:    defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:    defaultFileSystem.ID(),
 //				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
-//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //				ImageId:             pulumi.String(defaultGetImages.Images[0].Id),
 //				ImageOwnerAlias:     pulumi.String("system"),
 //				VolumeProtocol:      pulumi.String("nfs"),
-//				VolumeId:            defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				VolumeId:            defaultFileSystem.ID(),
 //				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
 //				ComputeCount:        pulumi.Int(1),
 //				ComputeInstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
@@ -115,8 +115,8 @@ import (
 //				OsTag:               pulumi.String("CentOS_7.6_64"),
 //				SchedulerType:       pulumi.String("pbs"),
 //				Password:            pulumi.String("your-password123"),
-//				VswitchId:           defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:               defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:           defaultSwitch.ID(),
+//				VpcId:               defaultNetwork.ID(),
 //				ZoneId:              pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {

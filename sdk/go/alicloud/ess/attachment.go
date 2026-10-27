@@ -106,7 +106,7 @@ import (
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("22/22"),
 //				Priority:        pulumi.Int(1),
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
 //				CidrIp:          pulumi.String("172.16.0.0/24"),
 //			})
 //			if err != nil {
@@ -128,10 +128,10 @@ import (
 //				return err
 //			}
 //			_, err = ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
-//				ScalingGroupId:     defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
+//				ScalingGroupId:     defaultScalingGroup.ID(),
 //				ImageId:            pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:       pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroupId:    defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
 //				SystemDiskCategory: pulumi.String("cloud_essd"),
 //				ForceDelete:        pulumi.Bool(true),
 //				Active:             pulumi.Bool(true),
@@ -147,7 +147,7 @@ import (
 //					ImageId:      pulumi.String(defaultGetImages.Images[0].Id),
 //					InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //					SecurityGroups: pulumi.StringArray{
-//						defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//						defaultSecurityGroup.ID(),
 //					},
 //					InternetChargeType:      pulumi.String("PayByTraffic"),
 //					InternetMaxBandwidthOut: pulumi.Int(10),
@@ -162,10 +162,10 @@ import (
 //				defaultInstance = append(defaultInstance, __res)
 //			}
 //			_, err = ess.NewAttachment(ctx, "default", &ess.AttachmentArgs{
-//				ScalingGroupId: defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
+//				ScalingGroupId: defaultScalingGroup.ID(),
 //				InstanceIds: pulumi.StringArray{
-//					defaultInstance[0].ID().ToIDOutput().ToStringOutput(),
-//					defaultInstance[1].ID().ToIDOutput().ToStringOutput(),
+//					defaultInstance[0].ID(),
+//					defaultInstance[1].ID(),
 //				},
 //				Force: pulumi.Bool(true),
 //			})

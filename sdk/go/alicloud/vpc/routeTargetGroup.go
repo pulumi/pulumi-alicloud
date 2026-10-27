@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			zoneA, err := vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
-//				VpcId:     _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     _default.ID(),
 //				ZoneId:    pulumi.String(zoneId1),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			zoneB, err := vpc.NewSwitch(ctx, "zone_b", &vpc.SwitchArgs{
-//				VpcId:     _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     _default.ID(),
 //				ZoneId:    pulumi.String(zoneId2),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -86,10 +86,10 @@ import (
 //			active, err := gwlb.NewLoadBalancer(ctx, "active", &gwlb.LoadBalancerArgs{
 //				LoadBalancerName: pulumi.Sprintf("%v-gwlb-active", name),
 //				AddressIpVersion: pulumi.String("Ipv4"),
-//				VpcId:            _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:            _default.ID(),
 //				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
 //					&gwlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: zoneA.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: zoneA.ID(),
 //						ZoneId:    pulumi.String(zoneId1),
 //					},
 //				},
@@ -106,9 +106,9 @@ import (
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpointServiceResource(ctx, "active", &privatelink.VpcEndpointServiceResourceArgs{
-//				ResourceId:   active.ID().ToIDOutput().ToStringOutput(),
+//				ResourceId:   active.ID(),
 //				ResourceType: pulumi.String("gwlb"),
-//				ServiceId:    activeVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
+//				ServiceId:    activeVpcEndpointService.ID(),
 //				ZoneId:       pulumi.String(zoneId1),
 //				DryRun:       pulumi.Bool(false),
 //			})
@@ -116,9 +116,9 @@ import (
 //				return err
 //			}
 //			activeVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "active", &privatelink.VpcEndpointArgs{
-//				ServiceId:       activeVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
+//				ServiceId:       activeVpcEndpointService.ID(),
 //				VpcEndpointName: pulumi.Sprintf("%v-ep-active", name),
-//				VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           _default.ID(),
 //				ServiceName:     activeVpcEndpointService.VpcEndpointServiceName,
 //				EndpointType:    pulumi.String("GatewayLoadBalancer"),
 //			})
@@ -128,8 +128,8 @@ import (
 //			// Attach zone A to the GWLB endpoint. The route target group backend looks up
 //			// the member endpoint by zone, so the endpoint must carry a non-empty zone.
 //			_, err = privatelink.NewVpcEndpointZone(ctx, "active", &privatelink.VpcEndpointZoneArgs{
-//				EndpointId: activeVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
-//				VswitchId:  zoneA.ID().ToIDOutput().ToStringOutput(),
+//				EndpointId: activeVpcEndpoint.ID(),
+//				VswitchId:  zoneA.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -139,10 +139,10 @@ import (
 //			standby, err := gwlb.NewLoadBalancer(ctx, "standby", &gwlb.LoadBalancerArgs{
 //				LoadBalancerName: pulumi.Sprintf("%v-gwlb-standby", name),
 //				AddressIpVersion: pulumi.String("Ipv4"),
-//				VpcId:            _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:            _default.ID(),
 //				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
 //					&gwlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: zoneB.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: zoneB.ID(),
 //						ZoneId:    pulumi.String(zoneId2),
 //					},
 //				},
@@ -159,9 +159,9 @@ import (
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpointServiceResource(ctx, "standby", &privatelink.VpcEndpointServiceResourceArgs{
-//				ResourceId:   standby.ID().ToIDOutput().ToStringOutput(),
+//				ResourceId:   standby.ID(),
 //				ResourceType: pulumi.String("gwlb"),
-//				ServiceId:    standbyVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
+//				ServiceId:    standbyVpcEndpointService.ID(),
 //				ZoneId:       pulumi.String(zoneId2),
 //				DryRun:       pulumi.Bool(false),
 //			})
@@ -169,9 +169,9 @@ import (
 //				return err
 //			}
 //			standbyVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "standby", &privatelink.VpcEndpointArgs{
-//				ServiceId:       standbyVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
+//				ServiceId:       standbyVpcEndpointService.ID(),
 //				VpcEndpointName: pulumi.Sprintf("%v-ep-standby", name),
-//				VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           _default.ID(),
 //				ServiceName:     standbyVpcEndpointService.VpcEndpointServiceName,
 //				EndpointType:    pulumi.String("GatewayLoadBalancer"),
 //			})
@@ -180,8 +180,8 @@ import (
 //			}
 //			// Attach zone B to the standby GWLB endpoint (different zone from active).
 //			_, err = privatelink.NewVpcEndpointZone(ctx, "standby", &privatelink.VpcEndpointZoneArgs{
-//				EndpointId: standbyVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
-//				VswitchId:  zoneB.ID().ToIDOutput().ToStringOutput(),
+//				EndpointId: standbyVpcEndpoint.ID(),
+//				VswitchId:  zoneB.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -191,16 +191,16 @@ import (
 //			_, err = vpc.NewRouteTargetGroup(ctx, "default", &vpc.RouteTargetGroupArgs{
 //				RouteTargetGroupName:        pulumi.String(name),
 //				RouteTargetGroupDescription: pulumi.String(name),
-//				VpcId:                       _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                       _default.ID(),
 //				ConfigMode:                  pulumi.String("Active-Standby"),
 //				RouteTargetMemberLists: vpc.RouteTargetGroupRouteTargetMemberListArray{
 //					&vpc.RouteTargetGroupRouteTargetMemberListArgs{
-//						MemberId:   activeVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+//						MemberId:   activeVpcEndpoint.ID(),
 //						MemberType: pulumi.String("GatewayLoadBalancerEndpoint"),
 //						Weight:     pulumi.Int(100),
 //					},
 //					&vpc.RouteTargetGroupRouteTargetMemberListArgs{
-//						MemberId:   standbyVpcEndpoint.ID().ToIDOutput().ToStringOutput(),
+//						MemberId:   standbyVpcEndpoint.ID(),
 //						MemberType: pulumi.String("GatewayLoadBalancerEndpoint"),
 //						Weight:     pulumi.Int(0),
 //					},

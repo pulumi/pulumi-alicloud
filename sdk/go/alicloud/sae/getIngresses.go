@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -102,12 +102,12 @@ import (
 //				return err
 //			}
 //			defaultIngress, err := sae.NewIngress(ctx, "default", &sae.IngressArgs{
-//				SlbId:        defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
-//				NamespaceId:  defaultNamespace.ID().ToIDOutput().ToStringOutput(),
+//				SlbId:        defaultLoadBalancer.ID(),
+//				NamespaceId:  defaultNamespace.ID(),
 //				ListenerPort: pulumi.Int("your_listener_port"),
 //				Rules: sae.IngressRuleArray{
 //					&sae.IngressRuleArgs{
-//						AppId:         defaultApplication.ID().ToIDOutput().ToStringOutput(),
+//						AppId:         defaultApplication.ID(),
 //						ContainerPort: pulumi.Int("your_container_port"),
 //						Domain:        pulumi.String("your_domain"),
 //						AppName:       pulumi.String("your_name"),
@@ -120,7 +120,7 @@ import (
 //			}
 //			defaultGetIngresses := sae.GetIngressesOutput(ctx, sae.GetIngressesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultIngress.ID().ToIDOutput().ToStringOutput(),
+//					defaultIngress.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("saeIngressId", defaultGetIngresses.ApplyT(func(defaultGetIngresses sae.GetIngressesResult) (interface{}, error) {

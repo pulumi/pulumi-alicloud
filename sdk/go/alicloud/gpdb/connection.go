@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			_, err = gpdb.NewConnection(ctx, "default", &gpdb.ConnectionArgs{
-//				InstanceId:       defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:       defaultInstance.ID(),
 //				ConnectionPrefix: pulumi.String("exampelcon"),
 //			})
 //			if err != nil {

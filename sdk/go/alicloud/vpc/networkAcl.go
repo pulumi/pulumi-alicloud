@@ -61,14 +61,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       example.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewNetworkAcl(ctx, "example", &vpc.NetworkAclArgs{
-//				VpcId:          example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          example.ID(),
 //				NetworkAclName: pulumi.String(name),
 //				Description:    pulumi.String(name),
 //				IngressAclEntries: vpc.NetworkAclIngressAclEntryArray{
@@ -93,7 +93,7 @@ import (
 //				},
 //				Resources: vpc.NetworkAclResourceArray{
 //					&vpc.NetworkAclResourceArgs{
-//						ResourceId:   exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//						ResourceId:   exampleSwitch.ID(),
 //						ResourceType: pulumi.String("VSwitch"),
 //					},
 //				},

@@ -51,7 +51,7 @@ import (
 //			}
 //			defaultWaitingRoom, err := esa.NewWaitingRoom(ctx, "default", &esa.WaitingRoomArgs{
 //				Status:                      pulumi.String("off"),
-//				SiteId:                      defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:                      defaultSite.ID(),
 //				JsonResponseEnable:          pulumi.String("off"),
 //				Description:                 pulumi.String("example"),
 //				WaitingRoomType:             pulumi.String("default"),
@@ -84,7 +84,7 @@ import (
 //				PreQueueStartTime:           pulumi.String(""),
 //				RandomPreQueueEnable:        pulumi.String("off"),
 //				JsonResponseEnable:          pulumi.String("off"),
-//				SiteId:                      defaultSite.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:                      defaultSite.ID(),
 //				PreQueueEnable:              pulumi.String("off"),
 //				Description:                 pulumi.String("example"),
 //				NewUsersPerMinute:           pulumi.String("200"),

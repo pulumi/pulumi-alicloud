@@ -91,8 +91,8 @@ import (
 //				return err
 //			}
 //			_, err = eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
-//				OfficeSiteId:  defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
-//				PolicyGroupId: defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
 //				BundleId:      pulumi.String(_default.Bundles[1].Id),
 //				DesktopName:   pulumi.String(name),
 //			})

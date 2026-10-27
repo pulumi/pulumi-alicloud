@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_ = kms.LookupCiphertextOutput(ctx, kms.GetCiphertextOutputArgs{
-//				KeyId:     key.ID().ToIDOutput().ToStringOutput(),
+//				KeyId:     key.ID(),
 //				Plaintext: pulumi.String("example"),
 //			}, nil)
 //			return nil

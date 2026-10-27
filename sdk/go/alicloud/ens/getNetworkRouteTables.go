@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultNetworkRouteTable, err := ens.NewNetworkRouteTable(ctx, "default", &ens.NetworkRouteTableArgs{
-//				NetworkId:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId:      defaultNetwork.ID(),
 //				AssociateType:  pulumi.String("Gateway"),
 //				RouteTableName: pulumi.String(name),
 //				Description:    pulumi.String(name),

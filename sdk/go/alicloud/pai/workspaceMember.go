@@ -67,8 +67,8 @@ import (
 //				return err
 //			}
 //			_, err = pai.NewWorkspaceMember(ctx, "default", &pai.WorkspaceMemberArgs{
-//				UserId:      defaultUser.ID().ToIDOutput().ToStringOutput(),
-//				WorkspaceId: workspace.ID().ToIDOutput().ToStringOutput(),
+//				UserId:      defaultUser.ID(),
+//				WorkspaceId: workspace.ID(),
 //				Roles: pulumi.StringArray{
 //					pulumi.String("PAI.AlgoDeveloper"),
 //					pulumi.String("PAI.AlgoOperator"),

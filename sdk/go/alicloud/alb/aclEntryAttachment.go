@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = alb.NewAclEntryAttachment(ctx, "default", &alb.AclEntryAttachmentArgs{
-//				AclId:       defaultAcl.ID().ToIDOutput().ToStringOutput(),
+//				AclId:       defaultAcl.ID(),
 //				Entry:       pulumi.String("168.10.10.0/24"),
 //				Description: pulumi.String(name),
 //			})

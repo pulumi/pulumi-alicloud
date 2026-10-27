@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = pvtz.NewZoneRecord(ctx, "foo", &pvtz.ZoneRecordArgs{
-//				ZoneId: zone.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId: zone.ID(),
 //				Rr:     pulumi.String("www"),
 //				Type:   pulumi.String("CNAME"),
 //				Value:  pulumi.String("bbb.test.com"),

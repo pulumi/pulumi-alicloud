@@ -72,7 +72,7 @@ import (
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
@@ -81,14 +81,14 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
 // }
 // defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 // LoadBalancerName: pulumi.String(name),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // LoadBalancerSpec: pulumi.String("slb.s2.small"),
 // AddressType: pulumi.String("intranet"),
 // })
@@ -96,7 +96,7 @@ import (
 // return err
 // }
 // defaultServerGroup, err := slb.NewServerGroup(ctx, "default", &slb.ServerGroupArgs{
-// LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+// LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 // Name: pulumi.String(name),
 // })
 // if err != nil {
@@ -116,14 +116,14 @@ import (
 // AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = slb.NewServerGroupServerAttachment(ctx, "server_attachment", &slb.ServerGroupServerAttachmentArgs{
-// ServerGroupId: defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
-// ServerId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// ServerGroupId: defaultServerGroup.ID(),
+// ServerId: defaultInstance.ID(),
 // Port: pulumi.Int(8080),
 // Type: pulumi.String("ecs"),
 // Weight: pulumi.Int(0),

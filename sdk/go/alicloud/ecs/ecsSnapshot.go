@@ -74,7 +74,7 @@ import (
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
@@ -83,7 +83,7 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // SecurityGroupName: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -101,7 +101,7 @@ import (
 // AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_essd"),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // InstanceName: pulumi.String(name),
 // DataDisks: ecs.InstanceDataDiskArray{
 // &ecs.InstanceDataDiskArgs{
@@ -123,8 +123,8 @@ import (
 // return err
 // }
 // defaultEcsDiskAttachment, err := ecs.NewEcsDiskAttachment(ctx, "default", &ecs.EcsDiskAttachmentArgs{
-// DiskId: defaultEcsDisk.ID().ToIDOutput().ToStringOutput(),
-// InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// DiskId: defaultEcsDisk.ID(),
+// InstanceId: defaultInstance.ID(),
 // })
 // if err != nil {
 // return err

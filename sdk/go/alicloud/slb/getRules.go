@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -60,13 +60,13 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:        defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultListener, err := slb.NewListener(ctx, "default", &slb.ListenerArgs{
-//				LoadBalancerId:         defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId:         defaultApplicationLoadBalancer.ID(),
 //				BackendPort:            pulumi.Int(22),
 //				FrontendPort:           pulumi.Int(22),
 //				Protocol:               pulumi.String("http"),
@@ -77,24 +77,24 @@ import (
 //				return err
 //			}
 //			defaultServerGroup, err := slb.NewServerGroup(ctx, "default", &slb.ServerGroupArgs{
-//				LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = slb.NewRule(ctx, "default", &slb.RuleArgs{
-//				LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 //				FrontendPort:   defaultListener.FrontendPort,
 //				Name:           pulumi.String(name),
 //				Domain:         pulumi.String("*.aliyun.com"),
 //				Url:            pulumi.String("/image"),
-//				ServerGroupId:  defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
+//				ServerGroupId:  defaultServerGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			sampleDs := slb.GetRulesOutput(ctx, slb.GetRulesOutputArgs{
-//				LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 //				FrontendPort:   pulumi.Int(22),
 //			}, nil)
 //			ctx.Export("firstSlbRuleId", sampleDs.ApplyT(func(sampleDs slb.GetRulesResult) (*string, error) {

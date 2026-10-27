@@ -59,7 +59,7 @@ import (
 //			defaultMaster, err := vpc.NewSwitch(ctx, "default_master", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(masterZone),
 //			})
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //			defaultSlave, err := vpc.NewSwitch(ctx, "default_slave", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(slaveZone),
 //			})
 //			if err != nil {
@@ -83,7 +83,7 @@ import (
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String(name),
-//				CenId:             defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				CenId:             defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,19 +95,19 @@ import (
 //				return err
 //			}
 //			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "default", &cen.TransitRouterVpcAttachmentArgs{
-//				CenId:                              defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				CenId:                              defaultInstance.ID(),
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				VpcId:                              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                              defaultNetwork.ID(),
 //				TransitRouterVpcAttachmentName:     pulumi.String(name),
 //				TransitRouterAttachmentDescription: pulumi.String(name),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(masterZone),
-//						VswitchId: defaultMaster.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultMaster.ID(),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(slaveZone),
-//						VswitchId: defaultSlave.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSlave.ID(),
 //					},
 //				},
 //			})

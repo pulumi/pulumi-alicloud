@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     _default.ID(),
 //				ZoneId:    pulumi.String(zoneId),
 //				CidrBlock: pulumi.String(cidrBlock),
 //			})
@@ -69,9 +69,9 @@ import (
 //			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
 //				EngineVersion:     pulumi.String("5.0"),
 //				StorageType:       pulumi.String("cloud_essd1"),
-//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:         defaultSwitch.ID(),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VpcId:             _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             _default.ID(),
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
@@ -84,7 +84,7 @@ import (
 //			}
 //			_, err = mongodb.NewBackup(ctx, "default", &mongodb.BackupArgs{
 //				BackupMethod:          pulumi.String("Snapshot"),
-//				DbInstanceId:          defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:          defaultInstance.ID(),
 //				BackupRetentionPeriod: pulumi.Int(7),
 //			})
 //			if err != nil {

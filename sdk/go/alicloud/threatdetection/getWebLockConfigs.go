@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := threatdetection.GetWebLockConfigs(ctx, &threatdetection.GetWebLockConfigsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudThreatDetectionWebLockConfig.Id,
 //				},
 //			}, nil)

@@ -45,7 +45,7 @@ import (
 //			}
 //			ids := expressconnect.GetRouterExpressConnectRoutersOutput(ctx, expressconnect.GetRouterExpressConnectRoutersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("expressConnectRouterExpressConnectRoutersId0", ids.ApplyT(func(ids expressconnect.GetRouterExpressConnectRoutersResult) (*string, error) {

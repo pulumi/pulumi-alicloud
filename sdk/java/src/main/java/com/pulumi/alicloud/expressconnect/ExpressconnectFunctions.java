@@ -4333,6 +4333,42 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections() {
         return getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.Empty, InvokeOptions.Empty);
@@ -4343,6 +4379,42 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain() {
@@ -4355,6 +4427,42 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args) {
         return getVirtualPhysicalConnections(args, InvokeOptions.Empty);
@@ -4365,6 +4473,42 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain(GetVirtualPhysicalConnectionsPlainArgs args) {
@@ -4377,6 +4521,42 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", TypeShape.of(GetVirtualPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
@@ -4388,6 +4568,42 @@ public final class ExpressconnectFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", TypeShape.of(GetVirtualPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
@@ -4398,6 +4614,42 @@ public final class ExpressconnectFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualPhysicalConnectionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("id"))
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("name"))
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.get("parentPhysicalConnectionId"))
+     *             .vlanId(789)
+     *             .vpconnAliUid("1234567890")
+     *             .build());
+     * 
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVirtualPhysicalConnectionsResult> getVirtualPhysicalConnectionsPlain(GetVirtualPhysicalConnectionsPlainArgs args, InvokeOptions options) {

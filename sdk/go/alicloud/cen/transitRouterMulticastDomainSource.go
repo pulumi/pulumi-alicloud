@@ -57,7 +57,7 @@ import (
 //			}
 //			defaultMaster, err := vpc.NewSwitch(ctx, "default_master", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //			})
@@ -66,7 +66,7 @@ import (
 //			}
 //			defaultSlave, err := vpc.NewSwitch(ctx, "default_slave", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //			})
@@ -81,24 +81,24 @@ import (
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
-//				CenId:            defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				CenId:            defaultInstance.ID(),
 //				SupportMulticast: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "default", &cen.TransitRouterVpcAttachmentArgs{
-//				CenId:           defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				CenId:           defaultInstance.ID(),
 //				TransitRouterId: defaultTransitRouter.TransitRouterId,
-//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    defaultMaster.ZoneId,
-//						VswitchId: defaultMaster.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultMaster.ID(),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    defaultSlave.ZoneId,
-//						VswitchId: defaultSlave.ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSlave.ID(),
 //					},
 //				},
 //				TransitRouterAttachmentName:        pulumi.String(name),
@@ -109,7 +109,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -130,9 +130,9 @@ import (
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
-//				VswitchId:            defaultMaster.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:            defaultMaster.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
 //				Description: pulumi.String("Basic test"),
 //				PrimaryIpAddress: std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
@@ -149,17 +149,17 @@ import (
 //				return err
 //			}
 //			defaultTransitRouterMulticastDomainAssociation, err := cen.NewTransitRouterMulticastDomainAssociation(ctx, "default", &cen.TransitRouterMulticastDomainAssociationArgs{
-//				TransitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.ID().ToIDOutput().ToStringOutput(),
+//				TransitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.ID(),
 //				TransitRouterAttachmentId:      defaultTransitRouterVpcAttachment.TransitRouterAttachmentId,
-//				VswitchId:                      defaultMaster.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:                      defaultMaster.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterMulticastDomainSource(ctx, "example", &cen.TransitRouterMulticastDomainSourceArgs{
-//				VpcId:                          defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                          defaultNetwork.ID(),
 //				TransitRouterMulticastDomainId: defaultTransitRouterMulticastDomainAssociation.TransitRouterMulticastDomainId,
-//				NetworkInterfaceId:             defaultEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+//				NetworkInterfaceId:             defaultEcsNetworkInterface.ID(),
 //				GroupIpAddress:                 pulumi.String("239.1.1.1"),
 //			})
 //			if err != nil {

@@ -73,7 +73,7 @@ import (
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
 // ZoneId: pulumi.String(_default.Ids[0]),
 // })
@@ -82,7 +82,7 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -101,14 +101,14 @@ import (
 // AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = ddos.NewBasicThreshold(ctx, "example", &ddos.BasicThresholdArgs{
 // InstanceType: pulumi.String("ecs"),
-// InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// InstanceId: defaultInstance.ID(),
 // InternetIp: defaultInstance.PublicIp,
 // Bps: pulumi.Int(100),
 // Pps: pulumi.Int(60000),

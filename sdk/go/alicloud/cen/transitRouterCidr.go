@@ -45,7 +45,7 @@ import (
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             example.ID().ToIDOutput().ToStringOutput(),
+//				CenId:             example.ID(),
 //			})
 //			if err != nil {
 //				return err

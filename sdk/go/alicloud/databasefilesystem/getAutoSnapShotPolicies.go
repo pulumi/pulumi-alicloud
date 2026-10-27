@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := databasefilesystem.GetAutoSnapShotPolicies(ctx, &databasefilesystem.GetAutoSnapShotPoliciesArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudDbfsAutoSnapShotPolicy.Id,
 //				},
 //			}, nil)

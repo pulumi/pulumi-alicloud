@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sag.GetAcls(ctx, &sag.GetAclsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudSagAcls.Id,
 //				},
 //				NameRegex: pulumi.StringRef("^tf-testAcc.*"),

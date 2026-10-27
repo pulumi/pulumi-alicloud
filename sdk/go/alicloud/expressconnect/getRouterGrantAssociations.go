@@ -65,7 +65,7 @@ import (
 //			}
 //			ids := expressconnect.GetRouterGrantAssociationsOutput(ctx, expressconnect.GetRouterGrantAssociationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //				EcrId: _default.EcrId,
 //			}, nil)

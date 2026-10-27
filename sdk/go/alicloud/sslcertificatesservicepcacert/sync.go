@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			sub, err := sslcertificatesservice.NewPcaCertificate(ctx, "sub", &sslcertificatesservice.PcaCertificateArgs{
-//				ParentIdentifier: root.ID().ToIDOutput().ToStringOutput(),
+//				ParentIdentifier: root.ID(),
 //				Organization:     pulumi.String("a"),
 //				Years:            pulumi.Int(1),
 //				Locality:         pulumi.String("a"),
@@ -73,7 +73,7 @@ import (
 //				val0 := index
 //				__res, err := sslcertificatesservicepcacert.NewSslCertificatesServicePcaCert(ctx, fmt.Sprintf("default-%v", key0), &sslcertificatesservicepcacert.SslCertificatesServicePcaCertArgs{
 //					Days:             pulumi.Int(1),
-//					ParentIdentifier: sub.ID().ToIDOutput().ToStringOutput(),
+//					ParentIdentifier: sub.ID(),
 //					Algorithm:        pulumi.String("RSA_2048"),
 //					CommonName:       pulumi.Sprintf("terraform-%v", val0),
 //					Organization:     pulumi.String("terraform"),

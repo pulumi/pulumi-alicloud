@@ -55,9 +55,9 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterGrantAttachment(ctx, "example", &cen.TransitRouterGrantAttachmentArgs{
-//				CenId:        exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//				CenId:        exampleInstance.ID(),
 //				CenOwnerId:   pulumi.String(_default.Id),
-//				InstanceId:   example.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   example.ID(),
 //				InstanceType: pulumi.String("VPC"),
 //				OrderType:    pulumi.String("PayByCenOwner"),
 //			})

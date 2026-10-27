@@ -67,7 +67,7 @@ import (
 //				DatasetName:    pulumi.String(name),
 //				DataSourceType: pulumi.String("NAS"),
 //				SourceType:     pulumi.String("ITAG"),
-//				WorkspaceId:    defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				WorkspaceId:    defaultWorkspace.ID(),
 //				DataType:       pulumi.String("PIC"),
 //				Property:       pulumi.String("DIRECTORY"),
 //				Uri:            pulumi.String("nas://086b649545.cn-hangzhou/"),

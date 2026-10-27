@@ -59,8 +59,8 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucketLogging(ctx, "default", &oss.BucketLoggingArgs{
-//				Bucket:       createBucket.ID().ToIDOutput().ToStringOutput(),
-//				TargetBucket: createLoggingBucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:       createBucket.ID(),
+//				TargetBucket: createLoggingBucket.ID(),
 //				TargetPrefix: pulumi.String("log/"),
 //				LoggingRole:  pulumi.String("example-role"),
 //			})

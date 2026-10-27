@@ -87,7 +87,7 @@ import (
 //			}
 //			_, err = gpdb.NewAccount(ctx, "default", &gpdb.AccountArgs{
 //				AccountName:        pulumi.String("tf_example"),
-//				DbInstanceId:       defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:       defaultInstance.ID(),
 //				AccountPassword:    pulumi.String("Example1234"),
 //				AccountDescription: pulumi.String("tf_example"),
 //			})

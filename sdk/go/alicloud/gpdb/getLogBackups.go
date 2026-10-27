@@ -39,7 +39,7 @@ import (
 //				StartTime:    pulumi.StringRef("2022-12-12T02:00Z"),
 //				EndTime:      pulumi.StringRef("2024-12-12T02:00Z"),
 //				DbInstanceId: _default.Ids[0],
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					_default.Ids[0],
 //				},
 //			}, nil)

@@ -48,7 +48,7 @@ import (
 //			}
 //			defaultTopic, err := rocketmq.NewTopic(ctx, "default", &rocketmq.TopicArgs{
 //				TopicName:   pulumi.String(topic),
-//				InstanceId:  _default.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  _default.ID(),
 //				MessageType: pulumi.Int(0),
 //				Remark:      pulumi.String("dafault_ons_topic_remark"),
 //			})

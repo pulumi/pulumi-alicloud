@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			defaultApply, err := sslcertificatesservicecertificate.NewApply(ctx, "default", &sslcertificatesservicecertificate.ApplyArgs{
-//				InstanceId:       _default.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:       _default.ID(),
 //				Domain:           _default.Domain,
 //				ValidationMethod: _default.ValidationMethod,
 //			})

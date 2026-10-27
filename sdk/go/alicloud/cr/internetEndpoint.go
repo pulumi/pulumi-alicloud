@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = cr.NewInternetEndpoint(ctx, "default", &cr.InternetEndpointArgs{
-//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: _default.ID(),
 //				Entries: cr.InternetEndpointEntryArray{
 //					&cr.InternetEndpointEntryArgs{
 //						Entry:   pulumi.String("192.168.1.0/24"),

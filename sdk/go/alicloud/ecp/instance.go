@@ -67,7 +67,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
 //			})
@@ -76,7 +76,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,8 +91,8 @@ import (
 //			_, err = ecp.NewInstance(ctx, "default", &ecp.InstanceArgs{
 //				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].InstanceType),
 //				ImageId:         pulumi.String("android-image-release5501072_a11_20240530.raw"),
-//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
 //				KeyPairName:     defaultKeyPair.KeyPairName,
 //				VncPassword:     pulumi.String("Ecp123"),
 //				PaymentType:     pulumi.String("PayAsYouGo"),

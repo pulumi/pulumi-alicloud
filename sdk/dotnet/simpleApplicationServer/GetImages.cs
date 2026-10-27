@@ -20,7 +20,25 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// 
         /// Basic Usage
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instanceImageType = AliCloud.SimpleApplicationServer.GetImages.Invoke(new()
+        ///     {
+        ///         InstanceImageType = "system",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerImageId1"] = ids.Images[0].Id,
+        ///     };
+        /// });
+        /// ```
         /// 
         /// 
         /// The following arguments are supported:
@@ -43,7 +61,25 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// 
         /// Basic Usage
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instanceImageType = AliCloud.SimpleApplicationServer.GetImages.Invoke(new()
+        ///     {
+        ///         InstanceImageType = "system",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerImageId1"] = ids.Images[0].Id,
+        ///     };
+        /// });
+        /// ```
         /// 
         /// 
         /// The following arguments are supported:
@@ -66,7 +102,25 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// 
         /// Basic Usage
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instanceImageType = AliCloud.SimpleApplicationServer.GetImages.Invoke(new()
+        ///     {
+        ///         InstanceImageType = "system",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerImageId1"] = ids.Images[0].Id,
+        ///     };
+        /// });
+        /// ```
         /// 
         /// 
         /// The following arguments are supported:

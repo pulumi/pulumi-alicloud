@@ -79,14 +79,14 @@ import (
 //				Period:      pulumi.Int(1),
 //				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = bastionhost.NewUserGroup(ctx, "default", &bastionhost.UserGroupArgs{
-//				InstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:    defaultInstance.ID(),
 //				UserGroupName: pulumi.String(name),
 //			})
 //			if err != nil {

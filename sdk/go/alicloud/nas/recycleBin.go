@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = nas.NewRecycleBin(ctx, "example", &nas.RecycleBinArgs{
-//				FileSystemId: exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId: exampleFileSystem.ID(),
 //				ReservedDays: pulumi.Int(3),
 //			})
 //			if err != nil {

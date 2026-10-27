@@ -61,7 +61,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ import (
 //			}
 //			_, err = kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
 //				DbInstanceName:  pulumi.String(name),
-//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID(),
 //				ResourceGroupId: pulumi.String(_default.Ids[0]),
 //				ZoneId:          pulumi.String(defaultGetZones.Zones[0].Id),
 //				InstanceClass:   pulumi.String("redis.master.large.default"),
@@ -221,7 +221,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -229,7 +229,7 @@ import (
 //			}
 //			_, err = kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
 //				DbInstanceName:    pulumi.String(name),
-//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:         defaultSwitch.ID(),
 //				ResourceGroupId:   pulumi.String(_default.Ids[0]),
 //				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
 //				SecondaryZoneId:   pulumi.String(defaultGetZones.Zones[1].Id),

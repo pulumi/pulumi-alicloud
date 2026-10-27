@@ -61,7 +61,7 @@ import (
 //			}
 //			ids := esa.GetNetworkOptimizationsOutput(ctx, esa.GetNetworkOptimizationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultNetworkOptimization.ID().ToIDOutput().ToStringOutput(),
+//					defaultNetworkOptimization.ID(),
 //				},
 //				SiteId: defaultNetworkOptimization.SiteId,
 //			}, nil)

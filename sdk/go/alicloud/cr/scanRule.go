@@ -68,7 +68,7 @@ import (
 //					pulumi.String("dd"),
 //					pulumi.String("ee"),
 //				},
-//				InstanceId: default2Aqoce.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: default2Aqoce.ID(),
 //			})
 //			if err != nil {
 //				return err

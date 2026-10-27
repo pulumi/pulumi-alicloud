@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			_, err = simpleapplicationserver.NewFirewallRule(ctx, "default", &simpleapplicationserver.FirewallRuleArgs{
-//				InstanceId:   defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   defaultInstance.ID(),
 //				RuleProtocol: pulumi.String("Tcp"),
 //				Port:         pulumi.String("9999"),
 //				Remark:       pulumi.String(name),

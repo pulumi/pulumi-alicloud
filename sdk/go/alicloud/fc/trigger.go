@@ -137,7 +137,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -148,7 +148,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.String("terraform-example"),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -296,7 +296,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -307,7 +307,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -469,7 +469,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -480,7 +480,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -579,7 +579,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -590,7 +590,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.String("terraform-example"),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -685,7 +685,7 @@ import (
 //			}
 //			defaultGroup, err := rocketmq.NewGroup(ctx, "default", &rocketmq.GroupArgs{
 //				GroupName:  pulumi.String("GID-example"),
-//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultInstance.ID(),
 //				Remark:     pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -693,7 +693,7 @@ import (
 //			}
 //			defaultTopic, err := rocketmq.NewTopic(ctx, "default", &rocketmq.TopicArgs{
 //				TopicName:   pulumi.String("mytopic"),
-//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  defaultInstance.ID(),
 //				MessageType: pulumi.Int(0),
 //				Remark:      pulumi.String("terraform-example"),
 //			})
@@ -766,7 +766,7 @@ import (
 //				return err
 //			}
 //			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
-//				InstanceId:      defaultInstance2.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:      defaultInstance2.ID(),
 //				VirtualHostName: pulumi.String("example-VirtualHost"),
 //			})
 //			if err != nil {

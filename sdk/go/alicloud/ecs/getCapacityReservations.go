@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := ecs.GetCapacityReservations(ctx, &ecs.GetCapacityReservationsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudEcsCapacityReservation.Id,
 //				},
 //				NameRegex:    pulumi.StringRef(defaultAlicloudEcsCapacityReservation.Name),

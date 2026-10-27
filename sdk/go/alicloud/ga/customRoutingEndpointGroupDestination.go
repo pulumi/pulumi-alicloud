@@ -60,8 +60,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      _default.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +81,7 @@ import (
 //			}
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
-//				ListenerId:                     defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:                     defaultListener.ID(),
 //				EndpointGroupRegion:            pulumi.String(region),
 //				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:                    pulumi.String("terraform-example"),
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewCustomRoutingEndpointGroupDestination(ctx, "default", &ga.CustomRoutingEndpointGroupDestinationArgs{
-//				EndpointGroupId: defaultCustomRoutingEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//				EndpointGroupId: defaultCustomRoutingEndpointGroup.ID(),
 //				Protocols: pulumi.StringArray{
 //					pulumi.String("TCP"),
 //				},

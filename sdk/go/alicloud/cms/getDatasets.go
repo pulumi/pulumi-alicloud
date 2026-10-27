@@ -79,7 +79,7 @@ import (
 //			_default := cms.GetDatasetsOutput(ctx, cms.GetDatasetsOutputArgs{
 //				Workspace: defaultWorkspace.WorkspaceName,
 //				Ids: pulumi.StringArray{
-//					defaultDataset.ID().ToIDOutput().ToStringOutput(),
+//					defaultDataset.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("cmsDatasetId1", _default.ApplyT(func(_default cms.GetDatasetsResult) (*string, error) {

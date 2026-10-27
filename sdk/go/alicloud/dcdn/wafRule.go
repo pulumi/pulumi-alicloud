@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = dcdn.NewWafRule(ctx, "example", &dcdn.WafRuleArgs{
-//				PolicyId: example.ID().ToIDOutput().ToStringOutput(),
+//				PolicyId: example.ID(),
 //				RuleName: pulumi.String(name),
 //				Conditions: dcdn.WafRuleConditionArray{
 //					&dcdn.WafRuleConditionArgs{

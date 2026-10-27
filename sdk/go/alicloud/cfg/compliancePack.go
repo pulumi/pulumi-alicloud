@@ -90,10 +90,10 @@ import (
 //				RiskLevel:          pulumi.Int(2),
 //				ConfigRuleIds: cfg.CompliancePackConfigRuleIdArray{
 //					&cfg.CompliancePackConfigRuleIdArgs{
-//						ConfigRuleId: rule1.ID().ToIDOutput().ToStringOutput(),
+//						ConfigRuleId: rule1.ID(),
 //					},
 //					&cfg.CompliancePackConfigRuleIdArgs{
-//						ConfigRuleId: rule2.ID().ToIDOutput().ToStringOutput(),
+//						ConfigRuleId: rule2.ID(),
 //					},
 //				},
 //			})

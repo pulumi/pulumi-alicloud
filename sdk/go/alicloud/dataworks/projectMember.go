@@ -81,8 +81,8 @@ import (
 //				return err
 //			}
 //			_, err = dataworks.NewProjectMember(ctx, "default", &dataworks.ProjectMemberArgs{
-//				UserId:    defaultKCTrB2.ID().ToIDOutput().ToStringOutput(),
-//				ProjectId: defaultQeRfvU.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				UserId:    defaultKCTrB2.ID(),
+//				ProjectId: defaultQeRfvU.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Roles: dataworks.ProjectMemberRoleArray{
 //					&dataworks.ProjectMemberRoleArgs{
 //						Code: pulumi.String(adminCode),

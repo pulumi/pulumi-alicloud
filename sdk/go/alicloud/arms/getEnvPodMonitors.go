@@ -63,7 +63,7 @@ import (
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 //				Description: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       vpc2.ID(),
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
@@ -109,7 +109,7 @@ import (
 //				ServiceCidr:   pulumi.String("172.23.0.0/16"),
 //				PodCidr:       pulumi.String("10.95.0.0/16"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					vswitch.ID().ToIDOutput().ToStringOutput(),
+//					vswitch.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -123,9 +123,9 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				Name:      pulumi.String("desired_size"),
-//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: defaultManagedKubernetes.ID(),
 //				VswitchIds: pulumi.StringArray{
-//					vswitch.ID().ToIDOutput().ToStringOutput(),
+//					vswitch.ID(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
@@ -151,7 +151,7 @@ import (
 //			}
 //			defaultEnvPodMonitor, err := arms.NewEnvPodMonitor(ctx, "default", &arms.EnvPodMonitorArgs{
 //				AliyunLang:    pulumi.String("en"),
-//				EnvironmentId: environment_cs.ID().ToIDOutput().ToStringOutput(),
+//				EnvironmentId: environment_cs.ID(),
 //				ConfigYaml: pulumi.String(`apiVersion: monitoring.coreos.com/v1
 //
 // kind: PodMonitor
@@ -190,7 +190,7 @@ import (
 //			ids := arms.GetEnvPodMonitorsOutput(ctx, arms.GetEnvPodMonitorsOutputArgs{
 //				EnvironmentId: defaultEnvPodMonitor.EnvironmentId,
 //				Ids: pulumi.StringArray{
-//					defaultEnvPodMonitor.ID().ToIDOutput().ToStringOutput(),
+//					defaultEnvPodMonitor.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvPodMonitorsId0", ids.ApplyT(func(ids arms.GetEnvPodMonitorsResult) (*string, error) {

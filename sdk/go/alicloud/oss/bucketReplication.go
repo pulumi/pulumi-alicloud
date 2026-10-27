@@ -123,7 +123,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucketReplication(ctx, "cross-region-replication", &oss.BucketReplicationArgs{
-//				Bucket:                      bucketSrc.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:                      bucketSrc.ID(),
 //				Action:                      pulumi.String("PUT,DELETE"),
 //				HistoricalObjectReplication: pulumi.String("enabled"),
 //				PrefixSet: &oss.BucketReplicationPrefixSetArgs{
@@ -133,12 +133,12 @@ import (
 //					},
 //				},
 //				Destination: &oss.BucketReplicationDestinationArgs{
-//					Bucket:   bucketDest.ID().ToIDOutput().ToStringOutput(),
+//					Bucket:   bucketDest.ID(),
 //					Location: bucketDest.Location,
 //				},
 //				SyncRole: role.RoleName,
 //				EncryptionConfiguration: &oss.BucketReplicationEncryptionConfigurationArgs{
-//					ReplicaKmsKeyId: key.ID().ToIDOutput().ToStringOutput(),
+//					ReplicaKmsKeyId: key.ID(),
 //				},
 //				SourceSelectionCriteria: &oss.BucketReplicationSourceSelectionCriteriaArgs{
 //					SseKmsEncryptedObjects: &oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{

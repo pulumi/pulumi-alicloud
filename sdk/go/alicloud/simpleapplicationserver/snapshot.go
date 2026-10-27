@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			defaultGetServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
-//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultInstance.ID(),
 //			}, nil)
 //			_, err = simpleapplicationserver.NewSnapshot(ctx, "default", &simpleapplicationserver.SnapshotArgs{
 //				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {

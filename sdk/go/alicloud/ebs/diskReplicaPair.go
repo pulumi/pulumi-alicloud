@@ -103,12 +103,12 @@ import (
 //				return err
 //			}
 //			_, err = ebs.NewDiskReplicaPair(ctx, "default", &ebs.DiskReplicaPairArgs{
-//				DestinationDiskId:   destination.ID().ToIDOutput().ToStringOutput(),
+//				DestinationDiskId:   destination.ID(),
 //				DestinationRegionId: pulumi.String(_default.Regions[0].Id),
 //				PaymentType:         pulumi.String("POSTPAY"),
 //				DestinationZoneId:   destination.ZoneId,
 //				SourceZoneId:        defaultEcsDisk.ZoneId,
-//				DiskId:              defaultEcsDisk.ID().ToIDOutput().ToStringOutput(),
+//				DiskId:              defaultEcsDisk.ID(),
 //				Description:         pulumi.String(name),
 //			})
 //			if err != nil {

@@ -81,9 +81,9 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewGrantRuleToCen(ctx, "default", &expressconnect.GrantRuleToCenArgs{
-//				CenId:      defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				CenId:      defaultInstance.ID(),
 //				CenOwnerId: pulumi.String(_default.Id),
-//				InstanceId: defaultVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultVirtualBorderRouter.ID(),
 //			})
 //			if err != nil {
 //				return err

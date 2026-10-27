@@ -113,7 +113,7 @@ import (
 //					},
 //				},
 //				Name:   pulumi.String(name),
-//				Domain: defaultDomainResource.ID().ToIDOutput().ToStringOutput(),
+//				Domain: defaultDomainResource.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -54,7 +54,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					defaultSwitch.ID(),
 //				},
 //				NewNatGateway:      pulumi.Bool(false),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -92,7 +92,7 @@ import (
 //			}
 //			clusterId := defaultManagedKubernetes.ID()
 //			defaultGetKubernetesAddonMetadata := cs.GetKubernetesAddonMetadataOutput(ctx, cs.GetKubernetesAddonMetadataOutputArgs{
-//				ClusterId: clusterId.ToIDOutput().ToStringOutput(),
+//				ClusterId: clusterId,
 //				Name:      pulumi.String("nginx-ingress-controller"),
 //				Version:   pulumi.String("v1.1.2-aliyun.2"),
 //			}, nil)

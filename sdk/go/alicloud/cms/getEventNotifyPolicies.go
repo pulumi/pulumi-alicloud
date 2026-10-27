@@ -102,7 +102,7 @@ import (
 //			}
 //			_default := cms.GetEventNotifyPoliciesOutput(ctx, cms.GetEventNotifyPoliciesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultEventNotifyPolicy.ID().ToIDOutput().ToStringOutput(),
+//					defaultEventNotifyPolicy.ID(),
 //				},
 //				Name:      pulumi.String("tf-list-enp-0716a"),
 //				Workspace: pulumi.String("default-workspace-cn-hangzhou"),

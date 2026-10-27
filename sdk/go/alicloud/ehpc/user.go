@@ -55,7 +55,7 @@ import (
 //			}
 //			userPasswordExampleVswitch, err := vpc.NewSwitch(ctx, "user_password_example_vswitch", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       userPasswordExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       userPasswordExampleVpc.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String("user-password-example-vsw"),
@@ -91,17 +91,17 @@ import (
 //				return err
 //			}
 //			userPasswordExampleMountDomain, err := nas.NewMountTarget(ctx, "user_password_example_mount_domain", &nas.MountTargetArgs{
-//				VpcId:           userPasswordExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           userPasswordExampleVpc.ID(),
 //				NetworkType:     pulumi.String("Vpc"),
 //				AccessGroupName: userPasswordExampleAccessGroup.AccessGroupName,
-//				VswitchId:       userPasswordExampleVswitch.ID().ToIDOutput().ToStringOutput(),
-//				FileSystemId:    userPasswordExampleNas.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       userPasswordExampleVswitch.ID(),
+//				FileSystemId:    userPasswordExampleNas.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			userPasswordExampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "user_password_example_security_group", &ecs.SecurityGroupArgs{
-//				VpcId:             userPasswordExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             userPasswordExampleVpc.ID(),
 //				SecurityGroupType: pulumi.String("normal"),
 //			})
 //			if err != nil {
@@ -120,10 +120,10 @@ import (
 //				ClusterCredentials: &ehpc.ClusterV2ClusterCredentialsArgs{
 //					Password: pulumi.String("aliHPC123"),
 //				},
-//				ClusterVpcId:       userPasswordExampleVpc.ID().ToIDOutput().ToStringOutput(),
+//				ClusterVpcId:       userPasswordExampleVpc.ID(),
 //				ClusterCategory:    pulumi.String("Standard"),
 //				ClusterMode:        pulumi.String("Integrated"),
-//				SecurityGroupId:    userPasswordExampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:    userPasswordExampleSecurityGroup.ID(),
 //				ClusterName:        pulumi.String("user-password-example-cluster"),
 //				DeletionProtection: pulumi.Bool(false),
 //				SharedStorages: ehpc.ClusterV2SharedStorageArray{
@@ -132,7 +132,7 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: userPasswordExampleMountDomain.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      userPasswordExampleNas.ID().ToIDOutput().ToStringOutput(),
+//						FileSystemId:      userPasswordExampleNas.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
@@ -140,7 +140,7 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: userPasswordExampleMountDomain.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      userPasswordExampleNas.ID().ToIDOutput().ToStringOutput(),
+//						FileSystemId:      userPasswordExampleNas.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
@@ -148,11 +148,11 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: userPasswordExampleMountDomain.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      userPasswordExampleNas.ID().ToIDOutput().ToStringOutput(),
+//						FileSystemId:      userPasswordExampleNas.ID(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //				},
-//				ClusterVswitchId: userPasswordExampleVswitch.ID().ToIDOutput().ToStringOutput(),
+//				ClusterVswitchId: userPasswordExampleVswitch.ID(),
 //				Manager: &ehpc.ClusterV2ManagerArgs{
 //					ManagerNode: &ehpc.ClusterV2ManagerManagerNodeArgs{
 //						SystemDisk: &ehpc.ClusterV2ManagerManagerNodeSystemDiskArgs{
@@ -186,7 +186,7 @@ import (
 //			_, err = ehpc.NewUser(ctx, "default", &ehpc.UserArgs{
 //				Group:     pulumi.String("users"),
 //				UserName:  pulumi.String("passworduser1"),
-//				ClusterId: userPasswordExampleCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: userPasswordExampleCluster.ID(),
 //				Password:  pulumi.String("UserPass123"),
 //			})
 //			if err != nil {

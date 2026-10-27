@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			var tmp0 pulumi.Int
-//			if len(defaultGetNetworks.Ids) > 0 {
+//			if bool(len(defaultGetNetworks.Ids) > 0) {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
@@ -75,7 +75,7 @@ import (
 //			defaultGetSwitches := vpc.GetSwitchesOutput(ctx, vpc.GetSwitchesOutputArgs{
 //				VpcId: defaultNetwork[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
 //					var tmp1 pulumi.String
-//					if len(defaultGetNetworks.Ids) > 0 {
+//					if bool(len(defaultGetNetworks.Ids) > 0) {
 //						tmp1 = defaultGetNetworks.Ids[0]
 //					} else {
 //						tmp1 = id
@@ -107,7 +107,7 @@ import (
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
 //					VpcId: defaultNetwork[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
 //						var tmp2 pulumi.String
-//						if len(defaultGetNetworks.Ids) > 0 {
+//						if bool(len(defaultGetNetworks.Ids) > 0) {
 //							tmp2 = defaultGetNetworks.Ids[0]
 //						} else {
 //							tmp2 = id
@@ -129,7 +129,7 @@ import (
 //				Network: &servicemesh.ServiceMeshNetworkArgs{
 //					VpcId: defaultNetwork[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
 //						var tmp4 pulumi.String
-//						if len(defaultGetNetworks.Ids) > 0 {
+//						if bool(len(defaultGetNetworks.Ids) > 0) {
 //							tmp4 = defaultGetNetworks.Ids[0]
 //						} else {
 //							tmp4 = id
@@ -158,7 +158,7 @@ import (
 //				return err
 //			}
 //			_, err = servicemesh.NewExtensionProvider(ctx, "default", &servicemesh.ExtensionProviderArgs{
-//				ServiceMeshId:         defaultServiceMesh.ID().ToIDOutput().ToStringOutput(),
+//				ServiceMeshId:         defaultServiceMesh.ID(),
 //				ExtensionProviderName: pulumi.String("httpextauth-tf-example"),
 //				Type:                  pulumi.String("httpextauth"),
 //				Config:                pulumi.String("{\"headersToDownstreamOnDeny\":[\"content-type\",\"set-cookie\"],\"headersToUpstreamOnAllow\":[\"authorization\",\"cookie\",\"path\",\"x-auth-request-access-token\",\"x-forwarded-access-token\"],\"includeRequestHeadersInCheck\":[\"cookie\",\"x-forward-access-token\"],\"oidc\":{\"clientID\":\"qweqweqwewqeqwe\",\"clientSecret\":\"asdasdasdasdsadas\",\"cookieExpire\":\"1000\",\"cookieRefresh\":\"500\",\"cookieSecret\":\"scxzcxzcxzcxzcxz\",\"issuerURI\":\"qweqwewqeqweqweqwe\",\"redirectDomain\":\"www.alicloud-provider.cn\",\"redirectProtocol\":\"http\",\"scopes\":[\"profile\"]},\"port\":4180,\"service\":\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\",\"timeout\":\"10s\"}"),

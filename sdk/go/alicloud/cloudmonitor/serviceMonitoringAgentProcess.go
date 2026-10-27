@@ -72,7 +72,7 @@ import (
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
@@ -101,13 +101,13 @@ import (
 // AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = cloudmonitor.NewServiceMonitoringAgentProcess(ctx, "default", &cloudmonitor.ServiceMonitoringAgentProcessArgs{
-// InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// InstanceId: defaultInstance.ID(),
 // ProcessName: pulumi.String(name),
 // ProcessUser: pulumi.String("root"),
 // })

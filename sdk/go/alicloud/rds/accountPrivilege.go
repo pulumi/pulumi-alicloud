@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -69,7 +69,7 @@ import (
 //				EngineVersion:   pulumi.String("5.6"),
 //				InstanceType:    pulumi.String("rds.mysql.s1.small"),
 //				InstanceStorage: pulumi.Int(10),
-//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID(),
 //				InstanceName:    pulumi.String(name),
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
-//					InstanceId:  instance.ID().ToIDOutput().ToStringOutput(),
+//					InstanceId:  instance.ID(),
 //					Name:        pulumi.Sprintf("%v_%v", name, val0),
 //					Description: pulumi.String("from terraform"),
 //				})
@@ -90,7 +90,7 @@ import (
 //				db = append(db, __res)
 //			}
 //			account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
-//				DbInstanceId:       instance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:       instance.ID(),
 //				AccountName:        pulumi.String("tfexample"),
 //				AccountPassword:    pulumi.String("Example12345"),
 //				AccountDescription: pulumi.String("from terraform"),
@@ -103,7 +103,7 @@ import (
 //				splat0 = append(splat0, val0.Name)
 //			}
 //			_, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
-//				InstanceId:  instance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  instance.ID(),
 //				AccountName: account.AccountName,
 //				Privilege:   pulumi.String("ReadOnly"),
 //				DbNames:     splat0,

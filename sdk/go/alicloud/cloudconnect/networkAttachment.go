@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudconnect.NewNetworkAttachment(ctx, "default", &cloudconnect.NetworkAttachmentArgs{
-//				CcnId: _default.ID().ToIDOutput().ToStringOutput(),
+//				CcnId: _default.ID(),
 //				SagId: pulumi.String(sagId),
 //			})
 //			if err != nil {

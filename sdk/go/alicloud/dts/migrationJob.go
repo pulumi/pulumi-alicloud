@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -93,7 +93,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -117,11 +117,11 @@ import (
 //					InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //					InstanceChargeType:    pulumi.String("Postpaid"),
 //					InstanceName:          pulumi.String(invokeFormat.Result),
-//					VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId:             exampleSwitch.ID(),
 //					MonitoringPeriod:      pulumi.Int(60),
 //					DbInstanceStorageType: pulumi.String("cloud_essd"),
 //					SecurityGroupIds: pulumi.StringArray{
-//						exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//						exampleSecurityGroup.ID(),
 //					},
 //				})
 //				if err != nil {
@@ -152,7 +152,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := rds.NewRdsAccount(ctx, fmt.Sprintf("example-%v", key0), &rds.RdsAccountArgs{
-//					DbInstanceId:    exampleInstance[val0].ID().ToIDOutput().ToStringOutput(),
+//					DbInstanceId:    exampleInstance[val0].ID(),
 //					AccountName:     pulumi.String(invokeFormat1.Result),
 //					AccountPassword: pulumi.String(invokeFormat2.Result),
 //				})
@@ -175,7 +175,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := rds.NewDatabase(ctx, fmt.Sprintf("example-%v", key0), &rds.DatabaseArgs{
-//					InstanceId: exampleInstance[val0].ID().ToIDOutput().ToStringOutput(),
+//					InstanceId: exampleInstance[val0].ID(),
 //					Name:       pulumi.String(invokeFormat3.Result),
 //				})
 //				if err != nil {
@@ -188,7 +188,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := rds.NewAccountPrivilege(ctx, fmt.Sprintf("example-%v", key0), &rds.AccountPrivilegeArgs{
-//					InstanceId:  exampleInstance[val0].ID().ToIDOutput().ToStringOutput(),
+//					InstanceId:  exampleInstance[val0].ID(),
 //					AccountName: exampleRdsAccount[val0].Name,
 //					Privilege:   pulumi.String("ReadWrite"),
 //					DbNames: pulumi.StringArray{
@@ -213,7 +213,7 @@ import (
 //				return err
 //			}
 //			_, err = dts.NewMigrationJob(ctx, "example", &dts.MigrationJobArgs{
-//				DtsInstanceId:                   exampleMigrationInstance.ID().ToIDOutput().ToStringOutput(),
+//				DtsInstanceId:                   exampleMigrationInstance.ID(),
 //				DtsJobName:                      pulumi.String(name),
 //				SourceEndpointInstanceType:      pulumi.String("RDS"),
 //				SourceEndpointInstanceId:        exampleAccountPrivilege[0].InstanceId,

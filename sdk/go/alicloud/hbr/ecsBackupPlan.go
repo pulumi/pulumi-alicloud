@@ -73,7 +73,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -81,7 +81,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,11 +91,11 @@ import (
 //				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				AvailabilityZone: pulumi.String(example.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					exampleSecurityGroup.ID(),
 //				},
 //				InstanceName:       pulumi.String("terraform-example"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:          exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -115,8 +115,8 @@ import (
 //			}
 //			_, err = hbr.NewEcsBackupPlan(ctx, "example", &hbr.EcsBackupPlanArgs{
 //				EcsBackupPlanName: pulumi.String("terraform-example"),
-//				InstanceId:        exampleInstance.ID().ToIDOutput().ToStringOutput(),
-//				VaultId:           exampleVault.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:        exampleInstance.ID(),
+//				VaultId:           exampleVault.ID(),
 //				Retention:         pulumi.String("1"),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),

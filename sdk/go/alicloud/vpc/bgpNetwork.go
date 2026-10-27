@@ -71,7 +71,7 @@ import (
 //			}
 //			_, err = vpc.NewBgpNetwork(ctx, "default", &vpc.BgpNetworkArgs{
 //				DstCidrBlock: pulumi.String("192.168.0.0/24"),
-//				RouterId:     defaultVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
+//				RouterId:     defaultVirtualBorderRouter.ID(),
 //			})
 //			if err != nil {
 //				return err

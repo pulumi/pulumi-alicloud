@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			defaultTQWN3k, err := vpc.NewSwitch(ctx, "defaultTQWN3k", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultktKLuM.ID(),
 //				ZoneId:    pulumi.String(zoneIdI),
 //				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			defaultylyLu8, err := vpc.NewSwitch(ctx, "defaultylyLu8", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultktKLuM.ID(),
 //				ZoneId:    pulumi.String(zoneIdL),
 //				CidrBlock: pulumi.String(vswIpRangeL),
 //			})
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			defaultRNbPh8, err := vpc.NewSwitch(ctx, "defaultRNbPh8", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultktKLuM.ID(),
 //				ZoneId:    pulumi.String(zoneIdK),
 //				CidrBlock: pulumi.String(vswIpRangeK),
 //			})
@@ -106,26 +106,26 @@ import (
 //			}
 //			_, err = clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "default", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
 //				ZoneId:    pulumi.String(zoneIdI),
-//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultktKLuM.ID(),
 //				ScaleMin:  pulumi.String("8"),
 //				ScaleMax:  pulumi.String("16"),
-//				VswitchId: defaultTQWN3k.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId: defaultTQWN3k.ID(),
 //				MultiZones: clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZoneArray{
 //					&clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZoneArgs{
 //						VswitchIds: pulumi.StringArray{
-//							defaultTQWN3k.ID().ToIDOutput().ToStringOutput(),
+//							defaultTQWN3k.ID(),
 //						},
 //						ZoneId: pulumi.String(zoneIdI),
 //					},
 //					&clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZoneArgs{
 //						VswitchIds: pulumi.StringArray{
-//							defaultylyLu8.ID().ToIDOutput().ToStringOutput(),
+//							defaultylyLu8.ID(),
 //						},
 //						ZoneId: pulumi.String(zoneIdL),
 //					},
 //					&clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZoneArgs{
 //						VswitchIds: pulumi.StringArray{
-//							defaultRNbPh8.ID().ToIDOutput().ToStringOutput(),
+//							defaultRNbPh8.ID(),
 //						},
 //						ZoneId: pulumi.String(zoneIdK),
 //					},

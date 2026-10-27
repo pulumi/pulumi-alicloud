@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			var tmp0 pulumi.Int
-//			if len(_default.Ids) > 0 {
+//			if bool(len(_default.Ids) > 0) {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
@@ -88,7 +88,7 @@ import (
 //				defaultSecurityGroup = append(defaultSecurityGroup, __res)
 //			}
 //			var tmp1 pulumi.Int
-//			if len(_default.Ids) > 0 {
+//			if bool(len(_default.Ids) > 0) {
 //				tmp1 = 0
 //			} else {
 //				tmp1 = 1
@@ -105,7 +105,7 @@ import (
 //					Period:      pulumi.Int(1),
 //					VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
 //					SecurityGroupIds: pulumi.StringArray{
-//						defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput(),
+//						defaultSecurityGroup[0].ID(),
 //					},
 //				})
 //				if err != nil {
@@ -115,7 +115,7 @@ import (
 //			}
 //			instanceId := defaultInstance[0].ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
 //				var tmp2 pulumi.String
-//				if len(_default.Ids) > 0 {
+//				if bool(len(_default.Ids) > 0) {
 //					tmp2 = _default.Ids[0]
 //				} else {
 //					tmp2 = id

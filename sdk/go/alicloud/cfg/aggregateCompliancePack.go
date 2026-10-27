@@ -69,7 +69,7 @@ import (
 //			}
 //			defaultAggregateConfigRule, err := cfg.NewAggregateConfigRule(ctx, "default", &cfg.AggregateConfigRuleArgs{
 //				AggregateConfigRuleName: pulumi.String("contains-tag"),
-//				AggregatorId:            defaultAggregator.ID().ToIDOutput().ToStringOutput(),
+//				AggregatorId:            defaultAggregator.ID(),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
 //				SourceOwner:             pulumi.String("ALIYUN"),
 //				SourceIdentifier:        pulumi.String("contains-tag"),
@@ -88,7 +88,7 @@ import (
 //			}
 //			_, err = cfg.NewAggregateCompliancePack(ctx, "default", &cfg.AggregateCompliancePackArgs{
 //				AggregateCompliancePackName: pulumi.String(name),
-//				AggregatorId:                defaultAggregator.ID().ToIDOutput().ToStringOutput(),
+//				AggregatorId:                defaultAggregator.ID(),
 //				Description:                 pulumi.String(name),
 //				RiskLevel:                   pulumi.Int(1),
 //				ConfigRuleIds: cfg.AggregateCompliancePackConfigRuleIdArray{

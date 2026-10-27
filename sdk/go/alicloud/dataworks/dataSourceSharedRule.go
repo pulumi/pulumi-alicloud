@@ -121,14 +121,14 @@ import (
 //				Type:                     pulumi.String("hive"),
 //				DataSourceName:           pulumi.String(invokeFormat1.Result),
 //				ConnectionProperties:     pulumi.String(json0),
-//				ProjectId:                defaultQeRfvU.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ProjectId:                defaultQeRfvU.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				ConnectionPropertiesMode: pulumi.String("UrlMode"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataworks.NewDataSourceSharedRule(ctx, "default", &dataworks.DataSourceSharedRuleArgs{
-//				TargetProjectId: defaultasjsH5.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				TargetProjectId: defaultasjsH5.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				DataSourceId:    defaultvzu0wG.DataSourceId,
 //				EnvType:         pulumi.String("Prod"),
 //			})

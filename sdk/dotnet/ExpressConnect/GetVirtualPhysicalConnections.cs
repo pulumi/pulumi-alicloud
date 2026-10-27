@@ -17,6 +17,33 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ExpressConnect.GetVirtualPhysicalConnections.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudExpressConnectVirtualPhysicalConnection.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudExpressConnectVirtualPhysicalConnection.Name,
+        ///         ParentPhysicalConnectionId = defaultAlicloudExpressConnectVirtualPhysicalConnection.ParentPhysicalConnectionId,
+        ///         VlanId = 789,
+        ///         VpconnAliUid = "1234567890",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudExpressConnectVirtualPhysicalConnectionExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVirtualPhysicalConnectionsResult =&gt; getVirtualPhysicalConnectionsResult.Connections[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetVirtualPhysicalConnectionsResult> InvokeAsync(GetVirtualPhysicalConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsArgs(), options.WithDefaults());
@@ -27,6 +54,33 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ExpressConnect.GetVirtualPhysicalConnections.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudExpressConnectVirtualPhysicalConnection.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudExpressConnectVirtualPhysicalConnection.Name,
+        ///         ParentPhysicalConnectionId = defaultAlicloudExpressConnectVirtualPhysicalConnection.ParentPhysicalConnectionId,
+        ///         VlanId = 789,
+        ///         VpconnAliUid = "1234567890",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudExpressConnectVirtualPhysicalConnectionExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVirtualPhysicalConnectionsResult =&gt; getVirtualPhysicalConnectionsResult.Connections[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVirtualPhysicalConnectionsResult> Invoke(GetVirtualPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsInvokeArgs(), options.WithDefaults());
@@ -37,6 +91,33 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ExpressConnect.GetVirtualPhysicalConnections.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAlicloudExpressConnectVirtualPhysicalConnection.Id,
+        ///         },
+        ///         NameRegex = defaultAlicloudExpressConnectVirtualPhysicalConnection.Name,
+        ///         ParentPhysicalConnectionId = defaultAlicloudExpressConnectVirtualPhysicalConnection.ParentPhysicalConnectionId,
+        ///         VlanId = 789,
+        ///         VpconnAliUid = "1234567890",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudExpressConnectVirtualPhysicalConnectionExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVirtualPhysicalConnectionsResult =&gt; getVirtualPhysicalConnectionsResult.Connections[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVirtualPhysicalConnectionsResult> Invoke(GetVirtualPhysicalConnectionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualPhysicalConnectionsResult>("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args ?? new GetVirtualPhysicalConnectionsInvokeArgs(), options.WithDefaults());

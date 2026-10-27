@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.GetMetricRuleBlackLists(ctx, &cms.GetMetricRuleBlackListsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudCmsMetricRuleBlackLists.Id,
 //				},
 //				Category:  pulumi.StringRef("ecs"),

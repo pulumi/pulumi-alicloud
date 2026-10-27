@@ -63,10 +63,10 @@ import (
 //			}
 //			_, err = vpc.NewPeerConnection(ctx, "default", &vpc.PeerConnectionArgs{
 //				PeerConnectionName: pulumi.String("terraform-example"),
-//				VpcId:              localVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:              localVpc.ID(),
 //				AcceptingAliUid:    pulumi.String(_default.Id),
 //				AcceptingRegionId:  pulumi.String(acceptingRegion),
-//				AcceptingVpcId:     acceptingVpc.ID().ToIDOutput().ToStringOutput(),
+//				AcceptingVpcId:     acceptingVpc.ID(),
 //				Description:        pulumi.String("terraform-example"),
 //			})
 //			if err != nil {

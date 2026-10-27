@@ -67,7 +67,7 @@ import (
 //						EndpointType: pulumi.String("Internet"),
 //					},
 //				},
-//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: _default.ID(),
 //			})
 //			if err != nil {
 //				return err

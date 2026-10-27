@@ -65,8 +65,8 @@ import (
 //				return err
 //			}
 //			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "example", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         example.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: exampleBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:         example.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterPeerAttachment(ctx, "example", &cen.TransitRouterPeerAttachmentArgs{
-//				CenId:                              example.ID().ToIDOutput().ToStringOutput(),
+//				CenId:                              example.ID(),
 //				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
 //				PeerTransitRouterRegionId:          pulumi.String(peerRegion),
 //				PeerTransitRouterId:                peer.TransitRouterId,

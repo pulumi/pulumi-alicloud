@@ -59,9 +59,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudmonitor.NewServiceHybridDoubleWrite(ctx, "default", &cloudmonitor.ServiceHybridDoubleWriteArgs{
-//				SourceNamespace: source.ID().ToIDOutput().ToStringOutput(),
+//				SourceNamespace: source.ID(),
 //				SourceUserId:    pulumi.String(_default.Id),
-//				Namespace:       defaultNamespace.ID().ToIDOutput().ToStringOutput(),
+//				Namespace:       defaultNamespace.ID(),
 //				UserId:          pulumi.String(_default.Id),
 //			})
 //			if err != nil {

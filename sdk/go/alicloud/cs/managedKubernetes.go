@@ -228,7 +228,7 @@ import (
 // }
 // var tmp6 pulumi.StringArray
 // if len(vswitchIds) > 0 {
-// tmp6 = pulumi.StringArray(std.Split(ctx, &std.SplitArgs{
+// tmp6 = pulumi.ToStringArray(std.Split(ctx, &std.SplitArgs{
 // Separator: ",",
 // Text: std.Join(ctx, std.JoinArgs{
 // Separator: ",",
@@ -253,7 +253,7 @@ import (
 // }
 // var tmp8 pulumi.StringArray
 // if len(terwayVswitchIds) > 0 {
-// tmp8 = pulumi.StringArray(std.Split(ctx, &std.SplitArgs{
+// tmp8 = pulumi.ToStringArray(std.Split(ctx, &std.SplitArgs{
 // Separator: ",",
 // Text: std.Join(ctx, std.JoinArgs{
 // Separator: ",",
@@ -573,7 +573,7 @@ import (
 //			}
 //			default1, err := vpc.NewSwitch(ctx, "default_1", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-1", name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.1.1.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
@@ -582,7 +582,7 @@ import (
 //			}
 //			default2, err := vpc.NewSwitch(ctx, "default_2", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-2", name),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.1.2.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[1].Id),
 //			})
@@ -593,12 +593,12 @@ import (
 //				Name:        pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				VswitchIds: pulumi.StringArray{
-//					default1.ID().ToIDOutput().ToStringOutput(),
-//					default2.ID().ToIDOutput().ToStringOutput(),
+//					default1.ID(),
+//					default2.ID(),
 //				},
 //				PodVswitchIds: pulumi.StringArray{
-//					default1.ID().ToIDOutput().ToStringOutput(),
-//					default2.ID().ToIDOutput().ToStringOutput(),
+//					default1.ID(),
+//					default2.ID(),
 //				},
 //				NewNatGateway:             pulumi.Bool(false),
 //				ServiceCidr:               pulumi.String(serviceCidr),

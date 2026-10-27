@@ -72,7 +72,7 @@ import (
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
@@ -82,7 +82,7 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // SecurityGroupName: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -94,21 +94,21 @@ import (
 // Policy: pulumi.String("accept"),
 // PortRange: pulumi.String("22/22"),
 // Priority: pulumi.Int(1),
-// SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+// SecurityGroupId: defaultSecurityGroup.ID(),
 // CidrIp: pulumi.String("172.16.0.0/24"),
 // })
 // if err != nil {
 // return err
 // }
 // foo, err := ecs.NewInstance(ctx, "foo", &ecs.InstanceArgs{
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // ImageId: pulumi.String(defaultGetImages.Images[0].Id),
 // InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(5),
 // SecurityGroups: pulumi.StringArray{
-// defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+// defaultSecurityGroup.ID(),
 // },
 // InstanceName: pulumi.String(name),
 // })

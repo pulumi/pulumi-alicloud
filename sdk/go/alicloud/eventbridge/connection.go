@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -79,9 +79,9 @@ import (
 //				Description:    pulumi.String("test-connection-basic-pre"),
 //				NetworkParameters: &eventbridge.ConnectionNetworkParametersArgs{
 //					NetworkType:     pulumi.String("PublicNetwork"),
-//					VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//					VswitcheId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//					SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					VpcId:           defaultNetwork.ID(),
+//					VswitcheId:      defaultSwitch.ID(),
+//					SecurityGroupId: defaultSecurityGroup.ID(),
 //				},
 //				AuthParameters: &eventbridge.ConnectionAuthParametersArgs{
 //					AuthorizationType: pulumi.String("BASIC_AUTH"),

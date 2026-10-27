@@ -60,7 +60,7 @@ import (
 //			}
 //			// The invited account accepts it.
 //			_, err = resourcemanager.NewHandshakeAcceptance(ctx, "example", &resourcemanager.HandshakeAcceptanceArgs{
-//				HandshakeId: example.ID().ToIDOutput().ToStringOutput(),
+//				HandshakeId: example.ID(),
 //			})
 //			if err != nil {
 //				return err

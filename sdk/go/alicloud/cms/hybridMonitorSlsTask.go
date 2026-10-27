@@ -125,10 +125,10 @@ import (
 //			}
 //			_, err = cms.NewHybridMonitorSlsTask(ctx, "default", &cms.HybridMonitorSlsTaskArgs{
 //				TaskName:          pulumi.String(name),
-//				Namespace:         defaultNamespace.ID().ToIDOutput().ToStringOutput(),
+//				Namespace:         defaultNamespace.ID(),
 //				Description:       pulumi.String(name),
 //				CollectInterval:   pulumi.Int(60),
-//				CollectTargetType: defaultSlsGroup.ID().ToIDOutput().ToStringOutput(),
+//				CollectTargetType: defaultSlsGroup.ID(),
 //				SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{
 //					Filter: &cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs{
 //						Relation: pulumi.String("and"),

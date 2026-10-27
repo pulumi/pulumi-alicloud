@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := servicecatalog.GetPortfolios(ctx, &servicecatalog.GetPortfoliosArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudServiceCatalogPortfolio.Id,
 //				},
 //				NameRegex: pulumi.StringRef(defaultAlicloudServiceCatalogPortfolio.Name),

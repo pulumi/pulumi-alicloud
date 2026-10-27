@@ -52,7 +52,7 @@ import (
 //				SecretParameterName: pulumi.String("terraform-example"),
 //				Value:               pulumi.String("terraform-example"),
 //				Type:                pulumi.String("Secret"),
-//				KeyId:               exampleKey.ID().ToIDOutput().ToStringOutput(),
+//				KeyId:               exampleKey.ID(),
 //				Description:         pulumi.String("terraform-example"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),

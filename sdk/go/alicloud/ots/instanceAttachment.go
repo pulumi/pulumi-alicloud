@@ -74,7 +74,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -83,7 +83,7 @@ import (
 //			_, err = ots.NewInstanceAttachment(ctx, "default", &ots.InstanceAttachmentArgs{
 //				InstanceName: defaultInstance.Name,
 //				VpcName:      pulumi.String("examplename"),
-//				VswitchId:    defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:    defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -61,7 +61,7 @@ import (
 // CidrBlock: pulumi.String("192.168.2.0/24"),
 // VswitchName: pulumi.String("terraform-example"),
 // EnsRegionId: pulumi.String("tr-Istanbul-1"),
-// NetworkId: _default.ID().ToIDOutput().ToStringOutput(),
+// NetworkId: _default.ID(),
 // })
 // if err != nil {
 // return err
@@ -93,15 +93,15 @@ import (
 // DbNodeClass: pulumi.String("polar.mysql.x4.medium.c"),
 // Description: pulumi.String("terraform-example"),
 // EnsRegionId: pulumi.String("tr-Istanbul-1"),
-// VpcId: _default.ID().ToIDOutput().ToStringOutput(),
-// VswitchId: defaultVswitch.ID().ToIDOutput().ToStringOutput(),
+// VpcId: _default.ID(),
+// VswitchId: defaultVswitch.ID(),
 // DbClusterNodesConfigs: pulumi.StringMap(forResult1),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = polardb.NewZonalAccount(ctx, "default", &polardb.ZonalAccountArgs{
-// DbClusterId: defaultZonalDbCluster.ID().ToIDOutput().ToStringOutput(),
+// DbClusterId: defaultZonalDbCluster.ID(),
 // AccountName: pulumi.String("terraform_example"),
 // AccountPassword: pulumi.String("Example1234"),
 // })

@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultTQWN3k, err := vpc.NewSwitch(ctx, "defaultTQWN3k", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultktKLuM.ID(),
 //				ZoneId:    pulumi.String(zoneIdI),
 //				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
@@ -75,10 +75,10 @@ import (
 //			}
 //			defaultn0nVrN, err := clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "defaultn0nVrN", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
 //				ZoneId:    pulumi.String(zoneIdI),
-//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultktKLuM.ID(),
 //				ScaleMin:  pulumi.String("8"),
 //				ScaleMax:  pulumi.String("16"),
-//				VswitchId: defaultTQWN3k.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId: defaultTQWN3k.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,7 @@ import (
 //			_, err = clickhouseenterprisedbcluster.NewSecurityIp(ctx, "default", &clickhouseenterprisedbcluster.SecurityIpArgs{
 //				GroupName:      pulumi.String("example_group"),
 //				SecurityIpList: pulumi.String("127.0.0.2"),
-//				DbInstanceId:   defaultn0nVrN.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:   defaultn0nVrN.ID(),
 //			})
 //			if err != nil {
 //				return err

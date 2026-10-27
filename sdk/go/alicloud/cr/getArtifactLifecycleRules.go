@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
 //				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PRIVATE"),
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "default", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
 //				Namespace:  defaultRegistryEnterpriseNamespace.Name,
 //				Name:       pulumi.String(name),
 //				RepoType:   pulumi.String("PRIVATE"),
@@ -73,7 +73,7 @@ import (
 //				RetentionTagCount: pulumi.Int(30),
 //				ScheduleTime:      pulumi.String("WEEK"),
 //				Scope:             pulumi.String("REPO"),
-//				InstanceId:        defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
 //				TagRegexp:         pulumi.String(".*"),
 //				RepoName:          defaultRegistryEnterpriseRepo.Name,
 //			})
@@ -82,9 +82,9 @@ import (
 //			}
 //			_default := cr.GetArtifactLifecycleRulesOutput(ctx, cr.GetArtifactLifecycleRulesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultArtifactLifecycleRule.ID().ToIDOutput().ToStringOutput(),
+//					defaultArtifactLifecycleRule.ID(),
 //				},
-//				InstanceId: defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
 //			}, nil)
 //			ctx.Export("alicloudCrArtifactLifecycleRuleExampleId", _default.ApplyT(func(_default cr.GetArtifactLifecycleRulesResult) (*string, error) {
 //				return _default.Rules[0].Id, nil

@@ -78,7 +78,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//					VpcId: defaultNetwork.ID(),
 //					CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //						Input:   defaultNetwork.CidrBlock,
 //						Newbits: pulumi.Int(8),
@@ -92,7 +92,7 @@ import (
 //				defaultSwitch = append(defaultSwitch, __res)
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
@@ -100,19 +100,19 @@ import (
 //			}
 //			defaultEndpoint, err := pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
 //				EndpointName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VpcId:           defaultNetwork.ID(),
 //				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
 //				IpConfigs: pvtz.EndpointIpConfigArray{
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[0].ZoneId,
 //						CidrBlock: defaultSwitch[0].CidrBlock,
-//						VswitchId: defaultSwitch[0].ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSwitch[0].ID(),
 //					},
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[1].ZoneId,
 //						CidrBlock: defaultSwitch[1].CidrBlock,
-//						VswitchId: defaultSwitch[1].ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSwitch[1].ID(),
 //					},
 //				},
 //			})
@@ -120,7 +120,7 @@ import (
 //				return err
 //			}
 //			_, err = pvtz.NewRule(ctx, "default", &pvtz.RuleArgs{
-//				EndpointId: defaultEndpoint.ID().ToIDOutput().ToStringOutput(),
+//				EndpointId: defaultEndpoint.ID(),
 //				RuleName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Type:       pulumi.String("OUTBOUND"),
 //				ZoneName:   pulumi.String(name),

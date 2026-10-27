@@ -73,7 +73,7 @@ import (
 //				},
 //				Description: pulumi.String("array route description"),
 //				RouteName:   pulumi.String("cspec-arr-route"),
-//				HttpApiId:   routeHttpapiArr.ID().ToIDOutput().ToStringOutput(),
+//				HttpApiId:   routeHttpapiArr.ID(),
 //				Match: &apig.RouteMatchArgs{
 //					Path: &apig.RouteMatchPathArgs{
 //						Type:  pulumi.String("Prefix"),
@@ -116,10 +116,10 @@ import (
 //			}
 //			_default := apig.GetRoutesOutput(ctx, apig.GetRoutesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultRoute.ID().ToIDOutput().ToStringOutput(),
+//					defaultRoute.ID(),
 //				},
 //				NameRegex: defaultRoute.RouteName,
-//				HttpApiId: routeHttpapiArr.ID().ToIDOutput().ToStringOutput(),
+//				HttpApiId: routeHttpapiArr.ID(),
 //				RouteName: pulumi.String("cspec-arr-route"),
 //			}, nil)
 //			ctx.Export("alicloudApigRouteExampleId", _default.ApplyT(func(_default apig.GetRoutesResult) (*string, error) {

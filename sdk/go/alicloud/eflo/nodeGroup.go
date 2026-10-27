@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			createVswitch, err := vpc.NewSwitch(ctx, "create_vswitch", &vpc.SwitchArgs{
-//				VpcId:       createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       createVpc.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-b"),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				VswitchName: pulumi.String("cluster-resoure-example"),
@@ -69,7 +69,7 @@ import (
 //				Description:       pulumi.String("sg"),
 //				SecurityGroupName: pulumi.String("cluster-resoure-example"),
 //				SecurityGroupType: pulumi.String("normal"),
-//				VpcId:             createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             createVpc.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,8 +95,8 @@ import (
 //				Networks: &eflo.ClusterNetworksArgs{
 //					TailIpVersion: pulumi.String("ipv4"),
 //					NewVpdInfo: &eflo.ClusterNetworksNewVpdInfoArgs{
-//						MonitorVpcId:     createVpc.ID().ToIDOutput().ToStringOutput(),
-//						MonitorVswitchId: createVswitch.ID().ToIDOutput().ToStringOutput(),
+//						MonitorVpcId:     createVpc.ID(),
+//						MonitorVswitchId: createVswitch.ID(),
 //						CenId:            pulumi.String("11111"),
 //						CloudLinkId:      pulumi.String("1111"),
 //						VpdCidr:          pulumi.String("111"),
@@ -109,10 +109,10 @@ import (
 //						},
 //						CloudLinkCidr: pulumi.String("169.254.128.0/23"),
 //					},
-//					SecurityGroupId: createSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					SecurityGroupId: createSecurityGroup.ID(),
 //					VswitchZoneId:   pulumi.String("cn-hangzhou-b"),
-//					VpcId:           createVpc.ID().ToIDOutput().ToStringOutput(),
-//					VswitchId:       createVswitch.ID().ToIDOutput().ToStringOutput(),
+//					VpcId:           createVpc.ID(),
+//					VswitchId:       createVswitch.ID(),
 //					VpdInfo: &eflo.ClusterNetworksVpdInfoArgs{
 //						VpdId: pulumi.String("111"),
 //						VpdSubnets: pulumi.StringArray{
@@ -183,15 +183,15 @@ import (
 //			_, err = eflo.NewNodeGroup(ctx, "default", &eflo.NodeGroupArgs{
 //				Nodes: eflo.NodeGroupNodeArray{
 //					&eflo.NodeGroupNodeArgs{
-//						NodeId:        defaultNode.ID().ToIDOutput().ToStringOutput(),
-//						VpcId:         createVpc.ID().ToIDOutput().ToStringOutput(),
-//						VswitchId:     createVswitch.ID().ToIDOutput().ToStringOutput(),
+//						NodeId:        defaultNode.ID(),
+//						VpcId:         createVpc.ID(),
+//						VswitchId:     createVswitch.ID(),
 //						Hostname:      pulumi.String("jxyhostname"),
 //						LoginPassword: pulumi.String("Alibaba@2025"),
 //					},
 //				},
 //				IgnoreFailedNodeTasks: pulumi.Bool(true),
-//				ClusterId:             defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:             defaultCluster.ID(),
 //				ImageId:               pulumi.String("i195048661660874208657"),
 //				ZoneId:                pulumi.String("cn-hangzhou-b"),
 //				VpdSubnets: pulumi.StringArray{
@@ -223,7 +223,7 @@ import (
 //						},
 //						NodePolicies: eflo.NodeGroupIpAllocationPolicyNodePolicyArray{
 //							&eflo.NodeGroupIpAllocationPolicyNodePolicyArgs{
-//								NodeId: defaultNode.ID().ToIDOutput().ToStringOutput(),
+//								NodeId: defaultNode.ID(),
 //								Bonds: eflo.NodeGroupIpAllocationPolicyNodePolicyBondArray{
 //									&eflo.NodeGroupIpAllocationPolicyNodePolicyBondArgs{
 //										Name:   pulumi.String("example"),

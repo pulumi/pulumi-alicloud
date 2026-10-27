@@ -72,8 +72,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      _default.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +107,7 @@ import (
 //				defaultEipAddress = append(defaultEipAddress, __res)
 //			}
 //			_, err = ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
-//				AcceleratorId: _default.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId: _default.ID(),
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
 //						Endpoint: defaultEipAddress[0].IpAddress,
@@ -121,7 +121,7 @@ import (
 //					},
 //				},
 //				EndpointGroupRegion: pulumi.String(region),
-//				ListenerId:          defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:          defaultListener.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -175,8 +175,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId:      _default.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -205,7 +205,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				ZoneId:      pulumi.String("cn-hangzhou-h"),
 //			})
@@ -214,7 +214,7 @@ import (
 //			}
 //			_, err = vpc.NewSwitch(ctx, "update", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example-update"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //			})
@@ -222,22 +222,22 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
-//				AcceleratorId: _default.ID().ToIDOutput().ToStringOutput(),
+//				AcceleratorId: _default.ID(),
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
 //						Endpoint: pulumi.String("192.168.1.10"),
 //						Type:     pulumi.String("IpTarget"),
 //						Weight:   pulumi.Int(20),
-//						VpcId:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//						VpcId:    defaultNetwork.ID(),
 //						VswitchIds: pulumi.StringArray{
-//							defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//							defaultSwitch.ID(),
 //						},
 //						EnableProxyProtocol:        pulumi.Bool(true),
 //						EnableClientipPreservation: pulumi.Bool(false),
 //					},
 //				},
 //				EndpointGroupRegion: pulumi.String(region),
-//				ListenerId:          defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:          defaultListener.ID(),
 //				Name:                pulumi.String("terraform-example"),
 //				Description:         pulumi.String("terraform-example"),
 //			})

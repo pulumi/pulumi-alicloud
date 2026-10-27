@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			ids, err := polardb.GetParameterGroups(ctx, &polardb.GetParameterGroupsArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					_default.Groups[0].Id,
 //				},
 //			}, nil)

@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultNetwork.ID(),
 //				ZoneId:    pulumi.String(zoneId),
 //				CidrBlock: pulumi.String("10.0.0.0/24"),
 //			})
@@ -65,9 +65,9 @@ import (
 //			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
 //				EngineVersion:     pulumi.String("4.4"),
 //				StorageType:       pulumi.String("cloud_essd1"),
-//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:         defaultSwitch.ID(),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
@@ -77,14 +77,14 @@ import (
 //				return err
 //			}
 //			defaultPublicNetworkAddress, err := mongodb.NewPublicNetworkAddress(ctx, "default", &mongodb.PublicNetworkAddressArgs{
-//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId: defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// modify private network address.
 //			_, err = mongodb.NewReplicaSetRole(ctx, "private", &mongodb.ReplicaSetRoleArgs{
-//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId: defaultInstance.ID(),
 //				RoleId: defaultInstance.ReplicaSets.ApplyT(func(replicaSets []mongodb.InstanceReplicaSet) (*string, error) {
 //					return replicaSets[0].RoleId, nil
 //				}).(pulumi.StringPtrOutput),
@@ -97,7 +97,7 @@ import (
 //			}
 //			// modify public network address.
 //			_, err = mongodb.NewReplicaSetRole(ctx, "public", &mongodb.ReplicaSetRoleArgs{
-//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId: defaultInstance.ID(),
 //				RoleId: defaultPublicNetworkAddress.ReplicaSets.ApplyT(func(replicaSets []mongodb.PublicNetworkAddressReplicaSet) (*string, error) {
 //					return replicaSets[0].RoleId, nil
 //				}).(pulumi.StringPtrOutput),

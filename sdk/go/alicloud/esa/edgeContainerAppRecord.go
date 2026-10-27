@@ -84,8 +84,8 @@ import (
 //			}
 //			_, err = esa.NewEdgeContainerAppRecord(ctx, "default", &esa.EdgeContainerAppRecordArgs{
 //				RecordName: pulumi.String("tf.terraform.com"),
-//				SiteId:     resourceSiteOriginPoolTest.ID().ToIDOutput().ToStringOutput(),
-//				AppId:      defaultEdgeContainerApp.ID().ToIDOutput().ToStringOutput(),
+//				SiteId:     resourceSiteOriginPoolTest.ID(),
+//				AppId:      defaultEdgeContainerApp.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -284,7 +284,7 @@ import (
 //				PolicyConfig: &sls.CollectionPolicyPolicyConfigArgs{
 //					ResourceMode: pulumi.String("instanceMode"),
 //					InstanceIds: pulumi.StringArray{
-//						bucket.ID().ToIDOutput().ToStringOutput(),
+//						bucket.ID(),
 //					},
 //				},
 //				DataCode:          pulumi.String("access_log"),

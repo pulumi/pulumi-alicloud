@@ -93,7 +93,7 @@ import (
 //			}
 //			_, err = vpn.NewSslVpnServer(ctx, "default", &vpn.SslVpnServerArgs{
 //				Name:         pulumi.String(name),
-//				VpnGatewayId: defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				VpnGatewayId: defaultGateway.ID(),
 //				ClientIpPool: pulumi.String("192.168.0.0/16"),
 //				LocalSubnet:  pulumi.String(invokeCidrsubnet.Result),
 //				Protocol:     pulumi.String("UDP"),

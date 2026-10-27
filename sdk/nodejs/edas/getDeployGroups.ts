@@ -12,6 +12,18 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.82.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const groups = alicloud.edas.getDeployGroups({
+ *     appId: "xxx",
+ *     ids: ["xxx"],
+ *     outputFile: "groups.txt",
+ * });
+ * export const firstGroupName = groups.then(groups => groups.groups?.[0]?.groupName);
+ * ```
  */
 export function getDeployGroups(args: GetDeployGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeployGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,6 +81,18 @@ export interface GetDeployGroupsResult {
  * > **NOTE:** Available in 1.82.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const groups = alicloud.edas.getDeployGroups({
+ *     appId: "xxx",
+ *     ids: ["xxx"],
+ *     outputFile: "groups.txt",
+ * });
+ * export const firstGroupName = groups.then(groups => groups.groups?.[0]?.groupName);
+ * ```
  */
 export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeployGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

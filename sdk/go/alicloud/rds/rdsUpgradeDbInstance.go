@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -84,14 +84,14 @@ import (
 //				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(exampleGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
-//				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:             exampleSwitch.ID(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rds.NewRdsUpgradeDbInstance(ctx, "example", &rds.RdsUpgradeDbInstanceArgs{
-//				SourceDbInstanceId:    exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//				SourceDbInstanceId:    exampleInstance.ID(),
 //				TargetMajorVersion:    pulumi.String("14.0"),
 //				DbInstanceClass:       exampleInstance.InstanceType,
 //				DbInstanceStorage:     exampleInstance.InstanceStorage,
@@ -101,7 +101,7 @@ import (
 //				SwitchOver:            pulumi.String("false"),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
 //				DbInstanceDescription: pulumi.String("terraform-example"),
-//				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:             exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

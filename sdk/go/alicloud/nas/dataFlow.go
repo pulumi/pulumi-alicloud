@@ -54,7 +54,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       exampleNetwork.ID(),
 //				ZoneId:      pulumi.String(example.Zones[1].ZoneId),
 //			})
 //			if err != nil {
@@ -67,15 +67,15 @@ import (
 //				Capacity:       pulumi.Int(3600),
 //				Description:    pulumi.String("terraform-example"),
 //				ZoneId:         pulumi.String(example.Zones[1].ZoneId),
-//				VpcId:          exampleNetwork.ID().ToIDOutput().ToStringOutput(),
-//				VswitchId:      exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          exampleNetwork.ID(),
+//				VswitchId:      exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleMountTarget, err := nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
-//				FileSystemId: exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
-//				VswitchId:    exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId: exampleFileSystem.ID(),
+//				VswitchId:    exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //			_, err = nas.NewDataFlow(ctx, "example", &nas.DataFlowArgs{
 //				FsetId:             exampleFileset.FilesetId,
 //				Description:        pulumi.String("terraform-example"),
-//				FileSystemId:       exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:       exampleFileSystem.ID(),
 //				SourceSecurityType: pulumi.String("SSL"),
 //				SourceStorage: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String(""),

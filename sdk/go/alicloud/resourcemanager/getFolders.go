@@ -45,7 +45,7 @@ import (
 //			}
 //			ids := resourcemanager.GetFoldersOutput(ctx, resourcemanager.GetFoldersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("resourceManagerFolderId0", ids.ApplyT(func(ids resourcemanager.GetFoldersResult) (*string, error) {

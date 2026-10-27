@@ -70,7 +70,7 @@ import (
 // return err
 // }
 // var tmp0 pulumi.Int
-// if len(defaultGetSwitches.Ids) > 0 {
+// if bool(len(defaultGetSwitches.Ids) > 0) {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
@@ -92,7 +92,7 @@ import (
 // vswitch = append(vswitch, __res)
 // }
 // var tmp1 pulumi.Any
-// if len(defaultGetSwitches.Ids) > 0 {
+// if bool(len(defaultGetSwitches.Ids) > 0) {
 // tmp1 = defaultGetSwitches.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
@@ -135,7 +135,7 @@ import (
 // return err
 // }
 // _, err = gpdb.NewBackupPolicy(ctx, "default", &gpdb.BackupPolicyArgs{
-// DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+// DbInstanceId: defaultInstance.ID(),
 // RecoveryPointPeriod: pulumi.String("1"),
 // EnableRecoveryPoint: pulumi.Bool(true),
 // PreferredBackupPeriod: pulumi.String("Wednesday"),

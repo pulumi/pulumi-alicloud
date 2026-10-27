@@ -57,7 +57,7 @@ import (
 //			}
 //			_default := threatdetection.GetAttackPathWhitelistsOutput(ctx, threatdetection.GetAttackPathWhitelistsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAttackPathWhitelist.ID().ToIDOutput().ToStringOutput(),
+//					defaultAttackPathWhitelist.ID(),
 //				},
 //				PathType:      pulumi.String("role_escalation"),
 //				WhitelistName: pulumi.String(name),

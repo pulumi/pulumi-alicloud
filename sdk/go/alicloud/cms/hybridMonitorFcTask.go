@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = cms.NewHybridMonitorFcTask(ctx, "default", &cms.HybridMonitorFcTaskArgs{
-//				Namespace: defaultNamespace.ID().ToIDOutput().ToStringOutput(),
+//				Namespace: defaultNamespace.ID(),
 //				YarmConfig: pulumi.String(`---
 //
 // products:

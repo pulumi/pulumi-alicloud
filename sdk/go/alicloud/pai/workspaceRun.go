@@ -65,7 +65,7 @@ import (
 //				Accessibility:  pulumi.String("PRIVATE"),
 //				ArtifactUri:    pulumi.String("oss://example.oss-cn-hangzhou.aliyuncs.com/example/"),
 //				ExperimentName: pulumi.String(invokeFormat.Result),
-//				WorkspaceId:    defaultCAFUa9.ID().ToIDOutput().ToStringOutput(),
+//				WorkspaceId:    defaultCAFUa9.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //				SourceType:   pulumi.String("TrainingService"),
 //				SourceId:     pulumi.String("759"),
 //				RunName:      pulumi.String(name),
-//				ExperimentId: defaultQRwWbv.ID().ToIDOutput().ToStringOutput(),
+//				ExperimentId: defaultQRwWbv.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -76,7 +76,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -105,8 +105,8 @@ import (
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
 //				SpecType:      pulumi.String("professional"),
-//				VswitchId:     defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				SecurityGroup: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:     defaultSwitch.ID(),
+//				SecurityGroup: defaultSecurityGroup.ID(),
 //				Config:        pulumi.String(json0),
 //			})
 //			if err != nil {

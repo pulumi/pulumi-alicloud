@@ -279,7 +279,7 @@ import (
 //			_, err = fc.NewV3CustomDomain(ctx, "default", &fc.V3CustomDomainArgs{
 //				CustomDomainName: pulumi.String(name),
 //				Protocol:         pulumi.String("HTTP,HTTPS"),
-//				CertificateId:    _default.ID().ToIDOutput().ToStringOutput(),
+//				CertificateId:    _default.ID(),
 //				RouteConfig: &fc.V3CustomDomainRouteConfigArgs{
 //					Routes: fc.V3CustomDomainRouteConfigRouteArray{
 //						&fc.V3CustomDomainRouteConfigRouteArgs{

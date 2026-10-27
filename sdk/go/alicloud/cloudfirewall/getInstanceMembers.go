@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := cloudfirewall.GetInstanceMembers(ctx, &cloudfirewall.GetInstanceMembersArgs{
-//				Ids: pulumi.StringArray{
+//				Ids: []string{
 //					defaultAlicloudCloudFirewallInstanceMember.Id,
 //				},
 //			}, nil)

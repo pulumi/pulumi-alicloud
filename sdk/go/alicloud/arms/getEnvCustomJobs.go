@@ -65,7 +65,7 @@ import (
 //			}
 //			defaultEnvCustomJob, err := arms.NewEnvCustomJob(ctx, "default", &arms.EnvCustomJobArgs{
 //				Status:           pulumi.String("run"),
-//				EnvironmentId:    defaultEnvironment.ID().ToIDOutput().ToStringOutput(),
+//				EnvironmentId:    defaultEnvironment.ID(),
 //				EnvCustomJobName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				ConfigYaml: pulumi.String(`scrape_configs:
 //   - job_name: job-demo1
@@ -88,7 +88,7 @@ import (
 //			ids := arms.GetEnvCustomJobsOutput(ctx, arms.GetEnvCustomJobsOutputArgs{
 //				EnvironmentId: defaultEnvCustomJob.EnvironmentId,
 //				Ids: pulumi.StringArray{
-//					defaultEnvCustomJob.ID().ToIDOutput().ToStringOutput(),
+//					defaultEnvCustomJob.ID(),
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvCustomJobsId0", ids.ApplyT(func(ids arms.GetEnvCustomJobsResult) (*string, error) {

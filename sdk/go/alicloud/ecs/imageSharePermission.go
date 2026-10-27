@@ -69,7 +69,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -77,7 +77,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,9 +86,9 @@ import (
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
-//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:               defaultSwitch.ID(),
 //				InstanceType:            pulumi.String(defaultGetInstanceTypes.Ids[0]),
 //				ImageId:                 pulumi.String(defaultGetImages.Ids[0]),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
@@ -104,7 +104,7 @@ import (
 //				return err
 //			}
 //			defaultImage, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
-//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  defaultInstance.ID(),
 //				ImageName:   pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
@@ -117,7 +117,7 @@ import (
 //				anotherUid = param
 //			}
 //			_, err = ecs.NewImageSharePermission(ctx, "default", &ecs.ImageSharePermissionArgs{
-//				ImageId:   defaultImage.ID().ToIDOutput().ToStringOutput(),
+//				ImageId:   defaultImage.ID(),
 //				AccountId: pulumi.String(anotherUid),
 //			})
 //			if err != nil {

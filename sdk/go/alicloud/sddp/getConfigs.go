@@ -40,7 +40,7 @@ import (
 //			}
 //			_default := sddp.GetConfigsOutput(ctx, sddp.GetConfigsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultConfig.ID().ToIDOutput().ToStringOutput(),
+//					defaultConfig.ID(),
 //				},
 //				OutputFile: pulumi.String("./t.json"),
 //			}, nil)

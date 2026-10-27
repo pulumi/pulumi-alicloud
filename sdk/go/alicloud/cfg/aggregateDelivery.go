@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			_, err = cfg.NewAggregateDelivery(ctx, "default", &cfg.AggregateDeliveryArgs{
-//				AggregatorId:                        defaultAggregator.ID().ToIDOutput().ToStringOutput(),
+//				AggregatorId:                        defaultAggregator.ID(),
 //				ConfigurationItemChangeNotification: pulumi.Bool(true),
 //				NonCompliantNotification:            pulumi.Bool(true),
 //				DeliveryChannelName:                 pulumi.String(name),

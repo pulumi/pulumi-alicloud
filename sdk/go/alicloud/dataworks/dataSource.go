@@ -96,7 +96,7 @@ import (
 //				DataSourceName:           pulumi.String(name),
 //				ConnectionProperties:     pulumi.String(json0),
 //				ConnectionPropertiesMode: pulumi.String("UrlMode"),
-//				ProjectId:                defaultkguw4R.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ProjectId:                defaultkguw4R.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Description:              pulumi.String(name),
 //			})
 //			if err != nil {

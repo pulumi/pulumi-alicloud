@@ -82,7 +82,7 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("CreateVSwitch-%v", key0), &vpc.SwitchArgs{
-// VpcId: createVPC.ID().ToIDOutput().ToStringOutput(),
+// VpcId: createVPC.ID(),
 // CidrBlock: vswitchCidrs[val0],
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
@@ -132,14 +132,14 @@ import (
 // return err
 // }
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "base", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
+// ClusterId: createCluster.ID(),
 // PolicyName: pulumi.String("ACKPSPReadOnlyRootFilesystem"),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "string", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
+// ClusterId: createCluster.ID(),
 // PolicyName: pulumi.String("ACKPVSizeConstraint"),
 // Action: pulumi.String("deny"),
 // Parameters: pulumi.StringMap{
@@ -150,7 +150,7 @@ import (
 // return err
 // }
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "int_bool", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
+// ClusterId: createCluster.ID(),
 // PolicyName: pulumi.String("ACKPSPHostNetworkingPorts"),
 // Namespaces: pulumi.StringArray{
 // pulumi.String("test"),
@@ -173,7 +173,7 @@ import (
 // }
 // json0 := string(tmpJSON0)
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "array", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
+// ClusterId: createCluster.ID(),
 // PolicyName: pulumi.String("ACKAllowedRepos"),
 // Parameters: pulumi.StringMap{
 // "repos": pulumi.String(json0),
@@ -198,7 +198,7 @@ import (
 // }
 // json1 := string(tmpJSON1)
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "object", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
+// ClusterId: createCluster.ID(),
 // PolicyName: pulumi.String("ACKRequiredLabels"),
 // Action: pulumi.String("warn"),
 // Namespaces: pulumi.StringArray{

@@ -71,8 +71,8 @@ import (
 //				return err
 //			}
 //			defaultRouterVbrChildInstance, err := expressconnect.NewRouterVbrChildInstance(ctx, "default", &expressconnect.RouterVbrChildInstanceArgs{
-//				EcrId:                 defaultRouterExpressConnectRouter.ID().ToIDOutput().ToStringOutput(),
-//				ChildInstanceId:       defaultVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
+//				EcrId:                 defaultRouterExpressConnectRouter.ID(),
+//				ChildInstanceId:       defaultVirtualBorderRouter.ID(),
 //				ChildInstanceType:     pulumi.String("VBR"),
 //				ChildInstanceOwnerId:  pulumi.String(_default.Id),
 //				ChildInstanceRegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
@@ -83,7 +83,7 @@ import (
 //			}
 //			ids := expressconnect.GetRouterVbrChildInstancesOutput(ctx, expressconnect.GetRouterVbrChildInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultRouterVbrChildInstance.ID().ToIDOutput().ToStringOutput(),
+//					defaultRouterVbrChildInstance.ID(),
 //				},
 //				EcrId: defaultRouterVbrChildInstance.EcrId,
 //			}, nil)

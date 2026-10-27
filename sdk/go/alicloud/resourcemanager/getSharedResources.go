@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultSharedResource, err := resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
-//				ResourceShareId: defaultResourceShare.ID().ToIDOutput().ToStringOutput(),
+//				ResourceShareId: defaultResourceShare.ID(),
 //				ResourceId:      pulumi.String(defaultGetSwitches.Ids[0]),
 //				ResourceType:    pulumi.String("VSwitch"),
 //			})
@@ -84,8 +84,8 @@ import (
 //				return err
 //			}
 //			ids, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
-//				Ids: pulumi.StringArray{
-//					invokeFormat.Result,
+//				Ids: []string{
+//					*string(invokeFormat.Result),
 //				},
 //			}, nil)
 //			if err != nil {

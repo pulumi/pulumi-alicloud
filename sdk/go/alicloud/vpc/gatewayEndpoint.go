@@ -63,8 +63,8 @@ import (
 //			_, err = vpc.NewGatewayEndpoint(ctx, "default", &vpc.GatewayEndpointArgs{
 //				GatewayEndpointDescrption: pulumi.String("test-gateway-endpoint"),
 //				GatewayEndpointName:       pulumi.String(name),
-//				VpcId:                     defaultVpc.ID().ToIDOutput().ToStringOutput(),
-//				ResourceGroupId:           defaultRg.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                     defaultVpc.ID(),
+//				ResourceGroupId:           defaultRg.ID(),
 //				ServiceName:               pulumi.String(domain),
 //				PolicyDocument: pulumi.String(`      {
 //	        \"Version\": \"1\",

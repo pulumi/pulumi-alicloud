@@ -79,7 +79,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -105,7 +105,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					defaultSwitch.ID(),
 //				},
 //				NewNatGateway:      pulumi.Bool(true),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -130,9 +130,9 @@ import (
 //				key0 := index
 //				__res, err := cs.NewNodePool(ctx, fmt.Sprintf("default-%v", key0), &cs.NodePoolArgs{
 //					NodePoolName: pulumi.String(invokeFormat2.Result),
-//					ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
+//					ClusterId:    defaultManagedKubernetes.ID(),
 //					VswitchIds: pulumi.StringArray{
-//						defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//						defaultSwitch.ID(),
 //					},
 //					InstanceTypes: pulumi.StringArray{
 //						pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
@@ -152,7 +152,7 @@ import (
 //				defaultNodePool = append(defaultNodePool, __res)
 //			}
 //			_, err = cs.NewAutoscalingConfig(ctx, "default", &cs.AutoscalingConfigArgs{
-//				ClusterId:                  defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:                  defaultManagedKubernetes.ID(),
 //				CoolDownDuration:           pulumi.String("10m"),
 //				UnneededDuration:           pulumi.String("10m"),
 //				UtilizationThreshold:       pulumi.String("0.5"),

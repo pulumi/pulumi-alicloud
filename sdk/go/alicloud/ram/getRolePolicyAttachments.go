@@ -104,9 +104,9 @@ import (
 //			}
 //			_default := ram.GetRolePolicyAttachmentsOutput(ctx, ram.GetRolePolicyAttachmentsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultRolePolicyAttachment.ID().ToIDOutput().ToStringOutput(),
+//					defaultRolePolicyAttachment.ID(),
 //				},
-//				RoleName: role.ID().ToIDOutput().ToStringOutput(),
+//				RoleName: role.ID(),
 //			}, nil)
 //			ctx.Export("alicloudRamRolePolicyAttachmentExampleId", _default.ApplyT(func(_default ram.GetRolePolicyAttachmentsResult) (*string, error) {
 //				return _default.Attachments[0].Id, nil

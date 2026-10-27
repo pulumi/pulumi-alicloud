@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = ddos.NewPort(ctx, "default", &ddos.PortArgs{
-//				InstanceId:       _default.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:       _default.ID(),
 //				FrontendPort:     pulumi.String("7001"),
 //				BackendPort:      pulumi.String("7002"),
 //				FrontendProtocol: pulumi.String("tcp"),

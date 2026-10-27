@@ -69,8 +69,8 @@ import (
 //				return err
 //			}
 //			_, err = ens.NewInstanceSecurityGroupAttachment(ctx, "default", &ens.InstanceSecurityGroupAttachmentArgs{
-//				InstanceId:      _default.ID().ToIDOutput().ToStringOutput(),
-//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:      _default.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err

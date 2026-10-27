@@ -46,7 +46,7 @@ import (
 //			_, err = arms.NewAlertContactGroup(ctx, "example", &arms.AlertContactGroupArgs{
 //				AlertContactGroupName: pulumi.String("example_value"),
 //				ContactIds: pulumi.StringArray{
-//					example.ID().ToIDOutput().ToStringOutput(),
+//					example.ID(),
 //				},
 //			})
 //			if err != nil {

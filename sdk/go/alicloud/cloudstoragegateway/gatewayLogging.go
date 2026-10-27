@@ -113,7 +113,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -127,17 +127,17 @@ import (
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:              defaultSwitch.ID(),
 //				ReleaseAfterExpiration: pulumi.Bool(false),
 //				PublicNetworkBandwidth: pulumi.Int(40),
-//				StorageBundleId:        defaultStorageBundle.ID().ToIDOutput().ToStringOutput(),
+//				StorageBundleId:        defaultStorageBundle.ID(),
 //				Location:               pulumi.String("Cloud"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudstoragegateway.NewGatewayLogging(ctx, "default", &cloudstoragegateway.GatewayLoggingArgs{
-//				GatewayId:   defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//				GatewayId:   defaultGateway.ID(),
 //				SlsLogstore: defaultStore.LogstoreName,
 //				SlsProject:  defaultProject.ProjectName,
 //			})

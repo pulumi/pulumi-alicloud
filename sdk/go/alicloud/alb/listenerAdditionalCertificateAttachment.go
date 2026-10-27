@@ -85,7 +85,7 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//					VpcId:       defaultNetwork.ID(),
 //					CidrBlock:   pulumi.String(invokeFormat.Result),
 //					ZoneId:      pulumi.String(_default.Zones[val0].Id),
 //					VswitchName: pulumi.String(invokeFormat1.Result),
@@ -96,7 +96,7 @@ import (
 //				defaultSwitch = append(defaultSwitch, __res)
 //			}
 //			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
-//				VpcId:                defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                defaultNetwork.ID(),
 //				AddressType:          pulumi.String("Internet"),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				LoadBalancerName:     pulumi.String(name),
@@ -110,11 +110,11 @@ import (
 //				},
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch[0].ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSwitch[0].ID(),
 //						ZoneId:    pulumi.String(_default.Zones[0].Id),
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch[1].ID().ToIDOutput().ToStringOutput(),
+//						VswitchId: defaultSwitch[1].ID(),
 //						ZoneId:    pulumi.String(_default.Zones[1].Id),
 //					},
 //				},
@@ -124,7 +124,7 @@ import (
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
-//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID(),
 //				ServerGroupName: pulumi.String(name),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
@@ -225,7 +225,7 @@ import (
 //				defaultServiceCertificate = append(defaultServiceCertificate, __res)
 //			}
 //			defaultListener, err := alb.NewListener(ctx, "default", &alb.ListenerArgs{
-//				LoadBalancerId:      defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId:      defaultLoadBalancer.ID(),
 //				ListenerProtocol:    pulumi.String("HTTPS"),
 //				ListenerPort:        pulumi.Int(8081),
 //				ListenerDescription: pulumi.String(name),
@@ -235,7 +235,7 @@ import (
 //						ForwardGroupConfig: &alb.ListenerDefaultActionForwardGroupConfigArgs{
 //							ServerGroupTuples: alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{
 //								&alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{
-//									ServerGroupId: defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
+//									ServerGroupId: defaultServerGroup.ID(),
 //								},
 //							},
 //						},
@@ -245,7 +245,7 @@ import (
 //					CertificateId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //						Separator: pulumi.String(""),
 //						Input: pulumi.StringArray{
-//							defaultServiceCertificate[0].ID().ToIDOutput().ToStringOutput(),
+//							defaultServiceCertificate[0].ID(),
 //							pulumi.String("-cn-hangzhou"),
 //						},
 //					}, nil).Result(),
@@ -258,11 +258,11 @@ import (
 //				CertificateId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String(""),
 //					Input: pulumi.StringArray{
-//						defaultServiceCertificate[1].ID().ToIDOutput().ToStringOutput(),
+//						defaultServiceCertificate[1].ID(),
 //						pulumi.String("-cn-hangzhou"),
 //					},
 //				}, nil).Result(),
-//				ListenerId: defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId: defaultListener.ID(),
 //			})
 //			if err != nil {
 //				return err

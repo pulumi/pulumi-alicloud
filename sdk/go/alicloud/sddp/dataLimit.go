@@ -82,7 +82,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -90,7 +90,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -102,18 +102,18 @@ import (
 //				InstanceStorage:       rds.GetInstanceClassesInstanceClassStorageRangeArgs(defaultGetInstanceClasses.InstanceClasses[0].StorageRanges.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String(name),
-//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:             defaultSwitch.ID(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "default", &rds.RdsAccountArgs{
-//				DbInstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:    defaultInstance.ID(),
 //				AccountName:     pulumi.String(name),
 //				AccountPassword: pulumi.String("Example1234"),
 //			})
@@ -121,14 +121,14 @@ import (
 //				return err
 //			}
 //			defaultDatabase, err := rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
-//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultInstance.ID(),
 //				Name:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAccountPrivilege, err := rds.NewAccountPrivilege(ctx, "default", &rds.AccountPrivilegeArgs{
-//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  defaultInstance.ID(),
 //				AccountName: defaultRdsAccount.AccountName,
 //				Privilege:   pulumi.String("ReadWrite"),
 //				DbNames: pulumi.StringArray{

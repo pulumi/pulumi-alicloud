@@ -86,7 +86,7 @@ import (
 //			}
 //			defaultAddressPool, err := dns.NewAddressPool(ctx, "default", &dns.AddressPoolArgs{
 //				AddressPoolName: pulumi.String(name),
-//				InstanceId:      defaultGtmInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:      defaultGtmInstance.ID(),
 //				LbaStrategy:     pulumi.String("RATIO"),
 //				Type:            pulumi.String("IPV4"),
 //				Addresses: dns.AddressPoolAddressArray{
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewMonitorConfig(ctx, "default", &dns.MonitorConfigArgs{
-//				AddrPoolId:        defaultAddressPool.ID().ToIDOutput().ToStringOutput(),
+//				AddrPoolId:        defaultAddressPool.ID(),
 //				EvaluationCount:   pulumi.Int(1),
 //				Interval:          pulumi.Int(60),
 //				Timeout:           pulumi.Int(5000),

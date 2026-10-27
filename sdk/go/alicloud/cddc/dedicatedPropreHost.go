@@ -88,7 +88,7 @@ import (
 // return err
 // }
 // var tmp0 pulumi.Int
-// if len(defaultGetSecurityGroups.Ids) > 0 {
+// if bool(len(defaultGetSecurityGroups.Ids) > 0) {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
@@ -114,7 +114,7 @@ import (
 // return err
 // }
 // var tmp1 pulumi.Int
-// if len(defaultGetEcsDeploymentSets.Ids) > 0 {
+// if bool(len(defaultGetEcsDeploymentSets.Ids) > 0) {
 // tmp1 = 0
 // } else {
 // tmp1 = 1
@@ -143,7 +143,7 @@ import (
 // return err
 // }
 // var tmp2 pulumi.Int
-// if len(defaultGetKeyPairs.Ids) > 0 {
+// if bool(len(defaultGetKeyPairs.Ids) > 0) {
 // tmp2 = 0
 // } else {
 // tmp2 = 1
@@ -169,7 +169,7 @@ import (
 // return err
 // }
 // var tmp3 pulumi.Int
-// if len(defaultGetDedicatedHostGroups.Ids) > 0 {
+// if bool(len(defaultGetDedicatedHostGroups.Ids) > 0) {
 // tmp3 = 0
 // } else {
 // tmp3 = 1
@@ -196,7 +196,7 @@ import (
 // defaultDedicatedHostGroup = append(defaultDedicatedHostGroup, __res)
 // }
 // var tmp4 pulumi.Any
-// if len(defaultGetSecurityGroups.Ids) > 0 {
+// if bool(len(defaultGetSecurityGroups.Ids) > 0) {
 // tmp4 = defaultGetSecurityGroups.Ids[0]
 // } else {
 // tmp4 = std.Concat(ctx, &std.ConcatArgs{
@@ -210,7 +210,7 @@ import (
 // }
 // alicloudSecurityGroupId := tmp4;
 // var tmp5 pulumi.Any
-// if len(defaultGetEcsDeploymentSets.Ids) > 0 {
+// if bool(len(defaultGetEcsDeploymentSets.Ids) > 0) {
 // tmp5 = defaultGetEcsDeploymentSets.Sets[0].DeploymentSetId
 // } else {
 // tmp5 = std.Concat(ctx, &std.ConcatArgs{
@@ -224,7 +224,7 @@ import (
 // }
 // alicloudEcsDeploymentSetId := tmp5;
 // var tmp6 pulumi.Any
-// if len(defaultGetKeyPairs.Ids) > 0 {
+// if bool(len(defaultGetKeyPairs.Ids) > 0) {
 // tmp6 = defaultGetKeyPairs.Ids[0]
 // } else {
 // tmp6 = std.Concat(ctx, &std.ConcatArgs{
@@ -238,7 +238,7 @@ import (
 // }
 // _ := tmp6;
 // var tmp7 pulumi.Any
-// if len(defaultGetDedicatedHostGroups.Ids) > 0 {
+// if bool(len(defaultGetDedicatedHostGroups.Ids) > 0) {
 // tmp7 = defaultGetDedicatedHostGroups.Ids[0]
 // } else {
 // tmp7 = std.Concat(ctx, &std.ConcatArgs{

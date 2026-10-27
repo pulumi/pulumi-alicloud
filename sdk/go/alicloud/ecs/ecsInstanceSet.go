@@ -78,7 +78,7 @@ import (
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.17.3.0/24"),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
 // if err != nil {
@@ -86,7 +86,7 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+// VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
@@ -104,7 +104,7 @@ import (
 // SystemDiskPerformanceLevel: pulumi.String("PL0"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // SystemDiskSize: pulumi.Int(200),
-// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// VswitchId: defaultSwitch.ID(),
 // SecurityGroupIds: toPulumiIDArray(splat0),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })

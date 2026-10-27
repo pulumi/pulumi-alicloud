@@ -57,14 +57,14 @@ import (
 //			}
 //			_, err = expressconnect.NewTrafficQosAssociation(ctx, "associateQos", &expressconnect.TrafficQosAssociationArgs{
 //				InstanceId:   pulumi.String(_default.Ids[1]),
-//				QosId:        createQos.ID().ToIDOutput().ToStringOutput(),
+//				QosId:        createQos.ID(),
 //				InstanceType: pulumi.String("PHYSICALCONNECTION"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			createQosQueue, err := expressconnect.NewTrafficQosQueue(ctx, "createQosQueue", &expressconnect.TrafficQosQueueArgs{
-//				QosId:            createQos.ID().ToIDOutput().ToStringOutput(),
+//				QosId:            createQos.ID(),
 //				BandwidthPercent: pulumi.String("60"),
 //				QueueDescription: pulumi.String("terraform-example"),
 //				QueueName:        pulumi.String(name),
@@ -83,7 +83,7 @@ import (
 //				DstPortRange:    pulumi.String("-1/-1"),
 //				RemarkingDscp:   pulumi.Int(-1),
 //				QueueId:         createQosQueue.QueueId,
-//				QosId:           createQos.ID().ToIDOutput().ToStringOutput(),
+//				QosId:           createQos.ID(),
 //				MatchDscp:       pulumi.Int(-1),
 //				RuleName:        pulumi.String(name),
 //			})

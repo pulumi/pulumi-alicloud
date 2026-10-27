@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = sag.NewQosCar(ctx, "default", &sag.QosCarArgs{
-//				QosId:             _default.ID().ToIDOutput().ToStringOutput(),
+//				QosId:             _default.ID(),
 //				Name:              pulumi.String(name),
 //				Description:       pulumi.String(name),
 //				Priority:          pulumi.Int(1),

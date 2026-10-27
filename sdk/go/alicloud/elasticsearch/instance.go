@@ -55,7 +55,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = elasticsearch.NewInstance(ctx, "default", &elasticsearch.InstanceArgs{
 //				Description:                  pulumi.String(name),
-//				VswitchId:                    defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:                    defaultSwitch.ID(),
 //				Password:                     pulumi.String("Examplw1234"),
 //				Version:                      pulumi.String("7.10_with_X-Pack"),
 //				PaymentType:                  pulumi.String("PayAsYouGo"),

@@ -55,7 +55,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: example.VpcName,
 //				CidrBlock:   example.CidrBlock,
-//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       example.ID(),
 //				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
@@ -81,10 +81,10 @@ import (
 //				return err
 //			}
 //			_, err = nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
-//				FileSystemId:    exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:    exampleFileSystem.ID(),
 //				AccessGroupName: exampleAccessGroup.AccessGroupName,
-//				VswitchId:       exampleSwitch.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       exampleSwitch.ID(),
+//				VpcId:           example.ID(),
 //				NetworkType:     exampleAccessGroup.AccessGroupType,
 //			})
 //			if err != nil {

@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			var tmp0 pulumi.Int
-//			if len(_default.Instances) > 0 {
+//			if bool(len(_default.Instances) > 0) {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1

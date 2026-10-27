@@ -65,7 +65,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String("terraform-example"),
-//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -97,7 +97,7 @@ import (
 //				SpotPriceLimit:              pulumi.Float64(5),
 //				SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//					defaultSecurityGroup.ID(),
 //				},
 //				SystemDisk: &ecs.EcsLaunchTemplateSystemDiskArgs{
 //					Category:           pulumi.String("cloud_ssd"),
@@ -107,8 +107,8 @@ import (
 //					DeleteWithInstance: pulumi.Bool(false),
 //				},
 //				UserData:  pulumi.String("xxxxxxx"),
-//				VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
-//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId: defaultSwitch.ID(),
+//				VpcId:     defaultNetwork.ID(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				TemplateTags: pulumi.StringMap{
 //					"Create": pulumi.String("Terraform"),
@@ -118,8 +118,8 @@ import (
 //					Name:            pulumi.String("eth0"),
 //					Description:     pulumi.String("hello1"),
 //					PrimaryIp:       pulumi.String("10.0.0.2"),
-//					SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
-//					VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					SecurityGroupId: defaultSecurityGroup.ID(),
+//					VswitchId:       defaultSwitch.ID(),
 //				},
 //				DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
 //					&ecs.EcsLaunchTemplateDataDiskArgs{

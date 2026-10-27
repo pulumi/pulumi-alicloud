@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //				VswitchName: pulumi.String("TF_VSwitch"),
@@ -72,7 +72,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("TF_SECURITY_GROUP"),
-//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -137,10 +137,10 @@ import (
 //				NodeAttributes: emrv2.ClusterNodeAttributeArray{
 //					&emrv2.ClusterNodeAttributeArgs{
 //						RamRole:         defaultRole.Name,
-//						SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
-//						VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//						SecurityGroupId: defaultSecurityGroup.ID(),
+//						VpcId:           defaultNetwork.ID(),
 //						ZoneId:          pulumi.String(defaultGetZones.Zones[0].Id),
-//						KeyPairName:     defaultEcsKeyPair.ID().ToIDOutput().ToStringOutput(),
+//						KeyPairName:     defaultEcsKeyPair.ID(),
 //					},
 //				},
 //				Tags: pulumi.StringMap{
@@ -152,7 +152,7 @@ import (
 //						NodeGroupName: pulumi.String("emr-master"),
 //						PaymentType:   pulumi.String("PayAsYouGo"),
 //						VswitchIds: pulumi.StringArray{
-//							defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//							defaultSwitch.ID(),
 //						},
 //						WithPublicIp: pulumi.Bool(false),
 //						InstanceTypes: pulumi.StringArray{
@@ -177,7 +177,7 @@ import (
 //						NodeGroupName: pulumi.String("emr-core"),
 //						PaymentType:   pulumi.String("PayAsYouGo"),
 //						VswitchIds: pulumi.StringArray{
-//							defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//							defaultSwitch.ID(),
 //						},
 //						WithPublicIp: pulumi.Bool(false),
 //						InstanceTypes: pulumi.StringArray{

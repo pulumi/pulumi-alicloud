@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
-//				CenId: _default.ID().ToIDOutput().ToStringOutput(),
+//				CenId: _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -75,8 +75,8 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterVbrAttachment(ctx, "default", &cen.TransitRouterVbrAttachmentArgs{
-//				CenId:                              _default.ID().ToIDOutput().ToStringOutput(),
-//				VbrId:                              defaultVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
+//				CenId:                              _default.ID(),
+//				VbrId:                              defaultVirtualBorderRouter.ID(),
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
 //				TransitRouterAttachmentName:        pulumi.String(name),
 //				TransitRouterAttachmentDescription: pulumi.String(name),

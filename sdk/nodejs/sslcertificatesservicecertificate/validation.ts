@@ -52,18 +52,15 @@ import * as utilities from "../utilities";
  * });
  * const defaultAlidnsRecord: {[key: string]: alicloud.dns.AlidnsRecord} = {};
  * defaultApply.domainValidationLists.apply(domainValidationLists => {
- *     const defaultAlidnsRecord: {[key: string]: alicloud.dns.AlidnsRecord} = {};
- * pulumi.all(domainValidationLists.reduce((__obj, v) => ({ ...__obj, [v.domain]: v }), {})).apply(rangeBody => {
- *         for (const range of Object.entries(rangeBody).sort().map(([k, v]) => ({key: k, value: v}))) {
- *             defaultAlidnsRecord[range.key] = new alicloud.dns.AlidnsRecord(`default-${range.key}`, {
- *                 domainName: range.value.rootDomain,
- *                 rr: range.value.validationKey,
- *                 type: range.value.validationType,
- *                 value: range.value.validationValue,
- *                 ttl: 600,
- *             });
- *         }
- *     });
+ *     for (const range of Object.entries(domainValidationLists.reduce((__obj, v) => ({ ...__obj, [v.domain]: v }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
+ *         defaultAlidnsRecord[range.key] = new alicloud.dns.AlidnsRecord(`default-${range.key}`, {
+ *             domainName: range.value.rootDomain,
+ *             rr: range.value.validationKey,
+ *             type: range.value.validationType,
+ *             value: range.value.validationValue,
+ *             ttl: 600,
+ *         });
+ *     }
  * });
  * const defaultValidation = new alicloud.sslcertificatesservicecertificate.Validation("default", {
  *     instanceId: _default.id,

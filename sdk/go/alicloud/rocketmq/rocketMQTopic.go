@@ -58,7 +58,7 @@ import (
 //			}
 //			createVswitch, err := vpc.NewSwitch(ctx, "createVswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("example"),
-//				VpcId:       createVpc.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:       createVpc.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -92,10 +92,10 @@ import (
 //				SeriesCode: pulumi.String("ultimate"),
 //				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
 //					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
-//						VpcId: createVpc.ID().ToIDOutput().ToStringOutput(),
+//						VpcId: createVpc.ID(),
 //						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
 //							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
-//								VswitchId: createVswitch.ID().ToIDOutput().ToStringOutput(),
+//								VswitchId: createVswitch.ID(),
 //							},
 //						},
 //					},
@@ -111,7 +111,7 @@ import (
 //			}
 //			_, err = rocketmq.NewRocketMQTopic(ctx, "default", &rocketmq.RocketMQTopicArgs{
 //				Remark:      pulumi.String("example"),
-//				InstanceId:  createInstance.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:  createInstance.ID(),
 //				MessageType: pulumi.String("NORMAL"),
 //				TopicName:   pulumi.String(name),
 //			})
