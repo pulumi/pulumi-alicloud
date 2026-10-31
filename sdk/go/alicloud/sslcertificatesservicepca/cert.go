@@ -178,6 +178,7 @@ type Cert struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
+	//
 	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Information about the queried instances and their associated tags.
@@ -294,6 +295,7 @@ type certState struct {
 	State *string `pulumi:"state"`
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
+	//
 	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status *string `pulumi:"status"`
 	// Information about the queried instances and their associated tags.
@@ -378,6 +380,7 @@ type CertState struct {
 	State pulumi.StringPtrInput
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
+	//
 	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status pulumi.StringPtrInput
 	// Information about the queried instances and their associated tags.
@@ -466,6 +469,7 @@ type certArgs struct {
 	State *string `pulumi:"state"`
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
+	//
 	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status *string `pulumi:"status"`
 	// Information about the queried instances and their associated tags.
@@ -551,6 +555,7 @@ type CertArgs struct {
 	State pulumi.StringPtrInput
 	// The status of the certificate. Valid values:
 	// - `REVOKE`: indicates that the certificate has been revoked.
+	//
 	// > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 	Status pulumi.StringPtrInput
 	// Information about the queried instances and their associated tags.
@@ -778,6 +783,7 @@ func (o CertOutput) State() pulumi.StringPtrOutput {
 
 // The status of the certificate. Valid values:
 // - `REVOKE`: indicates that the certificate has been revoked.
+//
 // > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
 func (o CertOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cert) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)

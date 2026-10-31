@@ -185,6 +185,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     * 
      * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
@@ -195,6 +196,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
      * @return The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     * 
      * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
@@ -582,6 +584,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
          * @param syncScope The synchronization scope. Valid values:
          * - `REPO`: Encrypts or decrypts data.
          * - `NAMESPACE`: Generates or verifies a digital signature.
+         * 
          * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
          * 
          * @return builder
@@ -596,6 +599,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
          * @param syncScope The synchronization scope. Valid values:
          * - `REPO`: Encrypts or decrypts data.
          * - `NAMESPACE`: Generates or verifies a digital signature.
+         * 
          * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
          * 
          * @return builder

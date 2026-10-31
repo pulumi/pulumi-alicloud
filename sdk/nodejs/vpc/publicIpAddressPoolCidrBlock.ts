@@ -81,6 +81,7 @@ export class PublicIpAddressPoolCidrBlock extends pulumi.CustomResource {
     declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     *
      * > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      */
     declare public readonly cidrMask: pulumi.Output<number | undefined>;
@@ -141,6 +142,7 @@ export interface PublicIpAddressPoolCidrBlockState {
     cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     *
      * > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      */
     cidrMask?: pulumi.Input<number | undefined>;
@@ -168,6 +170,7 @@ export interface PublicIpAddressPoolCidrBlockArgs {
     cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     *
      * > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      */
     cidrMask?: pulumi.Input<number | undefined>;

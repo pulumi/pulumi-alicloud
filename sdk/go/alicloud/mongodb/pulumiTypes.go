@@ -125,6 +125,7 @@ type InstanceReplicaSet struct {
 	// The connection port of the node.
 	ConnectionPort *string `pulumi:"connectionPort"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType *string `pulumi:"networkType"`
 	// The role of the node.
@@ -156,6 +157,7 @@ type InstanceReplicaSetArgs struct {
 	// The connection port of the node.
 	ConnectionPort pulumi.StringPtrInput `pulumi:"connectionPort"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// The role of the node.
@@ -232,6 +234,7 @@ func (o InstanceReplicaSetOutput) ConnectionPort() pulumi.StringPtrOutput {
 }
 
 // The network type of the instance. Valid values: `VPC`.
+//
 // > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 func (o InstanceReplicaSetOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.NetworkType }).(pulumi.StringPtrOutput)

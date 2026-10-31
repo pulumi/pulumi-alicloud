@@ -15,6 +15,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     {
         /// <summary>
         /// The paths of the ConfigFile volume. See `ConfigFileVolumeConfigFileToPaths` below.
+        /// 
         /// &gt; **NOTE:** Every volumes mounted must have `Name` and `Type` attributes.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPath> ConfigFileVolumeConfigFileToPaths;

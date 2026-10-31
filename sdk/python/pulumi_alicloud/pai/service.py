@@ -27,11 +27,11 @@ class ServiceArgs:
         """
         The set of arguments for constructing a Service resource.
 
-        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
-        :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
+        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
+        :param pulumi.Input[_builtins.str] develop: Specifies whether to enter development mode. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] status: Service Current Status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace id
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The custom label.
+        :param pulumi.Input[_builtins.str] workspace_id: The workspace ID.
         """
         pulumi.set(__self__, "service_config", service_config)
         if develop is not None:
@@ -47,7 +47,7 @@ class ServiceArgs:
     @pulumi.getter(name="serviceConfig")
     def service_config(self) -> pulumi.Input[_builtins.str]:
         """
-        Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         """
         return pulumi.get(self, "service_config")
 
@@ -59,7 +59,7 @@ class ServiceArgs:
     @pulumi.getter
     def develop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to enter the development mode.
+        Specifies whether to enter development mode. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "develop")
 
@@ -83,7 +83,7 @@ class ServiceArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource.
+        The custom label.
         """
         return pulumi.get(self, "tags")
 
@@ -95,7 +95,7 @@ class ServiceArgs:
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Workspace id
+        The workspace ID.
         """
         return pulumi.get(self, "workspace_id")
 
@@ -111,6 +111,7 @@ class _ServiceState:
                  develop: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -118,12 +119,13 @@ class _ServiceState:
         Input properties used for looking up and filtering Service resources.
 
         :param pulumi.Input[_builtins.str] create_time: Creation time of the service
-        :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
+        :param pulumi.Input[_builtins.str] develop: Specifies whether to enter development mode. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
-        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
+        :param pulumi.Input[_builtins.str] service_uid: (Available since v2.1.0) Unique Service ID
         :param pulumi.Input[_builtins.str] status: Service Current Status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace id
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The custom label.
+        :param pulumi.Input[_builtins.str] workspace_id: The workspace ID.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -133,6 +135,8 @@ class _ServiceState:
             pulumi.set(__self__, "region_id", region_id)
         if service_config is not None:
             pulumi.set(__self__, "service_config", service_config)
+        if service_uid is not None:
+            pulumi.set(__self__, "service_uid", service_uid)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -156,7 +160,7 @@ class _ServiceState:
     @pulumi.getter
     def develop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to enter the development mode.
+        Specifies whether to enter development mode. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "develop")
 
@@ -180,13 +184,25 @@ class _ServiceState:
     @pulumi.getter(name="serviceConfig")
     def service_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         """
         return pulumi.get(self, "service_config")
 
     @service_config.setter
     def service_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceUid")
+    def service_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) Unique Service ID
+        """
+        return pulumi.get(self, "service_uid")
+
+    @service_uid.setter
+    def service_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_uid", value)
 
     @_builtins.property
     @pulumi.getter
@@ -204,7 +220,7 @@ class _ServiceState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource.
+        The custom label.
         """
         return pulumi.get(self, "tags")
 
@@ -216,7 +232,7 @@ class _ServiceState:
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Workspace id
+        The workspace ID.
         """
         return pulumi.get(self, "workspace_id")
 
@@ -294,11 +310,11 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
-        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        :param pulumi.Input[_builtins.str] develop: Specifies whether to enter development mode. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         :param pulumi.Input[_builtins.str] status: Service Current Status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace id
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The custom label.
+        :param pulumi.Input[_builtins.str] workspace_id: The workspace ID.
         """
         ...
     @overload
@@ -399,6 +415,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
+            __props__.__dict__["service_uid"] = None
         super(Service, __self__).__init__(
             'alicloud:pai/service:Service',
             resource_name,
@@ -413,6 +430,7 @@ class Service(pulumi.CustomResource):
             develop: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_config: pulumi.Input[Optional[_builtins.str]] = None,
+            service_uid: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Service':
@@ -424,12 +442,13 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Creation time of the service
-        :param pulumi.Input[_builtins.str] develop: Whether to enter the development mode.
+        :param pulumi.Input[_builtins.str] develop: Specifies whether to enter development mode. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
-        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        :param pulumi.Input[_builtins.str] service_config: Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
+        :param pulumi.Input[_builtins.str] service_uid: (Available since v2.1.0) Unique Service ID
         :param pulumi.Input[_builtins.str] status: Service Current Status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace id
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The custom label.
+        :param pulumi.Input[_builtins.str] workspace_id: The workspace ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,6 +458,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["develop"] = develop
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["service_config"] = service_config
+        __props__.__dict__["service_uid"] = service_uid
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["workspace_id"] = workspace_id
@@ -456,7 +476,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def develop(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Whether to enter the development mode.
+        Specifies whether to enter development mode. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "develop")
 
@@ -472,9 +492,17 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="serviceConfig")
     def service_config(self) -> pulumi.Output[_builtins.str]:
         """
-        Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+        Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
         """
         return pulumi.get(self, "service_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceUid")
+    def service_uid(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v2.1.0) Unique Service ID
+        """
+        return pulumi.get(self, "service_uid")
 
     @_builtins.property
     @pulumi.getter
@@ -488,7 +516,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The tag of the resource.
+        The custom label.
         """
         return pulumi.get(self, "tags")
 
@@ -496,7 +524,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Workspace id
+        The workspace ID.
         """
         return pulumi.get(self, "workspace_id")
 

@@ -66,6 +66,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of backend servers to be added. See `servers` below.
+     * 
      * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      * @deprecated
@@ -78,6 +79,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of backend servers to be added. See `servers` below.
+     * 
      * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      * @deprecated
@@ -197,6 +199,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param servers The list of backend servers to be added. See `servers` below.
+         * 
          * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          * @return builder
@@ -213,6 +216,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param servers The list of backend servers to be added. See `servers` below.
+         * 
          * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          * @return builder
@@ -228,6 +232,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param servers The list of backend servers to be added. See `servers` below.
+         * 
          * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          * @return builder

@@ -209,6 +209,7 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
 
     /**
      * Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -217,6 +218,7 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
 
     /**
      * @return Reason for quota application.
+     * 
      * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      * 
      */
@@ -546,6 +548,7 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
 
         /**
          * @param reason Reason for quota application.
+         * 
          * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
          * 
          * @return builder
@@ -558,6 +561,7 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
 
         /**
          * @param reason Reason for quota application.
+         * 
          * &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
          * 
          * @return builder

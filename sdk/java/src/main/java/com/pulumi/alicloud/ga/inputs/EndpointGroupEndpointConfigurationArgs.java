@@ -66,6 +66,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * The private IP address of the ENI.
+     * 
      * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
      * 
      */
@@ -74,6 +75,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * @return The private IP address of the ENI.
+     * 
      * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
      * 
      */
@@ -148,6 +150,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+     * 
      * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
@@ -156,6 +159,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+     * 
      * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
@@ -259,6 +263,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param subAddress The private IP address of the ENI.
+         * 
          * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
          * 
          * @return builder
@@ -271,6 +276,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param subAddress The private IP address of the ENI.
+         * 
          * &gt; **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
          * 
          * @return builder
@@ -375,6 +381,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param weight The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+         * 
          * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          * 
          * @return builder
@@ -387,6 +394,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param weight The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+         * 
          * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          * 
          * @return builder

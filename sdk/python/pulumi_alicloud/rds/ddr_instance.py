@@ -128,6 +128,7 @@ class DdrInstanceArgs:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+               
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -173,6 +174,7 @@ class DdrInstanceArgs:
         :param pulumi.Input[_builtins.int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[_builtins.str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
@@ -601,6 +603,7 @@ class DdrInstanceArgs:
     def connection_string_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -822,6 +825,7 @@ class DdrInstanceArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -1368,6 +1372,7 @@ class _DdrInstanceState:
                - 0: disables the CRL
         :param pulumi.Input[_builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+               
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -1424,6 +1429,7 @@ class _DdrInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[_builtins.str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
@@ -1818,6 +1824,7 @@ class _DdrInstanceState:
     def connection_string_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -2105,6 +2112,7 @@ class _DdrInstanceState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -2677,6 +2685,8 @@ class DdrInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.198.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `payment_type = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Because the generation time of the disaster recovery set is uncertain, the query backup set may not have a value, so the following examples may not be executed successfully in one run.
@@ -2717,6 +2727,7 @@ class DdrInstance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+               
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -2773,6 +2784,7 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[_builtins.str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
@@ -2872,6 +2884,8 @@ class DdrInstance(pulumi.CustomResource):
         For information about RDS remote disaster recovery instance and how to use it, see [What is ApsaraDB for RDS Remote Disaster Recovery](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createddrinstance).
 
         > **NOTE:** Available since v1.198.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `payment_type = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -3171,6 +3185,7 @@ class DdrInstance(pulumi.CustomResource):
                - 0: disables the CRL
         :param pulumi.Input[_builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+               
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -3227,6 +3242,7 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstanceParameterArgs', 'DdrInstanceParameterArgsDict', 'outputs.DdrInstanceParameter']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DdrInstancePgHbaConfArgs', 'DdrInstancePgHbaConfArgsDict', 'outputs.DdrInstancePgHbaConf']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[_builtins.str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
@@ -3508,6 +3524,7 @@ class DdrInstance(pulumi.CustomResource):
     def connection_string_prefix(self) -> pulumi.Output[_builtins.str]:
         """
         The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
+
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -3711,6 +3728,7 @@ class DdrInstance(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

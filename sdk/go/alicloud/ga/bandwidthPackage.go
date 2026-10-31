@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.112.0.
 //
+// > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -75,6 +77,7 @@ type BandwidthPackage struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrOutput `pulumi:"bandwidthPackageName"`
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrOutput `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
@@ -155,6 +158,7 @@ type bandwidthPackageState struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
@@ -200,6 +204,7 @@ type BandwidthPackageState struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
@@ -249,6 +254,7 @@ type bandwidthPackageArgs struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
@@ -293,6 +299,7 @@ type BandwidthPackageArgs struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
 	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
@@ -437,6 +444,7 @@ func (o BandwidthPackageOutput) BandwidthPackageName() pulumi.StringPtrOutput {
 }
 
 // The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+//
 // > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 func (o BandwidthPackageOutput) BandwidthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BandwidthType }).(pulumi.StringPtrOutput)

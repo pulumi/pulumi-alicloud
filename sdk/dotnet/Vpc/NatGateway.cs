@@ -22,6 +22,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.37.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` or `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic usage
@@ -227,6 +229,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
@@ -422,6 +425,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
@@ -579,6 +583,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]

@@ -20,6 +20,16 @@ export type ConfigMap = import("./configMap").ConfigMap;
 export const ConfigMap: typeof import("./configMap").ConfigMap = null as any;
 utilities.lazyLoad(exports, ["ConfigMap"], () => require("./configMap"));
 
+export { GetApplicationGroupsArgs, GetApplicationGroupsResult, GetApplicationGroupsOutputArgs } from "./getApplicationGroups";
+export const getApplicationGroups: typeof import("./getApplicationGroups").getApplicationGroups = null as any;
+export const getApplicationGroupsOutput: typeof import("./getApplicationGroups").getApplicationGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationGroups","getApplicationGroupsOutput"], () => require("./getApplicationGroups"));
+
+export { GetApplicationInstancesArgs, GetApplicationInstancesResult, GetApplicationInstancesOutputArgs } from "./getApplicationInstances";
+export const getApplicationInstances: typeof import("./getApplicationInstances").getApplicationInstances = null as any;
+export const getApplicationInstancesOutput: typeof import("./getApplicationInstances").getApplicationInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationInstances","getApplicationInstancesOutput"], () => require("./getApplicationInstances"));
+
 export { GetApplicationScalingRulesArgs, GetApplicationScalingRulesResult, GetApplicationScalingRulesOutputArgs } from "./getApplicationScalingRules";
 export const getApplicationScalingRules: typeof import("./getApplicationScalingRules").getApplicationScalingRules = null as any;
 export const getApplicationScalingRulesOutput: typeof import("./getApplicationScalingRules").getApplicationScalingRulesOutput = null as any;

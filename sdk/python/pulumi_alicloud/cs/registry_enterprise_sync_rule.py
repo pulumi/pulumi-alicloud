@@ -47,6 +47,7 @@ class RegistryEnterpriseSyncRuleArgs:
         :param pulumi.Input[_builtins.str] sync_scope: The synchronization scope. Valid values:
                - `REPO`: Encrypts or decrypts data.
                - `NAMESPACE`: Generates or verifies a digital signature.
+               
                > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         :param pulumi.Input[_builtins.str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
                - `INITIATIVE`: Manually triggers the synchronization rule.
@@ -194,6 +195,7 @@ class RegistryEnterpriseSyncRuleArgs:
         The synchronization scope. Valid values:
         - `REPO`: Encrypts or decrypts data.
         - `NAMESPACE`: Generates or verifies a digital signature.
+
         > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         """
         return pulumi.get(self, "sync_scope")
@@ -278,6 +280,7 @@ class _RegistryEnterpriseSyncRuleState:
         :param pulumi.Input[_builtins.str] sync_scope: The synchronization scope. Valid values:
                - `REPO`: Encrypts or decrypts data.
                - `NAMESPACE`: Generates or verifies a digital signature.
+               
                > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         :param pulumi.Input[_builtins.str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
                - `INITIATIVE`: Manually triggers the synchronization rule.
@@ -461,6 +464,7 @@ class _RegistryEnterpriseSyncRuleState:
         The synchronization scope. Valid values:
         - `REPO`: Encrypts or decrypts data.
         - `NAMESPACE`: Generates or verifies a digital signature.
+
         > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         """
         return pulumi.get(self, "sync_scope")
@@ -671,6 +675,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] sync_scope: The synchronization scope. Valid values:
                - `REPO`: Encrypts or decrypts data.
                - `NAMESPACE`: Generates or verifies a digital signature.
+               
                > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         :param pulumi.Input[_builtins.str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
                - `INITIATIVE`: Manually triggers the synchronization rule.
@@ -888,6 +893,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] sync_scope: The synchronization scope. Valid values:
                - `REPO`: Encrypts or decrypts data.
                - `NAMESPACE`: Generates or verifies a digital signature.
+               
                > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         :param pulumi.Input[_builtins.str] sync_trigger: The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
                - `INITIATIVE`: Manually triggers the synchronization rule.
@@ -1012,6 +1018,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         The synchronization scope. Valid values:
         - `REPO`: Encrypts or decrypts data.
         - `NAMESPACE`: Generates or verifies a digital signature.
+
         > **NOTE:** From version 1.240.0, `sync_scope` can be set.
         """
         return pulumi.get(self, "sync_scope")

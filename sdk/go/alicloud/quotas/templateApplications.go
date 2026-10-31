@@ -93,14 +93,17 @@ type TemplateApplications struct {
 	pulumi.CustomResourceState
 
 	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+	//
 	// > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
 	AliyunUids pulumi.StringArrayOutput `pulumi:"aliyunUids"`
 	// The value of the quota request.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	DesireValue pulumi.Float64Output `pulumi:"desireValue"`
 	// Quota dimension. See `dimensions` below.
 	Dimensions TemplateApplicationsDimensionArrayOutput `pulumi:"dimensions"`
 	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The language of the quota application result notification. Value:
@@ -108,6 +111,7 @@ type TemplateApplications struct {
 	// - en: English.
 	EnvLanguage pulumi.StringPtrOutput `pulumi:"envLanguage"`
 	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
 	ExpireTime pulumi.StringPtrOutput `pulumi:"expireTime"`
 	// Whether to send notification of quota application result. Value:
@@ -115,6 +119,7 @@ type TemplateApplications struct {
 	// - 3: Yes.
 	NoticeType pulumi.IntPtrOutput `pulumi:"noticeType"`
 	// Cloud service name abbreviation.
+	//
 	// > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
 	ProductCode pulumi.StringOutput `pulumi:"productCode"`
 	// The quota ID.
@@ -127,6 +132,7 @@ type TemplateApplications struct {
 	// - WhiteListLabel: Equity quota.
 	QuotaCategory pulumi.StringOutput `pulumi:"quotaCategory"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason pulumi.StringOutput `pulumi:"reason"`
 }
@@ -180,14 +186,17 @@ func GetTemplateApplications(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TemplateApplications resources.
 type templateApplicationsState struct {
 	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+	//
 	// > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
 	AliyunUids []string `pulumi:"aliyunUids"`
 	// The value of the quota request.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	DesireValue *float64 `pulumi:"desireValue"`
 	// Quota dimension. See `dimensions` below.
 	Dimensions []TemplateApplicationsDimension `pulumi:"dimensions"`
 	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The language of the quota application result notification. Value:
@@ -195,6 +204,7 @@ type templateApplicationsState struct {
 	// - en: English.
 	EnvLanguage *string `pulumi:"envLanguage"`
 	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Whether to send notification of quota application result. Value:
@@ -202,6 +212,7 @@ type templateApplicationsState struct {
 	// - 3: Yes.
 	NoticeType *int `pulumi:"noticeType"`
 	// Cloud service name abbreviation.
+	//
 	// > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
 	ProductCode *string `pulumi:"productCode"`
 	// The quota ID.
@@ -214,20 +225,24 @@ type templateApplicationsState struct {
 	// - WhiteListLabel: Equity quota.
 	QuotaCategory *string `pulumi:"quotaCategory"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason *string `pulumi:"reason"`
 }
 
 type TemplateApplicationsState struct {
 	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+	//
 	// > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
 	AliyunUids pulumi.StringArrayInput
 	// The value of the quota request.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	DesireValue pulumi.Float64PtrInput
 	// Quota dimension. See `dimensions` below.
 	Dimensions TemplateApplicationsDimensionArrayInput
 	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
 	EffectiveTime pulumi.StringPtrInput
 	// The language of the quota application result notification. Value:
@@ -235,6 +250,7 @@ type TemplateApplicationsState struct {
 	// - en: English.
 	EnvLanguage pulumi.StringPtrInput
 	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
 	ExpireTime pulumi.StringPtrInput
 	// Whether to send notification of quota application result. Value:
@@ -242,6 +258,7 @@ type TemplateApplicationsState struct {
 	// - 3: Yes.
 	NoticeType pulumi.IntPtrInput
 	// Cloud service name abbreviation.
+	//
 	// > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
 	ProductCode pulumi.StringPtrInput
 	// The quota ID.
@@ -254,6 +271,7 @@ type TemplateApplicationsState struct {
 	// - WhiteListLabel: Equity quota.
 	QuotaCategory pulumi.StringPtrInput
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason pulumi.StringPtrInput
 }
@@ -264,14 +282,17 @@ func (TemplateApplicationsState) ElementType() reflect.Type {
 
 type templateApplicationsArgs struct {
 	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+	//
 	// > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
 	AliyunUids []string `pulumi:"aliyunUids"`
 	// The value of the quota request.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	DesireValue float64 `pulumi:"desireValue"`
 	// Quota dimension. See `dimensions` below.
 	Dimensions []TemplateApplicationsDimension `pulumi:"dimensions"`
 	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The language of the quota application result notification. Value:
@@ -279,6 +300,7 @@ type templateApplicationsArgs struct {
 	// - en: English.
 	EnvLanguage *string `pulumi:"envLanguage"`
 	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Whether to send notification of quota application result. Value:
@@ -286,6 +308,7 @@ type templateApplicationsArgs struct {
 	// - 3: Yes.
 	NoticeType *int `pulumi:"noticeType"`
 	// Cloud service name abbreviation.
+	//
 	// > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
 	ProductCode string `pulumi:"productCode"`
 	// The quota ID.
@@ -296,6 +319,7 @@ type templateApplicationsArgs struct {
 	// - WhiteListLabel: Equity quota.
 	QuotaCategory string `pulumi:"quotaCategory"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason string `pulumi:"reason"`
 }
@@ -303,14 +327,17 @@ type templateApplicationsArgs struct {
 // The set of arguments for constructing a TemplateApplications resource.
 type TemplateApplicationsArgs struct {
 	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+	//
 	// > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
 	AliyunUids pulumi.StringArrayInput
 	// The value of the quota request.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	DesireValue pulumi.Float64Input
 	// Quota dimension. See `dimensions` below.
 	Dimensions TemplateApplicationsDimensionArrayInput
 	// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
 	EffectiveTime pulumi.StringPtrInput
 	// The language of the quota application result notification. Value:
@@ -318,6 +345,7 @@ type TemplateApplicationsArgs struct {
 	// - en: English.
 	EnvLanguage pulumi.StringPtrInput
 	// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+	//
 	// > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
 	ExpireTime pulumi.StringPtrInput
 	// Whether to send notification of quota application result. Value:
@@ -325,6 +353,7 @@ type TemplateApplicationsArgs struct {
 	// - 3: Yes.
 	NoticeType pulumi.IntPtrInput
 	// Cloud service name abbreviation.
+	//
 	// > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
 	ProductCode pulumi.StringInput
 	// The quota ID.
@@ -335,6 +364,7 @@ type TemplateApplicationsArgs struct {
 	// - WhiteListLabel: Equity quota.
 	QuotaCategory pulumi.StringInput
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason pulumi.StringInput
 }
@@ -427,12 +457,14 @@ func (o TemplateApplicationsOutput) ToTemplateApplicationsOutputWithContext(ctx 
 }
 
 // The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+//
 // > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
 func (o TemplateApplicationsOutput) AliyunUids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TemplateApplications) pulumi.StringArrayOutput { return v.AliyunUids }).(pulumi.StringArrayOutput)
 }
 
 // The value of the quota request.
+//
 // > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 func (o TemplateApplicationsOutput) DesireValue() pulumi.Float64Output {
 	return o.ApplyT(func(v *TemplateApplications) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
@@ -444,6 +476,7 @@ func (o TemplateApplicationsOutput) Dimensions() TemplateApplicationsDimensionAr
 }
 
 // The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+//
 // > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
 func (o TemplateApplicationsOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateApplications) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
@@ -457,6 +490,7 @@ func (o TemplateApplicationsOutput) EnvLanguage() pulumi.StringPtrOutput {
 }
 
 // The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+//
 // > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
 func (o TemplateApplicationsOutput) ExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateApplications) pulumi.StringPtrOutput { return v.ExpireTime }).(pulumi.StringPtrOutput)
@@ -470,6 +504,7 @@ func (o TemplateApplicationsOutput) NoticeType() pulumi.IntPtrOutput {
 }
 
 // Cloud service name abbreviation.
+//
 // > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
 func (o TemplateApplicationsOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *TemplateApplications) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
@@ -496,6 +531,7 @@ func (o TemplateApplicationsOutput) QuotaCategory() pulumi.StringOutput {
 }
 
 // Reason for quota application.
+//
 // > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 func (o TemplateApplicationsOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v *TemplateApplications) pulumi.StringOutput { return v.Reason }).(pulumi.StringOutput)

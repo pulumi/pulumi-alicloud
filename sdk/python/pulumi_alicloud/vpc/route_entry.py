@@ -46,6 +46,7 @@ class RouteEntryArgs:
                - `Ipv4Gateway`: An IPv4 gateway.
                - `GatewayEndpoint`: A gateway endpoint.
                - `Ecr`: A Express Connect Router (ECR).
+               - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
         if description is not None:
@@ -136,6 +137,7 @@ class RouteEntryArgs:
         - `Ipv4Gateway`: An IPv4 gateway.
         - `GatewayEndpoint`: A gateway endpoint.
         - `Ecr`: A Express Connect Router (ECR).
+        - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -174,6 +176,7 @@ class _RouteEntryState:
                - `Ipv4Gateway`: An IPv4 gateway.
                - `GatewayEndpoint`: A gateway endpoint.
                - `Ecr`: A Express Connect Router (ECR).
+               - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the Route Table.
         :param pulumi.Input[_builtins.str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
@@ -260,6 +263,7 @@ class _RouteEntryState:
         - `Ipv4Gateway`: An IPv4 gateway.
         - `GatewayEndpoint`: A gateway endpoint.
         - `Ecr`: A Express Connect Router (ECR).
+        - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -397,6 +401,7 @@ class RouteEntry(pulumi.CustomResource):
                - `Ipv4Gateway`: An IPv4 gateway.
                - `GatewayEndpoint`: A gateway endpoint.
                - `Ecr`: A Express Connect Router (ECR).
+               - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the Route Table.
         """
         ...
@@ -557,6 +562,7 @@ class RouteEntry(pulumi.CustomResource):
                - `Ipv4Gateway`: An IPv4 gateway.
                - `GatewayEndpoint`: A gateway endpoint.
                - `Ecr`: A Express Connect Router (ECR).
+               - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the Route Table.
         :param pulumi.Input[_builtins.str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
@@ -622,6 +628,7 @@ class RouteEntry(pulumi.CustomResource):
         - `Ipv4Gateway`: An IPv4 gateway.
         - `GatewayEndpoint`: A gateway endpoint.
         - `Ecr`: A Express Connect Router (ECR).
+        - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
         """
         return pulumi.get(self, "nexthop_type")
 

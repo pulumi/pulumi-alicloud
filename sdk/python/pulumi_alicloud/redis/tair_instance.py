@@ -115,14 +115,14 @@ class TairInstanceArgs:
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         :param pulumi.Input[_builtins.str] param_repl_mode: The value is semisync or async. The default value is async.
                
-               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         :param pulumi.Input[_builtins.str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
         :param pulumi.Input[_builtins.str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
@@ -158,7 +158,7 @@ class TairInstanceArgs:
                If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
                
                If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
-        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] tair_instance_name: The name of the resource.
         :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable Transparent Data Encryption (TDE). Valid value: `enabled`.
@@ -551,7 +551,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="paramNoLooseSentinelEnabled")
     def param_no_loose_sentinel_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
         """
         return pulumi.get(self, "param_no_loose_sentinel_enabled")
 
@@ -563,7 +563,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="paramNoLooseSentinelPasswordFreeAccess")
     def param_no_loose_sentinel_password_free_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_access")
 
@@ -575,7 +575,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="paramNoLooseSentinelPasswordFreeCommands")
     def param_no_loose_sentinel_password_free_commands(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_commands")
 
@@ -589,7 +589,7 @@ class TairInstanceArgs:
         """
         The value is semisync or async. The default value is async.
 
-        The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
         """
         return pulumi.get(self, "param_repl_mode")
 
@@ -601,7 +601,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="paramSemisyncReplTimeout")
     def param_semisync_repl_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
         """
         return pulumi.get(self, "param_semisync_repl_timeout")
 
@@ -613,7 +613,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="paramSentinelCompatEnable")
     def param_sentinel_compat_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         """
         return pulumi.get(self, "param_sentinel_compat_enable")
 
@@ -847,7 +847,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="storageSizeGb")
     def storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         """
         return pulumi.get(self, "storage_size_gb")
 
@@ -913,6 +913,8 @@ class _TairInstanceState:
                  auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_backup_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -956,6 +958,7 @@ class _TairInstanceState:
                  slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
@@ -976,6 +979,8 @@ class _TairInstanceState:
         :param pulumi.Input[_builtins.str] backup_id: You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
                
                If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        :param pulumi.Input[_builtins.str] ca_cert_common_name: The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        :param pulumi.Input[_builtins.str] ca_cert_download_url: The download URL of the CA certificate. This attribute is populated when `ssl_enabled` is set to `Enable`.
         :param pulumi.Input[_builtins.str] cluster_backup_id: This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
         :param pulumi.Input[_builtins.str] connection_domain: The internal endpoint of the instance.
@@ -1015,14 +1020,14 @@ class _TairInstanceState:
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] network_type: The network type of the instance.  CLASSIC(classic network), VPC.
         :param pulumi.Input[_builtins.str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         :param pulumi.Input[_builtins.str] param_repl_mode: The value is semisync or async. The default value is async.
                
-               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         :param pulumi.Input[_builtins.str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
         :param pulumi.Input[_builtins.str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
@@ -1052,6 +1057,7 @@ class _TairInstanceState:
                Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         :param pulumi.Input[_builtins.str] src_db_instance_id: If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         :param pulumi.Input[_builtins.str] ssl_enabled: Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
+        :param pulumi.Input[_builtins.str] ssl_expired_time: The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] storage_performance_level: The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
                
@@ -1060,7 +1066,7 @@ class _TairInstanceState:
                If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
                
                If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
-        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] tair_instance_id: The ID of the resource.
         :param pulumi.Input[_builtins.str] tair_instance_name: The name of the resource.
@@ -1080,6 +1086,10 @@ class _TairInstanceState:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
+        if ca_cert_common_name is not None:
+            pulumi.set(__self__, "ca_cert_common_name", ca_cert_common_name)
+        if ca_cert_download_url is not None:
+            pulumi.set(__self__, "ca_cert_download_url", ca_cert_download_url)
         if cluster_backup_id is not None:
             pulumi.set(__self__, "cluster_backup_id", cluster_backup_id)
         if config is not None:
@@ -1166,6 +1176,8 @@ class _TairInstanceState:
             pulumi.set(__self__, "src_db_instance_id", src_db_instance_id)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if ssl_expired_time is not None:
+            pulumi.set(__self__, "ssl_expired_time", ssl_expired_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_performance_level is not None:
@@ -1238,6 +1250,30 @@ class _TairInstanceState:
     @backup_id.setter
     def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertCommonName")
+    def ca_cert_common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ca_cert_common_name")
+
+    @ca_cert_common_name.setter
+    def ca_cert_common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert_common_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertDownloadUrl")
+    def ca_cert_download_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The download URL of the CA certificate. This attribute is populated when `ssl_enabled` is set to `Enable`.
+        """
+        return pulumi.get(self, "ca_cert_download_url")
+
+    @ca_cert_download_url.setter
+    def ca_cert_download_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert_download_url", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterBackupId")
@@ -1502,7 +1538,7 @@ class _TairInstanceState:
     @pulumi.getter(name="paramNoLooseSentinelEnabled")
     def param_no_loose_sentinel_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
         """
         return pulumi.get(self, "param_no_loose_sentinel_enabled")
 
@@ -1514,7 +1550,7 @@ class _TairInstanceState:
     @pulumi.getter(name="paramNoLooseSentinelPasswordFreeAccess")
     def param_no_loose_sentinel_password_free_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_access")
 
@@ -1526,7 +1562,7 @@ class _TairInstanceState:
     @pulumi.getter(name="paramNoLooseSentinelPasswordFreeCommands")
     def param_no_loose_sentinel_password_free_commands(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_commands")
 
@@ -1540,7 +1576,7 @@ class _TairInstanceState:
         """
         The value is semisync or async. The default value is async.
 
-        The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
         """
         return pulumi.get(self, "param_repl_mode")
 
@@ -1552,7 +1588,7 @@ class _TairInstanceState:
     @pulumi.getter(name="paramSemisyncReplTimeout")
     def param_semisync_repl_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
         """
         return pulumi.get(self, "param_semisync_repl_timeout")
 
@@ -1564,7 +1600,7 @@ class _TairInstanceState:
     @pulumi.getter(name="paramSentinelCompatEnable")
     def param_sentinel_compat_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         """
         return pulumi.get(self, "param_sentinel_compat_enable")
 
@@ -1789,6 +1825,18 @@ class _TairInstanceState:
         pulumi.set(self, "ssl_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="sslExpiredTime")
+    def ssl_expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ssl_expired_time")
+
+    @ssl_expired_time.setter
+    def ssl_expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_expired_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1822,7 +1870,7 @@ class _TairInstanceState:
     @pulumi.getter(name="storageSizeGb")
     def storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         """
         return pulumi.get(self, "storage_size_gb")
 
@@ -2081,14 +2129,14 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         :param pulumi.Input[_builtins.str] param_repl_mode: The value is semisync or async. The default value is async.
                
-               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         :param pulumi.Input[_builtins.str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
         :param pulumi.Input[_builtins.str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
@@ -2124,7 +2172,7 @@ class TairInstance(pulumi.CustomResource):
                If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
                
                If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
-        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] tair_instance_name: The name of the resource.
         :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable Transparent Data Encryption (TDE). Valid value: `enabled`.
@@ -2329,11 +2377,14 @@ class TairInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["architecture_type"] = None
+            __props__.__dict__["ca_cert_common_name"] = None
+            __props__.__dict__["ca_cert_download_url"] = None
             __props__.__dict__["connection_domain"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["max_connections"] = None
             __props__.__dict__["network_type"] = None
             __props__.__dict__["region_id"] = None
+            __props__.__dict__["ssl_expired_time"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tair_instance_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
@@ -2352,6 +2403,8 @@ class TairInstance(pulumi.CustomResource):
             auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
             backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_backup_id: pulumi.Input[Optional[_builtins.str]] = None,
             config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2395,6 +2448,7 @@ class TairInstance(pulumi.CustomResource):
             slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
             src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
             storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2419,6 +2473,8 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_id: You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
                
                If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        :param pulumi.Input[_builtins.str] ca_cert_common_name: The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        :param pulumi.Input[_builtins.str] ca_cert_download_url: The download URL of the CA certificate. This attribute is populated when `ssl_enabled` is set to `Enable`.
         :param pulumi.Input[_builtins.str] cluster_backup_id: This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
         :param pulumi.Input[_builtins.str] connection_domain: The internal endpoint of the instance.
@@ -2458,14 +2514,14 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] network_type: The network type of the instance.  CLASSIC(classic network), VPC.
         :param pulumi.Input[_builtins.str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
-        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_access: Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
+        :param pulumi.Input[_builtins.str] param_no_loose_sentinel_password_free_commands: After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         :param pulumi.Input[_builtins.str] param_repl_mode: The value is semisync or async. The default value is async.
                
-               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
-        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+               The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_semisync_repl_timeout: The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
+        :param pulumi.Input[_builtins.str] param_sentinel_compat_enable: sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         :param pulumi.Input[_builtins.str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
         :param pulumi.Input[_builtins.str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
@@ -2495,6 +2551,7 @@ class TairInstance(pulumi.CustomResource):
                Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         :param pulumi.Input[_builtins.str] src_db_instance_id: If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         :param pulumi.Input[_builtins.str] ssl_enabled: Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
+        :param pulumi.Input[_builtins.str] ssl_expired_time: The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] storage_performance_level: The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
                
@@ -2503,7 +2560,7 @@ class TairInstance(pulumi.CustomResource):
                If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
                
                If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
-        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        :param pulumi.Input[_builtins.int] storage_size_gb: Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] tair_instance_id: The ID of the resource.
         :param pulumi.Input[_builtins.str] tair_instance_name: The name of the resource.
@@ -2523,6 +2580,8 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["backup_id"] = backup_id
+        __props__.__dict__["ca_cert_common_name"] = ca_cert_common_name
+        __props__.__dict__["ca_cert_download_url"] = ca_cert_download_url
         __props__.__dict__["cluster_backup_id"] = cluster_backup_id
         __props__.__dict__["config"] = config
         __props__.__dict__["connection_domain"] = connection_domain
@@ -2566,6 +2625,7 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["slave_read_only_count"] = slave_read_only_count
         __props__.__dict__["src_db_instance_id"] = src_db_instance_id
         __props__.__dict__["ssl_enabled"] = ssl_enabled
+        __props__.__dict__["ssl_expired_time"] = ssl_expired_time
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_performance_level"] = storage_performance_level
         __props__.__dict__["storage_size_gb"] = storage_size_gb
@@ -2612,6 +2672,22 @@ class TairInstance(pulumi.CustomResource):
         If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
         """
         return pulumi.get(self, "backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="caCertCommonName")
+    def ca_cert_common_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ca_cert_common_name")
+
+    @_builtins.property
+    @pulumi.getter(name="caCertDownloadUrl")
+    def ca_cert_download_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        The download URL of the CA certificate. This attribute is populated when `ssl_enabled` is set to `Enable`.
+        """
+        return pulumi.get(self, "ca_cert_download_url")
 
     @_builtins.property
     @pulumi.getter(name="clusterBackupId")
@@ -2796,7 +2872,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="paramNoLooseSentinelEnabled")
     def param_no_loose_sentinel_enabled(self) -> pulumi.Output[_builtins.str]:
         """
-        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
         """
         return pulumi.get(self, "param_no_loose_sentinel_enabled")
 
@@ -2804,7 +2880,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="paramNoLooseSentinelPasswordFreeAccess")
     def param_no_loose_sentinel_password_free_access(self) -> pulumi.Output[_builtins.str]:
         """
-        Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_access")
 
@@ -2812,7 +2888,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="paramNoLooseSentinelPasswordFreeCommands")
     def param_no_loose_sentinel_password_free_commands(self) -> pulumi.Output[_builtins.str]:
         """
-        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
         """
         return pulumi.get(self, "param_no_loose_sentinel_password_free_commands")
 
@@ -2822,7 +2898,7 @@ class TairInstance(pulumi.CustomResource):
         """
         The value is semisync or async. The default value is async.
 
-        The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
         """
         return pulumi.get(self, "param_repl_mode")
 
@@ -2830,7 +2906,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="paramSemisyncReplTimeout")
     def param_semisync_repl_timeout(self) -> pulumi.Output[_builtins.str]:
         """
-        The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
         """
         return pulumi.get(self, "param_semisync_repl_timeout")
 
@@ -2838,7 +2914,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="paramSentinelCompatEnable")
     def param_sentinel_compat_enable(self) -> pulumi.Output[_builtins.str]:
         """
-        sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
         """
         return pulumi.get(self, "param_sentinel_compat_enable")
 
@@ -2991,6 +3067,14 @@ class TairInstance(pulumi.CustomResource):
         return pulumi.get(self, "ssl_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="sslExpiredTime")
+    def ssl_expired_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ssl_expired_time")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
@@ -3016,7 +3100,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="storageSizeGb")
     def storage_size_gb(self) -> pulumi.Output[_builtins.int]:
         """
-        Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         """
         return pulumi.get(self, "storage_size_gb")
 

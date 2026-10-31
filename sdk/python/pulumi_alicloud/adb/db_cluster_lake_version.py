@@ -66,6 +66,7 @@ class DBClusterLakeVersionArgs:
         :param pulumi.Input[_builtins.str] product_version: The edition of the cluster. Valid values:
                - `BasicVersion`: Basic Edition.
                - `EnterpriseVersion`: Enterprise Edition.
+               
                > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         :param pulumi.Input[_builtins.int] reserved_node_count: The number of reserved resource nodes.
         :param pulumi.Input[_builtins.str] reserved_node_size: The specifications of reserved resource nodes.
@@ -303,6 +304,7 @@ class DBClusterLakeVersionArgs:
         The edition of the cluster. Valid values:
         - `BasicVersion`: Basic Edition.
         - `EnterpriseVersion`: Enterprise Edition.
+
         > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         """
         return pulumi.get(self, "product_version")
@@ -502,6 +504,7 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[_builtins.str] product_version: The edition of the cluster. Valid values:
                - `BasicVersion`: Basic Edition.
                - `EnterpriseVersion`: Enterprise Edition.
+               
                > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         :param pulumi.Input[_builtins.int] reserved_node_count: The number of reserved resource nodes.
         :param pulumi.Input[_builtins.str] reserved_node_size: The specifications of reserved resource nodes.
@@ -854,6 +857,7 @@ class _DBClusterLakeVersionState:
         The edition of the cluster. Valid values:
         - `BasicVersion`: Basic Edition.
         - `EnterpriseVersion`: Enterprise Edition.
+
         > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         """
         return pulumi.get(self, "product_version")
@@ -1072,6 +1076,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.190.0.
 
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `payment_type = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -1124,6 +1130,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] product_version: The edition of the cluster. Valid values:
                - `BasicVersion`: Basic Edition.
                - `EnterpriseVersion`: Enterprise Edition.
+               
                > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         :param pulumi.Input[_builtins.int] reserved_node_count: The number of reserved resource nodes.
         :param pulumi.Input[_builtins.str] reserved_node_size: The specifications of reserved resource nodes.
@@ -1153,6 +1160,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 
         > **NOTE:** Available since v1.190.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `payment_type = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -1362,6 +1371,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] product_version: The edition of the cluster. Valid values:
                - `BasicVersion`: Basic Edition.
                - `EnterpriseVersion`: Enterprise Edition.
+               
                > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         :param pulumi.Input[_builtins.int] reserved_node_count: The number of reserved resource nodes.
         :param pulumi.Input[_builtins.str] reserved_node_size: The specifications of reserved resource nodes.
@@ -1599,6 +1609,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         The edition of the cluster. Valid values:
         - `BasicVersion`: Basic Edition.
         - `EnterpriseVersion`: Enterprise Edition.
+
         > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
         """
         return pulumi.get(self, "product_version")

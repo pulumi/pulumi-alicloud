@@ -20,6 +20,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
     /**
      * The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+     * 
      * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
@@ -28,6 +29,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+     * 
      * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
@@ -221,6 +223,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+         * 
          * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
@@ -233,6 +236,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+         * 
          * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder
@@ -244,6 +248,7 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param configFileVolumeConfigFileToPaths The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+         * 
          * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
          * 
          * @return builder

@@ -87,6 +87,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of the endpoint. Valid values:
      * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
      * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
@@ -96,6 +97,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of the endpoint. Valid values:
      * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
      * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
@@ -402,6 +404,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param endpointType The type of the endpoint. Valid values:
          * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+         * - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
          * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
          * 
          * @return builder
@@ -415,6 +418,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param endpointType The type of the endpoint. Valid values:
          * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+         * - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
          * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
          * 
          * @return builder

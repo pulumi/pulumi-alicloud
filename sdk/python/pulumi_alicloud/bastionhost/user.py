@@ -39,6 +39,7 @@ class UserArgs:
                * Ram: Ram User
                * AD: AD-authenticated User
                * LDAP: LDAP-authenticated User
+               
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         :param pulumi.Input[_builtins.str] comment: Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -112,6 +113,7 @@ class UserArgs:
         * Ram: Ram User
         * AD: AD-authenticated User
         * LDAP: LDAP-authenticated User
+
         > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         """
         return pulumi.get(self, "source")
@@ -299,6 +301,7 @@ class _UserState:
                * Ram: Ram User
                * AD: AD-authenticated User
                * LDAP: LDAP-authenticated User
+               
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
@@ -444,6 +447,7 @@ class _UserState:
         * Ram: Ram User
         * AD: AD-authenticated User
         * LDAP: LDAP-authenticated User
+
         > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         """
         return pulumi.get(self, "source")
@@ -622,6 +626,7 @@ class User(pulumi.CustomResource):
                * Ram: Ram User
                * AD: AD-authenticated User
                * LDAP: LDAP-authenticated User
+               
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
@@ -818,6 +823,7 @@ class User(pulumi.CustomResource):
                * Ram: Ram User
                * AD: AD-authenticated User
                * LDAP: LDAP-authenticated User
+               
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
@@ -928,6 +934,7 @@ class User(pulumi.CustomResource):
         * Ram: Ram User
         * AD: AD-authenticated User
         * LDAP: LDAP-authenticated User
+
         > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         """
         return pulumi.get(self, "source")

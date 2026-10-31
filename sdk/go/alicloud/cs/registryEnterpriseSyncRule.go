@@ -177,6 +177,7 @@ type RegistryEnterpriseSyncRule struct {
 	// The synchronization scope. Valid values:
 	// - `REPO`: Encrypts or decrypts data.
 	// - `NAMESPACE`: Generates or verifies a digital signature.
+	//
 	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope pulumi.StringOutput `pulumi:"syncScope"`
 	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
@@ -272,6 +273,7 @@ type registryEnterpriseSyncRuleState struct {
 	// The synchronization scope. Valid values:
 	// - `REPO`: Encrypts or decrypts data.
 	// - `NAMESPACE`: Generates or verifies a digital signature.
+	//
 	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope *string `pulumi:"syncScope"`
 	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
@@ -320,6 +322,7 @@ type RegistryEnterpriseSyncRuleState struct {
 	// The synchronization scope. Valid values:
 	// - `REPO`: Encrypts or decrypts data.
 	// - `NAMESPACE`: Generates or verifies a digital signature.
+	//
 	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope pulumi.StringPtrInput
 	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
@@ -360,6 +363,7 @@ type registryEnterpriseSyncRuleArgs struct {
 	// The synchronization scope. Valid values:
 	// - `REPO`: Encrypts or decrypts data.
 	// - `NAMESPACE`: Generates or verifies a digital signature.
+	//
 	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope *string `pulumi:"syncScope"`
 	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
@@ -397,6 +401,7 @@ type RegistryEnterpriseSyncRuleArgs struct {
 	// The synchronization scope. Valid values:
 	// - `REPO`: Encrypts or decrypts data.
 	// - `NAMESPACE`: Generates or verifies a digital signature.
+	//
 	// > **NOTE:** From version 1.240.0, `syncScope` can be set.
 	SyncScope pulumi.StringPtrInput
 	// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
@@ -561,6 +566,7 @@ func (o RegistryEnterpriseSyncRuleOutput) SyncRuleName() pulumi.StringOutput {
 // The synchronization scope. Valid values:
 // - `REPO`: Encrypts or decrypts data.
 // - `NAMESPACE`: Generates or verifies a digital signature.
+//
 // > **NOTE:** From version 1.240.0, `syncScope` can be set.
 func (o RegistryEnterpriseSyncRuleOutput) SyncScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncScope }).(pulumi.StringOutput)

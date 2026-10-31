@@ -150,6 +150,7 @@ type Application struct {
 	// The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
 	// The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The region ID of the application.
@@ -251,6 +252,7 @@ type applicationState struct {
 	// The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
 	// The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The region ID of the application.
@@ -307,6 +309,7 @@ type ApplicationState struct {
 	// The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
 	PayType pulumi.StringPtrInput
 	// The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The region ID of the application.
@@ -367,6 +370,7 @@ type applicationArgs struct {
 	// The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
 	// The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The region ID of the application.
@@ -422,6 +426,7 @@ type ApplicationArgs struct {
 	// The billing method. Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`.
 	PayType pulumi.StringPtrInput
 	// The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The region ID of the application.
@@ -610,6 +615,7 @@ func (o ApplicationOutput) PayType() pulumi.StringPtrOutput {
 }
 
 // The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+//
 // > **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o ApplicationOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)

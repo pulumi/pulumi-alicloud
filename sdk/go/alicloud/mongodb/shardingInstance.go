@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.40.0.
 //
+// > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+//
 // > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
 // [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
 //
@@ -122,6 +124,7 @@ type ShardingInstance struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration pulumi.IntOutput `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -192,6 +195,7 @@ type ShardingInstance struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// (Available since v1.42.0) Instance data backup retention days.
@@ -218,6 +222,7 @@ type ShardingInstance struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction pulumi.StringPtrOutput `pulumi:"sslAction"`
 	// (Available since v1.259.0) The status of the SSL feature.
@@ -292,6 +297,7 @@ type shardingInstanceState struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -362,6 +368,7 @@ type shardingInstanceState struct {
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// (Available since v1.42.0) Instance data backup retention days.
@@ -388,6 +395,7 @@ type shardingInstanceState struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction *string `pulumi:"sslAction"`
 	// (Available since v1.259.0) The status of the SSL feature.
@@ -417,6 +425,7 @@ type ShardingInstanceState struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrInput
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration pulumi.IntPtrInput
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -487,6 +496,7 @@ type ShardingInstanceState struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime pulumi.StringPtrInput
 	// (Available since v1.42.0) Instance data backup retention days.
@@ -513,6 +523,7 @@ type ShardingInstanceState struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction pulumi.StringPtrInput
 	// (Available since v1.259.0) The status of the SSL feature.
@@ -546,6 +557,7 @@ type shardingInstanceArgs struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -614,6 +626,7 @@ type shardingInstanceArgs struct {
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -638,6 +651,7 @@ type shardingInstanceArgs struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -664,6 +678,7 @@ type ShardingInstanceArgs struct {
 	// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
 	AutoRenew pulumi.BoolPtrInput
 	// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+	//
 	// > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 	AutoRenewDuration pulumi.IntPtrInput
 	// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
@@ -732,6 +747,7 @@ type ShardingInstanceArgs struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	//
 	// > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 	RestoreTime pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -756,6 +772,7 @@ type ShardingInstanceArgs struct {
 	// - `Open`: turn on SSL encryption.
 	// - `Close`: turn off SSL encryption.
 	// - `Update`: update SSL certificate.
+	//
 	// > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 	SslAction pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -873,6 +890,7 @@ func (o ShardingInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
 }
 
 // The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+//
 // > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
 func (o ShardingInstanceOutput) AutoRenewDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.AutoRenewDuration }).(pulumi.IntOutput)
@@ -1042,6 +1060,7 @@ func (o ShardingInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+//
 // > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
 func (o ShardingInstanceOutput) RestoreTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.RestoreTime }).(pulumi.StringPtrOutput)
@@ -1098,6 +1117,7 @@ func (o ShardingInstanceOutput) SrcDbInstanceId() pulumi.StringPtrOutput {
 // - `Open`: turn on SSL encryption.
 // - `Close`: turn off SSL encryption.
 // - `Update`: update SSL certificate.
+//
 // > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
 func (o ShardingInstanceOutput) SslAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.SslAction }).(pulumi.StringPtrOutput)

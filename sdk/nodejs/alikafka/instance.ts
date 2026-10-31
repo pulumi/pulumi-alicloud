@@ -113,6 +113,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly config: pulumi.Output<string>;
     /**
      * The configurations of Confluent. See `confluentConfig` below.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      */
     declare public readonly confluentConfig: pulumi.Output<outputs.alikafka.InstanceConfluentConfig>;
@@ -126,6 +127,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly deployType: pulumi.Output<number>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
     declare public readonly diskSize: pulumi.Output<number | undefined>;
@@ -225,6 +227,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly selectedZones: pulumi.Output<string[] | undefined>;
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      */
     declare public readonly serverlessConfig: pulumi.Output<outputs.alikafka.InstanceServerlessConfig>;
@@ -293,6 +296,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
     declare public readonly vswitchIds: pulumi.Output<string[]>;
@@ -423,6 +427,7 @@ export interface InstanceState {
     config?: pulumi.Input<string | undefined>;
     /**
      * The configurations of Confluent. See `confluentConfig` below.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      */
     confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig | undefined>;
@@ -436,6 +441,7 @@ export interface InstanceState {
     deployType?: pulumi.Input<number | undefined>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
     diskSize?: pulumi.Input<number | undefined>;
@@ -535,6 +541,7 @@ export interface InstanceState {
     selectedZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      */
     serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig | undefined>;
@@ -603,6 +610,7 @@ export interface InstanceState {
     vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -622,6 +630,7 @@ export interface InstanceArgs {
     config?: pulumi.Input<string | undefined>;
     /**
      * The configurations of Confluent. See `confluentConfig` below.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      */
     confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig | undefined>;
@@ -635,6 +644,7 @@ export interface InstanceArgs {
     deployType: pulumi.Input<number>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
     diskSize?: pulumi.Input<number | undefined>;
@@ -702,6 +712,7 @@ export interface InstanceArgs {
     selectedZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      */
     serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig | undefined>;
@@ -742,6 +753,7 @@ export interface InstanceArgs {
     vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     *
      * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;

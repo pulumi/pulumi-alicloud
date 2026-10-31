@@ -56,9 +56,11 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[_builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+               
                > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         :param pulumi.Input[_builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[_builtins.int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
@@ -78,6 +80,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input['InstanceServerlessConfigArgs'] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
                - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -95,6 +98,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               
                > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
@@ -188,6 +192,7 @@ class InstanceArgs:
     def confluent_config(self) -> pulumi.Input[Optional['InstanceConfluentConfigArgs']]:
         """
         The configurations of Confluent. See `confluent_config` below.
+
         > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         """
         return pulumi.get(self, "confluent_config")
@@ -213,6 +218,7 @@ class InstanceArgs:
     def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+
         > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         """
         return pulumi.get(self, "disk_size")
@@ -408,6 +414,7 @@ class InstanceArgs:
     def serverless_config(self) -> pulumi.Input[Optional['InstanceServerlessConfigArgs']]:
         """
         The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+
         > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         """
         return pulumi.get(self, "serverless_config")
@@ -503,6 +510,7 @@ class InstanceArgs:
     def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated.
+
         > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         """
         return pulumi.get(self, "vswitch_ids")
@@ -576,10 +584,12 @@ class _InstanceState:
 
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         :param pulumi.Input[_builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+               
                > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         :param pulumi.Input[_builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[_builtins.str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
@@ -607,6 +617,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input['InstanceServerlessConfigArgs'] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
                - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -631,6 +642,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] vpc_sasl_domain_endpoint: (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               
                > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
@@ -743,6 +755,7 @@ class _InstanceState:
     def confluent_config(self) -> pulumi.Input[Optional['InstanceConfluentConfigArgs']]:
         """
         The configurations of Confluent. See `confluent_config` below.
+
         > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         """
         return pulumi.get(self, "confluent_config")
@@ -780,6 +793,7 @@ class _InstanceState:
     def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+
         > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         """
         return pulumi.get(self, "disk_size")
@@ -1071,6 +1085,7 @@ class _InstanceState:
     def serverless_config(self) -> pulumi.Input[Optional['InstanceServerlessConfigArgs']]:
         """
         The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+
         > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         """
         return pulumi.get(self, "serverless_config")
@@ -1250,6 +1265,7 @@ class _InstanceState:
     def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated.
+
         > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         """
         return pulumi.get(self, "vswitch_ids")
@@ -1383,10 +1399,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         :param pulumi.Input[_builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+               
                > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         :param pulumi.Input[_builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[_builtins.int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
@@ -1406,6 +1424,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
                - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -1423,6 +1442,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               
                > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
@@ -1666,10 +1686,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']] confluent_config: The configurations of Confluent. See `confluent_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         :param pulumi.Input[_builtins.int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+               
                > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         :param pulumi.Input[_builtins.int] disk_type: The disk type of the instance. Valid values:
         :param pulumi.Input[_builtins.str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
@@ -1697,6 +1719,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+               
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
                - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -1721,6 +1744,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_sasl_domain_endpoint: (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               
                > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
@@ -1787,6 +1811,7 @@ class Instance(pulumi.CustomResource):
     def confluent_config(self) -> pulumi.Output['outputs.InstanceConfluentConfig']:
         """
         The configurations of Confluent. See `confluent_config` below.
+
         > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         """
         return pulumi.get(self, "confluent_config")
@@ -1812,6 +1837,7 @@ class Instance(pulumi.CustomResource):
     def disk_size(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+
         > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
         """
         return pulumi.get(self, "disk_size")
@@ -2007,6 +2033,7 @@ class Instance(pulumi.CustomResource):
     def serverless_config(self) -> pulumi.Output['outputs.InstanceServerlessConfig']:
         """
         The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
+
         > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         """
         return pulumi.get(self, "serverless_config")
@@ -2130,6 +2157,7 @@ class Instance(pulumi.CustomResource):
     def vswitch_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The IDs of the vSwitches with which the instance is associated.
+
         > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         """
         return pulumi.get(self, "vswitch_ids")

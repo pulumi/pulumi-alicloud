@@ -98,7 +98,7 @@ type CapacityReservation struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
 	EndTimeType pulumi.StringOutput `pulumi:"endTimeType"`
@@ -173,7 +173,7 @@ type capacityReservationState struct {
 	Description *string `pulumi:"description"`
 	// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
 	EndTime *string `pulumi:"endTime"`
 	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
 	EndTimeType *string `pulumi:"endTimeType"`
@@ -210,7 +210,7 @@ type CapacityReservationState struct {
 	Description pulumi.StringPtrInput
 	// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
-	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
 	EndTime pulumi.StringPtrInput
 	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
 	EndTimeType pulumi.StringPtrInput
@@ -251,7 +251,7 @@ type capacityReservationArgs struct {
 	Description *string `pulumi:"description"`
 	// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
 	EndTime *string `pulumi:"endTime"`
 	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
 	EndTimeType *string `pulumi:"endTimeType"`
@@ -279,7 +279,7 @@ type CapacityReservationArgs struct {
 	Description pulumi.StringPtrInput
 	// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
-	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
 	EndTime pulumi.StringPtrInput
 	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
 	EndTimeType pulumi.StringPtrInput
@@ -401,7 +401,7 @@ func (o CapacityReservationOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+// The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `endTimeType` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
 func (o CapacityReservationOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }

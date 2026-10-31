@@ -96,7 +96,7 @@ export class SynchronizationInstance extends pulumi.CustomResource {
      */
     declare public readonly destinationEndpointRegion: pulumi.Output<string>;
     /**
-     * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      */
     declare public readonly instanceClass: pulumi.Output<string>;
     /**
@@ -227,7 +227,7 @@ export interface SynchronizationInstanceState {
      */
     destinationEndpointRegion?: pulumi.Input<string | undefined>;
     /**
-     * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      */
     instanceClass?: pulumi.Input<string | undefined>;
     /**
@@ -293,7 +293,7 @@ export interface SynchronizationInstanceArgs {
      */
     destinationEndpointRegion: pulumi.Input<string>;
     /**
-     * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      */
     instanceClass?: pulumi.Input<string | undefined>;
     /**

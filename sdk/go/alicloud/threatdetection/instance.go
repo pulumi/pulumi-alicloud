@@ -139,6 +139,7 @@ type Instance struct {
 	// - `CTDR_STORAGE`: Log Management Module.
 	// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
 	// - Value: `0` means off, `1` means on
+	//
 	// > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
 	//
 	// Deprecated: Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -328,6 +329,7 @@ type instanceState struct {
 	// - `CTDR_STORAGE`: Log Management Module.
 	// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
 	// - Value: `0` means off, `1` means on
+	//
 	// > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
 	//
 	// Deprecated: Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -485,6 +487,7 @@ type InstanceState struct {
 	// - `CTDR_STORAGE`: Log Management Module.
 	// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
 	// - Value: `0` means off, `1` means on
+	//
 	// > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
 	//
 	// Deprecated: Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -644,6 +647,7 @@ type instanceArgs struct {
 	// - `CTDR_STORAGE`: Log Management Module.
 	// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
 	// - Value: `0` means off, `1` means on
+	//
 	// > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
 	//
 	// Deprecated: Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -798,6 +802,7 @@ type InstanceArgs struct {
 	// - `CTDR_STORAGE`: Log Management Module.
 	// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
 	// - Value: `0` means off, `1` means on
+	//
 	// > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
 	//
 	// Deprecated: Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -1075,6 +1080,7 @@ func (o InstanceOutput) PostPaidHostAutoBindVersion() pulumi.IntOutput {
 // - `CTDR_STORAGE`: Log Management Module.
 // - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
 // - Value: `0` means off, `1` means on
+//
 // > **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
 //
 // Deprecated: Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.

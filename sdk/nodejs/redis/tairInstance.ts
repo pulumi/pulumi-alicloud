@@ -108,6 +108,14 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly backupId: pulumi.Output<string | undefined>;
     /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    declare public /*out*/ readonly caCertCommonName: pulumi.Output<string>;
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnabled` is set to `Enable`.
+     */
+    declare public /*out*/ readonly caCertDownloadUrl: pulumi.Output<string>;
+    /**
      * This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
      */
     declare public readonly clusterBackupId: pulumi.Output<string | undefined>;
@@ -207,29 +215,29 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly nodeType: pulumi.Output<string>;
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
      */
     declare public readonly paramNoLooseSentinelEnabled: pulumi.Output<string>;
     /**
-     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
      */
     declare public readonly paramNoLooseSentinelPasswordFreeAccess: pulumi.Output<string>;
     /**
-     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
      */
     declare public readonly paramNoLooseSentinelPasswordFreeCommands: pulumi.Output<string>;
     /**
      * The value is semisync or async. The default value is async.
      *
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
      */
     declare public readonly paramReplMode: pulumi.Output<string>;
     /**
-     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
      */
     declare public readonly paramSemisyncReplTimeout: pulumi.Output<string>;
     /**
-     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
      */
     declare public readonly paramSentinelCompatEnable: pulumi.Output<string>;
     /**
@@ -313,6 +321,10 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly sslEnabled: pulumi.Output<string>;
     /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    declare public /*out*/ readonly sslExpiredTime: pulumi.Output<string>;
+    /**
      * The status of the resource
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
@@ -327,7 +339,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly storagePerformanceLevel: pulumi.Output<string | undefined>;
     /**
-     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      */
     declare public readonly storageSizeGb: pulumi.Output<number>;
     /**
@@ -382,6 +394,8 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
             resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["caCertCommonName"] = state?.caCertCommonName;
+            resourceInputs["caCertDownloadUrl"] = state?.caCertDownloadUrl;
             resourceInputs["clusterBackupId"] = state?.clusterBackupId;
             resourceInputs["config"] = state?.config;
             resourceInputs["connectionDomain"] = state?.connectionDomain;
@@ -425,6 +439,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["slaveReadOnlyCount"] = state?.slaveReadOnlyCount;
             resourceInputs["srcDbInstanceId"] = state?.srcDbInstanceId;
             resourceInputs["sslEnabled"] = state?.sslEnabled;
+            resourceInputs["sslExpiredTime"] = state?.sslExpiredTime;
             resourceInputs["status"] = state?.status;
             resourceInputs["storagePerformanceLevel"] = state?.storagePerformanceLevel;
             resourceInputs["storageSizeGb"] = state?.storageSizeGb;
@@ -504,11 +519,14 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["architectureType"] = undefined /*out*/;
+            resourceInputs["caCertCommonName"] = undefined /*out*/;
+            resourceInputs["caCertDownloadUrl"] = undefined /*out*/;
             resourceInputs["connectionDomain"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["maxConnections"] = undefined /*out*/;
             resourceInputs["networkType"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
+            resourceInputs["sslExpiredTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["tairInstanceId"] = undefined /*out*/;
         }
@@ -541,6 +559,14 @@ export interface TairInstanceState {
      * If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
      */
     backupId?: pulumi.Input<string | undefined>;
+    /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    caCertCommonName?: pulumi.Input<string | undefined>;
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnabled` is set to `Enable`.
+     */
+    caCertDownloadUrl?: pulumi.Input<string | undefined>;
     /**
      * This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
      */
@@ -641,29 +667,29 @@ export interface TairInstanceState {
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
      */
     paramNoLooseSentinelEnabled?: pulumi.Input<string | undefined>;
     /**
-     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
      */
     paramNoLooseSentinelPasswordFreeAccess?: pulumi.Input<string | undefined>;
     /**
-     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
      */
     paramNoLooseSentinelPasswordFreeCommands?: pulumi.Input<string | undefined>;
     /**
      * The value is semisync or async. The default value is async.
      *
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
      */
     paramReplMode?: pulumi.Input<string | undefined>;
     /**
-     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
      */
     paramSemisyncReplTimeout?: pulumi.Input<string | undefined>;
     /**
-     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
      */
     paramSentinelCompatEnable?: pulumi.Input<string | undefined>;
     /**
@@ -747,6 +773,10 @@ export interface TairInstanceState {
      */
     sslEnabled?: pulumi.Input<string | undefined>;
     /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    sslExpiredTime?: pulumi.Input<string | undefined>;
+    /**
      * The status of the resource
      */
     status?: pulumi.Input<string | undefined>;
@@ -761,7 +791,7 @@ export interface TairInstanceState {
      */
     storagePerformanceLevel?: pulumi.Input<string | undefined>;
     /**
-     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      */
     storageSizeGb?: pulumi.Input<number | undefined>;
     /**
@@ -902,29 +932,29 @@ export interface TairInstanceArgs {
      */
     nodeType?: pulumi.Input<string | undefined>;
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>, valid values: yes, no. The default value is no.
      */
     paramNoLooseSentinelEnabled?: pulumi.Input<string | undefined>;
     /**
-     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see <https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>
      */
     paramNoLooseSentinelPasswordFreeAccess?: pulumi.Input<string | undefined>;
     /**
-     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+     * After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See <https://help.aliyun.com/zh/redis/user-guide/parameter-support> for details
      */
     paramNoLooseSentinelPasswordFreeCommands?: pulumi.Input<string | undefined>;
     /**
      * The value is semisync or async. The default value is async.
      *
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
      */
     paramReplMode?: pulumi.Input<string | undefined>;
     /**
-     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: <https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance>.
      */
     paramSemisyncReplTimeout?: pulumi.Input<string | undefined>;
     /**
-     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see <https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance>. The value is 0 or 1. The default value is 0.
      */
     paramSentinelCompatEnable?: pulumi.Input<string | undefined>;
     /**
@@ -1014,7 +1044,7 @@ export interface TairInstanceArgs {
      */
     storagePerformanceLevel?: pulumi.Input<string | undefined>;
     /**
-     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+     * Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see <https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type>. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      */
     storageSizeGb?: pulumi.Input<number | undefined>;
     /**

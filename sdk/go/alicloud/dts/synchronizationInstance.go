@@ -83,7 +83,7 @@ type SynchronizationInstance struct {
 	DestinationEndpointEngineName pulumi.StringOutput `pulumi:"destinationEndpointEngineName"`
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion pulumi.StringOutput `pulumi:"destinationEndpointRegion"`
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration pulumi.IntPtrOutput `pulumi:"paymentDuration"`
@@ -160,7 +160,7 @@ type synchronizationInstanceState struct {
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration *int `pulumi:"paymentDuration"`
@@ -193,7 +193,7 @@ type SynchronizationInstanceState struct {
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion pulumi.StringPtrInput
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
 	InstanceClass pulumi.StringPtrInput
 	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration pulumi.IntPtrInput
@@ -230,7 +230,7 @@ type synchronizationInstanceArgs struct {
 	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion string `pulumi:"destinationEndpointRegion"`
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration *int `pulumi:"paymentDuration"`
@@ -262,7 +262,7 @@ type SynchronizationInstanceArgs struct {
 	DestinationEndpointEngineName pulumi.StringInput
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion pulumi.StringInput
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
 	InstanceClass pulumi.StringPtrInput
 	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration pulumi.IntPtrInput
@@ -397,7 +397,7 @@ func (o SynchronizationInstanceOutput) DestinationEndpointRegion() pulumi.String
 	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.DestinationEndpointRegion }).(pulumi.StringOutput)
 }
 
-// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
 func (o SynchronizationInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationInstance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
 }

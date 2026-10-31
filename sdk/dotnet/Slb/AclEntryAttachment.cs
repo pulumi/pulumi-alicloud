@@ -12,11 +12,58 @@ namespace Pulumi.AliCloud.Slb
     /// <summary>
     /// &gt; **NOTE:** Available since v1.162.0.
     /// 
+    /// &gt; **NOTE:** The `Entries` attribute is available since v2.1.0. In batch mode, the attachment takes ownership of all entries of the acl: entries added out of band or by other `alicloud.slb.AclEntryAttachment` resources attached to the same acl are removed on the next apply. Do not manage the entries of the same acl from multiple resources.
+    /// 
     /// &gt; **NOTE:** The maximum number of entries per acl is 300.
+    /// 
+    /// &gt; **NOTE:** Exactly one of `Entry` and `Entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
     /// 
     /// For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Batch mode
+    /// 
+    /// The `Entries` attribute manages all entries of the acl in one resource. The entries are added and removed in batches of at most `50` entries per API call.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var attachment = new AliCloud.Slb.Acl("attachment", new()
+    ///     {
+    ///         Name = "forSlbAclEntryAttachment",
+    ///         IpVersion = "ipv4",
+    ///     });
+    /// 
+    ///     var attachmentAclEntryAttachment = new AliCloud.Slb.AclEntryAttachment("attachment", new()
+    ///     {
+    ///         AclId = attachment.Id,
+    ///         Entries = new[]
+    ///         {
+    ///             new AliCloud.Slb.Inputs.AclEntryAttachmentEntryArgs
+    ///             {
+    ///                 Entry = "168.10.10.0/24",
+    ///                 Comment = "first",
+    ///             },
+    ///             new AliCloud.Slb.Inputs.AclEntryAttachmentEntryArgs
+    ///             {
+    ///                 Entry = "168.10.20.0/24",
+    ///                 Comment = "second",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Single entry
+    /// 
+    /// `Entry` is deprecated, please use `Entries` instead.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,10 +93,16 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Import
     /// 
-    /// Acl entry attachment can be imported using the id, which consists of AclId and entry, e.g.
+    /// Acl entry attachment can be imported using the id. For a single entry the id consists of AclId and entry, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
+    /// ```
+    /// 
+    /// When `Entries` is used the id is the acl id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/aclEntryAttachment:AclEntryAttachment")]
@@ -62,16 +115,22 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// The comment of the entry.
+        /// The comment of the entry. Only valid when `Entry` is set.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR blocks.
+        /// One or more entry blocks. Exactly one of `Entry` and `Entries` must be specified. The order of the blocks is not significant. See `Entries` below for details.
+        /// </summary>
+        [Output("entries")]
+        public Output<ImmutableArray<Outputs.AclEntryAttachmentEntry>> Entries { get; private set; } = null!;
+
+        /// <summary>
+        /// The CIDR block of the acl entry. Field `Entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `Entries`. Exactly one of `Entry` and `Entries` must be specified.
         /// </summary>
         [Output("entry")]
-        public Output<string> Entry { get; private set; } = null!;
+        public Output<string?> Entry { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,16 +185,28 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
-        /// The comment of the entry.
+        /// The comment of the entry. Only valid when `Entry` is set.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        [Input("entries")]
+        private InputList<Inputs.AclEntryAttachmentEntryArgs>? _entries;
+
         /// <summary>
-        /// The CIDR blocks.
+        /// One or more entry blocks. Exactly one of `Entry` and `Entries` must be specified. The order of the blocks is not significant. See `Entries` below for details.
         /// </summary>
-        [Input("entry", required: true)]
-        public Input<string> Entry { get; set; } = null!;
+        public InputList<Inputs.AclEntryAttachmentEntryArgs> Entries
+        {
+            get => _entries ?? (_entries = new InputList<Inputs.AclEntryAttachmentEntryArgs>());
+            set => _entries = value;
+        }
+
+        /// <summary>
+        /// The CIDR block of the acl entry. Field `Entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `Entries`. Exactly one of `Entry` and `Entries` must be specified.
+        /// </summary>
+        [Input("entry")]
+        public Input<string>? Entry { get; set; }
 
         public AclEntryAttachmentArgs()
         {
@@ -152,13 +223,25 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The comment of the entry.
+        /// The comment of the entry. Only valid when `Entry` is set.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        [Input("entries")]
+        private InputList<Inputs.AclEntryAttachmentEntryGetArgs>? _entries;
+
         /// <summary>
-        /// The CIDR blocks.
+        /// One or more entry blocks. Exactly one of `Entry` and `Entries` must be specified. The order of the blocks is not significant. See `Entries` below for details.
+        /// </summary>
+        public InputList<Inputs.AclEntryAttachmentEntryGetArgs> Entries
+        {
+            get => _entries ?? (_entries = new InputList<Inputs.AclEntryAttachmentEntryGetArgs>());
+            set => _entries = value;
+        }
+
+        /// <summary>
+        /// The CIDR block of the acl entry. Field `Entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `Entries`. Exactly one of `Entry` and `Entries` must be specified.
         /// </summary>
         [Input("entry")]
         public Input<string>? Entry { get; set; }

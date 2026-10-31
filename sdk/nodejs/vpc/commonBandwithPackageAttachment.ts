@@ -83,6 +83,7 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
 
     /**
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     *
      * > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      */
     declare public readonly bandwidthPackageBandwidth: pulumi.Output<string>;
@@ -158,6 +159,7 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
 export interface CommonBandwithPackageAttachmentState {
     /**
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     *
      * > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      */
     bandwidthPackageBandwidth?: pulumi.Input<string | undefined>;
@@ -195,6 +197,7 @@ export interface CommonBandwithPackageAttachmentState {
 export interface CommonBandwithPackageAttachmentArgs {
     /**
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     *
      * > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      */
     bandwidthPackageBandwidth?: pulumi.Input<string | undefined>;

@@ -115,6 +115,85 @@ import (
 //
 // ```
 //
+// # Usage with Vpc Endpoint Zone
+//
+// The `privatelink.VpcEndpoint` and `privatelink.VpcEndpointZone` resources are separate. You can use them together to add a zone to a VPC endpoint. The following example creates a VPC endpoint and then adds a zone to it by referencing the endpoint ID, a vSwitch in the same zone, and the zone ID.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.1.0.0/16"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "example", &privatelink.VpcEndpointArgs{
+//				ServiceId: pulumi.String("epsrv-k1apjysze8u1l9t6uyg9"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				VpcId:           exampleNetwork.ID(),
+//				VpcEndpointName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = privatelink.NewVpcEndpointZone(ctx, "example", &privatelink.VpcEndpointZoneArgs{
+//				EndpointId: exampleVpcEndpoint.ID(),
+//				VswitchId:  exampleSwitch.ID(),
+//				ZoneId:     pulumi.String(example.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -149,6 +228,7 @@ type VpcEndpoint struct {
 	EndpointDomain pulumi.StringOutput `pulumi:"endpointDomain"`
 	// The type of the endpoint. Valid values:
 	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
 	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
@@ -236,6 +316,7 @@ type vpcEndpointState struct {
 	EndpointDomain *string `pulumi:"endpointDomain"`
 	// The type of the endpoint. Valid values:
 	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
 	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType *string `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
@@ -291,6 +372,7 @@ type VpcEndpointState struct {
 	EndpointDomain pulumi.StringPtrInput
 	// The type of the endpoint. Valid values:
 	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
 	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringPtrInput
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
@@ -340,6 +422,7 @@ type vpcEndpointArgs struct {
 	EndpointDescription *string `pulumi:"endpointDescription"`
 	// The type of the endpoint. Valid values:
 	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
 	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType *string `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
@@ -382,6 +465,7 @@ type VpcEndpointArgs struct {
 	EndpointDescription pulumi.StringPtrInput
 	// The type of the endpoint. Valid values:
 	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
 	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringPtrInput
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
@@ -546,6 +630,7 @@ func (o VpcEndpointOutput) EndpointDomain() pulumi.StringOutput {
 
 // The type of the endpoint. Valid values:
 // - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+// - `Reverse`: a reverse endpoint. You can add a VPC NAT gateway as a service resource. Reverse endpoints are supported only for services provided by Alibaba Cloud and ecosystem partners and cannot be self-created.
 // - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 func (o VpcEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)

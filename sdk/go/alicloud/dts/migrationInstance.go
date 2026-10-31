@@ -75,7 +75,7 @@ type MigrationInstance struct {
 	ComputeUnit pulumi.IntPtrOutput `pulumi:"computeUnit"`
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
 	DatabaseCount pulumi.IntPtrOutput `pulumi:"databaseCount"`
-	// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of destination engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	DestinationEndpointEngineName pulumi.StringOutput `pulumi:"destinationEndpointEngineName"`
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion pulumi.StringOutput `pulumi:"destinationEndpointRegion"`
@@ -85,7 +85,7 @@ type MigrationInstance struct {
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of source endpoint engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	SourceEndpointEngineName pulumi.StringOutput `pulumi:"sourceEndpointEngineName"`
 	// The region of source instance.
 	SourceEndpointRegion pulumi.StringOutput `pulumi:"sourceEndpointRegion"`
@@ -146,7 +146,7 @@ type migrationInstanceState struct {
 	ComputeUnit *int `pulumi:"computeUnit"`
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
 	DatabaseCount *int `pulumi:"databaseCount"`
-	// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of destination engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
@@ -156,7 +156,7 @@ type migrationInstanceState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of source endpoint engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
 	// The region of source instance.
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
@@ -173,7 +173,7 @@ type MigrationInstanceState struct {
 	ComputeUnit pulumi.IntPtrInput
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
 	DatabaseCount pulumi.IntPtrInput
-	// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of destination engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion pulumi.StringPtrInput
@@ -183,7 +183,7 @@ type MigrationInstanceState struct {
 	InstanceClass pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of source endpoint engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	SourceEndpointEngineName pulumi.StringPtrInput
 	// The region of source instance.
 	SourceEndpointRegion pulumi.StringPtrInput
@@ -204,7 +204,7 @@ type migrationInstanceArgs struct {
 	ComputeUnit *int `pulumi:"computeUnit"`
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
 	DatabaseCount *int `pulumi:"databaseCount"`
-	// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of destination engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion string `pulumi:"destinationEndpointRegion"`
@@ -212,7 +212,7 @@ type migrationInstanceArgs struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
-	// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of source endpoint engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
 	// The region of source instance.
 	SourceEndpointRegion string `pulumi:"sourceEndpointRegion"`
@@ -228,7 +228,7 @@ type MigrationInstanceArgs struct {
 	ComputeUnit pulumi.IntPtrInput
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
 	DatabaseCount pulumi.IntPtrInput
-	// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of destination engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	DestinationEndpointEngineName pulumi.StringInput
 	// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
 	DestinationEndpointRegion pulumi.StringInput
@@ -236,7 +236,7 @@ type MigrationInstanceArgs struct {
 	InstanceClass pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringInput
-	// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+	// The type of source endpoint engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 	SourceEndpointEngineName pulumi.StringInput
 	// The region of source instance.
 	SourceEndpointRegion pulumi.StringInput
@@ -343,7 +343,7 @@ func (o MigrationInstanceOutput) DatabaseCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MigrationInstance) pulumi.IntPtrOutput { return v.DatabaseCount }).(pulumi.IntPtrOutput)
 }
 
-// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+// The type of destination engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 func (o MigrationInstanceOutput) DestinationEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationInstance) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
 }
@@ -368,7 +368,7 @@ func (o MigrationInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
+// The type of source endpoint engine. Valid values: `ADS`, `ADB30`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mariadb`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
 func (o MigrationInstanceOutput) SourceEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationInstance) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
 }

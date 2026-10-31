@@ -40,7 +40,7 @@ class CapacityReservationArgs:
         :param pulumi.Input[_builtins.str] capacity_reservation_name: Capacity reservation service name.
         :param pulumi.Input[_builtins.str] description: description of the capacity reservation instance.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to pre-check the API request. Valid values: `true` and `false`.
-        :param pulumi.Input[_builtins.str] end_time: end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        :param pulumi.Input[_builtins.str] end_time: The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         :param pulumi.Input[_builtins.str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[_builtins.str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[_builtins.str] platform: platform of the capacity reservation, value range `windows`, `linux`.
@@ -145,7 +145,7 @@ class CapacityReservationArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         """
         return pulumi.get(self, "end_time")
 
@@ -240,7 +240,7 @@ class _CapacityReservationState:
         :param pulumi.Input[_builtins.str] capacity_reservation_name: Capacity reservation service name.
         :param pulumi.Input[_builtins.str] description: description of the capacity reservation instance.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to pre-check the API request. Valid values: `true` and `false`.
-        :param pulumi.Input[_builtins.str] end_time: end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        :param pulumi.Input[_builtins.str] end_time: The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         :param pulumi.Input[_builtins.str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[_builtins.int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
@@ -330,7 +330,7 @@ class _CapacityReservationState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         """
         return pulumi.get(self, "end_time")
 
@@ -564,7 +564,7 @@ class CapacityReservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] capacity_reservation_name: Capacity reservation service name.
         :param pulumi.Input[_builtins.str] description: description of the capacity reservation instance.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to pre-check the API request. Valid values: `true` and `false`.
-        :param pulumi.Input[_builtins.str] end_time: end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        :param pulumi.Input[_builtins.str] end_time: The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         :param pulumi.Input[_builtins.str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[_builtins.int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
@@ -721,7 +721,7 @@ class CapacityReservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] capacity_reservation_name: Capacity reservation service name.
         :param pulumi.Input[_builtins.str] description: description of the capacity reservation instance.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to pre-check the API request. Valid values: `true` and `false`.
-        :param pulumi.Input[_builtins.str] end_time: end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        :param pulumi.Input[_builtins.str] end_time: The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         :param pulumi.Input[_builtins.str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[_builtins.int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
@@ -787,7 +787,7 @@ class CapacityReservation(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[_builtins.str]:
         """
-        end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+        The expiration time of the capacity reservation service. The time format follows the ISO 8601 standard and must use UTC +0 time, in the format `yyyy-MM-ddTHH:mm:ssZ`. This parameter takes effect only when `end_time_type` is set to `Limited`. Example: `2021-10-30T06:32:00Z`.
         """
         return pulumi.get(self, "end_time")
 

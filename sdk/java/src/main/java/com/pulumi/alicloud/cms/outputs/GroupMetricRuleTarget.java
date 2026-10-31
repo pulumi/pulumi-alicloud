@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GroupMetricRuleTarget {
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * 
      * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
@@ -36,6 +37,7 @@ public final class GroupMetricRuleTarget {
     private GroupMetricRuleTarget() {}
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * 
      * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */

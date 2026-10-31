@@ -75,6 +75,7 @@ class V2FunctionArgs:
                - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
                - **g1**: Same as **fc.gpu.tesla.1**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] layers: List of layers.
+               
                > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         :param pulumi.Input[_builtins.int] memory_size: memory size needed by function.
         :param pulumi.Input[_builtins.int] timeout: max running time of function.
@@ -386,6 +387,7 @@ class V2FunctionArgs:
     def layers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of layers.
+
         > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         """
         return pulumi.get(self, "layers")
@@ -478,6 +480,7 @@ class _V2FunctionState:
                - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
                - **g1**: Same as **fc.gpu.tesla.1**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] layers: List of layers.
+               
                > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         :param pulumi.Input[_builtins.int] memory_size: memory size needed by function.
         :param pulumi.Input[_builtins.str] runtime: runtime of function code.
@@ -799,6 +802,7 @@ class _V2FunctionState:
     def layers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of layers.
+
         > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         """
         return pulumi.get(self, "layers")
@@ -932,6 +936,7 @@ class V2Function(pulumi.CustomResource):
                - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
                - **g1**: Same as **fc.gpu.tesla.1**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] layers: List of layers.
+               
                > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         :param pulumi.Input[_builtins.int] memory_size: memory size needed by function.
         :param pulumi.Input[_builtins.str] runtime: runtime of function code.
@@ -1114,6 +1119,7 @@ class V2Function(pulumi.CustomResource):
                - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
                - **g1**: Same as **fc.gpu.tesla.1**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] layers: List of layers.
+               
                > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         :param pulumi.Input[_builtins.int] memory_size: memory size needed by function.
         :param pulumi.Input[_builtins.str] runtime: runtime of function code.
@@ -1330,6 +1336,7 @@ class V2Function(pulumi.CustomResource):
     def layers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         List of layers.
+
         > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         """
         return pulumi.get(self, "layers")

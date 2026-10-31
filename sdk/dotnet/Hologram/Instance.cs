@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Hologram
     /// 
     /// &gt; **NOTE:** Available since v1.213.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -93,6 +95,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Whether to pay automatically. The default value is true. Value:
         /// - true: automatic payment
         /// - false: only generate orders, not pay
+        /// 
         /// &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         /// </summary>
         [Output("autoPay")]
@@ -100,6 +103,7 @@ namespace Pulumi.AliCloud.Hologram
 
         /// <summary>
         /// Instance low-frequency storage space. Unit: GB.
+        /// 
         /// &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         /// </summary>
         [Output("coldStorageSize")]
@@ -113,6 +117,7 @@ namespace Pulumi.AliCloud.Hologram
         /// - 64 core 256 GB (number of compute nodes: 4)
         /// - 96 core 384 GB (number of computing nodes: 6)
         /// - 128 core 512 GB (number of compute nodes: 8)
+        /// 
         /// &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         /// </summary>
         [Output("cpu")]
@@ -187,6 +192,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Billing cycle. Value:
         /// - Month: monthly billing
         /// - Hour: hourly billing
+        /// 
         /// &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         /// </summary>
         [Output("pricingCycle")]
@@ -208,6 +214,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Change matching type. Value:
         /// - UPGRADE: UPGRADE
         /// - DOWNGRADE: Downgrading
+        /// 
         /// &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         /// </summary>
         [Output("scaleType")]
@@ -221,6 +228,7 @@ namespace Pulumi.AliCloud.Hologram
 
         /// <summary>
         /// The standard storage space of the instance. Unit: GB.
+        /// 
         /// &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         /// </summary>
         [Output("storageSize")]
@@ -288,6 +296,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Whether to pay automatically. The default value is true. Value:
         /// - true: automatic payment
         /// - false: only generate orders, not pay
+        /// 
         /// &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         /// </summary>
         [Input("autoPay")]
@@ -295,6 +304,7 @@ namespace Pulumi.AliCloud.Hologram
 
         /// <summary>
         /// Instance low-frequency storage space. Unit: GB.
+        /// 
         /// &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         /// </summary>
         [Input("coldStorageSize")]
@@ -308,6 +318,7 @@ namespace Pulumi.AliCloud.Hologram
         /// - 64 core 256 GB (number of compute nodes: 4)
         /// - 96 core 384 GB (number of computing nodes: 6)
         /// - 128 core 512 GB (number of compute nodes: 8)
+        /// 
         /// &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         /// </summary>
         [Input("cpu")]
@@ -382,6 +393,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Billing cycle. Value:
         /// - Month: monthly billing
         /// - Hour: hourly billing
+        /// 
         /// &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         /// </summary>
         [Input("pricingCycle")]
@@ -397,6 +409,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Change matching type. Value:
         /// - UPGRADE: UPGRADE
         /// - DOWNGRADE: Downgrading
+        /// 
         /// &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         /// </summary>
         [Input("scaleType")]
@@ -410,6 +423,7 @@ namespace Pulumi.AliCloud.Hologram
 
         /// <summary>
         /// The standard storage space of the instance. Unit: GB.
+        /// 
         /// &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         /// </summary>
         [Input("storageSize")]
@@ -445,6 +459,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Whether to pay automatically. The default value is true. Value:
         /// - true: automatic payment
         /// - false: only generate orders, not pay
+        /// 
         /// &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
         /// </summary>
         [Input("autoPay")]
@@ -452,6 +467,7 @@ namespace Pulumi.AliCloud.Hologram
 
         /// <summary>
         /// Instance low-frequency storage space. Unit: GB.
+        /// 
         /// &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
         /// </summary>
         [Input("coldStorageSize")]
@@ -465,6 +481,7 @@ namespace Pulumi.AliCloud.Hologram
         /// - 64 core 256 GB (number of compute nodes: 4)
         /// - 96 core 384 GB (number of computing nodes: 6)
         /// - 128 core 512 GB (number of compute nodes: 8)
+        /// 
         /// &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         /// </summary>
         [Input("cpu")]
@@ -545,6 +562,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Billing cycle. Value:
         /// - Month: monthly billing
         /// - Hour: hourly billing
+        /// 
         /// &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         /// </summary>
         [Input("pricingCycle")]
@@ -566,6 +584,7 @@ namespace Pulumi.AliCloud.Hologram
         /// Change matching type. Value:
         /// - UPGRADE: UPGRADE
         /// - DOWNGRADE: Downgrading
+        /// 
         /// &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
         /// </summary>
         [Input("scaleType")]
@@ -579,6 +598,7 @@ namespace Pulumi.AliCloud.Hologram
 
         /// <summary>
         /// The standard storage space of the instance. Unit: GB.
+        /// 
         /// &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
         /// </summary>
         [Input("storageSize")]

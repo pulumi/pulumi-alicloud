@@ -36,10 +36,13 @@ class TemplateApplicationsArgs:
         The set of arguments for constructing a TemplateApplications resource.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+               
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param pulumi.Input[_builtins.str] product_code: Cloud service name abbreviation.
+               
                > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         :param pulumi.Input[_builtins.str] quota_action_code: The quota ID.
         :param pulumi.Input[_builtins.str] quota_category: The quota type. Value:
@@ -47,14 +50,17 @@ class TemplateApplicationsArgs:
                - FlowControl:API rate quota.
                - WhiteListLabel: Equity quota.
         :param pulumi.Input[_builtins.str] reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota application result notification. Value:
                - zh (default): Chinese.
                - en: English.
         :param pulumi.Input[_builtins.str] expire_time: The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         :param pulumi.Input[_builtins.int] notice_type: Whether to send notification of quota application result. Value:
                - 0 (default): No.
@@ -82,6 +88,7 @@ class TemplateApplicationsArgs:
     def aliyun_uids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+
         > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         """
         return pulumi.get(self, "aliyun_uids")
@@ -95,6 +102,7 @@ class TemplateApplicationsArgs:
     def desire_value(self) -> pulumi.Input[_builtins.float]:
         """
         The value of the quota request.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "desire_value")
@@ -108,6 +116,7 @@ class TemplateApplicationsArgs:
     def product_code(self) -> pulumi.Input[_builtins.str]:
         """
         Cloud service name abbreviation.
+
         > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         """
         return pulumi.get(self, "product_code")
@@ -148,6 +157,7 @@ class TemplateApplicationsArgs:
     def reason(self) -> pulumi.Input[_builtins.str]:
         """
         Reason for quota application.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "reason")
@@ -173,6 +183,7 @@ class TemplateApplicationsArgs:
     def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+
         > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         """
         return pulumi.get(self, "effective_time")
@@ -200,6 +211,7 @@ class TemplateApplicationsArgs:
     def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+
         > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         """
         return pulumi.get(self, "expire_time")
@@ -242,21 +254,26 @@ class _TemplateApplicationsState:
         Input properties used for looking up and filtering TemplateApplications resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+               
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota application result notification. Value:
                - zh (default): Chinese.
                - en: English.
         :param pulumi.Input[_builtins.str] expire_time: The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         :param pulumi.Input[_builtins.int] notice_type: Whether to send notification of quota application result. Value:
                - 0 (default): No.
                - 3: Yes.
         :param pulumi.Input[_builtins.str] product_code: Cloud service name abbreviation.
+               
                > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         :param pulumi.Input[_builtins.str] quota_action_code: The quota ID.
         :param pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]] quota_application_details: List of quota application details.
@@ -265,6 +282,7 @@ class _TemplateApplicationsState:
                - FlowControl:API rate quota.
                - WhiteListLabel: Equity quota.
         :param pulumi.Input[_builtins.str] reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         if aliyun_uids is not None:
@@ -297,6 +315,7 @@ class _TemplateApplicationsState:
     def aliyun_uids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+
         > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         """
         return pulumi.get(self, "aliyun_uids")
@@ -310,6 +329,7 @@ class _TemplateApplicationsState:
     def desire_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The value of the quota request.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "desire_value")
@@ -335,6 +355,7 @@ class _TemplateApplicationsState:
     def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+
         > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         """
         return pulumi.get(self, "effective_time")
@@ -362,6 +383,7 @@ class _TemplateApplicationsState:
     def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+
         > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         """
         return pulumi.get(self, "expire_time")
@@ -389,6 +411,7 @@ class _TemplateApplicationsState:
     def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud service name abbreviation.
+
         > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         """
         return pulumi.get(self, "product_code")
@@ -441,6 +464,7 @@ class _TemplateApplicationsState:
     def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for quota application.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "reason")
@@ -521,21 +545,26 @@ class TemplateApplications(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+               
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota application result notification. Value:
                - zh (default): Chinese.
                - en: English.
         :param pulumi.Input[_builtins.str] expire_time: The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         :param pulumi.Input[_builtins.int] notice_type: Whether to send notification of quota application result. Value:
                - 0 (default): No.
                - 3: Yes.
         :param pulumi.Input[_builtins.str] product_code: Cloud service name abbreviation.
+               
                > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         :param pulumi.Input[_builtins.str] quota_action_code: The quota ID.
         :param pulumi.Input[_builtins.str] quota_category: The quota type. Value:
@@ -543,6 +572,7 @@ class TemplateApplications(pulumi.CustomResource):
                - FlowControl:API rate quota.
                - WhiteListLabel: Equity quota.
         :param pulumi.Input[_builtins.str] reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         ...
@@ -690,21 +720,26 @@ class TemplateApplications(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aliyun_uids: The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+               
                > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         :param pulumi.Input[_builtins.float] desire_value: The value of the quota request.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[_builtins.str] effective_time: The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         :param pulumi.Input[_builtins.str] env_language: The language of the quota application result notification. Value:
                - zh (default): Chinese.
                - en: English.
         :param pulumi.Input[_builtins.str] expire_time: The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+               
                > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         :param pulumi.Input[_builtins.int] notice_type: Whether to send notification of quota application result. Value:
                - 0 (default): No.
                - 3: Yes.
         :param pulumi.Input[_builtins.str] product_code: Cloud service name abbreviation.
+               
                > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         :param pulumi.Input[_builtins.str] quota_action_code: The quota ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict', 'outputs.TemplateApplicationsQuotaApplicationDetail']]]] quota_application_details: List of quota application details.
@@ -713,6 +748,7 @@ class TemplateApplications(pulumi.CustomResource):
                - FlowControl:API rate quota.
                - WhiteListLabel: Equity quota.
         :param pulumi.Input[_builtins.str] reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -738,6 +774,7 @@ class TemplateApplications(pulumi.CustomResource):
     def aliyun_uids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+
         > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         """
         return pulumi.get(self, "aliyun_uids")
@@ -747,6 +784,7 @@ class TemplateApplications(pulumi.CustomResource):
     def desire_value(self) -> pulumi.Output[_builtins.float]:
         """
         The value of the quota request.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "desire_value")
@@ -764,6 +802,7 @@ class TemplateApplications(pulumi.CustomResource):
     def effective_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+
         > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         """
         return pulumi.get(self, "effective_time")
@@ -783,6 +822,7 @@ class TemplateApplications(pulumi.CustomResource):
     def expire_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+
         > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         """
         return pulumi.get(self, "expire_time")
@@ -802,6 +842,7 @@ class TemplateApplications(pulumi.CustomResource):
     def product_code(self) -> pulumi.Output[_builtins.str]:
         """
         Cloud service name abbreviation.
+
         > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         """
         return pulumi.get(self, "product_code")
@@ -838,6 +879,7 @@ class TemplateApplications(pulumi.CustomResource):
     def reason(self) -> pulumi.Output[_builtins.str]:
         """
         Reason for quota application.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "reason")

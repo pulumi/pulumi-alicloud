@@ -69,6 +69,10 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         /// </summary>
         public readonly string StorageClass;
+        /// <summary>
+        /// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+        /// </summary>
+        public readonly string XOssHashCrc64ecma;
 
         [OutputConstructor]
         private GetBucketObjectsObjectResult(
@@ -98,7 +102,9 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string sseKmsKeyId,
 
-            string storageClass)
+            string storageClass,
+
+            string xOssHashCrc64ecma)
         {
             Acl = acl;
             CacheControl = cacheControl;
@@ -114,6 +120,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
             ServerSideEncryption = serverSideEncryption;
             SseKmsKeyId = sseKmsKeyId;
             StorageClass = storageClass;
+            XOssHashCrc64ecma = xOssHashCrc64ecma;
         }
     }
 }

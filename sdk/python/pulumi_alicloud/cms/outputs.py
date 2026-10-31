@@ -4214,6 +4214,7 @@ class GroupMetricRuleTarget(dict):
                  level: Optional[_builtins.str] = None):
         """
         :param _builtins.str arn: The Alibaba Cloud Resource Name (ARN) of the resource.
+               
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param _builtins.str id: The ID of the resource for which alerts are triggered.
         :param _builtins.str json_params: The parameters of the alert callback. The parameters are in the JSON format.
@@ -4233,6 +4234,7 @@ class GroupMetricRuleTarget(dict):
     def arn(self) -> Optional[_builtins.str]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource.
+
         > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "arn")
@@ -4632,6 +4634,12 @@ class IntegrationPolicyEntityGroup(dict):
             suggest = "cluster_entity_type"
         elif key == "clusterId":
             suggest = "cluster_id"
+        elif key == "clusterNamespace":
+            suggest = "cluster_namespace"
+        elif key == "disablePolicyShare":
+            suggest = "disable_policy_share"
+        elif key == "entityUserId":
+            suggest = "entity_user_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in IntegrationPolicyEntityGroup. Access the value via the '{suggest}' property getter instead.")
@@ -4646,15 +4654,29 @@ class IntegrationPolicyEntityGroup(dict):
 
     def __init__(__self__, *,
                  cluster_entity_type: Optional[_builtins.str] = None,
-                 cluster_id: Optional[_builtins.str] = None):
+                 cluster_id: Optional[_builtins.str] = None,
+                 cluster_namespace: Optional[_builtins.str] = None,
+                 disable_policy_share: Optional[_builtins.bool] = None,
+                 entity_user_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str cluster_entity_type: The cluster entity type.
         :param _builtins.str cluster_id: The cluster ID.
+        :param _builtins.str cluster_namespace: The cluster Namespace.
+               
+               > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+        :param _builtins.bool disable_policy_share: Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+        :param _builtins.str entity_user_id: The ID of the user who owns the cluster.
         """
         if cluster_entity_type is not None:
             pulumi.set(__self__, "cluster_entity_type", cluster_entity_type)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_namespace is not None:
+            pulumi.set(__self__, "cluster_namespace", cluster_namespace)
+        if disable_policy_share is not None:
+            pulumi.set(__self__, "disable_policy_share", disable_policy_share)
+        if entity_user_id is not None:
+            pulumi.set(__self__, "entity_user_id", entity_user_id)
 
     @_builtins.property
     @pulumi.getter(name="clusterEntityType")
@@ -4671,6 +4693,32 @@ class IntegrationPolicyEntityGroup(dict):
         The cluster ID.
         """
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterNamespace")
+    def cluster_namespace(self) -> Optional[_builtins.str]:
+        """
+        The cluster Namespace.
+
+        > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+        """
+        return pulumi.get(self, "cluster_namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePolicyShare")
+    def disable_policy_share(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disable_policy_share")
+
+    @_builtins.property
+    @pulumi.getter(name="entityUserId")
+    def entity_user_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the user who owns the cluster.
+        """
+        return pulumi.get(self, "entity_user_id")
 
 
 @pulumi.output_type
@@ -4750,10 +4798,13 @@ class MetricRuleTemplateAlertTemplate(dict):
                  webhook: Optional[_builtins.str] = None):
         """
         :param _builtins.str category: The abbreviation of the Alibaba Cloud service name.
+               
                > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         :param _builtins.str metric_name: The name of the metric.
+               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param _builtins.str namespace: The namespace of the cloud service.
+               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param _builtins.str rule_name: The name of the alert rule.
         :param 'MetricRuleTemplateAlertTemplateEscalationsArgs' escalations: The information about the trigger condition based on the alert level. See `escalations` below.
@@ -4773,6 +4824,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     def category(self) -> _builtins.str:
         """
         The abbreviation of the Alibaba Cloud service name.
+
         > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         """
         return pulumi.get(self, "category")
@@ -4782,6 +4834,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     def metric_name(self) -> _builtins.str:
         """
         The name of the metric.
+
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_name")
@@ -4791,6 +4844,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     def namespace(self) -> _builtins.str:
         """
         The namespace of the cloud service.
+
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "namespace")

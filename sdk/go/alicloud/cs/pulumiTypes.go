@@ -10038,7 +10038,7 @@ func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) Enabled() pul
 type GetEdgeKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// A list of kubernetes cluster connection information.
 	Connections []GetEdgeKubernetesClustersClusterConnection `pulumi:"connections"`
 	// ID of the node.
 	Id string `pulumi:"id"`
@@ -10050,7 +10050,7 @@ type GetEdgeKubernetesClustersCluster struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes []GetEdgeKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
 }
 
@@ -10068,7 +10068,7 @@ type GetEdgeKubernetesClustersClusterInput interface {
 type GetEdgeKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// A list of kubernetes cluster connection information.
 	Connections GetEdgeKubernetesClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// ID of the node.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -10080,7 +10080,7 @@ type GetEdgeKubernetesClustersClusterArgs struct {
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes GetEdgeKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
 }
 
@@ -10140,7 +10140,7 @@ func (o GetEdgeKubernetesClustersClusterOutput) AvailabilityZone() pulumi.String
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+// A list of kubernetes cluster connection information.
 func (o GetEdgeKubernetesClustersClusterOutput) Connections() GetEdgeKubernetesClustersClusterConnectionArrayOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) []GetEdgeKubernetesClustersClusterConnection {
 		return v.Connections
@@ -10172,7 +10172,7 @@ func (o GetEdgeKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+// List of cluster worker nodes.
 func (o GetEdgeKubernetesClustersClusterOutput) WorkerNodes() GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) []GetEdgeKubernetesClustersClusterWorkerNode {
 		return v.WorkerNodes

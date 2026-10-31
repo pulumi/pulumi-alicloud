@@ -142,14 +142,14 @@ public class AccessPoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="publicAccessBlockConfiguration", refs={AccessPointPublicAccessBlockConfiguration.class}, tree="[0]")
-    private Output</* @Nullable */ AccessPointPublicAccessBlockConfiguration> publicAccessBlockConfiguration;
+    private Output<AccessPointPublicAccessBlockConfiguration> publicAccessBlockConfiguration;
 
     /**
      * @return Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      * 
      */
-    public Output<Optional<AccessPointPublicAccessBlockConfiguration>> publicAccessBlockConfiguration() {
-        return Codegen.optional(this.publicAccessBlockConfiguration);
+    public Output<AccessPointPublicAccessBlockConfiguration> publicAccessBlockConfiguration() {
+        return this.publicAccessBlockConfiguration;
     }
     /**
      * The status of the resource

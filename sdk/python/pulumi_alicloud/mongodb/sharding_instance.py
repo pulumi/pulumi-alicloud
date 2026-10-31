@@ -81,6 +81,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -115,6 +116,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -129,6 +131,7 @@ class ShardingInstanceArgs:
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
@@ -304,6 +307,7 @@ class ShardingInstanceArgs:
     def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         """
         return pulumi.get(self, "auto_renew_duration")
@@ -668,6 +672,7 @@ class ShardingInstanceArgs:
     def restore_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         """
         return pulumi.get(self, "restore_time")
@@ -770,6 +775,7 @@ class ShardingInstanceArgs:
         - `Open`: turn on SSL encryption.
         - `Close`: turn off SSL encryption.
         - `Update`: update SSL certificate.
+
         > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         """
         return pulumi.get(self, "ssl_action")
@@ -928,6 +934,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -965,6 +972,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.int] retention_period: (Available since v1.42.0) Instance data backup retention days.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -981,6 +989,7 @@ class _ShardingInstanceState:
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] ssl_status: (Available since v1.259.0) The status of the SSL feature.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -1133,6 +1142,7 @@ class _ShardingInstanceState:
     def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         """
         return pulumi.get(self, "auto_renew_duration")
@@ -1533,6 +1543,7 @@ class _ShardingInstanceState:
     def restore_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         """
         return pulumi.get(self, "restore_time")
@@ -1659,6 +1670,7 @@ class _ShardingInstanceState:
         - `Open`: turn on SSL encryption.
         - `Close`: turn off SSL encryption.
         - `Update`: update SSL certificate.
+
         > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         """
         return pulumi.get(self, "ssl_action")
@@ -1842,6 +1854,8 @@ class ShardingInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.40.0.
 
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
         [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
 
@@ -1915,6 +1929,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -1951,6 +1966,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -1966,6 +1982,7 @@ class ShardingInstance(pulumi.CustomResource):
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
@@ -1988,6 +2005,8 @@ class ShardingInstance(pulumi.CustomResource):
         You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.40.0.
+
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
         [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -2270,6 +2289,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+               
                > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         :param pulumi.Input[_builtins.str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
@@ -2307,6 +2327,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.str] restore_time: The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+               
                > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         :param pulumi.Input[_builtins.int] retention_period: (Available since v1.42.0) Instance data backup retention days.
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
@@ -2323,6 +2344,7 @@ class ShardingInstance(pulumi.CustomResource):
                - `Open`: turn on SSL encryption.
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
+               
                > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         :param pulumi.Input[_builtins.str] ssl_status: (Available since v1.259.0) The status of the SSL feature.
         :param pulumi.Input[_builtins.str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -2417,6 +2439,7 @@ class ShardingInstance(pulumi.CustomResource):
     def auto_renew_duration(self) -> pulumi.Output[_builtins.int]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
         """
         return pulumi.get(self, "auto_renew_duration")
@@ -2685,6 +2708,7 @@ class ShardingInstance(pulumi.CustomResource):
     def restore_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
         """
         return pulumi.get(self, "restore_time")
@@ -2771,6 +2795,7 @@ class ShardingInstance(pulumi.CustomResource):
         - `Open`: turn on SSL encryption.
         - `Close`: turn off SSL encryption.
         - `Update`: update SSL certificate.
+
         > **NOTE:** Once `ssl_action` is set, it isn't allowed to be removed from the Terraform code.
         """
         return pulumi.get(self, "ssl_action")

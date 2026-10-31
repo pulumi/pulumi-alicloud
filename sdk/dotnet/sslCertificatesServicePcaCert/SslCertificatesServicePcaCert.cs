@@ -242,6 +242,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         /// <summary>
         /// The status of the certificate. Valid values:
         /// - `REVOKE`: indicates that the certificate has been revoked.
+        /// 
         /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `Status` must be set to `REVOKE`
         /// </summary>
         [Output("status")]
@@ -466,6 +467,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         /// <summary>
         /// The status of the certificate. Valid values:
         /// - `REVOKE`: indicates that the certificate has been revoked.
+        /// 
         /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `Status` must be set to `REVOKE`
         /// </summary>
         [Input("status")]
@@ -654,6 +656,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         /// <summary>
         /// The status of the certificate. Valid values:
         /// - `REVOKE`: indicates that the certificate has been revoked.
+        /// 
         /// &gt; **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `Status` must be set to `REVOKE`
         /// </summary>
         [Input("status")]

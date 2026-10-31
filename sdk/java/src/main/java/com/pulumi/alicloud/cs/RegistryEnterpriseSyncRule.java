@@ -300,6 +300,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     * 
      * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */
@@ -310,6 +311,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * @return The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     * 
      * &gt; **NOTE:** From version 1.240.0, `syncScope` can be set.
      * 
      */

@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         public readonly string Endpoint;
         /// <summary>
         /// The private IP address of the ENI.
+        /// 
         /// &gt; **NOTE:** `SubAddress` is valid only when `Type` is set to `ENI`.
         /// </summary>
         public readonly string? SubAddress;
@@ -54,6 +55,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         public readonly ImmutableArray<string> VswitchIds;
         /// <summary>
         /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+        /// 
         /// &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         /// </summary>
         public readonly int Weight;

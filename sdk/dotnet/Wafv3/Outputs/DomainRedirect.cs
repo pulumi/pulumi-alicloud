@@ -64,6 +64,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         public readonly string Loadbalance;
         /// <summary>
         /// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        /// 
         /// &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
         /// </summary>
         public readonly int? MaxBodySize;

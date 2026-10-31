@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WorkspaceExperimentArgs', 'WorkspaceExperiment']
 
@@ -22,7 +24,8 @@ class WorkspaceExperimentArgs:
                  artifact_uri: pulumi.Input[_builtins.str],
                  experiment_name: pulumi.Input[_builtins.str],
                  workspace_id: pulumi.Input[_builtins.str],
-                 accessibility: pulumi.Input[Optional[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]]] = None):
         """
         The set of arguments for constructing a WorkspaceExperiment resource.
 
@@ -30,12 +33,15 @@ class WorkspaceExperimentArgs:
         :param pulumi.Input[_builtins.str] experiment_name: Name is the name of the experiment, unique in a namespace
         :param pulumi.Input[_builtins.str] workspace_id: WorkspaceId is the workspace id which contains the experiment
         :param pulumi.Input[_builtins.str] accessibility: Experimental Visibility
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]] labels: Labels are tags of the experiment. See `labels` below.
         """
         pulumi.set(__self__, "artifact_uri", artifact_uri)
         pulumi.set(__self__, "experiment_name", experiment_name)
         pulumi.set(__self__, "workspace_id", workspace_id)
         if accessibility is not None:
             pulumi.set(__self__, "accessibility", accessibility)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
 
     @_builtins.property
     @pulumi.getter(name="artifactUri")
@@ -85,6 +91,18 @@ class WorkspaceExperimentArgs:
     def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]]]:
+        """
+        Labels are tags of the experiment. See `labels` below.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
 
 @pulumi.input_type
 class _WorkspaceExperimentState:
@@ -93,6 +111,7 @@ class _WorkspaceExperimentState:
                  artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceExperiment resources.
@@ -101,6 +120,7 @@ class _WorkspaceExperimentState:
         :param pulumi.Input[_builtins.str] artifact_uri: ArtifactUri is default OSS storage path of the output of trials in the experiment
         :param pulumi.Input[_builtins.str] create_time: GmtCreateTime is time when this entity is created.
         :param pulumi.Input[_builtins.str] experiment_name: Name is the name of the experiment, unique in a namespace
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]] labels: Labels are tags of the experiment. See `labels` below.
         :param pulumi.Input[_builtins.str] workspace_id: WorkspaceId is the workspace id which contains the experiment
         """
         if accessibility is not None:
@@ -111,6 +131,8 @@ class _WorkspaceExperimentState:
             pulumi.set(__self__, "create_time", create_time)
         if experiment_name is not None:
             pulumi.set(__self__, "experiment_name", experiment_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if workspace_id is not None:
             pulumi.set(__self__, "workspace_id", workspace_id)
 
@@ -163,6 +185,18 @@ class _WorkspaceExperimentState:
         pulumi.set(self, "experiment_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]]]:
+        """
+        Labels are tags of the experiment. See `labels` below.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceExperimentLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -184,6 +218,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
                  accessibility: pulumi.Input[Optional[_builtins.str]] = None,
                  artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceExperimentLabelArgs', 'WorkspaceExperimentLabelArgsDict', 'outputs.WorkspaceExperimentLabel']]]]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -233,6 +268,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] accessibility: Experimental Visibility
         :param pulumi.Input[_builtins.str] artifact_uri: ArtifactUri is default OSS storage path of the output of trials in the experiment
         :param pulumi.Input[_builtins.str] experiment_name: Name is the name of the experiment, unique in a namespace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceExperimentLabelArgs', 'WorkspaceExperimentLabelArgsDict', 'outputs.WorkspaceExperimentLabel']]]] labels: Labels are tags of the experiment. See `labels` below.
         :param pulumi.Input[_builtins.str] workspace_id: WorkspaceId is the workspace id which contains the experiment
         """
         ...
@@ -301,6 +337,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
                  accessibility: pulumi.Input[Optional[_builtins.str]] = None,
                  artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceExperimentLabelArgs', 'WorkspaceExperimentLabelArgsDict', 'outputs.WorkspaceExperimentLabel']]]]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -318,6 +355,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
             if experiment_name is None and not opts.urn:
                 raise TypeError("Missing required property 'experiment_name'")
             __props__.__dict__["experiment_name"] = experiment_name
+            __props__.__dict__["labels"] = labels
             if workspace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workspace_id'")
             __props__.__dict__["workspace_id"] = workspace_id
@@ -336,6 +374,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
             artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceExperimentLabelArgs', 'WorkspaceExperimentLabelArgsDict', 'outputs.WorkspaceExperimentLabel']]]]] = None,
             workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceExperiment':
         """
         Get an existing WorkspaceExperiment resource's state with the given name, id, and optional extra
@@ -348,6 +387,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] artifact_uri: ArtifactUri is default OSS storage path of the output of trials in the experiment
         :param pulumi.Input[_builtins.str] create_time: GmtCreateTime is time when this entity is created.
         :param pulumi.Input[_builtins.str] experiment_name: Name is the name of the experiment, unique in a namespace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceExperimentLabelArgs', 'WorkspaceExperimentLabelArgsDict', 'outputs.WorkspaceExperimentLabel']]]] labels: Labels are tags of the experiment. See `labels` below.
         :param pulumi.Input[_builtins.str] workspace_id: WorkspaceId is the workspace id which contains the experiment
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -358,6 +398,7 @@ class WorkspaceExperiment(pulumi.CustomResource):
         __props__.__dict__["artifact_uri"] = artifact_uri
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["experiment_name"] = experiment_name
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["workspace_id"] = workspace_id
         return WorkspaceExperiment(resource_name, opts=opts, __props__=__props__)
 
@@ -392,6 +433,14 @@ class WorkspaceExperiment(pulumi.CustomResource):
         Name is the name of the experiment, unique in a namespace
         """
         return pulumi.get(self, "experiment_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.WorkspaceExperimentLabel']]]:
+        """
+        Labels are tags of the experiment. See `labels` below.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")

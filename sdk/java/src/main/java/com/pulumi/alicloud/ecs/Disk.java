@@ -78,14 +78,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/disk:Disk")
 public class Disk extends com.pulumi.resources.CustomResource {
+    /**
+     * The advanced features configured for the disk.
+     * 
+     */
     @Export(name="advancedFeatures", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> advancedFeatures;
 
+    /**
+     * @return The advanced features configured for the disk.
+     * 
+     */
     public Output<Optional<String>> advancedFeatures() {
         return Codegen.optional(this.advancedFeatures);
     }
     /**
-     * The Zone to create the disk in.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      * @deprecated
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
@@ -96,94 +104,126 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return The Zone to create the disk in.
+     * @return Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
      */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+     * 
+     */
     @Export(name="burstingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> burstingEnabled;
 
+    /**
+     * @return Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+     * 
+     */
     public Output<Optional<Boolean>> burstingEnabled() {
         return Codegen.optional(this.burstingEnabled);
     }
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+     * The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
      * 
      */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
-     * @return Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+     * @return The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
      * 
      */
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
+    /**
+     * (Available since v1.237.0) The time when the disk was created.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return (Available since v1.237.0) The time when the disk was created.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     * Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      * 
      */
     @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
     /**
-     * @return Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     * @return Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
         return Codegen.optional(this.deleteAutoSnapshot);
     }
     /**
-     * Indicates whether the disk is released together with the instance: Default value: false.
+     * Specifies whether to release the disk along with its associated instance. Default value: `false`.
      * 
      */
     @Export(name="deleteWithInstance", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Indicates whether the disk is released together with the instance: Default value: false.
+     * @return Specifies whether to release the disk along with its associated instance. Default value: `false`.
      * 
      */
     public Output<Boolean> deleteWithInstance() {
         return this.deleteWithInstance;
     }
     /**
-     * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * @return The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+     * 
+     */
     @Export(name="diskName", refs={String.class}, tree="[0]")
     private Output<String> diskName;
 
+    /**
+     * @return The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+     * 
+     */
     public Output<String> diskName() {
         return this.diskName;
     }
+    /**
+     * Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+     * 
+     */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
+    /**
+     * @return Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+     * 
+     */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      * @deprecated
      * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
@@ -194,60 +234,90 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output<Boolean> enableAutoSnapshot;
 
     /**
-     * @return Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     * @return Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
     public Output<Boolean> enableAutoSnapshot() {
         return this.enableAutoSnapshot;
     }
+    /**
+     * The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     @Export(name="encryptAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptAlgorithm;
 
+    /**
+     * @return The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+     * 
+     */
     public Output<Optional<String>> encryptAlgorithm() {
         return Codegen.optional(this.encryptAlgorithm);
     }
     /**
-     * If true, the disk will be encrypted, conflict with `snapshotId`.
+     * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      * 
      */
     @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> encrypted;
 
     /**
-     * @return If true, the disk will be encrypted, conflict with `snapshotId`.
+     * @return Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      * 
      */
     public Output<Boolean> encrypted() {
         return this.encrypted;
     }
+    /**
+     * The ID of the instance to which the created subscription disk is automatically attached.
+     * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
+    /**
+     * @return The ID of the instance to which the created subscription disk is automatically attached.
+     * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     * The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyId;
 
     /**
-     * @return The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     * @return The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
      * 
      */
     public Output<String> kmsKeyId() {
         return this.kmsKeyId;
     }
+    /**
+     * Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
+     * 
+     */
     @Export(name="multiAttach", refs={String.class}, tree="[0]")
     private Output<String> multiAttach;
 
+    /**
+     * @return Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
+     * 
+     */
     public Output<String> multiAttach() {
         return this.multiAttach;
     }
     /**
-     * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * 
+     * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      * @deprecated
      * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
@@ -258,117 +328,183 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * @return Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * 
+     * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
+     * 
+     */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
+    /**
+     * @return The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
+     * 
+     */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     @Export(name="performanceLevel", refs={String.class}, tree="[0]")
     private Output<String> performanceLevel;
 
     /**
-     * @return Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * @return Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     public Output<String> performanceLevel() {
         return this.performanceLevel;
     }
+    /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+     * 
+     */
     @Export(name="provisionedIops", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> provisionedIops;
 
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+     * 
+     */
     public Output<Optional<Integer>> provisionedIops() {
         return Codegen.optional(this.provisionedIops);
     }
+    /**
+     * (Available since v1.237.0) The ID of the region to which the disk belongs.
+     * 
+     */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
+    /**
+     * @return (Available since v1.237.0) The ID of the region to which the disk belongs.
+     * 
+     */
     public Output<String> regionId() {
         return this.regionId;
     }
     /**
-     * The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * The ID of the resource group to which to add the disk.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the disk belongs.
-     * &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * @return The ID of the resource group to which to add the disk.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      * 
      */
     @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
-     * @return The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * @return The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      * 
      */
     public Output<Integer> size() {
         return this.size;
     }
     /**
-     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output<String> snapshotId;
 
     /**
-     * @return A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * @return The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      * 
      */
     public Output<String> snapshotId() {
         return this.snapshotId;
     }
     /**
-     * The disk status.
+     * The status of the disk.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The disk status.
+     * @return The status of the disk.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The ID of the storage set.
+     * 
+     */
     @Export(name="storageSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageSetId;
 
+    /**
+     * @return The ID of the storage set.
+     * 
+     */
     public Output<Optional<String>> storageSetId() {
         return Codegen.optional(this.storageSetId);
     }
+    /**
+     * The number of partitions in the storage set.
+     * 
+     */
     @Export(name="storageSetPartitionNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> storageSetPartitionNumber;
 
+    /**
+     * @return The number of partitions in the storage set.
+     * 
+     */
     public Output<Optional<Integer>> storageSetPartitionNumber() {
         return Codegen.optional(this.storageSetPartitionNumber);
     }
@@ -386,15 +522,31 @@ public class Disk extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+     * 
+     */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
+    /**
+     * @return The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+     * 
+     */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
+    /**
+     * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
+    /**
+     * @return ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+     * 
+     */
     public Output<String> zoneId() {
         return this.zoneId;
     }

@@ -123,6 +123,7 @@ type ImageImport struct {
 	// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	//
 	// > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
 	Platform pulumi.StringOutput `pulumi:"platform"`
 }
@@ -177,6 +178,7 @@ type imageImportState struct {
 	// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
 	OsType *string `pulumi:"osType"`
 	// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	//
 	// > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
 	Platform *string `pulumi:"platform"`
 }
@@ -199,6 +201,7 @@ type ImageImportState struct {
 	// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
 	OsType pulumi.StringPtrInput
 	// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	//
 	// > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
 	Platform pulumi.StringPtrInput
 }
@@ -225,6 +228,7 @@ type imageImportArgs struct {
 	// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
 	OsType *string `pulumi:"osType"`
 	// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	//
 	// > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
 	Platform *string `pulumi:"platform"`
 }
@@ -248,6 +252,7 @@ type ImageImportArgs struct {
 	// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
 	OsType pulumi.StringPtrInput
 	// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	//
 	// > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
 	Platform pulumi.StringPtrInput
 }
@@ -380,6 +385,7 @@ func (o ImageImportOutput) OsType() pulumi.StringPtrOutput {
 }
 
 // The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+//
 // > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
 func (o ImageImportOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageImport) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)

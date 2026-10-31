@@ -86,6 +86,7 @@ type KeyPair struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
@@ -136,6 +137,7 @@ type keyPairState struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -157,6 +159,7 @@ type KeyPairState struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags pulumi.StringMapInput
 }
@@ -180,6 +183,7 @@ type keyPairArgs struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -200,6 +204,7 @@ type KeyPairArgs struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags pulumi.StringMapInput
 }
@@ -331,6 +336,7 @@ func (o KeyPairOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
+//
 // > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 func (o KeyPairOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)

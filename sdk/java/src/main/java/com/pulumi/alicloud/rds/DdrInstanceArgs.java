@@ -202,6 +202,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+     * 
      * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
@@ -210,6 +211,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+     * 
      * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
@@ -587,6 +589,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -595,6 +598,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -1529,6 +1533,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionStringPrefix The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+         * 
          * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
          * 
          * @return builder
@@ -1541,6 +1546,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionStringPrefix The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+         * 
          * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
          * 
          * @return builder
@@ -2050,6 +2056,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2062,6 +2069,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder

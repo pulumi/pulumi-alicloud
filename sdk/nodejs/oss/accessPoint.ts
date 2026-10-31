@@ -94,7 +94,7 @@ export class AccessPoint extends pulumi.CustomResource {
     /**
      * Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      */
-    declare public readonly publicAccessBlockConfiguration: pulumi.Output<outputs.oss.AccessPointPublicAccessBlockConfiguration | undefined>;
+    declare public readonly publicAccessBlockConfiguration: pulumi.Output<outputs.oss.AccessPointPublicAccessBlockConfiguration>;
     /**
      * The status of the resource
      */
