@@ -164,6 +164,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
@@ -339,6 +340,7 @@ export interface LoadBalancerState {
     paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number | undefined>;
@@ -449,6 +451,7 @@ export interface LoadBalancerArgs {
     paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number | undefined>;

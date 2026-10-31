@@ -295,6 +295,8 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly privateWhitelists: pulumi.Output<string[]>;
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
+     *
+     * > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      */
     declare public readonly protocol: pulumi.Output<string>;
     /**
@@ -325,7 +327,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly renewalDurationUnit: pulumi.Output<string>;
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
@@ -765,6 +767,8 @@ export interface InstanceState {
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
+     *
+     * > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      */
     protocol?: pulumi.Input<string | undefined>;
     /**
@@ -795,7 +799,7 @@ export interface InstanceState {
      */
     renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
@@ -1059,6 +1063,8 @@ export interface InstanceArgs {
     privateWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The access protocol. Supported protocols: HTTP and HTTPS.
+     *
+     * > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
      */
     protocol?: pulumi.Input<string | undefined>;
     /**
@@ -1081,7 +1087,7 @@ export interface InstanceArgs {
      */
     renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource group to which the instance belongs.
+     * The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**

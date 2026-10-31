@@ -46,6 +46,7 @@ class AggregateConfigRuleArgs:
         :param pulumi.Input[_builtins.str] config_rule_trigger_types: The trigger type of the rule. Valid values:
                - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
                - `ScheduledNotification`: The rule is periodically triggered.
+               
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[_builtins.int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
@@ -121,6 +122,7 @@ class AggregateConfigRuleArgs:
         The trigger type of the rule. Valid values:
         - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
         - `ScheduledNotification`: The rule is periodically triggered.
+
         > **NOTE:** Separate multiple trigger types with commas (,).
         """
         return pulumi.get(self, "config_rule_trigger_types")
@@ -328,6 +330,7 @@ class _AggregateConfigRuleState:
         :param pulumi.Input[_builtins.str] config_rule_trigger_types: The trigger type of the rule. Valid values:
                - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
                - `ScheduledNotification`: The rule is periodically triggered.
+               
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -424,6 +427,7 @@ class _AggregateConfigRuleState:
         The trigger type of the rule. Valid values:
         - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
         - `ScheduledNotification`: The rule is periodically triggered.
+
         > **NOTE:** Separate multiple trigger types with commas (,).
         """
         return pulumi.get(self, "config_rule_trigger_types")
@@ -687,6 +691,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_rule_trigger_types: The trigger type of the rule. Valid values:
                - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
                - `ScheduledNotification`: The rule is periodically triggered.
+               
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -878,6 +883,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_rule_trigger_types: The trigger type of the rule. Valid values:
                - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
                - `ScheduledNotification`: The rule is periodically triggered.
+               
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -949,6 +955,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         The trigger type of the rule. Valid values:
         - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
         - `ScheduledNotification`: The rule is periodically triggered.
+
         > **NOTE:** Separate multiple trigger types with commas (,).
         """
         return pulumi.get(self, "config_rule_trigger_types")

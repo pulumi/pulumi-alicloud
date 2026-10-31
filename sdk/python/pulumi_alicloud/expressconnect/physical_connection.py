@@ -59,8 +59,10 @@ class PhysicalConnectionArgs:
                - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
                - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
                - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               
                > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               
                > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         :param pulumi.Input[_builtins.str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         :param pulumi.Input[_builtins.str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
@@ -207,6 +209,7 @@ class PhysicalConnectionArgs:
         - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+
         > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         """
         return pulumi.get(self, "port_type")
@@ -220,6 +223,7 @@ class PhysicalConnectionArgs:
     def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+
         > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         """
         return pulumi.get(self, "pricing_cycle")
@@ -310,8 +314,10 @@ class _PhysicalConnectionState:
                - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
                - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
                - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               
                > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               
                > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         :param pulumi.Input[_builtins.str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         :param pulumi.Input[_builtins.str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
@@ -474,6 +480,7 @@ class _PhysicalConnectionState:
         - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+
         > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         """
         return pulumi.get(self, "port_type")
@@ -487,6 +494,7 @@ class _PhysicalConnectionState:
     def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+
         > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         """
         return pulumi.get(self, "pricing_cycle")
@@ -624,8 +632,10 @@ class PhysicalConnection(pulumi.CustomResource):
                - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
                - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
                - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               
                > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               
                > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         :param pulumi.Input[_builtins.str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         :param pulumi.Input[_builtins.str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
@@ -794,8 +804,10 @@ class PhysicalConnection(pulumi.CustomResource):
                - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
                - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
                - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               
                > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               
                > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         :param pulumi.Input[_builtins.str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         :param pulumi.Input[_builtins.str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
@@ -913,6 +925,7 @@ class PhysicalConnection(pulumi.CustomResource):
         - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
         - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
         - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+
         > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         """
         return pulumi.get(self, "port_type")
@@ -922,6 +935,7 @@ class PhysicalConnection(pulumi.CustomResource):
     def pricing_cycle(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+
         > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
         """
         return pulumi.get(self, "pricing_cycle")

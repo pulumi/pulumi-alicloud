@@ -77,9 +77,11 @@ type ControlPolicy struct {
 	// (Available since v1.148.0) The unique ID of the access control policy.
 	AclUuid pulumi.StringOutput `pulumi:"aclUuid"`
 	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName pulumi.StringPtrOutput `pulumi:"applicationName"`
 	// The application types supported by the access control policy.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists pulumi.StringArrayOutput `pulumi:"applicationNameLists"`
 	// (Available since v1.232.0) The time when the access control policy was created.
@@ -104,6 +106,7 @@ type ControlPolicy struct {
 	// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
 	DomainResolveType pulumi.StringPtrOutput `pulumi:"domainResolveType"`
 	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// The IP version supported by the access control policy. Default value: `4`. Valid values:
@@ -117,9 +120,11 @@ type ControlPolicy struct {
 	// The days of a week or of a month on which the access control policy takes effect. Valid values:
 	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
 	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	//
 	// > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
 	RepeatDays pulumi.IntArrayOutput `pulumi:"repeatDays"`
 	// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
 	RepeatEndTime pulumi.StringPtrOutput `pulumi:"repeatEndTime"`
 	// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
@@ -200,9 +205,11 @@ type controlPolicyState struct {
 	// (Available since v1.148.0) The unique ID of the access control policy.
 	AclUuid *string `pulumi:"aclUuid"`
 	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName *string `pulumi:"applicationName"`
 	// The application types supported by the access control policy.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists []string `pulumi:"applicationNameLists"`
 	// (Available since v1.232.0) The time when the access control policy was created.
@@ -227,6 +234,7 @@ type controlPolicyState struct {
 	// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
 	DomainResolveType *string `pulumi:"domainResolveType"`
 	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
 	EndTime *int `pulumi:"endTime"`
 	// The IP version supported by the access control policy. Default value: `4`. Valid values:
@@ -240,9 +248,11 @@ type controlPolicyState struct {
 	// The days of a week or of a month on which the access control policy takes effect. Valid values:
 	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
 	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	//
 	// > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
 	RepeatDays []int `pulumi:"repeatDays"`
 	// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
 	RepeatEndTime *string `pulumi:"repeatEndTime"`
 	// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
@@ -270,9 +280,11 @@ type ControlPolicyState struct {
 	// (Available since v1.148.0) The unique ID of the access control policy.
 	AclUuid pulumi.StringPtrInput
 	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName pulumi.StringPtrInput
 	// The application types supported by the access control policy.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists pulumi.StringArrayInput
 	// (Available since v1.232.0) The time when the access control policy was created.
@@ -297,6 +309,7 @@ type ControlPolicyState struct {
 	// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
 	DomainResolveType pulumi.StringPtrInput
 	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
 	EndTime pulumi.IntPtrInput
 	// The IP version supported by the access control policy. Default value: `4`. Valid values:
@@ -310,9 +323,11 @@ type ControlPolicyState struct {
 	// The days of a week or of a month on which the access control policy takes effect. Valid values:
 	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
 	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	//
 	// > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
 	RepeatDays pulumi.IntArrayInput
 	// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
 	RepeatEndTime pulumi.StringPtrInput
 	// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
@@ -342,9 +357,11 @@ type controlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`
 	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName *string `pulumi:"applicationName"`
 	// The application types supported by the access control policy.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists []string `pulumi:"applicationNameLists"`
 	// The description of the access control policy.
@@ -367,6 +384,7 @@ type controlPolicyArgs struct {
 	// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
 	DomainResolveType *string `pulumi:"domainResolveType"`
 	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
 	EndTime *int `pulumi:"endTime"`
 	// The IP version supported by the access control policy. Default value: `4`. Valid values:
@@ -380,9 +398,11 @@ type controlPolicyArgs struct {
 	// The days of a week or of a month on which the access control policy takes effect. Valid values:
 	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
 	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	//
 	// > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
 	RepeatDays []int `pulumi:"repeatDays"`
 	// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
 	RepeatEndTime *string `pulumi:"repeatEndTime"`
 	// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
@@ -409,9 +429,11 @@ type ControlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringInput
 	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName pulumi.StringPtrInput
 	// The application types supported by the access control policy.
+	//
 	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 	ApplicationNameLists pulumi.StringArrayInput
 	// The description of the access control policy.
@@ -434,6 +456,7 @@ type ControlPolicyArgs struct {
 	// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
 	DomainResolveType pulumi.StringPtrInput
 	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
 	EndTime pulumi.IntPtrInput
 	// The IP version supported by the access control policy. Default value: `4`. Valid values:
@@ -447,9 +470,11 @@ type ControlPolicyArgs struct {
 	// The days of a week or of a month on which the access control policy takes effect. Valid values:
 	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
 	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	//
 	// > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
 	RepeatDays pulumi.IntArrayInput
 	// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+	//
 	// > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
 	RepeatEndTime pulumi.StringPtrInput
 	// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
@@ -569,12 +594,14 @@ func (o ControlPolicyOutput) AclUuid() pulumi.StringOutput {
 }
 
 // The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+//
 // > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 func (o ControlPolicyOutput) ApplicationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.ApplicationName }).(pulumi.StringPtrOutput)
 }
 
 // The application types supported by the access control policy.
+//
 // > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
 func (o ControlPolicyOutput) ApplicationNameLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringArrayOutput { return v.ApplicationNameLists }).(pulumi.StringArrayOutput)
@@ -629,6 +656,7 @@ func (o ControlPolicyOutput) DomainResolveType() pulumi.StringPtrOutput {
 }
 
 // The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+//
 // > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
 func (o ControlPolicyOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
@@ -657,12 +685,14 @@ func (o ControlPolicyOutput) Release() pulumi.StringOutput {
 // The days of a week or of a month on which the access control policy takes effect. Valid values:
 // - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
 // - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+//
 // > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
 func (o ControlPolicyOutput) RepeatDays() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.IntArrayOutput { return v.RepeatDays }).(pulumi.IntArrayOutput)
 }
 
 // The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+//
 // > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
 func (o ControlPolicyOutput) RepeatEndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.RepeatEndTime }).(pulumi.StringPtrOutput)

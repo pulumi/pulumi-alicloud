@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Available since v1.132.0.
  *
+ * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -79,8 +81,6 @@ export class MscSubContract extends pulumi.CustomResource {
     declare public readonly mobile: pulumi.Output<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-     *
-     * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
     declare public readonly position: pulumi.Output<string>;
 
@@ -143,8 +143,6 @@ export interface MscSubContractState {
     mobile?: pulumi.Input<string | undefined>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-     *
-     * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
     position?: pulumi.Input<string | undefined>;
 }
@@ -167,8 +165,6 @@ export interface MscSubContractArgs {
     mobile: pulumi.Input<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-     *
-     * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
     position: pulumi.Input<string>;
 }

@@ -65,6 +65,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -311,6 +312,7 @@ class LoadBalancerArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -450,6 +452,7 @@ class _LoadBalancerState:
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -696,6 +699,7 @@ class _LoadBalancerState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -903,6 +907,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -1112,6 +1117,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[_builtins.str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -1280,6 +1286,7 @@ class LoadBalancer(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

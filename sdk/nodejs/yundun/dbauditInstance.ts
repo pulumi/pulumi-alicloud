@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
  *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ *
  * > **NOTE:** Available since v1.62.0+.
  *
  * > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
@@ -90,6 +92,7 @@ export class DBAuditInstance extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     declare public readonly period: pulumi.Output<number>;
@@ -165,6 +168,7 @@ export interface DBAuditInstanceState {
     description?: pulumi.Input<string | undefined>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number | undefined>;
@@ -196,6 +200,7 @@ export interface DBAuditInstanceArgs {
     description: pulumi.Input<string>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period: pulumi.Input<number>;

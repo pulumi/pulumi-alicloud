@@ -207,6 +207,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The subscription duration in months. It is valid when `PayType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
@@ -436,6 +437,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The subscription duration in months. It is valid when `PayType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
@@ -623,6 +625,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The subscription duration in months. It is valid when `PayType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]

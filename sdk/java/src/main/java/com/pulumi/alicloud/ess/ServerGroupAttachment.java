@@ -229,6 +229,7 @@ public class ServerGroupAttachment extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * 
      * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
@@ -237,6 +238,7 @@ public class ServerGroupAttachment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of server group N. Valid values: ALB, NLB, GWLB.
+     * 
      * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */

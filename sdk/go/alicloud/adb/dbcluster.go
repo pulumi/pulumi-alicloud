@@ -143,6 +143,7 @@ type DBCluster struct {
 	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the ADB cluster.
@@ -259,6 +260,7 @@ type dbclusterState struct {
 	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period *int `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the ADB cluster.
@@ -340,6 +342,7 @@ type DBClusterState struct {
 	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period pulumi.IntPtrInput
 	// (Available since v1.196.0) The connection port of the ADB cluster.
@@ -423,6 +426,7 @@ type dbclusterArgs struct {
 	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period *int `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -499,6 +503,7 @@ type DBClusterArgs struct {
 	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -728,6 +733,7 @@ func (o DBClusterOutput) PaymentType() pulumi.StringOutput {
 }
 
 // The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+//
 // > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 func (o DBClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)

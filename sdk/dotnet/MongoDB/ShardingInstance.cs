@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// &gt; **NOTE:** Available since v1.40.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
     /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
     /// 
@@ -119,6 +121,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Output("autoRenewDuration")]
@@ -321,6 +324,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Output("restoreTime")]
@@ -387,6 +391,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Output("sslAction")]
@@ -521,6 +526,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -753,6 +759,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Input("restoreTime")]
@@ -831,6 +838,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Input("sslAction")]
@@ -917,6 +925,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+        /// 
         /// &gt; **NOTE:** If `AutoRenew` is set to `True`, `AutoRenewDuration` must be set.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -1161,6 +1170,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        /// 
         /// &gt; **NOTE:** You must specify `SrcDbInstanceId` and `RestoreTime` only when you clone an instance based on a point in time.
         /// </summary>
         [Input("restoreTime")]
@@ -1245,6 +1255,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// - `Open`: turn on SSL encryption.
         /// - `Close`: turn off SSL encryption.
         /// - `Update`: update SSL certificate.
+        /// 
         /// &gt; **NOTE:** Once `SslAction` is set, it isn't allowed to be removed from the Terraform code.
         /// </summary>
         [Input("sslAction")]

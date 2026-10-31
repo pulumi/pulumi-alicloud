@@ -168,6 +168,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The instance ID.
+     * 
      * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      * 
      */
@@ -176,6 +177,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The instance ID.
+     * 
      * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      * 
      */

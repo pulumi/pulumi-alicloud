@@ -222,6 +222,8 @@ type Instance struct {
 	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
 	// The access protocol. Supported protocols: HTTP and HTTPS.
+	//
+	// > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The public endpoint of the instance.
 	PublicDomain pulumi.StringOutput `pulumi:"publicDomain"`
@@ -240,7 +242,7 @@ type Instance struct {
 	//
 	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit pulumi.StringOutput `pulumi:"renewalDurationUnit"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// YML configuration file settings for the instance.
 	SettingConfig pulumi.StringMapOutput `pulumi:"settingConfig"`
@@ -463,6 +465,8 @@ type instanceState struct {
 	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	// The access protocol. Supported protocols: HTTP and HTTPS.
+	//
+	// > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
 	Protocol *string `pulumi:"protocol"`
 	// The public endpoint of the instance.
 	PublicDomain *string `pulumi:"publicDomain"`
@@ -481,7 +485,7 @@ type instanceState struct {
 	//
 	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// YML configuration file settings for the instance.
 	SettingConfig map[string]string `pulumi:"settingConfig"`
@@ -662,6 +666,8 @@ type InstanceState struct {
 	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists pulumi.StringArrayInput
 	// The access protocol. Supported protocols: HTTP and HTTPS.
+	//
+	// > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
 	Protocol pulumi.StringPtrInput
 	// The public endpoint of the instance.
 	PublicDomain pulumi.StringPtrInput
@@ -680,7 +686,7 @@ type InstanceState struct {
 	//
 	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit pulumi.StringPtrInput
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
 	ResourceGroupId pulumi.StringPtrInput
 	// YML configuration file settings for the instance.
 	SettingConfig pulumi.StringMapInput
@@ -851,6 +857,8 @@ type instanceArgs struct {
 	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	// The access protocol. Supported protocols: HTTP and HTTPS.
+	//
+	// > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
 	Protocol *string `pulumi:"protocol"`
 	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
@@ -865,7 +873,7 @@ type instanceArgs struct {
 	//
 	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// YML configuration file settings for the instance.
 	SettingConfig map[string]string `pulumi:"settingConfig"`
@@ -1031,6 +1039,8 @@ type InstanceArgs struct {
 	// The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
 	PrivateWhitelists pulumi.StringArrayInput
 	// The access protocol. Supported protocols: HTTP and HTTPS.
+	//
+	// > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
 	Protocol pulumi.StringPtrInput
 	// The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
 	PublicWhitelists pulumi.StringArrayInput
@@ -1045,7 +1055,7 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
 	RenewalDurationUnit pulumi.StringPtrInput
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
 	ResourceGroupId pulumi.StringPtrInput
 	// YML configuration file settings for the instance.
 	SettingConfig pulumi.StringMapInput
@@ -1430,6 +1440,8 @@ func (o InstanceOutput) PrivateWhitelists() pulumi.StringArrayOutput {
 }
 
 // The access protocol. Supported protocols: HTTP and HTTPS.
+//
+// > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `clientNodeConfiguration` (or the deprecated `clientNodeSpec` and `clientNodeAmount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
 func (o InstanceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1466,7 +1478,7 @@ func (o InstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalDurationUnit }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group to which the instance belongs.
+// The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

@@ -21,8 +21,12 @@ class ServiceTopicArgs:
     def __init__(__self__, *,
                  topic_name: pulumi.Input[_builtins.str],
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -30,14 +34,28 @@ class ServiceTopicArgs:
 
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
         """
         pulumi.set(__self__, "topic_name", topic_name)
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
+        if enable_sse is not None:
+            pulumi.set(__self__, "enable_sse", enable_sse)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if logging_enabled is not None:
             warnings.warn("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""", DeprecationWarning)
             pulumi.log.warn("""logging_enabled is deprecated: Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
@@ -45,6 +63,10 @@ class ServiceTopicArgs:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if max_message_size is not None:
             pulumi.set(__self__, "max_message_size", max_message_size)
+        if sse_algorithm is not None:
+            pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+        if sse_type is not None:
+            pulumi.set(__self__, "sse_type", sse_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic_type is not None:
@@ -75,11 +97,39 @@ class ServiceTopicArgs:
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableSse")
+    def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_sse")
+
+    @enable_sse.setter
+    def enable_sse(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_sse", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="loggingEnabled")
     @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
     def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+
+        > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+
+        > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -98,6 +148,32 @@ class ServiceTopicArgs:
     @max_message_size.setter
     def max_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_message_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+    @sse_algorithm.setter
+    def sse_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sseType")
+    def sse_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of server-side encryption (SSE). Valid values:
+        - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        """
+        return pulumi.get(self, "sse_type")
+
+    @sse_type.setter
+    def sse_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -129,8 +205,12 @@ class _ServiceTopicState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  topic_type: pulumi.Input[Optional[_builtins.str]] = None):
@@ -139,8 +219,18 @@ class _ServiceTopicState:
 
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.241.0) The time when the topic was created.
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
         :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
@@ -149,6 +239,10 @@ class _ServiceTopicState:
             pulumi.set(__self__, "create_time", create_time)
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
+        if enable_sse is not None:
+            pulumi.set(__self__, "enable_sse", enable_sse)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if logging_enabled is not None:
             warnings.warn("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""", DeprecationWarning)
             pulumi.log.warn("""logging_enabled is deprecated: Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
@@ -156,6 +250,10 @@ class _ServiceTopicState:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if max_message_size is not None:
             pulumi.set(__self__, "max_message_size", max_message_size)
+        if sse_algorithm is not None:
+            pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+        if sse_type is not None:
+            pulumi.set(__self__, "sse_type", sse_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic_name is not None:
@@ -188,11 +286,39 @@ class _ServiceTopicState:
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableSse")
+    def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_sse")
+
+    @enable_sse.setter
+    def enable_sse(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_sse", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="loggingEnabled")
     @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
     def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+
+        > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+
+        > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -211,6 +337,32 @@ class _ServiceTopicState:
     @max_message_size.setter
     def max_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_message_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+    @sse_algorithm.setter
+    def sse_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sseType")
+    def sse_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of server-side encryption (SSE). Valid values:
+        - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        """
+        return pulumi.get(self, "sse_type")
+
+    @sse_type.setter
+    def sse_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sse_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -256,8 +408,12 @@ class ServiceTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  topic_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,8 +457,18 @@ class ServiceTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
         :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
@@ -365,8 +531,12 @@ class ServiceTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  topic_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -380,8 +550,12 @@ class ServiceTopic(pulumi.CustomResource):
             __props__ = ServiceTopicArgs.__new__(ServiceTopicArgs)
 
             __props__.__dict__["enable_logging"] = enable_logging
+            __props__.__dict__["enable_sse"] = enable_sse
+            __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["logging_enabled"] = logging_enabled
             __props__.__dict__["max_message_size"] = max_message_size
+            __props__.__dict__["sse_algorithm"] = sse_algorithm
+            __props__.__dict__["sse_type"] = sse_type
             __props__.__dict__["tags"] = tags
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
@@ -400,8 +574,12 @@ class ServiceTopic(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_type: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             topic_name: pulumi.Input[Optional[_builtins.str]] = None,
             topic_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceTopic':
@@ -414,8 +592,18 @@ class ServiceTopic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.241.0) The time when the topic was created.
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_sse: Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
         :param pulumi.Input[_builtins.bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+               
+               > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+               
+               > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
+        :param pulumi.Input[_builtins.str] sse_algorithm: The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        :param pulumi.Input[_builtins.str] sse_type: The type of server-side encryption (SSE). Valid values:
+               - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+               - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
         :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
@@ -426,8 +614,12 @@ class ServiceTopic(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["enable_logging"] = enable_logging
+        __props__.__dict__["enable_sse"] = enable_sse
+        __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["logging_enabled"] = logging_enabled
         __props__.__dict__["max_message_size"] = max_message_size
+        __props__.__dict__["sse_algorithm"] = sse_algorithm
+        __props__.__dict__["sse_type"] = sse_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["topic_name"] = topic_name
         __props__.__dict__["topic_type"] = topic_type
@@ -450,11 +642,31 @@ class ServiceTopic(pulumi.CustomResource):
         return pulumi.get(self, "enable_logging")
 
     @_builtins.property
+    @pulumi.getter(name="enableSse")
+    def enable_sse(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable server-side encryption (SSE) for the messages in the topic. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_sse")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the customer master key (CMK) in Key Management Service (KMS). This parameter is required when `sse_type` is set to `KMS`.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @_builtins.property
     @pulumi.getter(name="loggingEnabled")
     @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
     def logging_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
+
+        > **NOTE:** Server-side encryption (SSE) is available only after the feature is enabled for your account. To enable the feature, submit a ticket. Before you set `sse_type` to `KMS`, make sure that a symmetric key of the AES-256 key spec is created in KMS in the same region and within the same account as the topic, and that the service-linked role `AliyunMNSAccessingKMSRole` is authorized.
+
+        > **NOTE:** To disable SSE, you must set `enable_sse` to `false` and remove `sse_type`, `sse_algorithm`, and `kms_key_id` from the configuration at the same time. SSE takes effect only on the messages that are sent after SSE is enabled or disabled, and existing messages are not encrypted or decrypted again.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -465,6 +677,24 @@ class ServiceTopic(pulumi.CustomResource):
         The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         """
         return pulumi.get(self, "max_message_size")
+
+    @_builtins.property
+    @pulumi.getter(name="sseAlgorithm")
+    def sse_algorithm(self) -> pulumi.Output[_builtins.str]:
+        """
+        The encryption algorithm that is used to encrypt the messages in the topic. Valid value: `AES-256-GCM`.
+        """
+        return pulumi.get(self, "sse_algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="sseType")
+    def sse_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of server-side encryption (SSE). Valid values:
+        - `SMQ`: The keys that are managed by Message Service are used to encrypt and decrypt messages.
+        - `KMS`: The customer master key (CMK) that is managed by Key Management Service (KMS) is used to encrypt and decrypt messages.
+        """
+        return pulumi.get(self, "sse_type")
 
     @_builtins.property
     @pulumi.getter

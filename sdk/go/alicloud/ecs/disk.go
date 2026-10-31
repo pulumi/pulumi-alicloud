@@ -65,61 +65,92 @@ import (
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// The advanced features configured for the disk.
 	AdvancedFeatures pulumi.StringPtrOutput `pulumi:"advancedFeatures"`
-	// The Zone to create the disk in.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
-	AvailabilityZone pulumi.StringOutput  `pulumi:"availabilityZone"`
-	BurstingEnabled  pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
-	Category   pulumi.StringPtrOutput `pulumi:"category"`
-	CreateTime pulumi.StringOutput    `pulumi:"createTime"`
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+	BurstingEnabled pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+	Category pulumi.StringPtrOutput `pulumi:"category"`
+	// (Available since v1.237.0) The time when the disk was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
-	// Indicates whether the disk is released together with the instance: Default value: false.
+	// Specifies whether to release the disk along with its associated instance. Default value: `false`.
 	DeleteWithInstance pulumi.BoolOutput `pulumi:"deleteWithInstance"`
-	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	DiskName    pulumi.StringOutput    `pulumi:"diskName"`
-	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
-	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+	DiskName pulumi.StringOutput `pulumi:"diskName"`
+	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
-	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
-	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted  pulumi.BoolOutput   `pulumi:"encrypted"`
+	EnableAutoSnapshot pulumi.BoolOutput `pulumi:"enableAutoSnapshot"`
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
+	// The ID of the instance to which the created subscription disk is automatically attached.
+	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-	KmsKeyId    pulumi.StringOutput `pulumi:"kmsKeyId"`
+	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
+	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
+	// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 	MultiAttach pulumi.StringOutput `pulumi:"multiAttach"`
-	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+	//
+	// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
-	Name        pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
-	ProvisionedIops  pulumi.IntPtrOutput `pulumi:"provisionedIops"`
-	RegionId         pulumi.StringOutput `pulumi:"regionId"`
-	// The Id of resource group which the disk belongs.
-	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+	ProvisionedIops pulumi.IntPtrOutput `pulumi:"provisionedIops"`
+	// (Available since v1.237.0) The ID of the region to which the disk belongs.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group to which to add the disk.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// The disk status.
-	Status                    pulumi.StringOutput    `pulumi:"status"`
-	StorageSetId              pulumi.StringPtrOutput `pulumi:"storageSetId"`
-	StorageSetPartitionNumber pulumi.IntPtrOutput    `pulumi:"storageSetPartitionNumber"`
+	// The status of the disk.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The ID of the storage set.
+	StorageSetId pulumi.StringPtrOutput `pulumi:"storageSetId"`
+	// The number of partitions in the storage set.
+	StorageSetPartitionNumber pulumi.IntPtrOutput `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags   pulumi.StringMapOutput `pulumi:"tags"`
-	Type   pulumi.StringPtrOutput `pulumi:"type"`
-	ZoneId pulumi.StringOutput    `pulumi:"zoneId"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewDisk registers a new resource with the given unique name, arguments, and options.
@@ -152,118 +183,180 @@ func GetDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Disk resources.
 type diskState struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`
-	// The Zone to create the disk in.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	BurstingEnabled  *bool   `pulumi:"burstingEnabled"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
-	Category   *string `pulumi:"category"`
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+	Category *string `pulumi:"category"`
+	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
-	// Indicates whether the disk is released together with the instance: Default value: false.
+	// Specifies whether to release the disk along with its associated instance. Default value: `false`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	DiskName    *string `pulumi:"diskName"`
-	DryRun      *bool   `pulumi:"dryRun"`
-	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+	DiskName *string `pulumi:"diskName"`
+	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
-	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
-	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted  *bool   `pulumi:"encrypted"`
+	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm *string `pulumi:"encryptAlgorithm"`
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the instance to which the created subscription disk is automatically attached.
+	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId *string `pulumi:"instanceId"`
-	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-	KmsKeyId    *string `pulumi:"kmsKeyId"`
+	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 	MultiAttach *string `pulumi:"multiAttach"`
-	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+	//
+	// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
-	Name        *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
-	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	ProvisionedIops  *int    `pulumi:"provisionedIops"`
-	RegionId         *string `pulumi:"regionId"`
-	// The Id of resource group which the disk belongs.
-	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// (Available since v1.237.0) The ID of the region to which the disk belongs.
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group to which to add the disk.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size *int `pulumi:"size"`
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The disk status.
-	Status                    *string `pulumi:"status"`
-	StorageSetId              *string `pulumi:"storageSetId"`
-	StorageSetPartitionNumber *int    `pulumi:"storageSetPartitionNumber"`
+	// The status of the disk.
+	Status *string `pulumi:"status"`
+	// The ID of the storage set.
+	StorageSetId *string `pulumi:"storageSetId"`
+	// The number of partitions in the storage set.
+	StorageSetPartitionNumber *int `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags   map[string]string `pulumi:"tags"`
-	Type   *string           `pulumi:"type"`
-	ZoneId *string           `pulumi:"zoneId"`
+	Tags map[string]string `pulumi:"tags"`
+	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+	Type *string `pulumi:"type"`
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type DiskState struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures pulumi.StringPtrInput
-	// The Zone to create the disk in.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone pulumi.StringPtrInput
-	BurstingEnabled  pulumi.BoolPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
-	Category   pulumi.StringPtrInput
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+	BurstingEnabled pulumi.BoolPtrInput
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+	Category pulumi.StringPtrInput
+	// (Available since v1.237.0) The time when the disk was created.
 	CreateTime pulumi.StringPtrInput
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
-	// Indicates whether the disk is released together with the instance: Default value: false.
+	// Specifies whether to release the disk along with its associated instance. Default value: `false`.
 	DeleteWithInstance pulumi.BoolPtrInput
-	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	DiskName    pulumi.StringPtrInput
-	DryRun      pulumi.BoolPtrInput
-	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+	DiskName pulumi.StringPtrInput
+	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+	DryRun pulumi.BoolPtrInput
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
-	EncryptAlgorithm   pulumi.StringPtrInput
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted  pulumi.BoolPtrInput
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm pulumi.StringPtrInput
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+	Encrypted pulumi.BoolPtrInput
+	// The ID of the instance to which the created subscription disk is automatically attached.
+	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringPtrInput
-	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-	KmsKeyId    pulumi.StringPtrInput
+	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
+	KmsKeyId pulumi.StringPtrInput
+	// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 	MultiAttach pulumi.StringPtrInput
-	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+	//
+	// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
-	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
-	ProvisionedIops  pulumi.IntPtrInput
-	RegionId         pulumi.StringPtrInput
-	// The Id of resource group which the disk belongs.
-	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+	ProvisionedIops pulumi.IntPtrInput
+	// (Available since v1.237.0) The ID of the region to which the disk belongs.
+	RegionId pulumi.StringPtrInput
+	// The ID of the resource group to which to add the disk.
 	ResourceGroupId pulumi.StringPtrInput
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size pulumi.IntPtrInput
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId pulumi.StringPtrInput
-	// The disk status.
-	Status                    pulumi.StringPtrInput
-	StorageSetId              pulumi.StringPtrInput
+	// The status of the disk.
+	Status pulumi.StringPtrInput
+	// The ID of the storage set.
+	StorageSetId pulumi.StringPtrInput
+	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags   pulumi.StringMapInput
-	Type   pulumi.StringPtrInput
+	Tags pulumi.StringMapInput
+	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+	Type pulumi.StringPtrInput
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -272,111 +365,169 @@ func (DiskState) ElementType() reflect.Type {
 }
 
 type diskArgs struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`
-	// The Zone to create the disk in.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	BurstingEnabled  *bool   `pulumi:"burstingEnabled"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category *string `pulumi:"category"`
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
-	// Indicates whether the disk is released together with the instance: Default value: false.
+	// Specifies whether to release the disk along with its associated instance. Default value: `false`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	DiskName    *string `pulumi:"diskName"`
-	DryRun      *bool   `pulumi:"dryRun"`
-	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+	DiskName *string `pulumi:"diskName"`
+	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
-	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
-	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted  *bool   `pulumi:"encrypted"`
+	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm *string `pulumi:"encryptAlgorithm"`
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the instance to which the created subscription disk is automatically attached.
+	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId *string `pulumi:"instanceId"`
-	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-	KmsKeyId    *string `pulumi:"kmsKeyId"`
+	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 	MultiAttach *string `pulumi:"multiAttach"`
-	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+	//
+	// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
-	Name        *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
-	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	ProvisionedIops  *int    `pulumi:"provisionedIops"`
-	// The Id of resource group which the disk belongs.
-	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// The ID of the resource group to which to add the disk.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size *int `pulumi:"size"`
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-	SnapshotId                *string `pulumi:"snapshotId"`
-	StorageSetId              *string `pulumi:"storageSetId"`
-	StorageSetPartitionNumber *int    `pulumi:"storageSetPartitionNumber"`
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// The ID of the storage set.
+	StorageSetId *string `pulumi:"storageSetId"`
+	// The number of partitions in the storage set.
+	StorageSetPartitionNumber *int `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags   map[string]string `pulumi:"tags"`
-	Type   *string           `pulumi:"type"`
-	ZoneId *string           `pulumi:"zoneId"`
+	Tags map[string]string `pulumi:"tags"`
+	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+	Type *string `pulumi:"type"`
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Disk resource.
 type DiskArgs struct {
+	// The advanced features configured for the disk.
 	AdvancedFeatures pulumi.StringPtrInput
-	// The Zone to create the disk in.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 	AvailabilityZone pulumi.StringPtrInput
-	BurstingEnabled  pulumi.BoolPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
+	BurstingEnabled pulumi.BoolPtrInput
+	// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 	Category pulumi.StringPtrInput
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
-	// Indicates whether the disk is released together with the instance: Default value: false.
+	// Specifies whether to release the disk along with its associated instance. Default value: `false`.
 	DeleteWithInstance pulumi.BoolPtrInput
-	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	DiskName    pulumi.StringPtrInput
-	DryRun      pulumi.BoolPtrInput
-	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+	DiskName pulumi.StringPtrInput
+	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+	DryRun pulumi.BoolPtrInput
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	//
 	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
-	EncryptAlgorithm   pulumi.StringPtrInput
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted  pulumi.BoolPtrInput
+	// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
+	EncryptAlgorithm pulumi.StringPtrInput
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+	Encrypted pulumi.BoolPtrInput
+	// The ID of the instance to which the created subscription disk is automatically attached.
+	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringPtrInput
-	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-	KmsKeyId    pulumi.StringPtrInput
+	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
+	KmsKeyId pulumi.StringPtrInput
+	// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 	MultiAttach pulumi.StringPtrInput
-	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+	// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+	//
+	// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
-	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
-	ProvisionedIops  pulumi.IntPtrInput
-	// The Id of resource group which the disk belongs.
-	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
+	ProvisionedIops pulumi.IntPtrInput
+	// The ID of the resource group to which to add the disk.
 	ResourceGroupId pulumi.StringPtrInput
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size pulumi.IntPtrInput
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-	SnapshotId                pulumi.StringPtrInput
-	StorageSetId              pulumi.StringPtrInput
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+	SnapshotId pulumi.StringPtrInput
+	// The ID of the storage set.
+	StorageSetId pulumi.StringPtrInput
+	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags   pulumi.StringMapInput
-	Type   pulumi.StringPtrInput
+	Tags pulumi.StringMapInput
+	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+	Type pulumi.StringPtrInput
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -467,134 +618,163 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
+// The advanced features configured for the disk.
 func (o DiskOutput) AdvancedFeatures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.AdvancedFeatures }).(pulumi.StringPtrOutput)
 }
 
-// The Zone to create the disk in.
+// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 //
 // Deprecated: Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
 func (o DiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `burstingEnabled` is only valid when `category` is `cloudAuto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloudAuto` in the same apply (for example from `cloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloudAuto` disk.
 func (o DiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+// The category of the data disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. **NOTE:** When `category` is `cloudAuto`, the `burstingEnabled` and `provisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloudEssd` to `cloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
 func (o DiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.237.0) The time when the disk was created.
 func (o DiskOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
 func (o DiskOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the disk is released together with the instance: Default value: false.
+// Specifies whether to release the disk along with its associated instance. Default value: `false`.
 func (o DiskOutput) DeleteWithInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.DeleteWithInstance }).(pulumi.BoolOutput)
 }
 
-// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 func (o DiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
 func (o DiskOutput) DiskName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.DiskName }).(pulumi.StringOutput)
 }
 
+// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
 func (o DiskOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 //
 // Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 func (o DiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
 }
 
+// The encryption algorithm used to encrypt the disk. **NOTE:** `encryptAlgorithm` is only valid when `encrypted` is `true`.
 func (o DiskOutput) EncryptAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.EncryptAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// If true, the disk will be encrypted, conflict with `snapshotId`.
+// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 func (o DiskOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// The ID of the instance to which the created subscription disk is automatically attached.
+// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
+// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 func (o DiskOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
 func (o DiskOutput) KmsKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.KmsKeyId }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 func (o DiskOutput) MultiAttach() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.MultiAttach }).(pulumi.StringOutput)
 }
 
-// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+//
+// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 //
 // Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
 func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instanceId` is required.
 func (o DiskOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 func (o DiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
+// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisionedIops` is only valid when `category` is `cloudAuto`.
 func (o DiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntPtrOutput { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
+// (Available since v1.237.0) The ID of the region to which the disk belongs.
 func (o DiskOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The Id of resource group which the disk belongs.
-// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+// The ID of the resource group to which to add the disk.
 func (o DiskOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 func (o DiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 func (o DiskOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The disk status.
+// The status of the disk.
 func (o DiskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The ID of the storage set.
 func (o DiskOutput) StorageSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.StorageSetId }).(pulumi.StringPtrOutput)
 }
 
+// The number of partitions in the storage set.
 func (o DiskOutput) StorageSetPartitionNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntPtrOutput { return v.StorageSetPartitionNumber }).(pulumi.IntPtrOutput)
 }
@@ -604,10 +784,12 @@ func (o DiskOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 func (o DiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 func (o DiskOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

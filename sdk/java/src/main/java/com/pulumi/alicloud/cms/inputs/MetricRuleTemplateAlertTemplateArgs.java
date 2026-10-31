@@ -19,6 +19,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
     /**
      * The abbreviation of the Alibaba Cloud service name.
+     * 
      * &gt; **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
      * 
      */
@@ -27,6 +28,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
     /**
      * @return The abbreviation of the Alibaba Cloud service name.
+     * 
      * &gt; **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
      * 
      */
@@ -51,6 +53,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
     /**
      * The name of the metric.
+     * 
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
@@ -59,6 +62,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
     /**
      * @return The name of the metric.
+     * 
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
@@ -68,6 +72,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
     /**
      * The namespace of the cloud service.
+     * 
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
@@ -76,6 +81,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
     /**
      * @return The namespace of the cloud service.
+     * 
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
@@ -144,6 +150,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param category The abbreviation of the Alibaba Cloud service name.
+         * 
          * &gt; **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
          * 
          * @return builder
@@ -156,6 +163,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param category The abbreviation of the Alibaba Cloud service name.
+         * 
          * &gt; **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
          * 
          * @return builder
@@ -188,6 +196,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param metricName The name of the metric.
+         * 
          * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
@@ -200,6 +209,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param metricName The name of the metric.
+         * 
          * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
@@ -211,6 +221,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param namespace The namespace of the cloud service.
+         * 
          * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
@@ -223,6 +234,7 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param namespace The namespace of the cloud service.
+         * 
          * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder

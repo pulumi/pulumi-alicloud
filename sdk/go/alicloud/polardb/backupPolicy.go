@@ -109,6 +109,7 @@ type BackupPolicy struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency pulumi.StringOutput `pulumi:"dataLevel1BackupFrequency"`
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods pulumi.StringArrayOutput `pulumi:"dataLevel1BackupPeriods"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -120,6 +121,7 @@ type BackupPolicy struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod pulumi.IntOutput `pulumi:"dataLevel2BackupAnotherRegionRetentionPeriod"`
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods pulumi.StringArrayOutput `pulumi:"dataLevel2BackupPeriods"`
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -131,6 +133,7 @@ type BackupPolicy struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrOutput `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod pulumi.IntPtrOutput `pulumi:"logBackupAnotherRegionRetentionPeriod"`
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -183,6 +186,7 @@ type backupPolicyState struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency *string `pulumi:"dataLevel1BackupFrequency"`
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods []string `pulumi:"dataLevel1BackupPeriods"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -194,6 +198,7 @@ type backupPolicyState struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod *int `pulumi:"dataLevel2BackupAnotherRegionRetentionPeriod"`
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods []string `pulumi:"dataLevel2BackupPeriods"`
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -205,6 +210,7 @@ type backupPolicyState struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion *string `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod *int `pulumi:"logBackupAnotherRegionRetentionPeriod"`
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -225,6 +231,7 @@ type BackupPolicyState struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency pulumi.StringPtrInput
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -236,6 +243,7 @@ type BackupPolicyState struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -247,6 +255,7 @@ type BackupPolicyState struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrInput
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -271,6 +280,7 @@ type backupPolicyArgs struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency *string `pulumi:"dataLevel1BackupFrequency"`
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods []string `pulumi:"dataLevel1BackupPeriods"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -282,6 +292,7 @@ type backupPolicyArgs struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod *int `pulumi:"dataLevel2BackupAnotherRegionRetentionPeriod"`
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods []string `pulumi:"dataLevel2BackupPeriods"`
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -291,6 +302,7 @@ type backupPolicyArgs struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion *string `pulumi:"logBackupAnotherRegionRegion"`
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod *int `pulumi:"logBackupAnotherRegionRetentionPeriod"`
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -312,6 +324,7 @@ type BackupPolicyArgs struct {
 	// The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
 	DataLevel1BackupFrequency pulumi.StringPtrInput
 	// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel1BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
@@ -323,6 +336,7 @@ type BackupPolicyArgs struct {
 	// PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
 	DataLevel2BackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	//
 	// > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 	DataLevel2BackupPeriods pulumi.StringArrayInput
 	// The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
@@ -332,6 +346,7 @@ type BackupPolicyArgs struct {
 	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
 	LogBackupAnotherRegionRegion pulumi.StringPtrInput
 	// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+	//
 	// > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 	LogBackupAnotherRegionRetentionPeriod pulumi.IntPtrInput
 	// The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
@@ -450,6 +465,7 @@ func (o BackupPolicyOutput) DataLevel1BackupFrequency() pulumi.StringOutput {
 }
 
 // PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+//
 // > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 func (o BackupPolicyOutput) DataLevel1BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.DataLevel1BackupPeriods }).(pulumi.StringArrayOutput)
@@ -476,6 +492,7 @@ func (o BackupPolicyOutput) DataLevel2BackupAnotherRegionRetentionPeriod() pulum
 }
 
 // PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+//
 // > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
 func (o BackupPolicyOutput) DataLevel2BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringArrayOutput { return v.DataLevel2BackupPeriods }).(pulumi.StringArrayOutput)
@@ -502,6 +519,7 @@ func (o BackupPolicyOutput) LogBackupAnotherRegionRegion() pulumi.StringPtrOutpu
 }
 
 // The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+//
 // > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
 func (o BackupPolicyOutput) LogBackupAnotherRegionRetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.IntPtrOutput { return v.LogBackupAnotherRegionRetentionPeriod }).(pulumi.IntPtrOutput)

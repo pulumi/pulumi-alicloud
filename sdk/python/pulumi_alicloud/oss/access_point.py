@@ -448,7 +448,7 @@ class AccessPoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="publicAccessBlockConfiguration")
-    def public_access_block_configuration(self) -> pulumi.Output[Optional['outputs.AccessPointPublicAccessBlockConfiguration']]:
+    def public_access_block_configuration(self) -> pulumi.Output['outputs.AccessPointPublicAccessBlockConfiguration']:
         """
         Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
         """

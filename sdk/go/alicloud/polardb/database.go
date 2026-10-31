@@ -103,9 +103,11 @@ type Database struct {
 	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName pulumi.StringOutput `pulumi:"characterSetName"`
 	// The language that defines the collation rules in the database.
+	//
 	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Collate pulumi.StringPtrOutput `pulumi:"collate"`
 	// The language that indicates the character type of the database.
+	//
 	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Ctype pulumi.StringPtrOutput `pulumi:"ctype"`
 	// The ID of cluster.
@@ -161,9 +163,11 @@ type databaseState struct {
 	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName *string `pulumi:"characterSetName"`
 	// The language that defines the collation rules in the database.
+	//
 	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Collate *string `pulumi:"collate"`
 	// The language that indicates the character type of the database.
+	//
 	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Ctype *string `pulumi:"ctype"`
 	// The ID of cluster.
@@ -184,9 +188,11 @@ type DatabaseState struct {
 	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName pulumi.StringPtrInput
 	// The language that defines the collation rules in the database.
+	//
 	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Collate pulumi.StringPtrInput
 	// The language that indicates the character type of the database.
+	//
 	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Ctype pulumi.StringPtrInput
 	// The ID of cluster.
@@ -211,9 +217,11 @@ type databaseArgs struct {
 	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName *string `pulumi:"characterSetName"`
 	// The language that defines the collation rules in the database.
+	//
 	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Collate *string `pulumi:"collate"`
 	// The language that indicates the character type of the database.
+	//
 	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Ctype *string `pulumi:"ctype"`
 	// The ID of cluster.
@@ -233,9 +241,11 @@ type DatabaseArgs struct {
 	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName pulumi.StringPtrInput
 	// The language that defines the collation rules in the database.
+	//
 	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Collate pulumi.StringPtrInput
 	// The language that indicates the character type of the database.
+	//
 	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 	Ctype pulumi.StringPtrInput
 	// The ID of cluster.
@@ -346,12 +356,14 @@ func (o DatabaseOutput) CharacterSetName() pulumi.StringOutput {
 }
 
 // The language that defines the collation rules in the database.
+//
 // > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 func (o DatabaseOutput) Collate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Collate }).(pulumi.StringPtrOutput)
 }
 
 // The language that indicates the character type of the database.
+//
 // > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
 func (o DatabaseOutput) Ctype() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Ctype }).(pulumi.StringPtrOutput)

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Microservice Engine (MSE) Gateway resource.
  *
- * For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
+ * For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-addgateway).
  *
  * > **NOTE:** Available since v1.157.0.
  *
@@ -117,6 +117,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly replica: pulumi.Output<number>;
     /**
+     * The ID of the resource group which the gateway belongs.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
      * A list of gateway Slb.
      */
     declare public /*out*/ readonly slbLists: pulumi.Output<outputs.mse.GatewaySlbList[]>;
@@ -132,6 +136,10 @@ export class Gateway extends pulumi.CustomResource {
      * The status of the gateway.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the vpc.
      */
@@ -160,10 +168,12 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["gatewayName"] = state?.gatewayName;
             resourceInputs["internetSlbSpec"] = state?.internetSlbSpec;
             resourceInputs["replica"] = state?.replica;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["slbLists"] = state?.slbLists;
             resourceInputs["slbSpec"] = state?.slbSpec;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
@@ -186,8 +196,10 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["gatewayName"] = args?.gatewayName;
             resourceInputs["internetSlbSpec"] = args?.internetSlbSpec;
             resourceInputs["replica"] = args?.replica;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["slbSpec"] = args?.slbSpec;
             resourceInputs["spec"] = args?.spec;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["slbLists"] = undefined /*out*/;
@@ -227,6 +239,10 @@ export interface GatewayState {
      */
     replica?: pulumi.Input<number | undefined>;
     /**
+     * The ID of the resource group which the gateway belongs.
+     */
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
      * A list of gateway Slb.
      */
     slbLists?: pulumi.Input<pulumi.Input<inputs.mse.GatewaySlbList>[] | undefined>;
@@ -242,6 +258,10 @@ export interface GatewayState {
      * The status of the gateway.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the vpc.
      */
@@ -281,6 +301,10 @@ export interface GatewayArgs {
      */
     replica: pulumi.Input<number>;
     /**
+     * The ID of the resource group which the gateway belongs.
+     */
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
      * Private network SLB specifications.
      */
     slbSpec?: pulumi.Input<string | undefined>;
@@ -288,6 +312,10 @@ export interface GatewayArgs {
      * Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
      */
     spec: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the vpc.
      */

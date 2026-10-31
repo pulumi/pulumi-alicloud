@@ -177,6 +177,7 @@ type User struct {
 	// * Ram: Ram User
 	// * AD: AD-authenticated User
 	// * LDAP: LDAP-authenticated User
+	//
 	// > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
 	Source pulumi.StringOutput `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
@@ -275,6 +276,7 @@ type userState struct {
 	// * Ram: Ram User
 	// * AD: AD-authenticated User
 	// * LDAP: LDAP-authenticated User
+	//
 	// > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
 	Source *string `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
@@ -328,6 +330,7 @@ type UserState struct {
 	// * Ram: Ram User
 	// * AD: AD-authenticated User
 	// * LDAP: LDAP-authenticated User
+	//
 	// > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
 	Source pulumi.StringPtrInput
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
@@ -385,6 +388,7 @@ type userArgs struct {
 	// * Ram: Ram User
 	// * AD: AD-authenticated User
 	// * LDAP: LDAP-authenticated User
+	//
 	// > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
 	Source string `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
@@ -437,6 +441,7 @@ type UserArgs struct {
 	// * Ram: Ram User
 	// * AD: AD-authenticated User
 	// * LDAP: LDAP-authenticated User
+	//
 	// > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
 	Source pulumi.StringInput
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
@@ -595,6 +600,7 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 // * Ram: Ram User
 // * AD: AD-authenticated User
 // * LDAP: LDAP-authenticated User
+//
 // > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
 func (o UserOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)

@@ -97,6 +97,7 @@ class SslCertificatesServicePcaCertArgs:
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
+               
                > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
@@ -415,6 +416,7 @@ class SslCertificatesServicePcaCertArgs:
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
+
         > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         """
         return pulumi.get(self, "status")
@@ -543,6 +545,7 @@ class _SslCertificatesServicePcaCertState:
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
+               
                > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
@@ -862,6 +865,7 @@ class _SslCertificatesServicePcaCertState:
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
+
         > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         """
         return pulumi.get(self, "status")
@@ -1061,6 +1065,7 @@ class SslCertificatesServicePcaCert(pulumi.CustomResource):
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
+               
                > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
@@ -1308,6 +1313,7 @@ class SslCertificatesServicePcaCert(pulumi.CustomResource):
                The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] status: The status of the certificate. Valid values:
                - `REVOKE`: indicates that the certificate has been revoked.
+               
                > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Information about the queried instances and their associated tags.
         :param pulumi.Input[_builtins.int] upload_flag: Indicates whether the certificate has been uploaded to the SSL certificate management platform.
@@ -1533,6 +1539,7 @@ class SslCertificatesServicePcaCert(pulumi.CustomResource):
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
+
         > **NOTE:** If you want to destroy `sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
         """
         return pulumi.get(self, "status")

@@ -188,6 +188,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * 
      * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
      * 
      */
@@ -196,6 +197,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+     * 
      * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
      * 
      */
@@ -606,6 +608,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param maxBodySize The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * 
          * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
          * 
          * @return builder
@@ -618,6 +621,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param maxBodySize The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+         * 
          * &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
          * 
          * @return builder

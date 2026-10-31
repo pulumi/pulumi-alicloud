@@ -288,6 +288,18 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> BusinessInfo { get; private set; } = null!;
 
         /// <summary>
+        /// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Output("caCertCommonName")]
+        public Output<string> CaCertCommonName { get; private set; } = null!;
+
+        /// <summary>
+        /// The download URL of the CA certificate. This attribute is populated when `SslEnable` is set to `Enable`.
+        /// </summary>
+        [Output("caCertDownloadUrl")]
+        public Output<string> CaCertDownloadUrl { get; private set; } = null!;
+
+        /// <summary>
         /// The storage capacity of the KVStore DBInstance. Unit: MB.
         /// </summary>
         [Output("capacity")]
@@ -307,14 +319,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -411,6 +415,20 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("globalInstanceId")]
         public Output<string?> GlobalInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
+        /// </summary>
+        [Output("globalSecurityGroupLists")]
+        public Output<ImmutableArray<string>> GlobalSecurityGroupLists { get; private set; } = null!;
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
@@ -573,6 +591,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Output("secondaryZoneId")]
@@ -610,6 +629,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// 
         /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Output("slaveReadOnlyCount")]
@@ -617,6 +637,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// 
         /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         /// </summary>
         [Output("slaveReplicaCount")]
@@ -634,6 +655,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("sslEnable")]
         public Output<string> SslEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Output("sslExpiredTime")]
+        public Output<string> SslExpiredTime { get; private set; } = null!;
 
         /// <summary>
         /// The status of KVStore DBInstance.
@@ -888,6 +915,26 @@ namespace Pulumi.AliCloud.KVStore
         [Input("globalInstanceId")]
         public Input<string>? GlobalInstanceId { get; set; }
 
+        [Input("globalSecurityGroupLists")]
+        private InputList<string>? _globalSecurityGroupLists;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
+        /// </summary>
+        public InputList<string> GlobalSecurityGroupLists
+        {
+            get => _globalSecurityGroupLists ?? (_globalSecurityGroupLists = new InputList<string>());
+            set => _globalSecurityGroupLists = value;
+        }
+
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
         /// </summary>
@@ -1066,6 +1113,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Input("secondaryZoneId")]
@@ -1109,6 +1157,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// 
         /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Input("slaveReadOnlyCount")]
@@ -1116,6 +1165,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// 
         /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         /// </summary>
         [Input("slaveReplicaCount")]
@@ -1241,6 +1291,18 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BusinessInfo { get; set; }
 
         /// <summary>
+        /// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Input("caCertCommonName")]
+        public Input<string>? CaCertCommonName { get; set; }
+
+        /// <summary>
+        /// The download URL of the CA certificate. This attribute is populated when `SslEnable` is set to `Enable`.
+        /// </summary>
+        [Input("caCertDownloadUrl")]
+        public Input<string>? CaCertDownloadUrl { get; set; }
+
+        /// <summary>
         /// The storage capacity of the KVStore DBInstance. Unit: MB.
         /// </summary>
         [Input("capacity")]
@@ -1266,14 +1328,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -1370,6 +1424,26 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("globalInstanceId")]
         public Input<string>? GlobalInstanceId { get; set; }
+
+        [Input("globalSecurityGroupLists")]
+        private InputList<string>? _globalSecurityGroupLists;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
+        /// </summary>
+        public InputList<string> GlobalSecurityGroupLists
+        {
+            get => _globalSecurityGroupLists ?? (_globalSecurityGroupLists = new InputList<string>());
+            set => _globalSecurityGroupLists = value;
+        }
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
@@ -1555,6 +1629,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Input("secondaryZoneId")]
@@ -1598,6 +1673,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// 
         /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Input("slaveReadOnlyCount")]
@@ -1605,6 +1681,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// 
         /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         /// </summary>
         [Input("slaveReplicaCount")]
@@ -1622,6 +1699,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("sslEnable")]
         public Input<string>? SslEnable { get; set; }
+
+        /// <summary>
+        /// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Input("sslExpiredTime")]
+        public Input<string>? SslExpiredTime { get; set; }
 
         /// <summary>
         /// The status of KVStore DBInstance.

@@ -233,6 +233,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
     }
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * 
      * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      * 
      */
@@ -241,6 +242,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * 
      * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      * 
      */

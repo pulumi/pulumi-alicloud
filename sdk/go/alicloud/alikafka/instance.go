@@ -137,6 +137,7 @@ type Instance struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The configurations of Confluent. See `confluentConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
 	ConfluentConfig InstanceConfluentConfigOutput `pulumi:"confluentConfig"`
 	// The number of partitions in a topic that is automatically created.
@@ -144,6 +145,7 @@ type Instance struct {
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	DeployType pulumi.IntOutput `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize pulumi.IntPtrOutput `pulumi:"diskSize"`
 	// The disk type of the instance. Valid values:
@@ -195,6 +197,7 @@ type Instance struct {
 	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
 	ServerlessConfig InstanceServerlessConfigOutput `pulumi:"serverlessConfig"`
 	// The version of the Instance. Valid values:
@@ -235,6 +238,7 @@ type Instance struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -277,6 +281,7 @@ type instanceState struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config *string `pulumi:"config"`
 	// The configurations of Confluent. See `confluentConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
 	ConfluentConfig *InstanceConfluentConfig `pulumi:"confluentConfig"`
 	// The number of partitions in a topic that is automatically created.
@@ -284,6 +289,7 @@ type instanceState struct {
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	DeployType *int `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize *int `pulumi:"diskSize"`
 	// The disk type of the instance. Valid values:
@@ -335,6 +341,7 @@ type instanceState struct {
 	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
 	ServerlessConfig *InstanceServerlessConfig `pulumi:"serverlessConfig"`
 	// The version of the Instance. Valid values:
@@ -375,6 +382,7 @@ type instanceState struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -385,6 +393,7 @@ type InstanceState struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config pulumi.StringPtrInput
 	// The configurations of Confluent. See `confluentConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
 	ConfluentConfig InstanceConfluentConfigPtrInput
 	// The number of partitions in a topic that is automatically created.
@@ -392,6 +401,7 @@ type InstanceState struct {
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	DeployType pulumi.IntPtrInput
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize pulumi.IntPtrInput
 	// The disk type of the instance. Valid values:
@@ -443,6 +453,7 @@ type InstanceState struct {
 	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones pulumi.StringArrayInput
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
 	ServerlessConfig InstanceServerlessConfigPtrInput
 	// The version of the Instance. Valid values:
@@ -483,6 +494,7 @@ type InstanceState struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
 	// The IDs of the vSwitches with which the instance is associated.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -497,6 +509,7 @@ type instanceArgs struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config *string `pulumi:"config"`
 	// The configurations of Confluent. See `confluentConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
 	ConfluentConfig *InstanceConfluentConfig `pulumi:"confluentConfig"`
 	// The number of partitions in a topic that is automatically created.
@@ -504,6 +517,7 @@ type instanceArgs struct {
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	DeployType int `pulumi:"deployType"`
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize *int `pulumi:"diskSize"`
 	// The disk type of the instance. Valid values:
@@ -539,6 +553,7 @@ type instanceArgs struct {
 	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
 	ServerlessConfig *InstanceServerlessConfig `pulumi:"serverlessConfig"`
 	// The version of the Instance. Valid values:
@@ -565,6 +580,7 @@ type instanceArgs struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -576,6 +592,7 @@ type InstanceArgs struct {
 	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config pulumi.StringPtrInput
 	// The configurations of Confluent. See `confluentConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
 	ConfluentConfig InstanceConfluentConfigPtrInput
 	// The number of partitions in a topic that is automatically created.
@@ -583,6 +600,7 @@ type InstanceArgs struct {
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	DeployType pulumi.IntInput
 	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 	DiskSize pulumi.IntPtrInput
 	// The disk type of the instance. Valid values:
@@ -618,6 +636,7 @@ type InstanceArgs struct {
 	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones pulumi.StringArrayInput
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
 	ServerlessConfig InstanceServerlessConfigPtrInput
 	// The version of the Instance. Valid values:
@@ -644,6 +663,7 @@ type InstanceArgs struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
 	// The IDs of the vSwitches with which the instance is associated.
+	//
 	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -743,6 +763,7 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 }
 
 // The configurations of Confluent. See `confluentConfig` below.
+//
 // > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
 func (o InstanceOutput) ConfluentConfig() InstanceConfluentConfigOutput {
 	return o.ApplyT(func(v *Instance) InstanceConfluentConfigOutput { return v.ConfluentConfig }).(InstanceConfluentConfigOutput)
@@ -759,6 +780,7 @@ func (o InstanceOutput) DeployType() pulumi.IntOutput {
 }
 
 // The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+//
 // > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
 func (o InstanceOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
@@ -882,6 +904,7 @@ func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 }
 
 // The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
+//
 // > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
 func (o InstanceOutput) ServerlessConfig() InstanceServerlessConfigOutput {
 	return o.ApplyT(func(v *Instance) InstanceServerlessConfigOutput { return v.ServerlessConfig }).(InstanceServerlessConfigOutput)
@@ -964,6 +987,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 }
 
 // The IDs of the vSwitches with which the instance is associated.
+//
 // > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 func (o InstanceOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)

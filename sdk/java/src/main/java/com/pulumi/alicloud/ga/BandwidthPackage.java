@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.112.0.
  * 
+ * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -150,6 +152,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     }
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     * 
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
@@ -158,6 +161,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     * 
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */

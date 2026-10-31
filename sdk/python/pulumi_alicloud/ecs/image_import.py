@@ -42,6 +42,7 @@ class ImageImportArgs:
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         :param pulumi.Input[_builtins.str] platform: The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               
                > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
@@ -163,6 +164,7 @@ class ImageImportArgs:
     def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+
         > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         return pulumi.get(self, "platform")
@@ -196,6 +198,7 @@ class _ImageImportState:
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         :param pulumi.Input[_builtins.str] platform: The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               
                > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         if architecture is not None:
@@ -318,6 +321,7 @@ class _ImageImportState:
     def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+
         > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         return pulumi.get(self, "platform")
@@ -418,6 +422,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         :param pulumi.Input[_builtins.str] platform: The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               
                > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         ...
@@ -569,6 +574,7 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         :param pulumi.Input[_builtins.str] os_type: The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         :param pulumi.Input[_builtins.str] platform: The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               
                > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -655,6 +661,7 @@ class ImageImport(pulumi.CustomResource):
     def platform(self) -> pulumi.Output[_builtins.str]:
         """
         The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+
         > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         """
         return pulumi.get(self, "platform")

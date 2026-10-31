@@ -172,6 +172,7 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     *
      * > **NOTE:** From version 1.240.0, `syncScope` can be set.
      */
     declare public readonly syncScope: pulumi.Output<string>;
@@ -333,6 +334,7 @@ export interface RegistryEnterpriseSyncRuleState {
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     *
      * > **NOTE:** From version 1.240.0, `syncScope` can be set.
      */
     syncScope?: pulumi.Input<string | undefined>;
@@ -398,6 +400,7 @@ export interface RegistryEnterpriseSyncRuleArgs {
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
+     *
      * > **NOTE:** From version 1.240.0, `syncScope` can be set.
      */
     syncScope?: pulumi.Input<string | undefined>;

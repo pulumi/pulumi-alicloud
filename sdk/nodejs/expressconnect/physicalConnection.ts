@@ -132,11 +132,13 @@ export class PhysicalConnection extends pulumi.CustomResource {
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     *
      * > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      */
     declare public readonly portType: pulumi.Output<string | undefined>;
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     *
      * > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
@@ -265,11 +267,13 @@ export interface PhysicalConnectionState {
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     *
      * > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      */
     portType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     *
      * > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
@@ -340,11 +344,13 @@ export interface PhysicalConnectionArgs {
      * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
      * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     *
      * > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      */
     portType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     *
      * > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      */
     pricingCycle?: pulumi.Input<string | undefined>;

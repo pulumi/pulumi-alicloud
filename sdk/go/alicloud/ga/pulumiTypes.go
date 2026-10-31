@@ -374,6 +374,7 @@ type EndpointGroupEndpointConfiguration struct {
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint string `pulumi:"endpoint"`
 	// The private IP address of the ENI.
+	//
 	// > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
 	SubAddress *string `pulumi:"subAddress"`
 	// The type of Endpoint N in the endpoint group. Valid values:
@@ -393,6 +394,7 @@ type EndpointGroupEndpointConfiguration struct {
 	// A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+	//
 	// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight int `pulumi:"weight"`
 }
@@ -416,6 +418,7 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The private IP address of the ENI.
+	//
 	// > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
 	SubAddress pulumi.StringPtrInput `pulumi:"subAddress"`
 	// The type of Endpoint N in the endpoint group. Valid values:
@@ -435,6 +438,7 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	// A list of vSwitches in the VPC. You can specify a maximum of two vSwitch IDs for an endpoint group of an intelligent routing listener. This parameter is required when the endpoint type is IpTarget. The vSwitch must belong to the VPC specified by the VpcId parameter.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+	//
 	// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
@@ -506,6 +510,7 @@ func (o EndpointGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput
 }
 
 // The private IP address of the ENI.
+//
 // > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
 func (o EndpointGroupEndpointConfigurationOutput) SubAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *string { return v.SubAddress }).(pulumi.StringPtrOutput)
@@ -537,6 +542,7 @@ func (o EndpointGroupEndpointConfigurationOutput) VswitchIds() pulumi.StringArra
 }
 
 // The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+//
 // > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)
@@ -720,6 +726,7 @@ func (o EndpointGroupPortOverridesPtrOutput) ListenerPort() pulumi.IntPtrOutput 
 
 type ForwardingRuleRuleAction struct {
 	// Forwarding configuration. See `forwardGroupConfig` below.
+	//
 	// > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
 	ForwardGroupConfig *ForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
 	// Forwarding priority.
@@ -743,6 +750,7 @@ type ForwardingRuleRuleActionInput interface {
 
 type ForwardingRuleRuleActionArgs struct {
 	// Forwarding configuration. See `forwardGroupConfig` below.
+	//
 	// > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
 	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
 	// Forwarding priority.
@@ -805,6 +813,7 @@ func (o ForwardingRuleRuleActionOutput) ToForwardingRuleRuleActionOutputWithCont
 }
 
 // Forwarding configuration. See `forwardGroupConfig` below.
+//
 // > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
 func (o ForwardingRuleRuleActionOutput) ForwardGroupConfig() ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) *ForwardingRuleRuleActionForwardGroupConfig {
@@ -1085,6 +1094,7 @@ func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) I
 
 type ForwardingRuleRuleCondition struct {
 	// The configuration of the domain name. See `hostConfig` below.
+	//
 	// > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
 	HostConfigs []ForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
 	// The configuration of the path. See `pathConfig` below.
@@ -1108,6 +1118,7 @@ type ForwardingRuleRuleConditionInput interface {
 
 type ForwardingRuleRuleConditionArgs struct {
 	// The configuration of the domain name. See `hostConfig` below.
+	//
 	// > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
 	HostConfigs ForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
 	// The configuration of the path. See `pathConfig` below.
@@ -1170,6 +1181,7 @@ func (o ForwardingRuleRuleConditionOutput) ToForwardingRuleRuleConditionOutputWi
 }
 
 // The configuration of the domain name. See `hostConfig` below.
+//
 // > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
 func (o ForwardingRuleRuleConditionOutput) HostConfigs() ForwardingRuleRuleConditionHostConfigArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) []ForwardingRuleRuleConditionHostConfig { return v.HostConfigs }).(ForwardingRuleRuleConditionHostConfigArrayOutput)

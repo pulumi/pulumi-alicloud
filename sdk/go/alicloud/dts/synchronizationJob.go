@@ -301,6 +301,8 @@ type SynchronizationJob struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId pulumi.StringPtrOutput `pulumi:"destPrimaryVswitchId"`
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"destSecondaryVswitchId"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"destinationEndpointDatabaseName"`
@@ -332,12 +334,6 @@ type SynchronizationJob struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrOutput `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	DtsBisLabel pulumi.StringPtrOutput `pulumi:"dtsBisLabel"`
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringOutput `pulumi:"dtsInstanceId"`
@@ -347,7 +343,9 @@ type SynchronizationJob struct {
 	ErrorNotice pulumi.BoolPtrOutput `pulumi:"errorNotice"`
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
 	ErrorPhone pulumi.StringPtrOutput `pulumi:"errorPhone"`
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+	//
+	// > **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrOutput `pulumi:"jobParameters"`
@@ -391,6 +389,8 @@ type SynchronizationJob struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolOutput `pulumi:"structureInitialization"`
@@ -479,6 +479,8 @@ type synchronizationJobState struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
@@ -510,12 +512,6 @@ type synchronizationJobState struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	DtsBisLabel *string `pulumi:"dtsBisLabel"`
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId *string `pulumi:"dtsInstanceId"`
@@ -525,7 +521,9 @@ type synchronizationJobState struct {
 	ErrorNotice *bool `pulumi:"errorNotice"`
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
 	ErrorPhone *string `pulumi:"errorPhone"`
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+	//
+	// > **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters *string `pulumi:"jobParameters"`
@@ -569,6 +567,8 @@ type synchronizationJobState struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization *bool `pulumi:"structureInitialization"`
@@ -598,6 +598,8 @@ type SynchronizationJobState struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId pulumi.StringPtrInput
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
@@ -629,12 +631,6 @@ type SynchronizationJobState struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	DtsBisLabel pulumi.StringPtrInput
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringPtrInput
@@ -644,7 +640,9 @@ type SynchronizationJobState struct {
 	ErrorNotice pulumi.BoolPtrInput
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
 	ErrorPhone pulumi.StringPtrInput
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+	//
+	// > **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
 	InstanceClass pulumi.StringPtrInput
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrInput
@@ -688,6 +686,8 @@ type SynchronizationJobState struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolPtrInput
@@ -721,6 +721,8 @@ type synchronizationJobArgs struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
@@ -752,12 +754,6 @@ type synchronizationJobArgs struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	DtsBisLabel *string `pulumi:"dtsBisLabel"`
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId string `pulumi:"dtsInstanceId"`
@@ -767,7 +763,9 @@ type synchronizationJobArgs struct {
 	ErrorNotice *bool `pulumi:"errorNotice"`
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
 	ErrorPhone *string `pulumi:"errorPhone"`
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+	//
+	// > **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters *string `pulumi:"jobParameters"`
@@ -811,6 +809,8 @@ type synchronizationJobArgs struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization bool `pulumi:"structureInitialization"`
@@ -841,6 +841,8 @@ type SynchronizationJobArgs struct {
 	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
 	DestPrimaryVswitchId pulumi.StringPtrInput
 	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
@@ -872,12 +874,6 @@ type SynchronizationJobArgs struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
-	//
-	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-	//
-	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-	//
-	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	DtsBisLabel pulumi.StringPtrInput
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringInput
@@ -887,7 +883,9 @@ type SynchronizationJobArgs struct {
 	ErrorNotice pulumi.BoolPtrInput
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
 	ErrorPhone pulumi.StringPtrInput
-	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+	// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+	//
+	// > **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
 	InstanceClass pulumi.StringPtrInput
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrInput
@@ -931,6 +929,8 @@ type SynchronizationJobArgs struct {
 	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
 	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolInput
@@ -1076,6 +1076,8 @@ func (o SynchronizationJobOutput) DestPrimaryVswitchId() pulumi.StringPtrOutput 
 }
 
 // The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+//
+// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 func (o SynchronizationJobOutput) DestSecondaryVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestSecondaryVswitchId }).(pulumi.StringPtrOutput)
 }
@@ -1149,12 +1151,6 @@ func (o SynchronizationJobOutput) DestinationEndpointUserName() pulumi.StringPtr
 }
 
 // The environment label of the DTS instance. The value is: **normal**, **online**.
-//
-// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-//
-// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-//
-// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 func (o SynchronizationJobOutput) DtsBisLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DtsBisLabel }).(pulumi.StringPtrOutput)
 }
@@ -1179,7 +1175,9 @@ func (o SynchronizationJobOutput) ErrorPhone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.ErrorPhone }).(pulumi.StringPtrOutput)
 }
 
-// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+// The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+//
+// > **NOTE:** `instanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
 func (o SynchronizationJobOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
 }
@@ -1280,6 +1278,8 @@ func (o SynchronizationJobOutput) SrcSecondaryVswitchId() pulumi.StringPtrOutput
 }
 
 // The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+//
+// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 func (o SynchronizationJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

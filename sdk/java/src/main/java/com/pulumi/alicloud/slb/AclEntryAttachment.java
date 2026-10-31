@@ -6,22 +6,84 @@ package com.pulumi.alicloud.slb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.slb.AclEntryAttachmentArgs;
 import com.pulumi.alicloud.slb.inputs.AclEntryAttachmentState;
+import com.pulumi.alicloud.slb.outputs.AclEntryAttachmentEntry;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * &gt; **NOTE:** Available since v1.162.0.
  * 
+ * &gt; **NOTE:** The `entries` attribute is available since v2.1.0. In batch mode, the attachment takes ownership of all entries of the acl: entries added out of band or by other `alicloud.slb.AclEntryAttachment` resources attached to the same acl are removed on the next apply. Do not manage the entries of the same acl from multiple resources.
+ * 
  * &gt; **NOTE:** The maximum number of entries per acl is 300.
+ * 
+ * &gt; **NOTE:** Exactly one of `entry` and `entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
  * 
  * For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
  * 
  * ## Example Usage
+ * 
+ * ### Batch mode
+ * 
+ * The `entries` attribute manages all entries of the acl in one resource. The entries are added and removed in batches of at most `50` entries per API call.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.slb.Acl;
+ * import com.pulumi.alicloud.slb.AclArgs;
+ * import com.pulumi.alicloud.slb.AclEntryAttachment;
+ * import com.pulumi.alicloud.slb.AclEntryAttachmentArgs;
+ * import com.pulumi.alicloud.slb.inputs.AclEntryAttachmentEntryArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var attachment = new Acl("attachment", AclArgs.builder()
+ *             .name("forSlbAclEntryAttachment")
+ *             .ipVersion("ipv4")
+ *             .build());
+ * 
+ *         var attachmentAclEntryAttachment = new AclEntryAttachment("attachmentAclEntryAttachment", AclEntryAttachmentArgs.builder()
+ *             .aclId(attachment.id())
+ *             .entries(            
+ *                 AclEntryAttachmentEntryArgs.builder()
+ *                     .entry("168.10.10.0/24")
+ *                     .comment("first")
+ *                     .build(),
+ *                 AclEntryAttachmentEntryArgs.builder()
+ *                     .entry("168.10.20.0/24")
+ *                     .comment("second")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Single entry
+ * 
+ * `entry` is deprecated, please use `entries` instead.
  * 
  * <pre>
  * {@code
@@ -67,10 +129,16 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Acl entry attachment can be imported using the id, which consists of aclId and entry, e.g.
+ * Acl entry attachment can be imported using the id. For a single entry the id consists of aclId and entry, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;:&lt;entry&gt;
+ * ```
+ * 
+ * When `entries` is used the id is the acl id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example &lt;acl_id&gt;
  * ```
  * 
  */
@@ -91,32 +159,50 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
         return this.aclId;
     }
     /**
-     * The comment of the entry.
+     * The comment of the entry. Only valid when `entry` is set.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The comment of the entry.
+     * @return The comment of the entry. Only valid when `entry` is set.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The CIDR blocks.
+     * One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      * 
      */
-    @Export(name="entry", refs={String.class}, tree="[0]")
-    private Output<String> entry;
+    @Export(name="entries", refs={List.class,AclEntryAttachmentEntry.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AclEntryAttachmentEntry>> entries;
 
     /**
-     * @return The CIDR blocks.
+     * @return One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
      * 
      */
-    public Output<String> entry() {
-        return this.entry;
+    public Output<Optional<List<AclEntryAttachmentEntry>>> entries() {
+        return Codegen.optional(this.entries);
+    }
+    /**
+     * The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+     * 
+     * @deprecated
+     * Field &#39;entry&#39; has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+     * 
+     */
+    @Deprecated /* Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'. */
+    @Export(name="entry", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> entry;
+
+    /**
+     * @return The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+     * 
+     */
+    public Output<Optional<String>> entry() {
+        return Codegen.optional(this.entry);
     }
 
     /**

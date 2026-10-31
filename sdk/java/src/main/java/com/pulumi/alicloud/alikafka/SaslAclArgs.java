@@ -51,6 +51,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * 
      * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      * 
      */
@@ -65,6 +66,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * 
      * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      * 
      */
@@ -76,6 +78,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     * 
      * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      * 
      */
@@ -86,6 +89,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
      * @return Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     * 
      * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      * 
      */
@@ -156,6 +160,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The host of the acl.
+     * 
      * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
@@ -164,6 +169,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The host of the acl.
+     * 
      * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
@@ -274,6 +280,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
          * - `IdempotentWrite`: idempotent write to Cluster
          * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
          * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+         * 
          * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
          * 
          * @return builder
@@ -292,6 +299,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
          * - `IdempotentWrite`: idempotent write to Cluster
          * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
          * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+         * 
          * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
          * 
          * @return builder
@@ -305,6 +313,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
          * @param aclPermissionType Authorization method. Value:
          * - `DENY`: deny.
          * - `ALLOW`: allow.
+         * 
          * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
          * 
          * @return builder
@@ -319,6 +328,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
          * @param aclPermissionType Authorization method. Value:
          * - `DENY`: deny.
          * - `ALLOW`: allow.
+         * 
          * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
          * 
          * @return builder
@@ -409,6 +419,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host of the acl.
+         * 
          * &gt; **NOTE:** From version 1.270.0, `host` can be set.
          * 
          * @return builder
@@ -421,6 +432,7 @@ public final class SaslAclArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host of the acl.
+         * 
          * &gt; **NOTE:** From version 1.270.0, `host` can be set.
          * 
          * @return builder

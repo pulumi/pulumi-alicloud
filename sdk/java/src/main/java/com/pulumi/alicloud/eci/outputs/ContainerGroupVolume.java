@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class ContainerGroupVolume {
     /**
      * @return The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+     * 
      * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */
@@ -74,6 +75,7 @@ public final class ContainerGroupVolume {
     private ContainerGroupVolume() {}
     /**
      * @return The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+     * 
      * &gt; **NOTE:** Every volumes mounted must have `name` and `type` attributes.
      * 
      */

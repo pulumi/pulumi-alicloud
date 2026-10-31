@@ -14,11 +14,64 @@ import (
 
 // > **NOTE:** Available since v1.162.0.
 //
+// > **NOTE:** The `entries` attribute is available since v2.1.0. In batch mode, the attachment takes ownership of all entries of the acl: entries added out of band or by other `slb.AclEntryAttachment` resources attached to the same acl are removed on the next apply. Do not manage the entries of the same acl from multiple resources.
+//
 // > **NOTE:** The maximum number of entries per acl is 300.
+//
+// > **NOTE:** Exactly one of `entry` and `entries` must be specified. Switching between them replaces the resource. At least one entry block is required; to remove all the entries, remove the resource.
 //
 // For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/doc-detail/70023.html).
 //
 // ## Example Usage
+//
+// ### Batch mode
+//
+// The `entries` attribute manages all entries of the acl in one resource. The entries are added and removed in batches of at most `50` entries per API call.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			attachment, err := slb.NewAcl(ctx, "attachment", &slb.AclArgs{
+//				Name:      pulumi.String("forSlbAclEntryAttachment"),
+//				IpVersion: pulumi.String("ipv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewAclEntryAttachment(ctx, "attachment", &slb.AclEntryAttachmentArgs{
+//				AclId: attachment.ID(),
+//				Entries: slb.AclEntryAttachmentEntryArray{
+//					&slb.AclEntryAttachmentEntryArgs{
+//						Entry:   pulumi.String("168.10.10.0/24"),
+//						Comment: pulumi.String("first"),
+//					},
+//					&slb.AclEntryAttachmentEntryArgs{
+//						Entry:   pulumi.String("168.10.20.0/24"),
+//						Comment: pulumi.String("second"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Single entry
+//
+// `entry` is deprecated, please use `entries` instead.
 //
 // ```go
 // package main
@@ -57,20 +110,30 @@ import (
 //
 // ## Import
 //
-// Acl entry attachment can be imported using the id, which consists of aclId and entry, e.g.
+// Acl entry attachment can be imported using the id. For a single entry the id consists of aclId and entry, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>:<entry>
+// ```
+//
+// When `entries` is used the id is the acl id, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:slb/aclEntryAttachment:AclEntryAttachment example <acl_id>
 // ```
 type AclEntryAttachment struct {
 	pulumi.CustomResourceState
 
 	// The ID of the Acl.
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// The comment of the entry.
+	// The comment of the entry. Only valid when `entry` is set.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The CIDR blocks.
-	Entry pulumi.StringOutput `pulumi:"entry"`
+	// One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+	Entries AclEntryAttachmentEntryArrayOutput `pulumi:"entries"`
+	// The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+	//
+	// Deprecated: Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'.
+	Entry pulumi.StringPtrOutput `pulumi:"entry"`
 }
 
 // NewAclEntryAttachment registers a new resource with the given unique name, arguments, and options.
@@ -82,9 +145,6 @@ func NewAclEntryAttachment(ctx *pulumi.Context,
 
 	if args.AclId == nil {
 		return nil, errors.New("invalid value for required argument 'AclId'")
-	}
-	if args.Entry == nil {
-		return nil, errors.New("invalid value for required argument 'Entry'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclEntryAttachment
@@ -111,18 +171,26 @@ func GetAclEntryAttachment(ctx *pulumi.Context,
 type aclEntryAttachmentState struct {
 	// The ID of the Acl.
 	AclId *string `pulumi:"aclId"`
-	// The comment of the entry.
+	// The comment of the entry. Only valid when `entry` is set.
 	Comment *string `pulumi:"comment"`
-	// The CIDR blocks.
+	// One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+	Entries []AclEntryAttachmentEntry `pulumi:"entries"`
+	// The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+	//
+	// Deprecated: Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'.
 	Entry *string `pulumi:"entry"`
 }
 
 type AclEntryAttachmentState struct {
 	// The ID of the Acl.
 	AclId pulumi.StringPtrInput
-	// The comment of the entry.
+	// The comment of the entry. Only valid when `entry` is set.
 	Comment pulumi.StringPtrInput
-	// The CIDR blocks.
+	// One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+	Entries AclEntryAttachmentEntryArrayInput
+	// The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+	//
+	// Deprecated: Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'.
 	Entry pulumi.StringPtrInput
 }
 
@@ -133,20 +201,28 @@ func (AclEntryAttachmentState) ElementType() reflect.Type {
 type aclEntryAttachmentArgs struct {
 	// The ID of the Acl.
 	AclId string `pulumi:"aclId"`
-	// The comment of the entry.
+	// The comment of the entry. Only valid when `entry` is set.
 	Comment *string `pulumi:"comment"`
-	// The CIDR blocks.
-	Entry string `pulumi:"entry"`
+	// One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+	Entries []AclEntryAttachmentEntry `pulumi:"entries"`
+	// The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+	//
+	// Deprecated: Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'.
+	Entry *string `pulumi:"entry"`
 }
 
 // The set of arguments for constructing a AclEntryAttachment resource.
 type AclEntryAttachmentArgs struct {
 	// The ID of the Acl.
 	AclId pulumi.StringInput
-	// The comment of the entry.
+	// The comment of the entry. Only valid when `entry` is set.
 	Comment pulumi.StringPtrInput
-	// The CIDR blocks.
-	Entry pulumi.StringInput
+	// One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+	Entries AclEntryAttachmentEntryArrayInput
+	// The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+	//
+	// Deprecated: Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'.
+	Entry pulumi.StringPtrInput
 }
 
 func (AclEntryAttachmentArgs) ElementType() reflect.Type {
@@ -241,14 +317,21 @@ func (o AclEntryAttachmentOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The comment of the entry.
+// The comment of the entry. Only valid when `entry` is set.
 func (o AclEntryAttachmentOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The CIDR blocks.
-func (o AclEntryAttachmentOutput) Entry() pulumi.StringOutput {
-	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringOutput { return v.Entry }).(pulumi.StringOutput)
+// One or more entry blocks. Exactly one of `entry` and `entries` must be specified. The order of the blocks is not significant. See `entries` below for details.
+func (o AclEntryAttachmentOutput) Entries() AclEntryAttachmentEntryArrayOutput {
+	return o.ApplyT(func(v *AclEntryAttachment) AclEntryAttachmentEntryArrayOutput { return v.Entries }).(AclEntryAttachmentEntryArrayOutput)
+}
+
+// The CIDR block of the acl entry. Field `entry` has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field `entries`. Exactly one of `entry` and `entries` must be specified.
+//
+// Deprecated: Field 'entry' has been deprecated from provider version 2.1.0 and it will be removed in the future version. Please use the new field 'entries'.
+func (o AclEntryAttachmentOutput) Entry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringPtrOutput { return v.Entry }).(pulumi.StringPtrOutput)
 }
 
 type AclEntryAttachmentArrayOutput struct{ *pulumi.OutputState }

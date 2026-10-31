@@ -244,6 +244,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      * - perfer
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+     *
      * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     declare public readonly replicationAcl: pulumi.Output<string>;
@@ -319,6 +320,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     *
      * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
     declare public readonly whitelistNetworkType: pulumi.Output<string | undefined>;
@@ -593,6 +595,7 @@ export interface ReadOnlyInstanceState {
      * - perfer
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+     *
      * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     replicationAcl?: pulumi.Input<string | undefined>;
@@ -668,6 +671,7 @@ export interface ReadOnlyInstanceState {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     *
      * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
     whitelistNetworkType?: pulumi.Input<string | undefined>;
@@ -814,6 +818,7 @@ export interface ReadOnlyInstanceArgs {
      * - perfer
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+     *
      * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     replicationAcl?: pulumi.Input<string | undefined>;
@@ -889,6 +894,7 @@ export interface ReadOnlyInstanceArgs {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     *
      * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
     whitelistNetworkType?: pulumi.Input<string | undefined>;

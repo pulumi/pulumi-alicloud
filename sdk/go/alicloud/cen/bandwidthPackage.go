@@ -100,6 +100,7 @@ type BandwidthPackage struct {
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The association status of the bandwidth package.
@@ -172,6 +173,7 @@ type bandwidthPackageState struct {
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
 	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The association status of the bandwidth package.
@@ -212,6 +214,7 @@ type BandwidthPackageState struct {
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
 	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The association status of the bandwidth package.
@@ -254,6 +257,7 @@ type bandwidthPackageArgs struct {
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
 	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 }
@@ -291,6 +295,7 @@ type BandwidthPackageArgs struct {
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
 	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 }
@@ -448,6 +453,7 @@ func (o BandwidthPackageOutput) PaymentType() pulumi.StringOutput {
 }
 
 // The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+//
 // > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o BandwidthPackageOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)

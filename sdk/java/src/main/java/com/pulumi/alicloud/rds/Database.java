@@ -156,6 +156,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the database.
+     * 
      * &gt; **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -169,6 +170,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the database.
+     * 
      * &gt; **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -210,6 +212,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * 
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      * @deprecated
@@ -222,6 +225,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * 
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      */

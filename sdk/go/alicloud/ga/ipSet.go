@@ -97,6 +97,7 @@ type IpSet struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
 	// The bandwidth allocated to the acceleration region.
+	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
 	// The list of accelerated IP addresses in the acceleration region.
@@ -150,6 +151,7 @@ type ipSetState struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// The bandwidth allocated to the acceleration region.
+	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The list of accelerated IP addresses in the acceleration region.
@@ -168,6 +170,7 @@ type IpSetState struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringPtrInput
 	// The bandwidth allocated to the acceleration region.
+	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrInput
 	// The list of accelerated IP addresses in the acceleration region.
@@ -190,6 +193,7 @@ type ipSetArgs struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The bandwidth allocated to the acceleration region.
+	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
@@ -205,6 +209,7 @@ type IpSetArgs struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringInput
 	// The bandwidth allocated to the acceleration region.
+	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrInput
 	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
@@ -311,6 +316,7 @@ func (o IpSetOutput) AcceleratorId() pulumi.StringOutput {
 }
 
 // The bandwidth allocated to the acceleration region.
+//
 // > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 func (o IpSetOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IpSet) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)

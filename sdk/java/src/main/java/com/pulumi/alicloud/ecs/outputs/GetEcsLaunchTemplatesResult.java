@@ -38,7 +38,6 @@ public final class GetEcsLaunchTemplatesResult {
     private @Nullable String templateResourceGroupId;
     /**
      * @return The tags of the launch template.
-     * &gt; **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
      * 
      */
     private @Nullable Map<String,String> templateTags;
@@ -87,7 +86,6 @@ public final class GetEcsLaunchTemplatesResult {
     }
     /**
      * @return The tags of the launch template.
-     * &gt; **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
      * 
      */
     public Map<String,String> templateTags() {

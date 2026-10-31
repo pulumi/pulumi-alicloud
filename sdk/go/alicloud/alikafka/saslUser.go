@@ -130,6 +130,7 @@ type SaslUser struct {
 	// The encryption method. Valid values:
 	// - SCRAM-SHA-512. This is the default value.
 	// - SCRAM-SHA-256
+	//
 	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	Mechanism pulumi.StringOutput `pulumi:"mechanism"`
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -192,6 +193,7 @@ type saslUserState struct {
 	// The encryption method. Valid values:
 	// - SCRAM-SHA-512. This is the default value.
 	// - SCRAM-SHA-256
+	//
 	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	Mechanism *string `pulumi:"mechanism"`
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -212,6 +214,7 @@ type SaslUserState struct {
 	// The encryption method. Valid values:
 	// - SCRAM-SHA-512. This is the default value.
 	// - SCRAM-SHA-256
+	//
 	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	Mechanism pulumi.StringPtrInput
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -236,6 +239,7 @@ type saslUserArgs struct {
 	// The encryption method. Valid values:
 	// - SCRAM-SHA-512. This is the default value.
 	// - SCRAM-SHA-256
+	//
 	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	Mechanism *string `pulumi:"mechanism"`
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -257,6 +261,7 @@ type SaslUserArgs struct {
 	// The encryption method. Valid values:
 	// - SCRAM-SHA-512. This is the default value.
 	// - SCRAM-SHA-256
+	//
 	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
 	Mechanism pulumi.StringPtrInput
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -372,6 +377,7 @@ func (o SaslUserOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 // The encryption method. Valid values:
 // - SCRAM-SHA-512. This is the default value.
 // - SCRAM-SHA-256
+//
 // > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
 func (o SaslUserOutput) Mechanism() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Mechanism }).(pulumi.StringOutput)

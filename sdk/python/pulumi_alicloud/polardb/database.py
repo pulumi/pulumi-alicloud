@@ -34,8 +34,10 @@ class DatabaseArgs:
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               
                > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               
                > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
                - It cannot start with `http://` or `https://`.
@@ -107,6 +109,7 @@ class DatabaseArgs:
     def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that defines the collation rules in the database.
+
         > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         """
         return pulumi.get(self, "collate")
@@ -120,6 +123,7 @@ class DatabaseArgs:
     def ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that indicates the character type of the database.
+
         > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         """
         return pulumi.get(self, "ctype")
@@ -160,8 +164,10 @@ class _DatabaseState:
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               
                > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               
                > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
         :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
@@ -216,6 +222,7 @@ class _DatabaseState:
     def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that defines the collation rules in the database.
+
         > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         """
         return pulumi.get(self, "collate")
@@ -229,6 +236,7 @@ class _DatabaseState:
     def ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that indicates the character type of the database.
+
         > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         """
         return pulumi.get(self, "ctype")
@@ -359,8 +367,10 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               
                > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               
                > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
         :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
@@ -497,8 +507,10 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               
                > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               
                > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
         :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
@@ -542,6 +554,7 @@ class Database(pulumi.CustomResource):
     def collate(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The language that defines the collation rules in the database.
+
         > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         """
         return pulumi.get(self, "collate")
@@ -551,6 +564,7 @@ class Database(pulumi.CustomResource):
     def ctype(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The language that indicates the character type of the database.
+
         > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
         """
         return pulumi.get(self, "ctype")

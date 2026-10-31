@@ -93,6 +93,7 @@ export class IpSet extends pulumi.CustomResource {
     declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The bandwidth allocated to the acceleration region.
+     *
      * > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      */
     declare public readonly bandwidth: pulumi.Output<number | undefined>;
@@ -168,6 +169,7 @@ export interface IpSetState {
     acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth allocated to the acceleration region.
+     *
      * > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      */
     bandwidth?: pulumi.Input<number | undefined>;
@@ -203,6 +205,7 @@ export interface IpSetArgs {
     acceleratorId: pulumi.Input<string>;
     /**
      * The bandwidth allocated to the acceleration region.
+     *
      * > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      */
     bandwidth?: pulumi.Input<number | undefined>;

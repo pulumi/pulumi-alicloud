@@ -58,130 +58,185 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/disk:Disk")]
     public partial class Disk : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The advanced features configured for the disk.
+        /// </summary>
         [Output("advancedFeatures")]
         public Output<string?> AdvancedFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to create the disk in.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.122.0. New field `ZoneId` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`; specifying it for other categories is rejected by the API. When `Category` is changed to `CloudAuto` in the same apply (for example from `CloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `CloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`CloudAuto` disk.
+        /// </summary>
         [Output("burstingEnabled")]
         public Output<bool?> BurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the disk. Valid values are `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdEntry`. Default is `CloudEfficiency`.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `CloudEssd` to `CloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `Update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available since v1.237.0) The time when the disk was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `False`.
         /// </summary>
         [Output("deleteAutoSnapshot")]
         public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance: Default value: false.
+        /// Specifies whether to release the disk along with its associated instance. Default value: `False`.
         /// </summary>
         [Output("deleteWithInstance")]
         public Output<bool> DeleteWithInstance { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        /// </summary>
         [Output("diskName")]
         public Output<string> DiskName { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: `False`. Valid values:
+        /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        /// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `True` and `False`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         /// </summary>
         [Output("enableAutoSnapshot")]
         public Output<bool> EnableAutoSnapshot { get; private set; } = null!;
 
+        /// <summary>
+        /// The encryption algorithm used to encrypt the disk. **NOTE:** `EncryptAlgorithm` is only valid when `Encrypted` is `True`.
+        /// </summary>
         [Output("encryptAlgorithm")]
         public Output<string?> EncryptAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `SnapshotId`.
+        /// Specifies whether to encrypt the disk. Default value: `False`. Valid values:
         /// </summary>
         [Output("encrypted")]
         public Output<bool> Encrypted { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the instance to which the created subscription disk is automatically attached.
+        /// * After you specify the instance ID, the specified `ResourceGroupId`, `Tags`, and `KmsKeyId` parameters are ignored.
+        /// * One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `True` when KmsKeyId is not empty.
+        /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `KmsKeyId` is only valid when `Encrypted` is `True`.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string> KmsKeyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `MultiAttach` can only be set to `Enabled` when `Category` is set to `CloudEssd`.
+        /// </summary>
         [Output("multiAttach")]
         public Output<string> MultiAttach { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// Field `Name` has been deprecated from provider version 1.122.0. New field `DiskName` instead.
+        /// 
+        /// &gt; **NOTE:** Disk category `Cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `InstanceId` is required.
+        /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Output("performanceLevel")]
         public Output<string> PerformanceLevel { get; private set; } = null!;
 
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `ProvisionedIops` is only valid when `Category` is `CloudAuto`.
+        /// </summary>
         [Output("provisionedIops")]
         public Output<int?> ProvisionedIops { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available since v1.237.0) The ID of the region to which the disk belongs.
+        /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the disk belongs.
-        /// &gt; **NOTE:** Disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
+        /// The ID of the resource group to which to add the disk.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        /// - If `Category` is set to `Cloud`. Valid values: `5` to `2000`.
+        /// - If `Category` is set to `CloudEfficiency`. Valid values: `20` to `32768`.
+        /// - If `Category` is set to `CloudSsd`. Valid values: `20` to `32768`.
+        /// - If `Category` is set to `CloudAuto`. Valid values: `1` to `65536`.
+        /// - If `Category` is set to `CloudEssdEntry`. Valid values: `10` to `32768`.
+        /// - If `Category` is set to `ElasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+        /// - If `Category` is set to `ElasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+        /// - If `Category` is set to `CloudEssd`, the valid values are related to `PerformanceLevel`. Valid values:
+        /// - If `PerformanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `Size`, the `Size` will be ignored, conflict with `Encrypted`.
+        /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
         /// </summary>
         [Output("snapshotId")]
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The disk status.
+        /// The status of the disk.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the storage set.
+        /// </summary>
         [Output("storageSetId")]
         public Output<string?> StorageSetId { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of partitions in the storage set.
+        /// </summary>
         [Output("storageSetPartitionNumber")]
         public Output<int?> StorageSetPartitionNumber { get; private set; } = null!;
 
@@ -191,9 +246,15 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The type to expand cloud disks. Valid Values: `Online`, `Offline`. Default to `Offline`.
+        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the free zone to which the disk belongs. One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
@@ -243,118 +304,167 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The advanced features configured for the disk.
+        /// </summary>
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
 
         /// <summary>
-        /// The Zone to create the disk in.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.122.0. New field `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`; specifying it for other categories is rejected by the API. When `Category` is changed to `CloudAuto` in the same apply (for example from `CloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `CloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`CloudAuto` disk.
+        /// </summary>
         [Input("burstingEnabled")]
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdEntry`. Default is `CloudEfficiency`.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `CloudEssd` to `CloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `Update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `False`.
         /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance: Default value: false.
+        /// Specifies whether to release the disk along with its associated instance. Default value: `False`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: `False`. Valid values:
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        /// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `True` and `False`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
+        /// <summary>
+        /// The encryption algorithm used to encrypt the disk. **NOTE:** `EncryptAlgorithm` is only valid when `Encrypted` is `True`.
+        /// </summary>
         [Input("encryptAlgorithm")]
         public Input<string>? EncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `SnapshotId`.
+        /// Specifies whether to encrypt the disk. Default value: `False`. Valid values:
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The ID of the instance to which the created subscription disk is automatically attached.
+        /// * After you specify the instance ID, the specified `ResourceGroupId`, `Tags`, and `KmsKeyId` parameters are ignored.
+        /// * One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `True` when KmsKeyId is not empty.
+        /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `KmsKeyId` is only valid when `Encrypted` is `True`.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `MultiAttach` can only be set to `Enabled` when `Category` is set to `CloudEssd`.
+        /// </summary>
         [Input("multiAttach")]
         public Input<string>? MultiAttach { get; set; }
 
         /// <summary>
-        /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// Field `Name` has been deprecated from provider version 1.122.0. New field `DiskName` instead.
+        /// 
+        /// &gt; **NOTE:** Disk category `Cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `InstanceId` is required.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `ProvisionedIops` is only valid when `Category` is `CloudAuto`.
+        /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the disk belongs.
-        /// &gt; **NOTE:** Disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
+        /// The ID of the resource group to which to add the disk.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        /// - If `Category` is set to `Cloud`. Valid values: `5` to `2000`.
+        /// - If `Category` is set to `CloudEfficiency`. Valid values: `20` to `32768`.
+        /// - If `Category` is set to `CloudSsd`. Valid values: `20` to `32768`.
+        /// - If `Category` is set to `CloudAuto`. Valid values: `1` to `65536`.
+        /// - If `Category` is set to `CloudEssdEntry`. Valid values: `10` to `32768`.
+        /// - If `Category` is set to `ElasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+        /// - If `Category` is set to `ElasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+        /// - If `Category` is set to `CloudEssd`, the valid values are related to `PerformanceLevel`. Valid values:
+        /// - If `PerformanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `Size`, the `Size` will be ignored, conflict with `Encrypted`.
+        /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
+        /// <summary>
+        /// The ID of the storage set.
+        /// </summary>
         [Input("storageSetId")]
         public Input<string>? StorageSetId { get; set; }
 
+        /// <summary>
+        /// The number of partitions in the storage set.
+        /// </summary>
         [Input("storageSetPartitionNumber")]
         public Input<int>? StorageSetPartitionNumber { get; set; }
 
@@ -370,9 +480,15 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The type to expand cloud disks. Valid Values: `Online`, `Offline`. Default to `Offline`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// ID of the free zone to which the disk belongs. One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
@@ -384,130 +500,185 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The advanced features configured for the disk.
+        /// </summary>
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
 
         /// <summary>
-        /// The Zone to create the disk in.
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.122.0. New field `ZoneId` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable the performance burst feature. Valid values: `True`, `False`. **NOTE:** `BurstingEnabled` is only valid when `Category` is `CloudAuto`; specifying it for other categories is rejected by the API. When `Category` is changed to `CloudAuto` in the same apply (for example from `CloudEssd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `CloudAuto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`CloudAuto` disk.
+        /// </summary>
         [Input("burstingEnabled")]
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudEssdEntry`. Default is `CloudEfficiency`.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `CloudEssd` to `CloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `Update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// (Available since v1.237.0) The time when the disk was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `False`.
         /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance: Default value: false.
+        /// Specifies whether to release the disk along with its associated instance. Default value: `False`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: `False`. Valid values:
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        /// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `True` and `False`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
+        /// <summary>
+        /// The encryption algorithm used to encrypt the disk. **NOTE:** `EncryptAlgorithm` is only valid when `Encrypted` is `True`.
+        /// </summary>
         [Input("encryptAlgorithm")]
         public Input<string>? EncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `SnapshotId`.
+        /// Specifies whether to encrypt the disk. Default value: `False`. Valid values:
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The ID of the instance to which the created subscription disk is automatically attached.
+        /// * After you specify the instance ID, the specified `ResourceGroupId`, `Tags`, and `KmsKeyId` parameters are ignored.
+        /// * One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `True` when KmsKeyId is not empty.
+        /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `KmsKeyId` is only valid when `Encrypted` is `True`.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `MultiAttach` can only be set to `Enabled` when `Category` is set to `CloudEssd`.
+        /// </summary>
         [Input("multiAttach")]
         public Input<string>? MultiAttach { get; set; }
 
         /// <summary>
-        /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        /// Field `Name` has been deprecated from provider version 1.122.0. New field `DiskName` instead.
+        /// 
+        /// &gt; **NOTE:** Disk category `Cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `InstanceId` is required.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
+        /// <summary>
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `ProvisionedIops` is only valid when `Category` is `CloudAuto`.
+        /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
 
+        /// <summary>
+        /// (Available since v1.237.0) The ID of the region to which the disk belongs.
+        /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the disk belongs.
-        /// &gt; **NOTE:** Disk category `Cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `CloudEfficiency` and `CloudSsd` disk.
+        /// The ID of the resource group to which to add the disk.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        /// - If `Category` is set to `Cloud`. Valid values: `5` to `2000`.
+        /// - If `Category` is set to `CloudEfficiency`. Valid values: `20` to `32768`.
+        /// - If `Category` is set to `CloudSsd`. Valid values: `20` to `32768`.
+        /// - If `Category` is set to `CloudAuto`. Valid values: `1` to `65536`.
+        /// - If `Category` is set to `CloudEssdEntry`. Valid values: `10` to `32768`.
+        /// - If `Category` is set to `ElasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+        /// - If `Category` is set to `ElasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+        /// - If `Category` is set to `CloudEssd`, the valid values are related to `PerformanceLevel`. Valid values:
+        /// - If `PerformanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+        /// - If `PerformanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `Size`, the `Size` will be ignored, conflict with `Encrypted`.
+        /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `SnapshotId` is larger than the value of `Size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `SnapshotId` is smaller than the value of `Size`, the size of the created disk is equal to the value of `Size`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The disk status.
+        /// The status of the disk.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The ID of the storage set.
+        /// </summary>
         [Input("storageSetId")]
         public Input<string>? StorageSetId { get; set; }
 
+        /// <summary>
+        /// The number of partitions in the storage set.
+        /// </summary>
         [Input("storageSetPartitionNumber")]
         public Input<int>? StorageSetPartitionNumber { get; set; }
 
@@ -523,9 +694,15 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The type to expand cloud disks. Valid Values: `Online`, `Offline`. Default to `Offline`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// ID of the free zone to which the disk belongs. One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

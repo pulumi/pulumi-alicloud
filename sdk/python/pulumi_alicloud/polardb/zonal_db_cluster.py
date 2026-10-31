@@ -55,10 +55,12 @@ class ZonalDbClusterArgs:
         :param pulumi.Input[_builtins.str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
         :param pulumi.Input[_builtins.str] target_minor_version: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
         :param pulumi.Input[_builtins.int] used_time: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         pulumi.set(__self__, "db_cluster_nodes_configs", db_cluster_nodes_configs)
@@ -266,6 +268,7 @@ class ZonalDbClusterArgs:
     def storage_space(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
+
         > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         """
         return pulumi.get(self, "storage_space")
@@ -303,6 +306,7 @@ class ZonalDbClusterArgs:
     def used_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         return pulumi.get(self, "used_time")
@@ -361,10 +365,12 @@ class _ZonalDbClusterState:
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `Prepaid`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
         :param pulumi.Input[_builtins.str] target_minor_version: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
         :param pulumi.Input[_builtins.int] used_time: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the ENS VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ENS virtual switch ID to launch DB instances in one VPC.
@@ -639,6 +645,7 @@ class _ZonalDbClusterState:
     def storage_space(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
+
         > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         """
         return pulumi.get(self, "storage_space")
@@ -676,6 +683,7 @@ class _ZonalDbClusterState:
     def used_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         return pulumi.get(self, "used_time")
@@ -814,10 +822,12 @@ class ZonalDbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
         :param pulumi.Input[_builtins.str] target_minor_version: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
         :param pulumi.Input[_builtins.int] used_time: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the ENS VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ENS virtual switch ID to launch DB instances in one VPC.
@@ -1029,10 +1039,12 @@ class ZonalDbCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `Prepaid`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
+               
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         :param pulumi.Input[_builtins.str] storage_type: The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
         :param pulumi.Input[_builtins.str] target_minor_version: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
         :param pulumi.Input[_builtins.int] used_time: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the ENS VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ENS virtual switch ID to launch DB instances in one VPC.
@@ -1216,6 +1228,7 @@ class ZonalDbCluster(pulumi.CustomResource):
     def storage_space(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
+
         > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
         """
         return pulumi.get(self, "storage_space")
@@ -1241,6 +1254,7 @@ class ZonalDbCluster(pulumi.CustomResource):
     def used_time(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         """
         return pulumi.get(self, "used_time")

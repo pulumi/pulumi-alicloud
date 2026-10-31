@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.198.0.
  * 
+ * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `paymentType = &#34;PayAsYouGo&#34;` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * Because the generation time of the disaster recovery set is uncertain, the query backup set may not have a value, so the following examples may not be executed successfully in one run.
@@ -240,6 +242,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+     * 
      * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
@@ -248,6 +251,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+     * 
      * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
@@ -604,6 +608,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -612,6 +617,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */

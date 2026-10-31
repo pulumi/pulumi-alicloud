@@ -46,6 +46,7 @@ class InstanceArgs:
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -117,6 +118,15 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -146,6 +156,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -153,8 +164,10 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -226,6 +239,8 @@ class InstanceArgs:
             pulumi.set(__self__, "global_instance", global_instance)
         if global_instance_id is not None:
             pulumi.set(__self__, "global_instance_id", global_instance_id)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
@@ -621,6 +636,26 @@ class InstanceArgs:
     @global_instance_id.setter
     def global_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
@@ -933,6 +968,7 @@ class InstanceArgs:
     def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -1006,6 +1042,7 @@ class InstanceArgs:
     def slave_read_only_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
@@ -1019,6 +1056,7 @@ class InstanceArgs:
     def slave_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+
         > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         """
         return pulumi.get(self, "slave_replica_count")
@@ -1127,6 +1165,8 @@ class _InstanceState:
                  backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  business_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1146,6 +1186,7 @@ class _InstanceState:
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1182,6 +1223,7 @@ class _InstanceState:
                  slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tde_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1200,18 +1242,12 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[_builtins.int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         :param pulumi.Input[_builtins.str] business_info: The ID of the event or the business information.
+        :param pulumi.Input[_builtins.str] ca_cert_common_name: The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        :param pulumi.Input[_builtins.str] ca_cert_download_url: The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
         :param pulumi.Input[_builtins.int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[_builtins.str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[_builtins.str] connection_string: Indicates whether the address is a private endpoint.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[_builtins.str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[_builtins.str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -1230,6 +1266,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -1260,6 +1305,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -1267,12 +1313,15 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
+        :param pulumi.Input[_builtins.str] ssl_expired_time: The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
         :param pulumi.Input[_builtins.str] status: The status of KVStore DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
@@ -1303,6 +1352,10 @@ class _InstanceState:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if business_info is not None:
             pulumi.set(__self__, "business_info", business_info)
+        if ca_cert_common_name is not None:
+            pulumi.set(__self__, "ca_cert_common_name", ca_cert_common_name)
+        if ca_cert_download_url is not None:
+            pulumi.set(__self__, "ca_cert_download_url", ca_cert_download_url)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
         if config is not None:
@@ -1350,6 +1403,8 @@ class _InstanceState:
             pulumi.set(__self__, "global_instance", global_instance)
         if global_instance_id is not None:
             pulumi.set(__self__, "global_instance_id", global_instance_id)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
@@ -1431,6 +1486,8 @@ class _InstanceState:
             pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
         if ssl_enable is not None:
             pulumi.set(__self__, "ssl_enable", ssl_enable)
+        if ssl_expired_time is not None:
+            pulumi.set(__self__, "ssl_expired_time", ssl_expired_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -1554,6 +1611,30 @@ class _InstanceState:
         pulumi.set(self, "business_info", value)
 
     @_builtins.property
+    @pulumi.getter(name="caCertCommonName")
+    def ca_cert_common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ca_cert_common_name")
+
+    @ca_cert_common_name.setter
+    def ca_cert_common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert_common_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertDownloadUrl")
+    def ca_cert_download_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
+        """
+        return pulumi.get(self, "ca_cert_download_url")
+
+    @ca_cert_download_url.setter
+    def ca_cert_download_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert_download_url", value)
+
+    @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1595,14 +1676,6 @@ class _InstanceState:
     def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the address is a private endpoint.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1794,6 +1867,26 @@ class _InstanceState:
     @global_instance_id.setter
     def global_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
@@ -2118,6 +2211,7 @@ class _InstanceState:
     def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -2191,6 +2285,7 @@ class _InstanceState:
     def slave_read_only_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
@@ -2204,6 +2299,7 @@ class _InstanceState:
     def slave_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+
         > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         """
         return pulumi.get(self, "slave_replica_count")
@@ -2236,6 +2332,18 @@ class _InstanceState:
     @ssl_enable.setter
     def ssl_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslExpiredTime")
+    def ssl_expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ssl_expired_time")
+
+    @ssl_expired_time.setter
+    def ssl_expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_expired_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2343,6 +2451,7 @@ class Instance(pulumi.CustomResource):
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2559,6 +2668,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -2588,6 +2706,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -2595,8 +2714,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -2800,6 +2921,7 @@ class Instance(pulumi.CustomResource):
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2874,6 +2996,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["force_upgrade"] = force_upgrade
             __props__.__dict__["global_instance"] = global_instance
             __props__.__dict__["global_instance_id"] = global_instance_id
+            __props__.__dict__["global_security_group_lists"] = global_security_group_lists
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_class"] = instance_class
             __props__.__dict__["instance_name"] = instance_name
@@ -2914,10 +3037,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vpc_auth_mode"] = vpc_auth_mode
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["ca_cert_common_name"] = None
+            __props__.__dict__["ca_cert_download_url"] = None
             __props__.__dict__["connection_domain"] = None
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["qps"] = None
+            __props__.__dict__["ssl_expired_time"] = None
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -2940,6 +3066,8 @@ class Instance(pulumi.CustomResource):
             backup_time: pulumi.Input[Optional[_builtins.str]] = None,
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             business_info: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
             capacity: pulumi.Input[Optional[_builtins.int]] = None,
             config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2959,6 +3087,7 @@ class Instance(pulumi.CustomResource):
             force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_class: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2995,6 +3124,7 @@ class Instance(pulumi.CustomResource):
             slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
             srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tde_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3017,18 +3147,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[_builtins.int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         :param pulumi.Input[_builtins.str] business_info: The ID of the event or the business information.
+        :param pulumi.Input[_builtins.str] ca_cert_common_name: The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        :param pulumi.Input[_builtins.str] ca_cert_download_url: The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
         :param pulumi.Input[_builtins.int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[_builtins.str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[_builtins.str] connection_string: Indicates whether the address is a private endpoint.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[_builtins.str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[_builtins.str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -3047,6 +3171,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -3077,6 +3210,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -3084,12 +3218,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
+        :param pulumi.Input[_builtins.str] ssl_expired_time: The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
         :param pulumi.Input[_builtins.str] status: The status of KVStore DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
@@ -3112,6 +3249,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["business_info"] = business_info
+        __props__.__dict__["ca_cert_common_name"] = ca_cert_common_name
+        __props__.__dict__["ca_cert_download_url"] = ca_cert_download_url
         __props__.__dict__["capacity"] = capacity
         __props__.__dict__["config"] = config
         __props__.__dict__["connection_domain"] = connection_domain
@@ -3131,6 +3270,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["force_upgrade"] = force_upgrade
         __props__.__dict__["global_instance"] = global_instance
         __props__.__dict__["global_instance_id"] = global_instance_id
+        __props__.__dict__["global_security_group_lists"] = global_security_group_lists
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_class"] = instance_class
         __props__.__dict__["instance_name"] = instance_name
@@ -3167,6 +3307,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["slave_replica_count"] = slave_replica_count
         __props__.__dict__["srcdb_instance_id"] = srcdb_instance_id
         __props__.__dict__["ssl_enable"] = ssl_enable
+        __props__.__dict__["ssl_expired_time"] = ssl_expired_time
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
@@ -3249,6 +3390,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "business_info")
 
     @_builtins.property
+    @pulumi.getter(name="caCertCommonName")
+    def ca_cert_common_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ca_cert_common_name")
+
+    @_builtins.property
+    @pulumi.getter(name="caCertDownloadUrl")
+    def ca_cert_download_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
+        """
+        return pulumi.get(self, "ca_cert_download_url")
+
+    @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[_builtins.int]:
         """
@@ -3278,14 +3435,6 @@ class Instance(pulumi.CustomResource):
     def connection_string(self) -> pulumi.Output[_builtins.str]:
         """
         Indicates whether the address is a private endpoint.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "connection_string")
 
@@ -3413,6 +3562,22 @@ class Instance(pulumi.CustomResource):
         The ID of distributed cache.
         """
         return pulumi.get(self, "global_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of Global Security Group Ids.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        """
+        return pulumi.get(self, "global_security_group_lists")
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
@@ -3633,6 +3798,7 @@ class Instance(pulumi.CustomResource):
     def secondary_zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -3682,6 +3848,7 @@ class Instance(pulumi.CustomResource):
     def slave_read_only_count(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
@@ -3691,6 +3858,7 @@ class Instance(pulumi.CustomResource):
     def slave_replica_count(self) -> pulumi.Output[_builtins.int]:
         """
         The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+
         > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         """
         return pulumi.get(self, "slave_replica_count")
@@ -3711,6 +3879,14 @@ class Instance(pulumi.CustomResource):
         **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         """
         return pulumi.get(self, "ssl_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="sslExpiredTime")
+    def ssl_expired_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ssl_expired_time")
 
     @_builtins.property
     @pulumi.getter

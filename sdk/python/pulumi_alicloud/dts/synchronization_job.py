@@ -91,6 +91,8 @@ class SynchronizationJobArgs:
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
                - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -106,15 +108,11 @@ class SynchronizationJobArgs:
         :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         :param pulumi.Input[_builtins.str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
-        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+               
+               > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
                
@@ -137,6 +135,8 @@ class SynchronizationJobArgs:
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         :param pulumi.Input[_builtins.str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
         pulumi.set(__self__, "data_initialization", data_initialization)
@@ -441,6 +441,8 @@ class SynchronizationJobArgs:
     def dest_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "dest_secondary_vswitch_id")
 
@@ -588,12 +590,6 @@ class SynchronizationJobArgs:
     def dts_bis_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment label of the DTS instance. The value is: **normal**, **online**.
-
-        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-
-        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-
-        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         """
         return pulumi.get(self, "dts_bis_label")
 
@@ -629,7 +625,9 @@ class SynchronizationJobArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+
+        > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         """
         return pulumi.get(self, "instance_class")
 
@@ -839,6 +837,8 @@ class SynchronizationJobArgs:
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+
+        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         """
         return pulumi.get(self, "status")
 
@@ -927,6 +927,8 @@ class _SynchronizationJobState:
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
@@ -944,17 +946,13 @@ class _SynchronizationJobState:
         :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         :param pulumi.Input[_builtins.str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[_builtins.str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
-        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+               
+               > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
                
@@ -979,6 +977,8 @@ class _SynchronizationJobState:
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
@@ -1210,6 +1210,8 @@ class _SynchronizationJobState:
     def dest_secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "dest_secondary_vswitch_id")
 
@@ -1381,12 +1383,6 @@ class _SynchronizationJobState:
     def dts_bis_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment label of the DTS instance. The value is: **normal**, **online**.
-
-        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-
-        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-
-        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         """
         return pulumi.get(self, "dts_bis_label")
 
@@ -1446,7 +1442,9 @@ class _SynchronizationJobState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+
+        > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         """
         return pulumi.get(self, "instance_class")
 
@@ -1680,6 +1678,8 @@ class _SynchronizationJobState:
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+
+        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         """
         return pulumi.get(self, "status")
 
@@ -1928,6 +1928,8 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
@@ -1945,17 +1947,13 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         :param pulumi.Input[_builtins.str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[_builtins.str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
-        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+               
+               > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
                
@@ -1980,6 +1978,8 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
@@ -2359,6 +2359,8 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] dest_primary_vswitch_id: The ID of the primary vSwitch on the destination side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] dest_secondary_vswitch_id: The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+               
+               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
@@ -2376,17 +2378,13 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         :param pulumi.Input[_builtins.str] dts_bis_label: The environment label of the DTS instance. The value is: **normal**, **online**.
-               
-               > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-               
-               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-               
-               > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[_builtins.str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
-        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+               
+               > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
                
@@ -2411,6 +2409,8 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] src_primary_vswitch_id: The ID of the primary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] src_secondary_vswitch_id: The ID of the secondary vSwitch on the source side of a VPC NAT connection.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+               
+               > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
@@ -2556,6 +2556,8 @@ class SynchronizationJob(pulumi.CustomResource):
     def dest_secondary_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+
+        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         """
         return pulumi.get(self, "dest_secondary_vswitch_id")
 
@@ -2671,12 +2673,6 @@ class SynchronizationJob(pulumi.CustomResource):
     def dts_bis_label(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The environment label of the DTS instance. The value is: **normal**, **online**.
-
-        > **NOTE:** `src_primary_vswitch_id`, `src_secondary_vswitch_id`, `dest_primary_vswitch_id` and `dest_secondary_vswitch_id` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-
-        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-
-        > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         """
         return pulumi.get(self, "dts_bis_label")
 
@@ -2716,7 +2712,9 @@ class SynchronizationJob(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[_builtins.str]:
         """
-        The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+
+        > **NOTE:** `instance_class` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `large` or above, the target class cannot be lower than `medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         """
         return pulumi.get(self, "instance_class")
 
@@ -2874,6 +2872,8 @@ class SynchronizationJob(pulumi.CustomResource):
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+
+        > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         """
         return pulumi.get(self, "status")
 

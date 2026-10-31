@@ -36,6 +36,7 @@ class SaslUserArgs:
         :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
                - SCRAM-SHA-512. This is the default value.
                - SCRAM-SHA-256
+               
                > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
@@ -108,6 +109,7 @@ class SaslUserArgs:
         The encryption method. Valid values:
         - SCRAM-SHA-512. This is the default value.
         - SCRAM-SHA-256
+
         > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         """
         return pulumi.get(self, "mechanism")
@@ -160,6 +162,7 @@ class _SaslUserState:
         :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
                - SCRAM-SHA-512. This is the default value.
                - SCRAM-SHA-256
+               
                > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
@@ -223,6 +226,7 @@ class _SaslUserState:
         The encryption method. Valid values:
         - SCRAM-SHA-512. This is the default value.
         - SCRAM-SHA-256
+
         > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         """
         return pulumi.get(self, "mechanism")
@@ -355,6 +359,7 @@ class SaslUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
                - SCRAM-SHA-512. This is the default value.
                - SCRAM-SHA-256
+               
                > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
@@ -505,6 +510,7 @@ class SaslUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
                - SCRAM-SHA-512. This is the default value.
                - SCRAM-SHA-256
+               
                > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
@@ -554,6 +560,7 @@ class SaslUser(pulumi.CustomResource):
         The encryption method. Valid values:
         - SCRAM-SHA-512. This is the default value.
         - SCRAM-SHA-256
+
         > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         """
         return pulumi.get(self, "mechanism")

@@ -7711,7 +7711,8 @@ type ServerGroupServer struct {
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 	//
 	// > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-	// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -7762,7 +7763,8 @@ type ServerGroupServerArgs struct {
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 	//
 	// > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-	// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -7876,7 +7878,8 @@ func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 // The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 //
 // > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+//
+// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

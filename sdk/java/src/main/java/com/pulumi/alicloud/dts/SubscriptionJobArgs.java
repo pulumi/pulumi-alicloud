@@ -455,6 +455,21 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     * 
+     */
+    @Import(name="sourceEndpointSsl")
+    private @Nullable Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     * 
+     */
+    public Optional<Output<String>> sourceEndpointSsl() {
+        return Optional.ofNullable(this.sourceEndpointSsl);
+    }
+
+    /**
      * The username of source database instance account.
      * 
      */
@@ -636,6 +651,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
         this.sourceEndpointPort = $.sourceEndpointPort;
         this.sourceEndpointRegion = $.sourceEndpointRegion;
         this.sourceEndpointRole = $.sourceEndpointRole;
+        this.sourceEndpointSsl = $.sourceEndpointSsl;
         this.sourceEndpointUserName = $.sourceEndpointUserName;
         this.status = $.status;
         this.subscriptionDataTypeDdl = $.subscriptionDataTypeDdl;
@@ -1273,6 +1289,27 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder sourceEndpointRole(String sourceEndpointRole) {
             return sourceEndpointRole(Output.of(sourceEndpointRole));
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(@Nullable Output<String> sourceEndpointSsl) {
+            $.sourceEndpointSsl = sourceEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(String sourceEndpointSsl) {
+            return sourceEndpointSsl(Output.of(sourceEndpointSsl));
         }
 
         /**

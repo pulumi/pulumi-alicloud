@@ -50,6 +50,7 @@ public final class CooDomainPreciseAccessRuleState extends com.pulumi.resources.
 
     /**
      * Domain name of the website service.
+     * 
      * &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      * 
      */
@@ -58,6 +59,7 @@ public final class CooDomainPreciseAccessRuleState extends com.pulumi.resources.
 
     /**
      * @return Domain name of the website service.
+     * 
      * &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      * 
      */
@@ -177,6 +179,7 @@ public final class CooDomainPreciseAccessRuleState extends com.pulumi.resources.
 
         /**
          * @param domain Domain name of the website service.
+         * 
          * &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
          * 
          * @return builder
@@ -189,6 +192,7 @@ public final class CooDomainPreciseAccessRuleState extends com.pulumi.resources.
 
         /**
          * @param domain Domain name of the website service.
+         * 
          * &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
          * 
          * @return builder

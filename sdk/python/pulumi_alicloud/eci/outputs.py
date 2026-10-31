@@ -1676,6 +1676,7 @@ class ContainerGroupVolume(dict):
                  type: Optional[_builtins.str] = None):
         """
         :param Sequence['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs'] config_file_volume_config_file_to_paths: The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+               
                > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         :param _builtins.str disk_volume_disk_id: The ID of DiskVolume.
         :param _builtins.str disk_volume_fs_type: The system type of DiskVolume.
@@ -1716,6 +1717,7 @@ class ContainerGroupVolume(dict):
     def config_file_volume_config_file_to_paths(self) -> Optional[Sequence['outputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPath']]:
         """
         The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+
         > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         """
         return pulumi.get(self, "config_file_volume_config_file_to_paths")

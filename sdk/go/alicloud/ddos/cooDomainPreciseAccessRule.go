@@ -111,6 +111,7 @@ type CooDomainPreciseAccessRule struct {
 	// List of matching conditions. See `condition` below.
 	Conditions CooDomainPreciseAccessRuleConditionArrayOutput `pulumi:"conditions"`
 	// Domain name of the website service.
+	//
 	// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
@@ -163,6 +164,7 @@ type cooDomainPreciseAccessRuleState struct {
 	// List of matching conditions. See `condition` below.
 	Conditions []CooDomainPreciseAccessRuleCondition `pulumi:"conditions"`
 	// Domain name of the website service.
+	//
 	// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	Domain *string `pulumi:"domain"`
 	// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
@@ -177,6 +179,7 @@ type CooDomainPreciseAccessRuleState struct {
 	// List of matching conditions. See `condition` below.
 	Conditions CooDomainPreciseAccessRuleConditionArrayInput
 	// Domain name of the website service.
+	//
 	// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	Domain pulumi.StringPtrInput
 	// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
@@ -195,6 +198,7 @@ type cooDomainPreciseAccessRuleArgs struct {
 	// List of matching conditions. See `condition` below.
 	Conditions []CooDomainPreciseAccessRuleCondition `pulumi:"conditions"`
 	// Domain name of the website service.
+	//
 	// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	Domain string `pulumi:"domain"`
 	// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
@@ -210,6 +214,7 @@ type CooDomainPreciseAccessRuleArgs struct {
 	// List of matching conditions. See `condition` below.
 	Conditions CooDomainPreciseAccessRuleConditionArrayInput
 	// Domain name of the website service.
+	//
 	// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 	Domain pulumi.StringInput
 	// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
@@ -318,6 +323,7 @@ func (o CooDomainPreciseAccessRuleOutput) Conditions() CooDomainPreciseAccessRul
 }
 
 // Domain name of the website service.
+//
 // > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
 func (o CooDomainPreciseAccessRuleOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *CooDomainPreciseAccessRule) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)

@@ -55,8 +55,10 @@ class ControlPolicyArgs:
         :param pulumi.Input[_builtins.str] source: The source address in the access control policy.
         :param pulumi.Input[_builtins.str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         :param pulumi.Input[_builtins.str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The application types supported by the access control policy.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         :param pulumi.Input[_builtins.str] dest_port_group: The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
@@ -66,6 +68,7 @@ class ControlPolicyArgs:
                - `DNS`: DNS-based dynamic resolution.
                - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
         :param pulumi.Input[_builtins.int] end_time: The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -73,8 +76,10 @@ class ControlPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
                - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+               
                > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         :param pulumi.Input[_builtins.str] repeat_end_time: The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         :param pulumi.Input[_builtins.str] repeat_start_time: The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
@@ -228,6 +233,7 @@ class ControlPolicyArgs:
     def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         """
         return pulumi.get(self, "application_name")
@@ -241,6 +247,7 @@ class ControlPolicyArgs:
     def application_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application types supported by the access control policy.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         """
         return pulumi.get(self, "application_name_lists")
@@ -305,6 +312,7 @@ class ControlPolicyArgs:
     def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+
         > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         """
         return pulumi.get(self, "end_time")
@@ -356,6 +364,7 @@ class ControlPolicyArgs:
         The days of a week or of a month on which the access control policy takes effect. Valid values:
         - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
         - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+
         > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         """
         return pulumi.get(self, "repeat_days")
@@ -369,6 +378,7 @@ class ControlPolicyArgs:
     def repeat_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+
         > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         """
         return pulumi.get(self, "repeat_end_time")
@@ -466,8 +476,10 @@ class _ControlPolicyState:
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] acl_uuid: (Available since v1.148.0) The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The application types supported by the access control policy.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the access control policy was created.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
@@ -482,6 +494,7 @@ class _ControlPolicyState:
                - `DNS`: DNS-based dynamic resolution.
                - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
         :param pulumi.Input[_builtins.int] end_time: The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -490,8 +503,10 @@ class _ControlPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
                - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+               
                > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         :param pulumi.Input[_builtins.str] repeat_end_time: The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         :param pulumi.Input[_builtins.str] repeat_start_time: The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
@@ -587,6 +602,7 @@ class _ControlPolicyState:
     def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         """
         return pulumi.get(self, "application_name")
@@ -600,6 +616,7 @@ class _ControlPolicyState:
     def application_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application types supported by the access control policy.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         """
         return pulumi.get(self, "application_name_lists")
@@ -724,6 +741,7 @@ class _ControlPolicyState:
     def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+
         > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         """
         return pulumi.get(self, "end_time")
@@ -787,6 +805,7 @@ class _ControlPolicyState:
         The days of a week or of a month on which the access control policy takes effect. Valid values:
         - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
         - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+
         > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         """
         return pulumi.get(self, "repeat_days")
@@ -800,6 +819,7 @@ class _ControlPolicyState:
     def repeat_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+
         > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         """
         return pulumi.get(self, "repeat_end_time")
@@ -963,8 +983,10 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The application types supported by the access control policy.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
         :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
@@ -978,6 +1000,7 @@ class ControlPolicy(pulumi.CustomResource):
                - `DNS`: DNS-based dynamic resolution.
                - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
         :param pulumi.Input[_builtins.int] end_time: The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -986,8 +1009,10 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
                - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+               
                > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         :param pulumi.Input[_builtins.str] repeat_end_time: The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         :param pulumi.Input[_builtins.str] repeat_start_time: The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
@@ -1185,8 +1210,10 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] acl_uuid: (Available since v1.148.0) The unique ID of the access control policy.
         :param pulumi.Input[_builtins.str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The application types supported by the access control policy.
+               
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the access control policy was created.
         :param pulumi.Input[_builtins.str] description: The description of the access control policy.
@@ -1201,6 +1228,7 @@ class ControlPolicy(pulumi.CustomResource):
                - `DNS`: DNS-based dynamic resolution.
                - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
         :param pulumi.Input[_builtins.int] end_time: The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -1209,8 +1237,10 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
                - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+               
                > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         :param pulumi.Input[_builtins.str] repeat_end_time: The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+               
                > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         :param pulumi.Input[_builtins.str] repeat_start_time: The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
@@ -1277,6 +1307,7 @@ class ControlPolicy(pulumi.CustomResource):
     def application_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         """
         return pulumi.get(self, "application_name")
@@ -1286,6 +1317,7 @@ class ControlPolicy(pulumi.CustomResource):
     def application_name_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         The application types supported by the access control policy.
+
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         """
         return pulumi.get(self, "application_name_lists")
@@ -1370,6 +1402,7 @@ class ControlPolicy(pulumi.CustomResource):
     def end_time(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+
         > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         """
         return pulumi.get(self, "end_time")
@@ -1413,6 +1446,7 @@ class ControlPolicy(pulumi.CustomResource):
         The days of a week or of a month on which the access control policy takes effect. Valid values:
         - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
         - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+
         > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
         """
         return pulumi.get(self, "repeat_days")
@@ -1422,6 +1456,7 @@ class ControlPolicy(pulumi.CustomResource):
     def repeat_end_time(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+
         > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
         """
         return pulumi.get(self, "repeat_end_time")

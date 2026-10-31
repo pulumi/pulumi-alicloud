@@ -45,16 +45,19 @@ class BackupPolicyArgs:
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -159,6 +162,7 @@ class BackupPolicyArgs:
     def data_level1_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level1_backup_periods")
@@ -220,6 +224,7 @@ class BackupPolicyArgs:
     def data_level2_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level2_backup_periods")
@@ -257,6 +262,7 @@ class BackupPolicyArgs:
     def log_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         """
         return pulumi.get(self, "log_backup_another_region_retention_period")
@@ -331,18 +337,21 @@ class _BackupPolicyState:
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.int] enable_backup_log: Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -438,6 +447,7 @@ class _BackupPolicyState:
     def data_level1_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level1_backup_periods")
@@ -499,6 +509,7 @@ class _BackupPolicyState:
     def data_level2_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level2_backup_periods")
@@ -560,6 +571,7 @@ class _BackupPolicyState:
     def log_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         """
         return pulumi.get(self, "log_backup_another_region_retention_period")
@@ -690,17 +702,20 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -867,18 +882,21 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.int] enable_backup_log: Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -945,6 +963,7 @@ class BackupPolicy(pulumi.CustomResource):
     def data_level1_backup_periods(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level1_backup_periods")
@@ -986,6 +1005,7 @@ class BackupPolicy(pulumi.CustomResource):
     def data_level2_backup_periods(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level2_backup_periods")
@@ -1027,6 +1047,7 @@ class BackupPolicy(pulumi.CustomResource):
     def log_backup_another_region_retention_period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         """
         return pulumi.get(self, "log_backup_another_region_retention_period")

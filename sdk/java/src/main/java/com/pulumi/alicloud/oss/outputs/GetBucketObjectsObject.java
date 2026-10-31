@@ -80,6 +80,11 @@ public final class GetBucketObjectsObject {
      * 
      */
     private String storageClass;
+    /**
+     * @return The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+     * 
+     */
+    private String xOssHashCrc64ecma;
 
     private GetBucketObjectsObject() {}
     /**
@@ -180,6 +185,13 @@ public final class GetBucketObjectsObject {
     public String storageClass() {
         return this.storageClass;
     }
+    /**
+     * @return The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+     * 
+     */
+    public String xOssHashCrc64ecma() {
+        return this.xOssHashCrc64ecma;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -204,6 +216,7 @@ public final class GetBucketObjectsObject {
         private String serverSideEncryption;
         private String sseKmsKeyId;
         private String storageClass;
+        private String xOssHashCrc64ecma;
         public Builder() {}
         public Builder(GetBucketObjectsObject defaults) {
     	      Objects.requireNonNull(defaults);
@@ -221,6 +234,7 @@ public final class GetBucketObjectsObject {
     	      this.serverSideEncryption = defaults.serverSideEncryption;
     	      this.sseKmsKeyId = defaults.sseKmsKeyId;
     	      this.storageClass = defaults.storageClass;
+    	      this.xOssHashCrc64ecma = defaults.xOssHashCrc64ecma;
         }
 
         @CustomType.Setter
@@ -335,6 +349,14 @@ public final class GetBucketObjectsObject {
             this.storageClass = storageClass;
             return this;
         }
+        @CustomType.Setter
+        public Builder xOssHashCrc64ecma(String xOssHashCrc64ecma) {
+            if (xOssHashCrc64ecma == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectsObject", "xOssHashCrc64ecma");
+            }
+            this.xOssHashCrc64ecma = xOssHashCrc64ecma;
+            return this;
+        }
         public GetBucketObjectsObject build() {
             final var _resultValue = new GetBucketObjectsObject();
             _resultValue.acl = acl;
@@ -351,6 +373,7 @@ public final class GetBucketObjectsObject {
             _resultValue.serverSideEncryption = serverSideEncryption;
             _resultValue.sseKmsKeyId = sseKmsKeyId;
             _resultValue.storageClass = storageClass;
+            _resultValue.xOssHashCrc64ecma = xOssHashCrc64ecma;
             return _resultValue;
         }
     }

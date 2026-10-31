@@ -122,6 +122,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */
@@ -130,6 +131,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
      * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
      */
@@ -311,6 +313,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
          * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
          * 
          * @return builder
@@ -323,6 +326,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
          * &gt; **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
          * 
          * @return builder

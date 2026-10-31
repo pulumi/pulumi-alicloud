@@ -89,6 +89,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      * 
      */
     @Import(name="nexthopType")
@@ -108,6 +109,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      * 
      */
     public Optional<Output<String>> nexthopType() {
@@ -280,6 +282,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
          * - `Ipv4Gateway`: An IPv4 gateway.
          * - `GatewayEndpoint`: A gateway endpoint.
          * - `Ecr`: A Express Connect Router (ECR).
+         * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
          * 
          * @return builder
          * 
@@ -303,6 +306,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
          * - `Ipv4Gateway`: An IPv4 gateway.
          * - `GatewayEndpoint`: A gateway endpoint.
          * - `Ecr`: A Express Connect Router (ECR).
+         * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
          * 
          * @return builder
          * 

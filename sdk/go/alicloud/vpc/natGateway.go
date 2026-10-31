@@ -24,6 +24,8 @@ import (
 //
 // > **NOTE:** Available since v1.37.0.
 //
+// > **NOTE:** Destroying a `Subscription` or `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+//
 // ## Example Usage
 //
 // # Basic usage
@@ -199,6 +201,7 @@ type NatGateway struct {
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -297,6 +300,7 @@ type natGatewayState struct {
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -363,6 +367,7 @@ type NatGatewayState struct {
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -431,6 +436,7 @@ type natGatewayArgs struct {
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -492,6 +498,7 @@ type NatGatewayArgs struct {
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
@@ -688,6 +695,7 @@ func (o NatGatewayOutput) PaymentType() pulumi.StringOutput {
 }
 
 // The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+//
 // > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o NatGatewayOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)

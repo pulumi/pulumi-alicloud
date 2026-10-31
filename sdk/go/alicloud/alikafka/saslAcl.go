@@ -157,11 +157,13 @@ type SaslAcl struct {
 	// - `IdempotentWrite`: idempotent write to Cluster
 	// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
 	// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+	//
 	// > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
 	AclOperationTypes pulumi.StringPtrOutput `pulumi:"aclOperationTypes"`
 	// Authorization method. Value:
 	// - `DENY`: deny.
 	// - `ALLOW`: allow.
+	//
 	// > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
 	AclPermissionType pulumi.StringOutput `pulumi:"aclPermissionType"`
 	// The resource name.
@@ -179,6 +181,7 @@ type SaslAcl struct {
 	// - `TransactionalId`: transaction ID.
 	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
 	// The host of the acl.
+	//
 	// > **NOTE:** From version 1.270.0, `host` can be set.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The instance ID.
@@ -250,11 +253,13 @@ type saslAclState struct {
 	// - `IdempotentWrite`: idempotent write to Cluster
 	// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
 	// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+	//
 	// > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
 	AclOperationTypes *string `pulumi:"aclOperationTypes"`
 	// Authorization method. Value:
 	// - `DENY`: deny.
 	// - `ALLOW`: allow.
+	//
 	// > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
 	AclPermissionType *string `pulumi:"aclPermissionType"`
 	// The resource name.
@@ -272,6 +277,7 @@ type saslAclState struct {
 	// - `TransactionalId`: transaction ID.
 	AclResourceType *string `pulumi:"aclResourceType"`
 	// The host of the acl.
+	//
 	// > **NOTE:** From version 1.270.0, `host` can be set.
 	Host *string `pulumi:"host"`
 	// The instance ID.
@@ -296,11 +302,13 @@ type SaslAclState struct {
 	// - `IdempotentWrite`: idempotent write to Cluster
 	// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
 	// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+	//
 	// > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
 	AclOperationTypes pulumi.StringPtrInput
 	// Authorization method. Value:
 	// - `DENY`: deny.
 	// - `ALLOW`: allow.
+	//
 	// > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
 	AclPermissionType pulumi.StringPtrInput
 	// The resource name.
@@ -318,6 +326,7 @@ type SaslAclState struct {
 	// - `TransactionalId`: transaction ID.
 	AclResourceType pulumi.StringPtrInput
 	// The host of the acl.
+	//
 	// > **NOTE:** From version 1.270.0, `host` can be set.
 	Host pulumi.StringPtrInput
 	// The instance ID.
@@ -346,11 +355,13 @@ type saslAclArgs struct {
 	// - `IdempotentWrite`: idempotent write to Cluster
 	// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
 	// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+	//
 	// > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
 	AclOperationTypes *string `pulumi:"aclOperationTypes"`
 	// Authorization method. Value:
 	// - `DENY`: deny.
 	// - `ALLOW`: allow.
+	//
 	// > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
 	AclPermissionType *string `pulumi:"aclPermissionType"`
 	// The resource name.
@@ -368,6 +379,7 @@ type saslAclArgs struct {
 	// - `TransactionalId`: transaction ID.
 	AclResourceType string `pulumi:"aclResourceType"`
 	// The host of the acl.
+	//
 	// > **NOTE:** From version 1.270.0, `host` can be set.
 	Host *string `pulumi:"host"`
 	// The instance ID.
@@ -393,11 +405,13 @@ type SaslAclArgs struct {
 	// - `IdempotentWrite`: idempotent write to Cluster
 	// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
 	// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+	//
 	// > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
 	AclOperationTypes pulumi.StringPtrInput
 	// Authorization method. Value:
 	// - `DENY`: deny.
 	// - `ALLOW`: allow.
+	//
 	// > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
 	AclPermissionType pulumi.StringPtrInput
 	// The resource name.
@@ -415,6 +429,7 @@ type SaslAclArgs struct {
 	// - `TransactionalId`: transaction ID.
 	AclResourceType pulumi.StringInput
 	// The host of the acl.
+	//
 	// > **NOTE:** From version 1.270.0, `host` can be set.
 	Host pulumi.StringPtrInput
 	// The instance ID.
@@ -528,6 +543,7 @@ func (o SaslAclOutput) AclOperationType() pulumi.StringOutput {
 // - `IdempotentWrite`: idempotent write to Cluster
 // - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
 // - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+//
 // > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
 func (o SaslAclOutput) AclOperationTypes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SaslAcl) pulumi.StringPtrOutput { return v.AclOperationTypes }).(pulumi.StringPtrOutput)
@@ -536,6 +552,7 @@ func (o SaslAclOutput) AclOperationTypes() pulumi.StringPtrOutput {
 // Authorization method. Value:
 // - `DENY`: deny.
 // - `ALLOW`: allow.
+//
 // > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
 func (o SaslAclOutput) AclPermissionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclPermissionType }).(pulumi.StringOutput)
@@ -565,6 +582,7 @@ func (o SaslAclOutput) AclResourceType() pulumi.StringOutput {
 }
 
 // The host of the acl.
+//
 // > **NOTE:** From version 1.270.0, `host` can be set.
 func (o SaslAclOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)

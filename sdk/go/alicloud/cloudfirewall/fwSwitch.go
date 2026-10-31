@@ -49,6 +49,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Fw Switch can be imported using the id, e.g.

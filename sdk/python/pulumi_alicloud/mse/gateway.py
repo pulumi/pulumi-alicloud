@@ -30,7 +30,9 @@ class GatewayArgs:
                  enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
-                 slb_spec: pulumi.Input[Optional[_builtins.str]] = None):
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Gateway resource.
 
@@ -43,7 +45,9 @@ class GatewayArgs:
         :param pulumi.Input[_builtins.bool] enterprise_security_group: Whether the enterprise security group type.
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway .
         :param pulumi.Input[_builtins.str] internet_slb_spec: Public network SLB specifications.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group which the gateway belongs.
         :param pulumi.Input[_builtins.str] slb_spec: Private network SLB specifications.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "replica", replica)
         pulumi.set(__self__, "spec", spec)
@@ -59,8 +63,12 @@ class GatewayArgs:
             pulumi.set(__self__, "gateway_name", gateway_name)
         if internet_slb_spec is not None:
             pulumi.set(__self__, "internet_slb_spec", internet_slb_spec)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if slb_spec is not None:
             pulumi.set(__self__, "slb_spec", slb_spec)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -171,6 +179,18 @@ class GatewayArgs:
         pulumi.set(self, "internet_slb_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group which the gateway belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="slbSpec")
     def slb_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -182,6 +202,18 @@ class GatewayArgs:
     def slb_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_spec", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _GatewayState:
@@ -192,10 +224,12 @@ class _GatewayState:
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySlbListArgs']]]] = None,
                  slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -207,10 +241,12 @@ class _GatewayState:
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway .
         :param pulumi.Input[_builtins.str] internet_slb_spec: Public network SLB specifications.
         :param pulumi.Input[_builtins.int] replica: Number of Gateway Nodes.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group which the gateway belongs.
         :param pulumi.Input[Sequence[pulumi.Input['GatewaySlbListArgs']]] slb_lists: A list of gateway Slb.
         :param pulumi.Input[_builtins.str] slb_spec: Private network SLB specifications.
         :param pulumi.Input[_builtins.str] spec: Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
         :param pulumi.Input[_builtins.str] status: The status of the gateway.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch.
         """
@@ -226,6 +262,8 @@ class _GatewayState:
             pulumi.set(__self__, "internet_slb_spec", internet_slb_spec)
         if replica is not None:
             pulumi.set(__self__, "replica", replica)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if slb_lists is not None:
             pulumi.set(__self__, "slb_lists", slb_lists)
         if slb_spec is not None:
@@ -234,6 +272,8 @@ class _GatewayState:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -312,6 +352,18 @@ class _GatewayState:
         pulumi.set(self, "replica", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group which the gateway belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="slbLists")
     def slb_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySlbListArgs']]]]:
         """
@@ -360,6 +412,18 @@ class _GatewayState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -396,15 +460,17 @@ class Gateway(pulumi.CustomResource):
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Microservice Engine (MSE) Gateway resource.
 
-        For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
+        For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-addgateway).
 
         > **NOTE:** Available since v1.157.0.
 
@@ -459,8 +525,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway .
         :param pulumi.Input[_builtins.str] internet_slb_spec: Public network SLB specifications.
         :param pulumi.Input[_builtins.int] replica: Number of Gateway Nodes.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group which the gateway belongs.
         :param pulumi.Input[_builtins.str] slb_spec: Private network SLB specifications.
         :param pulumi.Input[_builtins.str] spec: Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch.
         """
@@ -473,7 +541,7 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a Microservice Engine (MSE) Gateway resource.
 
-        For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
+        For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-addgateway).
 
         > **NOTE:** Available since v1.157.0.
 
@@ -541,8 +609,10 @@ class Gateway(pulumi.CustomResource):
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -562,10 +632,12 @@ class Gateway(pulumi.CustomResource):
             if replica is None and not opts.urn:
                 raise TypeError("Missing required property 'replica'")
             __props__.__dict__["replica"] = replica
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["slb_spec"] = slb_spec
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec
+            __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -590,10 +662,12 @@ class Gateway(pulumi.CustomResource):
             gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
             internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
             replica: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict', 'outputs.GatewaySlbList']]]]] = None,
             slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
             spec: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Gateway':
         """
@@ -609,10 +683,12 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_name: The name of the Gateway .
         :param pulumi.Input[_builtins.str] internet_slb_spec: Public network SLB specifications.
         :param pulumi.Input[_builtins.int] replica: Number of Gateway Nodes.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group which the gateway belongs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict', 'outputs.GatewaySlbList']]]] slb_lists: A list of gateway Slb.
         :param pulumi.Input[_builtins.str] slb_spec: Private network SLB specifications.
         :param pulumi.Input[_builtins.str] spec: Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
         :param pulumi.Input[_builtins.str] status: The status of the gateway.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch.
         """
@@ -626,10 +702,12 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["gateway_name"] = gateway_name
         __props__.__dict__["internet_slb_spec"] = internet_slb_spec
         __props__.__dict__["replica"] = replica
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["slb_lists"] = slb_lists
         __props__.__dict__["slb_spec"] = slb_spec
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
@@ -683,6 +761,14 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "replica")
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group which the gateway belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
     @pulumi.getter(name="slbLists")
     def slb_lists(self) -> pulumi.Output[Sequence['outputs.GatewaySlbList']]:
         """
@@ -713,6 +799,14 @@ class Gateway(pulumi.CustomResource):
         The status of the gateway.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")

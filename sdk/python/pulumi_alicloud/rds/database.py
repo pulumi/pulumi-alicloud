@@ -39,6 +39,7 @@ class DatabaseArgs:
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -47,6 +48,7 @@ class DatabaseArgs:
                For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -100,6 +102,7 @@ class DatabaseArgs:
     def data_base_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
+
         > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -131,6 +134,7 @@ class DatabaseArgs:
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+
         > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
@@ -163,6 +167,7 @@ class _DatabaseState:
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -172,6 +177,7 @@ class _DatabaseState:
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         """
@@ -217,6 +223,7 @@ class _DatabaseState:
     def data_base_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
+
         > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -260,6 +267,7 @@ class _DatabaseState:
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+
         > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
@@ -370,6 +378,7 @@ class Database(pulumi.CustomResource):
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -379,6 +388,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         ...
@@ -522,6 +532,7 @@ class Database(pulumi.CustomResource):
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -531,6 +542,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         """
@@ -568,6 +580,7 @@ class Database(pulumi.CustomResource):
     def data_base_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the database.
+
         > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -599,6 +612,7 @@ class Database(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+
         > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")

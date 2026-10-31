@@ -62,16 +62,12 @@ public final class MscSubContractArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      * 
-     * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
-     * 
      */
     @Import(name="position", required=true)
     private Output<String> position;
 
     /**
      * @return The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-     * 
-     * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      * 
      */
     public Output<String> position() {
@@ -171,8 +167,6 @@ public final class MscSubContractArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param position The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
          * 
-         * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
-         * 
          * @return builder
          * 
          */
@@ -183,8 +177,6 @@ public final class MscSubContractArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param position The User&#39;s Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-         * 
-         * &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
          * 
          * @return builder
          * 

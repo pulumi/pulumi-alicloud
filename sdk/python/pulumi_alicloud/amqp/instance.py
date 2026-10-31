@@ -69,6 +69,7 @@ class InstanceArgs:
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
+               
                > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
@@ -243,6 +244,7 @@ class InstanceArgs:
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
         - serverless: Serverless Edition.
+
         > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         """
         return pulumi.get(self, "instance_type")
@@ -583,6 +585,7 @@ class _InstanceState:
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
+               
                > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
@@ -764,6 +767,7 @@ class _InstanceState:
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
         - serverless: Serverless Edition.
+
         > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         """
         return pulumi.get(self, "instance_type")
@@ -1274,6 +1278,7 @@ class Instance(pulumi.CustomResource):
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
+               
                > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
@@ -1606,6 +1611,7 @@ class Instance(pulumi.CustomResource):
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
+               
                > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
@@ -1736,6 +1742,7 @@ class Instance(pulumi.CustomResource):
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
         - serverless: Serverless Edition.
+
         > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         """
         return pulumi.get(self, "instance_type")

@@ -123,6 +123,7 @@ class ReadOnlyInstanceArgs:
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[_builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
@@ -159,6 +160,7 @@ class ReadOnlyInstanceArgs:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
+               
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance.
         """
@@ -565,6 +567,7 @@ class ReadOnlyInstanceArgs:
         - perfer
         - verify-ca
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+
         > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "replication_acl")
@@ -744,6 +747,7 @@ class ReadOnlyInstanceArgs:
         - Classic: classic network in enhanced whitelist mode
         - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         - MIX: standard whitelist mode
+
         > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         """
         return pulumi.get(self, "whitelist_network_type")
@@ -876,6 +880,7 @@ class _ReadOnlyInstanceState:
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[_builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
@@ -912,6 +917,7 @@ class _ReadOnlyInstanceState:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
+               
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance.
         """
@@ -1364,6 +1370,7 @@ class _ReadOnlyInstanceState:
         - perfer
         - verify-ca
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+
         > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "replication_acl")
@@ -1543,6 +1550,7 @@ class _ReadOnlyInstanceState:
         - Classic: classic network in enhanced whitelist mode
         - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         - MIX: standard whitelist mode
+
         > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         """
         return pulumi.get(self, "whitelist_network_type")
@@ -1733,6 +1741,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[_builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
@@ -1769,6 +1778,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
+               
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance.
         """
@@ -2074,6 +2084,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[_builtins.str] security_ip_type: The type of IP address in the IP address whitelist.
@@ -2110,6 +2121,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
+               
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[_builtins.str] zone_id: The Zone to launch the DB instance.
         """
@@ -2417,6 +2429,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - perfer
         - verify-ca
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+
         > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "replication_acl")
@@ -2544,6 +2557,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - Classic: classic network in enhanced whitelist mode
         - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         - MIX: standard whitelist mode
+
         > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         """
         return pulumi.get(self, "whitelist_network_type")

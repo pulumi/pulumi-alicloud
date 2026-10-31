@@ -49,24 +49,53 @@ class DiskArgs:
         """
         The set of arguments for constructing a Disk resource.
 
-        :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
-        :param pulumi.Input[_builtins.str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
-        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
-        :param pulumi.Input[_builtins.bool] delete_with_instance: Indicates whether the disk is released together with the instance: Default value: false.
-        :param pulumi.Input[_builtins.str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
-        :param pulumi.Input[_builtins.bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-        :param pulumi.Input[_builtins.str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the disk belongs.
-               > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        :param pulumi.Input[_builtins.int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[_builtins.str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
+        :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
+               * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+               
+               > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the disk.
+        :param pulumi.Input[_builtins.int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+        :param pulumi.Input[_builtins.str] storage_set_id: The ID of the storage set.
+        :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
@@ -135,6 +164,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The advanced features configured for the disk.
+        """
         return pulumi.get(self, "advanced_features")
 
     @advanced_features.setter
@@ -146,7 +178,7 @@ class DiskArgs:
     @_utilities.deprecated("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
     def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Zone to create the disk in.
+        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -157,6 +189,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="burstingEnabled")
     def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        """
         return pulumi.get(self, "bursting_enabled")
 
     @bursting_enabled.setter
@@ -167,7 +202,7 @@ class DiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         """
         return pulumi.get(self, "category")
 
@@ -179,7 +214,7 @@ class DiskArgs:
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         """
         return pulumi.get(self, "delete_auto_snapshot")
 
@@ -191,7 +226,7 @@ class DiskArgs:
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the disk is released together with the instance: Default value: false.
+        Specifies whether to release the disk along with its associated instance. Default value: `false`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -203,7 +238,7 @@ class DiskArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -214,6 +249,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
@@ -223,6 +261,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -234,7 +275,7 @@ class DiskArgs:
     @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -245,6 +286,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="encryptAlgorithm")
     def encrypt_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        """
         return pulumi.get(self, "encrypt_algorithm")
 
     @encrypt_algorithm.setter
@@ -255,7 +299,7 @@ class DiskArgs:
     @pulumi.getter
     def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
@@ -266,6 +310,11 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the instance to which the created subscription disk is automatically attached.
+        * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -276,7 +325,7 @@ class DiskArgs:
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -287,6 +336,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="multiAttach")
     def multi_attach(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        """
         return pulumi.get(self, "multi_attach")
 
     @multi_attach.setter
@@ -298,7 +350,9 @@ class DiskArgs:
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+
+        > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         """
         return pulumi.get(self, "name")
 
@@ -309,6 +363,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
@@ -319,10 +376,11 @@ class DiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -333,6 +391,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
@@ -343,8 +404,7 @@ class DiskArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Id of resource group which the disk belongs.
-        > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        The ID of the resource group to which to add the disk.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -356,7 +416,19 @@ class DiskArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         """
         return pulumi.get(self, "size")
 
@@ -368,7 +440,7 @@ class DiskArgs:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -379,6 +451,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="storageSetId")
     def storage_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the storage set.
+        """
         return pulumi.get(self, "storage_set_id")
 
     @storage_set_id.setter
@@ -388,6 +463,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="storageSetPartitionNumber")
     def storage_set_partition_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of partitions in the storage set.
+        """
         return pulumi.get(self, "storage_set_partition_number")
 
     @storage_set_partition_number.setter
@@ -409,6 +487,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -418,6 +499,9 @@ class DiskArgs:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -461,25 +545,56 @@ class _DiskState:
         """
         Input properties used for looking up and filtering Disk resources.
 
-        :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
-        :param pulumi.Input[_builtins.str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
-        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
-        :param pulumi.Input[_builtins.bool] delete_with_instance: Indicates whether the disk is released together with the instance: Default value: false.
-        :param pulumi.Input[_builtins.str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
-        :param pulumi.Input[_builtins.bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-        :param pulumi.Input[_builtins.str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the disk belongs.
-               > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        :param pulumi.Input[_builtins.int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[_builtins.str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-        :param pulumi.Input[_builtins.str] status: The disk status.
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
+        :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the disk was created.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
+               * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+               
+               > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.237.0) The ID of the region to which the disk belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the disk.
+        :param pulumi.Input[_builtins.int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+        :param pulumi.Input[_builtins.str] status: The status of the disk.
+        :param pulumi.Input[_builtins.str] storage_set_id: The ID of the storage set.
+        :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
@@ -554,6 +669,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The advanced features configured for the disk.
+        """
         return pulumi.get(self, "advanced_features")
 
     @advanced_features.setter
@@ -565,7 +683,7 @@ class _DiskState:
     @_utilities.deprecated("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
     def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Zone to create the disk in.
+        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -576,6 +694,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="burstingEnabled")
     def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        """
         return pulumi.get(self, "bursting_enabled")
 
     @bursting_enabled.setter
@@ -586,7 +707,7 @@ class _DiskState:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         """
         return pulumi.get(self, "category")
 
@@ -597,6 +718,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.237.0) The time when the disk was created.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -607,7 +731,7 @@ class _DiskState:
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         """
         return pulumi.get(self, "delete_auto_snapshot")
 
@@ -619,7 +743,7 @@ class _DiskState:
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the disk is released together with the instance: Default value: false.
+        Specifies whether to release the disk along with its associated instance. Default value: `false`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -631,7 +755,7 @@ class _DiskState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -642,6 +766,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
@@ -651,6 +778,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -662,7 +792,7 @@ class _DiskState:
     @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -673,6 +803,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="encryptAlgorithm")
     def encrypt_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        """
         return pulumi.get(self, "encrypt_algorithm")
 
     @encrypt_algorithm.setter
@@ -683,7 +816,7 @@ class _DiskState:
     @pulumi.getter
     def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
@@ -694,6 +827,11 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the instance to which the created subscription disk is automatically attached.
+        * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -704,7 +842,7 @@ class _DiskState:
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -715,6 +853,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="multiAttach")
     def multi_attach(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        """
         return pulumi.get(self, "multi_attach")
 
     @multi_attach.setter
@@ -726,7 +867,9 @@ class _DiskState:
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+
+        > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         """
         return pulumi.get(self, "name")
 
@@ -737,6 +880,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
@@ -747,10 +893,11 @@ class _DiskState:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -761,6 +908,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
@@ -770,6 +920,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.237.0) The ID of the region to which the disk belongs.
+        """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
@@ -780,8 +933,7 @@ class _DiskState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Id of resource group which the disk belongs.
-        > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        The ID of the resource group to which to add the disk.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -793,7 +945,19 @@ class _DiskState:
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         """
         return pulumi.get(self, "size")
 
@@ -805,7 +969,7 @@ class _DiskState:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -817,7 +981,7 @@ class _DiskState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk status.
+        The status of the disk.
         """
         return pulumi.get(self, "status")
 
@@ -828,6 +992,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="storageSetId")
     def storage_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the storage set.
+        """
         return pulumi.get(self, "storage_set_id")
 
     @storage_set_id.setter
@@ -837,6 +1004,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="storageSetPartitionNumber")
     def storage_set_partition_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of partitions in the storage set.
+        """
         return pulumi.get(self, "storage_set_partition_number")
 
     @storage_set_partition_number.setter
@@ -858,6 +1028,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -867,6 +1040,9 @@ class _DiskState:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -948,24 +1124,53 @@ class Disk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
-        :param pulumi.Input[_builtins.str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
-        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
-        :param pulumi.Input[_builtins.bool] delete_with_instance: Indicates whether the disk is released together with the instance: Default value: false.
-        :param pulumi.Input[_builtins.str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
-        :param pulumi.Input[_builtins.bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-        :param pulumi.Input[_builtins.str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the disk belongs.
-               > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        :param pulumi.Input[_builtins.int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[_builtins.str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
+        :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
+               * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+               
+               > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the disk.
+        :param pulumi.Input[_builtins.int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+        :param pulumi.Input[_builtins.str] storage_set_id: The ID of the storage set.
+        :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         ...
     @overload
@@ -1139,25 +1344,56 @@ class Disk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: The Zone to create the disk in.
-        :param pulumi.Input[_builtins.str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
-        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
-        :param pulumi.Input[_builtins.bool] delete_with_instance: Indicates whether the disk is released together with the instance: Default value: false.
-        :param pulumi.Input[_builtins.str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
-        :param pulumi.Input[_builtins.bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-        :param pulumi.Input[_builtins.str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the disk belongs.
-               > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        :param pulumi.Input[_builtins.int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[_builtins.str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-        :param pulumi.Input[_builtins.str] status: The disk status.
+        :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
+        :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the disk was created.
+        :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+        :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
+               * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
+        :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+               
+               > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        :param pulumi.Input[_builtins.str] payment_type: The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        :param pulumi.Input[_builtins.str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.237.0) The ID of the region to which the disk belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which to add the disk.
+        :param pulumi.Input[_builtins.int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+        :param pulumi.Input[_builtins.str] status: The status of the disk.
+        :param pulumi.Input[_builtins.str] storage_set_id: The ID of the storage set.
+        :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1198,6 +1434,9 @@ class Disk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The advanced features configured for the disk.
+        """
         return pulumi.get(self, "advanced_features")
 
     @_builtins.property
@@ -1205,33 +1444,39 @@ class Disk(pulumi.CustomResource):
     @_utilities.deprecated("""Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead""")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
         """
-        The Zone to create the disk in.
+        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="burstingEnabled")
     def bursting_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
+        """
         return pulumi.get(self, "bursting_enabled")
 
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         """
         return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.237.0) The time when the disk was created.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         """
         return pulumi.get(self, "delete_auto_snapshot")
 
@@ -1239,7 +1484,7 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates whether the disk is released together with the instance: Default value: false.
+        Specifies whether to release the disk along with its associated instance. Default value: `false`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -1247,18 +1492,24 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "disk_name")
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
+        """
         return pulumi.get(self, "dry_run")
 
     @_builtins.property
@@ -1266,39 +1517,50 @@ class Disk(pulumi.CustomResource):
     @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="encryptAlgorithm")
     def encrypt_algorithm(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
+        """
         return pulumi.get(self, "encrypt_algorithm")
 
     @_builtins.property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the instance to which the created subscription disk is automatically attached.
+        * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
+        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="multiAttach")
     def multi_attach(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        """
         return pulumi.get(self, "multi_attach")
 
     @_builtins.property
@@ -1306,42 +1568,53 @@ class Disk(pulumi.CustomResource):
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+
+        > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
-        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.237.0) The ID of the region to which the disk belongs.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Id of resource group which the disk belongs.
-        > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        The ID of the resource group to which to add the disk.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1349,7 +1622,19 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
         """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         """
         return pulumi.get(self, "size")
 
@@ -1357,7 +1642,7 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[_builtins.str]:
         """
-        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -1365,18 +1650,24 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The disk status.
+        The status of the disk.
         """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="storageSetId")
     def storage_set_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the storage set.
+        """
         return pulumi.get(self, "storage_set_id")
 
     @_builtins.property
     @pulumi.getter(name="storageSetPartitionNumber")
     def storage_set_partition_number(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of partitions in the storage set.
+        """
         return pulumi.get(self, "storage_set_partition_number")
 
     @_builtins.property
@@ -1390,10 +1681,16 @@ class Disk(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        """
         return pulumi.get(self, "zone_id")
 

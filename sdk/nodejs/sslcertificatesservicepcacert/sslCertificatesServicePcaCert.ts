@@ -212,6 +212,7 @@ export class SslCertificatesServicePcaCert extends pulumi.CustomResource {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     *
      * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      */
     declare public readonly status: pulumi.Output<string>;
@@ -416,6 +417,7 @@ export interface SslCertificatesServicePcaCertState {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     *
      * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      */
     status?: pulumi.Input<string | undefined>;
@@ -549,6 +551,7 @@ export interface SslCertificatesServicePcaCertArgs {
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
+     *
      * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepcacert.SslCertificatesServicePcaCert`, `status` must be set to `REVOKE`
      */
     status?: pulumi.Input<string | undefined>;

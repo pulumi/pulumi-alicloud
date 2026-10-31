@@ -72,6 +72,7 @@ class NatGatewayArgs:
         :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
@@ -335,6 +336,7 @@ class NatGatewayArgs:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -449,6 +451,7 @@ class _NatGatewayState:
         :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] snat_table_ids: The nat gateway will auto create a snat item.
@@ -722,6 +725,7 @@ class _NatGatewayState:
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
@@ -856,6 +860,8 @@ class NatGateway(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.37.0.
 
+        > **NOTE:** Destroying a `Subscription` or `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic usage
@@ -953,6 +959,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
@@ -978,6 +985,8 @@ class NatGateway(pulumi.CustomResource):
         > **NOTE:** After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
 
         > **NOTE:** Available since v1.37.0.
+
+        > **NOTE:** Destroying a `Subscription` or `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -1187,6 +1196,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+               
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] snat_table_ids: The nat gateway will auto create a snat item.
@@ -1371,6 +1381,7 @@ class NatGateway(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")

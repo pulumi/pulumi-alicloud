@@ -300,6 +300,7 @@ type Instance struct {
 	// - enterprise: enterprise Edition
 	// - vip: Platinum Edition.
 	// - serverless: Serverless Edition.
+	//
 	// > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
@@ -412,6 +413,7 @@ type instanceState struct {
 	// - enterprise: enterprise Edition
 	// - vip: Platinum Edition.
 	// - serverless: Serverless Edition.
+	//
 	// > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
@@ -492,6 +494,7 @@ type InstanceState struct {
 	// - enterprise: enterprise Edition
 	// - vip: Platinum Edition.
 	// - serverless: Serverless Edition.
+	//
 	// > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
 	InstanceType pulumi.StringPtrInput
 	// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
@@ -574,6 +577,7 @@ type instanceArgs struct {
 	// - enterprise: enterprise Edition
 	// - vip: Platinum Edition.
 	// - serverless: Serverless Edition.
+	//
 	// > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
@@ -651,6 +655,7 @@ type InstanceArgs struct {
 	// - enterprise: enterprise Edition
 	// - vip: Platinum Edition.
 	// - serverless: Serverless Edition.
+	//
 	// > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
 	InstanceType pulumi.StringPtrInput
 	// The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
@@ -833,6 +838,7 @@ func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 // - enterprise: enterprise Edition
 // - vip: Platinum Edition.
 // - serverless: Serverless Edition.
+//
 // > **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = "PayAsYouGo"` and choose `serverlessChargeType = "onDemand"` or `serverlessChargeType = "provisioned"`.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)

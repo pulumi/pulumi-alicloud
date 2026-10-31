@@ -426,6 +426,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    @Import(name="globalSecurityGroupLists")
+    private @Nullable Output<List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    public Optional<Output<List<String>>> globalSecurityGroupLists() {
+        return Optional.ofNullable(this.globalSecurityGroupLists);
+    }
+
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      * @deprecated
@@ -832,6 +863,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -840,6 +872,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -924,6 +957,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -932,6 +966,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -941,6 +976,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -949,6 +985,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -1095,6 +1132,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.forceUpgrade = $.forceUpgrade;
         this.globalInstance = $.globalInstance;
         this.globalInstanceId = $.globalInstanceId;
+        this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceClass = $.instanceClass;
         this.instanceName = $.instanceName;
@@ -1721,6 +1759,61 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(@Nullable Output<List<String>> globalSecurityGroupLists) {
+            $.globalSecurityGroupLists = globalSecurityGroupLists;
+            return this;
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(List<String> globalSecurityGroupLists) {
+            return globalSecurityGroupLists(Output.of(globalSecurityGroupLists));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(String... globalSecurityGroupLists) {
+            return globalSecurityGroupLists(List.of(globalSecurityGroupLists));
+        }
+
+        /**
          * @param instanceChargeType It has been deprecated from provider version 1.101.0 and `paymentType` instead.
          * 
          * @return builder
@@ -2291,6 +2384,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * 
          * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
@@ -2303,6 +2397,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+         * 
          * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
@@ -2429,6 +2524,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+         * 
          * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
          * 
          * @return builder
@@ -2441,6 +2537,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+         * 
          * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
          * 
          * @return builder
@@ -2452,6 +2549,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
          * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
          * 
          * @return builder
@@ -2464,6 +2562,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
          * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
          * 
          * @return builder
