@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         /// <summary>
         /// Whether to support automatic scrolling screen, loading page.
         /// - 0 (default): No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         [Input("automaticScrolling")]
         public Input<int>? AutomaticScrolling { get; set; }

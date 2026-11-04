@@ -149,6 +149,12 @@ func (InstanceSecurityGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceSecurityGroupAttachmentState)(nil)).Elem()
 }
 
+// InstanceSecurityGroupAttachmentExists checks whether an existing InstanceSecurityGroupAttachment resource with the given ID exists.
+func InstanceSecurityGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceSecurityGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/instanceSecurityGroupAttachment:InstanceSecurityGroupAttachment", id, state, "", opts...)
+}
+
 type instanceSecurityGroupAttachmentArgs struct {
 	// Instance ID.
 	InstanceId *string `pulumi:"instanceId"`

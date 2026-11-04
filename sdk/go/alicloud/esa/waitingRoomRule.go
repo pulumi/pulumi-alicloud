@@ -203,6 +203,12 @@ func (WaitingRoomRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomRuleState)(nil)).Elem()
 }
 
+// WaitingRoomRuleExists checks whether an existing WaitingRoomRule resource with the given ID exists.
+func WaitingRoomRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/waitingRoomRule:WaitingRoomRule", id, state, "", opts...)
+}
+
 type waitingRoomRuleArgs struct {
 	// The content of the rule, the implemented policy or conditional expression.
 	Rule string `pulumi:"rule"`

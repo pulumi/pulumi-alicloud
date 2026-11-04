@@ -181,6 +181,12 @@ func (ProductVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*productVersionState)(nil)).Elem()
 }
 
+// ProductVersionExists checks whether an existing ProductVersion resource with the given ID exists.
+func ProductVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProductVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicecatalog/productVersion:ProductVersion", id, state, "", opts...)
+}
+
 type productVersionArgs struct {
 	// Whether the version is activated
 	Active *bool `pulumi:"active"`

@@ -34,14 +34,14 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="bgpGroupName")
     private @Nullable Output<String> bgpGroupName;
 
     /**
-     * @return The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * @return The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> bgpGroupName() {
@@ -231,7 +231,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpGroupName The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+         * @param bgpGroupName The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpGroupName The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+         * @param bgpGroupName The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 

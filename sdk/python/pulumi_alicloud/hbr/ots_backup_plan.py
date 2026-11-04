@@ -775,6 +775,36 @@ class OtsBackupPlan(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return OtsBackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ots_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ots_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict', 'outputs.OtsBackupPlanOtsDetail']]]]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict', 'outputs.OtsBackupPlanRule']]]]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupType"] = backup_type
+        __props__["crossAccountRoleName"] = cross_account_role_name
+        __props__["crossAccountType"] = cross_account_type
+        __props__["crossAccountUserId"] = cross_account_user_id
+        __props__["disabled"] = disabled
+        __props__["instanceName"] = instance_name
+        __props__["otsBackupPlanName"] = ots_backup_plan_name
+        __props__["otsDetails"] = ots_details
+        __props__["retention"] = retention
+        __props__["rules"] = rules
+        __props__["schedule"] = schedule
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/otsBackupPlan:OtsBackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[_builtins.str]:

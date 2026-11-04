@@ -1002,6 +1002,48 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["threshold"] = threshold
         return Alarm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alarm_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_monitor_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict', 'outputs.AlarmExpression']]]]] = None,
+            expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statistics: pulumi.Input[Optional[_builtins.str]] = None,
+            threshold: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alarmActions"] = alarm_actions
+        __props__["cloudMonitorGroupId"] = cloud_monitor_group_id
+        __props__["comparisonOperator"] = comparison_operator
+        __props__["description"] = description
+        __props__["dimensions"] = dimensions
+        __props__["effective"] = effective
+        __props__["enable"] = enable
+        __props__["evaluationCount"] = evaluation_count
+        __props__["expressions"] = expressions
+        __props__["expressionsLogicOperator"] = expressions_logic_operator
+        __props__["metricName"] = metric_name
+        __props__["metricType"] = metric_type
+        __props__["name"] = name
+        __props__["period"] = period
+        __props__["scalingGroupId"] = scaling_group_id
+        __props__["state"] = state
+        __props__["statistics"] = statistics
+        __props__["threshold"] = threshold
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/alarm:Alarm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alarmActions")
     def alarm_actions(self) -> pulumi.Output[Sequence[_builtins.str]]:

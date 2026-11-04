@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("Instance")
  *             .build());
@@ -133,17 +133,17 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new HanaBackupClient("default", HanaBackupClientArgs.builder()
  *             .vaultId(exampleVault.id())
- *             .clientInfo(Output.tuple(exampleInstance.id(), exampleHanaInstance.hanaInstanceId()).applyValue(values -> {
+ *             .clientInfo(Output.tuple(exampleInstance.id(), exampleHanaInstance.hanaInstanceId()).applyValue(values -> }{{@code
  *                 var id = values.t1;
  *                 var hanaInstanceId = values.t2;
- *                 return String.format("[ {{ \"instanceId\": \"%s\", \"clusterId\": \"%s\", \"sourceTypes\": [ \"HANA\" ]  }}]", id,hanaInstanceId);
- *             }))
+ *                 return String.format("[ }{{{@code  }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ", }&#92;{@code "clusterId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ", }&#92;{@code "sourceTypes}&#92;{@code ": [ }&#92;{@code "HANA}&#92;{@code " ]  }}}{@code ]", id,hanaInstanceId);
+ *             }}{@code ))
  *             .alertSetting("INHERITED")
  *             .useHttps(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

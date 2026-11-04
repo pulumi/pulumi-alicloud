@@ -321,6 +321,18 @@ class BucketObjectWormConfiguration(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         return BucketObjectWormConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_worm_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[Union['BucketObjectWormConfigurationRuleArgs', 'BucketObjectWormConfigurationRuleArgsDict', 'outputs.BucketObjectWormConfigurationRule']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketName"] = bucket_name
+        __props__["objectWormEnabled"] = object_worm_enabled
+        __props__["rule"] = rule
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketObjectWormConfiguration:BucketObjectWormConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[_builtins.str]:

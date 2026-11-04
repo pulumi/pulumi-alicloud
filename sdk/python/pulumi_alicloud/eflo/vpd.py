@@ -453,6 +453,30 @@ class Vpd(pulumi.CustomResource):
         __props__.__dict__["vpd_name"] = vpd_name
         return Vpd(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpd_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidr"] = cidr
+        __props__["createTime"] = create_time
+        __props__["gmtModified"] = gmt_modified
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["secondaryCidrBlocks"] = secondary_cidr_blocks
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpdName"] = vpd_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/vpd:Vpd', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:

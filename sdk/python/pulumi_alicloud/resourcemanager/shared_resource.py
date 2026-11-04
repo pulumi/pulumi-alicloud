@@ -536,6 +536,30 @@ class SharedResource(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return SharedResource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_name: pulumi.Input[Optional[_builtins.str]] = None,
+            properties_resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_property: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["permissionName"] = permission_name
+        __props__["propertiesResourceArn"] = properties_resource_arn
+        __props__["resourceArn"] = resource_arn
+        __props__["resourceId"] = resource_id
+        __props__["resourceProperty"] = resource_property
+        __props__["resourceShareId"] = resource_share_id
+        __props__["resourceType"] = resource_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/sharedResource:SharedResource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

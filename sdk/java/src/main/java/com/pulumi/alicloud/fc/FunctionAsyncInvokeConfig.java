@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages an asynchronous invocation configuration for a FC Function or Alias.\
+ * Manages an asynchronous invocation configuration for a FC Function or Alias.&#92;
  *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-putfunctionasyncinvokeconfig).
  * 
  * &gt; **NOTE:** Available since v1.100.0.
@@ -72,12 +72,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -92,20 +92,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("examplerole%s", defaultInteger.get("result")))
  *             .document("""
- * \t{
- * \t\t\"Statement\": [
- * \t\t  {
- * \t\t\t\"Action\": \"sts:AssumeRole\",
- * \t\t\t\"Effect\": \"Allow\",
- * \t\t\t\"Principal\": {
- * \t\t\t  \"Service\": [
- * \t\t\t\t\"fc.aliyuncs.com\"
- * \t\t\t  ]
- * \t\t\t}
- * \t\t  }
- * \t\t],
- * \t\t\"Version\": \"1\"
- * \t}
+ * }&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t  }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Principal}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code "Service}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "fc.aliyuncs.com}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t  ]
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t  }}{@code
+ * }&#92;{@code t}&#92;{@code t],
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ * }&#92;{@code t}}{@code
  *             """)
  *             .description("this is a example")
  *             .force(true)
@@ -114,16 +114,16 @@ import javax.annotation.Nullable;
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(String.format("examplepolicy%s", defaultInteger.get("result")))
  *             .policyDocument("""
- * \t{
- * \t\t\"Version\": \"1\",
- * \t\t\"Statement\": [
- * \t\t  {
- * \t\t\t\"Action\": \"mns:*\",
- * \t\t\t\"Resource\": \"*\",
- * \t\t\t\"Effect\": \"Allow\"
- * \t\t  }
- * \t\t]
- * \t  }
+ * }&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t  }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "mns:*}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t  }}{@code
+ * }&#92;{@code t}&#92;{@code t]
+ * }&#92;{@code t  }}{@code
  *             """)
  *             .build());
  * 
@@ -192,8 +192,8 @@ import javax.annotation.Nullable;
  *             .qualifier("LATEST")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

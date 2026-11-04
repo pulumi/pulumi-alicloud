@@ -234,6 +234,12 @@ func (DbProxyPublicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbProxyPublicState)(nil)).Elem()
 }
 
+// DbProxyPublicExists checks whether an existing DbProxyPublic resource with the given ID exists.
+func DbProxyPublicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbProxyPublicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/dbProxyPublic:DbProxyPublic", id, state, "", opts...)
+}
+
 type dbProxyPublicArgs struct {
 	// The prefix for the new database proxy connection address can be customized.
 	ConnectionStringPrefix string `pulumi:"connectionStringPrefix"`

@@ -688,6 +688,38 @@ class DwResourceGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DwResourceGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            default_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["createTime"] = create_time
+        __props__["defaultVpcId"] = default_vpc_id
+        __props__["defaultVswitchId"] = default_vswitch_id
+        __props__["paymentDuration"] = payment_duration
+        __props__["paymentDurationUnit"] = payment_duration_unit
+        __props__["paymentType"] = payment_type
+        __props__["remark"] = remark
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resourceGroupName"] = resource_group_name
+        __props__["specification"] = specification
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/dwResourceGroup:DwResourceGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

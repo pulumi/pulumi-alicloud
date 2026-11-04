@@ -50,22 +50,20 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
-     * @deprecated
-     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
+     * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      */
-    @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
+    @Deprecated
     @Import(name="innerAccess")
     private @Nullable Output<Boolean> innerAccess;
 
     /**
      * @return Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
-     * @deprecated
-     * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
+     * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      * 
      */
-    @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> innerAccess() {
         return Optional.ofNullable(this.innerAccess);
     }
@@ -92,22 +90,20 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -128,14 +124,14 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (&#92;_), periods (.), and hyphens (-).
      * 
      */
     @Import(name="securityGroupName")
     private @Nullable Output<String> securityGroupName;
 
     /**
-     * @return The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * @return The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (&#92;_), periods (.), and hyphens (-).
      * 
      */
     public Optional<Output<String>> securityGroupName() {
@@ -267,11 +263,10 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
+         * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
          * 
          */
-        @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
+        @Deprecated
         public Builder innerAccess(@Nullable Output<Boolean> innerAccess) {
             $.innerAccess = innerAccess;
             return this;
@@ -282,11 +277,10 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
+         * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
          * 
          */
-        @Deprecated /* Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead. */
+        @Deprecated
         public Builder innerAccess(Boolean innerAccess) {
             return innerAccess(Output.of(innerAccess));
         }
@@ -321,11 +315,10 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -336,11 +329,10 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -367,7 +359,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityGroupName The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+         * @param securityGroupName The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (&#92;_), periods (.), and hyphens (-).
          * 
          * @return builder
          * 
@@ -378,7 +370,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityGroupName The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+         * @param securityGroupName The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (&#92;_), periods (.), and hyphens (-).
          * 
          * @return builder
          * 

@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -70,16 +70,16 @@ import javax.annotation.Nullable;
  *             .nameRegex("default-NODELETING")
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetNetworks.ids().size() > 0 ? 0 : 1; i++) {
+ *         for (var i = 0; i < defaultGetNetworks.ids().size() > 0 ? 0 : 1; i++) }{{@code
  *             new Network("defaultNetwork-" + i);
  * 
  *         
- * }
+ * }}{@code
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .vpcId(defaultNetwork.get(0).id().applyValue(_id -> defaultGetNetworks.ids().size() > 0 ? defaultGetNetworks.ids()[0] : _id))
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().size()).applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().size()).applyValue(_length -> _length > 0 ? 0 : 1); i++) }{{@code
  *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
  *                 .vpcId(defaultNetwork.get(0).id().applyValue(_id -> defaultGetNetworks.ids().size() > 0 ? defaultGetNetworks.ids()[0] : _id))
  *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -91,19 +91,19 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         var defaultServiceMesh = new ServiceMesh("defaultServiceMesh", ServiceMeshArgs.builder()
  *             .serviceMeshName("mesh-c50f3fef117ad45b6b26047cdafef65ad")
  *             .version("v1.21.6.103-g5ddeaef7-aliyun")
  *             .edition("Default")
  *             .network(ServiceMeshNetworkArgs.builder()
  *                 .vpcId(defaultNetwork.get(0).id().applyValue(_id -> defaultGetNetworks.ids().size() > 0 ? defaultGetNetworks.ids()[0] : _id))
- *                 .vswitcheLists(Arrays.asList(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().size()), defaultGetSwitches, defaultSwitch.get(0).id()).applyValue(values -> {
+ *                 .vswitcheLists(Arrays.asList(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids().size()), defaultGetSwitches, defaultSwitch.get(0).id()).applyValue(values -> }{{@code
  *                     var length = values.t1;
  *                     var defaultGetSwitches = values.t2;
  *                     var id = values.t3;
  *                     return length > 0 ? defaultGetSwitches.ids().get(0) : id;
- *                 })))
+ *                 }}{@code )))
  *                 .build())
  *             .build());
  * 
@@ -111,11 +111,11 @@ import javax.annotation.Nullable;
  *             .serviceMeshId(defaultServiceMesh.id())
  *             .extensionProviderName("httpextauth-tf-example")
  *             .type("httpextauth")
- *             .config("{\"headersToDownstreamOnDeny\":[\"content-type\",\"set-cookie\"],\"headersToUpstreamOnAllow\":[\"authorization\",\"cookie\",\"path\",\"x-auth-request-access-token\",\"x-forwarded-access-token\"],\"includeRequestHeadersInCheck\":[\"cookie\",\"x-forward-access-token\"],\"oidc\":{\"clientID\":\"qweqweqwewqeqwe\",\"clientSecret\":\"asdasdasdasdsadas\",\"cookieExpire\":\"1000\",\"cookieRefresh\":\"500\",\"cookieSecret\":\"scxzcxzcxzcxzcxz\",\"issuerURI\":\"qweqwewqeqweqweqwe\",\"redirectDomain\":\"www.alicloud-provider.cn\",\"redirectProtocol\":\"http\",\"scopes\":[\"profile\"]},\"port\":4180,\"service\":\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\",\"timeout\":\"10s\"}")
+ *             .config("}{&#92;{@code "headersToDownstreamOnDeny}&#92;{@code ":[}&#92;{@code "content-type}&#92;{@code ",}&#92;{@code "set-cookie}&#92;{@code "],}&#92;{@code "headersToUpstreamOnAllow}&#92;{@code ":[}&#92;{@code "authorization}&#92;{@code ",}&#92;{@code "cookie}&#92;{@code ",}&#92;{@code "path}&#92;{@code ",}&#92;{@code "x-auth-request-access-token}&#92;{@code ",}&#92;{@code "x-forwarded-access-token}&#92;{@code "],}&#92;{@code "includeRequestHeadersInCheck}&#92;{@code ":[}&#92;{@code "cookie}&#92;{@code ",}&#92;{@code "x-forward-access-token}&#92;{@code "],}&#92;{@code "oidc}&#92;{@code ":}{&#92;{@code "clientID}&#92;{@code ":}&#92;{@code "qweqweqwewqeqwe}&#92;{@code ",}&#92;{@code "clientSecret}&#92;{@code ":}&#92;{@code "asdasdasdasdsadas}&#92;{@code ",}&#92;{@code "cookieExpire}&#92;{@code ":}&#92;{@code "1000}&#92;{@code ",}&#92;{@code "cookieRefresh}&#92;{@code ":}&#92;{@code "500}&#92;{@code ",}&#92;{@code "cookieSecret}&#92;{@code ":}&#92;{@code "scxzcxzcxzcxzcxz}&#92;{@code ",}&#92;{@code "issuerURI}&#92;{@code ":}&#92;{@code "qweqwewqeqweqweqwe}&#92;{@code ",}&#92;{@code "redirectDomain}&#92;{@code ":}&#92;{@code "www.alicloud-provider.cn}&#92;{@code ",}&#92;{@code "redirectProtocol}&#92;{@code ":}&#92;{@code "http}&#92;{@code ",}&#92;{@code "scopes}&#92;{@code ":[}&#92;{@code "profile}&#92;{@code "]}}{@code ,}&#92;{@code "port}&#92;{@code ":4180,}&#92;{@code "service}&#92;{@code ":}&#92;{@code "oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local}&#92;{@code ",}&#92;{@code "timeout}&#92;{@code ":}&#92;{@code "10s}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

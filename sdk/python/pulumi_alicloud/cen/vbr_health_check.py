@@ -556,6 +556,28 @@ class VbrHealthCheck(pulumi.CustomResource):
         __props__.__dict__["vbr_instance_region_id"] = vbr_instance_region_id
         return VbrHealthCheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            vbr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vbr_instance_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vbr_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["healthCheckInterval"] = health_check_interval
+        __props__["healthCheckSourceIp"] = health_check_source_ip
+        __props__["healthCheckTargetIp"] = health_check_target_ip
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["vbrInstanceId"] = vbr_instance_id
+        __props__["vbrInstanceOwnerId"] = vbr_instance_owner_id
+        __props__["vbrInstanceRegionId"] = vbr_instance_region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/vbrHealthCheck:VbrHealthCheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

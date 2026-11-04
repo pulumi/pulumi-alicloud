@@ -546,6 +546,28 @@ class ShardingAuditFilter(pulumi.CustomResource):
         __props__.__dict__["storage_period"] = storage_period
         return ShardingAuditFilter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audit_status: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_storage_period: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_period: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["auditStatus"] = audit_status
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["filter"] = filter
+        __props__["hotStoragePeriod"] = hot_storage_period
+        __props__["regionId"] = region_id
+        __props__["roleType"] = role_type
+        __props__["serviceType"] = service_type
+        __props__["storagePeriod"] = storage_period
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/shardingAuditFilter:ShardingAuditFilter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Output[_builtins.str]:

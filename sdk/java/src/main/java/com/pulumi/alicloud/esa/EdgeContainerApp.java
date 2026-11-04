@@ -180,8 +180,8 @@ public class EdgeContainerApp extends com.pulumi.resources.CustomResource {
     /**
      * The HTTP status code returned for a successful health check. Valid values:
      * 
-     * - **http\_2xx** (default)
-     * - **http\_3xx**
+     * - **http&#92;_2xx** (default)
+     * - **http&#92;_3xx**
      * 
      */
     @Export(name="healthCheckMethod", refs={String.class}, tree="[0]")
@@ -190,8 +190,8 @@ public class EdgeContainerApp extends com.pulumi.resources.CustomResource {
     /**
      * @return The HTTP status code returned for a successful health check. Valid values:
      * 
-     * - **http\_2xx** (default)
-     * - **http\_3xx**
+     * - **http&#92;_2xx** (default)
+     * - **http&#92;_3xx**
      * 
      */
     public Output<String> healthCheckMethod() {

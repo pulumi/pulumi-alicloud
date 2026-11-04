@@ -597,6 +597,24 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
         __props__.__dict__["policy_name"] = policy_name
         return KubernetesPolicyInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["clusterId"] = cluster_id
+        __props__["instanceName"] = instance_name
+        __props__["namespaces"] = namespaces
+        __props__["parameters"] = parameters
+        __props__["policyName"] = policy_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

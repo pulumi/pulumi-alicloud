@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var resourceRewriteUrlRuleRatePlanInstanceExample = new RatePlanInstance("resourceRewriteUrlRuleRatePlanInstanceExample", RatePlanInstanceArgs.builder()
@@ -86,12 +86,12 @@ import javax.annotation.Nullable;
  *             .ruleEnable("on")
  *             .queryString("example=123")
  *             .siteVersion(0)
- *             .rule("http.host eq \"video.example.com\"")
+ *             .rule("http.host eq }&#92;{@code "video.example.com}&#92;{@code "")
  *             .uri("/image/example.jpg")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

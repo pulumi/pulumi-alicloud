@@ -2161,6 +2161,96 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ReadOnlyInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            client_cert_revocation_list: pulumi.Input[Optional[_builtins.str]] = None,
+            client_crl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict', 'outputs.ReadOnlyInstanceParameter']]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            server_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_db_instance_kernel_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["caType"] = ca_type
+        __props__["clientCaCert"] = client_ca_cert
+        __props__["clientCaEnabled"] = client_ca_enabled
+        __props__["clientCertRevocationList"] = client_cert_revocation_list
+        __props__["clientCrlEnabled"] = client_crl_enabled
+        __props__["connectionString"] = connection_string
+        __props__["dbInstanceIpArrayAttribute"] = db_instance_ip_array_attribute
+        __props__["dbInstanceIpArrayName"] = db_instance_ip_array_name
+        __props__["dbInstanceStorageType"] = db_instance_storage_type
+        __props__["deletionProtection"] = deletion_protection
+        __props__["direction"] = direction
+        __props__["effectiveTime"] = effective_time
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["forceRestart"] = force_restart
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["instanceName"] = instance_name
+        __props__["instanceStorage"] = instance_storage
+        __props__["instanceType"] = instance_type
+        __props__["masterDbInstanceId"] = master_db_instance_id
+        __props__["modifyMode"] = modify_mode
+        __props__["parameters"] = parameters
+        __props__["period"] = period
+        __props__["port"] = port
+        __props__["replicationAcl"] = replication_acl
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityIpType"] = security_ip_type
+        __props__["securityIps"] = security_ips
+        __props__["serverCert"] = server_cert
+        __props__["serverKey"] = server_key
+        __props__["sslEnabled"] = ssl_enabled
+        __props__["switchTime"] = switch_time
+        __props__["tags"] = tags
+        __props__["targetMinorVersion"] = target_minor_version
+        __props__["upgradeDbInstanceKernelVersion"] = upgrade_db_instance_kernel_version
+        __props__["upgradeTime"] = upgrade_time
+        __props__["vswitchId"] = vswitch_id
+        __props__["whitelistNetworkType"] = whitelist_network_type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/readOnlyInstance:ReadOnlyInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[_builtins.str]:

@@ -399,6 +399,24 @@ class OriginCaCertificate(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return OriginCaCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_ca_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["createTime"] = create_time
+        __props__["name"] = name
+        __props__["originCaCertificateId"] = origin_ca_certificate_id
+        __props__["siteId"] = site_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/originCaCertificate:OriginCaCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

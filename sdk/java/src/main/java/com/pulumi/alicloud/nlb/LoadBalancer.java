@@ -414,7 +414,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the NLB instance.
-     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The value must start with a letter.
      * 
      */
     @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
@@ -422,7 +422,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the NLB instance.
-     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The value must start with a letter.
      * 
      */
     public Output<Optional<String>> loadBalancerName() {

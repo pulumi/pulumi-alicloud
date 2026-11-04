@@ -176,6 +176,12 @@ func (FirewallVpcFirewallCenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallVpcFirewallCenState)(nil)).Elem()
 }
 
+// FirewallVpcFirewallCenExists checks whether an existing FirewallVpcFirewallCen resource with the given ID exists.
+func FirewallVpcFirewallCenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallVpcFirewallCenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen", id, state, "", opts...)
+}
+
 type firewallVpcFirewallCenArgs struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`

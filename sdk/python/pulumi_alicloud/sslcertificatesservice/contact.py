@@ -386,6 +386,22 @@ class Contact(pulumi.CustomResource):
         __props__.__dict__["webhook_lists"] = webhook_lists
         return Contact(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            idcard: pulumi.Input[Optional[_builtins.str]] = None,
+            mobile: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["idcard"] = idcard
+        __props__["mobile"] = mobile
+        __props__["name"] = name
+        __props__["webhookLists"] = webhook_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesservice/contact:Contact', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:

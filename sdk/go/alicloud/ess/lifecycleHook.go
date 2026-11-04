@@ -228,6 +228,12 @@ func (LifecycleHookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lifecycleHookState)(nil)).Elem()
 }
 
+// LifecycleHookExists checks whether an existing LifecycleHook resource with the given ID exists.
+func LifecycleHookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LifecycleHookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/lifecycleHook:LifecycleHook", id, state, "", opts...)
+}
+
 type lifecycleHookArgs struct {
 	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
 	DefaultResult *string `pulumi:"defaultResult"`

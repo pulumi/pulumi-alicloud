@@ -2031,6 +2031,102 @@ class EcsInstanceSet(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return EcsInstanceSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_check_os_with_assistant: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict', 'outputs.EcsInstanceSetDataDisk']]]]] = None,
+            dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_instance_filter: pulumi.Input[Optional[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict', 'outputs.EcsInstanceSetExcludeInstanceFilter']]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict', 'outputs.EcsInstanceSetNetworkInterface']]]]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amount"] = amount
+        __props__["autoReleaseTime"] = auto_release_time
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["bootCheckOsWithAssistant"] = boot_check_os_with_assistant
+        __props__["dataDisks"] = data_disks
+        __props__["dedicatedHostId"] = dedicated_host_id
+        __props__["deletionProtection"] = deletion_protection
+        __props__["deploymentSetId"] = deployment_set_id
+        __props__["description"] = description
+        __props__["excludeInstanceFilter"] = exclude_instance_filter
+        __props__["hostName"] = host_name
+        __props__["hpcClusterId"] = hpc_cluster_id
+        __props__["imageId"] = image_id
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["instanceIds"] = instance_ids
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["internetMaxBandwidthOut"] = internet_max_bandwidth_out
+        __props__["keyPairName"] = key_pair_name
+        __props__["launchTemplateId"] = launch_template_id
+        __props__["launchTemplateName"] = launch_template_name
+        __props__["launchTemplateVersion"] = launch_template_version
+        __props__["networkInterfaces"] = network_interfaces
+        __props__["password"] = password
+        __props__["passwordInherit"] = password_inherit
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["ramRoleName"] = ram_role_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityEnhancementStrategy"] = security_enhancement_strategy
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["spotPriceLimit"] = spot_price_limit
+        __props__["spotStrategy"] = spot_strategy
+        __props__["systemDiskAutoSnapshotPolicyId"] = system_disk_auto_snapshot_policy_id
+        __props__["systemDiskCategory"] = system_disk_category
+        __props__["systemDiskDescription"] = system_disk_description
+        __props__["systemDiskName"] = system_disk_name
+        __props__["systemDiskPerformanceLevel"] = system_disk_performance_level
+        __props__["systemDiskSize"] = system_disk_size
+        __props__["tags"] = tags
+        __props__["uniqueSuffix"] = unique_suffix
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsInstanceSet:EcsInstanceSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def amount(self) -> pulumi.Output[Optional[_builtins.int]]:

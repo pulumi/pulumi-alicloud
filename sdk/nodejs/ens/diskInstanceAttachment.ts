@@ -75,6 +75,17 @@ export class DiskInstanceAttachment extends pulumi.CustomResource {
         return new DiskInstanceAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing DiskInstanceAttachment resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DiskInstanceAttachmentState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment';
 

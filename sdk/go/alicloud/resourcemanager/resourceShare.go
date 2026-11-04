@@ -212,6 +212,12 @@ func (ResourceShareState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceShareState)(nil)).Elem()
 }
 
+// ResourceShareExists checks whether an existing ResourceShare resource with the given ID exists.
+func ResourceShareExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceShareState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/resourceShare:ResourceShare", id, state, "", opts...)
+}
+
 type resourceShareArgs struct {
 	// Whether to allow sharing to accounts outside the resource directory. Value:
 	// - false (default): Only sharing within the resource directory is allowed.

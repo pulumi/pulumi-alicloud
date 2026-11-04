@@ -128,11 +128,10 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
     /**
      * . Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidthPackageBandwidth` = `&#34;Cancelled&#34;`.
      * 
-     * @deprecated
-     * Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
+     * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
      * 
      */
-    @Deprecated /* Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = ""Cancelled"" */
+    @Deprecated
     @Export(name="cancelCommonBandwidthPackageIpBandwidth", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cancelCommonBandwidthPackageIpBandwidth;
 

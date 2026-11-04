@@ -165,6 +165,12 @@ func (DynamicTagGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dynamicTagGroupState)(nil)).Elem()
 }
 
+// DynamicTagGroupExists checks whether an existing DynamicTagGroup resource with the given ID exists.
+func DynamicTagGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DynamicTagGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/dynamicTagGroup:DynamicTagGroup", id, state, "", opts...)
+}
+
 type dynamicTagGroupArgs struct {
 	// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 	ContactGroupLists []string `pulumi:"contactGroupLists"`

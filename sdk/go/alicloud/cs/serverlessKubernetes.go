@@ -439,6 +439,12 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverlessKubernetesState)(nil)).Elem()
 }
 
+// ServerlessKubernetesExists checks whether an existing ServerlessKubernetes resource with the given ID exists.
+func ServerlessKubernetesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerlessKubernetesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/serverlessKubernetes:ServerlessKubernetes", id, state, "", opts...)
+}
+
 type serverlessKubernetesArgs struct {
 	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`

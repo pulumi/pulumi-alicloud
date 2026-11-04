@@ -373,6 +373,12 @@ func (ScalingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingRuleState)(nil)).Elem()
 }
 
+// ScalingRuleExists checks whether an existing ScalingRule resource with the given ID exists.
+func ScalingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScalingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/scalingRule:ScalingRule", id, state, "", opts...)
+}
+
 type scalingRuleArgs struct {
 	// Adjustment mode of a scaling rule. Optional values:
 	// - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.

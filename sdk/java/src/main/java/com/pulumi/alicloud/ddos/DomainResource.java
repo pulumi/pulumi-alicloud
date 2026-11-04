@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var domain = config.get("domain").orElse("tf-example.alibaba.com");
@@ -74,11 +74,11 @@ import javax.annotation.Nullable;
  *             .instanceIds(default_.id())
  *             .realServers("177.167.32.11")
  *             .httpsExt("""
- *     {
- *     \"Http2\": 1,
- *     \"Http2https\": 0,
- *     \"Https2http\": 0
- *   }
+ *     }{{@code
+ *     }&#92;{@code "Http2}&#92;{@code ": 1,
+ *     }&#92;{@code "Http2https}&#92;{@code ": 0,
+ *     }&#92;{@code "Https2http}&#92;{@code ": 0
+ *   }}{@code
  *             """)
  *             .proxyTypes(DomainResourceProxyTypeArgs.builder()
  *                 .proxyPorts(443)
@@ -86,8 +86,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

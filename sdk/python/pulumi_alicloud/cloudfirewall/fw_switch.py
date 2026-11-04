@@ -668,6 +668,52 @@ class FwSwitch(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return FwSwitch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            internet_address: pulumi.Input[Optional[_builtins.str]] = None,
+            intranet_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            protect_status: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sg_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sg_status_time: pulumi.Input[Optional[_builtins.int]] = None,
+            sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliUid"] = ali_uid
+        __props__["bindInstanceId"] = bind_instance_id
+        __props__["bindInstanceName"] = bind_instance_name
+        __props__["dryRun"] = dry_run
+        __props__["internetAddress"] = internet_address
+        __props__["intranetAddress"] = intranet_address
+        __props__["ipVersion"] = ip_version
+        __props__["lang"] = lang
+        __props__["memberUid"] = member_uid
+        __props__["name"] = name
+        __props__["note"] = note
+        __props__["protectStatus"] = protect_status
+        __props__["regionId"] = region_id
+        __props__["regionStatus"] = region_status
+        __props__["resourceInstanceId"] = resource_instance_id
+        __props__["resourceType"] = resource_type
+        __props__["sgStatus"] = sg_status
+        __props__["sgStatusTime"] = sg_status_time
+        __props__["syncStatus"] = sync_status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/fwSwitch:FwSwitch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliUid")
     def ali_uid(self) -> pulumi.Output[_builtins.int]:

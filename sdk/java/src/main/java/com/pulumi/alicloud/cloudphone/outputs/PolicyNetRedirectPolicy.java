@@ -27,12 +27,12 @@ public final class PolicyNetRedirectPolicy {
      */
     private @Nullable String netRedirect;
     /**
-     * @return Transparent proxy port. The Port value range is 1\~ 65535.
+     * @return Transparent proxy port. The Port value range is 1&#92;~ 65535.
      * 
      */
     private @Nullable String port;
     /**
-     * @return The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * @return The proxy password. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     private @Nullable String proxyPassword;
@@ -42,7 +42,7 @@ public final class PolicyNetRedirectPolicy {
      */
     private @Nullable String proxyType;
     /**
-     * @return The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * @return The proxy user name. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     private @Nullable String proxyUserName;
@@ -70,14 +70,14 @@ public final class PolicyNetRedirectPolicy {
         return Optional.ofNullable(this.netRedirect);
     }
     /**
-     * @return Transparent proxy port. The Port value range is 1\~ 65535.
+     * @return Transparent proxy port. The Port value range is 1&#92;~ 65535.
      * 
      */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * @return The proxy password. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     public Optional<String> proxyPassword() {
@@ -91,7 +91,7 @@ public final class PolicyNetRedirectPolicy {
         return Optional.ofNullable(this.proxyType);
     }
     /**
-     * @return The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * @return The proxy user name. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     public Optional<String> proxyUserName() {

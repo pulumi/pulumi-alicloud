@@ -155,6 +155,12 @@ func (ChartNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*chartNamespaceState)(nil)).Elem()
 }
 
+// ChartNamespaceExists checks whether an existing ChartNamespace resource with the given ID exists.
+func ChartNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChartNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/chartNamespace:ChartNamespace", id, state, "", opts...)
+}
+
 type chartNamespaceArgs struct {
 	// Specifies whether to automatically create repositories in the namespace. Valid values:
 	AutoCreateRepo *bool `pulumi:"autoCreateRepo"`

@@ -923,6 +923,48 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         __props__.__dict__["target_user_id"] = target_user_id
         return RegistryEnterpriseSyncRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_sync_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["name"] = name
+        __props__["namespaceName"] = namespace_name
+        __props__["regionId"] = region_id
+        __props__["repoName"] = repo_name
+        __props__["repoSyncRuleId"] = repo_sync_rule_id
+        __props__["ruleId"] = rule_id
+        __props__["syncDirection"] = sync_direction
+        __props__["syncRuleName"] = sync_rule_name
+        __props__["syncScope"] = sync_scope
+        __props__["syncTrigger"] = sync_trigger
+        __props__["tagFilter"] = tag_filter
+        __props__["targetInstanceId"] = target_instance_id
+        __props__["targetNamespaceName"] = target_namespace_name
+        __props__["targetRegionId"] = target_region_id
+        __props__["targetRepoName"] = target_repo_name
+        __props__["targetUserId"] = target_user_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

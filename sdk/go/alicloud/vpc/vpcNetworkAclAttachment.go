@@ -170,6 +170,12 @@ func (VpcNetworkAclAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcNetworkAclAttachmentState)(nil)).Elem()
 }
 
+// VpcNetworkAclAttachmentExists checks whether an existing VpcNetworkAclAttachment resource with the given ID exists.
+func VpcNetworkAclAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcNetworkAclAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment", id, state, "", opts...)
+}
+
 type vpcNetworkAclAttachmentArgs struct {
 	// The ID of the network ACL instance.
 	NetworkAclId string `pulumi:"networkAclId"`

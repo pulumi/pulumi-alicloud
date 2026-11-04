@@ -262,6 +262,12 @@ func (DomainExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainExtensionState)(nil)).Elem()
 }
 
+// DomainExtensionExists checks whether an existing DomainExtension resource with the given ID exists.
+func DomainExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/domainExtension:DomainExtension", id, state, "", opts...)
+}
+
 type domainExtensionArgs struct {
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`

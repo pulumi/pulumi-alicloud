@@ -407,22 +407,20 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     /**
      * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -659,22 +657,20 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
      * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     public Optional<Output<String>> systemDiskCategory() {
         return Optional.ofNullable(this.systemDiskCategory);
     }
@@ -682,22 +678,20 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Import(name="systemDiskDescription")
     private @Nullable Output<String> systemDiskDescription;
 
     /**
      * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     public Optional<Output<String>> systemDiskDescription() {
         return Optional.ofNullable(this.systemDiskDescription);
     }
@@ -705,22 +699,20 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Import(name="systemDiskName")
     private @Nullable Output<String> systemDiskName;
 
     /**
      * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     public Optional<Output<String>> systemDiskName() {
         return Optional.ofNullable(this.systemDiskName);
     }
@@ -728,22 +720,20 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Import(name="systemDiskSize")
     private @Nullable Output<Integer> systemDiskSize;
 
     /**
      * @return It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     public Optional<Output<Integer>> systemDiskSize() {
         return Optional.ofNullable(this.systemDiskSize);
     }
@@ -830,22 +820,20 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     /**
      * It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
-     * @deprecated
-     * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
+     * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
      */
-    @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
+    @Deprecated
     @Import(name="userdata")
     private @Nullable Output<String> userdata;
 
     /**
      * @return It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
-     * @deprecated
-     * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
+     * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
      */
-    @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
+    @Deprecated
     public Optional<Output<String>> userdata() {
         return Optional.ofNullable(this.userdata);
     }
@@ -1526,11 +1514,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -1541,11 +1528,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -1884,11 +1870,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskCategory(@Nullable Output<String> systemDiskCategory) {
             $.systemDiskCategory = systemDiskCategory;
             return this;
@@ -1899,11 +1884,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskCategory(String systemDiskCategory) {
             return systemDiskCategory(Output.of(systemDiskCategory));
         }
@@ -1913,11 +1897,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskDescription(@Nullable Output<String> systemDiskDescription) {
             $.systemDiskDescription = systemDiskDescription;
             return this;
@@ -1928,11 +1911,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskDescription(String systemDiskDescription) {
             return systemDiskDescription(Output.of(systemDiskDescription));
         }
@@ -1942,11 +1924,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskName(@Nullable Output<String> systemDiskName) {
             $.systemDiskName = systemDiskName;
             return this;
@@ -1957,11 +1938,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskName(String systemDiskName) {
             return systemDiskName(Output.of(systemDiskName));
         }
@@ -1971,11 +1951,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskSize(@Nullable Output<Integer> systemDiskSize) {
             $.systemDiskSize = systemDiskSize;
             return this;
@@ -1986,11 +1965,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+         * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+        @Deprecated
         public Builder systemDiskSize(Integer systemDiskSize) {
             return systemDiskSize(Output.of(systemDiskSize));
         }
@@ -2109,11 +2087,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
+         * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
          * 
          */
-        @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
+        @Deprecated
         public Builder userdata(@Nullable Output<String> userdata) {
             $.userdata = userdata;
             return this;
@@ -2124,11 +2101,10 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
+         * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
          * 
          */
-        @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
+        @Deprecated
         public Builder userdata(String userdata) {
             return userdata(Output.of(userdata));
         }

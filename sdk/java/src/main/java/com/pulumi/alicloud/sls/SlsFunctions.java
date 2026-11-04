@@ -1451,12 +1451,12 @@ public final class SlsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
@@ -1493,12 +1493,12 @@ public final class SlsFunctions {
      *                             ",", 
      *                             " ", 
      *                             ";", 
-     *                             "\"", 
+     *                             "}&#92;{@code "", 
      *                             "'", 
      *                             "(", 
      *                             ")", 
-     *                             "{", 
-     *                             "}", 
+     *                             "}{{@code ", 
+     *                             "}}{@code ", 
      *                             "[", 
      *                             "]", 
      *                             "<", 
@@ -1524,8 +1524,8 @@ public final class SlsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1564,12 +1564,12 @@ public final class SlsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
@@ -1606,12 +1606,12 @@ public final class SlsFunctions {
      *                             ",", 
      *                             " ", 
      *                             ";", 
-     *                             "\"", 
+     *                             "}&#92;{@code "", 
      *                             "'", 
      *                             "(", 
      *                             ")", 
-     *                             "{", 
-     *                             "}", 
+     *                             "}{{@code ", 
+     *                             "}}{@code ", 
      *                             "[", 
      *                             "]", 
      *                             "<", 
@@ -1637,8 +1637,8 @@ public final class SlsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1677,12 +1677,12 @@ public final class SlsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
@@ -1719,12 +1719,12 @@ public final class SlsFunctions {
      *                             ",", 
      *                             " ", 
      *                             ";", 
-     *                             "\"", 
+     *                             "}&#92;{@code "", 
      *                             "'", 
      *                             "(", 
      *                             ")", 
-     *                             "{", 
-     *                             "}", 
+     *                             "}{{@code ", 
+     *                             "}}{@code ", 
      *                             "[", 
      *                             "]", 
      *                             "<", 
@@ -1750,8 +1750,8 @@ public final class SlsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1790,12 +1790,12 @@ public final class SlsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
@@ -1832,12 +1832,12 @@ public final class SlsFunctions {
      *                             ",", 
      *                             " ", 
      *                             ";", 
-     *                             "\"", 
+     *                             "}&#92;{@code "", 
      *                             "'", 
      *                             "(", 
      *                             ")", 
-     *                             "{", 
-     *                             "}", 
+     *                             "}{{@code ", 
+     *                             "}}{@code ", 
      *                             "[", 
      *                             "]", 
      *                             "<", 
@@ -1863,8 +1863,8 @@ public final class SlsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1903,12 +1903,12 @@ public final class SlsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
@@ -1945,12 +1945,12 @@ public final class SlsFunctions {
      *                             ",", 
      *                             " ", 
      *                             ";", 
-     *                             "\"", 
+     *                             "}&#92;{@code "", 
      *                             "'", 
      *                             "(", 
      *                             ")", 
-     *                             "{", 
-     *                             "}", 
+     *                             "}{{@code ", 
+     *                             "}}{@code ", 
      *                             "[", 
      *                             "]", 
      *                             "<", 
@@ -1976,8 +1976,8 @@ public final class SlsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

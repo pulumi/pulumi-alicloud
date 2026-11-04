@@ -966,7 +966,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
         /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         /// - MariaDB: [ 10.3 ]
-        /// **Serverless**
+        ///   **Serverless**
         /// - MySQL: [ 5.7、8.0 ]
         /// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
         /// - PostgreSQL: [ 14.0 ]
@@ -1037,8 +1037,8 @@ namespace Pulumi.AliCloud.Rds
         /// - [20,1000] for MySQL 5.7 basic single node edition;
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
-        /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
+        ///   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        ///   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
         /// </summary>
         [Output("instanceStorage")]
         public Output<int> InstanceStorage { get; private set; } = null!;
@@ -1246,7 +1246,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values: 
+        /// Actions performed on SSL functions. Valid values:
         /// `Open`: turn on SSL encryption;
         /// `Close`: turn off SSL encryption;
         /// `Update`: update SSL certificate.
@@ -1441,7 +1441,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
@@ -1813,7 +1812,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
         /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         /// - MariaDB: [ 10.3 ]
-        /// **Serverless**
+        ///   **Serverless**
         /// - MySQL: [ 5.7、8.0 ]
         /// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
         /// - PostgreSQL: [ 14.0 ]
@@ -1884,8 +1883,8 @@ namespace Pulumi.AliCloud.Rds
         /// - [20,1000] for MySQL 5.7 basic single node edition;
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
-        /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
+        ///   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        ///   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
         /// </summary>
         [Input("instanceStorage", required: true)]
         public Input<int> InstanceStorage { get; set; } = null!;
@@ -2133,7 +2132,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values: 
+        /// Actions performed on SSL functions. Valid values:
         /// `Open`: turn on SSL encryption;
         /// `Close`: turn off SSL encryption;
         /// `Update`: update SSL certificate.
@@ -2372,7 +2371,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
@@ -2714,7 +2712,7 @@ namespace Pulumi.AliCloud.Rds
         /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent、2022_web、2022_std_ha、2022_ent、2025_std、2025_ent ]
         /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         /// - MariaDB: [ 10.3 ]
-        /// **Serverless**
+        ///   **Serverless**
         /// - MySQL: [ 5.7、8.0 ]
         /// - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
         /// - PostgreSQL: [ 14.0 ]
@@ -2785,8 +2783,8 @@ namespace Pulumi.AliCloud.Rds
         /// - [20,1000] for MySQL 5.7 basic single node edition;
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
-        /// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        /// Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
+        ///   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        ///   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `InstanceStorage`.
         /// </summary>
         [Input("instanceStorage")]
         public Input<int>? InstanceStorage { get; set; }
@@ -3034,7 +3032,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values: 
+        /// Actions performed on SSL functions. Valid values:
         /// `Open`: turn on SSL encryption;
         /// `Close`: turn off SSL encryption;
         /// `Update`: update SSL certificate.
@@ -3297,7 +3295,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>

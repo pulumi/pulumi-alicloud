@@ -143,6 +143,12 @@ func (BucketAccessMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketAccessMonitorState)(nil)).Elem()
 }
 
+// BucketAccessMonitorExists checks whether an existing BucketAccessMonitor resource with the given ID exists.
+func BucketAccessMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketAccessMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketAccessMonitor:BucketAccessMonitor", id, state, "", opts...)
+}
+
 type bucketAccessMonitorArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

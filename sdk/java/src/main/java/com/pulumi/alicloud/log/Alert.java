@@ -477,11 +477,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use evalCondition in severity_configurations
+     * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
+    @Deprecated
     @Export(name="condition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> condition;
 
@@ -495,11 +494,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use dashboardId in query_list
+     * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use dashboardId in query_list */
+    @Deprecated
     @Export(name="dashboard", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dashboard;
 
@@ -597,11 +595,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use policyConfiguration for notification
+     * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
+    @Deprecated
     @Export(name="notificationLists", refs={List.class,AlertNotificationList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertNotificationList>> notificationLists;
 
@@ -615,11 +612,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use threshold
+     * @deprecated Deprecated from 1.161.0+, use threshold
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use threshold */
+    @Deprecated
     @Export(name="notifyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> notifyThreshold;
 
@@ -689,11 +685,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
      * 
-     * @deprecated
-     * Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+     * @deprecated Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+    @Deprecated
     @Export(name="scheduleInterval", refs={String.class}, tree="[0]")
     private Output<String> scheduleInterval;
 
@@ -707,11 +702,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
      * 
-     * @deprecated
-     * Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+     * @deprecated Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+    @Deprecated
     @Export(name="scheduleType", refs={String.class}, tree="[0]")
     private Output<String> scheduleType;
 
@@ -781,11 +775,10 @@ public class Alert extends com.pulumi.resources.CustomResource {
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+     * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
+    @Deprecated
     @Export(name="throttling", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> throttling;
 

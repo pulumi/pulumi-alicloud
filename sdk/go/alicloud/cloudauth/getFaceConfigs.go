@@ -44,9 +44,10 @@ import (
 //				},
 //				NameRegex: defaultFaceConfig.BizName,
 //			}, nil)
-//			ctx.Export("faceConfig", _default.ApplyT(func(_default cloudauth.GetFaceConfigsResult) (cloudauth.GetFaceConfigsConfig, error) {
-//				return _default.Configs[0].(cloudauth.GetFaceConfigsConfig), nil
-//			}).(cloudauth.GetFaceConfigsConfigOutput))
+//			ctx.Export("faceConfig", _default.ApplyT(func(_default cloudauth.GetFaceConfigsResult) (*cloudauth.GetFaceConfigsConfig, error) {
+//				val := _default.Configs[0].(*cloudauth.GetFaceConfigsConfig)
+//				return &val, nil
+//			}).(Cloudauth.GetFaceConfigsConfigPtrOutput))
 //			return nil
 //		})
 //	}

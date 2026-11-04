@@ -18,20 +18,18 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
     public static final ClusterBootstrapScriptNodeSelectorArgs Empty = new ClusterBootstrapScriptNodeSelectorArgs();
 
     /**
-     * @deprecated
-     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * @deprecated Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
+    @Deprecated
     @Import(name="nodeGroupId")
     private @Nullable Output<String> nodeGroupId;
 
     /**
-     * @deprecated
-     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * @deprecated Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
+    @Deprecated
     public Optional<Output<String>> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
@@ -52,20 +50,18 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
     }
 
     /**
-     * @deprecated
-     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * @deprecated Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
+    @Deprecated
     @Import(name="nodeGroupName")
     private @Nullable Output<String> nodeGroupName;
 
     /**
-     * @deprecated
-     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * @deprecated Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
+    @Deprecated
     public Optional<Output<String>> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
     }
@@ -163,11 +159,10 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+         * @deprecated Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
+        @Deprecated
         public Builder nodeGroupId(@Nullable Output<String> nodeGroupId) {
             $.nodeGroupId = nodeGroupId;
             return this;
@@ -176,11 +171,10 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+         * @deprecated Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
+        @Deprecated
         public Builder nodeGroupId(String nodeGroupId) {
             return nodeGroupId(Output.of(nodeGroupId));
         }
@@ -219,11 +213,10 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+         * @deprecated Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
+        @Deprecated
         public Builder nodeGroupName(@Nullable Output<String> nodeGroupName) {
             $.nodeGroupName = nodeGroupName;
             return this;
@@ -232,11 +225,10 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+         * @deprecated Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
+        @Deprecated
         public Builder nodeGroupName(String nodeGroupName) {
             return nodeGroupName(Output.of(nodeGroupName));
         }

@@ -209,6 +209,12 @@ func (ZonalAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zonalAccountState)(nil)).Elem()
 }
 
+// ZonalAccountExists checks whether an existing ZonalAccount resource with the given ID exists.
+func ZonalAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZonalAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/zonalAccount:ZonalAccount", id, state, "", opts...)
+}
+
 type zonalAccountArgs struct {
 	// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	AccountDescription *string `pulumi:"accountDescription"`

@@ -42,25 +42,25 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()
  *             .operationSystem("Windows")
  *             .patchBaselineName("terraform-example")
  *             .description("terraform-example")
- *             .approvalRules("{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}")
+ *             .approvalRules("}{&#92;{@code "PatchRules}&#92;{@code ":[}{&#92;{@code "PatchFilterGroup}&#92;{@code ":[}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "PatchSet}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "OS}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "ProductFamily}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Windows}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "Product}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Windows 10}&#92;{@code ",}&#92;{@code "Windows 7}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "Classification}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Security Updates}&#92;{@code ",}&#92;{@code "Updates}&#92;{@code ",}&#92;{@code "Update Rollups}&#92;{@code ",}&#92;{@code "Critical Updates}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "Severity}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Critical}&#92;{@code ",}&#92;{@code "Important}&#92;{@code ",}&#92;{@code "Moderate}&#92;{@code "]}}{@code ],}&#92;{@code "ApproveAfterDays}&#92;{@code ":7,}&#92;{@code "EnableNonSecurity}&#92;{@code ":true,}&#92;{@code "ComplianceLevel}&#92;{@code ":}&#92;{@code "Medium}&#92;{@code "}}{@code ]}}{@code ")
  *             .build());
  * 
  *         var defaultDefaultPatchBaseline = new DefaultPatchBaseline("defaultDefaultPatchBaseline", DefaultPatchBaselineArgs.builder()
  *             .patchBaselineName(default_.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

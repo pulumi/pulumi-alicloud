@@ -1335,6 +1335,78 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            elastic_io_resource: pulumi.Input[Optional[_builtins.int]] = None,
+            elastic_io_resource_size: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            kernel_version: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["computeResource"] = compute_resource
+        __props__["connectionString"] = connection_string
+        __props__["dbClusterCategory"] = db_cluster_category
+        __props__["dbClusterClass"] = db_cluster_class
+        __props__["dbClusterVersion"] = db_cluster_version
+        __props__["dbNodeClass"] = db_node_class
+        __props__["dbNodeCount"] = db_node_count
+        __props__["dbNodeStorage"] = db_node_storage
+        __props__["description"] = description
+        __props__["diskEncryption"] = disk_encryption
+        __props__["diskPerformanceLevel"] = disk_performance_level
+        __props__["elasticIoResource"] = elastic_io_resource
+        __props__["elasticIoResourceSize"] = elastic_io_resource_size
+        __props__["enableSsl"] = enable_ssl
+        __props__["kernelVersion"] = kernel_version
+        __props__["kmsId"] = kms_id
+        __props__["maintainTime"] = maintain_time
+        __props__["mode"] = mode
+        __props__["modifyType"] = modify_type
+        __props__["payType"] = pay_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["port"] = port
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityIps"] = security_ips
+        __props__["status"] = status
+        __props__["switchMode"] = switch_mode
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:adb/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[_builtins.int]:

@@ -579,6 +579,28 @@ class MonitorConfig(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return MonitorConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict', 'outputs.MonitorConfigIspCityNode']]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addrPoolId"] = addr_pool_id
+        __props__["evaluationCount"] = evaluation_count
+        __props__["interval"] = interval
+        __props__["ispCityNodes"] = isp_city_nodes
+        __props__["lang"] = lang
+        __props__["monitorExtendInfo"] = monitor_extend_info
+        __props__["protocolType"] = protocol_type
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/monitorConfig:MonitorConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addrPoolId")
     def addr_pool_id(self) -> pulumi.Output[_builtins.str]:

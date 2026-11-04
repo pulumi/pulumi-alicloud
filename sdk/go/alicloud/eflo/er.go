@@ -166,6 +166,12 @@ func (ErState) ElementType() reflect.Type {
 	return reflect.TypeOf((*erState)(nil)).Elem()
 }
 
+// ErExists checks whether an existing Er resource with the given ID exists.
+func ErExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ErState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/er:Er", id, state, "", opts...)
+}
+
 type erArgs struct {
 	// Description.
 	Description *string `pulumi:"description"`

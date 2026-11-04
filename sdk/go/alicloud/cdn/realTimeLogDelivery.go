@@ -215,6 +215,12 @@ func (RealTimeLogDeliveryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*realTimeLogDeliveryState)(nil)).Elem()
 }
 
+// RealTimeLogDeliveryExists checks whether an existing RealTimeLogDelivery resource with the given ID exists.
+func RealTimeLogDeliveryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RealTimeLogDeliveryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery", id, state, "", opts...)
+}
+
 type realTimeLogDeliveryArgs struct {
 	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 	Domain string `pulumi:"domain"`

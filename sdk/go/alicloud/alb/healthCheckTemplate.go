@@ -218,6 +218,12 @@ func (HealthCheckTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthCheckTemplateState)(nil)).Elem()
 }
 
+// HealthCheckTemplateExists checks whether an existing HealthCheckTemplate resource with the given ID exists.
+func HealthCheckTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HealthCheckTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/healthCheckTemplate:HealthCheckTemplate", id, state, "", opts...)
+}
+
 type healthCheckTemplateArgs struct {
 	// Whether to PreCheck only this request, value:
 	// true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.

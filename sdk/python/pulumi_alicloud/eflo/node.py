@@ -1651,6 +1651,74 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            classify: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_server: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict', 'outputs.NodeDataDisk']]]]] = None,
+            discount_level: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict', 'outputs.NodeIpAllocationPolicy']]]]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_ratio: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            product_form: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["billingCycle"] = billing_cycle
+        __props__["classify"] = classify
+        __props__["clusterId"] = cluster_id
+        __props__["computingServer"] = computing_server
+        __props__["createTime"] = create_time
+        __props__["dataDisks"] = data_disks
+        __props__["discountLevel"] = discount_level
+        __props__["hostname"] = hostname
+        __props__["hpnZone"] = hpn_zone
+        __props__["installPai"] = install_pai
+        __props__["ipAllocationPolicies"] = ip_allocation_policies
+        __props__["loginPassword"] = login_password
+        __props__["machineType"] = machine_type
+        __props__["nodeGroupId"] = node_group_id
+        __props__["nodeType"] = node_type
+        __props__["paymentRatio"] = payment_ratio
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["productForm"] = product_form
+        __props__["regionId"] = region_id
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["serverArch"] = server_arch
+        __props__["stageNum"] = stage_num
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["userData"] = user_data
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/node:Node', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="billingCycle")
     def billing_cycle(self) -> pulumi.Output[Optional[_builtins.str]]:

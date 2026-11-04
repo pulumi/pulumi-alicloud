@@ -179,6 +179,17 @@ export class AnycastEipAddressAttachment extends pulumi.CustomResource {
         return new AnycastEipAddressAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing AnycastEipAddressAttachment resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AnycastEipAddressAttachmentState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment';
 

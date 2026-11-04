@@ -581,6 +581,12 @@ func (DedicatedPropreHostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedPropreHostState)(nil)).Elem()
 }
 
+// DedicatedPropreHostExists checks whether an existing DedicatedPropreHost resource with the given ID exists.
+func DedicatedPropreHostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedPropreHostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost", id, state, "", opts...)
+}
+
 type dedicatedPropreHostArgs struct {
 	// Whether to pay automatically when the host is created.
 	AutoPay *bool `pulumi:"autoPay"`

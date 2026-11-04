@@ -461,6 +461,28 @@ class CacheReserveInstance(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return CacheReserveInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            cr_region: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            quota_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["crRegion"] = cr_region
+        __props__["createTime"] = create_time
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["quotaGb"] = quota_gb
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/cacheReserveInstance:CacheReserveInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

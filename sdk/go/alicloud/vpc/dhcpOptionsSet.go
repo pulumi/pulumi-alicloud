@@ -212,6 +212,12 @@ func (DhcpOptionsSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dhcpOptionsSetState)(nil)).Elem()
 }
 
+// DhcpOptionsSetExists checks whether an existing DhcpOptionsSet resource with the given ID exists.
+func DhcpOptionsSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DhcpOptionsSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet", id, state, "", opts...)
+}
+
 type dhcpOptionsSetArgs struct {
 	// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
 	//

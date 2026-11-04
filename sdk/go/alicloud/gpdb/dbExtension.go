@@ -238,6 +238,12 @@ func (DbExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbExtensionState)(nil)).Elem()
 }
 
+// DbExtensionExists checks whether an existing DbExtension resource with the given ID exists.
+func DbExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/dbExtension:DbExtension", id, state, "", opts...)
+}
+
 type dbExtensionArgs struct {
 	// The name of the database.
 	DatabaseName string `pulumi:"databaseName"`

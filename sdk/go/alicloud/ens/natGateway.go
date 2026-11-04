@@ -178,6 +178,12 @@ func (NatGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natGatewayState)(nil)).Elem()
 }
 
+// NatGatewayExists checks whether an existing NatGateway resource with the given ID exists.
+func NatGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/natGateway:NatGateway", id, state, "", opts...)
+}
+
 type natGatewayArgs struct {
 	// The ID of the ENS node.
 	EnsRegionId string `pulumi:"ensRegionId"`

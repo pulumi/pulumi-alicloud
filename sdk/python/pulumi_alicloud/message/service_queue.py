@@ -801,6 +801,44 @@ class ServiceQueue(pulumi.CustomResource):
         __props__.__dict__["visibility_timeout"] = visibility_timeout
         return ServiceQueue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict', 'outputs.ServiceQueueDlqPolicy']]] = None,
+            enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["delaySeconds"] = delay_seconds
+        __props__["dlqPolicy"] = dlq_policy
+        __props__["enableSse"] = enable_sse
+        __props__["encryptionEnabled"] = encryption_enabled
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["loggingEnabled"] = logging_enabled
+        __props__["maximumMessageSize"] = maximum_message_size
+        __props__["messageRetentionPeriod"] = message_retention_period
+        __props__["pollingWaitSeconds"] = polling_wait_seconds
+        __props__["queueName"] = queue_name
+        __props__["queueType"] = queue_type
+        __props__["sseAlgorithm"] = sse_algorithm
+        __props__["sseType"] = sse_type
+        __props__["tags"] = tags
+        __props__["visibilityTimeout"] = visibility_timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:message/serviceQueue:ServiceQueue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:

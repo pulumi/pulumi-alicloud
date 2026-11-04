@@ -539,6 +539,28 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         __props__.__dict__["site_version"] = site_version
         return HttpRequestHeaderModificationRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            request_header_modifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HttpRequestHeaderModificationRuleRequestHeaderModificationArgs', 'HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict', 'outputs.HttpRequestHeaderModificationRuleRequestHeaderModification']]]]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configId"] = config_id
+        __props__["requestHeaderModifications"] = request_header_modifications
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[_builtins.int]:

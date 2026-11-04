@@ -222,6 +222,12 @@ func (ShardingAuditFilterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shardingAuditFilterState)(nil)).Elem()
 }
 
+// ShardingAuditFilterExists checks whether an existing ShardingAuditFilter resource with the given ID exists.
+func ShardingAuditFilterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShardingAuditFilterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/shardingAuditFilter:ShardingAuditFilter", id, state, "", opts...)
+}
+
 type shardingAuditFilterArgs struct {
 	// Audit state. Valid values: `enable`, `disabled`.
 	AuditStatus string `pulumi:"auditStatus"`

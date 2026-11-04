@@ -137,6 +137,12 @@ func (AssetSelectionConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assetSelectionConfigState)(nil)).Elem()
 }
 
+// AssetSelectionConfigExists checks whether an existing AssetSelectionConfig resource with the given ID exists.
+func AssetSelectionConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssetSelectionConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig", id, state, "", opts...)
+}
+
 type assetSelectionConfigArgs struct {
 	// The first ID of the resource
 	BusinessType string `pulumi:"businessType"`

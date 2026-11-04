@@ -577,6 +577,26 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         __props__.__dict__["task_name"] = task_name
         return HybridMonitorSlsTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attach_labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict', 'outputs.HybridMonitorSlsTaskAttachLabel']]]]] = None,
+            collect_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            collect_target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_process_config: pulumi.Input[Optional[Union['HybridMonitorSlsTaskSlsProcessConfigArgs', 'HybridMonitorSlsTaskSlsProcessConfigArgsDict', 'outputs.HybridMonitorSlsTaskSlsProcessConfig']]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachLabels"] = attach_labels
+        __props__["collectInterval"] = collect_interval
+        __props__["collectTargetType"] = collect_target_type
+        __props__["description"] = description
+        __props__["namespace"] = namespace
+        __props__["slsProcessConfig"] = sls_process_config
+        __props__["taskName"] = task_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attachLabels")
     def attach_labels(self) -> pulumi.Output[Optional[Sequence['outputs.HybridMonitorSlsTaskAttachLabel']]]:

@@ -1152,6 +1152,64 @@ class V2Function(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return V2Function(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+            code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict', 'outputs.V2FunctionCode']]] = None,
+            code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu: pulumi.Input[Optional[_builtins.float]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict', 'outputs.V2FunctionCustomContainerConfig']]] = None,
+            custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict', 'outputs.V2FunctionCustomDns']]] = None,
+            custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict', 'outputs.V2FunctionCustomHealthCheckConfig']]] = None,
+            custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict', 'outputs.V2FunctionCustomRuntimeConfig']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+            handler: pulumi.Input[Optional[_builtins.str]] = None,
+            initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            initializer: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict', 'outputs.V2FunctionInstanceLifecycleConfig']]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["caPort"] = ca_port
+        __props__["code"] = code
+        __props__["codeChecksum"] = code_checksum
+        __props__["cpu"] = cpu
+        __props__["createTime"] = create_time
+        __props__["customContainerConfig"] = custom_container_config
+        __props__["customDns"] = custom_dns
+        __props__["customHealthCheckConfig"] = custom_health_check_config
+        __props__["customRuntimeConfig"] = custom_runtime_config
+        __props__["description"] = description
+        __props__["diskSize"] = disk_size
+        __props__["environmentVariables"] = environment_variables
+        __props__["functionArn"] = function_arn
+        __props__["functionName"] = function_name
+        __props__["gpuMemorySize"] = gpu_memory_size
+        __props__["handler"] = handler
+        __props__["initializationTimeout"] = initialization_timeout
+        __props__["initializer"] = initializer
+        __props__["instanceConcurrency"] = instance_concurrency
+        __props__["instanceLifecycleConfig"] = instance_lifecycle_config
+        __props__["instanceType"] = instance_type
+        __props__["layers"] = layers
+        __props__["memorySize"] = memory_size
+        __props__["runtime"] = runtime
+        __props__["serviceName"] = service_name
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v2Function:V2Function', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="caPort")
     def ca_port(self) -> pulumi.Output[_builtins.int]:

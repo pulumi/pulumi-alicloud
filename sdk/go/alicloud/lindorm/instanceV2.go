@@ -401,6 +401,12 @@ func (InstanceV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceV2State)(nil)).Elem()
 }
 
+// InstanceV2Exists checks whether an existing InstanceV2 resource with the given ID exists.
+func InstanceV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:lindorm/instanceV2:InstanceV2", id, state, "", opts...)
+}
+
 type instanceV2Args struct {
 	// Coordination Zone VswitchId
 	ArbiterVswitchId *string `pulumi:"arbiterVswitchId"`

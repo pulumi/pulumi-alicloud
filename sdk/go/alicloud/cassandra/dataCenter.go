@@ -248,6 +248,12 @@ func (DataCenterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataCenterState)(nil)).Elem()
 }
 
+// DataCenterExists checks whether an existing DataCenter resource with the given ID exists.
+func DataCenterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataCenterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cassandra/dataCenter:DataCenter", id, state, "", opts...)
+}
+
 type dataCenterArgs struct {
 	// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
 	AutoRenew *bool `pulumi:"autoRenew"`

@@ -279,6 +279,18 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         __props__.__dict__["vserver_groups"] = vserver_groups
         return ScalingGroupVServerGroups(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vserver_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupVServerGroupsVserverGroupArgs', 'ScalingGroupVServerGroupsVserverGroupArgsDict', 'outputs.ScalingGroupVServerGroupsVserverGroup']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["force"] = force
+        __props__["scalingGroupId"] = scaling_group_id
+        __props__["vserverGroups"] = vserver_groups
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:

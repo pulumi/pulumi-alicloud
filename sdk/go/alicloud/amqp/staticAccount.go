@@ -182,6 +182,12 @@ func (StaticAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*staticAccountState)(nil)).Elem()
 }
 
+// StaticAccountExists checks whether an existing StaticAccount resource with the given ID exists.
+func StaticAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StaticAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:amqp/staticAccount:StaticAccount", id, state, "", opts...)
+}
+
 type staticAccountArgs struct {
 	// Access key.
 	AccessKey string `pulumi:"accessKey"`

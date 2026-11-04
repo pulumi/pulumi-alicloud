@@ -19,29 +19,26 @@ public final class V3FunctionCustomContainerConfig {
     /**
      * @return (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+     * @deprecated Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
+    @Deprecated
     private @Nullable V3FunctionCustomContainerConfigAccelerationInfo accelerationInfo;
     /**
      * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+     * @deprecated Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
+    @Deprecated
     private @Nullable String accelerationType;
     /**
      * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+     * @deprecated Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete) */
+    @Deprecated
     private @Nullable String acrInstanceId;
     /**
      * @return Container startup parameters.
@@ -83,33 +80,30 @@ public final class V3FunctionCustomContainerConfig {
     /**
      * @return (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+     * @deprecated Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
+    @Deprecated
     public Optional<V3FunctionCustomContainerConfigAccelerationInfo> accelerationInfo() {
         return Optional.ofNullable(this.accelerationInfo);
     }
     /**
      * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+     * @deprecated Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
+    @Deprecated
     public Optional<String> accelerationType() {
         return Optional.ofNullable(this.accelerationType);
     }
     /**
      * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+     * @deprecated Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete) */
+    @Deprecated
     public Optional<String> acrInstanceId() {
         return Optional.ofNullable(this.acrInstanceId);
     }

@@ -283,6 +283,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:waf/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
 	BigScreen string `pulumi:"bigScreen"`

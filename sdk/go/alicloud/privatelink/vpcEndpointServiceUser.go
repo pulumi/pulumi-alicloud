@@ -157,6 +157,12 @@ func (VpcEndpointServiceUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointServiceUserState)(nil)).Elem()
 }
 
+// VpcEndpointServiceUserExists checks whether an existing VpcEndpointServiceUser resource with the given ID exists.
+func VpcEndpointServiceUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcEndpointServiceUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser", id, state, "", opts...)
+}
+
 type vpcEndpointServiceUserArgs struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`

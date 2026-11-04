@@ -275,6 +275,16 @@ class WafDomain(pulumi.CustomResource):
         __props__.__dict__["domain_name"] = domain_name
         return WafDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_ip_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientIpTag"] = client_ip_tag
+        __props__["domainName"] = domain_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:dcdn/wafDomain:WafDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientIpTag")
     def client_ip_tag(self) -> pulumi.Output[Optional[_builtins.str]]:

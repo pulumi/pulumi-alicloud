@@ -47,20 +47,18 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -176,11 +174,10 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `lang` has been deprecated from provider version 1.232.0.
+         * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
          * 
          */
-        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+        @Deprecated
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
@@ -189,11 +186,10 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `lang` has been deprecated from provider version 1.232.0.
+         * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
          * 
          */
-        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+        @Deprecated
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }

@@ -1101,6 +1101,60 @@ class PolardbxInstance(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return PolardbxInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cn_class: pulumi.Input[Optional[_builtins.str]] = None,
+            cn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dn_class: pulumi.Input[Optional[_builtins.str]] = None,
+            dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            dn_storage_space: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            specified_dn_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+            specified_dn_spec_map_json: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            topology_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cnClass"] = cn_class
+        __props__["cnNodeCount"] = cn_node_count
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dnClass"] = dn_class
+        __props__["dnNodeCount"] = dn_node_count
+        __props__["dnStorageSpace"] = dn_storage_space
+        __props__["engineVersion"] = engine_version
+        __props__["isReadDbInstance"] = is_read_db_instance
+        __props__["primaryDbInstanceName"] = primary_db_instance_name
+        __props__["primaryZone"] = primary_zone
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["secondaryZone"] = secondary_zone
+        __props__["specifiedDnScale"] = specified_dn_scale
+        __props__["specifiedDnSpecMapJson"] = specified_dn_spec_map_json
+        __props__["status"] = status
+        __props__["storageType"] = storage_type
+        __props__["switchTime"] = switch_time
+        __props__["switchTimeMode"] = switch_time_mode
+        __props__["tertiaryZone"] = tertiary_zone
+        __props__["topologyType"] = topology_type
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:drds/polardbxInstance:PolardbxInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cnClass")
     def cn_class(self) -> pulumi.Output[_builtins.str]:

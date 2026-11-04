@@ -43,8 +43,8 @@ namespace Pulumi.AliCloud.Outputs
         /// The component type. Different types need to be configured according to different versions.
         /// - Starter version: Array including standalone
         /// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        /// 2.5: proxy ,mix_coordinator,data,query,index
-        /// 2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+        ///   2.5: proxy ,mix_coordinator,data,query,index
+        ///   2.6 need to configure: proxy,mix_coordinator,data,query,streaming
         /// </summary>
         public readonly string Type;
 

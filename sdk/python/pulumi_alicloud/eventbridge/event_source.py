@@ -514,6 +514,24 @@ class EventSource(pulumi.CustomResource):
         __props__.__dict__["linked_external_source"] = linked_external_source
         return EventSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_source_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            external_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["eventBusName"] = event_bus_name
+        __props__["eventSourceName"] = event_source_name
+        __props__["externalSourceConfig"] = external_source_config
+        __props__["externalSourceType"] = external_source_type
+        __props__["linkedExternalSource"] = linked_external_source
+        return pulumi.runtime.exists_resource(None, 'alicloud:eventbridge/eventSource:EventSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

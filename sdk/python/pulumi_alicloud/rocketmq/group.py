@@ -480,6 +480,26 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            read_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupId"] = group_id
+        __props__["groupName"] = group_name
+        __props__["groupType"] = group_type
+        __props__["instanceId"] = instance_id
+        __props__["readEnable"] = read_enable
+        __props__["remark"] = remark
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupId")
     @_utilities.deprecated("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")

@@ -743,6 +743,42 @@ class ArtifactSubscriptionRule(pulumi.CustomResource):
         __props__.__dict__["tag_regexp"] = tag_regexp
         return ArtifactSubscriptionRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerate: pulumi.Input[Optional[_builtins.bool]] = None,
+            artifact_subscription_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            override: pulumi.Input[Optional[_builtins.bool]] = None,
+            platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            source_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            source_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_count: pulumi.Input[Optional[_builtins.int]] = None,
+            tag_regexp: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accelerate"] = accelerate
+        __props__["artifactSubscriptionRuleId"] = artifact_subscription_rule_id
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["modifiedTime"] = modified_time
+        __props__["namespaceName"] = namespace_name
+        __props__["override"] = override
+        __props__["platforms"] = platforms
+        __props__["repoName"] = repo_name
+        __props__["sourceDomain"] = source_domain
+        __props__["sourceNamespaceName"] = source_namespace_name
+        __props__["sourceProvider"] = source_provider
+        __props__["sourceRepoName"] = source_repo_name
+        __props__["tagCount"] = tag_count
+        __props__["tagRegexp"] = tag_regexp
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/artifactSubscriptionRule:ArtifactSubscriptionRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accelerate(self) -> pulumi.Output[Optional[_builtins.bool]]:

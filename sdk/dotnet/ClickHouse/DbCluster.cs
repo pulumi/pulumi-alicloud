@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// The zone IDs and 
+        /// The zone IDs and
         /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `MultiZoneVswitchList` below.
         /// </summary>
         [Output("multiZoneVswitchLists")]
@@ -386,7 +386,7 @@ namespace Pulumi.AliCloud.ClickHouse
         private InputList<Inputs.DbClusterMultiZoneVswitchListArgs>? _multiZoneVswitchLists;
 
         /// <summary>
-        /// The zone IDs and 
+        /// The zone IDs and
         /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `MultiZoneVswitchList` below.
         /// </summary>
         public InputList<Inputs.DbClusterMultiZoneVswitchListArgs> MultiZoneVswitchLists
@@ -559,7 +559,7 @@ namespace Pulumi.AliCloud.ClickHouse
         private InputList<Inputs.DbClusterMultiZoneVswitchListGetArgs>? _multiZoneVswitchLists;
 
         /// <summary>
-        /// The zone IDs and 
+        /// The zone IDs and
         /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `MultiZoneVswitchList` below.
         /// </summary>
         public InputList<Inputs.DbClusterMultiZoneVswitchListGetArgs> MultiZoneVswitchLists

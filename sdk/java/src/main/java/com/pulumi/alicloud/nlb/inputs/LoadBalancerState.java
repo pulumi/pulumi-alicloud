@@ -226,7 +226,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The name of the NLB instance.
-     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The value must start with a letter.
      * 
      */
     @Import(name="loadBalancerName")
@@ -234,7 +234,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the NLB instance.
-     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The value must start with a letter.
      * 
      */
     public Optional<Output<String>> loadBalancerName() {
@@ -751,7 +751,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadBalancerName The name of the NLB instance.
-         * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+         * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The value must start with a letter.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadBalancerName The name of the NLB instance.
-         * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+         * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The value must start with a letter.
          * 
          * @return builder
          * 

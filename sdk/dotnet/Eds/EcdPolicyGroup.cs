@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string> HtmlFileTransfer { get; private set; } = null!;
 
         /// <summary>
-        /// Local drive redirect policy. Valid values: ` readwrite`, `Off`, `Read`.
+        /// Local drive redirect policy. Valid values: `  readwrite `, `Off`, `Read`.
         /// </summary>
         [Output("localDrive")]
         public Output<string> LocalDrive { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? HtmlFileTransfer { get; set; }
 
         /// <summary>
-        /// Local drive redirect policy. Valid values: ` readwrite`, `Off`, `Read`.
+        /// Local drive redirect policy. Valid values: `  readwrite `, `Off`, `Read`.
         /// </summary>
         [Input("localDrive")]
         public Input<string>? LocalDrive { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? HtmlFileTransfer { get; set; }
 
         /// <summary>
-        /// Local drive redirect policy. Valid values: ` readwrite`, `Off`, `Read`.
+        /// Local drive redirect policy. Valid values: `  readwrite `, `Off`, `Read`.
         /// </summary>
         [Input("localDrive")]
         public Input<string>? LocalDrive { get; set; }

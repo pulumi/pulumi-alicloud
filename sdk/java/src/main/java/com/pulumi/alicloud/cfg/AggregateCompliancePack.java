@@ -194,11 +194,10 @@ public class AggregateCompliancePack extends com.pulumi.resources.CustomResource
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
-     * @deprecated
-     * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+     * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
-    @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
+    @Deprecated
     @Export(name="configRules", refs={List.class,AggregateCompliancePackConfigRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AggregateCompliancePackConfigRule>> configRules;
 

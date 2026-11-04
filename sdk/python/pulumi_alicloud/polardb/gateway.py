@@ -801,6 +801,56 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            current_version: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEndpointArgs', 'GatewayEndpointArgsDict', 'outputs.GatewayEndpoint']]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            latest_version: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            running_version: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityIpArrayArgs', 'GatewaySecurityIpArrayArgsDict', 'outputs.GatewaySecurityIpArray']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            used_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["createTime"] = create_time
+        __props__["currentVersion"] = current_version
+        __props__["dbClusterClass"] = db_cluster_class
+        __props__["dbType"] = db_type
+        __props__["description"] = description
+        __props__["endpoints"] = endpoints
+        __props__["expireTime"] = expire_time
+        __props__["expired"] = expired
+        __props__["latestVersion"] = latest_version
+        __props__["modifyTime"] = modify_time
+        __props__["payType"] = pay_type
+        __props__["period"] = period
+        __props__["regionId"] = region_id
+        __props__["runningVersion"] = running_version
+        __props__["securityGroupId"] = security_group_id
+        __props__["securityIpArrays"] = security_ip_arrays
+        __props__["status"] = status
+        __props__["usedTime"] = used_time
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

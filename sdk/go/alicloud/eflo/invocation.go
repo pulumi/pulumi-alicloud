@@ -296,6 +296,12 @@ func (InvocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*invocationState)(nil)).Elem()
 }
 
+// InvocationExists checks whether an existing Invocation resource with the given ID exists.
+func InvocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InvocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/invocation:Invocation", id, state, "", opts...)
+}
+
 type invocationArgs struct {
 	// The command content. You need to pay attention:
 	// - Specify the parameter 'EnableParameter = true' to enable the custom parameter feature in the command content.

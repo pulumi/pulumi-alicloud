@@ -258,6 +258,12 @@ func (EnvFeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envFeatureState)(nil)).Elem()
 }
 
+// EnvFeatureExists checks whether an existing EnvFeature resource with the given ID exists.
+func EnvFeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvFeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/envFeature:EnvFeature", id, state, "", opts...)
+}
+
 type envFeatureArgs struct {
 	// The name of the resource.
 	EnvFeatureName string `pulumi:"envFeatureName"`

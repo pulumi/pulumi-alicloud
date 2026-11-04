@@ -176,22 +176,20 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     /**
      * The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
      * 
-     * @deprecated
-     * Use sourceGroupOwnerId instead.
+     * @deprecated Use sourceGroupOwnerId instead.
      * 
      */
-    @Deprecated /* Use sourceGroupOwnerId instead. */
+    @Deprecated
     @Import(name="sourceGroupOwnerAccount")
     private @Nullable Output<String> sourceGroupOwnerAccount;
 
     /**
      * @return The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
      * 
-     * @deprecated
-     * Use sourceGroupOwnerId instead.
+     * @deprecated Use sourceGroupOwnerId instead.
      * 
      */
-    @Deprecated /* Use sourceGroupOwnerId instead. */
+    @Deprecated
     public Optional<Output<String>> sourceGroupOwnerAccount() {
         return Optional.ofNullable(this.sourceGroupOwnerAccount);
     }
@@ -499,11 +497,10 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use sourceGroupOwnerId instead.
+         * @deprecated Use sourceGroupOwnerId instead.
          * 
          */
-        @Deprecated /* Use sourceGroupOwnerId instead. */
+        @Deprecated
         public Builder sourceGroupOwnerAccount(@Nullable Output<String> sourceGroupOwnerAccount) {
             $.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
             return this;
@@ -514,11 +511,10 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use sourceGroupOwnerId instead.
+         * @deprecated Use sourceGroupOwnerId instead.
          * 
          */
-        @Deprecated /* Use sourceGroupOwnerId instead. */
+        @Deprecated
         public Builder sourceGroupOwnerAccount(String sourceGroupOwnerAccount) {
             return sourceGroupOwnerAccount(Output.of(sourceGroupOwnerAccount));
         }

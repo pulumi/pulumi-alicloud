@@ -169,6 +169,12 @@ func (EnterpriseLogicDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseLogicDatabaseState)(nil)).Elem()
 }
 
+// EnterpriseLogicDatabaseExists checks whether an existing EnterpriseLogicDatabase resource with the given ID exists.
+func EnterpriseLogicDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseLogicDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase", id, state, "", opts...)
+}
+
 type enterpriseLogicDatabaseArgs struct {
 	// Logical Library alias.
 	Alias string `pulumi:"alias"`

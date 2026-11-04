@@ -676,6 +676,34 @@ class EcsBackupClient(pulumi.CustomResource):
         __props__.__dict__["use_https"] = use_https
         return EcsBackupClient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_proxy_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_cpu_core: pulumi.Input[Optional[_builtins.str]] = None,
+            max_worker: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_host: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_password: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_port: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_user: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_https: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataNetworkType"] = data_network_type
+        __props__["dataProxySetting"] = data_proxy_setting
+        __props__["instanceId"] = instance_id
+        __props__["maxCpuCore"] = max_cpu_core
+        __props__["maxWorker"] = max_worker
+        __props__["proxyHost"] = proxy_host
+        __props__["proxyPassword"] = proxy_password
+        __props__["proxyPort"] = proxy_port
+        __props__["proxyUser"] = proxy_user
+        __props__["status"] = status
+        __props__["useHttps"] = use_https
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/ecsBackupClient:EcsBackupClient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataNetworkType")
     def data_network_type(self) -> pulumi.Output[_builtins.str]:

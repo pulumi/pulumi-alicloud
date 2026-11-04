@@ -43,7 +43,7 @@ public final class ServerGroupHealthCheck {
      */
     private @Nullable String healthCheckExp;
     /**
-     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
@@ -144,7 +144,7 @@ public final class ServerGroupHealthCheck {
         return Optional.ofNullable(this.healthCheckExp);
     }
     /**
-     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 

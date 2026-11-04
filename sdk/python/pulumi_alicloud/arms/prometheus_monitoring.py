@@ -503,6 +503,22 @@ class PrometheusMonitoring(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return PrometheusMonitoring(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            monitoring_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["configYaml"] = config_yaml
+        __props__["monitoringName"] = monitoring_name
+        __props__["status"] = status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/prometheusMonitoring:PrometheusMonitoring', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

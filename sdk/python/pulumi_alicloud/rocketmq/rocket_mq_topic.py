@@ -525,6 +525,28 @@ class RocketMQTopic(pulumi.CustomResource):
         __props__.__dict__["topic_name"] = topic_name
         return RocketMQTopic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_send_tps: pulumi.Input[Optional[_builtins.int]] = None,
+            message_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["maxSendTps"] = max_send_tps
+        __props__["messageType"] = message_type
+        __props__["regionId"] = region_id
+        __props__["remark"] = remark
+        __props__["status"] = status
+        __props__["topicName"] = topic_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/rocketMQTopic:RocketMQTopic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

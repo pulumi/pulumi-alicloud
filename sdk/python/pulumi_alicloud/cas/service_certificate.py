@@ -805,6 +805,38 @@ class ServiceCertificate(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ServiceCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cert"] = cert
+        __props__["certificateName"] = certificate_name
+        __props__["encryptCert"] = encrypt_cert
+        __props__["encryptPrivateKey"] = encrypt_private_key
+        __props__["key"] = key
+        __props__["keyWo"] = key_wo
+        __props__["keyWoVersion"] = key_wo_version
+        __props__["lang"] = lang
+        __props__["name"] = name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["signCert"] = sign_cert
+        __props__["signPrivateKey"] = sign_private_key
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:cas/serviceCertificate:ServiceCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cert(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -485,6 +485,22 @@ class GreyTagRoute(pulumi.CustomResource):
         __props__.__dict__["sc_rules"] = sc_rules
         return GreyTagRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict', 'outputs.GreyTagRouteDubboRule']]]]] = None,
+            grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict', 'outputs.GreyTagRouteScRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["description"] = description
+        __props__["dubboRules"] = dubbo_rules
+        __props__["greyTagRouteName"] = grey_tag_route_name
+        __props__["scRules"] = sc_rules
+        return pulumi.runtime.exists_resource(None, 'alicloud:sae/greyTagRoute:GreyTagRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

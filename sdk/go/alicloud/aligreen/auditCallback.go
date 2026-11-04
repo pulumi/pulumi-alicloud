@@ -164,6 +164,12 @@ func (AuditCallbackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*auditCallbackState)(nil)).Elem()
 }
 
+// AuditCallbackExists checks whether an existing AuditCallback resource with the given ID exists.
+func AuditCallbackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuditCallbackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:aligreen/auditCallback:AuditCallback", id, state, "", opts...)
+}
+
 type auditCallbackArgs struct {
 	// The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
 	AuditCallbackName string `pulumi:"auditCallbackName"`

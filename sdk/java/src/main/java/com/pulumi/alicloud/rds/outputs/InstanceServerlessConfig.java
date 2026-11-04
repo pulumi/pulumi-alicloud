@@ -33,7 +33,7 @@ public final class InstanceServerlessConfig {
     /**
      * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
-     * - SQLServer: 2~8 \(Supports integers only\).
+     * - SQLServer: 2~8 &#92;(Supports integers only&#92;).
      * - PostgreSQL: 0.5~12
      * 
      */
@@ -73,7 +73,7 @@ public final class InstanceServerlessConfig {
     /**
      * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
-     * - SQLServer: 2~8 \(Supports integers only\).
+     * - SQLServer: 2~8 &#92;(Supports integers only&#92;).
      * - PostgreSQL: 0.5~12
      * 
      */

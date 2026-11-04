@@ -351,6 +351,12 @@ func (ListenerAdditionalCertificateAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerAdditionalCertificateAttachmentState)(nil)).Elem()
 }
 
+// ListenerAdditionalCertificateAttachmentExists checks whether an existing ListenerAdditionalCertificateAttachment resource with the given ID exists.
+func ListenerAdditionalCertificateAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListenerAdditionalCertificateAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment", id, state, "", opts...)
+}
+
 type listenerAdditionalCertificateAttachmentArgs struct {
 	// The ID of additional certificates.
 	CertificateId string `pulumi:"certificateId"`

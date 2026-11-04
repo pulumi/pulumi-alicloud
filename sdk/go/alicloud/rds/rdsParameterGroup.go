@@ -160,6 +160,12 @@ func (RdsParameterGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsParameterGroupState)(nil)).Elem()
 }
 
+// RdsParameterGroupExists checks whether an existing RdsParameterGroup resource with the given ID exists.
+func RdsParameterGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsParameterGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsParameterGroup:RdsParameterGroup", id, state, "", opts...)
+}
+
 type rdsParameterGroupArgs struct {
 	// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 	Engine string `pulumi:"engine"`

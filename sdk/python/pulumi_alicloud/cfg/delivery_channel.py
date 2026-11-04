@@ -498,6 +498,26 @@ class DeliveryChannel(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DeliveryChannel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delivery_channel_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deliveryChannelAssumeRoleArn"] = delivery_channel_assume_role_arn
+        __props__["deliveryChannelCondition"] = delivery_channel_condition
+        __props__["deliveryChannelName"] = delivery_channel_name
+        __props__["deliveryChannelTargetArn"] = delivery_channel_target_arn
+        __props__["deliveryChannelType"] = delivery_channel_type
+        __props__["description"] = description
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cfg/deliveryChannel:DeliveryChannel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deliveryChannelAssumeRoleArn")
     def delivery_channel_assume_role_arn(self) -> pulumi.Output[_builtins.str]:

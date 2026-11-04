@@ -495,6 +495,26 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         __props__.__dict__["transit_router_attachment_id"] = transit_router_attachment_id
         return ChildInstanceRouteEntryToAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["childInstanceRouteTableId"] = child_instance_route_table_id
+        __props__["destinationCidrBlock"] = destination_cidr_block
+        __props__["dryRun"] = dry_run
+        __props__["serviceType"] = service_type
+        __props__["status"] = status
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

@@ -14,22 +14,20 @@ public final class V3FunctionCustomContainerConfigAccelerationInfo {
     /**
      * @return Image Acceleration Status (Deprecated)
      * 
-     * @deprecated
-     * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+     * @deprecated Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
      * 
      */
-    @Deprecated /* Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated) */
+    @Deprecated
     private @Nullable String status;
 
     private V3FunctionCustomContainerConfigAccelerationInfo() {}
     /**
      * @return Image Acceleration Status (Deprecated)
      * 
-     * @deprecated
-     * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+     * @deprecated Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
      * 
      */
-    @Deprecated /* Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated) */
+    @Deprecated
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

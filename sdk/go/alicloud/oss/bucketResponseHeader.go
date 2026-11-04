@@ -169,6 +169,12 @@ func (BucketResponseHeaderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketResponseHeaderState)(nil)).Elem()
 }
 
+// BucketResponseHeaderExists checks whether an existing BucketResponseHeader resource with the given ID exists.
+func BucketResponseHeaderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketResponseHeaderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketResponseHeader:BucketResponseHeader", id, state, "", opts...)
+}
+
 type bucketResponseHeaderArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

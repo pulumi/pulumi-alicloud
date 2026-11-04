@@ -1235,6 +1235,60 @@ class StarRocksInstance(pulumi.CustomResource):
         __props__.__dict__["vswitches"] = vswitches
         return StarRocksInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict', 'outputs.StarRocksInstanceBackendNodeGroup']]]]] = None,
+            cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict', 'outputs.StarRocksInstanceFrontendNodeGroup']]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict', 'outputs.StarRocksInstanceObserverNodeGroup']]]]] = None,
+            oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict', 'outputs.StarRocksInstanceVswitch']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminPassword"] = admin_password
+        __props__["autoRenew"] = auto_renew
+        __props__["backendNodeGroups"] = backend_node_groups
+        __props__["clusterZoneId"] = cluster_zone_id
+        __props__["createTime"] = create_time
+        __props__["duration"] = duration
+        __props__["encrypted"] = encrypted
+        __props__["frontendNodeGroups"] = frontend_node_groups
+        __props__["instanceName"] = instance_name
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["observerNodeGroups"] = observer_node_groups
+        __props__["ossAccessingRoleName"] = oss_accessing_role_name
+        __props__["packageType"] = package_type
+        __props__["payType"] = pay_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["promotionOptionNo"] = promotion_option_no
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["runMode"] = run_mode
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["version"] = version
+        __props__["vpcId"] = vpc_id
+        __props__["vswitches"] = vswitches
+        return pulumi.runtime.exists_resource(None, 'alicloud:index/starRocksInstance:StarRocksInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> pulumi.Output[_builtins.str]:

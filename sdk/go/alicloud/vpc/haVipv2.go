@@ -262,6 +262,12 @@ func (HaVipv2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*haVipv2State)(nil)).Elem()
 }
 
+// HaVipv2Exists checks whether an existing HaVipv2 resource with the given ID exists.
+func HaVipv2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HaVipv2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/haVipv2:HaVipv2", id, state, "", opts...)
+}
+
 type haVipv2Args struct {
 	// The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`

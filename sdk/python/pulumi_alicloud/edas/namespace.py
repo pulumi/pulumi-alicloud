@@ -348,6 +348,20 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["namespace_name"] = namespace_name
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            debug_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_logical_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["debugEnable"] = debug_enable
+        __props__["description"] = description
+        __props__["namespaceLogicalId"] = namespace_logical_id
+        __props__["namespaceName"] = namespace_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/namespace:Namespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="debugEnable")
     def debug_enable(self) -> pulumi.Output[_builtins.bool]:

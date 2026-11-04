@@ -508,6 +508,26 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         __props__.__dict__["traffic_qos_policy_id"] = traffic_qos_policy_id
         return InterRegionTrafficQosQueue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            dscps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            inter_region_traffic_qos_queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+            inter_region_traffic_qos_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            remain_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["dscps"] = dscps
+        __props__["interRegionTrafficQosQueueDescription"] = inter_region_traffic_qos_queue_description
+        __props__["interRegionTrafficQosQueueName"] = inter_region_traffic_qos_queue_name
+        __props__["remainBandwidthPercent"] = remain_bandwidth_percent
+        __props__["status"] = status
+        __props__["trafficQosPolicyId"] = traffic_qos_policy_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[Optional[_builtins.str]]:

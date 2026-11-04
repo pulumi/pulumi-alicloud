@@ -166,11 +166,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
-     * @deprecated
-     * Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
+     * @deprecated Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
      * 
      */
-    @Deprecated /* Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead. */
+    @Deprecated
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
@@ -184,11 +183,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * The Id of instance in which account belongs.
      * 
-     * @deprecated
-     * Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
+     * @deprecated Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead. */
+    @Deprecated
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
@@ -230,11 +228,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -248,11 +245,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
-     * @deprecated
-     * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
+     * @deprecated Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
      * 
      */
-    @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
+    @Deprecated
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
@@ -282,11 +278,10 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      * Default to Normal.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead. */
+    @Deprecated
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 

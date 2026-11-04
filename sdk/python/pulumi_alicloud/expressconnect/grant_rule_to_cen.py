@@ -344,6 +344,20 @@ class GrantRuleToCen(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         return GrantRuleToCen(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["cenOwnerId"] = cen_owner_id
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/grantRuleToCen:GrantRuleToCen', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

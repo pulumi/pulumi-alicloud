@@ -391,6 +391,12 @@ func (ClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterState)(nil)).Elem()
 }
 
+// ClusterExists checks whether an existing Cluster resource with the given ID exists.
+func ClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:emrv2/cluster:Cluster", id, state, "", opts...)
+}
+
 type clusterArgs struct {
 	// The application configurations of EMR cluster. See `applicationConfigs` below.
 	ApplicationConfigs []ClusterApplicationConfig `pulumi:"applicationConfigs"`

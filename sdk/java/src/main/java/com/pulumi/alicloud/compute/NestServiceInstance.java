@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -125,15 +125,15 @@ import javax.annotation.Nullable;
  *                 .operationStartTime("1681281179000")
  *                 .operationEndTime("1681367579000")
  *                 .resources(defaultInstance.id().applyValue(_id -> """
- *     {
- *       \"Type\": \"ResourceIds\",
- *       \"RegionId\": \"cn-hangzhou\",
- *       \"ResourceIds\": {
- *       \"ALIYUN::ECS::INSTANCE\": [
- *         \"%s\"
+ *     }{{@code
+ *       }&#92;{@code "Type}&#92;{@code ": }&#92;{@code "ResourceIds}&#92;{@code ",
+ *       }&#92;{@code "RegionId}&#92;{@code ": }&#92;{@code "cn-hangzhou}&#92;{@code ",
+ *       }&#92;{@code "ResourceIds}&#92;{@code ": }{{@code
+ *       }&#92;{@code "ALIYUN::ECS::INSTANCE}&#92;{@code ": [
+ *         }&#92;{@code "%s}&#92;{@code "
  *         ]
- *       } 
- *     }
+ *       }}{@code  
+ *     }}{@code
  * ", _id)))
  *                 .build())
  *             .tags(Map.ofEntries(
@@ -142,8 +142,8 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -229,6 +229,12 @@ func (ScheduledSqlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledSqlState)(nil)).Elem()
 }
 
+// ScheduledSqlExists checks whether an existing ScheduledSql resource with the given ID exists.
+func ScheduledSqlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduledSqlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/scheduledSql:ScheduledSql", id, state, "", opts...)
+}
+
 type scheduledSqlArgs struct {
 	// Job description.
 	Description *string `pulumi:"description"`

@@ -262,6 +262,12 @@ func (RedirectRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*redirectRuleState)(nil)).Elem()
 }
 
+// RedirectRuleExists checks whether an existing RedirectRule resource with the given ID exists.
+func RedirectRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RedirectRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/redirectRule:RedirectRule", id, state, "", opts...)
+}
+
 type redirectRuleArgs struct {
 	// Indicates whether the feature of retaining the query string is enabled. Valid values:
 	//

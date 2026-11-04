@@ -239,6 +239,12 @@ func (InstanceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceConfigState)(nil)).Elem()
 }
 
+// InstanceConfigExists checks whether an existing InstanceConfig resource with the given ID exists.
+func InstanceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alidnscloudgtm/instanceConfig:InstanceConfig", id, state, "", opts...)
+}
+
 type instanceConfigArgs struct {
 	// The load balancing strategy among address pools:
 	// - round_robin: Round-robin. For any incoming DNS resolution request, all address pools are returned, and the order of these address pools is rotated with each request.

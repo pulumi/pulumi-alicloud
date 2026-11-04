@@ -22,22 +22,20 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     /**
      * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
-     * @deprecated
-     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
-    @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
+    @Deprecated
     @Import(name="associatedPhysicalConnections")
     private @Nullable Output<String> associatedPhysicalConnections;
 
     /**
      * @return Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
-     * @deprecated
-     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
-    @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
+    @Deprecated
     public Optional<Output<String>> associatedPhysicalConnections() {
         return Optional.ofNullable(this.associatedPhysicalConnections);
     }
@@ -437,11 +435,10 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+         * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
          * 
          */
-        @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
+        @Deprecated
         public Builder associatedPhysicalConnections(@Nullable Output<String> associatedPhysicalConnections) {
             $.associatedPhysicalConnections = associatedPhysicalConnections;
             return this;
@@ -452,11 +449,10 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+         * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
          * 
          */
-        @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
+        @Deprecated
         public Builder associatedPhysicalConnections(String associatedPhysicalConnections) {
             return associatedPhysicalConnections(Output.of(associatedPhysicalConnections));
         }

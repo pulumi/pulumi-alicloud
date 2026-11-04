@@ -313,6 +313,12 @@ func (PolardbxInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*polardbxInstanceState)(nil)).Elem()
 }
 
+// PolardbxInstanceExists checks whether an existing PolardbxInstance resource with the given ID exists.
+func PolardbxInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolardbxInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:drds/polardbxInstance:PolardbxInstance", id, state, "", opts...)
+}
+
 type polardbxInstanceArgs struct {
 	// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	CnClass string `pulumi:"cnClass"`

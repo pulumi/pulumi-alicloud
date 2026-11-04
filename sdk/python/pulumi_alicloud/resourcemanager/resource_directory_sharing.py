@@ -192,6 +192,14 @@ class ResourceDirectorySharing(pulumi.CustomResource):
         __props__.__dict__["enable_sharing_with_rd"] = enable_sharing_with_rd
         return ResourceDirectorySharing(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable_sharing_with_rd: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enableSharingWithRd"] = enable_sharing_with_rd
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="enableSharingWithRd")
     def enable_sharing_with_rd(self) -> pulumi.Output[_builtins.bool]:

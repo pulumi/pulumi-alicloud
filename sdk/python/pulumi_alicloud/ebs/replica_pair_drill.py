@@ -244,6 +244,18 @@ class ReplicaPairDrill(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ReplicaPairDrill(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            pair_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_pair_drill_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["pairId"] = pair_id
+        __props__["replicaPairDrillId"] = replica_pair_drill_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ebs/replicaPairDrill:ReplicaPairDrill', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="pairId")
     def pair_id(self) -> pulumi.Output[_builtins.str]:

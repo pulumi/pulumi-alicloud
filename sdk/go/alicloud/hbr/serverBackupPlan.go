@@ -246,6 +246,12 @@ func (ServerBackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverBackupPlanState)(nil)).Elem()
 }
 
+// ServerBackupPlanExists checks whether an existing ServerBackupPlan resource with the given ID exists.
+func ServerBackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerBackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/serverBackupPlan:ServerBackupPlan", id, state, "", opts...)
+}
+
 type serverBackupPlanArgs struct {
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
 	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`

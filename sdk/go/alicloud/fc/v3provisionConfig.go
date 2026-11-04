@@ -287,6 +287,12 @@ func (V3ProvisionConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3provisionConfigState)(nil)).Elem()
 }
 
+// V3ProvisionConfigExists checks whether an existing V3ProvisionConfig resource with the given ID exists.
+func V3ProvisionConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3ProvisionConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3ProvisionConfig:V3ProvisionConfig", id, state, "", opts...)
+}
+
 type v3provisionConfigArgs struct {
 	// Whether the CPU is always allocated. The default value is true.
 	AlwaysAllocateCpu *bool `pulumi:"alwaysAllocateCpu"`

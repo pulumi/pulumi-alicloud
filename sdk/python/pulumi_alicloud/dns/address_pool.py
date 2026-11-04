@@ -446,6 +446,22 @@ class AddressPool(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return AddressPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict', 'outputs.AddressPoolAddress']]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressPoolName"] = address_pool_name
+        __props__["addresses"] = addresses
+        __props__["instanceId"] = instance_id
+        __props__["lbaStrategy"] = lba_strategy
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/addressPool:AddressPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressPoolName")
     def address_pool_name(self) -> pulumi.Output[_builtins.str]:

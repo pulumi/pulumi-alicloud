@@ -286,6 +286,16 @@ class CloudPhoneInstance(pulumi.CustomResource):
         __props__.__dict__["android_instance_name"] = android_instance_name
         return CloudPhoneInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            android_instance_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            android_instance_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["androidInstanceGroupId"] = android_instance_group_id
+        __props__["androidInstanceName"] = android_instance_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="androidInstanceGroupId")
     def android_instance_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -212,6 +212,12 @@ func (DefenseTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defenseTemplateState)(nil)).Elem()
 }
 
+// DefenseTemplateExists checks whether an existing DefenseTemplate resource with the given ID exists.
+func DefenseTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefenseTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:wafv3/defenseTemplate:DefenseTemplate", id, state, "", opts...)
+}
+
 type defenseTemplateArgs struct {
 	// The WAF protection scenario to be created. Valid values:
 	DefenseScene string `pulumi:"defenseScene"`

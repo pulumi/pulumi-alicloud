@@ -262,6 +262,12 @@ func (TemplateApplicationsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateApplicationsState)(nil)).Elem()
 }
 
+// TemplateApplicationsExists checks whether an existing TemplateApplications resource with the given ID exists.
+func TemplateApplicationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateApplicationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:quotas/templateApplications:TemplateApplications", id, state, "", opts...)
+}
+
 type templateApplicationsArgs struct {
 	// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
 	// > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.

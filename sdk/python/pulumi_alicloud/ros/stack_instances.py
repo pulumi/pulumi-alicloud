@@ -672,6 +672,34 @@ class StackInstances(pulumi.CustomResource):
         __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
         return StackInstances(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deployment_options: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_targets: pulumi.Input[Optional[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict', 'outputs.StackInstancesDeploymentTargets']]] = None,
+            disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+            operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_preferences: pulumi.Input[Optional[Union['StackInstancesOperationPreferencesArgs', 'StackInstancesOperationPreferencesArgsDict', 'outputs.StackInstancesOperationPreferences']]] = None,
+            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesParameterOverrideArgs', 'StackInstancesParameterOverrideArgsDict', 'outputs.StackInstancesParameterOverride']]]]] = None,
+            region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstancesStackInstanceArgs', 'StackInstancesStackInstanceArgsDict', 'outputs.StackInstancesStackInstance']]]]] = None,
+            timeout_in_minutes: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountIds"] = account_ids
+        __props__["deploymentOptions"] = deployment_options
+        __props__["deploymentTargets"] = deployment_targets
+        __props__["disableRollback"] = disable_rollback
+        __props__["operationDescription"] = operation_description
+        __props__["operationPreferences"] = operation_preferences
+        __props__["parameterOverrides"] = parameter_overrides
+        __props__["regionIds"] = region_ids
+        __props__["stackGroupName"] = stack_group_name
+        __props__["stackInstances"] = stack_instances
+        __props__["timeoutInMinutes"] = timeout_in_minutes
+        return pulumi.runtime.exists_resource(None, 'alicloud:ros/stackInstances:StackInstances', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

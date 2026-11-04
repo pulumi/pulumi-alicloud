@@ -201,6 +201,12 @@ func (AuditPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*auditPolicyState)(nil)).Elem()
 }
 
+// AuditPolicyExists checks whether an existing AuditPolicy resource with the given ID exists.
+func AuditPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuditPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/auditPolicy:AuditPolicy", id, state, "", opts...)
+}
+
 type auditPolicyArgs struct {
 	// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 	AuditStatus string `pulumi:"auditStatus"`

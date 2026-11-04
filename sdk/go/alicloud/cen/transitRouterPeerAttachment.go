@@ -344,6 +344,12 @@ func (TransitRouterPeerAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterPeerAttachmentState)(nil)).Elem()
 }
 
+// TransitRouterPeerAttachmentExists checks whether an existing TransitRouterPeerAttachment resource with the given ID exists.
+func TransitRouterPeerAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterPeerAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment", id, state, "", opts...)
+}
+
 type transitRouterPeerAttachmentArgs struct {
 	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`

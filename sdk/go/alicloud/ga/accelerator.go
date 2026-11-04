@@ -235,6 +235,12 @@ func (AcceleratorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*acceleratorState)(nil)).Elem()
 }
 
+// AcceleratorExists checks whether an existing Accelerator resource with the given ID exists.
+func AcceleratorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AcceleratorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/accelerator:Accelerator", id, state, "", opts...)
+}
+
 type acceleratorArgs struct {
 	// The Name of the GA instance.
 	AcceleratorName *string `pulumi:"acceleratorName"`

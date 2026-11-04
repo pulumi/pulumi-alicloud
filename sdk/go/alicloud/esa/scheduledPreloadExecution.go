@@ -178,6 +178,12 @@ func (ScheduledPreloadExecutionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledPreloadExecutionState)(nil)).Elem()
 }
 
+// ScheduledPreloadExecutionExists checks whether an existing ScheduledPreloadExecution resource with the given ID exists.
+func ScheduledPreloadExecutionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduledPreloadExecutionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution", id, state, "", opts...)
+}
+
 type scheduledPreloadExecutionArgs struct {
 	// The end time of the prefetch plan.
 	EndTime *string `pulumi:"endTime"`

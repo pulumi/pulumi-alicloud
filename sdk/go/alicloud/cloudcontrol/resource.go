@@ -180,6 +180,12 @@ func (ResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceState)(nil)).Elem()
 }
 
+// ResourceExists checks whether an existing Resource resource with the given ID exists.
+func ResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudcontrol/resource:Resource", id, state, "", opts...)
+}
+
 type resourceArgs struct {
 	// Resource attributes specified when a user creates or updates a resource.
 	DesireAttributes *string `pulumi:"desireAttributes"`

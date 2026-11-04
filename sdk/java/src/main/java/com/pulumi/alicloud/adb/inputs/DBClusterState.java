@@ -82,22 +82,20 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
-     * @deprecated
-     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
+    @Deprecated
     @Import(name="dbClusterClass")
     private @Nullable Output<String> dbClusterClass;
 
     /**
      * @return It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
-     * @deprecated
-     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
+    @Deprecated
     public Optional<Output<String>> dbClusterClass() {
         return Optional.ofNullable(this.dbClusterClass);
     }
@@ -336,22 +334,20 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      * 
-     * @deprecated
-     * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * @deprecated Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated
     @Import(name="payType")
     private @Nullable Output<String> payType;
 
     /**
      * @return Field `payType` has been deprecated. New field `paymentType` instead.
      * 
-     * @deprecated
-     * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * @deprecated Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated
     public Optional<Output<String>> payType() {
         return Optional.ofNullable(this.payType);
     }
@@ -691,11 +687,10 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+         * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
          * 
          */
-        @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
+        @Deprecated
         public Builder dbClusterClass(@Nullable Output<String> dbClusterClass) {
             $.dbClusterClass = dbClusterClass;
             return this;
@@ -706,11 +701,10 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+         * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
          * 
          */
-        @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
+        @Deprecated
         public Builder dbClusterClass(String dbClusterClass) {
             return dbClusterClass(Output.of(dbClusterClass));
         }
@@ -1041,11 +1035,10 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+         * @deprecated Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+        @Deprecated
         public Builder payType(@Nullable Output<String> payType) {
             $.payType = payType;
             return this;
@@ -1056,11 +1049,10 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+         * @deprecated Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+        @Deprecated
         public Builder payType(String payType) {
             return payType(Output.of(payType));
         }

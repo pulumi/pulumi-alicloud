@@ -131,7 +131,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The name of the security policy.
      * 
-     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      */
     @Export(name="securityPolicyName", refs={String.class}, tree="[0]")
@@ -140,7 +140,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the security policy.
      * 
-     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      */
     public Output<String> securityPolicyName() {

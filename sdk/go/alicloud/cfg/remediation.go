@@ -226,6 +226,12 @@ func (RemediationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*remediationState)(nil)).Elem()
 }
 
+// RemediationExists checks whether an existing Remediation resource with the given ID exists.
+func RemediationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RemediationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/remediation:Remediation", id, state, "", opts...)
+}
+
 type remediationArgs struct {
 	// Rule ID.
 	ConfigRuleId string `pulumi:"configRuleId"`

@@ -235,6 +235,12 @@ func (ApplicationDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationDeploymentState)(nil)).Elem()
 }
 
+// ApplicationDeploymentExists checks whether an existing ApplicationDeployment resource with the given ID exists.
+func ApplicationDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/applicationDeployment:ApplicationDeployment", id, state, "", opts...)
+}
+
 type applicationDeploymentArgs struct {
 	// The ID of the application that you want to deploy.
 	AppId string `pulumi:"appId"`

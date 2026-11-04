@@ -655,6 +655,28 @@ class Remediation(pulumi.CustomResource):
         __props__.__dict__["remediation_type"] = remediation_type
         return Remediation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            invoke_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_origin_params: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregatorId"] = aggregator_id
+        __props__["configRuleId"] = config_rule_id
+        __props__["invokeType"] = invoke_type
+        __props__["remediationId"] = remediation_id
+        __props__["remediationOriginParams"] = remediation_origin_params
+        __props__["remediationSourceType"] = remediation_source_type
+        __props__["remediationTemplateId"] = remediation_template_id
+        __props__["remediationType"] = remediation_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:configaggregate/remediation:Remediation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregatorId")
     def aggregator_id(self) -> pulumi.Output[_builtins.str]:

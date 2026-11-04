@@ -1018,6 +1018,44 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict', 'outputs.ClusterApplicationConfig']]]]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict', 'outputs.ClusterBootstrapScript']]]]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict', 'outputs.ClusterNodeAttribute']]]]] = None,
+            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            release_version: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict', 'outputs.ClusterSubscriptionConfig']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationConfigs"] = application_configs
+        __props__["applications"] = applications
+        __props__["bootstrapScripts"] = bootstrap_scripts
+        __props__["clusterName"] = cluster_name
+        __props__["clusterType"] = cluster_type
+        __props__["deletionProtection"] = deletion_protection
+        __props__["deployMode"] = deploy_mode
+        __props__["logCollectStrategy"] = log_collect_strategy
+        __props__["nodeAttributes"] = node_attributes
+        __props__["nodeGroups"] = node_groups
+        __props__["paymentType"] = payment_type
+        __props__["releaseVersion"] = release_version
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityMode"] = security_mode
+        __props__["subscriptionConfig"] = subscription_config
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:emrv2/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationConfigs")
     def application_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterApplicationConfig']]]:

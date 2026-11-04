@@ -406,6 +406,24 @@ class Repo(pulumi.CustomResource):
         __props__.__dict__["summary"] = summary
         return Repo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            detail: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict', 'outputs.RepoDomainList']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+            summary: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["detail"] = detail
+        __props__["domainLists"] = domain_lists
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["repoType"] = repo_type
+        __props__["summary"] = summary
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/repo:Repo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def detail(self) -> pulumi.Output[Optional[_builtins.str]]:

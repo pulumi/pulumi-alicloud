@@ -177,6 +177,12 @@ func (SecurityIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityIpState)(nil)).Elem()
 }
 
+// SecurityIpExists checks whether an existing SecurityIp resource with the given ID exists.
+func SecurityIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp", id, state, "", opts...)
+}
+
 type securityIpArgs struct {
 	// The cluster ID.
 	DbInstanceId string `pulumi:"dbInstanceId"`

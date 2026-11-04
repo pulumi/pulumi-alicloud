@@ -43,22 +43,20 @@ public final class GetNetworkInterfacesArgs extends com.pulumi.resources.InvokeA
     /**
      * Name of the ENI.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the ENI.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -94,22 +92,20 @@ public final class GetNetworkInterfacesArgs extends com.pulumi.resources.InvokeA
     /**
      * Primary private IP of the ENI.
      * 
-     * @deprecated
-     * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+     * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+    @Deprecated
     @Import(name="privateIp")
     private @Nullable Output<String> privateIp;
 
     /**
      * @return Primary private IP of the ENI.
      * 
-     * @deprecated
-     * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+     * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+    @Deprecated
     public Optional<Output<String>> privateIp() {
         return Optional.ofNullable(this.privateIp);
     }
@@ -288,11 +284,10 @@ public final class GetNetworkInterfacesArgs extends com.pulumi.resources.InvokeA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -303,11 +298,10 @@ public final class GetNetworkInterfacesArgs extends com.pulumi.resources.InvokeA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -353,11 +347,10 @@ public final class GetNetworkInterfacesArgs extends com.pulumi.resources.InvokeA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+         * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+        @Deprecated
         public Builder privateIp(@Nullable Output<String> privateIp) {
             $.privateIp = privateIp;
             return this;
@@ -368,11 +361,10 @@ public final class GetNetworkInterfacesArgs extends com.pulumi.resources.InvokeA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+         * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+        @Deprecated
         public Builder privateIp(String privateIp) {
             return privateIp(Output.of(privateIp));
         }

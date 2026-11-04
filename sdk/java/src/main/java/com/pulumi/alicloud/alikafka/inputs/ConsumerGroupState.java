@@ -50,22 +50,20 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
-     * @deprecated
-     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
      */
-    @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
+    @Deprecated
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
-     * @deprecated
-     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
      */
-    @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
+    @Deprecated
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -207,11 +205,10 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+         * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
          * 
          */
-        @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
+        @Deprecated
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -222,11 +219,10 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+         * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
          * 
          */
-        @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
+        @Deprecated
         public Builder description(String description) {
             return description(Output.of(description));
         }

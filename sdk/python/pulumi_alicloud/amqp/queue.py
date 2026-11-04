@@ -599,6 +599,32 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["virtual_host_name"] = virtual_host_name
         return Queue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_expire_state: pulumi.Input[Optional[_builtins.str]] = None,
+            dead_letter_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            dead_letter_routing_key: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_length: pulumi.Input[Optional[_builtins.str]] = None,
+            maximum_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            message_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoDeleteState"] = auto_delete_state
+        __props__["autoExpireState"] = auto_expire_state
+        __props__["deadLetterExchange"] = dead_letter_exchange
+        __props__["deadLetterRoutingKey"] = dead_letter_routing_key
+        __props__["instanceId"] = instance_id
+        __props__["maxLength"] = max_length
+        __props__["maximumPriority"] = maximum_priority
+        __props__["messageTtl"] = message_ttl
+        __props__["queueName"] = queue_name
+        __props__["virtualHostName"] = virtual_host_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:amqp/queue:Queue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -640,6 +640,30 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["stop_strategy"] = stop_strategy
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict', 'outputs.JobLocalVariable']]]]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict', 'outputs.JobRestoreStrategy']]] = None,
+            status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict', 'outputs.JobStatus']]] = None,
+            stop_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deploymentId"] = deployment_id
+        __props__["jobId"] = job_id
+        __props__["localVariables"] = local_variables
+        __props__["namespace"] = namespace
+        __props__["resourceId"] = resource_id
+        __props__["resourceQueueName"] = resource_queue_name
+        __props__["restoreStrategy"] = restore_strategy
+        __props__["status"] = status
+        __props__["stopStrategy"] = stop_strategy
+        return pulumi.runtime.exists_resource(None, 'alicloud:realtimecompute/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deploymentId")
     def deployment_id(self) -> pulumi.Output[Optional[_builtins.str]]:

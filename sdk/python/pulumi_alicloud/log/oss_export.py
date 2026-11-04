@@ -1220,6 +1220,62 @@ class OssExport(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return OssExport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            buffer_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+            config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict', 'outputs.OssExportConfigColumn']]]]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_escape: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+            csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_null: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            export_name: pulumi.Input[Optional[_builtins.str]] = None,
+            from_time: pulumi.Input[Optional[_builtins.int]] = None,
+            json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_read_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            path_format: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["bufferInterval"] = buffer_interval
+        __props__["bufferSize"] = buffer_size
+        __props__["compressType"] = compress_type
+        __props__["configColumns"] = config_columns
+        __props__["contentType"] = content_type
+        __props__["csvConfigColumns"] = csv_config_columns
+        __props__["csvConfigDelimiter"] = csv_config_delimiter
+        __props__["csvConfigEscape"] = csv_config_escape
+        __props__["csvConfigHeader"] = csv_config_header
+        __props__["csvConfigLinefeed"] = csv_config_linefeed
+        __props__["csvConfigNull"] = csv_config_null
+        __props__["csvConfigQuote"] = csv_config_quote
+        __props__["displayName"] = display_name
+        __props__["exportName"] = export_name
+        __props__["fromTime"] = from_time
+        __props__["jsonEnableTag"] = json_enable_tag
+        __props__["logReadRoleArn"] = log_read_role_arn
+        __props__["logstoreName"] = logstore_name
+        __props__["pathFormat"] = path_format
+        __props__["prefix"] = prefix
+        __props__["projectName"] = project_name
+        __props__["roleArn"] = role_arn
+        __props__["suffix"] = suffix
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/ossExport:OssExport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

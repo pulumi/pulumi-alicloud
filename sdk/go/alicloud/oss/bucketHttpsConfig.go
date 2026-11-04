@@ -160,6 +160,12 @@ func (BucketHttpsConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketHttpsConfigState)(nil)).Elem()
 }
 
+// BucketHttpsConfigExists checks whether an existing BucketHttpsConfig resource with the given ID exists.
+func BucketHttpsConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketHttpsConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketHttpsConfig:BucketHttpsConfig", id, state, "", opts...)
+}
+
 type bucketHttpsConfigArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

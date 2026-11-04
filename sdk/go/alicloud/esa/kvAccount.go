@@ -106,6 +106,12 @@ func (KvAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kvAccountState)(nil)).Elem()
 }
 
+// KvAccountExists checks whether an existing KvAccount resource with the given ID exists.
+func KvAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KvAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/kvAccount:KvAccount", id, state, "", opts...)
+}
+
 type kvAccountArgs struct {
 }
 

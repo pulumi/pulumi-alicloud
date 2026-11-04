@@ -2486,14 +2486,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2502,8 +2502,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2535,14 +2535,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2551,8 +2551,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2584,14 +2584,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2600,8 +2600,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2633,14 +2633,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2649,8 +2649,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2682,14 +2682,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2698,8 +2698,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2731,14 +2731,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2747,8 +2747,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2780,14 +2780,14 @@ public final class RdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("data-\\d+")
+     *             .nameRegex("data-}&#92;&#92;{@code d+")
      *             .status("Running")
      *             .tags(Map.ofEntries(
      *                 Map.entry("type", "database"),
@@ -2796,8 +2796,8 @@ public final class RdsFunctions {
      *             .build());
      * 
      *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

@@ -126,22 +126,20 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
-     * @deprecated
-     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+     * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      */
-    @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
+    @Deprecated
     @Import(name="deletionWindowInDays")
     private @Nullable Output<Integer> deletionWindowInDays;
 
     /**
      * @return Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
-     * @deprecated
-     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+     * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      */
-    @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
+    @Deprecated
     public Optional<Output<Integer>> deletionWindowInDays() {
         return Optional.ofNullable(this.deletionWindowInDays);
     }
@@ -189,11 +187,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
-     * @deprecated
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+     * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      * 
      */
-    @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
+    @Deprecated
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
@@ -206,11 +203,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
-     * @deprecated
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+     * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      * 
      */
-    @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
@@ -237,22 +233,20 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
-     * @deprecated
-     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
+    @Deprecated
     @Import(name="keyState")
     private @Nullable Output<String> keyState;
 
     /**
      * @return Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
-     * @deprecated
-     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
+    @Deprecated
     public Optional<Output<String>> keyState() {
         return Optional.ofNullable(this.keyState);
     }
@@ -653,11 +647,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+         * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
          * 
          */
-        @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
+        @Deprecated
         public Builder deletionWindowInDays(@Nullable Output<Integer> deletionWindowInDays) {
             $.deletionWindowInDays = deletionWindowInDays;
             return this;
@@ -668,11 +661,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+         * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
          * 
          */
-        @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
+        @Deprecated
         public Builder deletionWindowInDays(Integer deletionWindowInDays) {
             return deletionWindowInDays(Output.of(deletionWindowInDays));
         }
@@ -734,11 +726,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+         * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
          * 
          */
-        @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
+        @Deprecated
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
@@ -755,11 +746,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+         * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
          * 
          */
-        @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
+        @Deprecated
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
@@ -794,11 +784,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          */
-        @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
+        @Deprecated
         public Builder keyState(@Nullable Output<String> keyState) {
             $.keyState = keyState;
             return this;
@@ -809,11 +798,10 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          */
-        @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
+        @Deprecated
         public Builder keyState(String keyState) {
             return keyState(Output.of(keyState));
         }

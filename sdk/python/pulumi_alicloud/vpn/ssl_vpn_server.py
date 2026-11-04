@@ -611,6 +611,34 @@ class SslVpnServer(pulumi.CustomResource):
         __props__.__dict__["vpn_gateway_id"] = vpn_gateway_id
         return SslVpnServer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cipher: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            compress: pulumi.Input[Optional[_builtins.bool]] = None,
+            connections: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cipher"] = cipher
+        __props__["clientIpPool"] = client_ip_pool
+        __props__["compress"] = compress
+        __props__["connections"] = connections
+        __props__["internetIp"] = internet_ip
+        __props__["localSubnet"] = local_subnet
+        __props__["maxConnections"] = max_connections
+        __props__["name"] = name
+        __props__["port"] = port
+        __props__["protocol"] = protocol
+        __props__["vpnGatewayId"] = vpn_gateway_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/sslVpnServer:SslVpnServer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cipher(self) -> pulumi.Output[Optional[_builtins.str]]:

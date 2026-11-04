@@ -72,11 +72,10 @@ public final class GetLoadBalancersBalancer {
     /**
      * @return Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter &#39;load_balancer_business_status&#39; instead.
+     * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter &#39;load_balancer_business_status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead. */
+    @Deprecated
     private String loadBalancerBussinessStatus;
     /**
      * @return The edition of the ALB instance.
@@ -204,11 +203,10 @@ public final class GetLoadBalancersBalancer {
     /**
      * @return Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter &#39;load_balancer_business_status&#39; instead.
+     * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter &#39;load_balancer_business_status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead. */
+    @Deprecated
     public String loadBalancerBussinessStatus() {
         return this.loadBalancerBussinessStatus;
     }

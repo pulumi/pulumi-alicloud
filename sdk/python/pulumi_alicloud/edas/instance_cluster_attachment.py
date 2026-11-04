@@ -346,6 +346,22 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         __props__.__dict__["status_map"] = status_map
         return InstanceClusterAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_member_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ecu_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["clusterMemberIds"] = cluster_member_ids
+        __props__["ecuMap"] = ecu_map
+        __props__["instanceIds"] = instance_ids
+        __props__["statusMap"] = status_map
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

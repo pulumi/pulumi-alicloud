@@ -166,6 +166,12 @@ func (QuotaPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaPlanState)(nil)).Elem()
 }
 
+// QuotaPlanExists checks whether an existing QuotaPlan resource with the given ID exists.
+func QuotaPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:maxcompute/quotaPlan:QuotaPlan", id, state, "", opts...)
+}
+
 type quotaPlanArgs struct {
 	// Whether to take effect immediately. “Valid values: true”\
 	// .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.

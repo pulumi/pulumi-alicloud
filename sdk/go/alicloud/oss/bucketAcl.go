@@ -143,6 +143,12 @@ func (BucketAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketAclState)(nil)).Elem()
 }
 
+// BucketAclExists checks whether an existing BucketAcl resource with the given ID exists.
+func BucketAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketAcl:BucketAcl", id, state, "", opts...)
+}
+
 type bucketAclArgs struct {
 	// Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
 	Acl string `pulumi:"acl"`

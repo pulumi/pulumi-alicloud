@@ -388,6 +388,24 @@ class BucketLifecycle(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BucketLifecycle(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_days: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowSameActionOverlap"] = allow_same_action_overlap
+        __props__["bucketName"] = bucket_name
+        __props__["expirationDays"] = expiration_days
+        __props__["prefix"] = prefix
+        __props__["ruleId"] = rule_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/bucketLifecycle:BucketLifecycle', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowSameActionOverlap")
     def allow_same_action_overlap(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -918,6 +918,50 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return BandwidthPackage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cbn_geographic_region_ida: pulumi.Input[Optional[_builtins.str]] = None,
+            cbn_geographic_region_idb: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenewDuration"] = auto_renew_duration
+        __props__["autoUseCoupon"] = auto_use_coupon
+        __props__["bandwidth"] = bandwidth
+        __props__["bandwidthPackageName"] = bandwidth_package_name
+        __props__["bandwidthType"] = bandwidth_type
+        __props__["billingType"] = billing_type
+        __props__["cbnGeographicRegionIda"] = cbn_geographic_region_ida
+        __props__["cbnGeographicRegionIdb"] = cbn_geographic_region_idb
+        __props__["description"] = description
+        __props__["duration"] = duration
+        __props__["paymentType"] = payment_type
+        __props__["promotionOptionNo"] = promotion_option_no
+        __props__["ratio"] = ratio
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/bandwidthPackage:BandwidthPackage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

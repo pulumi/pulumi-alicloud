@@ -282,6 +282,12 @@ func (AggregateConfigRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggregateConfigRuleState)(nil)).Elem()
 }
 
+// AggregateConfigRuleExists checks whether an existing AggregateConfigRule resource with the given ID exists.
+func AggregateConfigRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AggregateConfigRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/aggregateConfigRule:AggregateConfigRule", id, state, "", opts...)
+}
+
 type aggregateConfigRuleArgs struct {
 	// The name of the rule.
 	AggregateConfigRuleName string `pulumi:"aggregateConfigRuleName"`

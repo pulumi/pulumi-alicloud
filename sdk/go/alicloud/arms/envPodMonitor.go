@@ -291,6 +291,12 @@ func (EnvPodMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envPodMonitorState)(nil)).Elem()
 }
 
+// EnvPodMonitorExists checks whether an existing EnvPodMonitor resource with the given ID exists.
+func EnvPodMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvPodMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/envPodMonitor:EnvPodMonitor", id, state, "", opts...)
+}
+
 type envPodMonitorArgs struct {
 	// Language environment, default is Chinese zh | en.
 	AliyunLang *string `pulumi:"aliyunLang"`

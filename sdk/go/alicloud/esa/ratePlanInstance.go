@@ -203,6 +203,12 @@ func (RatePlanInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ratePlanInstanceState)(nil)).Elem()
 }
 
+// RatePlanInstanceExists checks whether an existing RatePlanInstance resource with the given ID exists.
+func RatePlanInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RatePlanInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/ratePlanInstance:RatePlanInstance", id, state, "", opts...)
+}
+
 type ratePlanInstanceArgs struct {
 	// Specifies whether to enable auto payment.
 	//

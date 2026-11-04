@@ -177,6 +177,12 @@ func (ExperimentPlanTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*experimentPlanTemplateState)(nil)).Elem()
 }
 
+// ExperimentPlanTemplateExists checks whether an existing ExperimentPlanTemplate resource with the given ID exists.
+func ExperimentPlanTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExperimentPlanTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate", id, state, "", opts...)
+}
+
 type experimentPlanTemplateArgs struct {
 	// Used to indicate the privacy level of the content or information. It can have the following optional parameters:
 	// - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.

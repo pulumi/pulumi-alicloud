@@ -184,6 +184,12 @@ func (HoneyPotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*honeyPotState)(nil)).Elem()
 }
 
+// HoneyPotExists checks whether an existing HoneyPot resource with the given ID exists.
+func HoneyPotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HoneyPotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/honeyPot:HoneyPot", id, state, "", opts...)
+}
+
 type honeyPotArgs struct {
 	// The image ID of the honeypot.
 	HoneypotImageId string `pulumi:"honeypotImageId"`

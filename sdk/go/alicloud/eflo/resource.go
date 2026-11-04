@@ -185,6 +185,12 @@ func (ResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceState)(nil)).Elem()
 }
 
+// ResourceExists checks whether an existing Resource resource with the given ID exists.
+func ResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/resource:Resource", id, state, "", opts...)
+}
+
 type resourceArgs struct {
 	// Used to provide a description or comment on the compute cluster.
 	ClusterDesc *string `pulumi:"clusterDesc"`

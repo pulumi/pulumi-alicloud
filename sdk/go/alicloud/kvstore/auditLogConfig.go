@@ -207,6 +207,12 @@ func (AuditLogConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*auditLogConfigState)(nil)).Elem()
 }
 
+// AuditLogConfigExists checks whether an existing AuditLogConfig resource with the given ID exists.
+func AuditLogConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuditLogConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kvstore/auditLogConfig:AuditLogConfig", id, state, "", opts...)
+}
+
 type auditLogConfigArgs struct {
 	// Indicates Whether to Enable the Audit Log.  Valid value:
 	// * true: Default Value, Open.

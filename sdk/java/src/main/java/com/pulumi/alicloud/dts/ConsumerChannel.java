@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var example = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *             .sourceEndpointDatabaseName(exampleDatabase.name())
  *             .sourceEndpointUserName(exampleRdsAccount.accountName())
  *             .sourceEndpointPassword(exampleRdsAccount.accountPassword())
- *             .dbList(exampleDatabase.name().applyValue(_name -> String.format("{{\"%s\":{{\"name\":\"%s\",\"all\":true}}}}", _name,_name)))
+ *             .dbList(exampleDatabase.name().applyValue(_name -> String.format("}{{&#92;{@code "%s}&#92;{@code ":}{{&#92;{@code "name}&#92;{@code ":}&#92;{@code "%s}&#92;{@code ",}&#92;{@code "all}&#92;{@code ":true}}}}}{@code ", _name,_name)))
  *             .subscriptionInstanceNetworkType("vpc")
  *             .subscriptionInstanceVpcId(exampleNetwork.id())
  *             .subscriptionInstanceVswitchId(exampleSwitch.id())
@@ -162,8 +162,8 @@ import javax.annotation.Nullable;
  *             .consumerGroupPassword("example1234")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

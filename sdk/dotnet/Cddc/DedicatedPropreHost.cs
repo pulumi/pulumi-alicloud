@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         /// - **true**: added.
         /// - **false** (default): Do not add.
-        /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix NameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+        ///   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix NameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         /// </summary>
         [Output("ecsUniqueSuffix")]
         public Output<string?> EcsUniqueSuffix { get; private set; } = null!;
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - **alisql**
         /// - **tair**
         /// - **mssql**
-        /// Must be consistent with the parent resource cluster engine attributes.
+        ///   Must be consistent with the parent resource cluster engine attributes.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -539,7 +539,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         /// - **true**: added.
         /// - **false** (default): Do not add.
-        /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix NameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+        ///   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix NameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         /// </summary>
         [Input("ecsUniqueSuffix")]
         public Input<string>? EcsUniqueSuffix { get; set; }
@@ -555,7 +555,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - **alisql**
         /// - **tair**
         /// - **mssql**
-        /// Must be consistent with the parent resource cluster engine attributes.
+        ///   Must be consistent with the parent resource cluster engine attributes.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -738,7 +738,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         /// - **true**: added.
         /// - **false** (default): Do not add.
-        /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix NameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+        ///   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix NameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         /// </summary>
         [Input("ecsUniqueSuffix")]
         public Input<string>? EcsUniqueSuffix { get; set; }
@@ -754,7 +754,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - **alisql**
         /// - **tair**
         /// - **mssql**
-        /// Must be consistent with the parent resource cluster engine attributes.
+        ///   Must be consistent with the parent resource cluster engine attributes.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

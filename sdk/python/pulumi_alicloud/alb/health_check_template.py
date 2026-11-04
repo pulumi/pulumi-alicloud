@@ -790,6 +790,42 @@ class HealthCheckTemplate(pulumi.CustomResource):
         __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
         return HealthCheckTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_version: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_path: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["healthCheckCodes"] = health_check_codes
+        __props__["healthCheckConnectPort"] = health_check_connect_port
+        __props__["healthCheckHost"] = health_check_host
+        __props__["healthCheckHttpVersion"] = health_check_http_version
+        __props__["healthCheckInterval"] = health_check_interval
+        __props__["healthCheckMethod"] = health_check_method
+        __props__["healthCheckPath"] = health_check_path
+        __props__["healthCheckProtocol"] = health_check_protocol
+        __props__["healthCheckTemplateName"] = health_check_template_name
+        __props__["healthCheckTimeout"] = health_check_timeout
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tags"] = tags
+        __props__["unhealthyThreshold"] = unhealthy_threshold
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/healthCheckTemplate:HealthCheckTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -445,6 +445,24 @@ class ApplicationGroup(pulumi.CustomResource):
         __props__.__dict__["import_tag_value"] = import_tag_value
         return ApplicationGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            import_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            import_tag_value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationGroupName"] = application_group_name
+        __props__["applicationName"] = application_name
+        __props__["deployRegionId"] = deploy_region_id
+        __props__["description"] = description
+        __props__["importTagKey"] = import_tag_key
+        __props__["importTagValue"] = import_tag_value
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/applicationGroup:ApplicationGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationGroupName")
     def application_group_name(self) -> pulumi.Output[_builtins.str]:

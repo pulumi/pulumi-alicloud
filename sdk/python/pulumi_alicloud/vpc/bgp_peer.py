@@ -454,6 +454,26 @@ class BgpPeer(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BgpPeer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bfd_multi_hop: pulumi.Input[Optional[_builtins.int]] = None,
+            bgp_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bgp_peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_bfd: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bfdMultiHop"] = bfd_multi_hop
+        __props__["bgpGroupId"] = bgp_group_id
+        __props__["bgpPeerName"] = bgp_peer_name
+        __props__["enableBfd"] = enable_bfd
+        __props__["ipVersion"] = ip_version
+        __props__["peerIpAddress"] = peer_ip_address
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/bgpPeer:BgpPeer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bfdMultiHop")
     def bfd_multi_hop(self) -> pulumi.Output[Optional[_builtins.int]]:

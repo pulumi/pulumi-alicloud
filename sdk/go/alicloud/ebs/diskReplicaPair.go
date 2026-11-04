@@ -371,6 +371,12 @@ func (DiskReplicaPairState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskReplicaPairState)(nil)).Elem()
 }
 
+// DiskReplicaPairExists checks whether an existing DiskReplicaPair resource with the given ID exists.
+func DiskReplicaPairExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskReplicaPairState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/diskReplicaPair:DiskReplicaPair", id, state, "", opts...)
+}
+
 type diskReplicaPairArgs struct {
 	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
 	// - 10240 Kbps: equal to 10 Mbps.

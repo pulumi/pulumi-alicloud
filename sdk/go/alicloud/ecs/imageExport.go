@@ -200,6 +200,12 @@ func (ImageExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageExportState)(nil)).Elem()
 }
 
+// ImageExportExists checks whether an existing ImageExport resource with the given ID exists.
+func ImageExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/imageExport:ImageExport", id, state, "", opts...)
+}
+
 type imageExportArgs struct {
 	// The source image ID.
 	ImageId string `pulumi:"imageId"`

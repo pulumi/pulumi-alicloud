@@ -283,6 +283,12 @@ func (SecurityPreferenceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityPreferenceState)(nil)).Elem()
 }
 
+// SecurityPreferenceExists checks whether an existing SecurityPreference resource with the given ID exists.
+func SecurityPreferenceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityPreferenceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/securityPreference:SecurityPreference", id, state, "", opts...)
+}
+
 type securityPreferenceArgs struct {
 	// Whether to allow RAM users to manage their own passwords. Value:
 	// - true (default): Allowed.

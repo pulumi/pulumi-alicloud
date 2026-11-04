@@ -571,6 +571,30 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["zone_mappings"] = zone_mappings
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressIpVersion"] = address_ip_version
+        __props__["createTime"] = create_time
+        __props__["dryRun"] = dry_run
+        __props__["loadBalancerName"] = load_balancer_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["zoneMappings"] = zone_mappings
+        return pulumi.runtime.exists_resource(None, 'alicloud:gwlb/loadBalancer:LoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[_builtins.str]:

@@ -164,6 +164,12 @@ func (BatchTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*batchTaskState)(nil)).Elem()
 }
 
+// BatchTaskExists checks whether an existing BatchTask resource with the given ID exists.
+func BatchTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BatchTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/batchTask:BatchTask", id, state, "", opts...)
+}
+
 type batchTaskArgs struct {
 	// A list of PolarDB application IDs to which the task will be applied.
 	InstanceIds []string `pulumi:"instanceIds"`

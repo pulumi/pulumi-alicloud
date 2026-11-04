@@ -271,6 +271,12 @@ func (TopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicState)(nil)).Elem()
 }
 
+// TopicExists checks whether an existing Topic resource with the given ID exists.
+func TopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alikafka/topic:Topic", id, state, "", opts...)
+}
+
 type topicArgs struct {
 	// The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
 	// - false: The delete cleanup policy is used.

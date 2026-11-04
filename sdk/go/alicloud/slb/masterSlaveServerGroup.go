@@ -274,6 +274,12 @@ func (MasterSlaveServerGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*masterSlaveServerGroupState)(nil)).Elem()
 }
 
+// MasterSlaveServerGroupExists checks whether an existing MasterSlaveServerGroup resource with the given ID exists.
+func MasterSlaveServerGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MasterSlaveServerGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", id, state, "", opts...)
+}
+
 type masterSlaveServerGroupArgs struct {
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`

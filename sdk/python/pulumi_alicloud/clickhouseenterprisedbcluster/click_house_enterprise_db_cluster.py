@@ -990,6 +990,60 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ClickHouseEnterpriseDbCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterEndpointArgs', 'ClickHouseEnterpriseDbClusterEndpointArgsDict', 'outputs.ClickHouseEnterpriseDbClusterEndpoint']]]]] = None,
+            engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickHouseEnterpriseDbClusterMultiZoneArgs', 'ClickHouseEnterpriseDbClusterMultiZoneArgsDict', 'outputs.ClickHouseEnterpriseDbClusterMultiZone']]]]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+            node_scale_min: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_max: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_min: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_quota: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["category"] = category
+        __props__["chargeType"] = charge_type
+        __props__["computingGroupIds"] = computing_group_ids
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["endpoints"] = endpoints
+        __props__["engineMinorVersion"] = engine_minor_version
+        __props__["instanceNetworkType"] = instance_network_type
+        __props__["multiZones"] = multi_zones
+        __props__["nodeCount"] = node_count
+        __props__["nodeScaleMax"] = node_scale_max
+        __props__["nodeScaleMin"] = node_scale_min
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scaleMax"] = scale_max
+        __props__["scaleMin"] = scale_min
+        __props__["status"] = status
+        __props__["storageQuota"] = storage_quota
+        __props__["storageSize"] = storage_size
+        __props__["storageType"] = storage_type
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[_builtins.str]:

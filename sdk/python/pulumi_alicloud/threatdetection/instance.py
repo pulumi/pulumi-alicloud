@@ -2121,6 +2121,88 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["vul_switch"] = vul_switch
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            buy_number: pulumi.Input[Optional[_builtins.str]] = None,
+            container_image_scan: pulumi.Input[Optional[_builtins.str]] = None,
+            container_image_scan_new: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            post_paid_flag: pulumi.Input[Optional[_builtins.int]] = None,
+            post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
+            post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
+            post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict', 'outputs.InstancePostPayModuleSwitchObj']]] = None,
+            rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_anti_ransomware: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_cspm: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_cspm_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_sc: pulumi.Input[Optional[_builtins.bool]] = None,
+            sas_sdk: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_sdk_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_webguard_boolean: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_webguard_order_num: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_flow: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_switch1: pulumi.Input[Optional[_builtins.str]] = None,
+            v_core: pulumi.Input[Optional[_builtins.str]] = None,
+            version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            vul_count: pulumi.Input[Optional[_builtins.str]] = None,
+            vul_switch: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["buyNumber"] = buy_number
+        __props__["containerImageScan"] = container_image_scan
+        __props__["containerImageScanNew"] = container_image_scan_new
+        __props__["createTime"] = create_time
+        __props__["honeypot"] = honeypot
+        __props__["honeypotSwitch"] = honeypot_switch
+        __props__["modifyType"] = modify_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["postPaidFlag"] = post_paid_flag
+        __props__["postPaidHostAutoBind"] = post_paid_host_auto_bind
+        __props__["postPaidHostAutoBindVersion"] = post_paid_host_auto_bind_version
+        __props__["postPayModuleSwitch"] = post_pay_module_switch
+        __props__["postPayModuleSwitchObj"] = post_pay_module_switch_obj
+        __props__["raspCount"] = rasp_count
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalPeriodUnit"] = renewal_period_unit
+        __props__["renewalStatus"] = renewal_status
+        __props__["sasAntiRansomware"] = sas_anti_ransomware
+        __props__["sasCspm"] = sas_cspm
+        __props__["sasCspmSwitch"] = sas_cspm_switch
+        __props__["sasSc"] = sas_sc
+        __props__["sasSdk"] = sas_sdk
+        __props__["sasSdkSwitch"] = sas_sdk_switch
+        __props__["sasSlsStorage"] = sas_sls_storage
+        __props__["sasWebguardBoolean"] = sas_webguard_boolean
+        __props__["sasWebguardOrderNum"] = sas_webguard_order_num
+        __props__["status"] = status
+        __props__["subscriptionType"] = subscription_type
+        __props__["threatAnalysis"] = threat_analysis
+        __props__["threatAnalysisFlow"] = threat_analysis_flow
+        __props__["threatAnalysisSlsStorage"] = threat_analysis_sls_storage
+        __props__["threatAnalysisSwitch"] = threat_analysis_switch
+        __props__["threatAnalysisSwitch1"] = threat_analysis_switch1
+        __props__["vCore"] = v_core
+        __props__["versionCode"] = version_code
+        __props__["vulCount"] = vul_count
+        __props__["vulSwitch"] = vul_switch
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="buyNumber")
     def buy_number(self) -> pulumi.Output[Optional[_builtins.str]]:

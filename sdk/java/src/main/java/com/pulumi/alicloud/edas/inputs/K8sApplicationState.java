@@ -142,11 +142,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Import(name="internetSlbId")
     private @Nullable Output<String> internetSlbId;
 
@@ -154,11 +153,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
      * @return Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     public Optional<Output<String>> internetSlbId() {
         return Optional.ofNullable(this.internetSlbId);
     }
@@ -166,22 +164,20 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
     /**
      * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Import(name="internetSlbPort")
     private @Nullable Output<Integer> internetSlbPort;
 
     /**
      * @return The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     public Optional<Output<Integer>> internetSlbPort() {
         return Optional.ofNullable(this.internetSlbPort);
     }
@@ -189,22 +185,20 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
     /**
      * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Import(name="internetSlbProtocol")
     private @Nullable Output<String> internetSlbProtocol;
 
     /**
      * @return The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     public Optional<Output<String>> internetSlbProtocol() {
         return Optional.ofNullable(this.internetSlbProtocol);
     }
@@ -213,11 +207,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Import(name="internetTargetPort")
     private @Nullable Output<Integer> internetTargetPort;
 
@@ -225,11 +218,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
      * @return The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     public Optional<Output<Integer>> internetTargetPort() {
         return Optional.ofNullable(this.internetTargetPort);
     }
@@ -757,11 +749,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetSlbId(@Nullable Output<String> internetSlbId) {
             $.internetSlbId = internetSlbId;
             return this;
@@ -773,11 +764,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetSlbId(String internetSlbId) {
             return internetSlbId(Output.of(internetSlbId));
         }
@@ -787,11 +777,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetSlbPort(@Nullable Output<Integer> internetSlbPort) {
             $.internetSlbPort = internetSlbPort;
             return this;
@@ -802,11 +791,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetSlbPort(Integer internetSlbPort) {
             return internetSlbPort(Output.of(internetSlbPort));
         }
@@ -816,11 +804,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetSlbProtocol(@Nullable Output<String> internetSlbProtocol) {
             $.internetSlbProtocol = internetSlbProtocol;
             return this;
@@ -831,11 +818,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetSlbProtocol(String internetSlbProtocol) {
             return internetSlbProtocol(Output.of(internetSlbProtocol));
         }
@@ -846,11 +832,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetTargetPort(@Nullable Output<Integer> internetTargetPort) {
             $.internetTargetPort = internetTargetPort;
             return this;
@@ -862,11 +847,10 @@ public final class K8sApplicationState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+         * @deprecated Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
          * 
          */
-        @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+        @Deprecated
         public Builder internetTargetPort(Integer internetTargetPort) {
             return internetTargetPort(Output.of(internetTargetPort));
         }

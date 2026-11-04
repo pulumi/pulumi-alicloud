@@ -488,6 +488,26 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         return DbInstanceEndpointAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionString"] = connection_string
+        __props__["connectionStringPrefix"] = connection_string_prefix
+        __props__["dbInstanceEndpointId"] = db_instance_endpoint_id
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["ipAddress"] = ip_address
+        __props__["ipType"] = ip_type
+        __props__["port"] = port
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[_builtins.str]:

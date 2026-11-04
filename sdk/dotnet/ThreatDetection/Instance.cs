@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Tamper-proof authorization number. Value:
         /// - 0: No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         [Output("sasWebguardOrderNum")]
         public Output<string?> SasWebguardOrderNum { get; private set; } = null!;
@@ -625,7 +625,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Tamper-proof authorization number. Value:
         /// - 0: No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         [Input("sasWebguardOrderNum")]
         public Input<string>? SasWebguardOrderNum { get; set; }
@@ -929,7 +929,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Tamper-proof authorization number. Value:
         /// - 0: No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         [Input("sasWebguardOrderNum")]
         public Input<string>? SasWebguardOrderNum { get; set; }

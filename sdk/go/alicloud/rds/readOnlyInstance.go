@@ -596,6 +596,12 @@ func (ReadOnlyInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*readOnlyInstanceState)(nil)).Elem()
 }
 
+// ReadOnlyInstanceExists checks whether an existing ReadOnlyInstance resource with the given ID exists.
+func ReadOnlyInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReadOnlyInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/readOnlyInstance:ReadOnlyInstance", id, state, "", opts...)
+}
+
 type readOnlyInstanceArgs struct {
 	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
 	// - cert

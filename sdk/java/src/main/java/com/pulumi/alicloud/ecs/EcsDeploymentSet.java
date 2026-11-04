@@ -104,11 +104,10 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
     /**
      * Field `domain` has been deprecated from provider version 1.243.0.
      * 
-     * @deprecated
-     * Field `domain` has been deprecated from provider version 1.243.0.
+     * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
-    @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
+    @Deprecated
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
@@ -122,11 +121,10 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
     /**
      * Field `granularity` has been deprecated from provider version 1.243.0.
      * 
-     * @deprecated
-     * Field `granularity` has been deprecated from provider version 1.243.0.
+     * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
-    @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
+    @Deprecated
     @Export(name="granularity", refs={String.class}, tree="[0]")
     private Output<String> granularity;
 

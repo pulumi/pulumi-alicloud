@@ -188,6 +188,12 @@ func (ValueAddedServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*valueAddedServiceState)(nil)).Elem()
 }
 
+// ValueAddedServiceExists checks whether an existing ValueAddedService resource with the given ID exists.
+func ValueAddedServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValueAddedServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/valueAddedService:ValueAddedService", id, state, "", opts...)
+}
+
 type valueAddedServiceArgs struct {
 	// The payment type of the resource
 	PaymentType string `pulumi:"paymentType"`

@@ -36,22 +36,20 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
     /**
      * This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
-     * @deprecated
-     * Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
+     * @deprecated Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
      * 
      */
-    @Deprecated /* Field 'create_time' has been deprecated from provider version 1.153.0. */
+    @Deprecated
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
      * @return This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
-     * @deprecated
-     * Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
+     * @deprecated Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
      * 
      */
-    @Deprecated /* Field 'create_time' has been deprecated from provider version 1.153.0. */
+    @Deprecated
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
@@ -289,11 +287,10 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
+         * @deprecated Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
          * 
          */
-        @Deprecated /* Field 'create_time' has been deprecated from provider version 1.153.0. */
+        @Deprecated
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
@@ -304,11 +301,10 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
+         * @deprecated Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
          * 
          */
-        @Deprecated /* Field 'create_time' has been deprecated from provider version 1.153.0. */
+        @Deprecated
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }

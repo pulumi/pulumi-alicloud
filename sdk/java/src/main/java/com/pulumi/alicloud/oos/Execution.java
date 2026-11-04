@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
@@ -56,28 +56,28 @@ import javax.annotation.Nullable;
  * 
  *         var defaultTemplate = new Template("defaultTemplate", TemplateArgs.builder()
  *             .content("""
- *   {
- *     \"FormatVersion\": \"OOS-2019-06-01\",
- *     \"Description\": \"Update Describe instances of given status\",
- *     \"Parameters\":{
- *       \"Status\":{
- *         \"Type\": \"String\",
- *         \"Description\": \"(Required) The status of the Ecs instance.\"
- *       }
- *     },
- *     \"Tasks\": [
- *       {
- *         \"Properties\" :{
- *           \"Parameters\":{
- *             \"Status\": \"{{ Status }}\"
- *           },
- *           \"API\": \"DescribeInstances\",
- *           \"Service\": \"Ecs\"
- *         },
- *         \"Name\": \"foo\",
- *         \"Action\": \"ACS::ExecuteApi\"
- *       }]
- *   }
+ *   }{{@code
+ *     }&#92;{@code "FormatVersion}&#92;{@code ": }&#92;{@code "OOS-2019-06-01}&#92;{@code ",
+ *     }&#92;{@code "Description}&#92;{@code ": }&#92;{@code "Update Describe instances of given status}&#92;{@code ",
+ *     }&#92;{@code "Parameters}&#92;{@code ":}{{@code
+ *       }&#92;{@code "Status}&#92;{@code ":}{{@code
+ *         }&#92;{@code "Type}&#92;{@code ": }&#92;{@code "String}&#92;{@code ",
+ *         }&#92;{@code "Description}&#92;{@code ": }&#92;{@code "(Required) The status of the Ecs instance.}&#92;{@code "
+ *       }}{@code
+ *     }}{@code ,
+ *     }&#92;{@code "Tasks}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Properties}&#92;{@code " :}{{@code
+ *           }&#92;{@code "Parameters}&#92;{@code ":}{{@code
+ *             }&#92;{@code "Status}&#92;{@code ": }&#92;{@code "}{{{@code  Status }}}&#92;{@code "
+ *           }}{@code ,
+ *           }&#92;{@code "API}&#92;{@code ": }&#92;{@code "DescribeInstances}&#92;{@code ",
+ *           }&#92;{@code "Service}&#92;{@code ": }&#92;{@code "Ecs}&#92;{@code "
+ *         }}{@code ,
+ *         }&#92;{@code "Name}&#92;{@code ": }&#92;{@code "foo}&#92;{@code ",
+ *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "ACS::ExecuteApi}&#92;{@code "
+ *       }}{@code ]
+ *   }}{@code
  *             """)
  *             .templateName(String.format("tf-example-name-%s", default_.get("result")))
  *             .versionName("example")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .templateName(defaultTemplate.templateName())
  *             .description("From TF Test")
  *             .parameters("""
- * \t\t\t\t{\"Status\":\"Running\"}
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}{&#92;{@code "Status}&#92;{@code ":}&#92;{@code "Running}&#92;{@code "}}{@code
  *             """)
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
@@ -99,8 +99,8 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

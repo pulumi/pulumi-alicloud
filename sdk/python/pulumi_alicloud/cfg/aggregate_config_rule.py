@@ -918,6 +918,48 @@ class AggregateConfigRule(pulumi.CustomResource):
         __props__.__dict__["tag_value_scope"] = tag_value_scope
         return AggregateConfigRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregate_config_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_tags_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateConfigRuleExcludeTagsScopeArgs', 'AggregateConfigRuleExcludeTagsScopeArgsDict', 'outputs.AggregateConfigRuleExcludeTagsScope']]]]] = None,
+            input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_types_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+            source_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            source_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregateConfigRuleName"] = aggregate_config_rule_name
+        __props__["aggregatorId"] = aggregator_id
+        __props__["configRuleId"] = config_rule_id
+        __props__["configRuleTriggerTypes"] = config_rule_trigger_types
+        __props__["description"] = description
+        __props__["excludeResourceIdsScope"] = exclude_resource_ids_scope
+        __props__["excludeTagsScopes"] = exclude_tags_scopes
+        __props__["inputParameters"] = input_parameters
+        __props__["maximumExecutionFrequency"] = maximum_execution_frequency
+        __props__["regionIdsScope"] = region_ids_scope
+        __props__["resourceGroupIdsScope"] = resource_group_ids_scope
+        __props__["resourceTypesScopes"] = resource_types_scopes
+        __props__["riskLevel"] = risk_level
+        __props__["sourceIdentifier"] = source_identifier
+        __props__["sourceOwner"] = source_owner
+        __props__["status"] = status
+        __props__["tagKeyScope"] = tag_key_scope
+        __props__["tagValueScope"] = tag_value_scope
+        return pulumi.runtime.exists_resource(None, 'alicloud:cfg/aggregateConfigRule:AggregateConfigRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregateConfigRuleName")
     def aggregate_config_rule_name(self) -> pulumi.Output[_builtins.str]:

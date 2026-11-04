@@ -650,6 +650,32 @@ class CycleTask(pulumi.CustomResource):
         __props__.__dict__["task_type"] = task_type
         return CycleTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable: pulumi.Input[Optional[_builtins.int]] = None,
+            first_date_str: pulumi.Input[Optional[_builtins.int]] = None,
+            interval_period: pulumi.Input[Optional[_builtins.int]] = None,
+            param: pulumi.Input[Optional[_builtins.str]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            target_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            target_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enable"] = enable
+        __props__["firstDateStr"] = first_date_str
+        __props__["intervalPeriod"] = interval_period
+        __props__["param"] = param
+        __props__["periodUnit"] = period_unit
+        __props__["source"] = source
+        __props__["targetEndTime"] = target_end_time
+        __props__["targetStartTime"] = target_start_time
+        __props__["taskName"] = task_name
+        __props__["taskType"] = task_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/cycleTask:CycleTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enable(self) -> pulumi.Output[_builtins.int]:

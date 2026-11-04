@@ -614,6 +614,32 @@ class ScanRule(pulumi.CustomResource):
         __props__.__dict__["trigger_type"] = trigger_type
         return ScanRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            repo_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            repo_tag_filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_type: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["namespaces"] = namespaces
+        __props__["repoNames"] = repo_names
+        __props__["repoTagFilterPattern"] = repo_tag_filter_pattern
+        __props__["ruleName"] = rule_name
+        __props__["scanRuleId"] = scan_rule_id
+        __props__["scanScope"] = scan_scope
+        __props__["scanType"] = scan_type
+        __props__["triggerType"] = trigger_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/scanRule:ScanRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:

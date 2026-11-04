@@ -342,6 +342,12 @@ func (TransitRouterVpnAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterVpnAttachmentState)(nil)).Elem()
 }
 
+// TransitRouterVpnAttachmentExists checks whether an existing TransitRouterVpnAttachment resource with the given ID exists.
+func TransitRouterVpnAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterVpnAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment", id, state, "", opts...)
+}
+
 type transitRouterVpnAttachmentArgs struct {
 	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`

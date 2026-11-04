@@ -296,6 +296,12 @@ func (OssShipperState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ossShipperState)(nil)).Elem()
 }
 
+// OssShipperExists checks whether an existing OssShipper resource with the given ID exists.
+func OssShipperExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OssShipperState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/ossShipper:OssShipper", id, state, "", opts...)
+}
+
 type ossShipperArgs struct {
 	// How often is it delivered every interval.
 	BufferInterval int `pulumi:"bufferInterval"`

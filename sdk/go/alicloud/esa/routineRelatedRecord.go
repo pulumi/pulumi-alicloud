@@ -155,6 +155,12 @@ func (RoutineRelatedRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineRelatedRecordState)(nil)).Elem()
 }
 
+// RoutineRelatedRecordExists checks whether an existing RoutineRelatedRecord resource with the given ID exists.
+func RoutineRelatedRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineRelatedRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/routineRelatedRecord:RoutineRelatedRecord", id, state, "", opts...)
+}
+
 type routineRelatedRecordArgs struct {
 	// The routine name.
 	Name *string `pulumi:"name"`

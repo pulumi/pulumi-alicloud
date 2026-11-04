@@ -1104,6 +1104,66 @@ class Eip(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return Eip(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address_name: pulumi.Input[Optional[_builtins.str]] = None,
+            allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            high_definition_monitor_log_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            netmode: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activityId"] = activity_id
+        __props__["addressName"] = address_name
+        __props__["allocationId"] = allocation_id
+        __props__["autoPay"] = auto_pay
+        __props__["bandwidth"] = bandwidth
+        __props__["createTime"] = create_time
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["highDefinitionMonitorLogStatus"] = high_definition_monitor_log_status
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["ipAddress"] = ip_address
+        __props__["isp"] = isp
+        __props__["logProject"] = log_project
+        __props__["logStore"] = log_store
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["netmode"] = netmode
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["publicIpAddressPoolId"] = public_ip_address_pool_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityProtectionTypes"] = security_protection_types
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/eip:Eip', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> pulumi.Output[Optional[_builtins.str]]:

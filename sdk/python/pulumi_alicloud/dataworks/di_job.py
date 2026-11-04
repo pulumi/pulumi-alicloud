@@ -900,6 +900,38 @@ class DiJob(pulumi.CustomResource):
         __props__.__dict__["transformation_rules"] = transformation_rules
         return DiJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobDestinationDataSourceSettingArgs', 'DiJobDestinationDataSourceSettingArgsDict', 'outputs.DiJobDestinationDataSourceSetting']]]]] = None,
+            destination_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
+            job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_settings: pulumi.Input[Optional[Union['DiJobJobSettingsArgs', 'DiJobJobSettingsArgsDict', 'outputs.DiJobJobSettings']]] = None,
+            migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_settings: pulumi.Input[Optional[Union['DiJobResourceSettingsArgs', 'DiJobResourceSettingsArgsDict', 'outputs.DiJobResourceSettings']]] = None,
+            source_data_source_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobSourceDataSourceSettingArgs', 'DiJobSourceDataSourceSettingArgsDict', 'outputs.DiJobSourceDataSourceSetting']]]]] = None,
+            source_data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            table_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTableMappingArgs', 'DiJobTableMappingArgsDict', 'outputs.DiJobTableMapping']]]]] = None,
+            transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiJobTransformationRuleArgs', 'DiJobTransformationRuleArgsDict', 'outputs.DiJobTransformationRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["destinationDataSourceSettings"] = destination_data_source_settings
+        __props__["destinationDataSourceType"] = destination_data_source_type
+        __props__["diJobId"] = di_job_id
+        __props__["jobName"] = job_name
+        __props__["jobSettings"] = job_settings
+        __props__["migrationType"] = migration_type
+        __props__["projectId"] = project_id
+        __props__["resourceSettings"] = resource_settings
+        __props__["sourceDataSourceSettings"] = source_data_source_settings
+        __props__["sourceDataSourceType"] = source_data_source_type
+        __props__["tableMappings"] = table_mappings
+        __props__["transformationRules"] = transformation_rules
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/diJob:DiJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

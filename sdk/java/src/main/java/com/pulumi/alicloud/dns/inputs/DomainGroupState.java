@@ -33,22 +33,20 @@ public final class DomainGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      * 
-     * @deprecated
-     * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
+     * @deprecated Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead. */
+    @Deprecated
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
      * @return The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      * 
-     * @deprecated
-     * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
+     * @deprecated Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead. */
+    @Deprecated
     public Optional<Output<String>> groupName() {
         return Optional.ofNullable(this.groupName);
     }
@@ -120,11 +118,10 @@ public final class DomainGroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
+         * @deprecated Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead. */
+        @Deprecated
         public Builder groupName(@Nullable Output<String> groupName) {
             $.groupName = groupName;
             return this;
@@ -135,11 +132,10 @@ public final class DomainGroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
+         * @deprecated Field &#39;group_name&#39; has been deprecated from version 1.97.0. Use &#39;domain_group_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead. */
+        @Deprecated
         public Builder groupName(String groupName) {
             return groupName(Output.of(groupName));
         }

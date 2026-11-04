@@ -376,6 +376,22 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comments"] = comments
+        __props__["createTime"] = create_time
+        __props__["force"] = force
+        __props__["groupName"] = group_name
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comments(self) -> pulumi.Output[Optional[_builtins.str]]:

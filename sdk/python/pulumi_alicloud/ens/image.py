@@ -397,6 +397,24 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["target_oss_region_id"] = target_oss_region_id
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_after_image_upload: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_oss_region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deleteAfterImageUpload"] = delete_after_image_upload
+        __props__["imageName"] = image_name
+        __props__["instanceId"] = instance_id
+        __props__["status"] = status
+        __props__["targetOssRegionId"] = target_oss_region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/image:Image', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

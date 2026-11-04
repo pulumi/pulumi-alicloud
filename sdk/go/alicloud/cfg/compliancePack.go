@@ -216,6 +216,12 @@ func (CompliancePackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*compliancePackState)(nil)).Elem()
 }
 
+// CompliancePackExists checks whether an existing CompliancePack resource with the given ID exists.
+func CompliancePackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CompliancePackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/compliancePack:CompliancePack", id, state, "", opts...)
+}
+
 type compliancePackArgs struct {
 	// The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
 	CompliancePackName string `pulumi:"compliancePackName"`

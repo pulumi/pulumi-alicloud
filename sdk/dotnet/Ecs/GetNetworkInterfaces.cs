@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ecs
         /// });
         /// ```
         /// 
-        /// ##  Argument Reference
+        /// ## Argument Reference
         /// 
         /// The following arguments are supported:
         /// 
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Ecs
         /// });
         /// ```
         /// 
-        /// ##  Argument Reference
+        /// ## Argument Reference
         /// 
         /// The following arguments are supported:
         /// 
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Ecs
         /// });
         /// ```
         /// 
-        /// ##  Argument Reference
+        /// ## Argument Reference
         /// 
         /// The following arguments are supported:
         /// 

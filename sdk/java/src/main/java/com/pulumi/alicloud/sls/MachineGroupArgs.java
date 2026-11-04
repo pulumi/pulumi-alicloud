@@ -37,7 +37,7 @@ public final class MachineGroupArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the machine group. The name must meet the following requirements:
      * 
      * - The name of each machine group in a project must be unique.
-     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (&#92;_).
      * - It must start and end with a lowercase letter or a digit.
      * - It must be 3 to 128 characters in length.
      * 
@@ -49,7 +49,7 @@ public final class MachineGroupArgs extends com.pulumi.resources.ResourceArgs {
      * @return The name of the machine group. The name must meet the following requirements:
      * 
      * - The name of each machine group in a project must be unique.
-     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+     * - It can contain only lowercase letters, digits, hyphens (-), and underscores (&#92;_).
      * - It must start and end with a lowercase letter or a digit.
      * - It must be 3 to 128 characters in length.
      * 
@@ -182,7 +182,7 @@ public final class MachineGroupArgs extends com.pulumi.resources.ResourceArgs {
          * @param groupName The name of the machine group. The name must meet the following requirements:
          * 
          * - The name of each machine group in a project must be unique.
-         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (&#92;_).
          * - It must start and end with a lowercase letter or a digit.
          * - It must be 3 to 128 characters in length.
          * 
@@ -198,7 +198,7 @@ public final class MachineGroupArgs extends com.pulumi.resources.ResourceArgs {
          * @param groupName The name of the machine group. The name must meet the following requirements:
          * 
          * - The name of each machine group in a project must be unique.
-         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+         * - It can contain only lowercase letters, digits, hyphens (-), and underscores (&#92;_).
          * - It must start and end with a lowercase letter or a digit.
          * - It must be 3 to 128 characters in length.
          * 

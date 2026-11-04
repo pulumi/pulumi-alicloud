@@ -144,11 +144,10 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

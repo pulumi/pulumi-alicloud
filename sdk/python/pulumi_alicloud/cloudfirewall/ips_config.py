@@ -533,6 +533,26 @@ class IpsConfig(pulumi.CustomResource):
         __props__.__dict__["run_mode"] = run_mode
         return IpsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            cti_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            max_sdl: pulumi.Input[Optional[_builtins.int]] = None,
+            patch_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_class: pulumi.Input[Optional[_builtins.int]] = None,
+            run_mode: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basicRules"] = basic_rules
+        __props__["ctiRules"] = cti_rules
+        __props__["lang"] = lang
+        __props__["maxSdl"] = max_sdl
+        __props__["patchRules"] = patch_rules
+        __props__["ruleClass"] = rule_class
+        __props__["runMode"] = run_mode
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/ipsConfig:IpsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basicRules")
     def basic_rules(self) -> pulumi.Output[Optional[_builtins.int]]:

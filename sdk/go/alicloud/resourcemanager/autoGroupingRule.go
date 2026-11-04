@@ -226,6 +226,12 @@ func (AutoGroupingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoGroupingRuleState)(nil)).Elem()
 }
 
+// AutoGroupingRuleExists checks whether an existing AutoGroupingRule resource with the given ID exists.
+func AutoGroupingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoGroupingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule", id, state, "", opts...)
+}
+
 type autoGroupingRuleArgs struct {
 	// The IDs of regions to be excluded. Separate multiple IDs with commas (,).
 	ExcludeRegionIdsScope *string `pulumi:"excludeRegionIdsScope"`

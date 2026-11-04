@@ -145,6 +145,12 @@ func (OriginProtectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*originProtectionState)(nil)).Elem()
 }
 
+// OriginProtectionExists checks whether an existing OriginProtection resource with the given ID exists.
+func OriginProtectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OriginProtectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/originProtection:OriginProtection", id, state, "", opts...)
+}
+
 type originProtectionArgs struct {
 	// The IP convergence status.
 	//

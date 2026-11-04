@@ -688,6 +688,36 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_databases: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_dictionaries: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ddl_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+            dml_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            total_databases: pulumi.Input[Optional[_builtins.str]] = None,
+            total_dictionaries: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountDescription"] = account_description
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["allowDatabases"] = allow_databases
+        __props__["allowDictionaries"] = allow_dictionaries
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["ddlAuthority"] = ddl_authority
+        __props__["dmlAuthority"] = dml_authority
+        __props__["status"] = status
+        __props__["totalDatabases"] = total_databases
+        __props__["totalDictionaries"] = total_dictionaries
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:clickhouse/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -91,20 +91,18 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
+    @Deprecated
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @deprecated
-     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
+    @Deprecated
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -112,22 +110,20 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -298,11 +294,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
          * 
          */
-        @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
+        @Deprecated
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
@@ -311,11 +306,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
          * 
          */
-        @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
+        @Deprecated
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
@@ -325,11 +319,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -340,11 +333,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

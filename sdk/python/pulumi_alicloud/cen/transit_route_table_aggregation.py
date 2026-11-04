@@ -496,6 +496,26 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         __props__.__dict__["transit_route_table_id"] = transit_route_table_id
         return TransitRouteTableAggregation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_scope_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            transit_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["status"] = status
+        __props__["transitRouteTableAggregationCidr"] = transit_route_table_aggregation_cidr
+        __props__["transitRouteTableAggregationDescription"] = transit_route_table_aggregation_description
+        __props__["transitRouteTableAggregationName"] = transit_route_table_aggregation_name
+        __props__["transitRouteTableAggregationScope"] = transit_route_table_aggregation_scope
+        __props__["transitRouteTableAggregationScopeLists"] = transit_route_table_aggregation_scope_lists
+        __props__["transitRouteTableId"] = transit_route_table_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:

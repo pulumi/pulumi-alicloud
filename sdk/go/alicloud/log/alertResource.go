@@ -119,6 +119,12 @@ func (AlertResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertResourceState)(nil)).Elem()
 }
 
+// AlertResourceExists checks whether an existing AlertResource resource with the given ID exists.
+func AlertResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/alertResource:AlertResource", id, state, "", opts...)
+}
+
 type alertResourceArgs struct {
 	// The lang of alert center resource when type is user.
 	Lang *string `pulumi:"lang"`

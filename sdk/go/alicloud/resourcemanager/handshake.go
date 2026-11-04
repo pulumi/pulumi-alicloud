@@ -182,6 +182,12 @@ func (HandshakeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*handshakeState)(nil)).Elem()
 }
 
+// HandshakeExists checks whether an existing Handshake resource with the given ID exists.
+func HandshakeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HandshakeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/handshake:Handshake", id, state, "", opts...)
+}
+
 type handshakeArgs struct {
 	// The description of the invitation.
 	// The description can be up to 1,024 characters in length.

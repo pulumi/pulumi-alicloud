@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         /// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
         /// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
         /// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        /// Default to `PL1`.
+        ///   Default to `PL1`.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }

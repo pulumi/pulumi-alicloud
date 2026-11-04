@@ -684,11 +684,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: &lt;`topicQuota`&gt; = 1000 + &lt;`partitionNum`&gt;.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      * 
-     * @deprecated
-     * Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
+     * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      * 
      */
-    @Deprecated /* Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead. */
+    @Deprecated
     @Export(name="topicQuota", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicQuota;
 

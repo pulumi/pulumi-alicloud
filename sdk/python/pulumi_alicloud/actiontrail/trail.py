@@ -921,6 +921,50 @@ class Trail(pulumi.CustomResource):
         __props__.__dict__["trail_region"] = trail_region
         return Trail(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_event_trail_region: pulumi.Input[Optional[_builtins.str]] = None,
+            event_rw: pulumi.Input[Optional[_builtins.str]] = None,
+            event_selectors: pulumi.Input[Optional[_builtins.str]] = None,
+            is_organization_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_compute_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            max_compute_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            mns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            trail_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trail_region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataEventTrailRegion"] = data_event_trail_region
+        __props__["eventRw"] = event_rw
+        __props__["eventSelectors"] = event_selectors
+        __props__["isOrganizationTrail"] = is_organization_trail
+        __props__["maxComputeProjectArn"] = max_compute_project_arn
+        __props__["maxComputeWriteRoleArn"] = max_compute_write_role_arn
+        __props__["mnsTopicArn"] = mns_topic_arn
+        __props__["name"] = name
+        __props__["ossBucketName"] = oss_bucket_name
+        __props__["ossKeyPrefix"] = oss_key_prefix
+        __props__["ossWriteRoleArn"] = oss_write_role_arn
+        __props__["regionId"] = region_id
+        __props__["roleName"] = role_name
+        __props__["slsProjectArn"] = sls_project_arn
+        __props__["slsWriteRoleArn"] = sls_write_role_arn
+        __props__["status"] = status
+        __props__["trailName"] = trail_name
+        __props__["trailRegion"] = trail_region
+        return pulumi.runtime.exists_resource(None, 'alicloud:actiontrail/trail:Trail', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

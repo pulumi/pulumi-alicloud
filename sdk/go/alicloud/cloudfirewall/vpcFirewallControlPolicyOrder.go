@@ -183,6 +183,12 @@ func (VpcFirewallControlPolicyOrderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcFirewallControlPolicyOrderState)(nil)).Elem()
 }
 
+// VpcFirewallControlPolicyOrderExists checks whether an existing VpcFirewallControlPolicyOrder resource with the given ID exists.
+func VpcFirewallControlPolicyOrderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcFirewallControlPolicyOrderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/vpcFirewallControlPolicyOrder:VpcFirewallControlPolicyOrder", id, state, "", opts...)
+}
+
 type vpcFirewallControlPolicyOrderArgs struct {
 	// The unique identifier ID of the access control policy.\
 	// When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.

@@ -786,6 +786,56 @@ class ProvisionedProduct(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ProvisionedProduct(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_successful_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict', 'outputs.ProvisionedProductOutput']]]]] = None,
+            owner_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]]] = None,
+            portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_name: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["lastProvisioningTaskId"] = last_provisioning_task_id
+        __props__["lastSuccessfulProvisioningTaskId"] = last_successful_provisioning_task_id
+        __props__["lastTaskId"] = last_task_id
+        __props__["outputs"] = outputs
+        __props__["ownerPrincipalId"] = owner_principal_id
+        __props__["ownerPrincipalType"] = owner_principal_type
+        __props__["parameters"] = parameters
+        __props__["portfolioId"] = portfolio_id
+        __props__["productId"] = product_id
+        __props__["productName"] = product_name
+        __props__["productVersionId"] = product_version_id
+        __props__["productVersionName"] = product_version_name
+        __props__["provisionedProductArn"] = provisioned_product_arn
+        __props__["provisionedProductId"] = provisioned_product_id
+        __props__["provisionedProductName"] = provisioned_product_name
+        __props__["provisionedProductType"] = provisioned_product_type
+        __props__["stackId"] = stack_id
+        __props__["stackRegionId"] = stack_region_id
+        __props__["status"] = status
+        __props__["statusMessage"] = status_message
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -94,22 +94,20 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
-     * @deprecated
-     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      */
-    @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
+    @Deprecated
     @Import(name="multi")
     private @Nullable Output<Boolean> multi;
 
     /**
      * @return It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
-     * @deprecated
-     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
      * 
      */
-    @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> multi() {
         return Optional.ofNullable(this.multi);
     }
@@ -285,11 +283,10 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+         * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
          * 
          */
-        @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
+        @Deprecated
         public Builder multi(@Nullable Output<Boolean> multi) {
             $.multi = multi;
             return this;
@@ -300,11 +297,10 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+         * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
          * 
          */
-        @Deprecated /* It has been deprecated from version 1.137.0 and using `multiZone` instead. */
+        @Deprecated
         public Builder multi(Boolean multi) {
             return multi(Output.of(multi));
         }

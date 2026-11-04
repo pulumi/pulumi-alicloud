@@ -402,6 +402,24 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["visibility_timeout"] = visibility_timeout
         return Queue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["delaySeconds"] = delay_seconds
+        __props__["maximumMessageSize"] = maximum_message_size
+        __props__["messageRetentionPeriod"] = message_retention_period
+        __props__["name"] = name
+        __props__["pollingWaitSeconds"] = polling_wait_seconds
+        __props__["visibilityTimeout"] = visibility_timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:mns/queue:Queue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="delaySeconds")
     def delay_seconds(self) -> pulumi.Output[Optional[_builtins.int]]:

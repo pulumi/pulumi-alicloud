@@ -348,6 +348,18 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupPeriods"] = backup_periods
+        __props__["backupTime"] = backup_time
+        __props__["instanceId"] = instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:kvstore/backupPolicy:BackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> pulumi.Output[Sequence[_builtins.str]]:

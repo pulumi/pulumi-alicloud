@@ -748,6 +748,42 @@ class BasicAccelerator(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return BasicAccelerator(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+            basic_accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewDuration"] = auto_renew_duration
+        __props__["autoUseCoupon"] = auto_use_coupon
+        __props__["bandwidthBillingType"] = bandwidth_billing_type
+        __props__["basicAcceleratorName"] = basic_accelerator_name
+        __props__["crossBorderStatus"] = cross_border_status
+        __props__["description"] = description
+        __props__["duration"] = duration
+        __props__["paymentType"] = payment_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["promotionOptionNo"] = promotion_option_no
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/basicAccelerator:BasicAccelerator', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -586,6 +586,30 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ServerGroupServerAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["port"] = port
+        __props__["serverGroupId"] = server_group_id
+        __props__["serverId"] = server_id
+        __props__["serverIp"] = server_ip
+        __props__["serverType"] = server_type
+        __props__["status"] = status
+        __props__["weight"] = weight
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

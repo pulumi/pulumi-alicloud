@@ -385,6 +385,12 @@ func (NatGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natGatewayState)(nil)).Elem()
 }
 
+// NatGatewayExists checks whether an existing NatGateway resource with the given ID exists.
+func NatGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/natGateway:NatGateway", id, state, "", opts...)
+}
+
 type natGatewayArgs struct {
 	// The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
 	AccessMode *NatGatewayAccessMode `pulumi:"accessMode"`

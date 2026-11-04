@@ -169,6 +169,12 @@ func (DeployGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployGroupState)(nil)).Elem()
 }
 
+// DeployGroupExists checks whether an existing DeployGroup resource with the given ID exists.
+func DeployGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeployGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/deployGroup:DeployGroup", id, state, "", opts...)
+}
+
 type deployGroupArgs struct {
 	// The ID of the application that you want to deploy.
 	AppId string `pulumi:"appId"`

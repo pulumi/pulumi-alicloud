@@ -452,6 +452,22 @@ class OriginPool(pulumi.CustomResource):
         __props__.__dict__["site_id"] = site_id
         return OriginPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            origin_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict', 'outputs.OriginPoolOrigin']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["originPoolId"] = origin_pool_id
+        __props__["originPoolName"] = origin_pool_name
+        __props__["origins"] = origins
+        __props__["siteId"] = site_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/originPool:OriginPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

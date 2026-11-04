@@ -251,6 +251,12 @@ func (FlowPipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowPipelineState)(nil)).Elem()
 }
 
+// FlowPipelineExists checks whether an existing FlowPipeline resource with the given ID exists.
+func FlowPipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlowPipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/flowPipeline:FlowPipeline", id, state, "", opts...)
+}
+
 type flowPipelineArgs struct {
 	// The pipeline definition. For more information, see the sample pipeline definition).
 	Manifest string `pulumi:"manifest"`

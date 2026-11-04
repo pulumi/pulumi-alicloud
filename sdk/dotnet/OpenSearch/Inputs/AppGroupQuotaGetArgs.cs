@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.OpenSearch.Inputs
         public Input<int>? Qps { get; set; }
 
         /// <summary>
-        /// Specification. Valid values: 
+        /// Specification. Valid values:
         /// * `opensearch.share.junior`: Entry-level.
         /// * `opensearch.share.common`: Shared universal.
         /// * `opensearch.share.compute`: Shared computing.

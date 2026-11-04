@@ -149,6 +149,12 @@ func (AclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclState)(nil)).Elem()
 }
 
+// AclExists checks whether an existing Acl resource with the given ID exists.
+func AclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/acl:Acl", id, state, "", opts...)
+}
+
 type aclArgs struct {
 	// The list of the ACL entries. You can add up to `20` entries in each call.  See `aclEntries` below for details.
 	// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",

@@ -308,6 +308,18 @@ class UserVpcAuthorization(pulumi.CustomResource):
         __props__.__dict__["authorized_user_id"] = authorized_user_id
         return UserVpcAuthorization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authChannel"] = auth_channel
+        __props__["authType"] = auth_type
+        __props__["authorizedUserId"] = authorized_user_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authChannel")
     def auth_channel(self) -> pulumi.Output[Optional[_builtins.str]]:

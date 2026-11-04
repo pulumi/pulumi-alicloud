@@ -266,6 +266,12 @@ func (OssScanConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ossScanConfigState)(nil)).Elem()
 }
 
+// OssScanConfigExists checks whether an existing OssScanConfig resource with the given ID exists.
+func OssScanConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OssScanConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/ossScanConfig:OssScanConfig", id, state, "", opts...)
+}
+
 type ossScanConfigArgs struct {
 	// Specifies whether to match the prefixes of all objects.
 	AllKeyPrefix *bool `pulumi:"allKeyPrefix"`

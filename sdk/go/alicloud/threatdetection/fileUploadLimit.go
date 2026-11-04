@@ -118,6 +118,12 @@ func (FileUploadLimitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileUploadLimitState)(nil)).Elem()
 }
 
+// FileUploadLimitExists checks whether an existing FileUploadLimit resource with the given ID exists.
+func FileUploadLimitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileUploadLimitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/fileUploadLimit:FileUploadLimit", id, state, "", opts...)
+}
+
 type fileUploadLimitArgs struct {
 	// File Upload Threshold.
 	Limit int `pulumi:"limit"`

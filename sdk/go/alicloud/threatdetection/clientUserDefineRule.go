@@ -258,6 +258,12 @@ func (ClientUserDefineRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientUserDefineRuleState)(nil)).Elem()
 }
 
+// ClientUserDefineRuleExists checks whether an existing ClientUserDefineRule resource with the given ID exists.
+func ClientUserDefineRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientUserDefineRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule", id, state, "", opts...)
+}
+
 type clientUserDefineRuleArgs struct {
 	// The operation type. Value:
 	// - **0**: plus White

@@ -285,6 +285,12 @@ func (DedicatedHostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedHostState)(nil)).Elem()
 }
 
+// DedicatedHostExists checks whether an existing DedicatedHost resource with the given ID exists.
+func DedicatedHostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedHostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cddc/dedicatedHost:DedicatedHost", id, state, "", opts...)
+}
+
 type dedicatedHostArgs struct {
 	// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
 	AllocationStatus *string `pulumi:"allocationStatus"`

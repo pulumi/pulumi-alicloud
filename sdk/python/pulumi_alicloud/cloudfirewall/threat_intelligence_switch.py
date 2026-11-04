@@ -299,6 +299,18 @@ class ThreatIntelligenceSwitch(pulumi.CustomResource):
         __props__.__dict__["enable_status"] = enable_status
         return ThreatIntelligenceSwitch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            category_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["categoryId"] = category_id
+        __props__["enableStatus"] = enable_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -170,6 +170,12 @@ func (HoneypotPresetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*honeypotPresetState)(nil)).Elem()
 }
 
+// HoneypotPresetExists checks whether an existing HoneypotPreset resource with the given ID exists.
+func HoneypotPresetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HoneypotPresetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/honeypotPreset:HoneypotPreset", id, state, "", opts...)
+}
+
 type honeypotPresetArgs struct {
 	// Honeypot mirror name
 	HoneypotImageName string `pulumi:"honeypotImageName"`

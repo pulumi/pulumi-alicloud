@@ -368,6 +368,16 @@ class RuleAttachment(pulumi.CustomResource):
         __props__.__dict__["vpcs"] = vpcs
         return RuleAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict', 'outputs.RuleAttachmentVpc']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ruleId"] = rule_id
+        __props__["vpcs"] = vpcs
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/ruleAttachment:RuleAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> pulumi.Output[_builtins.str]:

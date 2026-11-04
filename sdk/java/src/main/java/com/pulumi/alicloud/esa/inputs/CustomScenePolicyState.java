@@ -18,22 +18,20 @@ public final class CustomScenePolicyState extends com.pulumi.resources.ResourceA
     /**
      * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
      * 
-     * @deprecated
-     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+     * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      * 
      */
-    @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+    @Deprecated
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
      * @return Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
      * 
-     * @deprecated
-     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+     * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      * 
      */
-    @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+    @Deprecated
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
@@ -167,11 +165,10 @@ public final class CustomScenePolicyState extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+         * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
          * 
          */
-        @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+        @Deprecated
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
@@ -182,11 +179,10 @@ public final class CustomScenePolicyState extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+         * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
          * 
          */
-        @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+        @Deprecated
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }

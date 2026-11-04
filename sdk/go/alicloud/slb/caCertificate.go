@@ -162,6 +162,12 @@ func (CaCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caCertificateState)(nil)).Elem()
 }
 
+// CaCertificateExists checks whether an existing CaCertificate resource with the given ID exists.
+func CaCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/caCertificate:CaCertificate", id, state, "", opts...)
+}
+
 type caCertificateArgs struct {
 	// the content of the CA certificate.
 	CaCertificate string `pulumi:"caCertificate"`

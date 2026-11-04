@@ -1000,6 +1000,48 @@ class Store(pulumi.CustomResource):
         __props__.__dict__["telemetry_type"] = telemetry_type
         return Store(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict', 'outputs.StoreEncryptConf']]] = None,
+            hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            metering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            shards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict', 'outputs.StoreShard']]]]] = None,
+            telemetry_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appendMeta"] = append_meta
+        __props__["autoSplit"] = auto_split
+        __props__["createTime"] = create_time
+        __props__["enableWebTracking"] = enable_web_tracking
+        __props__["encryptConf"] = encrypt_conf
+        __props__["hotTtl"] = hot_ttl
+        __props__["infrequentAccessTtl"] = infrequent_access_ttl
+        __props__["logstoreName"] = logstore_name
+        __props__["maxSplitShardCount"] = max_split_shard_count
+        __props__["meteringMode"] = metering_mode
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["projectName"] = project_name
+        __props__["retentionPeriod"] = retention_period
+        __props__["shardCount"] = shard_count
+        __props__["shards"] = shards
+        __props__["telemetryType"] = telemetry_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/store:Store', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appendMeta")
     def append_meta(self) -> pulumi.Output[Optional[_builtins.bool]]:

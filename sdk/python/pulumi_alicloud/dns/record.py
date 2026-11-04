@@ -476,6 +476,30 @@ class Record(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return Record(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            host_record: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            routing: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hostRecord"] = host_record
+        __props__["locked"] = locked
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["routing"] = routing
+        __props__["status"] = status
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/record:Record', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="hostRecord")
     def host_record(self) -> pulumi.Output[_builtins.str]:

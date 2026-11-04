@@ -1436,6 +1436,72 @@ class EnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return EnterpriseInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_link_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_password: pulumi.Input[Optional[_builtins.str]] = None,
+            database_user: pulumi.Input[Optional[_builtins.str]] = None,
+            dba_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dba_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dba_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            ddl_online: pulumi.Input[Optional[_builtins.int]] = None,
+            ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_region: pulumi.Input[Optional[_builtins.str]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            export_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_source: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            query_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            safe_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            safe_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sell_trust: pulumi.Input[Optional[_builtins.bool]] = None,
+            sid: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_test: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tid: pulumi.Input[Optional[_builtins.int]] = None,
+            use_dsql: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataLinkName"] = data_link_name
+        __props__["databasePassword"] = database_password
+        __props__["databaseUser"] = database_user
+        __props__["dbaId"] = dba_id
+        __props__["dbaNickName"] = dba_nick_name
+        __props__["dbaUid"] = dba_uid
+        __props__["ddlOnline"] = ddl_online
+        __props__["ecsInstanceId"] = ecs_instance_id
+        __props__["ecsRegion"] = ecs_region
+        __props__["envType"] = env_type
+        __props__["exportTimeout"] = export_timeout
+        __props__["host"] = host
+        __props__["instanceAlias"] = instance_alias
+        __props__["instanceId"] = instance_id
+        __props__["instanceName"] = instance_name
+        __props__["instanceSource"] = instance_source
+        __props__["instanceType"] = instance_type
+        __props__["networkType"] = network_type
+        __props__["port"] = port
+        __props__["queryTimeout"] = query_timeout
+        __props__["safeRule"] = safe_rule
+        __props__["safeRuleId"] = safe_rule_id
+        __props__["sellTrust"] = sell_trust
+        __props__["sid"] = sid
+        __props__["skipTest"] = skip_test
+        __props__["state"] = state
+        __props__["status"] = status
+        __props__["tid"] = tid
+        __props__["useDsql"] = use_dsql
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dms/enterpriseInstance:EnterpriseInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataLinkName")
     def data_link_name(self) -> pulumi.Output[_builtins.str]:

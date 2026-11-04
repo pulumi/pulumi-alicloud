@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader {
     private @Nullable String key;
     /**
-     * @return Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+     * @return Set the value of the Header to 1024 bytes at most. &#92;r&#92;n. It takes effect only when the RedirectType is set to Mirror.
      * 
      */
     private @Nullable String value;
@@ -23,7 +23,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeade
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+     * @return Set the value of the Header to 1024 bytes at most. &#92;r&#92;n. It takes effect only when the RedirectType is set to Mirror.
      * 
      */
     public Optional<String> value() {

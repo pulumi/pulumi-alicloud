@@ -197,6 +197,12 @@ func (AlidnsRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsRecordState)(nil)).Elem()
 }
 
+// AlidnsRecordExists checks whether an existing AlidnsRecord resource with the given ID exists.
+func AlidnsRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlidnsRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/alidnsRecord:AlidnsRecord", id, state, "", opts...)
+}
+
 type alidnsRecordArgs struct {
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName string `pulumi:"domainName"`

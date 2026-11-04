@@ -1307,6 +1307,50 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["version_stages"] = version_stages
         return Secret(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            extended_config: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+            planned_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version_stages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arn"] = arn
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dkmsInstanceId"] = dkms_instance_id
+        __props__["enableAutomaticRotation"] = enable_automatic_rotation
+        __props__["encryptionKeyId"] = encryption_key_id
+        __props__["extendedConfig"] = extended_config
+        __props__["forceDeleteWithoutRecovery"] = force_delete_without_recovery
+        __props__["plannedDeleteTime"] = planned_delete_time
+        __props__["policy"] = policy
+        __props__["recoveryWindowInDays"] = recovery_window_in_days
+        __props__["rotationInterval"] = rotation_interval
+        __props__["secretData"] = secret_data
+        __props__["secretDataType"] = secret_data_type
+        __props__["secretName"] = secret_name
+        __props__["secretType"] = secret_type
+        __props__["tags"] = tags
+        __props__["versionId"] = version_id
+        __props__["versionStages"] = version_stages
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/secret:Secret', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arn(self) -> pulumi.Output[_builtins.str]:

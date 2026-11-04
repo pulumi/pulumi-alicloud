@@ -145,6 +145,12 @@ func (UserGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGroupAttachmentState)(nil)).Elem()
 }
 
+// UserGroupAttachmentExists checks whether an existing UserGroupAttachment resource with the given ID exists.
+func UserGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/userGroupAttachment:UserGroupAttachment", id, state, "", opts...)
+}
+
 type userGroupAttachmentArgs struct {
 	// The name of group.
 	GroupName string `pulumi:"groupName"`

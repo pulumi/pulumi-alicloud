@@ -187,6 +187,12 @@ func (StudioApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*studioApplicationState)(nil)).Elem()
 }
 
+// StudioApplicationExists checks whether an existing StudioApplication resource with the given ID exists.
+func StudioApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StudioApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bp/studioApplication:StudioApplication", id, state, "", opts...)
+}
+
 type studioApplicationArgs struct {
 	// The name of the application.
 	ApplicationName string `pulumi:"applicationName"`

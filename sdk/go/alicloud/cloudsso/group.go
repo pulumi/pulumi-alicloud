@@ -176,6 +176,12 @@ func (GroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupState)(nil)).Elem()
 }
 
+// GroupExists checks whether an existing Group resource with the given ID exists.
+func GroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/group:Group", id, state, "", opts...)
+}
+
 type groupArgs struct {
 	// The Description of the group. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`

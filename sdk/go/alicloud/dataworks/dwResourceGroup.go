@@ -246,6 +246,12 @@ func (DwResourceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dwResourceGroupState)(nil)).Elem()
 }
 
+// DwResourceGroupExists checks whether an existing DwResourceGroup resource with the given ID exists.
+func DwResourceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DwResourceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dataworks/dwResourceGroup:DwResourceGroup", id, state, "", opts...)
+}
+
 type dwResourceGroupArgs struct {
 	// Whether to automatically renew. The default value is false.
 	AutoRenew *bool `pulumi:"autoRenew"`

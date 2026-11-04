@@ -130,6 +130,12 @@ func (ThreatIntelligenceSwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*threatIntelligenceSwitchState)(nil)).Elem()
 }
 
+// ThreatIntelligenceSwitchExists checks whether an existing ThreatIntelligenceSwitch resource with the given ID exists.
+func ThreatIntelligenceSwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ThreatIntelligenceSwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch", id, state, "", opts...)
+}
+
 type threatIntelligenceSwitchArgs struct {
 	// Rule action. Value:
 	Action *string `pulumi:"action"`

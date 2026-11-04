@@ -277,6 +277,12 @@ func (GtmInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gtmInstanceState)(nil)).Elem()
 }
 
+// GtmInstanceExists checks whether an existing GtmInstance resource with the given ID exists.
+func GtmInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GtmInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/gtmInstance:GtmInstance", id, state, "", opts...)
+}
+
 type gtmInstanceArgs struct {
 	// The alert notification methods. See `alertConfig` below for details.
 	AlertConfigs []GtmInstanceAlertConfig `pulumi:"alertConfigs"`

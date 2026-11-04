@@ -331,6 +331,12 @@ func (ApiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiState)(nil)).Elem()
 }
 
+// ApiExists checks whether an existing Api resource with the given ID exists.
+func ApiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/api:Api", id, state, "", opts...)
+}
+
 type apiArgs struct {
 	// The App Code authentication type, only valid when `authType` is `APP`. Valid values: `DISABLE`, `HEADER` and `HEADER_QUERY`. If not set, the default value `DEFAULT` is used.
 	AppCodeAuthType *string `pulumi:"appCodeAuthType"`

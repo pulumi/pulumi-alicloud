@@ -268,6 +268,16 @@ class NetworkAttachment(pulumi.CustomResource):
         __props__.__dict__["sag_id"] = sag_id
         return NetworkAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sag_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ccnId"] = ccn_id
+        __props__["sagId"] = sag_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudconnect/networkAttachment:NetworkAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ccnId")
     def ccn_id(self) -> pulumi.Output[_builtins.str]:

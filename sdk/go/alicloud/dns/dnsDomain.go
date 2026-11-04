@@ -165,6 +165,12 @@ func (DnsDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsDomainState)(nil)).Elem()
 }
 
+// DnsDomainExists checks whether an existing DnsDomain resource with the given ID exists.
+func DnsDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/dnsDomain:DnsDomain", id, state, "", opts...)
+}
+
 type dnsDomainArgs struct {
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName string `pulumi:"domainName"`

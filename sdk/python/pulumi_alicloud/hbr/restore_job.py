@@ -1240,6 +1240,64 @@ class RestoreJob(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return RestoreJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            exclude: pulumi.Input[Optional[_builtins.str]] = None,
+            include: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            ots_detail: pulumi.Input[Optional[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict', 'outputs.RestoreJobOtsDetail']]] = None,
+            restore_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            target_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            target_data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_path: pulumi.Input[Optional[_builtins.str]] = None,
+            target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            target_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_time: pulumi.Input[Optional[_builtins.str]] = None,
+            udm_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["crossAccountRoleName"] = cross_account_role_name
+        __props__["crossAccountType"] = cross_account_type
+        __props__["crossAccountUserId"] = cross_account_user_id
+        __props__["exclude"] = exclude
+        __props__["include"] = include
+        __props__["options"] = options
+        __props__["otsDetail"] = ots_detail
+        __props__["restoreJobId"] = restore_job_id
+        __props__["restoreType"] = restore_type
+        __props__["snapshotHash"] = snapshot_hash
+        __props__["snapshotId"] = snapshot_id
+        __props__["sourceType"] = source_type
+        __props__["status"] = status
+        __props__["targetBucket"] = target_bucket
+        __props__["targetClientId"] = target_client_id
+        __props__["targetCreateTime"] = target_create_time
+        __props__["targetDataSourceId"] = target_data_source_id
+        __props__["targetFileSystemId"] = target_file_system_id
+        __props__["targetInstanceId"] = target_instance_id
+        __props__["targetInstanceName"] = target_instance_name
+        __props__["targetPath"] = target_path
+        __props__["targetPrefix"] = target_prefix
+        __props__["targetTableName"] = target_table_name
+        __props__["targetTime"] = target_time
+        __props__["udmDetail"] = udm_detail
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/restoreJob:RestoreJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
     def cross_account_role_name(self) -> pulumi.Output[Optional[_builtins.str]]:

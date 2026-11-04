@@ -984,6 +984,52 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         __props__.__dict__["verify_code"] = verify_code
         return AdConnectorOfficeSite(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ad_connector_office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ad_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_code: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adConnectorOfficeSiteName"] = ad_connector_office_site_name
+        __props__["adHostname"] = ad_hostname
+        __props__["bandwidth"] = bandwidth
+        __props__["cenId"] = cen_id
+        __props__["cenOwnerId"] = cen_owner_id
+        __props__["cidrBlock"] = cidr_block
+        __props__["desktopAccessType"] = desktop_access_type
+        __props__["dnsAddresses"] = dns_addresses
+        __props__["domainName"] = domain_name
+        __props__["domainPassword"] = domain_password
+        __props__["domainUserName"] = domain_user_name
+        __props__["enableAdminAccess"] = enable_admin_access
+        __props__["enableInternetAccess"] = enable_internet_access
+        __props__["mfaEnabled"] = mfa_enabled
+        __props__["protocolType"] = protocol_type
+        __props__["specification"] = specification
+        __props__["status"] = status
+        __props__["subDomainDnsAddresses"] = sub_domain_dns_addresses
+        __props__["subDomainName"] = sub_domain_name
+        __props__["verifyCode"] = verify_code
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adConnectorOfficeSiteName")
     def ad_connector_office_site_name(self) -> pulumi.Output[_builtins.str]:

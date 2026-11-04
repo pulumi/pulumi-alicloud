@@ -167,6 +167,12 @@ func (TransitRouterCidrState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterCidrState)(nil)).Elem()
 }
 
+// TransitRouterCidrExists checks whether an existing TransitRouterCidr resource with the given ID exists.
+func TransitRouterCidrExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterCidrState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterCidr:TransitRouterCidr", id, state, "", opts...)
+}
+
 type transitRouterCidrArgs struct {
 	// The new CIDR block of the transit router.
 	Cidr string `pulumi:"cidr"`

@@ -840,6 +840,42 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            number_of_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amount"] = amount
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["chargeType"] = charge_type
+        __props__["gpuAcceleration"] = gpu_acceleration
+        __props__["imageId"] = image_id
+        __props__["instanceGroupName"] = instance_group_name
+        __props__["instanceGroupSpec"] = instance_group_spec
+        __props__["numberOfInstances"] = number_of_instances
+        __props__["officeSiteId"] = office_site_id
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["policyGroupId"] = policy_group_id
+        __props__["status"] = status
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudphoneinstance/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def amount(self) -> pulumi.Output[Optional[_builtins.int]]:

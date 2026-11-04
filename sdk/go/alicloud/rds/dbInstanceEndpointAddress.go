@@ -250,6 +250,12 @@ func (DbInstanceEndpointAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbInstanceEndpointAddressState)(nil)).Elem()
 }
 
+// DbInstanceEndpointAddressExists checks whether an existing DbInstanceEndpointAddress resource with the given ID exists.
+func DbInstanceEndpointAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbInstanceEndpointAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress", id, state, "", opts...)
+}
+
 type dbInstanceEndpointAddressArgs struct {
 	// The prefix of the public endpoint.
 	ConnectionStringPrefix string `pulumi:"connectionStringPrefix"`

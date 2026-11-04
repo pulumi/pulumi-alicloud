@@ -58,9 +58,10 @@ import (
 //					"key2": pulumi.String("value2"),
 //				},
 //			}, nil)
-//			ctx.Export("vodDomain", _default.ApplyT(func(_default vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
-//				return _default.Domains[0].(vod.GetDomainsDomain), nil
-//			}).(vod.GetDomainsDomainOutput))
+//			ctx.Export("vodDomain", _default.ApplyT(func(_default vod.GetDomainsResult) (*vod.GetDomainsDomain, error) {
+//				val := _default.Domains[0].(*vod.GetDomainsDomain)
+//				return &val, nil
+//			}).(Vod.GetDomainsDomainPtrOutput))
 //			return nil
 //		})
 //	}

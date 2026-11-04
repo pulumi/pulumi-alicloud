@@ -178,6 +178,12 @@ func (AccessKeyPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessKeyPolicyState)(nil)).Elem()
 }
 
+// AccessKeyPolicyExists checks whether an existing AccessKeyPolicy resource with the given ID exists.
+func AccessKeyPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessKeyPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/accessKeyPolicy:AccessKeyPolicy", id, state, "", opts...)
+}
+
 type accessKeyPolicyArgs struct {
 	// The network access restriction policy, in JSON format. For the structure of the policy document, see [SetAccessKeyPolicy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-setaccesskeypolicy).
 	AccessKeyPolicy string `pulumi:"accessKeyPolicy"`

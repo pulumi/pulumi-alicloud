@@ -277,6 +277,12 @@ func (MetricRuleBlackListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricRuleBlackListState)(nil)).Elem()
 }
 
+// MetricRuleBlackListExists checks whether an existing MetricRuleBlackList resource with the given ID exists.
+func MetricRuleBlackListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetricRuleBlackListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/metricRuleBlackList:MetricRuleBlackList", id, state, "", opts...)
+}
+
 type metricRuleBlackListArgs struct {
 	// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
 	Category string `pulumi:"category"`

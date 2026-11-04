@@ -247,6 +247,12 @@ func (CustomRoutingEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customRoutingEndpointState)(nil)).Elem()
 }
 
+// CustomRoutingEndpointExists checks whether an existing CustomRoutingEndpoint resource with the given ID exists.
+func CustomRoutingEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomRoutingEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint", id, state, "", opts...)
+}
+
 type customRoutingEndpointArgs struct {
 	// The ID of the endpoint (vSwitch).
 	Endpoint string `pulumi:"endpoint"`

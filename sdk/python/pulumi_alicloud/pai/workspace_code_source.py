@@ -619,6 +619,34 @@ class WorkspaceCodeSource(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return WorkspaceCodeSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            code_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            code_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            code_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            code_repo_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            code_repo_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessibility"] = accessibility
+        __props__["codeBranch"] = code_branch
+        __props__["codeCommit"] = code_commit
+        __props__["codeRepo"] = code_repo
+        __props__["codeRepoAccessToken"] = code_repo_access_token
+        __props__["codeRepoUserName"] = code_repo_user_name
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["mountPath"] = mount_path
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accessibility(self) -> pulumi.Output[_builtins.str]:

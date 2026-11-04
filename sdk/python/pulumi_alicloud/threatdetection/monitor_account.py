@@ -219,6 +219,14 @@ class MonitorAccount(pulumi.CustomResource):
         __props__.__dict__["account_ids"] = account_ids
         return MonitorAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_ids: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountIds"] = account_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/monitorAccount:MonitorAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> pulumi.Output[Optional[_builtins.str]]:

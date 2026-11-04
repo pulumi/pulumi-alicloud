@@ -416,6 +416,24 @@ class EditingProject(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return EditingProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+            division: pulumi.Input[Optional[_builtins.str]] = None,
+            editing_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeline: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["coverUrl"] = cover_url
+        __props__["division"] = division
+        __props__["editingProjectName"] = editing_project_name
+        __props__["status"] = status
+        __props__["timeline"] = timeline
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'alicloud:vod/editingProject:EditingProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="coverUrl")
     def cover_url(self) -> pulumi.Output[Optional[_builtins.str]]:

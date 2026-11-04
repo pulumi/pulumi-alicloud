@@ -633,6 +633,48 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return BastionHostInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ad_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict', 'outputs.BastionHostInstanceAdAuthServer']]]]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            ldap_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict', 'outputs.BastionHostInstanceLdapAuthServer']]]]] = None,
+            license_code: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+            public_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            slave_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adAuthServers"] = ad_auth_servers
+        __props__["bandwidth"] = bandwidth
+        __props__["description"] = description
+        __props__["enablePublicAccess"] = enable_public_access
+        __props__["ldapAuthServers"] = ldap_auth_servers
+        __props__["licenseCode"] = license_code
+        __props__["period"] = period
+        __props__["planCode"] = plan_code
+        __props__["publicWhiteLists"] = public_white_lists
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalPeriodUnit"] = renewal_period_unit
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["slaveVswitchId"] = slave_vswitch_id
+        __props__["storage"] = storage
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:yundun/bastionHostInstance:BastionHostInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> pulumi.Output[Sequence['outputs.BastionHostInstanceAdAuthServer']]:

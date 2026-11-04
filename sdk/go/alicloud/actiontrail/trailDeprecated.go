@@ -202,6 +202,12 @@ func (TrailDeprecatedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trailDeprecatedState)(nil)).Elem()
 }
 
+// TrailDeprecatedExists checks whether an existing TrailDeprecated resource with the given ID exists.
+func TrailDeprecatedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrailDeprecatedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:actiontrail/trailDeprecated:TrailDeprecated", id, state, "", opts...)
+}
+
 type trailDeprecatedArgs struct {
 	DataEventTrailRegion *string `pulumi:"dataEventTrailRegion"`
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.

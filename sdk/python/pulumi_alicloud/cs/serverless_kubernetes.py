@@ -1671,6 +1671,80 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ServerlessKubernetes(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict', 'outputs.ServerlessKubernetesAddon']]]]] = None,
+            client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_san: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_type: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict', 'outputs.ServerlessKubernetesMaintenanceWindow']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            operation_policy: pulumi.Input[Optional[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']]] = None,
+            private_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rrsa_metadata: pulumi.Input[Optional[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict', 'outputs.ServerlessKubernetesRrsaMetadata']]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            service_discovery_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addons"] = addons
+        __props__["clientCert"] = client_cert
+        __props__["clientKey"] = client_key
+        __props__["clusterCaCert"] = cluster_ca_cert
+        __props__["clusterSpec"] = cluster_spec
+        __props__["customSan"] = custom_san
+        __props__["deleteOptions"] = delete_options
+        __props__["deletionProtection"] = deletion_protection
+        __props__["disableEncryption"] = disable_encryption
+        __props__["enableRrsa"] = enable_rrsa
+        __props__["encryptionProviderKey"] = encryption_provider_key
+        __props__["endpointPublicAccessEnabled"] = endpoint_public_access_enabled
+        __props__["kubeConfig"] = kube_config
+        __props__["loadBalancerSpec"] = load_balancer_spec
+        __props__["loggingType"] = logging_type
+        __props__["maintenanceWindow"] = maintenance_window
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["newNatGateway"] = new_nat_gateway
+        __props__["operationPolicy"] = operation_policy
+        __props__["privateZone"] = private_zone
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["retainResources"] = retain_resources
+        __props__["rrsaMetadata"] = rrsa_metadata
+        __props__["securityGroupId"] = security_group_id
+        __props__["serviceCidr"] = service_cidr
+        __props__["serviceDiscoveryTypes"] = service_discovery_types
+        __props__["slsProjectName"] = sls_project_name
+        __props__["tags"] = tags
+        __props__["timeZone"] = time_zone
+        __props__["version"] = version
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchIds"] = vswitch_ids
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/serverlessKubernetes:ServerlessKubernetes', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def addons(self) -> pulumi.Output[Optional[Sequence['outputs.ServerlessKubernetesAddon']]]:

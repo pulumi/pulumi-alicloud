@@ -239,6 +239,12 @@ func (EcdPolicyGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecdPolicyGroupState)(nil)).Elem()
 }
 
+// EcdPolicyGroupExists checks whether an existing EcdPolicyGroup resource with the given ID exists.
+func EcdPolicyGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcdPolicyGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup", id, state, "", opts...)
+}
+
 type ecdPolicyGroupArgs struct {
 	// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 	AuthorizeAccessPolicyRules []EcdPolicyGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`

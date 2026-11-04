@@ -257,6 +257,12 @@ func (PluginClassState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pluginClassState)(nil)).Elem()
 }
 
+// PluginClassExists checks whether an existing PluginClass resource with the given ID exists.
+func PluginClassExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PluginClassState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apig/pluginClass:PluginClass", id, state, "", opts...)
+}
+
 type pluginClassArgs struct {
 	// The alias of the plugin class.
 	Alias *string `pulumi:"alias"`

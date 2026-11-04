@@ -448,6 +448,32 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         __props__.__dict__["time_points"] = time_points
         return AutoSnapShotPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            applied_dbfs_number: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appliedDbfsNumber"] = applied_dbfs_number
+        __props__["createTime"] = create_time
+        __props__["lastModified"] = last_modified
+        __props__["policyId"] = policy_id
+        __props__["policyName"] = policy_name
+        __props__["repeatWeekdays"] = repeat_weekdays
+        __props__["retentionDays"] = retention_days
+        __props__["status"] = status
+        __props__["statusDetail"] = status_detail
+        __props__["timePoints"] = time_points
+        return pulumi.runtime.exists_resource(None, 'alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appliedDbfsNumber")
     def applied_dbfs_number(self) -> pulumi.Output[_builtins.int]:

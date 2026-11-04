@@ -596,6 +596,30 @@ class StackInstance(pulumi.CustomResource):
         __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
         return StackInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]]] = None,
+            retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
+            stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_in_minutes: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["operationDescription"] = operation_description
+        __props__["operationPreferences"] = operation_preferences
+        __props__["parameterOverrides"] = parameter_overrides
+        __props__["retainStacks"] = retain_stacks
+        __props__["stackGroupName"] = stack_group_name
+        __props__["stackInstanceAccountId"] = stack_instance_account_id
+        __props__["stackInstanceRegionId"] = stack_instance_region_id
+        __props__["status"] = status
+        __props__["timeoutInMinutes"] = timeout_in_minutes
+        return pulumi.runtime.exists_resource(None, 'alicloud:ros/stackInstance:StackInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="operationDescription")
     def operation_description(self) -> pulumi.Output[Optional[_builtins.str]]:

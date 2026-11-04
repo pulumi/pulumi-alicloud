@@ -132,6 +132,12 @@ func (DeviceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceGroupState)(nil)).Elem()
 }
 
+// DeviceGroupExists checks whether an existing DeviceGroup resource with the given ID exists.
+func DeviceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeviceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:iot/deviceGroup:DeviceGroup", id, state, "", opts...)
+}
+
 type deviceGroupArgs struct {
 	// The GroupDesc of the device group.
 	GroupDesc *string `pulumi:"groupDesc"`

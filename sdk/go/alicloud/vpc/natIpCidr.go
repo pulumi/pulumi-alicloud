@@ -213,6 +213,12 @@ func (NatIpCidrState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natIpCidrState)(nil)).Elem()
 }
 
+// NatIpCidrExists checks whether an existing NatIpCidr resource with the given ID exists.
+func NatIpCidrExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatIpCidrState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/natIpCidr:NatIpCidr", id, state, "", opts...)
+}
+
 type natIpCidrArgs struct {
 	// Specifies whether to only precheck this request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`

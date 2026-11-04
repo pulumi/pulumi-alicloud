@@ -44,25 +44,25 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
  *             .machineTypes("ecs")
  *             .build());
  * 
  *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()
  *             .backupPolicyName("tf-example-name")
- *             .policy("{\"Exclude\":[\"/bin/\",\"/usr/bin/\",\"/sbin/\",\"/boot/\",\"/proc/\",\"/sys/\",\"/srv/\",\"/lib/\",\"/selinux/\",\"/usr/sbin/\",\"/run/\",\"/lib32/\",\"/lib64/\",\"/lost+found/\",\"/var/lib/kubelet/\",\"/var/lib/ntp/proc\",\"/var/lib/container\"],\"ExcludeSystemPath\":true,\"Include\":[],\"IsDefault\":1,\"Retention\":7,\"Schedule\":\"I|1668703620|PT24H\",\"Source\":[],\"SpeedLimiter\":\"\",\"UseVss\":true}")
+ *             .policy("}{&#92;{@code "Exclude}&#92;{@code ":[}&#92;{@code "/bin/}&#92;{@code ",}&#92;{@code "/usr/bin/}&#92;{@code ",}&#92;{@code "/sbin/}&#92;{@code ",}&#92;{@code "/boot/}&#92;{@code ",}&#92;{@code "/proc/}&#92;{@code ",}&#92;{@code "/sys/}&#92;{@code ",}&#92;{@code "/srv/}&#92;{@code ",}&#92;{@code "/lib/}&#92;{@code ",}&#92;{@code "/selinux/}&#92;{@code ",}&#92;{@code "/usr/sbin/}&#92;{@code ",}&#92;{@code "/run/}&#92;{@code ",}&#92;{@code "/lib32/}&#92;{@code ",}&#92;{@code "/lib64/}&#92;{@code ",}&#92;{@code "/lost+found/}&#92;{@code ",}&#92;{@code "/var/lib/kubelet/}&#92;{@code ",}&#92;{@code "/var/lib/ntp/proc}&#92;{@code ",}&#92;{@code "/var/lib/container}&#92;{@code "],}&#92;{@code "ExcludeSystemPath}&#92;{@code ":true,}&#92;{@code "Include}&#92;{@code ":[],}&#92;{@code "IsDefault}&#92;{@code ":1,}&#92;{@code "Retention}&#92;{@code ":7,}&#92;{@code "Schedule}&#92;{@code ":}&#92;{@code "I|1668703620|PT24H}&#92;{@code ",}&#92;{@code "Source}&#92;{@code ":[],}&#92;{@code "SpeedLimiter}&#92;{@code ":}&#92;{@code "}&#92;{@code ",}&#92;{@code "UseVss}&#92;{@code ":true}}{@code ")
  *             .policyVersion("2.0.0")
  *             .uuidLists(default_.ids()[0])
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

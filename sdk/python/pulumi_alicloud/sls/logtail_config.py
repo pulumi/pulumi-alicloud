@@ -626,6 +626,30 @@ class LogtailConfig(pulumi.CustomResource):
         __props__.__dict__["project_name"] = project_name
         return LogtailConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            input_type: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+            logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict', 'outputs.LogtailConfigOutputDetail']]] = None,
+            output_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["inputDetail"] = input_detail
+        __props__["inputType"] = input_type
+        __props__["lastModifyTime"] = last_modify_time
+        __props__["logSample"] = log_sample
+        __props__["logtailConfigName"] = logtail_config_name
+        __props__["outputDetail"] = output_detail
+        __props__["outputType"] = output_type
+        __props__["projectName"] = project_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/logtailConfig:LogtailConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

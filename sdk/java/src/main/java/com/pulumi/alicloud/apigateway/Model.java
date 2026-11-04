@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Group("default", GroupArgs.builder()
  *             .name("example_value")
  *             .description("example_value")
@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *         var defaultModel = new Model("defaultModel", ModelArgs.builder()
  *             .groupId(default_.id())
  *             .modelName("example_value")
- *             .schema("{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}")
+ *             .schema("}{&#92;{@code "type}&#92;{@code ":}&#92;{@code "object}&#92;{@code ",}&#92;{@code "properties}&#92;{@code ":}{&#92;{@code "id}&#92;{@code ":}{&#92;{@code "format}&#92;{@code ":}&#92;{@code "int64}&#92;{@code ",}&#92;{@code "maximum}&#92;{@code ":100,}&#92;{@code "exclusiveMaximum}&#92;{@code ":true,}&#92;{@code "type}&#92;{@code ":}&#92;{@code "integer}&#92;{@code "}}{@code ,}&#92;{@code "name}&#92;{@code ":}{&#92;{@code "maxLength}&#92;{@code ":10,}&#92;{@code "type}&#92;{@code ":}&#92;{@code "string}&#92;{@code "}}}}{@code ")
  *             .description("example_value")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

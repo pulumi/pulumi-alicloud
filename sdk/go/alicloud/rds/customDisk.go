@@ -331,6 +331,12 @@ func (CustomDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDiskState)(nil)).Elem()
 }
 
+// CustomDiskExists checks whether an existing CustomDisk resource with the given ID exists.
+func CustomDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/customDisk:CustomDisk", id, state, "", opts...)
+}
+
 type customDiskArgs struct {
 	// Whether to pay automatically. Value range:
 	AutoPay *bool `pulumi:"autoPay"`

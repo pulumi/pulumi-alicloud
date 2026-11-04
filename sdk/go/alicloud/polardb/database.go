@@ -205,6 +205,12 @@ func (DatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseState)(nil)).Elem()
 }
 
+// DatabaseExists checks whether an existing Database resource with the given ID exists.
+func DatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/database:Database", id, state, "", opts...)
+}
+
 type databaseArgs struct {
 	// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 	AccountName *string `pulumi:"accountName"`

@@ -1310,6 +1310,56 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Listener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alpn_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            alpn_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cps: pulumi.Input[Optional[_builtins.int]] = None,
+            end_port: pulumi.Input[Optional[_builtins.int]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mss: pulumi.Input[Optional[_builtins.int]] = None,
+            proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict', 'outputs.ListenerProxyProtocolConfig']]] = None,
+            proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_port: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alpnEnabled"] = alpn_enabled
+        __props__["alpnPolicy"] = alpn_policy
+        __props__["caCertificateIds"] = ca_certificate_ids
+        __props__["caEnabled"] = ca_enabled
+        __props__["certificateIds"] = certificate_ids
+        __props__["cps"] = cps
+        __props__["endPort"] = end_port
+        __props__["idleTimeout"] = idle_timeout
+        __props__["listenerDescription"] = listener_description
+        __props__["listenerPort"] = listener_port
+        __props__["listenerProtocol"] = listener_protocol
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["mss"] = mss
+        __props__["proxyProtocolConfig"] = proxy_protocol_config
+        __props__["proxyProtocolEnabled"] = proxy_protocol_enabled
+        __props__["regionId"] = region_id
+        __props__["secSensorEnabled"] = sec_sensor_enabled
+        __props__["securityPolicyId"] = security_policy_id
+        __props__["serverGroupId"] = server_group_id
+        __props__["startPort"] = start_port
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:nlb/listener:Listener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alpnEnabled")
     def alpn_enabled(self) -> pulumi.Output[_builtins.bool]:

@@ -603,6 +603,32 @@ class HanaBackupPlan(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return HanaBackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupPrefix"] = backup_prefix
+        __props__["backupType"] = backup_type
+        __props__["clusterId"] = cluster_id
+        __props__["databaseName"] = database_name
+        __props__["planId"] = plan_id
+        __props__["planName"] = plan_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["schedule"] = schedule
+        __props__["status"] = status
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/hanaBackupPlan:HanaBackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupPrefix")
     def backup_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -260,6 +260,12 @@ func (PhysicalConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*physicalConnectionState)(nil)).Elem()
 }
 
+// PhysicalConnectionExists checks whether an existing PhysicalConnection resource with the given ID exists.
+func PhysicalConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PhysicalConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/physicalConnection:PhysicalConnection", id, state, "", opts...)
+}
+
 type physicalConnectionArgs struct {
 	// The access point ID of the Express Connect circuit.
 	AccessPointId string `pulumi:"accessPointId"`

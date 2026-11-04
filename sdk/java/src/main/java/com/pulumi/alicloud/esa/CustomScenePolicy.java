@@ -93,11 +93,10 @@ public class CustomScenePolicy extends com.pulumi.resources.CustomResource {
     /**
      * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
      * 
-     * @deprecated
-     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+     * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      * 
      */
-    @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+    @Deprecated
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 

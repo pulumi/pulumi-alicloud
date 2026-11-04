@@ -160,6 +160,12 @@ func (PrivateSrvNetworkAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateSrvNetworkAddressState)(nil)).Elem()
 }
 
+// PrivateSrvNetworkAddressExists checks whether an existing PrivateSrvNetworkAddress resource with the given ID exists.
+func PrivateSrvNetworkAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivateSrvNetworkAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress", id, state, "", opts...)
+}
+
 type privateSrvNetworkAddressArgs struct {
 	// The instance ID.
 	DbInstanceId string `pulumi:"dbInstanceId"`

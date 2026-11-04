@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// Whether the monitoring samples are evenly distributed:
         /// - 0: No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         public readonly int? MonitorSamples;
         /// <summary>

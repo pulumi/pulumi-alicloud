@@ -208,6 +208,12 @@ func (SystemGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*systemGroupState)(nil)).Elem()
 }
 
+// SystemGroupExists checks whether an existing SystemGroup resource with the given ID exists.
+func SystemGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SystemGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:videosurveillance/systemGroup:SystemGroup", id, state, "", opts...)
+}
+
 type systemGroupArgs struct {
 	// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
 	Callback *string `pulumi:"callback"`

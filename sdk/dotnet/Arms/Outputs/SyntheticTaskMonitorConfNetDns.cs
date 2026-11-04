@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// The IP address type of the DNS server.
         /// - 0 (default):ipv4
         /// - 1:ipv6
-        /// 2: Automatic.
+        ///   2: Automatic.
         /// </summary>
         public readonly int? DnsServerIpType;
         /// <summary>

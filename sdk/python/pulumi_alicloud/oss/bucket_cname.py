@@ -460,6 +460,26 @@ class BucketCname(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BucketCname(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict', 'outputs.BucketCnameCertificate']]] = None,
+            delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            previous_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["certificate"] = certificate
+        __props__["deleteCertificate"] = delete_certificate
+        __props__["domain"] = domain
+        __props__["force"] = force
+        __props__["previousCertId"] = previous_cert_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketCname:BucketCname', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

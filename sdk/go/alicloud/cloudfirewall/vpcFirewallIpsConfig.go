@@ -189,6 +189,12 @@ func (VpcFirewallIpsConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcFirewallIpsConfigState)(nil)).Elem()
 }
 
+// VpcFirewallIpsConfigExists checks whether an existing VpcFirewallIpsConfig resource with the given ID exists.
+func VpcFirewallIpsConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcFirewallIpsConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig", id, state, "", opts...)
+}
+
 type vpcFirewallIpsConfigArgs struct {
 	// Base rule switch. Value:
 	BasicRules int `pulumi:"basicRules"`

@@ -182,6 +182,12 @@ func (ScheduledTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledTaskState)(nil)).Elem()
 }
 
+// ScheduledTaskExists checks whether an existing ScheduledTask resource with the given ID exists.
+func ScheduledTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduledTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/scheduledTask:ScheduledTask", id, state, "", opts...)
+}
+
 type scheduledTaskArgs struct {
 	// Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
 	Description *string `pulumi:"description"`

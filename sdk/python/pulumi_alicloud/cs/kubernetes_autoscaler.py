@@ -520,6 +520,24 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         __props__.__dict__["utilization"] = utilization
         return KubernetesAutoscaler(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            defer_scale_in_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            nodepools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict', 'outputs.KubernetesAutoscalerNodepool']]]]] = None,
+            use_ecs_ram_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            utilization: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["coolDownDuration"] = cool_down_duration
+        __props__["deferScaleInDuration"] = defer_scale_in_duration
+        __props__["nodepools"] = nodepools
+        __props__["useEcsRamRoleToken"] = use_ecs_ram_role_token
+        __props__["utilization"] = utilization
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

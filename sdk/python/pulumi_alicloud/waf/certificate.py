@@ -410,6 +410,24 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["private_key"] = private_key
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["certificateId"] = certificate_id
+        __props__["certificateName"] = certificate_name
+        __props__["domain"] = domain
+        __props__["instanceId"] = instance_id
+        __props__["privateKey"] = private_key
+        return pulumi.runtime.exists_resource(None, 'alicloud:waf/certificate:Certificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[Optional[_builtins.str]]:

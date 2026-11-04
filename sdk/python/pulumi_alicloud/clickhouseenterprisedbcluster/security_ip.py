@@ -340,6 +340,18 @@ class SecurityIp(pulumi.CustomResource):
         __props__.__dict__["security_ip_list"] = security_ip_list
         return SecurityIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_list: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["groupName"] = group_name
+        __props__["securityIpList"] = security_ip_list
+        return pulumi.runtime.exists_resource(None, 'alicloud:clickhouseenterprisedbcluster/securityIp:SecurityIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:

@@ -1372,6 +1372,74 @@ class SslCertificatesServiceInstance(pulumi.CustomResource):
         __props__.__dict__["wildcard_domain_count"] = wildcard_domain_count
         return SslCertificatesServiceInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_reissue: pulumi.Input[Optional[_builtins.str]] = None,
+            average_waiting_time: pulumi.Input[Optional[_builtins.str]] = None,
+            brand: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+            city: pulumi.Input[Optional[_builtins.str]] = None,
+            company_id: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            full_domain_count: pulumi.Input[Optional[_builtins.int]] = None,
+            generate_csr_method: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            order_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            order_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SslCertificatesServiceInstanceParameterArgs', 'SslCertificatesServiceInstanceParameterArgsDict', 'outputs.SslCertificatesServiceInstanceParameter']]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            province: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            upgrade_status: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_method: pulumi.Input[Optional[_builtins.str]] = None,
+            wildcard_domain_count: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoReissue"] = auto_reissue
+        __props__["averageWaitingTime"] = average_waiting_time
+        __props__["brand"] = brand
+        __props__["certificateType"] = certificate_type
+        __props__["city"] = city
+        __props__["companyId"] = company_id
+        __props__["contactIdLists"] = contact_id_lists
+        __props__["countryCode"] = country_code
+        __props__["csr"] = csr
+        __props__["domain"] = domain
+        __props__["fullDomainCount"] = full_domain_count
+        __props__["generateCsrMethod"] = generate_csr_method
+        __props__["instanceEndTime"] = instance_end_time
+        __props__["instanceName"] = instance_name
+        __props__["instanceStartTime"] = instance_start_time
+        __props__["instanceType"] = instance_type
+        __props__["keyAlgorithm"] = key_algorithm
+        __props__["orderEndTime"] = order_end_time
+        __props__["orderStartTime"] = order_start_time
+        __props__["parameters"] = parameters
+        __props__["period"] = period
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["productType"] = product_type
+        __props__["province"] = province
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["upgradeStatus"] = upgrade_status
+        __props__["validationMethod"] = validation_method
+        __props__["wildcardDomainCount"] = wildcard_domain_count
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesserviceinstance/sslCertificatesServiceInstance:SslCertificatesServiceInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoReissue")
     def auto_reissue(self) -> pulumi.Output[_builtins.str]:

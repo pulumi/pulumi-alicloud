@@ -525,6 +525,28 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         __props__.__dict__["traffic_mirror_filter_name"] = traffic_mirror_filter_name
         return TrafficMirrorFilter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]]] = None,
+            ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_filter_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["egressRules"] = egress_rules
+        __props__["ingressRules"] = ingress_rules
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["trafficMirrorFilterDescription"] = traffic_mirror_filter_description
+        __props__["trafficMirrorFilterName"] = traffic_mirror_filter_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

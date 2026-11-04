@@ -297,6 +297,18 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
         __props__.__dict__["reserved_concurrency"] = reserved_concurrency
         return V3ConcurrencyConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_concurrency: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["functionArn"] = function_arn
+        __props__["functionName"] = function_name
+        __props__["reservedConcurrency"] = reserved_concurrency
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="functionArn")
     def function_arn(self) -> pulumi.Output[_builtins.str]:

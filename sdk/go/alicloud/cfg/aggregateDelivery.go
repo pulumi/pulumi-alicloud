@@ -342,6 +342,12 @@ func (AggregateDeliveryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggregateDeliveryState)(nil)).Elem()
 }
 
+// AggregateDeliveryExists checks whether an existing AggregateDelivery resource with the given ID exists.
+func AggregateDeliveryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AggregateDeliveryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/aggregateDelivery:AggregateDelivery", id, state, "", opts...)
+}
+
 type aggregateDeliveryArgs struct {
 	// Aggregator ID.
 	AggregatorId string `pulumi:"aggregatorId"`

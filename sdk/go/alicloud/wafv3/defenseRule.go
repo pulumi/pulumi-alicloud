@@ -254,6 +254,12 @@ func (DefenseRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defenseRuleState)(nil)).Elem()
 }
 
+// DefenseRuleExists checks whether an existing DefenseRule resource with the given ID exists.
+func DefenseRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefenseRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:wafv3/defenseRule:DefenseRule", id, state, "", opts...)
+}
+
 type defenseRuleArgs struct {
 	// Rule configuration content, in JSON format, constructed with a series of parameters.
 	//

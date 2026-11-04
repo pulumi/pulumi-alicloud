@@ -261,6 +261,12 @@ func (ServerGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupAttachmentState)(nil)).Elem()
 }
 
+// ServerGroupAttachmentExists checks whether an existing ServerGroupAttachment resource with the given ID exists.
+func ServerGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/serverGroupAttachment:ServerGroupAttachment", id, state, "", opts...)
+}
+
 type serverGroupAttachmentArgs struct {
 	// If instances of scaling group are attached/removed from backend server when
 	// server group from scaling group. Default to false.

@@ -47,23 +47,23 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new StackGroup("example", StackGroupArgs.builder()
  *             .stackGroupName("example_value")
  *             .templateBody("""
- *     {
- *     \t\"ROSTemplateFormatVersion\": \"2015-09-01\"
- *     }
+ *     }{{@code
+ *     }&#92;{@code t}&#92;{@code "ROSTemplateFormatVersion}&#92;{@code ": }&#92;{@code "2015-09-01}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

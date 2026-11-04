@@ -169,6 +169,12 @@ func (AttackPathWhitelistState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attackPathWhitelistState)(nil)).Elem()
 }
 
+// AttackPathWhitelistExists checks whether an existing AttackPathWhitelist resource with the given ID exists.
+func AttackPathWhitelistExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttackPathWhitelistState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/attackPathWhitelist:AttackPathWhitelist", id, state, "", opts...)
+}
+
 type attackPathWhitelistArgs struct {
 	// The list of attack path cloud product assets. See `attackPathAssetList` below.
 	AttackPathAssetLists []AttackPathWhitelistAttackPathAssetList `pulumi:"attackPathAssetLists"`

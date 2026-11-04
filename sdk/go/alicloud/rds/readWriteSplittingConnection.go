@@ -230,6 +230,12 @@ func (ReadWriteSplittingConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*readWriteSplittingConnectionState)(nil)).Elem()
 }
 
+// ReadWriteSplittingConnectionExists checks whether an existing ReadWriteSplittingConnection resource with the given ID exists.
+func ReadWriteSplittingConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReadWriteSplittingConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection", id, state, "", opts...)
+}
+
 type readWriteSplittingConnectionArgs struct {
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`

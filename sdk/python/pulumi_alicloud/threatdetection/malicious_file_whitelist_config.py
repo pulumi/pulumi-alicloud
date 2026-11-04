@@ -477,6 +477,28 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         __props__.__dict__["target_value"] = target_value
         return MaliciousFileWhitelistConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            event_name: pulumi.Input[Optional[_builtins.str]] = None,
+            field: pulumi.Input[Optional[_builtins.str]] = None,
+            field_value: pulumi.Input[Optional[_builtins.str]] = None,
+            operator: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            target_value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["eventName"] = event_name
+        __props__["field"] = field
+        __props__["fieldValue"] = field_value
+        __props__["operator"] = operator
+        __props__["source"] = source
+        __props__["targetType"] = target_type
+        __props__["targetValue"] = target_value
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

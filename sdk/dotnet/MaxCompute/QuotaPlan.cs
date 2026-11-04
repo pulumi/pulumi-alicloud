@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public partial class QuotaPlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to take effect immediately. “Valid values: true”  
+        /// Whether to take effect immediately. “Valid values: true”\
         /// .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         /// </summary>
         [Output("isEffective")]
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class QuotaPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to take effect immediately. “Valid values: true”  
+        /// Whether to take effect immediately. “Valid values: true”\
         /// .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         /// </summary>
         [Input("isEffective")]
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class QuotaPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to take effect immediately. “Valid values: true”  
+        /// Whether to take effect immediately. “Valid values: true”\
         /// .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         /// </summary>
         [Input("isEffective")]

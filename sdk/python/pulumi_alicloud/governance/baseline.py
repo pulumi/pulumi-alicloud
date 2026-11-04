@@ -373,6 +373,18 @@ class Baseline(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         return Baseline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict', 'outputs.BaselineBaselineItem']]]]] = None,
+            baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baselineItems"] = baseline_items
+        __props__["baselineName"] = baseline_name
+        __props__["description"] = description
+        return pulumi.runtime.exists_resource(None, 'alicloud:governance/baseline:Baseline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="baselineItems")
     def baseline_items(self) -> pulumi.Output[Optional[Sequence['outputs.BaselineBaselineItem']]]:

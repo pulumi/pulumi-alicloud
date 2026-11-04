@@ -216,6 +216,14 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
         __props__.__dict__["attack_path_asset_lists"] = attack_path_asset_lists
         return AttackPathSensitiveAssetConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict', 'outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attackPathAssetLists"] = attack_path_asset_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attackPathAssetLists")
     def attack_path_asset_lists(self) -> pulumi.Output[Sequence['outputs.AttackPathSensitiveAssetConfigAttackPathAssetList']]:

@@ -257,6 +257,12 @@ func (HttpsApplicationConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpsApplicationConfigurationState)(nil)).Elem()
 }
 
+// HttpsApplicationConfigurationExists checks whether an existing HttpsApplicationConfiguration resource with the given ID exists.
+func HttpsApplicationConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HttpsApplicationConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration", id, state, "", opts...)
+}
+
 type httpsApplicationConfigurationArgs struct {
 	// Function switch, default off. Value range:
 	AltSvc *string `pulumi:"altSvc"`

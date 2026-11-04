@@ -164,6 +164,12 @@ func (BucketStyleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketStyleState)(nil)).Elem()
 }
 
+// BucketStyleExists checks whether an existing BucketStyle resource with the given ID exists.
+func BucketStyleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketStyleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketStyle:BucketStyle", id, state, "", opts...)
+}
+
 type bucketStyleArgs struct {
 	// Storage space to which the picture style belongs
 	Bucket string `pulumi:"bucket"`

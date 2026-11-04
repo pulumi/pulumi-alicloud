@@ -420,6 +420,22 @@ class CooDomainPreciseAccessRule(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return CooDomainPreciseAccessRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CooDomainPreciseAccessRuleConditionArgs', 'CooDomainPreciseAccessRuleConditionArgsDict', 'outputs.CooDomainPreciseAccessRuleCondition']]]]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            expires: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["conditions"] = conditions
+        __props__["domain"] = domain
+        __props__["expires"] = expires
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

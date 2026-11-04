@@ -323,6 +323,12 @@ func (TrafficMirrorSessionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficMirrorSessionState)(nil)).Elem()
 }
 
+// TrafficMirrorSessionExists checks whether an existing TrafficMirrorSession resource with the given ID exists.
+func TrafficMirrorSessionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficMirrorSessionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/trafficMirrorSession:TrafficMirrorSession", id, state, "", opts...)
+}
+
 type trafficMirrorSessionArgs struct {
 	// Whether to PreCheck only this request, value:
 	// - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.

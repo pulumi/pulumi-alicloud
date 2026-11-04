@@ -1493,6 +1493,60 @@ class FileSystem(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return FileSystem(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_type: pulumi.Input[Optional[_builtins.int]] = None,
+            file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            keytab: pulumi.Input[Optional[_builtins.str]] = None,
+            keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_acl: pulumi.Input[Optional[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict', 'outputs.FileSystemNfsAcl']]] = None,
+            options: pulumi.Input[Optional[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict', 'outputs.FileSystemOptions']]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            recycle_bin: pulumi.Input[Optional[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict', 'outputs.FileSystemRecycleBin']]] = None,
+            redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            redundancy_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            smb_acl: pulumi.Input[Optional[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacity"] = capacity
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["encryptType"] = encrypt_type
+        __props__["fileSystemType"] = file_system_type
+        __props__["keytab"] = keytab
+        __props__["keytabMd5"] = keytab_md5
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["nfsAcl"] = nfs_acl
+        __props__["options"] = options
+        __props__["protocolType"] = protocol_type
+        __props__["recycleBin"] = recycle_bin
+        __props__["redundancyType"] = redundancy_type
+        __props__["redundancyVswitchIds"] = redundancy_vswitch_ids
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["smbAcl"] = smb_acl
+        __props__["snapshotId"] = snapshot_id
+        __props__["status"] = status
+        __props__["storageType"] = storage_type
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/fileSystem:FileSystem', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[_builtins.int]:

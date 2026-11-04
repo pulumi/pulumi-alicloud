@@ -300,6 +300,20 @@ class SharedTarget(pulumi.CustomResource):
         __props__.__dict__["target_id"] = target_id
         return SharedTarget(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["resourceShareId"] = resource_share_id
+        __props__["status"] = status
+        __props__["targetId"] = target_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/sharedTarget:SharedTarget', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -116,6 +116,12 @@ func (BackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPlanState)(nil)).Elem()
 }
 
+// BackupPlanExists checks whether an existing BackupPlan resource with the given ID exists.
+func BackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cassandra/backupPlan:BackupPlan", id, state, "", opts...)
+}
+
 type backupPlanArgs struct {
 	// Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
 	Active *bool `pulumi:"active"`

@@ -127,7 +127,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// &gt; **NOTE:** For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("interval")]
@@ -343,7 +342,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// &gt; **NOTE:** For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("interval")]
@@ -532,7 +530,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// The trigger interval of the alarm rule. Unit: seconds.
         /// 
         /// &gt; **NOTE:** For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>

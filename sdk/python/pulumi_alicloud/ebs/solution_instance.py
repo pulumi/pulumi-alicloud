@@ -595,6 +595,28 @@ class SolutionInstance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return SolutionInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict', 'outputs.SolutionInstanceParameter']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            solution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["parameters"] = parameters
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["solutionId"] = solution_id
+        __props__["solutionInstanceName"] = solution_instance_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ebs/solutionInstance:SolutionInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

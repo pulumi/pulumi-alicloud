@@ -41,11 +41,10 @@ public final class GetProvisionedProductsResult {
     /**
      * @return (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
+     * @deprecated Field &#39;products&#39; has been deprecated from provider version 1.197.0.
      * 
      */
-    @Deprecated /* Field 'products' has been deprecated from provider version 1.197.0. */
+    @Deprecated
     private List<GetProvisionedProductsProduct> products;
     /**
      * @return (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
@@ -98,11 +97,10 @@ public final class GetProvisionedProductsResult {
     /**
      * @return (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
+     * @deprecated Field &#39;products&#39; has been deprecated from provider version 1.197.0.
      * 
      */
-    @Deprecated /* Field 'products' has been deprecated from provider version 1.197.0. */
+    @Deprecated
     public List<GetProvisionedProductsProduct> products() {
         return this.products;
     }

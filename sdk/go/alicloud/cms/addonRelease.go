@@ -215,6 +215,12 @@ func (AddonReleaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addonReleaseState)(nil)).Elem()
 }
 
+// AddonReleaseExists checks whether an existing AddonRelease resource with the given ID exists.
+func AddonReleaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddonReleaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/addonRelease:AddonRelease", id, state, "", opts...)
+}
+
 type addonReleaseArgs struct {
 	// The name of the add-on to integrate.
 	AddonName string `pulumi:"addonName"`

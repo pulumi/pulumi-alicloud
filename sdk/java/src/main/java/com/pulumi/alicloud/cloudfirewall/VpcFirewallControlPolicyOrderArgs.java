@@ -17,7 +17,7 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
     public static final VpcFirewallControlPolicyOrderArgs Empty = new VpcFirewallControlPolicyOrderArgs();
 
     /**
-     * The unique identifier ID of the access control policy.\
+     * The unique identifier ID of the access control policy.&#92;
      * When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
      * 
      */
@@ -25,7 +25,7 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
     private @Nullable Output<String> aclUuid;
 
     /**
-     * @return The unique identifier ID of the access control policy.\
+     * @return The unique identifier ID of the access control policy.&#92;
      * When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
      * 
      */
@@ -77,10 +77,10 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
      * Valid values:
      * - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
      * 
-     * Example: cen-ervw0g12b5jbw*\*\*\*
+     * Example: cen-ervw0g12b5jbw*&#92;*&#92;*&#92;*
      * - When the VPC border firewall protects Express Connect, the policy group ID is the VPC border firewall instance ID.
      * 
-     * Example: vfw-a42bbb7b887148c9*\*\*\*.
+     * Example: vfw-a42bbb7b887148c9*&#92;*&#92;*&#92;*.
      * 
      */
     @Import(name="vpcFirewallId", required=true)
@@ -92,10 +92,10 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
      * Valid values:
      * - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
      * 
-     * Example: cen-ervw0g12b5jbw*\*\*\*
+     * Example: cen-ervw0g12b5jbw*&#92;*&#92;*&#92;*
      * - When the VPC border firewall protects Express Connect, the policy group ID is the VPC border firewall instance ID.
      * 
-     * Example: vfw-a42bbb7b887148c9*\*\*\*.
+     * Example: vfw-a42bbb7b887148c9*&#92;*&#92;*&#92;*.
      * 
      */
     public Output<String> vpcFirewallId() {
@@ -130,7 +130,7 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
         }
 
         /**
-         * @param aclUuid The unique identifier ID of the access control policy.\
+         * @param aclUuid The unique identifier ID of the access control policy.&#92;
          * When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
          * 
          * @return builder
@@ -142,7 +142,7 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
         }
 
         /**
-         * @param aclUuid The unique identifier ID of the access control policy.\
+         * @param aclUuid The unique identifier ID of the access control policy.&#92;
          * When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
          * 
          * @return builder
@@ -208,10 +208,10 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
          * Valid values:
          * - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
          * 
-         * Example: cen-ervw0g12b5jbw*\*\*\*
+         * Example: cen-ervw0g12b5jbw*&#92;*&#92;*&#92;*
          * - When the VPC border firewall protects Express Connect, the policy group ID is the VPC border firewall instance ID.
          * 
-         * Example: vfw-a42bbb7b887148c9*\*\*\*.
+         * Example: vfw-a42bbb7b887148c9*&#92;*&#92;*&#92;*.
          * 
          * @return builder
          * 
@@ -227,10 +227,10 @@ public final class VpcFirewallControlPolicyOrderArgs extends com.pulumi.resource
          * Valid values:
          * - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
          * 
-         * Example: cen-ervw0g12b5jbw*\*\*\*
+         * Example: cen-ervw0g12b5jbw*&#92;*&#92;*&#92;*
          * - When the VPC border firewall protects Express Connect, the policy group ID is the VPC border firewall instance ID.
          * 
-         * Example: vfw-a42bbb7b887148c9*\*\*\*.
+         * Example: vfw-a42bbb7b887148c9*&#92;*&#92;*&#92;*.
          * 
          * @return builder
          * 

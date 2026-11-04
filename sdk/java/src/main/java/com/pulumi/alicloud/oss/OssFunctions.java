@@ -1084,11 +1084,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
+     * @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
      * 
      */
-    @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
+    @Deprecated
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args) {
         return getInstanceAttachments(args, InvokeOptions.Empty);
     }
@@ -1131,11 +1130,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
+     * @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
      * 
      */
-    @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
+    @Deprecated
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args) {
         return getInstanceAttachmentsPlain(args, InvokeOptions.Empty);
     }
@@ -1178,11 +1176,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
+     * @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
      * 
      */
-    @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
+    @Deprecated
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
@@ -1225,11 +1222,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
+     * @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
      * 
      */
-    @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
+    @Deprecated
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
@@ -1272,11 +1268,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
+     * @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
      * 
      */
-    @Deprecated /* alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
+    @Deprecated
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oss/getInstanceAttachments:getInstanceAttachments", TypeShape.of(GetInstanceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
@@ -1319,11 +1314,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static Output<GetInstancesResult> getInstances() {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
@@ -1366,11 +1360,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -1413,11 +1406,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
         return getInstances(args, InvokeOptions.Empty);
     }
@@ -1460,11 +1452,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
@@ -1507,11 +1498,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1554,11 +1544,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1601,11 +1590,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
+     * @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
      * 
      */
-    @Deprecated /* alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
+    @Deprecated
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oss/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1958,11 +1946,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
+     * @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
      */
-    @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
+    @Deprecated
     public static Output<GetTablesResult> getTables(GetTablesArgs args) {
         return getTables(args, InvokeOptions.Empty);
     }
@@ -2007,11 +1994,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
+     * @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
      */
-    @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
+    @Deprecated
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args) {
         return getTablesPlain(args, InvokeOptions.Empty);
     }
@@ -2056,11 +2042,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
+     * @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
      */
-    @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
+    @Deprecated
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
@@ -2105,11 +2090,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
+     * @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
      */
-    @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
+    @Deprecated
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:oss/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
@@ -2154,11 +2138,10 @@ public final class OssFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
+     * @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
      */
-    @Deprecated /* alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
+    @Deprecated
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:oss/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }

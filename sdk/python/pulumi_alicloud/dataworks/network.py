@@ -398,6 +398,22 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            dw_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dwResourceGroupId"] = dw_resource_group_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:

@@ -263,6 +263,12 @@ func (ForwardEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*forwardEntryState)(nil)).Elem()
 }
 
+// ForwardEntryExists checks whether an existing ForwardEntry resource with the given ID exists.
+func ForwardEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ForwardEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/forwardEntry:ForwardEntry", id, state, "", opts...)
+}
+
 type forwardEntryArgs struct {
 	// When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
 	// - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.

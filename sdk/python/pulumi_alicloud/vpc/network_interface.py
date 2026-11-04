@@ -1031,6 +1031,62 @@ class NetworkInterface(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NetworkInterface(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_release: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_prefix_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_number: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteOnRelease"] = delete_on_release
+        __props__["description"] = description
+        __props__["instanceType"] = instance_type
+        __props__["ipv4PrefixCount"] = ipv4_prefix_count
+        __props__["ipv4Prefixes"] = ipv4_prefixes
+        __props__["ipv6AddressCount"] = ipv6_address_count
+        __props__["ipv6Addresses"] = ipv6_addresses
+        __props__["mac"] = mac
+        __props__["name"] = name
+        __props__["networkInterfaceName"] = network_interface_name
+        __props__["networkInterfaceTrafficMode"] = network_interface_traffic_mode
+        __props__["primaryIpAddress"] = primary_ip_address
+        __props__["privateIp"] = private_ip
+        __props__["privateIpAddresses"] = private_ip_addresses
+        __props__["privateIps"] = private_ips
+        __props__["privateIpsCount"] = private_ips_count
+        __props__["queueNumber"] = queue_number
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["secondaryPrivateIpAddressCount"] = secondary_private_ip_address_count
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["securityGroups"] = security_groups
+        __props__["sourceDestCheck"] = source_dest_check
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/networkInterface:NetworkInterface', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
     def delete_on_release(self) -> pulumi.Output[_builtins.bool]:

@@ -63,14 +63,14 @@ import javax.annotation.Nullable;
  *         var examplePolicy = new Policy("examplePolicy", PolicyArgs.builder()
  *             .policyName(name)
  *             .policyDocument("""
- * \t\t}{{@code
- * \t\t\t\"Statement\": [}{{@code
- * \t\t\t\t\"Action\": [\"oss:*\"],
- * \t\t\t\t\"Effect\": \"Allow\",
- * \t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]
- * \t\t\t}}{@code ],
- * \t\t\t\"Version\": \"1\"
- * \t\t}}{@code
+ * }&#92;{@code t}&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [}&#92;{@code "oss:*}&#92;{@code "],
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [}&#92;{@code "acs:oss:*:*:*}&#92;{@code "]
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code ],
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}}{@code
  *             """)
  *             .build());
  * 

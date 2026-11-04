@@ -709,6 +709,38 @@ class ScheduledTask(pulumi.CustomResource):
         __props__.__dict__["task_enabled"] = task_enabled
         return ScheduledTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            max_value: pulumi.Input[Optional[_builtins.int]] = None,
+            min_value: pulumi.Input[Optional[_builtins.int]] = None,
+            recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+            recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["desiredCapacity"] = desired_capacity
+        __props__["launchExpirationTime"] = launch_expiration_time
+        __props__["launchTime"] = launch_time
+        __props__["maxValue"] = max_value
+        __props__["minValue"] = min_value
+        __props__["recurrenceEndTime"] = recurrence_end_time
+        __props__["recurrenceType"] = recurrence_type
+        __props__["recurrenceValue"] = recurrence_value
+        __props__["scalingGroupId"] = scaling_group_id
+        __props__["scheduledAction"] = scheduled_action
+        __props__["scheduledTaskName"] = scheduled_task_name
+        __props__["taskEnabled"] = task_enabled
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/scheduledTask:ScheduledTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:

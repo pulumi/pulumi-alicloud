@@ -194,6 +194,12 @@ func (Ipv6CidrBlockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv6CidrBlockState)(nil)).Elem()
 }
 
+// Ipv6CidrBlockExists checks whether an existing Ipv6CidrBlock resource with the given ID exists.
+func Ipv6CidrBlockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv6CidrBlockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipv6CidrBlock:Ipv6CidrBlock", id, state, "", opts...)
+}
+
 type ipv6CidrBlockArgs struct {
 	// The additional IPv6 CIDR block. Both `ipv6CidrBlock` and `ipv6CidrMask` are optional and can be left empty. If neither is specified, the system automatically allocates a `/56` IPv6 CIDR block to the VPC from the Alibaba Cloud GUA address pool.
 	//

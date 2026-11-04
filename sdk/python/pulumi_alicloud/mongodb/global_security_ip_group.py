@@ -284,6 +284,18 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
         __props__.__dict__["region_id"] = region_id
         return GlobalSecurityIpGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            global_ig_name: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["globalIgName"] = global_ig_name
+        __props__["globalSecurityIpList"] = global_security_ip_list
+        __props__["regionId"] = region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="globalIgName")
     def global_ig_name(self) -> pulumi.Output[_builtins.str]:

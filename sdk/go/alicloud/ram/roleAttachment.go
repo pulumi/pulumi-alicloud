@@ -226,6 +226,12 @@ func (RoleAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAttachmentState)(nil)).Elem()
 }
 
+// RoleAttachmentExists checks whether an existing RoleAttachment resource with the given ID exists.
+func RoleAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/roleAttachment:RoleAttachment", id, state, "", opts...)
+}
+
 type roleAttachmentArgs struct {
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`

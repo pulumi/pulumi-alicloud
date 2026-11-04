@@ -284,6 +284,12 @@ func (PeerConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peerConnectionState)(nil)).Elem()
 }
 
+// PeerConnectionExists checks whether an existing PeerConnection resource with the given ID exists.
+func PeerConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeerConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/peerConnection:PeerConnection", id, state, "", opts...)
+}
+
 type peerConnectionArgs struct {
 	// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
 	//

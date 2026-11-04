@@ -1228,6 +1228,60 @@ class ScalingRule(pulumi.CustomResource):
         __props__.__dict__["target_value"] = target_value
         return ScalingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+            alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict', 'outputs.ScalingRuleAlarmDimension']]] = None,
+            ari: pulumi.Input[Optional[_builtins.str]] = None,
+            cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+            disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
+            hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict', 'outputs.ScalingRuleHybridMetric']]]]] = None,
+            hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+            min_adjustment_magnitude: pulumi.Input[Optional[_builtins.int]] = None,
+            predictive_scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            predictive_task_buffer_time: pulumi.Input[Optional[_builtins.int]] = None,
+            predictive_value_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            predictive_value_buffer: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_in_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_out_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict', 'outputs.ScalingRuleStepAdjustment']]]]] = None,
+            target_value: pulumi.Input[Optional[_builtins.float]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adjustmentType"] = adjustment_type
+        __props__["adjustmentValue"] = adjustment_value
+        __props__["alarmDimension"] = alarm_dimension
+        __props__["ari"] = ari
+        __props__["cooldown"] = cooldown
+        __props__["disableScaleIn"] = disable_scale_in
+        __props__["estimatedInstanceWarmup"] = estimated_instance_warmup
+        __props__["hybridMetrics"] = hybrid_metrics
+        __props__["hybridMonitorNamespace"] = hybrid_monitor_namespace
+        __props__["initialMaxSize"] = initial_max_size
+        __props__["metricName"] = metric_name
+        __props__["metricType"] = metric_type
+        __props__["minAdjustmentMagnitude"] = min_adjustment_magnitude
+        __props__["predictiveScalingMode"] = predictive_scaling_mode
+        __props__["predictiveTaskBufferTime"] = predictive_task_buffer_time
+        __props__["predictiveValueBehavior"] = predictive_value_behavior
+        __props__["predictiveValueBuffer"] = predictive_value_buffer
+        __props__["scaleInEvaluationCount"] = scale_in_evaluation_count
+        __props__["scaleOutEvaluationCount"] = scale_out_evaluation_count
+        __props__["scalingGroupId"] = scaling_group_id
+        __props__["scalingRuleName"] = scaling_rule_name
+        __props__["scalingRuleType"] = scaling_rule_type
+        __props__["stepAdjustments"] = step_adjustments
+        __props__["targetValue"] = target_value
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/scalingRule:ScalingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adjustmentType")
     def adjustment_type(self) -> pulumi.Output[Optional[_builtins.str]]:

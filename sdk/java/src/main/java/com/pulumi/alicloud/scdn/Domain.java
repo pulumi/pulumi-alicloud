@@ -87,11 +87,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * Attribute perm has been deprecated and suggest removing it from your template.
      * 
-     * @deprecated
-     * Attribute bizName has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
+    @Deprecated
     @Export(name="bizName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bizName;
 

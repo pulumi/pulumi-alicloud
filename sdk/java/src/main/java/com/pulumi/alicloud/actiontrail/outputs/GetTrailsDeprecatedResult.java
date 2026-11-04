@@ -19,11 +19,10 @@ public final class GetTrailsDeprecatedResult {
     /**
      * @return A list of actiontrails. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
+     * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
      */
-    @Deprecated /* Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead. */
+    @Deprecated
     private List<GetTrailsDeprecatedActiontrail> actiontrails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -47,11 +46,10 @@ public final class GetTrailsDeprecatedResult {
     /**
      * @return A list of actiontrails. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
+     * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
      */
-    @Deprecated /* Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead. */
+    @Deprecated
     public List<GetTrailsDeprecatedActiontrail> actiontrails() {
         return this.actiontrails;
     }

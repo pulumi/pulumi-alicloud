@@ -214,18 +214,18 @@ import javax.annotation.Nullable;
  *                 .name("AliyunRDSInstanceEncryptionDefaultRole")
  *                 .document("""
  *     }{{@code
- *         \"Statement\": [
+ *         }&#92;{@code "Statement}&#92;{@code ": [
  *             }{{@code
- *                \"Action\": \"sts:AssumeRole\",
- *                 \"Effect\": \"Allow\",
- *                 \"Principal\": }{{@code
- *                     \"Service\": [
- *                         \"rds.aliyuncs.com\"
+ *                }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *                 }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *                 }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *                     }&#92;{@code "Service}&#92;{@code ": [
+ *                         }&#92;{@code "rds.aliyuncs.com}&#92;{@code "
  *                     ]
  *                 }}{@code
  *             }}{@code
  *         ],
- *         \"Version\": \"1\"
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
  *     }}{@code
  *                 """)
  *                 .description("RDS使用此角色来访问您在其他云产品中的资源")

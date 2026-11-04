@@ -43,29 +43,29 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Role("default", RoleArgs.builder()
  *             .name("tf-example-fnfflow")
  *             .document("""
- *   {
- *     \"Statement\": [
- *       {
- *         \"Action\": \"sts:AssumeRole\",
- *         \"Effect\": \"Allow\",
- *         \"Principal\": {
- *           \"Service\": [
- *             \"fnf.aliyuncs.com\"
+ *   }{{@code
+ *     }&#92;{@code "Statement}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *           }&#92;{@code "Service}&#92;{@code ": [
+ *             }&#92;{@code "fnf.aliyuncs.com}&#92;{@code "
  *           ]
- *         }
- *       }
+ *         }}{@code
+ *       }}{@code
  *     ],
- *     \"Version\": \"1\"
- *   }
+ *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .build());
  * 
@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *             .type("FDL")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

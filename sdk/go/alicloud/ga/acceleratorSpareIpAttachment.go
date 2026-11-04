@@ -161,6 +161,12 @@ func (AcceleratorSpareIpAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*acceleratorSpareIpAttachmentState)(nil)).Elem()
 }
 
+// AcceleratorSpareIpAttachmentExists checks whether an existing AcceleratorSpareIpAttachment resource with the given ID exists.
+func AcceleratorSpareIpAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AcceleratorSpareIpAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment", id, state, "", opts...)
+}
+
 type acceleratorSpareIpAttachmentArgs struct {
 	// The ID of the global acceleration instance.
 	AcceleratorId string `pulumi:"acceleratorId"`

@@ -649,6 +649,40 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["vpc_config"] = vpc_config
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict', 'outputs.ServiceLogConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_config: pulumi.Input[Optional[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict', 'outputs.ServiceNasConfig']]] = None,
+            publish: pulumi.Input[Optional[_builtins.bool]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tracing_config: pulumi.Input[Optional[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict', 'outputs.ServiceTracingConfig']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_config: pulumi.Input[Optional[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict', 'outputs.ServiceVpcConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["internetAccess"] = internet_access
+        __props__["lastModified"] = last_modified
+        __props__["logConfig"] = log_config
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["nasConfig"] = nas_config
+        __props__["publish"] = publish
+        __props__["role"] = role
+        __props__["serviceId"] = service_id
+        __props__["tags"] = tags
+        __props__["tracingConfig"] = tracing_config
+        __props__["version"] = version
+        __props__["vpcConfig"] = vpc_config
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/service:Service', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

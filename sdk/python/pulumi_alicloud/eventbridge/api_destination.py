@@ -375,6 +375,22 @@ class ApiDestination(pulumi.CustomResource):
         __props__.__dict__["http_api_parameters"] = http_api_parameters
         return ApiDestination(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict', 'outputs.ApiDestinationHttpApiParameters']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiDestinationName"] = api_destination_name
+        __props__["connectionName"] = connection_name
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["httpApiParameters"] = http_api_parameters
+        return pulumi.runtime.exists_resource(None, 'alicloud:eventbridge/apiDestination:ApiDestination', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiDestinationName")
     def api_destination_name(self) -> pulumi.Output[_builtins.str]:

@@ -425,6 +425,32 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         __props__.__dict__["search_name"] = search_name
         return EnterpriseLogicDatabase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            database_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            db_type: pulumi.Input[Optional[_builtins.str]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            logic: pulumi.Input[Optional[_builtins.bool]] = None,
+            logic_database_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            owner_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            search_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alias"] = alias
+        __props__["databaseIds"] = database_ids
+        __props__["dbType"] = db_type
+        __props__["envType"] = env_type
+        __props__["logic"] = logic
+        __props__["logicDatabaseId"] = logic_database_id
+        __props__["ownerIdLists"] = owner_id_lists
+        __props__["ownerNameLists"] = owner_name_lists
+        __props__["schemaName"] = schema_name
+        __props__["searchName"] = search_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alias(self) -> pulumi.Output[_builtins.str]:

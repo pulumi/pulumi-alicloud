@@ -201,6 +201,12 @@ func (RemoteWriteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*remoteWriteState)(nil)).Elem()
 }
 
+// RemoteWriteExists checks whether an existing RemoteWrite resource with the given ID exists.
+func RemoteWriteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RemoteWriteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/remoteWrite:RemoteWrite", id, state, "", opts...)
+}
+
 type remoteWriteArgs struct {
 	// The ID of the Prometheus instance.
 	ClusterId string `pulumi:"clusterId"`

@@ -268,6 +268,12 @@ func (RouterInterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceState)(nil)).Elem()
 }
 
+// RouterInterfaceExists checks whether an existing RouterInterface resource with the given ID exists.
+func RouterInterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterInterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/routerInterface:RouterInterface", id, state, "", opts...)
+}
+
 type routerInterfaceArgs struct {
 	// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
 	Description *string `pulumi:"description"`

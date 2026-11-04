@@ -277,6 +277,12 @@ func (ExpressSyncState) ElementType() reflect.Type {
 	return reflect.TypeOf((*expressSyncState)(nil)).Elem()
 }
 
+// ExpressSyncExists checks whether an existing ExpressSync resource with the given ID exists.
+func ExpressSyncExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExpressSyncState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/expressSync:ExpressSync", id, state, "", opts...)
+}
+
 type expressSyncArgs struct {
 	// The name of the OSS Bucket.
 	BucketName string `pulumi:"bucketName"`

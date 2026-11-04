@@ -605,6 +605,32 @@ class SmbAclAttachment(pulumi.CustomResource):
         __props__.__dict__["super_admin_sid"] = super_admin_sid
         return SmbAclAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+            keytab: pulumi.Input[Optional[_builtins.str]] = None,
+            keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
+            reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authMethod"] = auth_method
+        __props__["enableAnonymousAccess"] = enable_anonymous_access
+        __props__["enabled"] = enabled
+        __props__["encryptData"] = encrypt_data
+        __props__["fileSystemId"] = file_system_id
+        __props__["homeDirPath"] = home_dir_path
+        __props__["keytab"] = keytab
+        __props__["keytabMd5"] = keytab_md5
+        __props__["rejectUnencryptedAccess"] = reject_unencrypted_access
+        __props__["superAdminSid"] = super_admin_sid
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/smbAclAttachment:SmbAclAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[_builtins.str]:

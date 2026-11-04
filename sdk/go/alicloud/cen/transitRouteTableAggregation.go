@@ -201,6 +201,12 @@ func (TransitRouteTableAggregationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouteTableAggregationState)(nil)).Elem()
 }
 
+// TransitRouteTableAggregationExists checks whether an existing TransitRouteTableAggregation resource with the given ID exists.
+func TransitRouteTableAggregationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouteTableAggregationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation", id, state, "", opts...)
+}
+
 type transitRouteTableAggregationArgs struct {
 	// The destination CIDR block of the aggregate route.
 	//

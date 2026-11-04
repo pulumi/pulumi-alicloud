@@ -18,22 +18,20 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     /**
      * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -41,22 +39,20 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     /**
      * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
      * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -91,11 +87,10 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -106,11 +101,10 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -120,11 +114,10 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
@@ -135,11 +128,10 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -272,6 +272,12 @@ func (RouteEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeEntryState)(nil)).Elem()
 }
 
+// RouteEntryExists checks whether an existing RouteEntry resource with the given ID exists.
+func RouteEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/routeEntry:RouteEntry", id, state, "", opts...)
+}
+
 type routeEntryArgs struct {
 	// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`

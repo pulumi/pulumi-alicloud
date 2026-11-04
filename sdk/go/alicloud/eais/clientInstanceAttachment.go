@@ -262,6 +262,12 @@ func (ClientInstanceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientInstanceAttachmentState)(nil)).Elem()
 }
 
+// ClientInstanceAttachmentExists checks whether an existing ClientInstanceAttachment resource with the given ID exists.
+func ClientInstanceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientInstanceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment", id, state, "", opts...)
+}
+
 type clientInstanceAttachmentArgs struct {
 	// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
 	Category *string `pulumi:"category"`

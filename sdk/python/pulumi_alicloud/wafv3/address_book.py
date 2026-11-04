@@ -417,6 +417,24 @@ class AddressBook(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         return AddressBook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_book_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address_book_name: pulumi.Input[Optional[_builtins.str]] = None,
+            address_book_type: pulumi.Input[Optional[_builtins.str]] = None,
+            address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressBookId"] = address_book_id
+        __props__["addressBookName"] = address_book_name
+        __props__["addressBookType"] = address_book_type
+        __props__["addressLists"] = address_lists
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:wafv3/addressBook:AddressBook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressBookId")
     def address_book_id(self) -> pulumi.Output[_builtins.str]:

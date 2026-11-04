@@ -247,6 +247,12 @@ func (SslVpnServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslVpnServerState)(nil)).Elem()
 }
 
+// SslVpnServerExists checks whether an existing SslVpnServer resource with the given ID exists.
+func SslVpnServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SslVpnServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/sslVpnServer:SslVpnServer", id, state, "", opts...)
+}
+
 type sslVpnServerArgs struct {
 	// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
 	// * `AES-128-CBC` - the AES-128-CBC algorithm.

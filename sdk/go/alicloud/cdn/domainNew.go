@@ -195,6 +195,12 @@ func (DomainNewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainNewState)(nil)).Elem()
 }
 
+// DomainNewExists checks whether an existing DomainNew resource with the given ID exists.
+func DomainNewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainNewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cdn/domainNew:DomainNew", id, state, "", opts...)
+}
+
 type domainNewArgs struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType string `pulumi:"cdnType"`

@@ -461,6 +461,26 @@ class EcFailoverTestJob(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return EcFailoverTestJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ec_failover_test_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["ecFailoverTestJobName"] = ec_failover_test_job_name
+        __props__["jobDuration"] = job_duration
+        __props__["jobType"] = job_type
+        __props__["resourceIds"] = resource_ids
+        __props__["resourceType"] = resource_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

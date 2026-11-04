@@ -328,6 +328,20 @@ class InstanceAttachment(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return InstanceAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["instanceName"] = instance_name
+        __props__["vpcId"] = vpc_id
+        __props__["vpcName"] = vpc_name
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ots/instanceAttachment:InstanceAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[_builtins.str]:

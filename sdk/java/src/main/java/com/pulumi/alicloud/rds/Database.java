@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
 public class Database extends com.pulumi.resources.CustomResource {
     /**
      * Character set. The value range is limited to the following:
-     * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
+     * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] &#92;(`utf8mb4` only supports versions 5.5 and 5.6&#92;).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
      * - PostgreSQL: Valid values for PostgreSQL databases: a value in the `character set,&lt;Collate&gt;,&lt;Ctype&gt;` format. Example: `UTF8,C,en_US.utf8`.
      * &gt; - Valid values for the character set : [ KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC_CN, EUC_KR, EUC_TW, EUC_JP, EUC_JIS_2004, KOI8R, MULE_INTERNAL, LATIN1, LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO_8859_5, ISO_8859_6, ISO_8859_7, ISO_8859_8, SQL_ASCII ]
@@ -140,7 +140,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Character set. The value range is limited to the following:
-     * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
+     * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] &#92;(`utf8mb4` only supports versions 5.5 and 5.6&#92;).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
      * - PostgreSQL: Valid values for PostgreSQL databases: a value in the `character set,&lt;Collate&gt;,&lt;Ctype&gt;` format. Example: `UTF8,C,en_US.utf8`.
      * &gt; - Valid values for the character set : [ KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC_CN, EUC_KR, EUC_TW, EUC_JP, EUC_JIS_2004, KOI8R, MULE_INTERNAL, LATIN1, LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO_8859_5, ISO_8859_6, ISO_8859_7, ISO_8859_8, SQL_ASCII ]
@@ -212,11 +212,10 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
      * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

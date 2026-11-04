@@ -586,6 +586,30 @@ class ImageImport(pulumi.CustomResource):
         __props__.__dict__["platform"] = platform
         return ImageImport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict', 'outputs.ImageImportDiskDeviceMapping']]]]] = None,
+            features: pulumi.Input[Optional[Union['ImageImportFeaturesArgs', 'ImageImportFeaturesArgsDict', 'outputs.ImageImportFeatures']]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["architecture"] = architecture
+        __props__["bootMode"] = boot_mode
+        __props__["description"] = description
+        __props__["diskDeviceMappings"] = disk_device_mappings
+        __props__["features"] = features
+        __props__["imageName"] = image_name
+        __props__["licenseType"] = license_type
+        __props__["osType"] = os_type
+        __props__["platform"] = platform
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/imageImport:ImageImport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def architecture(self) -> pulumi.Output[Optional[_builtins.str]]:

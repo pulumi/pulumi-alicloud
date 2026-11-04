@@ -1029,6 +1029,58 @@ class VpcEndpoint(pulumi.CustomResource):
         __props__.__dict__["zone_private_ip_address_count"] = zone_private_ip_address_count
         return VpcEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_region_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            protected_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressIpVersion"] = address_ip_version
+        __props__["bandwidth"] = bandwidth
+        __props__["connectionStatus"] = connection_status
+        __props__["createTime"] = create_time
+        __props__["crossRegionBandwidth"] = cross_region_bandwidth
+        __props__["dryRun"] = dry_run
+        __props__["endpointBusinessStatus"] = endpoint_business_status
+        __props__["endpointDescription"] = endpoint_description
+        __props__["endpointDomain"] = endpoint_domain
+        __props__["endpointType"] = endpoint_type
+        __props__["policyDocument"] = policy_document
+        __props__["protectedEnabled"] = protected_enabled
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["serviceId"] = service_id
+        __props__["serviceName"] = service_name
+        __props__["serviceRegionId"] = service_region_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcEndpointName"] = vpc_endpoint_name
+        __props__["vpcId"] = vpc_id
+        __props__["zonePrivateIpAddressCount"] = zone_private_ip_address_count
+        return pulumi.runtime.exists_resource(None, 'alicloud:privatelink/vpcEndpoint:VpcEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[_builtins.str]:

@@ -293,6 +293,12 @@ func (WaitingRoomState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomState)(nil)).Elem()
 }
 
+// WaitingRoomExists checks whether an existing WaitingRoom resource with the given ID exists.
+func WaitingRoomExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/waitingRoom:WaitingRoom", id, state, "", opts...)
+}
+
 type waitingRoomArgs struct {
 	// Custom Cookie name.
 	CookieName string `pulumi:"cookieName"`

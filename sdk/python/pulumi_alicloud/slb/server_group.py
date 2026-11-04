@@ -426,6 +426,22 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteProtectionValidation"] = delete_protection_validation
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["name"] = name
+        __props__["servers"] = servers
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/serverGroup:ServerGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> pulumi.Output[Optional[_builtins.bool]]:

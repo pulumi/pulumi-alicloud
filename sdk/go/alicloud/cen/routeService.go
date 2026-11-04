@@ -199,6 +199,12 @@ func (RouteServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeServiceState)(nil)).Elem()
 }
 
+// RouteServiceExists checks whether an existing RouteService resource with the given ID exists.
+func RouteServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/routeService:RouteService", id, state, "", opts...)
+}
+
 type routeServiceArgs struct {
 	// The region of the network instances that access the cloud services.
 	AccessRegionId string `pulumi:"accessRegionId"`

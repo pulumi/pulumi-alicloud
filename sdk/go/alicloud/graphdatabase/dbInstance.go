@@ -223,6 +223,12 @@ func (DbInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbInstanceState)(nil)).Elem()
 }
 
+// DbInstanceExists checks whether an existing DbInstance resource with the given ID exists.
+func DbInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:graphdatabase/dbInstance:DbInstance", id, state, "", opts...)
+}
+
 type dbInstanceArgs struct {
 	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory string `pulumi:"dbInstanceCategory"`

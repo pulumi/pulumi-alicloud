@@ -172,6 +172,12 @@ func (EndpointAclPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointAclPolicyState)(nil)).Elem()
 }
 
+// EndpointAclPolicyExists checks whether an existing EndpointAclPolicy resource with the given ID exists.
+func EndpointAclPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointAclPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/endpointAclPolicy:EndpointAclPolicy", id, state, "", opts...)
+}
+
 type endpointAclPolicyArgs struct {
 	// The description of the entry.
 	Description *string `pulumi:"description"`

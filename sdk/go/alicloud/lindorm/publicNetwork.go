@@ -183,6 +183,12 @@ func (PublicNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicNetworkState)(nil)).Elem()
 }
 
+// PublicNetworkExists checks whether an existing PublicNetwork resource with the given ID exists.
+func PublicNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:lindorm/publicNetwork:PublicNetwork", id, state, "", opts...)
+}
+
 type publicNetworkArgs struct {
 	// Open or close the public connection. Value:
 	EnablePublicNetwork *int `pulumi:"enablePublicNetwork"`

@@ -991,6 +991,42 @@ class WorkspaceModelVersion(pulumi.CustomResource):
         __props__.__dict__["version_name"] = version_name
         return WorkspaceModelVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approval_status: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            format_type: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_type: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict', 'outputs.WorkspaceModelVersionLabel']]]]] = None,
+            metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            training_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            version_description: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approvalStatus"] = approval_status
+        __props__["extraInfo"] = extra_info
+        __props__["formatType"] = format_type
+        __props__["frameworkType"] = framework_type
+        __props__["inferenceSpec"] = inference_spec
+        __props__["labels"] = labels
+        __props__["metrics"] = metrics
+        __props__["modelId"] = model_id
+        __props__["options"] = options
+        __props__["sourceId"] = source_id
+        __props__["sourceType"] = source_type
+        __props__["trainingSpec"] = training_spec
+        __props__["uri"] = uri
+        __props__["versionDescription"] = version_description
+        __props__["versionName"] = version_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approvalStatus")
     def approval_status(self) -> pulumi.Output[_builtins.str]:

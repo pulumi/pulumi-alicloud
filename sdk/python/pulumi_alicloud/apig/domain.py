@@ -743,6 +743,40 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["tls_min"] = tls_min
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ca_cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
+            http2_option: pulumi.Input[Optional[_builtins.str]] = None,
+            m_tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_cipher_suites_config: pulumi.Input[Optional[Union['DomainTlsCipherSuitesConfigArgs', 'DomainTlsCipherSuitesConfigArgsDict', 'outputs.DomainTlsCipherSuitesConfig']]] = None,
+            tls_max: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_min: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["caCertIdentifier"] = ca_cert_identifier
+        __props__["certIdentifier"] = cert_identifier
+        __props__["clientCaCert"] = client_ca_cert
+        __props__["domainName"] = domain_name
+        __props__["domainScope"] = domain_scope
+        __props__["forceHttps"] = force_https
+        __props__["gatewayType"] = gateway_type
+        __props__["http2Option"] = http2_option
+        __props__["mTlsEnabled"] = m_tls_enabled
+        __props__["protocol"] = protocol
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tlsCipherSuitesConfig"] = tls_cipher_suites_config
+        __props__["tlsMax"] = tls_max
+        __props__["tlsMin"] = tls_min
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="caCertIdentifier")
     def ca_cert_identifier(self) -> pulumi.Output[Optional[_builtins.str]]:

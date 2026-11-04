@@ -661,6 +661,36 @@ class DdosBgpInstance(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return DdosBgpInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            base_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            normal_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["baseBandwidth"] = base_bandwidth
+        __props__["instanceName"] = instance_name
+        __props__["ipCount"] = ip_count
+        __props__["ipType"] = ip_type
+        __props__["name"] = name
+        __props__["normalBandwidth"] = normal_bandwidth
+        __props__["period"] = period
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/ddosBgpInstance:DdosBgpInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:

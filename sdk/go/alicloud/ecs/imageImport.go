@@ -207,6 +207,12 @@ func (ImageImportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageImportState)(nil)).Elem()
 }
 
+// ImageImportExists checks whether an existing ImageImport resource with the given ID exists.
+func ImageImportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageImportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/imageImport:ImageImport", id, state, "", opts...)
+}
+
 type imageImportArgs struct {
 	// The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
 	Architecture *string `pulumi:"architecture"`

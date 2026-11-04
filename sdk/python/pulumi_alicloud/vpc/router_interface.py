@@ -788,6 +788,46 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["specification"] = specification
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_region: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_type: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPointId"] = access_point_id
+        __props__["description"] = description
+        __props__["healthCheckSourceIp"] = health_check_source_ip
+        __props__["healthCheckTargetIp"] = health_check_target_ip
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["name"] = name
+        __props__["oppositeAccessPointId"] = opposite_access_point_id
+        __props__["oppositeInterfaceId"] = opposite_interface_id
+        __props__["oppositeInterfaceOwnerId"] = opposite_interface_owner_id
+        __props__["oppositeRegion"] = opposite_region
+        __props__["oppositeRouterId"] = opposite_router_id
+        __props__["oppositeRouterType"] = opposite_router_type
+        __props__["period"] = period
+        __props__["role"] = role
+        __props__["routerId"] = router_id
+        __props__["routerType"] = router_type
+        __props__["specification"] = specification
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/routerInterface:RouterInterface', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPointId")
     @_utilities.deprecated("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")

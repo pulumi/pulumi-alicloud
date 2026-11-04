@@ -166,6 +166,12 @@ func (VswitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vswitchState)(nil)).Elem()
 }
 
+// VswitchExists checks whether an existing Vswitch resource with the given ID exists.
+func VswitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VswitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/vswitch:Vswitch", id, state, "", opts...)
+}
+
 type vswitchArgs struct {
 	// The CIDR block of the vSwitch.
 	CidrBlock string `pulumi:"cidrBlock"`

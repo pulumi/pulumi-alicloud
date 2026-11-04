@@ -913,6 +913,40 @@ class PolicyBinding(pulumi.CustomResource):
         __props__.__dict__["speed_limit"] = speed_limit
         return PolicyBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_options: pulumi.Input[Optional[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict', 'outputs.PolicyBindingAdvancedOptions']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude: pulumi.Input[Optional[_builtins.str]] = None,
+            include: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_binding_description: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            speed_limit: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedOptions"] = advanced_options
+        __props__["createTime"] = create_time
+        __props__["crossAccountRoleName"] = cross_account_role_name
+        __props__["crossAccountType"] = cross_account_type
+        __props__["crossAccountUserId"] = cross_account_user_id
+        __props__["dataSourceId"] = data_source_id
+        __props__["disabled"] = disabled
+        __props__["exclude"] = exclude
+        __props__["include"] = include
+        __props__["policyBindingDescription"] = policy_binding_description
+        __props__["policyId"] = policy_id
+        __props__["source"] = source
+        __props__["sourceType"] = source_type
+        __props__["speedLimit"] = speed_limit
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/policyBinding:PolicyBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedOptions")
     def advanced_options(self) -> pulumi.Output['outputs.PolicyBindingAdvancedOptions']:

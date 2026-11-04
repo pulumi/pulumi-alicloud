@@ -400,6 +400,22 @@ class EndpointAclPolicy(pulumi.CustomResource):
         __props__.__dict__["module_name"] = module_name
         return EndpointAclPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            entry: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            module_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["endpointType"] = endpoint_type
+        __props__["entry"] = entry
+        __props__["instanceId"] = instance_id
+        __props__["moduleName"] = module_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/endpointAclPolicy:EndpointAclPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

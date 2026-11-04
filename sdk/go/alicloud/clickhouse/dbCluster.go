@@ -344,6 +344,12 @@ func (DbClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbClusterState)(nil)).Elem()
 }
 
+// DbClusterExists checks whether an existing DbCluster resource with the given ID exists.
+func DbClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:clickhouse/dbCluster:DbCluster", id, state, "", opts...)
+}
+
 type dbClusterArgs struct {
 	// Whether to enable public connection. Value options: `true`, `false`.
 	AllocatePublicConnection *bool `pulumi:"allocatePublicConnection"`

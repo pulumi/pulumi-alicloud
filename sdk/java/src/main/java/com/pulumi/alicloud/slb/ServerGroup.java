@@ -162,11 +162,10 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The list of backend servers to be added. See `servers` below.
      * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
-     * @deprecated
-     * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+     * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
-    @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
+    @Deprecated
     @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output<List<ServerGroupServer>> servers;
 

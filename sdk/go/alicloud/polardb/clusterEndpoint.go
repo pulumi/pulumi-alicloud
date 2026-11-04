@@ -246,6 +246,12 @@ func (ClusterEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterEndpointState)(nil)).Elem()
 }
 
+// ClusterEndpointExists checks whether an existing ClusterEndpoint resource with the given ID exists.
+func ClusterEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/clusterEndpoint:ClusterEndpoint", id, state, "", opts...)
+}
+
 type clusterEndpointArgs struct {
 	// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
 	AutoAddNewNodes *string `pulumi:"autoAddNewNodes"`

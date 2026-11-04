@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Apig
         public Output<ImmutableArray<Outputs.GatewaySecurityGroup>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway specification:  
+        /// Gateway specification:
         /// - apigw.small.x1: Small specification.
         /// </summary>
         [Output("spec")]
@@ -339,7 +339,7 @@ namespace Pulumi.AliCloud.Apig
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Gateway specification:  
+        /// Gateway specification:
         /// - apigw.small.x1: Small specification.
         /// </summary>
         [Input("spec")]
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// Gateway specification:  
+        /// Gateway specification:
         /// - apigw.small.x1: Small specification.
         /// </summary>
         [Input("spec")]

@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Edas
     public partial class K8sCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The import status of cluster: 
+        /// The import status of cluster:
         /// `1`: success.
         /// `2`: failed.
         /// `3`: importing.
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Edas
     public sealed class K8sClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The import status of cluster: 
+        /// The import status of cluster:
         /// `1`: success.
         /// `2`: failed.
         /// `3`: importing.

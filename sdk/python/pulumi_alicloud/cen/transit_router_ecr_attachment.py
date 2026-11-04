@@ -524,6 +524,30 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         __props__.__dict__["transit_router_id"] = transit_router_id
         return TransitRouterEcrAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_ecr_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["createTime"] = create_time
+        __props__["ecrId"] = ecr_id
+        __props__["ecrOwnerId"] = ecr_owner_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transitRouterAttachmentDescription"] = transit_router_attachment_description
+        __props__["transitRouterEcrAttachmentName"] = transit_router_ecr_attachment_name
+        __props__["transitRouterId"] = transit_router_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[Optional[_builtins.str]]:

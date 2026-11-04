@@ -218,6 +218,12 @@ func (ExperimentPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*experimentPlanState)(nil)).Elem()
 }
 
+// ExperimentPlanExists checks whether an existing ExperimentPlan resource with the given ID exists.
+func ExperimentPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExperimentPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/experimentPlan:ExperimentPlan", id, state, "", opts...)
+}
+
 type experimentPlanArgs struct {
 	// Additional operating parameters. You can include information about the specified node.
 	ExternalParams map[string]string `pulumi:"externalParams"`

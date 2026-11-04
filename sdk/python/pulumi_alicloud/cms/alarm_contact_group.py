@@ -313,6 +313,20 @@ class AlarmContactGroup(pulumi.CustomResource):
         __props__.__dict__["enable_subscribed"] = enable_subscribed
         return AlarmContactGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alarm_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            describe: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_subscribed: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alarmContactGroupName"] = alarm_contact_group_name
+        __props__["contacts"] = contacts
+        __props__["describe"] = describe
+        __props__["enableSubscribed"] = enable_subscribed
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/alarmContactGroup:AlarmContactGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alarmContactGroupName")
     def alarm_contact_group_name(self) -> pulumi.Output[_builtins.str]:

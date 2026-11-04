@@ -262,6 +262,16 @@ class PublicNetworkAddress(pulumi.CustomResource):
         __props__.__dict__["replica_sets"] = replica_sets
         return PublicNetworkAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicNetworkAddressReplicaSetArgs', 'PublicNetworkAddressReplicaSetArgsDict', 'outputs.PublicNetworkAddressReplicaSet']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["replicaSets"] = replica_sets
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:

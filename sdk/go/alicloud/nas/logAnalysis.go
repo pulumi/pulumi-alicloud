@@ -141,6 +141,12 @@ func (LogAnalysisState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logAnalysisState)(nil)).Elem()
 }
 
+// LogAnalysisExists checks whether an existing LogAnalysis resource with the given ID exists.
+func LogAnalysisExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogAnalysisState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/logAnalysis:LogAnalysis", id, state, "", opts...)
+}
+
 type logAnalysisArgs struct {
 	// The ID of the file system for which log delivery is enabled.
 	FileSystemId string `pulumi:"fileSystemId"`

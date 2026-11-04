@@ -506,6 +506,30 @@ class ReplicationVault(pulumi.CustomResource):
         __props__.__dict__["vault_storage_class"] = vault_storage_class
         return ReplicationVault(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_source_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["encryptType"] = encrypt_type
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["regionId"] = region_id
+        __props__["replicationSourceRegionId"] = replication_source_region_id
+        __props__["replicationSourceVaultId"] = replication_source_vault_id
+        __props__["status"] = status
+        __props__["vaultName"] = vault_name
+        __props__["vaultStorageClass"] = vault_storage_class
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/replicationVault:ReplicationVault', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

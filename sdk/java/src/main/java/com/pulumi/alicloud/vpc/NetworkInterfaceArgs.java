@@ -80,22 +80,20 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     /**
      * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -124,22 +122,20 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     /**
      * The primary private IP of the ENI.
      * 
-     * @deprecated
-     * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+     * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+    @Deprecated
     @Import(name="privateIp")
     private @Nullable Output<String> privateIp;
 
     /**
      * @return The primary private IP of the ENI.
      * 
-     * @deprecated
-     * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+     * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+    @Deprecated
     public Optional<Output<String>> privateIp() {
         return Optional.ofNullable(this.privateIp);
     }
@@ -154,22 +150,20 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     /**
      * List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
-     * @deprecated
-     * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
+     * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
+    @Deprecated
     @Import(name="privateIps")
     private @Nullable Output<List<String>> privateIps;
 
     /**
      * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
-     * @deprecated
-     * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
+     * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
+    @Deprecated
     public Optional<Output<List<String>>> privateIps() {
         return Optional.ofNullable(this.privateIps);
     }
@@ -177,22 +171,20 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     /**
      * Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
-     * @deprecated
-     * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
+     * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead */
+    @Deprecated
     @Import(name="privateIpsCount")
     private @Nullable Output<Integer> privateIpsCount;
 
     /**
      * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
      * 
-     * @deprecated
-     * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
+     * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead */
+    @Deprecated
     public Optional<Output<Integer>> privateIpsCount() {
         return Optional.ofNullable(this.privateIpsCount);
     }
@@ -236,22 +228,20 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
     /**
      * A list of security group ids to associate with.
      * 
-     * @deprecated
-     * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
+     * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
      * 
      */
-    @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
+    @Deprecated
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
      * @return A list of security group ids to associate with.
      * 
-     * @deprecated
-     * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
+     * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
      * 
      */
-    @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
+    @Deprecated
     public Optional<Output<List<String>>> securityGroups() {
         return Optional.ofNullable(this.securityGroups);
     }
@@ -427,11 +417,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -442,11 +431,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -483,11 +471,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+         * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+        @Deprecated
         public Builder privateIp(@Nullable Output<String> privateIp) {
             $.privateIp = privateIp;
             return this;
@@ -498,11 +485,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+         * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+        @Deprecated
         public Builder privateIp(String privateIp) {
             return privateIp(Output.of(privateIp));
         }
@@ -525,11 +511,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
+         * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
+        @Deprecated
         public Builder privateIps(@Nullable Output<List<String>> privateIps) {
             $.privateIps = privateIps;
             return this;
@@ -540,11 +525,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
+         * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
+        @Deprecated
         public Builder privateIps(List<String> privateIps) {
             return privateIps(Output.of(privateIps));
         }
@@ -554,11 +538,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
+         * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
+        @Deprecated
         public Builder privateIps(String... privateIps) {
             return privateIps(List.of(privateIps));
         }
@@ -568,11 +551,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
+         * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead */
+        @Deprecated
         public Builder privateIpsCount(@Nullable Output<Integer> privateIpsCount) {
             $.privateIpsCount = privateIpsCount;
             return this;
@@ -583,11 +565,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
+         * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead */
+        @Deprecated
         public Builder privateIpsCount(Integer privateIpsCount) {
             return privateIpsCount(Output.of(privateIpsCount));
         }
@@ -649,11 +630,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
+         * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
          * 
          */
-        @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
+        @Deprecated
         public Builder securityGroups(@Nullable Output<List<String>> securityGroups) {
             $.securityGroups = securityGroups;
             return this;
@@ -664,11 +644,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
+         * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
          * 
          */
-        @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
+        @Deprecated
         public Builder securityGroups(List<String> securityGroups) {
             return securityGroups(Output.of(securityGroups));
         }
@@ -678,11 +657,10 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
+         * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
          * 
          */
-        @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
+        @Deprecated
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }

@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly bool? Tty;
         /// <summary>
-        /// The structure of volumeMounts. 
+        /// The structure of volumeMounts.
         /// See `VolumeMounts` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationContainerVolumeMount> VolumeMounts;

@@ -210,6 +210,12 @@ func (DedicatedHostAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedHostAccountState)(nil)).Elem()
 }
 
+// DedicatedHostAccountExists checks whether an existing DedicatedHostAccount resource with the given ID exists.
+func DedicatedHostAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedHostAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount", id, state, "", opts...)
+}
+
 type dedicatedHostAccountArgs struct {
 	// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
 	AccountName string `pulumi:"accountName"`

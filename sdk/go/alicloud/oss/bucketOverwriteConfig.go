@@ -169,6 +169,12 @@ func (BucketOverwriteConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketOverwriteConfigState)(nil)).Elem()
 }
 
+// BucketOverwriteConfigExists checks whether an existing BucketOverwriteConfig resource with the given ID exists.
+func BucketOverwriteConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketOverwriteConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig", id, state, "", opts...)
+}
+
 type bucketOverwriteConfigArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

@@ -185,6 +185,12 @@ func (DedicatedHostGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedHostGroupState)(nil)).Elem()
 }
 
+// DedicatedHostGroupExists checks whether an existing DedicatedHostGroup resource with the given ID exists.
+func DedicatedHostGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedHostGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup", id, state, "", opts...)
+}
+
 type dedicatedHostGroupArgs struct {
 	// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
 	AllocationPolicy *string `pulumi:"allocationPolicy"`

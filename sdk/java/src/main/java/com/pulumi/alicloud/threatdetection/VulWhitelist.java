@@ -41,20 +41,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new VulWhitelist("default", VulWhitelistArgs.builder()
- *             .whitelist("[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]")
- *             .targetInfo("{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}")
+ *             .whitelist("[}{&#92;{@code "aliasName}&#92;{@code ":}&#92;{@code "RHSA-2021:2260: libwebp 安全更新}&#92;{@code ",}&#92;{@code "name}&#92;{@code ":}&#92;{@code "RHSA-2021:2260: libwebp 安全更新}&#92;{@code ",}&#92;{@code "type}&#92;{@code ":}&#92;{@code "cve}&#92;{@code "}}{@code ]")
+ *             .targetInfo("}{&#92;{@code "type}&#92;{@code ":}&#92;{@code "GroupId}&#92;{@code ",}&#92;{@code "uuids}&#92;{@code ":[],}&#92;{@code "groupIds}&#92;{@code ":[10782678]}}{@code ")
  *             .reason("tf-example-reason")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

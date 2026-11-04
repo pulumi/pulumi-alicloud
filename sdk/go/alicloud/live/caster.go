@@ -301,6 +301,12 @@ func (CasterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*casterState)(nil)).Elem()
 }
 
+// CasterExists checks whether an existing Caster resource with the given ID exists.
+func CasterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CasterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:live/caster:Caster", id, state, "", opts...)
+}
+
 type casterArgs struct {
 	// Automatic standby broadcast configuration. eofThres: indicates that the broadcast is automatically cut and prepared after the flow interruption time, in seconds.
 	AutoSwitchUrgentConfig *string `pulumi:"autoSwitchUrgentConfig"`

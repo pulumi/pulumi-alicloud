@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
  *             .planSubscribeType("enterpriseplan")
  *             .build());
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var defaultCompressionRule = new CompressionRule("defaultCompressionRule", CompressionRuleArgs.builder()
  *             .gzip("off")
  *             .brotli("off")
- *             .rule("http.host eq \"video.example.com\"")
+ *             .rule("http.host eq }&#92;{@code "video.example.com}&#92;{@code "")
  *             .siteVersion(0)
  *             .ruleName("rule_example")
  *             .siteId(example.id())
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  *             .ruleEnable("off")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -137,7 +137,7 @@ public class CompressionRule extends com.pulumi.resources.CustomResource {
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
-     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
@@ -146,7 +146,7 @@ public class CompressionRule extends com.pulumi.resources.CustomResource {
     /**
      * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
-     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
      * 
      */
     public Output<Optional<String>> rule() {

@@ -1403,6 +1403,72 @@ class RouteMap(pulumi.CustomResource):
         __props__.__dict__["transmit_direction"] = transmit_direction
         return RouteMap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            as_path_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            community_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            community_operate_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+            destination_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            map_result: pulumi.Input[Optional[_builtins.str]] = None,
+            match_asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            match_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            next_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            operate_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preference: pulumi.Input[Optional[_builtins.int]] = None,
+            prepend_as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            route_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transmit_direction: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asPathMatchMode"] = as_path_match_mode
+        __props__["cenId"] = cen_id
+        __props__["cenRegionId"] = cen_region_id
+        __props__["cidrMatchMode"] = cidr_match_mode
+        __props__["communityMatchMode"] = community_match_mode
+        __props__["communityOperateMode"] = community_operate_mode
+        __props__["description"] = description
+        __props__["destinationChildInstanceTypes"] = destination_child_instance_types
+        __props__["destinationCidrBlocks"] = destination_cidr_blocks
+        __props__["destinationInstanceIds"] = destination_instance_ids
+        __props__["destinationInstanceIdsReverseMatch"] = destination_instance_ids_reverse_match
+        __props__["destinationRouteTableIds"] = destination_route_table_ids
+        __props__["mapResult"] = map_result
+        __props__["matchAsns"] = match_asns
+        __props__["matchCommunitySets"] = match_community_sets
+        __props__["nextPriority"] = next_priority
+        __props__["operateCommunitySets"] = operate_community_sets
+        __props__["preference"] = preference
+        __props__["prependAsPaths"] = prepend_as_paths
+        __props__["priority"] = priority
+        __props__["routeMapId"] = route_map_id
+        __props__["routeTypes"] = route_types
+        __props__["sourceChildInstanceTypes"] = source_child_instance_types
+        __props__["sourceInstanceIds"] = source_instance_ids
+        __props__["sourceInstanceIdsReverseMatch"] = source_instance_ids_reverse_match
+        __props__["sourceRegionIds"] = source_region_ids
+        __props__["sourceRouteTableIds"] = source_route_table_ids
+        __props__["status"] = status
+        __props__["transitRouterRouteTableId"] = transit_router_route_table_id
+        __props__["transmitDirection"] = transmit_direction
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/routeMap:RouteMap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="asPathMatchMode")
     def as_path_match_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

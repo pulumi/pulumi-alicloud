@@ -287,14 +287,14 @@ namespace Pulumi.AliCloud.Vpn
         public Output<Outputs.GatewayVpnAttachmentHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of Phase 1 negotiations. 
+        /// The configurations of Phase 1 negotiations.
         /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IkeConfig` below.
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.GatewayVpnAttachmentIkeConfig> IkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration negotiated in the second stage. 
+        /// Configuration negotiated in the second stage.
         /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IpsecConfig` below.
         /// </summary>
         [Output("ipsecConfig")]
@@ -462,14 +462,14 @@ namespace Pulumi.AliCloud.Vpn
         public Input<Inputs.GatewayVpnAttachmentHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configurations of Phase 1 negotiations. 
+        /// The configurations of Phase 1 negotiations.
         /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IkeConfig` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// Configuration negotiated in the second stage. 
+        /// Configuration negotiated in the second stage.
         /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IpsecConfig` below.
         /// </summary>
         [Input("ipsecConfig")]
@@ -611,14 +611,14 @@ namespace Pulumi.AliCloud.Vpn
         public Input<Inputs.GatewayVpnAttachmentHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The configurations of Phase 1 negotiations. 
+        /// The configurations of Phase 1 negotiations.
         /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IkeConfig` below.
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigGetArgs>? IkeConfig { get; set; }
 
         /// <summary>
-        /// Configuration negotiated in the second stage. 
+        /// Configuration negotiated in the second stage.
         /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `IpsecConfig` below.
         /// </summary>
         [Input("ipsecConfig")]

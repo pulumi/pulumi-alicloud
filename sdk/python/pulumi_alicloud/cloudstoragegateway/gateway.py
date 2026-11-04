@@ -702,6 +702,38 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_class: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_network_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            reason_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            reason_type: pulumi.Input[Optional[_builtins.str]] = None,
+            release_after_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["gatewayClass"] = gateway_class
+        __props__["gatewayName"] = gateway_name
+        __props__["location"] = location
+        __props__["paymentType"] = payment_type
+        __props__["publicNetworkBandwidth"] = public_network_bandwidth
+        __props__["reasonDetail"] = reason_detail
+        __props__["reasonType"] = reason_type
+        __props__["releaseAfterExpiration"] = release_after_expiration
+        __props__["status"] = status
+        __props__["storageBundleId"] = storage_bundle_id
+        __props__["type"] = type
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudstoragegateway/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

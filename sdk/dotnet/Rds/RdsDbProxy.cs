@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Rds
         /// - ReadWriteSpliting: read/write splitting.
         /// - ConnectionPersist: connection pooling.
         /// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        /// Valid status values:
+        ///   Valid status values:
         /// - 1: enabled.
         /// - 0: disabled.
         /// 
@@ -369,7 +369,7 @@ namespace Pulumi.AliCloud.Rds
         /// - ReadWriteSpliting: read/write splitting.
         /// - ConnectionPersist: connection pooling.
         /// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        /// Valid status values:
+        ///   Valid status values:
         /// - 1: enabled.
         /// - 0: disabled.
         /// 
@@ -546,7 +546,7 @@ namespace Pulumi.AliCloud.Rds
         /// - ReadWriteSpliting: read/write splitting.
         /// - ConnectionPersist: connection pooling.
         /// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        /// Valid status values:
+        ///   Valid status values:
         /// - 1: enabled.
         /// - 0: disabled.
         /// 

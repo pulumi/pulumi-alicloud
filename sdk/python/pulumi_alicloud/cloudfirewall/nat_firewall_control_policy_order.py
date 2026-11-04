@@ -404,6 +404,22 @@ class NatFirewallControlPolicyOrder(pulumi.CustomResource):
         __props__.__dict__["order"] = order
         return NatFirewallControlPolicyOrder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            current_page: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            order: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclUuid"] = acl_uuid
+        __props__["currentPage"] = current_page
+        __props__["direction"] = direction
+        __props__["natGatewayId"] = nat_gateway_id
+        __props__["order"] = order
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> pulumi.Output[_builtins.str]:

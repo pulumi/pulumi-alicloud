@@ -110,6 +110,12 @@ func (ServiceLinkedRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceLinkedRoleState)(nil)).Elem()
 }
 
+// ServiceLinkedRoleExists checks whether an existing ServiceLinkedRole resource with the given ID exists.
+func ServiceLinkedRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceLinkedRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole", id, state, "", opts...)
+}
+
 type serviceLinkedRoleArgs struct {
 	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 	ProductName string `pulumi:"productName"`

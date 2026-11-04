@@ -700,6 +700,48 @@ class DbCluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DbCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict', 'outputs.DbClusterDesiredParam']]]]] = None,
+            desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            param_change_logs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict', 'outputs.DbClusterParamChangeLog']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cacheSize"] = cache_size
+        __props__["cpu"] = cpu
+        __props__["createTime"] = create_time
+        __props__["dbClusterClass"] = db_cluster_class
+        __props__["dbClusterDescription"] = db_cluster_description
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["desiredParams"] = desired_params
+        __props__["desiredStatus"] = desired_status
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["memory"] = memory
+        __props__["paramChangeLogs"] = param_change_logs
+        __props__["paymentType"] = payment_type
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:selectdb/dbCluster:DbCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cacheSize")
     def cache_size(self) -> pulumi.Output[_builtins.int]:

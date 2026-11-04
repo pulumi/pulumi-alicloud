@@ -100,22 +100,20 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -343,11 +341,10 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -358,11 +355,10 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

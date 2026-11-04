@@ -227,6 +227,14 @@ class ServiceAgentConfig(pulumi.CustomResource):
         __props__.__dict__["enable_install_agent_new_ecs"] = enable_install_agent_new_ecs
         return ServiceAgentConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable_install_agent_new_ecs: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enableInstallAgentNewEcs"] = enable_install_agent_new_ecs
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="enableInstallAgentNewEcs")
     def enable_install_agent_new_ecs(self) -> pulumi.Output[Optional[_builtins.bool]]:

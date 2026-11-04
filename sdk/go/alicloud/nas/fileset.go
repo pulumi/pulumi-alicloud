@@ -198,6 +198,12 @@ func (FilesetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*filesetState)(nil)).Elem()
 }
 
+// FilesetExists checks whether an existing Fileset resource with the given ID exists.
+func FilesetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FilesetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/fileset:Fileset", id, state, "", opts...)
+}
+
 type filesetArgs struct {
 	// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
 	// - true: Enable instance release protection.

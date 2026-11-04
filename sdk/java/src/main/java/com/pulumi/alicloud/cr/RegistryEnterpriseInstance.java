@@ -112,11 +112,10 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
     /**
      * . Field &#39;created_time&#39; has been deprecated from provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
+     * @deprecated Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
      */
-    @Deprecated /* Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead. */
+    @Deprecated
     @Export(name="createdTime", refs={String.class}, tree="[0]")
     private Output<String> createdTime;
 

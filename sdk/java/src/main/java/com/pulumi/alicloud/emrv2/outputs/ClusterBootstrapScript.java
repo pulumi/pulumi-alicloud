@@ -32,11 +32,10 @@ public final class ClusterBootstrapScript {
     /**
      * @return The bootstrap scripts priority.
      * 
-     * @deprecated
-     * Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
+     * @deprecated Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
      * 
      */
-    @Deprecated /* Field 'priority' has been deprecated from provider version 1.227.0. */
+    @Deprecated
     private @Nullable Integer priority;
     /**
      * @return The bootstrap script args, e.g. &#34;--a=b&#34;.
@@ -79,11 +78,10 @@ public final class ClusterBootstrapScript {
     /**
      * @return The bootstrap scripts priority.
      * 
-     * @deprecated
-     * Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
+     * @deprecated Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
      * 
      */
-    @Deprecated /* Field 'priority' has been deprecated from provider version 1.227.0. */
+    @Deprecated
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }

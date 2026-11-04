@@ -459,6 +459,24 @@ class UserAlarmConfig(pulumi.CustomResource):
         __props__.__dict__["use_default_contact"] = use_default_contact
         return UserAlarmConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alarm_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigAlarmConfigArgs', 'UserAlarmConfigAlarmConfigArgsDict', 'outputs.UserAlarmConfigAlarmConfig']]]]] = None,
+            alarm_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigContactConfigArgs', 'UserAlarmConfigContactConfigArgsDict', 'outputs.UserAlarmConfigContactConfig']]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAlarmConfigNotifyConfigArgs', 'UserAlarmConfigNotifyConfigArgsDict', 'outputs.UserAlarmConfigNotifyConfig']]]]] = None,
+            use_default_contact: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alarmConfigs"] = alarm_configs
+        __props__["alarmLang"] = alarm_lang
+        __props__["contactConfigs"] = contact_configs
+        __props__["lang"] = lang
+        __props__["notifyConfigs"] = notify_configs
+        __props__["useDefaultContact"] = use_default_contact
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alarmConfigs")
     def alarm_configs(self) -> pulumi.Output[Sequence['outputs.UserAlarmConfigAlarmConfig']]:

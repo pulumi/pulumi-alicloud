@@ -293,7 +293,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("period")]
@@ -304,9 +303,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `Month` (default): monthly payment.
         /// - `Year`: Pay per Year.
         /// 
-        /// 
         /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -586,7 +583,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
@@ -597,9 +593,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `Month` (default): monthly payment.
         /// - `Year`: Pay per Year.
         /// 
-        /// 
         /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -883,7 +877,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
@@ -894,9 +887,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - `Month` (default): monthly payment.
         /// - `Year`: Pay per Year.
         /// 
-        /// 
         /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>

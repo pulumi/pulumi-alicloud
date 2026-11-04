@@ -205,6 +205,12 @@ func (DefenseResourceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defenseResourceGroupState)(nil)).Elem()
 }
 
+// DefenseResourceGroupExists checks whether an existing DefenseResourceGroup resource with the given ID exists.
+func DefenseResourceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefenseResourceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup", id, state, "", opts...)
+}
+
 type defenseResourceGroupArgs struct {
 	// The description of the protected object group.
 	Description *string `pulumi:"description"`

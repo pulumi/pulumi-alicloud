@@ -189,6 +189,12 @@ func (AccessGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessGroupState)(nil)).Elem()
 }
 
+// AccessGroupExists checks whether an existing AccessGroup resource with the given ID exists.
+func AccessGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/accessGroup:AccessGroup", id, state, "", opts...)
+}
+
 type accessGroupArgs struct {
 	// The name of the permission group.
 	AccessGroupName *string `pulumi:"accessGroupName"`

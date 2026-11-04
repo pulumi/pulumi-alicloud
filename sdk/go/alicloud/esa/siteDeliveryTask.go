@@ -271,6 +271,12 @@ func (SiteDeliveryTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteDeliveryTaskState)(nil)).Elem()
 }
 
+// SiteDeliveryTaskExists checks whether an existing SiteDeliveryTask resource with the given ID exists.
+func SiteDeliveryTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SiteDeliveryTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/siteDeliveryTask:SiteDeliveryTask", id, state, "", opts...)
+}
+
 type siteDeliveryTaskArgs struct {
 	// Real-time log type. Valid values:
 	// - `dcdnLogAccessL1 (default)`: access log.

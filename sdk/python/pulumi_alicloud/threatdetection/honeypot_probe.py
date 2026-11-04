@@ -656,6 +656,38 @@ class HoneypotProbe(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return HoneypotProbe(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arp: pulumi.Input[Optional[_builtins.bool]] = None,
+            control_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_bind_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict', 'outputs.HoneypotProbeHoneypotBindList']]]]] = None,
+            honeypot_probe_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ping: pulumi.Input[Optional[_builtins.bool]] = None,
+            probe_type: pulumi.Input[Optional[_builtins.str]] = None,
+            probe_version: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            service_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arp"] = arp
+        __props__["controlNodeId"] = control_node_id
+        __props__["displayName"] = display_name
+        __props__["honeypotBindLists"] = honeypot_bind_lists
+        __props__["honeypotProbeId"] = honeypot_probe_id
+        __props__["ping"] = ping
+        __props__["probeType"] = probe_type
+        __props__["probeVersion"] = probe_version
+        __props__["proxyIp"] = proxy_ip
+        __props__["serviceIpLists"] = service_ip_lists
+        __props__["status"] = status
+        __props__["uuid"] = uuid
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/honeypotProbe:HoneypotProbe', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arp(self) -> pulumi.Output[Optional[_builtins.bool]]:

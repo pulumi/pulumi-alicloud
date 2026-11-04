@@ -177,6 +177,12 @@ func (ScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduleState)(nil)).Elem()
 }
 
+// ScheduleExists checks whether an existing Schedule resource with the given ID exists.
+func ScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fnf/schedule:Schedule", id, state, "", opts...)
+}
+
 type scheduleArgs struct {
 	// The CRON expression of the time-based schedule to be created.
 	CronExpression string `pulumi:"cronExpression"`

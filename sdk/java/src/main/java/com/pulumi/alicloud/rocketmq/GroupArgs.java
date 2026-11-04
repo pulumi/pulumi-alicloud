@@ -21,22 +21,20 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Replaced by `groupName` after version 1.98.0.
      * 
-     * @deprecated
-     * Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
+     * @deprecated Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead. */
+    @Deprecated
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
      * @return Replaced by `groupName` after version 1.98.0.
      * 
-     * @deprecated
-     * Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
+     * @deprecated Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead. */
+    @Deprecated
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
@@ -170,11 +168,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
+         * @deprecated Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead. */
+        @Deprecated
         public Builder groupId(@Nullable Output<String> groupId) {
             $.groupId = groupId;
             return this;
@@ -185,11 +182,10 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
+         * @deprecated Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead. */
+        @Deprecated
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }

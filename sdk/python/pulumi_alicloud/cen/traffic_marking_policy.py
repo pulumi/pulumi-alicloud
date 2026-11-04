@@ -539,6 +539,32 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         __props__.__dict__["transit_router_id"] = transit_router_id
         return TrafficMarkingPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_marking_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict', 'outputs.TrafficMarkingPolicyTrafficMatchRule']]]]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["force"] = force
+        __props__["markingDscp"] = marking_dscp
+        __props__["priority"] = priority
+        __props__["status"] = status
+        __props__["trafficMarkingPolicyId"] = traffic_marking_policy_id
+        __props__["trafficMarkingPolicyName"] = traffic_marking_policy_name
+        __props__["trafficMatchRules"] = traffic_match_rules
+        __props__["transitRouterId"] = transit_router_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

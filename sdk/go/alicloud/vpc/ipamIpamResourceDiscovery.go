@@ -167,6 +167,12 @@ func (IpamIpamResourceDiscoveryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipamIpamResourceDiscoveryState)(nil)).Elem()
 }
 
+// IpamIpamResourceDiscoveryExists checks whether an existing IpamIpamResourceDiscovery resource with the given ID exists.
+func IpamIpamResourceDiscoveryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpamIpamResourceDiscoveryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery", id, state, "", opts...)
+}
+
 type ipamIpamResourceDiscoveryArgs struct {
 	// The description of resource discovery.
 	IpamResourceDiscoveryDescription *string `pulumi:"ipamResourceDiscoveryDescription"`

@@ -25,22 +25,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
+    @Deprecated
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
      * @return Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
+    @Deprecated
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -248,22 +246,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      * 
-     * @deprecated
-     * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+     * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
+    @Deprecated
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      * 
-     * @deprecated
-     * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+     * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
+    @Deprecated
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -390,22 +386,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
-     * @deprecated
-     * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
+    @Deprecated
     @Import(name="masterNodeNum")
     private @Nullable Output<Integer> masterNodeNum;
 
     /**
      * @return The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
-     * @deprecated
-     * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
+    @Deprecated
     public Optional<Output<Integer>> masterNodeNum() {
         return Optional.ofNullable(this.masterNodeNum);
     }
@@ -477,22 +471,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
-     * @deprecated
-     * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
+    @Deprecated
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
 
     /**
      * @return The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
-     * @deprecated
-     * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
+    @Deprecated
     public Optional<Output<String>> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
@@ -545,22 +537,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      * 
-     * @deprecated
-     * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+     * @deprecated Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
      * 
      */
-    @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+    @Deprecated
     @Import(name="securityIpLists")
     private @Nullable Output<List<String>> securityIpLists;
 
     /**
      * @return Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      * 
-     * @deprecated
-     * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+     * @deprecated Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
      * 
      */
-    @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+    @Deprecated
     public Optional<Output<List<String>>> securityIpLists() {
         return Optional.ofNullable(this.securityIpLists);
     }
@@ -892,11 +882,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+         * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
+        @Deprecated
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
@@ -907,11 +896,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+         * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
+        @Deprecated
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
@@ -1193,11 +1181,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+         * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
+        @Deprecated
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -1208,11 +1195,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+         * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
+        @Deprecated
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -1394,11 +1380,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+         * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
+        @Deprecated
         public Builder masterNodeNum(@Nullable Output<Integer> masterNodeNum) {
             $.masterNodeNum = masterNodeNum;
             return this;
@@ -1409,11 +1394,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+         * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
+        @Deprecated
         public Builder masterNodeNum(Integer masterNodeNum) {
             return masterNodeNum(Output.of(masterNodeNum));
         }
@@ -1521,11 +1505,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+         * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
+        @Deprecated
         public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
             $.privateIpAddress = privateIpAddress;
             return this;
@@ -1536,11 +1519,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+         * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
          * 
          */
-        @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
+        @Deprecated
         public Builder privateIpAddress(String privateIpAddress) {
             return privateIpAddress(Output.of(privateIpAddress));
         }
@@ -1613,11 +1595,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+         * @deprecated Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
          * 
          */
-        @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+        @Deprecated
         public Builder securityIpLists(@Nullable Output<List<String>> securityIpLists) {
             $.securityIpLists = securityIpLists;
             return this;
@@ -1628,11 +1609,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+         * @deprecated Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
          * 
          */
-        @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+        @Deprecated
         public Builder securityIpLists(List<String> securityIpLists) {
             return securityIpLists(Output.of(securityIpLists));
         }
@@ -1642,11 +1622,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+         * @deprecated Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
          * 
          */
-        @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+        @Deprecated
         public Builder securityIpLists(String... securityIpLists) {
             return securityIpLists(List.of(securityIpLists));
         }

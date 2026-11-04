@@ -8894,11 +8894,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static Output<GetEipsResult> getEips() {
         return getEips(GetEipsArgs.Empty, InvokeOptions.Empty);
     }
@@ -8940,11 +8939,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static CompletableFuture<GetEipsResult> getEipsPlain() {
         return getEipsPlain(GetEipsPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -8986,11 +8984,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static Output<GetEipsResult> getEips(GetEipsArgs args) {
         return getEips(args, InvokeOptions.Empty);
     }
@@ -9032,11 +9029,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static CompletableFuture<GetEipsResult> getEipsPlain(GetEipsPlainArgs args) {
         return getEipsPlain(args, InvokeOptions.Empty);
     }
@@ -9078,11 +9074,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static Output<GetEipsResult> getEips(GetEipsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEips:getEips", TypeShape.of(GetEipsResult.class), args, Utilities.withVersion(options));
     }
@@ -9124,11 +9119,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static Output<GetEipsResult> getEips(GetEipsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ecs/getEips:getEips", TypeShape.of(GetEipsResult.class), args, Utilities.withVersion(options));
     }
@@ -9170,11 +9164,10 @@ public final class EcsFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * This function has been deprecated in favour of the getEipAddresses function
+     * @deprecated This function has been deprecated in favour of the getEipAddresses function
      * 
      */
-    @Deprecated /* This function has been deprecated in favour of the getEipAddresses function */
+    @Deprecated
     public static CompletableFuture<GetEipsResult> getEipsPlain(GetEipsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getEips:getEips", TypeShape.of(GetEipsResult.class), args, Utilities.withVersion(options));
     }

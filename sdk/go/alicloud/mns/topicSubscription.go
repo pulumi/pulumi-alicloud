@@ -163,6 +163,12 @@ func (TopicSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicSubscriptionState)(nil)).Elem()
 }
 
+// TopicSubscriptionExists checks whether an existing TopicSubscription resource with the given ID exists.
+func TopicSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TopicSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mns/topicSubscription:TopicSubscription", id, state, "", opts...)
+}
+
 type topicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
 	// - `HTTP Format`: http://xxx.com/xxx

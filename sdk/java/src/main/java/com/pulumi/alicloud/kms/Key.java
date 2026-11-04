@@ -175,11 +175,10 @@ public class Key extends com.pulumi.resources.CustomResource {
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
-     * @deprecated
-     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+     * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      * 
      */
-    @Deprecated /* Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead. */
+    @Deprecated
     @Export(name="deletionWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deletionWindowInDays;
 
@@ -231,11 +230,10 @@ public class Key extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
-     * @deprecated
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+     * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      * 
      */
-    @Deprecated /* Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead. */
+    @Deprecated
     @Export(name="isEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEnabled;
 
@@ -273,11 +271,10 @@ public class Key extends com.pulumi.resources.CustomResource {
     /**
      * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
-     * @deprecated
-     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead. */
+    @Deprecated
     @Export(name="keyState", refs={String.class}, tree="[0]")
     private Output<String> keyState;
 

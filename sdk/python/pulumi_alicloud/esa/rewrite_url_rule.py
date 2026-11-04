@@ -639,6 +639,34 @@ class RewriteUrlRule(pulumi.CustomResource):
         __props__.__dict__["uri"] = uri
         return RewriteUrlRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            rewrite_query_string_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rewrite_uri_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configId"] = config_id
+        __props__["queryString"] = query_string
+        __props__["rewriteQueryStringType"] = rewrite_query_string_type
+        __props__["rewriteUriType"] = rewrite_uri_type
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        __props__["uri"] = uri
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/rewriteUrlRule:RewriteUrlRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[_builtins.int]:

@@ -248,11 +248,10 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

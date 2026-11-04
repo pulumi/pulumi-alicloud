@@ -470,6 +470,24 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return TransitRouterMulticastDomainMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["groupIpAddress"] = group_ip_address
+        __props__["networkInterfaceId"] = network_interface_id
+        __props__["status"] = status
+        __props__["transitRouterMulticastDomainId"] = transit_router_multicast_domain_id
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

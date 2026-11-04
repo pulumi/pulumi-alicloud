@@ -382,6 +382,12 @@ func (RegistryEnterpriseInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseInstanceState)(nil)).Elem()
 }
 
+// RegistryEnterpriseInstanceExists checks whether an existing RegistryEnterpriseInstance resource with the given ID exists.
+func RegistryEnterpriseInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegistryEnterpriseInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance", id, state, "", opts...)
+}
+
 type registryEnterpriseInstanceArgs struct {
 	// Custom OSS Bucket name
 	//

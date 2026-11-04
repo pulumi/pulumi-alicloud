@@ -62,6 +62,17 @@ export class AclRule extends pulumi.CustomResource {
         return new AclRule(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing AclRule resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AclRuleState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:sag/aclRule:AclRule", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:sag/aclRule:AclRule';
 

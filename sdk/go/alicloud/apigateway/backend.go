@@ -137,6 +137,12 @@ func (BackendState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendState)(nil)).Elem()
 }
 
+// BackendExists checks whether an existing Backend resource with the given ID exists.
+func BackendExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/backend:Backend", id, state, "", opts...)
+}
+
 type backendArgs struct {
 	// The name of the Backend.
 	BackendName string `pulumi:"backendName"`

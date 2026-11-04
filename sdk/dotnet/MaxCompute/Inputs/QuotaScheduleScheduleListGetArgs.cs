@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// The type of the quota plan. Valid values: daily 
+        /// The type of the quota plan. Valid values: daily
         /// 
         /// &gt; **NOTE:** Currently, only daily is supported.
         /// </summary>

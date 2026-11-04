@@ -549,6 +549,30 @@ class DedicatedHostGroup(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return DedicatedHostGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            dedicated_host_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            host_replace_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            mem_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            open_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocationPolicy"] = allocation_policy
+        __props__["cpuAllocationRatio"] = cpu_allocation_ratio
+        __props__["dedicatedHostGroupDesc"] = dedicated_host_group_desc
+        __props__["diskAllocationRatio"] = disk_allocation_ratio
+        __props__["engine"] = engine
+        __props__["hostReplacePolicy"] = host_replace_policy
+        __props__["memAllocationRatio"] = mem_allocation_ratio
+        __props__["openPermission"] = open_permission
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocationPolicy")
     def allocation_policy(self) -> pulumi.Output[_builtins.str]:

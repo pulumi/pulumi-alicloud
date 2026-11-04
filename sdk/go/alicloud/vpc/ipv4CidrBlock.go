@@ -153,6 +153,12 @@ func (Ipv4CidrBlockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv4CidrBlockState)(nil)).Elem()
 }
 
+// Ipv4CidrBlockExists checks whether an existing Ipv4CidrBlock resource with the given ID exists.
+func Ipv4CidrBlockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv4CidrBlockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock", id, state, "", opts...)
+}
+
 type ipv4CidrBlockArgs struct {
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`

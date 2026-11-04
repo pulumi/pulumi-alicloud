@@ -275,6 +275,12 @@ func (ZonalEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zonalEndpointState)(nil)).Elem()
 }
 
+// ZonalEndpointExists checks whether an existing ZonalEndpoint resource with the given ID exists.
+func ZonalEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZonalEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/zonalEndpoint:ZonalEndpoint", id, state, "", opts...)
+}
+
 type zonalEndpointArgs struct {
 	// Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
 	AutoAddNewNodes *string `pulumi:"autoAddNewNodes"`

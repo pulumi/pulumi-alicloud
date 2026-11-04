@@ -264,6 +264,12 @@ func (LoadBalancerUdpListenerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerUdpListenerState)(nil)).Elem()
 }
 
+// LoadBalancerUdpListenerExists checks whether an existing LoadBalancerUdpListener resource with the given ID exists.
+func LoadBalancerUdpListenerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerUdpListenerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/loadBalancerUdpListener:LoadBalancerUdpListener", id, state, "", opts...)
+}
+
 type loadBalancerUdpListenerArgs struct {
 	// The port used by the backend server of the load balancer instance. Valid values: `1` to `65535`.
 	BackendServerPort *int `pulumi:"backendServerPort"`

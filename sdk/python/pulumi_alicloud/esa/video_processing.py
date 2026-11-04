@@ -701,6 +701,38 @@ class VideoProcessing(pulumi.CustomResource):
         __props__.__dict__["video_seek_enable"] = video_seek_enable
         return VideoProcessing(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            flv_seek_end: pulumi.Input[Optional[_builtins.str]] = None,
+            flv_seek_start: pulumi.Input[Optional[_builtins.str]] = None,
+            flv_video_seek_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mp4_seek_end: pulumi.Input[Optional[_builtins.str]] = None,
+            mp4_seek_start: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configId"] = config_id
+        __props__["flvSeekEnd"] = flv_seek_end
+        __props__["flvSeekStart"] = flv_seek_start
+        __props__["flvVideoSeekMode"] = flv_video_seek_mode
+        __props__["mp4SeekEnd"] = mp4_seek_end
+        __props__["mp4SeekStart"] = mp4_seek_start
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        __props__["videoSeekEnable"] = video_seek_enable
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/videoProcessing:VideoProcessing', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[_builtins.int]:

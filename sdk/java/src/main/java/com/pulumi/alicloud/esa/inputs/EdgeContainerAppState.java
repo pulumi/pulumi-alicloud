@@ -117,8 +117,8 @@ public final class EdgeContainerAppState extends com.pulumi.resources.ResourceAr
     /**
      * The HTTP status code returned for a successful health check. Valid values:
      * 
-     * - **http\_2xx** (default)
-     * - **http\_3xx**
+     * - **http&#92;_2xx** (default)
+     * - **http&#92;_3xx**
      * 
      */
     @Import(name="healthCheckMethod")
@@ -127,8 +127,8 @@ public final class EdgeContainerAppState extends com.pulumi.resources.ResourceAr
     /**
      * @return The HTTP status code returned for a successful health check. Valid values:
      * 
-     * - **http\_2xx** (default)
-     * - **http\_3xx**
+     * - **http&#92;_2xx** (default)
+     * - **http&#92;_3xx**
      * 
      */
     public Optional<Output<String>> healthCheckMethod() {
@@ -452,8 +452,8 @@ public final class EdgeContainerAppState extends com.pulumi.resources.ResourceAr
         /**
          * @param healthCheckMethod The HTTP status code returned for a successful health check. Valid values:
          * 
-         * - **http\_2xx** (default)
-         * - **http\_3xx**
+         * - **http&#92;_2xx** (default)
+         * - **http&#92;_3xx**
          * 
          * @return builder
          * 
@@ -466,8 +466,8 @@ public final class EdgeContainerAppState extends com.pulumi.resources.ResourceAr
         /**
          * @param healthCheckMethod The HTTP status code returned for a successful health check. Valid values:
          * 
-         * - **http\_2xx** (default)
-         * - **http\_3xx**
+         * - **http&#92;_2xx** (default)
+         * - **http&#92;_3xx**
          * 
          * @return builder
          * 

@@ -254,6 +254,16 @@ class MscSubWebhook(pulumi.CustomResource):
         __props__.__dict__["webhook_name"] = webhook_name
         return MscSubWebhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            server_url: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["serverUrl"] = server_url
+        __props__["webhookName"] = webhook_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:index/mscSubWebhook:MscSubWebhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> pulumi.Output[_builtins.str]:

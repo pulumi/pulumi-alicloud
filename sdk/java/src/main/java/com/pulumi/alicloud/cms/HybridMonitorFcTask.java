@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
@@ -64,28 +64,28 @@ import javax.annotation.Nullable;
  *             .yarmConfig("""
  * ---
  * products:
- * - namespace: \"acs_ecs_dashboard\"
+ * - namespace: }&#92;{@code "acs_ecs_dashboard}&#92;{@code "
  *   metric_info:
  *   - metric_list:
- *     - \"CPUUtilization\"
- *     - \"DiskReadBPS\"
- *     - \"InternetOut\"
- *     - \"IntranetOut\"
- *     - \"cpu_idle\"
- *     - \"cpu_system\"
- *     - \"cpu_total\"
- *     - \"diskusage_utilization\"
- * - namespace: \"acs_rds_dashboard\"
+ *     - }&#92;{@code "CPUUtilization}&#92;{@code "
+ *     - }&#92;{@code "DiskReadBPS}&#92;{@code "
+ *     - }&#92;{@code "InternetOut}&#92;{@code "
+ *     - }&#92;{@code "IntranetOut}&#92;{@code "
+ *     - }&#92;{@code "cpu_idle}&#92;{@code "
+ *     - }&#92;{@code "cpu_system}&#92;{@code "
+ *     - }&#92;{@code "cpu_total}&#92;{@code "
+ *     - }&#92;{@code "diskusage_utilization}&#92;{@code "
+ * - namespace: }&#92;{@code "acs_rds_dashboard}&#92;{@code "
  *   metric_info:
  *   - metric_list:
- *     - \"MySQL_QPS\"
- *     - \"MySQL_TPS\"
+ *     - }&#92;{@code "MySQL_QPS}&#92;{@code "
+ *     - }&#92;{@code "MySQL_TPS}&#92;{@code "
  *             """)
  *             .targetUserId(default_.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

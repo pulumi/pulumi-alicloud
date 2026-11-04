@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Auto renewal period of an instance, in the unit of month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-        /// **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
+        ///   **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The duration that you will buy the resource, in month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-        /// **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
+        ///   **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
         /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-        /// **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
+        ///   **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
@@ -454,7 +454,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Auto renewal period of an instance, in the unit of month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-        /// **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
+        ///   **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -617,7 +617,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The duration that you will buy the resource, in month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-        /// **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
+        ///   **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -671,7 +671,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
         /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-        /// **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
+        ///   **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -772,7 +772,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Auto renewal period of an instance, in the unit of month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-        /// **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
+        ///   **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -947,7 +947,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The duration that you will buy the resource, in month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-        /// **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
+        ///   **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1001,7 +1001,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
         /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-        /// **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
+        ///   **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }

@@ -158,11 +158,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Whether to force the deletion when the instance status does not meet the deletion conditions.
      * 
-     * @deprecated
-     * Field &#39;force&#39; is deprecated and will be removed in a future release.
+     * @deprecated Field &#39;force&#39; is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
+    @Deprecated
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 

@@ -579,6 +579,38 @@ class PublicIpAddressPool(pulumi.CustomResource):
         __props__.__dict__["used_ip_num"] = used_ip_num
         return PublicIpAddressPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address_remaining: pulumi.Input[Optional[_builtins.bool]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            total_ip_num: pulumi.Input[Optional[_builtins.int]] = None,
+            used_ip_num: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bizType"] = biz_type
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["ipAddressRemaining"] = ip_address_remaining
+        __props__["isp"] = isp
+        __props__["publicIpAddressPoolId"] = public_ip_address_pool_id
+        __props__["publicIpAddressPoolName"] = public_ip_address_pool_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityProtectionTypes"] = security_protection_types
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["totalIpNum"] = total_ip_num
+        __props__["usedIpNum"] = used_ip_num
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/publicIpAddressPool:PublicIpAddressPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bizType")
     def biz_type(self) -> pulumi.Output[_builtins.str]:

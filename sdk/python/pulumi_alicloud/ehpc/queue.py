@@ -1042,6 +1042,38 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return Queue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict', 'outputs.QueueComputeNode']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+            hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+            inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            min_count: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["computeNodes"] = compute_nodes
+        __props__["createTime"] = create_time
+        __props__["enableScaleIn"] = enable_scale_in
+        __props__["enableScaleOut"] = enable_scale_out
+        __props__["hostnamePrefix"] = hostname_prefix
+        __props__["hostnameSuffix"] = hostname_suffix
+        __props__["initialCount"] = initial_count
+        __props__["interConnect"] = inter_connect
+        __props__["maxCount"] = max_count
+        __props__["minCount"] = min_count
+        __props__["queueName"] = queue_name
+        __props__["vswitchIds"] = vswitch_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:ehpc/queue:Queue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

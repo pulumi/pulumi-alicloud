@@ -1303,6 +1303,58 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         __props__.__dict__["webhook"] = webhook
         return ServiceMetricAlarmRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            composite_expression: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleCompositeExpressionArgs', 'ServiceMetricAlarmRuleCompositeExpressionArgsDict', 'outputs.ServiceMetricAlarmRuleCompositeExpression']]] = None,
+            contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            escalations: pulumi.Input[Optional[Union['ServiceMetricAlarmRuleEscalationsArgs', 'ServiceMetricAlarmRuleEscalationsArgsDict', 'outputs.ServiceMetricAlarmRuleEscalations']]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleLabelArgs', 'ServiceMetricAlarmRuleLabelArgsDict', 'outputs.ServiceMetricAlarmRuleLabel']]]]] = None,
+            metric_alarm_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            no_data_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus: pulumi.Input[Optional[Union['ServiceMetricAlarmRulePrometheusArgs', 'ServiceMetricAlarmRulePrometheusArgsDict', 'outputs.ServiceMetricAlarmRulePrometheus']]] = None,
+            resources: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.bool]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict', 'outputs.ServiceMetricAlarmRuleTarget']]]]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["compositeExpression"] = composite_expression
+        __props__["contactGroups"] = contact_groups
+        __props__["dimensions"] = dimensions
+        __props__["effectiveInterval"] = effective_interval
+        __props__["emailSubject"] = email_subject
+        __props__["escalations"] = escalations
+        __props__["interval"] = interval
+        __props__["labels"] = labels
+        __props__["metricAlarmRuleId"] = metric_alarm_rule_id
+        __props__["metricName"] = metric_name
+        __props__["namespace"] = namespace
+        __props__["noDataPolicy"] = no_data_policy
+        __props__["noEffectiveInterval"] = no_effective_interval
+        __props__["period"] = period
+        __props__["prometheus"] = prometheus
+        __props__["resources"] = resources
+        __props__["ruleName"] = rule_name
+        __props__["sendOk"] = send_ok
+        __props__["silenceTime"] = silence_time
+        __props__["sourceType"] = source_type
+        __props__["status"] = status
+        __props__["targets"] = targets
+        __props__["webhook"] = webhook
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudmonitor/serviceMetricAlarmRule:ServiceMetricAlarmRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="compositeExpression")
     def composite_expression(self) -> pulumi.Output[Optional['outputs.ServiceMetricAlarmRuleCompositeExpression']]:

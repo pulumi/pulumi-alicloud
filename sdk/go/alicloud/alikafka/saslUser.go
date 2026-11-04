@@ -226,6 +226,12 @@ func (SaslUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*saslUserState)(nil)).Elem()
 }
 
+// SaslUserExists checks whether an existing SaslUser resource with the given ID exists.
+func SaslUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SaslUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alikafka/saslUser:SaslUser", id, state, "", opts...)
+}
+
 type saslUserArgs struct {
 	// The instance ID.
 	InstanceId string `pulumi:"instanceId"`

@@ -276,6 +276,12 @@ func (ServiceCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceCertificateState)(nil)).Elem()
 }
 
+// ServiceCertificateExists checks whether an existing ServiceCertificate resource with the given ID exists.
+func ServiceCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cas/serviceCertificate:ServiceCertificate", id, state, "", opts...)
+}
+
 type serviceCertificateArgs struct {
 	// The content of a non-SM certificate in PEM format.
 	Cert *string `pulumi:"cert"`

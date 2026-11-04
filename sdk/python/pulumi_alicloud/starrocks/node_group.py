@@ -1144,6 +1144,52 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["storage_size"] = storage_size
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cu: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            fast_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+            spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["createTime"] = create_time
+        __props__["cu"] = cu
+        __props__["description"] = description
+        __props__["diskNumber"] = disk_number
+        __props__["duration"] = duration
+        __props__["fastMode"] = fast_mode
+        __props__["instanceId"] = instance_id
+        __props__["localStorageInstanceType"] = local_storage_instance_type
+        __props__["nodeGroupId"] = node_group_id
+        __props__["nodeGroupName"] = node_group_name
+        __props__["payType"] = pay_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["promotionOptionNo"] = promotion_option_no
+        __props__["regionId"] = region_id
+        __props__["residentNodeNumber"] = resident_node_number
+        __props__["specType"] = spec_type
+        __props__["status"] = status
+        __props__["storagePerformanceLevel"] = storage_performance_level
+        __props__["storageSize"] = storage_size
+        return pulumi.runtime.exists_resource(None, 'alicloud:starrocks/nodeGroup:NodeGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -161,6 +161,12 @@ func (MaliciousFileWhitelistConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*maliciousFileWhitelistConfigState)(nil)).Elem()
 }
 
+// MaliciousFileWhitelistConfigExists checks whether an existing MaliciousFileWhitelistConfig resource with the given ID exists.
+func MaliciousFileWhitelistConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MaliciousFileWhitelistConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig", id, state, "", opts...)
+}
+
 type maliciousFileWhitelistConfigArgs struct {
 	// The name of the security alert associated with the representative rule.
 	EventName *string `pulumi:"eventName"`

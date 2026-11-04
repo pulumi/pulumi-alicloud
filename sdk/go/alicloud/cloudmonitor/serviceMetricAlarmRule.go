@@ -404,6 +404,12 @@ func (ServiceMetricAlarmRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceMetricAlarmRuleState)(nil)).Elem()
 }
 
+// ServiceMetricAlarmRuleExists checks whether an existing ServiceMetricAlarmRule resource with the given ID exists.
+func ServiceMetricAlarmRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceMetricAlarmRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudmonitor/serviceMetricAlarmRule:ServiceMetricAlarmRule", id, state, "", opts...)
+}
+
 type serviceMetricAlarmRuleArgs struct {
 	// Alert condition for multiple metrics.
 	//

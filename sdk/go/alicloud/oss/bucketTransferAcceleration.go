@@ -140,6 +140,12 @@ func (BucketTransferAccelerationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketTransferAccelerationState)(nil)).Elem()
 }
 
+// BucketTransferAccelerationExists checks whether an existing BucketTransferAcceleration resource with the given ID exists.
+func BucketTransferAccelerationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketTransferAccelerationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration", id, state, "", opts...)
+}
+
 type bucketTransferAccelerationArgs struct {
 	// The name of the Bucket.
 	Bucket string `pulumi:"bucket"`

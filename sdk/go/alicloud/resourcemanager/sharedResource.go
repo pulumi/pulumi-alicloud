@@ -214,6 +214,12 @@ func (SharedResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedResourceState)(nil)).Elem()
 }
 
+// SharedResourceExists checks whether an existing SharedResource resource with the given ID exists.
+func SharedResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SharedResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/sharedResource:SharedResource", id, state, "", opts...)
+}
+
 type sharedResourceArgs struct {
 	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
 	//

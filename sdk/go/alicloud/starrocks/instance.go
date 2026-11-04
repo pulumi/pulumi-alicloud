@@ -388,6 +388,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:starrocks/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Password of admin user.
 	AdminPassword string `pulumi:"adminPassword"`

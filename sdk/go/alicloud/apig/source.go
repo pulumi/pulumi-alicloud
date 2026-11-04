@@ -223,6 +223,12 @@ func (SourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceState)(nil)).Elem()
 }
 
+// SourceExists checks whether an existing Source resource with the given ID exists.
+func SourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apig/source:Source", id, state, "", opts...)
+}
+
 type sourceArgs struct {
 	// The ID of the gateway instance.
 	GatewayId string `pulumi:"gatewayId"`

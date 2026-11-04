@@ -92,11 +92,10 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * Replaced by `groupName` after version 1.98.0.
      * 
-     * @deprecated
-     * Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
+     * @deprecated Field &#39;group_id&#39; has been deprecated from version 1.98.0. Use &#39;group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead. */
+    @Deprecated
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 

@@ -693,6 +693,32 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Environment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_metrics: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_sub_type: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliyunLang"] = aliyun_lang
+        __props__["bindResourceId"] = bind_resource_id
+        __props__["dropMetrics"] = drop_metrics
+        __props__["environmentId"] = environment_id
+        __props__["environmentName"] = environment_name
+        __props__["environmentSubType"] = environment_sub_type
+        __props__["environmentType"] = environment_type
+        __props__["managedType"] = managed_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/environment:Environment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
     def aliyun_lang(self) -> pulumi.Output[Optional[_builtins.str]]:

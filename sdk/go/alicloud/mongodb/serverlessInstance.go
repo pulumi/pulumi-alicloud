@@ -295,6 +295,12 @@ func (ServerlessInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverlessInstanceState)(nil)).Elem()
 }
 
+// ServerlessInstanceExists checks whether an existing ServerlessInstance resource with the given ID exists.
+func ServerlessInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerlessInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/serverlessInstance:ServerlessInstance", id, state, "", opts...)
+}
+
 type serverlessInstanceArgs struct {
 	// The password of the database logon account.
 	// * The password length is `8` to `32` bits.

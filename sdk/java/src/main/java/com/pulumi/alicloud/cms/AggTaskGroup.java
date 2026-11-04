@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -76,30 +76,30 @@ import javax.annotation.Nullable;
  *             .slsProject(defaultProject.projectName())
  *             .build());
  * 
- *         for (var i = 0; i < 2; i++) {
+ *         for (var i = 0; i < 2; i++) }{{@code
  *             new PrometheusInstance("defaultPrometheusInstance-" + i, PrometheusInstanceArgs.builder()
  *                 .prometheusInstanceName(String.format("%s_%s", name,range.value()))
  *                 .workspace(defaultWorkspace.id())
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         var defaultAggTaskGroup = new AggTaskGroup("defaultAggTaskGroup", AggTaskGroupArgs.builder()
  *             .sourcePrometheusId(defaultPrometheusInstance.get(0).id())
  *             .targetPrometheusId(defaultPrometheusInstance.get(1).id())
  *             .aggTaskGroupName(name)
  *             .aggTaskGroupConfig("""
  * groups:
- * - name: \"node.rules\"
- *   interval: \"60s\"
+ * - name: }&#92;{@code "node.rules}&#92;{@code "
+ *   interval: }&#92;{@code "60s}&#92;{@code "
  *   rules:
- *   - record: \"node_namespace_pod:kube_pod_info:\"
- *     expr: \"max(label_replace(kube_pod_info{job=\\\"kubernetes-pods-kube-state-metrics\\\" }, \\\"pod\\\", \\\"$1\\\", \\\"pod\\\", \\\"(.*)\\\")) by (node, namespace, pod, cluster)\"
+ *   - record: }&#92;{@code "node_namespace_pod:kube_pod_info:}&#92;{@code "
+ *     expr: }&#92;{@code "max(label_replace(kube_pod_info}{{@code job=}&#92;&#92;&#92;{@code "kubernetes-pods-kube-state-metrics}&#92;&#92;&#92;{@code " }}{@code , }&#92;&#92;&#92;{@code "pod}&#92;&#92;&#92;{@code ", }&#92;&#92;&#92;{@code "$1}&#92;&#92;&#92;{@code ", }&#92;&#92;&#92;{@code "pod}&#92;&#92;&#92;{@code ", }&#92;&#92;&#92;{@code "(.*)}&#92;&#92;&#92;{@code ")) by (node, namespace, pod, cluster)}&#92;{@code "
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

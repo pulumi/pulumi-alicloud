@@ -563,6 +563,28 @@ class DispatchRule(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DispatchRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dispatch_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dispatch_type: pulumi.Input[Optional[_builtins.str]] = None,
+            group_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict', 'outputs.DispatchRuleGroupRule']]]]] = None,
+            is_recover: pulumi.Input[Optional[_builtins.bool]] = None,
+            label_match_expression_grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict', 'outputs.DispatchRuleLabelMatchExpressionGrid']]]]] = None,
+            notify_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict', 'outputs.DispatchRuleNotifyRule']]]]] = None,
+            notify_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict', 'outputs.DispatchRuleNotifyTemplate']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dispatchRuleName"] = dispatch_rule_name
+        __props__["dispatchType"] = dispatch_type
+        __props__["groupRules"] = group_rules
+        __props__["isRecover"] = is_recover
+        __props__["labelMatchExpressionGrids"] = label_match_expression_grids
+        __props__["notifyRules"] = notify_rules
+        __props__["notifyTemplates"] = notify_templates
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/dispatchRule:DispatchRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dispatchRuleName")
     def dispatch_rule_name(self) -> pulumi.Output[_builtins.str]:

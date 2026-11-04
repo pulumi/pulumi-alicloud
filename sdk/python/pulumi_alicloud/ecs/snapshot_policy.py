@@ -703,6 +703,44 @@ class SnapshotPolicy(pulumi.CustomResource):
         __props__.__dict__["time_points"] = time_points
         return SnapshotPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            association_type: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            copied_snapshots_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            copy_encryption_configuration: pulumi.Input[Optional[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict', 'outputs.SnapshotPolicyCopyEncryptionConfiguration']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_cross_region_copy: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_copy_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPolicyTargetTagArgs', 'SnapshotPolicyTargetTagArgsDict', 'outputs.SnapshotPolicyTargetTag']]]]] = None,
+            time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associationType"] = association_type
+        __props__["autoSnapshotPolicyName"] = auto_snapshot_policy_name
+        __props__["copiedSnapshotsRetentionDays"] = copied_snapshots_retention_days
+        __props__["copyEncryptionConfiguration"] = copy_encryption_configuration
+        __props__["createTime"] = create_time
+        __props__["enableCrossRegionCopy"] = enable_cross_region_copy
+        __props__["name"] = name
+        __props__["regionId"] = region_id
+        __props__["repeatWeekdays"] = repeat_weekdays
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["retentionDays"] = retention_days
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["targetCopyRegions"] = target_copy_regions
+        __props__["targetTags"] = target_tags
+        __props__["timePoints"] = time_points
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/snapshotPolicy:SnapshotPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associationType")
     def association_type(self) -> pulumi.Output[_builtins.str]:

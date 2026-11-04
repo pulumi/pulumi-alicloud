@@ -367,6 +367,16 @@ class K8sSlbAttachment(pulumi.CustomResource):
         __props__.__dict__["slb_configs"] = slb_configs
         return K8sSlbAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict', 'outputs.K8sSlbAttachmentSlbConfig']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["slbConfigs"] = slb_configs
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/k8sSlbAttachment:K8sSlbAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

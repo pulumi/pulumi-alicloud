@@ -1296,6 +1296,56 @@ class RocketMQInstance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return RocketMQInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict', 'outputs.RocketMQInstanceAclInfo']]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict', 'outputs.RocketMQInstanceNetworkInfo']]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict', 'outputs.RocketMQInstanceProductInfo']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            series_code: pulumi.Input[Optional[_builtins.str]] = None,
+            service_code: pulumi.Input[Optional[_builtins.str]] = None,
+            software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict', 'outputs.RocketMQInstanceSoftware']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclInfo"] = acl_info
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["autoRenewPeriodUnit"] = auto_renew_period_unit
+        __props__["commodityCode"] = commodity_code
+        __props__["createTime"] = create_time
+        __props__["instanceName"] = instance_name
+        __props__["ipWhitelists"] = ip_whitelists
+        __props__["networkInfo"] = network_info
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["productInfo"] = product_info
+        __props__["regionId"] = region_id
+        __props__["remark"] = remark
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["seriesCode"] = series_code
+        __props__["serviceCode"] = service_code
+        __props__["software"] = software
+        __props__["status"] = status
+        __props__["subSeriesCode"] = sub_series_code
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/rocketMQInstance:RocketMQInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclInfo")
     def acl_info(self) -> pulumi.Output['outputs.RocketMQInstanceAclInfo']:

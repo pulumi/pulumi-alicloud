@@ -190,6 +190,12 @@ func (CompressionRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*compressionRuleState)(nil)).Elem()
 }
 
+// CompressionRuleExists checks whether an existing CompressionRule resource with the given ID exists.
+func CompressionRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CompressionRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/compressionRule:CompressionRule", id, state, "", opts...)
+}
+
 type compressionRuleArgs struct {
 	// Brotli compression. Value range:
 	Brotli *string `pulumi:"brotli"`

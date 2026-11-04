@@ -80,22 +80,20 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
     /**
      * The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
      * 
-     * @deprecated
-     * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+     * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
+    @Deprecated
     @Import(name="device")
     private @Nullable Output<String> device;
 
     /**
      * @return The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
      * 
-     * @deprecated
-     * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+     * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
+    @Deprecated
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -329,11 +327,10 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+         * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
          * 
          */
-        @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
+        @Deprecated
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
@@ -344,11 +341,10 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+         * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
          * 
          */
-        @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
+        @Deprecated
         public Builder device(String device) {
             return device(Output.of(device));
         }

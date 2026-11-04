@@ -176,6 +176,12 @@ func (ImageTransformState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageTransformState)(nil)).Elem()
 }
 
+// ImageTransformExists checks whether an existing ImageTransform resource with the given ID exists.
+func ImageTransformExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageTransformState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/imageTransform:ImageTransform", id, state, "", opts...)
+}
+
 type imageTransformArgs struct {
 	// Indicates whether the image transformations feature is enabled. Valid values:
 	Enable *string `pulumi:"enable"`

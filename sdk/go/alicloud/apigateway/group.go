@@ -158,6 +158,12 @@ func (GroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupState)(nil)).Elem()
 }
 
+// GroupExists checks whether an existing Group resource with the given ID exists.
+func GroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/group:Group", id, state, "", opts...)
+}
+
 type groupArgs struct {
 	// The base path of the api gateway group. Defaults to `/`.
 	BasePath *string `pulumi:"basePath"`

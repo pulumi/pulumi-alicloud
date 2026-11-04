@@ -415,6 +415,22 @@ class Validation(pulumi.CustomResource):
         __props__.__dict__["validation_record_ids"] = validation_record_ids
         return Validation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.int]] = None,
+            certificate_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_record_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certIdentifier"] = cert_identifier
+        __props__["certificateId"] = certificate_id
+        __props__["certificateStatus"] = certificate_status
+        __props__["instanceId"] = instance_id
+        __props__["validationRecordIds"] = validation_record_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesservicecertificate/validation:Validation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certIdentifier")
     def cert_identifier(self) -> pulumi.Output[_builtins.str]:

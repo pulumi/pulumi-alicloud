@@ -237,6 +237,12 @@ func (BandwidthPackageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthPackageState)(nil)).Elem()
 }
 
+// BandwidthPackageExists checks whether an existing BandwidthPackage resource with the given ID exists.
+func BandwidthPackageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BandwidthPackageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/bandwidthPackage:BandwidthPackage", id, state, "", opts...)
+}
+
 type bandwidthPackageArgs struct {
 	// Whether to pay automatically. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`

@@ -211,6 +211,12 @@ func (LogTailConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logTailConfigState)(nil)).Elem()
 }
 
+// LogTailConfigExists checks whether an existing LogTailConfig resource with the given ID exists.
+func LogTailConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogTailConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/logTailConfig:LogTailConfig", id, state, "", opts...)
+}
+
 type logTailConfigArgs struct {
 	// The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
 	InputDetail string `pulumi:"inputDetail"`

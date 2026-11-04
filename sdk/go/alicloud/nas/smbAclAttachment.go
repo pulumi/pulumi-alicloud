@@ -226,6 +226,12 @@ func (SmbAclAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*smbAclAttachmentState)(nil)).Elem()
 }
 
+// SmbAclAttachmentExists checks whether an existing SmbAclAttachment resource with the given ID exists.
+func SmbAclAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SmbAclAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/smbAclAttachment:SmbAclAttachment", id, state, "", opts...)
+}
+
 type smbAclAttachmentArgs struct {
 	// Specifies whether to allow anonymous access. Valid values:
 	// true: The file system allows anonymous access.

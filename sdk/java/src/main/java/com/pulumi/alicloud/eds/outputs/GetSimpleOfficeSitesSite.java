@@ -16,11 +16,10 @@ public final class GetSimpleOfficeSitesSite {
     /**
      * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
      * 
-     * @deprecated
-     * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     private Integer bandwidth;
     /**
      * @return Cloud Enterprise Network Instance Id.
@@ -90,11 +89,10 @@ public final class GetSimpleOfficeSitesSite {
     /**
      * @return Whether the Open Internet Access Function.
      * 
-     * @deprecated
-     * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     private Boolean enableInternetAccess;
     /**
      * @return NAS File System ID.
@@ -176,11 +174,10 @@ public final class GetSimpleOfficeSitesSite {
     /**
      * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
      * 
-     * @deprecated
-     * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     public Integer bandwidth() {
         return this.bandwidth;
     }
@@ -278,11 +275,10 @@ public final class GetSimpleOfficeSitesSite {
     /**
      * @return Whether the Open Internet Access Function.
      * 
-     * @deprecated
-     * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     public Boolean enableInternetAccess() {
         return this.enableInternetAccess;
     }

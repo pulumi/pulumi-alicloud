@@ -362,6 +362,18 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         __props__.__dict__["security_group_id"] = security_group_id
         return LoadBalancerSecurityGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["securityGroupId"] = security_group_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

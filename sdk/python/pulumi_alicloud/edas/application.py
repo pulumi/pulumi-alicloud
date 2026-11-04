@@ -626,6 +626,34 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["war_url"] = war_url
         return Application(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            build_pack_id: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+            ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            war_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationName"] = application_name
+        __props__["buildPackId"] = build_pack_id
+        __props__["clusterId"] = cluster_id
+        __props__["descriotion"] = descriotion
+        __props__["ecuInfos"] = ecu_infos
+        __props__["groupId"] = group_id
+        __props__["healthCheckUrl"] = health_check_url
+        __props__["logicalRegionId"] = logical_region_id
+        __props__["packageType"] = package_type
+        __props__["packageVersion"] = package_version
+        __props__["warUrl"] = war_url
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/application:Application', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationName")
     def application_name(self) -> pulumi.Output[_builtins.str]:

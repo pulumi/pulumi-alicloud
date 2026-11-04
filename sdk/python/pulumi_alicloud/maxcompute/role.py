@@ -393,6 +393,20 @@ class Role(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Role(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["policy"] = policy
+        __props__["projectName"] = project_name
+        __props__["roleName"] = role_name
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:maxcompute/role:Role', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def policy(self) -> pulumi.Output[Optional[_builtins.str]]:

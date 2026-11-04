@@ -202,6 +202,12 @@ func (BundleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bundleState)(nil)).Elem()
 }
 
+// BundleExists checks whether an existing Bundle resource with the given ID exists.
+func BundleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BundleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/bundle:Bundle", id, state, "", opts...)
+}
+
 type bundleArgs struct {
 	// The name of the bundle.
 	BundleName *string `pulumi:"bundleName"`

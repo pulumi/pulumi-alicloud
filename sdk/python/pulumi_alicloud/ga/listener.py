@@ -830,6 +830,42 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Listener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict', 'outputs.ListenerCertificate']]]]] = None,
+            client_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarded_for_config: pulumi.Input[Optional[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict', 'outputs.ListenerForwardedForConfig']]] = None,
+            http_version: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict', 'outputs.ListenerPortRange']]]]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorId"] = accelerator_id
+        __props__["certificates"] = certificates
+        __props__["clientAffinity"] = client_affinity
+        __props__["description"] = description
+        __props__["forwardedForConfig"] = forwarded_for_config
+        __props__["httpVersion"] = http_version
+        __props__["idleTimeout"] = idle_timeout
+        __props__["listenerType"] = listener_type
+        __props__["name"] = name
+        __props__["portRanges"] = port_ranges
+        __props__["protocol"] = protocol
+        __props__["proxyProtocol"] = proxy_protocol
+        __props__["requestTimeout"] = request_timeout
+        __props__["securityPolicyId"] = security_policy_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/listener:Listener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[_builtins.str]:

@@ -328,11 +328,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead. */
+    @Deprecated
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
@@ -466,11 +465,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      * 
-     * @deprecated
-     * Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
@@ -492,11 +490,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
-     * @deprecated
-     * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionStringPrefix;
 
@@ -598,11 +595,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
-     * @deprecated
-     * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enablePublic;
 
@@ -716,11 +712,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead. */
+    @Deprecated
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -750,11 +745,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
-     * @deprecated
-     * Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+     * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      * 
      */
-    @Deprecated /* Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead. */
+    @Deprecated
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
@@ -898,11 +892,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     @Export(name="parameters", refs={List.class,InstanceParameter.class}, tree="[0,1]")
     private Output<List<InstanceParameter>> parameters;
 

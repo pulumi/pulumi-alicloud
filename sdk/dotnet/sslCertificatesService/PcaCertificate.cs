@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         public Output<bool?> EnableCrl { get; private set; } = null!;
 
         /// <summary>
-        /// Extended attributes of the certificate, used to define extended key usages.  
+        /// Extended attributes of the certificate, used to define extended key usages.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// Extended attributes of the certificate, used to define extended key usages.  
+        /// Extended attributes of the certificate, used to define extended key usages.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -448,7 +448,7 @@ namespace Pulumi.AliCloud.sslCertificatesService
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// Extended attributes of the certificate, used to define extended key usages.  
+        /// Extended attributes of the certificate, used to define extended key usages.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>

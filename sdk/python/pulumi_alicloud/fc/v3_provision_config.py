@@ -692,6 +692,32 @@ class V3ProvisionConfig(pulumi.CustomResource):
         __props__.__dict__["target_tracking_policies"] = target_tracking_policies
         return V3ProvisionConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            always_allocate_cpu: pulumi.Input[Optional[_builtins.bool]] = None,
+            always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
+            current: pulumi.Input[Optional[_builtins.int]] = None,
+            current_error: pulumi.Input[Optional[_builtins.str]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict', 'outputs.V3ProvisionConfigScheduledAction']]]]] = None,
+            target: pulumi.Input[Optional[_builtins.int]] = None,
+            target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict', 'outputs.V3ProvisionConfigTargetTrackingPolicy']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alwaysAllocateCpu"] = always_allocate_cpu
+        __props__["alwaysAllocateGpu"] = always_allocate_gpu
+        __props__["current"] = current
+        __props__["currentError"] = current_error
+        __props__["functionArn"] = function_arn
+        __props__["functionName"] = function_name
+        __props__["qualifier"] = qualifier
+        __props__["scheduledActions"] = scheduled_actions
+        __props__["target"] = target
+        __props__["targetTrackingPolicies"] = target_tracking_policies
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3ProvisionConfig:V3ProvisionConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alwaysAllocateCpu")
     def always_allocate_cpu(self) -> pulumi.Output[Optional[_builtins.bool]]:

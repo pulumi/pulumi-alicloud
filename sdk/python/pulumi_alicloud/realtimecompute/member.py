@@ -396,6 +396,20 @@ class Member(pulumi.CustomResource):
         __props__.__dict__["role"] = role
         return Member(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["member"] = member
+        __props__["namespace"] = namespace
+        __props__["resourceId"] = resource_id
+        __props__["role"] = role
+        return pulumi.runtime.exists_resource(None, 'alicloud:realtimecompute/member:Member', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def member(self) -> pulumi.Output[_builtins.str]:

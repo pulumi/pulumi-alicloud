@@ -211,6 +211,12 @@ func (WorkspaceCodeSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceCodeSourceState)(nil)).Elem()
 }
 
+// WorkspaceCodeSourceExists checks whether an existing WorkspaceCodeSource resource with the given ID exists.
+func WorkspaceCodeSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceCodeSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceCodeSource:WorkspaceCodeSource", id, state, "", opts...)
+}
+
 type workspaceCodeSourceArgs struct {
 	// Visibility of the code configuration, possible values:
 	// - PRIVATE: In this workspace, it is only visible to you and the administrator.

@@ -211,6 +211,12 @@ func (Ipv6GatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv6GatewayState)(nil)).Elem()
 }
 
+// Ipv6GatewayExists checks whether an existing Ipv6Gateway resource with the given ID exists.
+func Ipv6GatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv6GatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipv6Gateway:Ipv6Gateway", id, state, "", opts...)
+}
+
 type ipv6GatewayArgs struct {
 	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Description *string `pulumi:"description"`

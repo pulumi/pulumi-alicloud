@@ -752,6 +752,42 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attachment_count: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            document: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict', 'outputs.PolicyStatement']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachmentCount"] = attachment_count
+        __props__["createTime"] = create_time
+        __props__["defaultVersion"] = default_version
+        __props__["description"] = description
+        __props__["document"] = document
+        __props__["force"] = force
+        __props__["name"] = name
+        __props__["policyDocument"] = policy_document
+        __props__["policyName"] = policy_name
+        __props__["rotateStrategy"] = rotate_strategy
+        __props__["statements"] = statements
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["version"] = version
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attachmentCount")
     def attachment_count(self) -> pulumi.Output[_builtins.int]:

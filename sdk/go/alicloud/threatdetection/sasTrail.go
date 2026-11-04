@@ -114,6 +114,12 @@ func (SasTrailState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sasTrailState)(nil)).Elem()
 }
 
+// SasTrailExists checks whether an existing SasTrail resource with the given ID exists.
+func SasTrailExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SasTrailState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/sasTrail:SasTrail", id, state, "", opts...)
+}
+
 type sasTrailArgs struct {
 }
 

@@ -474,6 +474,28 @@ class OidcProvider(pulumi.CustomResource):
         __props__.__dict__["oidc_provider_name"] = oidc_provider_name
         return OidcProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            issuance_limit_time: pulumi.Input[Optional[_builtins.int]] = None,
+            issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_provider_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arn"] = arn
+        __props__["clientIds"] = client_ids
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["fingerprints"] = fingerprints
+        __props__["issuanceLimitTime"] = issuance_limit_time
+        __props__["issuerUrl"] = issuer_url
+        __props__["oidcProviderName"] = oidc_provider_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ims/oidcProvider:OidcProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arn(self) -> pulumi.Output[_builtins.str]:

@@ -137,6 +137,12 @@ func (SavedQueryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*savedQueryState)(nil)).Elem()
 }
 
+// SavedQueryExists checks whether an existing SavedQuery resource with the given ID exists.
+func SavedQueryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SavedQueryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/savedQuery:SavedQuery", id, state, "", opts...)
+}
+
 type savedQueryArgs struct {
 	// Query Description.
 	Description *string `pulumi:"description"`

@@ -53,20 +53,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -100,20 +100,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -147,20 +147,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -194,20 +194,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -241,20 +241,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -288,20 +288,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -335,20 +335,20 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-\\w+")
+     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
      *             .status("Running")
      *             .build());
      * 
      *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

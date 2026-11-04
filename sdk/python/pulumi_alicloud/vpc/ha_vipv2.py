@@ -672,6 +672,42 @@ class HaVipv2(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return HaVipv2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associated_eip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            associated_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            associated_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            havip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            master_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatedEipAddresses"] = associated_eip_addresses
+        __props__["associatedInstanceType"] = associated_instance_type
+        __props__["associatedInstances"] = associated_instances
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["haVipId"] = ha_vip_id
+        __props__["haVipName"] = ha_vip_name
+        __props__["havipName"] = havip_name
+        __props__["ipAddress"] = ip_address
+        __props__["masterInstanceId"] = master_instance_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/haVipv2:HaVipv2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatedEipAddresses")
     def associated_eip_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

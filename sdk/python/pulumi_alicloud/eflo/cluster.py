@@ -830,6 +830,40 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict', 'outputs.ClusterComponent']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+            networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict', 'outputs.ClusterNetworks']]] = None,
+            nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict', 'outputs.ClusterNodeGroup']]]]] = None,
+            open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterDescription"] = cluster_description
+        __props__["clusterName"] = cluster_name
+        __props__["clusterType"] = cluster_type
+        __props__["components"] = components
+        __props__["createTime"] = create_time
+        __props__["hpnZone"] = hpn_zone
+        __props__["ignoreFailedNodeTasks"] = ignore_failed_node_tasks
+        __props__["networks"] = networks
+        __props__["nimizVswitches"] = nimiz_vswitches
+        __props__["nodeGroups"] = node_groups
+        __props__["openEniJumboFrame"] = open_eni_jumbo_frame
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterDescription")
     def cluster_description(self) -> pulumi.Output[Optional[_builtins.str]]:

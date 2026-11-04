@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example-name");
  *         var default_ = new Rule("default", RuleArgs.builder()
@@ -55,24 +55,24 @@ import javax.annotation.Nullable;
  *             .category(2)
  *             .content("""
  *   [
- *     {
- *       \"rule\": [
- *         {
- *           \"operator\": \"contains\",
- *           \"target\": \"content\",
- *           \"value\": \"tf-testACCContent\"
- *         }
+ *     }{{@code
+ *       }&#92;{@code "rule}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "contains}&#92;{@code ",
+ *           }&#92;{@code "target}&#92;{@code ": }&#92;{@code "content}&#92;{@code ",
+ *           }&#92;{@code "value}&#92;{@code ": }&#92;{@code "tf-testACCContent}&#92;{@code "
+ *         }}{@code
  *       ],
- *       \"ruleRelation\": \"AND\"
- *     }
+ *       }&#92;{@code "ruleRelation}&#92;{@code ": }&#92;{@code "AND}&#92;{@code "
+ *     }}{@code
  *   ]
  *             """)
  *             .riskLevelId("4")
  *             .productCode("OSS")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

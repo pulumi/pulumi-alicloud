@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create a RAM Group Policy attachment.
  *         var group = new Group("group", GroupArgs.builder()
  *             .groupName("groupName")
@@ -66,22 +66,22 @@ import javax.annotation.Nullable;
  *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("tf-example-%s", default_.get("result")))
  *             .policyDocument("""
- *     {
- *       \"Statement\": [
- *         {
- *           \"Action\": [
- *             \"oss:ListObjects\",
- *             \"oss:GetObject\"
+ *     }{{@code
+ *       }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "Action}&#92;{@code ": [
+ *             }&#92;{@code "oss:ListObjects}&#92;{@code ",
+ *             }&#92;{@code "oss:GetObject}&#92;{@code "
  *           ],
- *           \"Effect\": \"Allow\",
- *           \"Resource\": [
- *             \"acs:oss:*:*:mybucket\",
- *             \"acs:oss:*:*:mybucket/*\"
+ *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *           }&#92;{@code "Resource}&#92;{@code ": [
+ *             }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+ *             }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
  *           ]
- *         }
+ *         }}{@code
  *       ],
- *         \"Version\": \"1\"
- *     }
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .description("this is a policy test")
  *             .build());
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  *             .groupName(group.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

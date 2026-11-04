@@ -180,6 +180,12 @@ func (PublicEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicEndpointState)(nil)).Elem()
 }
 
+// PublicEndpointExists checks whether an existing PublicEndpoint resource with the given ID exists.
+func PublicEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint", id, state, "", opts...)
+}
+
 type publicEndpointArgs struct {
 	// The public network connection string prefix of the instance.
 	ConnectionStringPrefix string `pulumi:"connectionStringPrefix"`

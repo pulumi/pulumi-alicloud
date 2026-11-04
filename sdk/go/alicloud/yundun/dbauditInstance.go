@@ -183,6 +183,12 @@ func (DBAuditInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbauditInstanceState)(nil)).Elem()
 }
 
+// DBAuditInstanceExists checks whether an existing DBAuditInstance resource with the given ID exists.
+func DBAuditInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DBAuditInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:yundun/dBAuditInstance:DBAuditInstance", id, state, "", opts...)
+}
+
 type dbauditInstanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`

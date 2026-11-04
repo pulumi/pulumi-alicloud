@@ -577,6 +577,32 @@ class JdbcDataSource(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return JdbcDataSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_password: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataSourceDescription"] = data_source_description
+        __props__["dataSourceId"] = data_source_id
+        __props__["dataSourceName"] = data_source_name
+        __props__["dataSourceType"] = data_source_type
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["jdbcConnectionString"] = jdbc_connection_string
+        __props__["jdbcPassword"] = jdbc_password
+        __props__["jdbcUserName"] = jdbc_user_name
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/jdbcDataSource:JdbcDataSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

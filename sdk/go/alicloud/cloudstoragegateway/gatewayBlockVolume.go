@@ -330,6 +330,12 @@ func (GatewayBlockVolumeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayBlockVolumeState)(nil)).Elem()
 }
 
+// GatewayBlockVolumeExists checks whether an existing GatewayBlockVolume resource with the given ID exists.
+func GatewayBlockVolumeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayBlockVolumeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume", id, state, "", opts...)
+}
+
 type gatewayBlockVolumeArgs struct {
 	// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
 	CacheMode *string `pulumi:"cacheMode"`

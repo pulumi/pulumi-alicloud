@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var networkRule1 = new NetworkRule("networkRule1", NetworkRuleArgs.builder()
@@ -92,16 +92,16 @@ import javax.annotation.Nullable;
  *             .policyName(name)
  *             .kmsInstanceId("shared")
  *             .accessControlRules("""
- *   {
- *       \"NetworkRules\":[
- *           \"alicloud_kms_network_rule.networkRule1.network_rule_name\"
+ *   }{{@code
+ *       }&#92;{@code "NetworkRules}&#92;{@code ":[
+ *           }&#92;{@code "alicloud_kms_network_rule.networkRule1.network_rule_name}&#92;{@code "
  *       ]
- *   }
+ *   }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

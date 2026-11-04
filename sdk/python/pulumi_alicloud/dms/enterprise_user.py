@@ -536,6 +536,30 @@ class EnterpriseUser(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return EnterpriseUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            max_execute_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_result_count: pulumi.Input[Optional[_builtins.int]] = None,
+            mobile: pulumi.Input[Optional[_builtins.str]] = None,
+            nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tid: pulumi.Input[Optional[_builtins.int]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["maxExecuteCount"] = max_execute_count
+        __props__["maxResultCount"] = max_result_count
+        __props__["mobile"] = mobile
+        __props__["nickName"] = nick_name
+        __props__["roleNames"] = role_names
+        __props__["status"] = status
+        __props__["tid"] = tid
+        __props__["uid"] = uid
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:dms/enterpriseUser:EnterpriseUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="maxExecuteCount")
     def max_execute_count(self) -> pulumi.Output[Optional[_builtins.int]]:

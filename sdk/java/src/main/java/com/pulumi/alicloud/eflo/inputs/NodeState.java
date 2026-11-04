@@ -77,22 +77,20 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Node Model
      * 
-     * @deprecated
-     * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * @deprecated Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
+    @Deprecated
     @Import(name="computingServer")
     private @Nullable Output<String> computingServer;
 
     /**
      * @return Node Model
      * 
-     * @deprecated
-     * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * @deprecated Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
+    @Deprecated
     public Optional<Output<String>> computingServer() {
         return Optional.ofNullable(this.computingServer);
     }
@@ -670,11 +668,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+         * @deprecated Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
+        @Deprecated
         public Builder computingServer(@Nullable Output<String> computingServer) {
             $.computingServer = computingServer;
             return this;
@@ -685,11 +682,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+         * @deprecated Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
+        @Deprecated
         public Builder computingServer(String computingServer) {
             return computingServer(Output.of(computingServer));
         }

@@ -644,6 +644,30 @@ class AScript(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AScript(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ascript_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict', 'outputs.AScriptExtAttribute']]]]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[_builtins.str]] = None,
+            script_content: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ascriptName"] = ascript_name
+        __props__["dryRun"] = dry_run
+        __props__["enabled"] = enabled
+        __props__["extAttributeEnabled"] = ext_attribute_enabled
+        __props__["extAttributes"] = ext_attributes
+        __props__["listenerId"] = listener_id
+        __props__["position"] = position
+        __props__["scriptContent"] = script_content
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/aScript:AScript', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ascriptName")
     def ascript_name(self) -> pulumi.Output[_builtins.str]:

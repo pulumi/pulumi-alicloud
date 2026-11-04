@@ -192,6 +192,12 @@ func (QuotaAlarmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaAlarmState)(nil)).Elem()
 }
 
+// QuotaAlarmExists checks whether an existing QuotaAlarm resource with the given ID exists.
+func QuotaAlarmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaAlarmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:quotas/quotaAlarm:QuotaAlarm", id, state, "", opts...)
+}
+
 type quotaAlarmArgs struct {
 	// The Product Code.
 	ProductCode string `pulumi:"productCode"`

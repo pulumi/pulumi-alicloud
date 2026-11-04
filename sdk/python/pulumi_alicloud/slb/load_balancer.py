@@ -1155,6 +1155,54 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            master_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modification_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            modification_protection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slave_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["addressIpVersion"] = address_ip_version
+        __props__["addressType"] = address_type
+        __props__["bandwidth"] = bandwidth
+        __props__["deleteProtection"] = delete_protection
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["loadBalancerName"] = load_balancer_name
+        __props__["loadBalancerSpec"] = load_balancer_spec
+        __props__["masterZoneId"] = master_zone_id
+        __props__["modificationProtectionReason"] = modification_protection_reason
+        __props__["modificationProtectionStatus"] = modification_protection_status
+        __props__["name"] = name
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["slaveZoneId"] = slave_zone_id
+        __props__["specification"] = specification
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/loadBalancer:LoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

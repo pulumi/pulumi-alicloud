@@ -321,6 +321,20 @@ class DeviceGroup(pulumi.CustomResource):
         __props__.__dict__["super_group_id"] = super_group_id
         return DeviceGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            iot_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            super_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupDesc"] = group_desc
+        __props__["groupName"] = group_name
+        __props__["iotInstanceId"] = iot_instance_id
+        __props__["superGroupId"] = super_group_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:iot/deviceGroup:DeviceGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupDesc")
     def group_desc(self) -> pulumi.Output[Optional[_builtins.str]]:

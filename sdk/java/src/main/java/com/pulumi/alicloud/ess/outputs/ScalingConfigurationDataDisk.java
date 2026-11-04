@@ -36,11 +36,10 @@ public final class ScalingConfigurationDataDisk {
     /**
      * @return The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
      * 
-     * @deprecated
-     * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+     * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
+    @Deprecated
     private @Nullable String device;
     /**
      * @return Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
@@ -110,11 +109,10 @@ public final class ScalingConfigurationDataDisk {
     /**
      * @return The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
      * 
-     * @deprecated
-     * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+     * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
+    @Deprecated
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }

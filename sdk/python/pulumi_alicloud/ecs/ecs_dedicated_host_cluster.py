@@ -368,6 +368,22 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return EcsDedicatedHostCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dedicated_host_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dedicatedHostClusterName"] = dedicated_host_cluster_name
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["tags"] = tags
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dedicatedHostClusterName")
     def dedicated_host_cluster_name(self) -> pulumi.Output[Optional[_builtins.str]]:

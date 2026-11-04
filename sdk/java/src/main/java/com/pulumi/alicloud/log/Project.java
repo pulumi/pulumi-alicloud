@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -104,30 +104,30 @@ import javax.annotation.Nullable;
  *             .projectName(String.format("terraform-example-%s", default_.get("result")))
  *             .description("terraform-example")
  *             .policy("""
- * {
- *   \"Statement\": [
- *     {
- *       \"Action\": [
- *         \"log:PostLogStoreLogs\"
+ * }{{@code
+ *   }&#92;{@code "Statement}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "Action}&#92;{@code ": [
+ *         }&#92;{@code "log:PostLogStoreLogs}&#92;{@code "
  *       ],
- *       \"Condition\": {
- *         \"StringNotLike\": {
- *           \"acs:SourceVpc\": [
- *             \"vpc-*\"
+ *       }&#92;{@code "Condition}&#92;{@code ": }{{@code
+ *         }&#92;{@code "StringNotLike}&#92;{@code ": }{{@code
+ *           }&#92;{@code "acs:SourceVpc}&#92;{@code ": [
+ *             }&#92;{@code "vpc-*}&#92;{@code "
  *           ]
- *         }
- *       },
- *       \"Effect\": \"Deny\",
- *       \"Resource\": \"acs:log:*:*:project/tf-log/*\"
- *     }
+ *         }}{@code
+ *       }}{@code ,
+ *       }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+ *       }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "acs:log:*:*:project/tf-log/*}&#92;{@code "
+ *     }}{@code
  *   ],
- *   \"Version\": \"1\"
- * }
+ *   }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ * }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -180,11 +180,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Access point network source. The valid values are as follows: 
+        /// Access point network source. The valid values are as follows:
         /// - vpc: only the specified VPC ID can be used to access the access point.
         /// - internet: the access point can be accessed through both external and internal Endpoint.
         /// </summary>
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Access point network source. The valid values are as follows: 
+        /// Access point network source. The valid values are as follows:
         /// - vpc: only the specified VPC ID can be used to access the access point.
         /// - internet: the access point can be accessed through both external and internal Endpoint.
         /// </summary>
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Access point network source. The valid values are as follows: 
+        /// Access point network source. The valid values are as follows:
         /// - vpc: only the specified VPC ID can be used to access the access point.
         /// - internet: the access point can be accessed through both external and internal Endpoint.
         /// </summary>

@@ -455,6 +455,24 @@ class PolarDbExtension(pulumi.CustomResource):
         __props__.__dict__["installed_version"] = installed_version
         return PolarDbExtension(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_version: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_name: pulumi.Input[Optional[_builtins.str]] = None,
+            installed_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["dbName"] = db_name
+        __props__["defaultVersion"] = default_version
+        __props__["extensionName"] = extension_name
+        __props__["installedVersion"] = installed_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:index/polarDbExtension:PolarDbExtension', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[_builtins.str]:

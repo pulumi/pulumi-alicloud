@@ -373,6 +373,22 @@ class EcsPrefixList(pulumi.CustomResource):
         __props__.__dict__["prefix_list_name"] = prefix_list_name
         return EcsPrefixList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_family: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict', 'outputs.EcsPrefixListEntry']]]]] = None,
+            max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressFamily"] = address_family
+        __props__["description"] = description
+        __props__["entries"] = entries
+        __props__["maxEntries"] = max_entries
+        __props__["prefixListName"] = prefix_list_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsPrefixList:EcsPrefixList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressFamily")
     def address_family(self) -> pulumi.Output[_builtins.str]:

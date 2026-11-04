@@ -14,11 +14,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterBootstrapScriptNodeSelector {
     /**
-     * @deprecated
-     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * @deprecated Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
+    @Deprecated
     private @Nullable String nodeGroupId;
     /**
      * @return The bootstrap scripts execution target node group ids.
@@ -26,11 +25,10 @@ public final class ClusterBootstrapScriptNodeSelector {
      */
     private @Nullable List<String> nodeGroupIds;
     /**
-     * @deprecated
-     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * @deprecated Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
+    @Deprecated
     private @Nullable String nodeGroupName;
     /**
      * @return The bootstrap scripts execution target node group names.
@@ -55,11 +53,10 @@ public final class ClusterBootstrapScriptNodeSelector {
 
     private ClusterBootstrapScriptNodeSelector() {}
     /**
-     * @deprecated
-     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * @deprecated Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
+    @Deprecated
     public Optional<String> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
@@ -71,11 +68,10 @@ public final class ClusterBootstrapScriptNodeSelector {
         return this.nodeGroupIds == null ? List.of() : this.nodeGroupIds;
     }
     /**
-     * @deprecated
-     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * @deprecated Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
+    @Deprecated
     public Optional<String> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
     }

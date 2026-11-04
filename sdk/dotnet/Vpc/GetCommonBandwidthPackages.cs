@@ -46,9 +46,9 @@ namespace Pulumi.AliCloud.Vpc
         /// ```
         /// 
         /// ## Public ip addresses Block
-        ///   
+        /// 
         ///   The public ip addresses mapping supports the following:
-        ///   
+        /// 
         ///   * `IpAddress`   - The address of the EIP.
         ///   * `AllocationId` - The ID of the EIP instance.
         ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
@@ -91,9 +91,9 @@ namespace Pulumi.AliCloud.Vpc
         /// ```
         /// 
         /// ## Public ip addresses Block
-        ///   
+        /// 
         ///   The public ip addresses mapping supports the following:
-        ///   
+        /// 
         ///   * `IpAddress`   - The address of the EIP.
         ///   * `AllocationId` - The ID of the EIP instance.
         ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
@@ -136,9 +136,9 @@ namespace Pulumi.AliCloud.Vpc
         /// ```
         /// 
         /// ## Public ip addresses Block
-        ///   
+        /// 
         ///   The public ip addresses mapping supports the following:
-        ///   
+        /// 
         ///   * `IpAddress`   - The address of the EIP.
         ///   * `AllocationId` - The ID of the EIP instance.
         ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.

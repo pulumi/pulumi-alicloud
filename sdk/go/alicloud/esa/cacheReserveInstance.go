@@ -166,6 +166,12 @@ func (CacheReserveInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cacheReserveInstanceState)(nil)).Elem()
 }
 
+// CacheReserveInstanceExists checks whether an existing CacheReserveInstance resource with the given ID exists.
+func CacheReserveInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CacheReserveInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/cacheReserveInstance:CacheReserveInstance", id, state, "", opts...)
+}
+
 type cacheReserveInstanceArgs struct {
 	// Automatic payment.
 	AutoPay *bool `pulumi:"autoPay"`

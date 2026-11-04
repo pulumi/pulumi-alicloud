@@ -335,6 +335,12 @@ func (V3TriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3triggerState)(nil)).Elem()
 }
 
+// V3TriggerExists checks whether an existing V3Trigger resource with the given ID exists.
+func V3TriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3TriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3Trigger:V3Trigger", id, state, "", opts...)
+}
+
 type v3triggerArgs struct {
 	// Description of the trigger
 	Description *string `pulumi:"description"`

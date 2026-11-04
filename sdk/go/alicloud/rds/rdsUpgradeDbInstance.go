@@ -711,6 +711,12 @@ func (RdsUpgradeDbInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsUpgradeDbInstanceState)(nil)).Elem()
 }
 
+// RdsUpgradeDbInstanceExists checks whether an existing RdsUpgradeDbInstance resource with the given ID exists.
+func RdsUpgradeDbInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsUpgradeDbInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance", id, state, "", opts...)
+}
+
 type rdsUpgradeDbInstanceArgs struct {
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
 	Acl *string `pulumi:"acl"`

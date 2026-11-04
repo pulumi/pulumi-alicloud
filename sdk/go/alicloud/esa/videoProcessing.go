@@ -218,6 +218,12 @@ func (VideoProcessingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*videoProcessingState)(nil)).Elem()
 }
 
+// VideoProcessingExists checks whether an existing VideoProcessing resource with the given ID exists.
+func VideoProcessingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VideoProcessingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/videoProcessing:VideoProcessing", id, state, "", opts...)
+}
+
 type videoProcessingArgs struct {
 	// Custom FLV end parameters.
 	FlvSeekEnd *string `pulumi:"flvSeekEnd"`

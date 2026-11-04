@@ -247,11 +247,10 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
     /**
      * Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
-     * @deprecated
-     * Field `instantAccess` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
@@ -265,11 +264,10 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
     /**
      * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
-     * @deprecated
-     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
@@ -283,11 +281,10 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

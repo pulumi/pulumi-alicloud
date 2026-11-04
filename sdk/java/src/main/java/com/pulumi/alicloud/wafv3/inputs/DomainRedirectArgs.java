@@ -23,8 +23,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
      * 
-     * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
-     * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
+     * - If you specify IP addresses, specify the value in the **&#92;[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+     * - If you specify domain names, specify the value in the **&#92;[&#34;domain&#34;]** format. You can enter up to 20 domain names.
      * 
      */
     @Import(name="backends")
@@ -33,8 +33,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
      * 
-     * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
-     * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
+     * - If you specify IP addresses, specify the value in the **&#92;[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+     * - If you specify domain names, specify the value in the **&#92;[&#34;domain&#34;]** format. You can enter up to 20 domain names.
      * 
      */
     public Optional<Output<List<String>>> backends() {
@@ -358,8 +358,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param backends The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
          * 
-         * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
-         * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
+         * - If you specify IP addresses, specify the value in the **&#92;[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **&#92;[&#34;domain&#34;]** format. You can enter up to 20 domain names.
          * 
          * @return builder
          * 
@@ -372,8 +372,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param backends The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
          * 
-         * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
-         * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
+         * - If you specify IP addresses, specify the value in the **&#92;[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **&#92;[&#34;domain&#34;]** format. You can enter up to 20 domain names.
          * 
          * @return builder
          * 
@@ -385,8 +385,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param backends The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
          * 
-         * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
-         * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
+         * - If you specify IP addresses, specify the value in the **&#92;[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **&#92;[&#34;domain&#34;]** format. You can enter up to 20 domain names.
          * 
          * @return builder
          * 

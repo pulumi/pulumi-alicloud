@@ -969,6 +969,46 @@ class EcsBackupPlan(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return EcsBackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            detail: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecs_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude: pulumi.Input[Optional[_builtins.str]] = None,
+            include: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            update_paths: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupType"] = backup_type
+        __props__["crossAccountRoleName"] = cross_account_role_name
+        __props__["crossAccountType"] = cross_account_type
+        __props__["crossAccountUserId"] = cross_account_user_id
+        __props__["detail"] = detail
+        __props__["disabled"] = disabled
+        __props__["ecsBackupPlanName"] = ecs_backup_plan_name
+        __props__["exclude"] = exclude
+        __props__["include"] = include
+        __props__["instanceId"] = instance_id
+        __props__["options"] = options
+        __props__["paths"] = paths
+        __props__["retention"] = retention
+        __props__["schedule"] = schedule
+        __props__["speedLimit"] = speed_limit
+        __props__["updatePaths"] = update_paths
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/ecsBackupPlan:EcsBackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[_builtins.str]:

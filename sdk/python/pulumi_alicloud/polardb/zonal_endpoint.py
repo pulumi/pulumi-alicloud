@@ -751,6 +751,42 @@ class ZonalEndpoint(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return ZonalEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_nodes_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            nodes_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoAddNewNodes"] = auto_add_new_nodes
+        __props__["connectionPrefix"] = connection_prefix
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["dbClusterNodesIds"] = db_cluster_nodes_ids
+        __props__["dbEndpointDescription"] = db_endpoint_description
+        __props__["dbEndpointId"] = db_endpoint_id
+        __props__["endpointConfig"] = endpoint_config
+        __props__["endpointType"] = endpoint_type
+        __props__["netType"] = net_type
+        __props__["nodes"] = nodes
+        __props__["nodesKeys"] = nodes_keys
+        __props__["port"] = port
+        __props__["readWriteMode"] = read_write_mode
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/zonalEndpoint:ZonalEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoAddNewNodes")
     def auto_add_new_nodes(self) -> pulumi.Output[_builtins.str]:

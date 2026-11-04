@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var create_agg = new Aggregator("create-agg", AggregatorArgs.builder()
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                         jsonObject(
  *                             jsonProperty("name", "regionId"),
  *                             jsonProperty("type", "String"),
- *                             jsonProperty("value", "{regionId}"),
+ *                             jsonProperty("value", "}{{@code regionId}}{@code "),
  *                             jsonProperty("allowedValues", jsonArray(
  *                             )),
  *                             jsonProperty("description", "region ID")
@@ -99,15 +99,15 @@ import javax.annotation.Nullable;
  *                         jsonObject(
  *                             jsonProperty("name", "tags"),
  *                             jsonProperty("type", "Json"),
- *                             jsonProperty("value", "{\"aaa\":\"bbb\"}"),
+ *                             jsonProperty("value", "}{&#92;{@code "aaa}&#92;{@code ":}&#92;{@code "bbb}&#92;{@code "}}{@code "),
  *                             jsonProperty("allowedValues", jsonArray(
  *                             )),
- *                             jsonProperty("description", "resource tags (for example,{\"k1\":\"v1\",\"k2\":\"v2\"}).")
+ *                             jsonProperty("description", "resource tags (for example,}{&#92;{@code "k1}&#92;{@code ":}&#92;{@code "v1}&#92;{@code ",}&#92;{@code "k2}&#92;{@code ":}&#92;{@code "v2}&#92;{@code "}}{@code ).")
  *                         ), 
  *                         jsonObject(
  *                             jsonProperty("name", "resourceType"),
  *                             jsonProperty("type", "String"),
- *                             jsonProperty("value", "{resourceType}"),
+ *                             jsonProperty("value", "}{{@code resourceType}}{@code "),
  *                             jsonProperty("allowedValues", jsonArray(
  *                             )),
  *                             jsonProperty("description", "resource type")
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *                         jsonObject(
  *                             jsonProperty("name", "resourceIds"),
  *                             jsonProperty("type", "ARRAY"),
- *                             jsonProperty("value", "[{\"resources\":[]}]"),
+ *                             jsonProperty("value", "[}{&#92;{@code "resources}&#92;{@code ":[]}}{@code ]"),
  *                             jsonProperty("allowedValues", jsonArray(
  *                             )),
  *                             jsonProperty("description", "Resource ID List")
@@ -124,8 +124,8 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

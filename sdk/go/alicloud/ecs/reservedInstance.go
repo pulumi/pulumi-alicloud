@@ -258,6 +258,12 @@ func (ReservedInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedInstanceState)(nil)).Elem()
 }
 
+// ReservedInstanceExists checks whether an existing ReservedInstance resource with the given ID exists.
+func ReservedInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservedInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/reservedInstance:ReservedInstance", id, state, "", opts...)
+}
+
 type reservedInstanceArgs struct {
 	// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`

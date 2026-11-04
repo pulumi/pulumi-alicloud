@@ -281,6 +281,12 @@ func (DesktopState) ElementType() reflect.Type {
 	return reflect.TypeOf((*desktopState)(nil)).Elem()
 }
 
+// DesktopExists checks whether an existing Desktop resource with the given ID exists.
+func DesktopExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DesktopState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/desktop:Desktop", id, state, "", opts...)
+}
+
 type desktopArgs struct {
 	// The amount of the Desktop.
 	Amount *int `pulumi:"amount"`

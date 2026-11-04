@@ -415,6 +415,22 @@ class DeliveryChannel(pulumi.CustomResource):
         __props__.__dict__["resource_snapshot_delivery"] = resource_snapshot_delivery
         return DeliveryChannel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_filter: pulumi.Input[Optional[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict', 'outputs.DeliveryChannelDeliveryChannelFilter']]] = None,
+            delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_change_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict', 'outputs.DeliveryChannelResourceChangeDelivery']]] = None,
+            resource_snapshot_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict', 'outputs.DeliveryChannelResourceSnapshotDelivery']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deliveryChannelDescription"] = delivery_channel_description
+        __props__["deliveryChannelFilter"] = delivery_channel_filter
+        __props__["deliveryChannelName"] = delivery_channel_name
+        __props__["resourceChangeDelivery"] = resource_change_delivery
+        __props__["resourceSnapshotDelivery"] = resource_snapshot_delivery
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/deliveryChannel:DeliveryChannel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deliveryChannelDescription")
     def delivery_channel_description(self) -> pulumi.Output[Optional[_builtins.str]]:

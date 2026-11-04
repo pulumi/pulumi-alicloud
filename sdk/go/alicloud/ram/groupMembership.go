@@ -182,6 +182,12 @@ func (GroupMembershipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMembershipState)(nil)).Elem()
 }
 
+// GroupMembershipExists checks whether an existing GroupMembership resource with the given ID exists.
+func GroupMembershipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupMembershipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/groupMembership:GroupMembership", id, state, "", opts...)
+}
+
 type groupMembershipArgs struct {
 	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	GroupName string `pulumi:"groupName"`

@@ -280,6 +280,12 @@ func (ExecutionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*executionState)(nil)).Elem()
 }
 
+// ExecutionExists checks whether an existing Execution resource with the given ID exists.
+func ExecutionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExecutionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/execution:Execution", id, state, "", opts...)
+}
+
 type executionArgs struct {
 	// The description of OOS Execution.
 	Description *string `pulumi:"description"`

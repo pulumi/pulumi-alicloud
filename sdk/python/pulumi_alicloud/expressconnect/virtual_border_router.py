@@ -1188,6 +1188,62 @@ class VirtualBorderRouter(pulumi.CustomResource):
         __props__.__dict__["vlan_id"] = vlan_id
         return VirtualBorderRouter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associated_physical_connections: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_multiplier: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            min_rx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            min_tx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sitelink_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_border_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatedPhysicalConnections"] = associated_physical_connections
+        __props__["bandwidth"] = bandwidth
+        __props__["circuitCode"] = circuit_code
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["detectMultiplier"] = detect_multiplier
+        __props__["enableIpv6"] = enable_ipv6
+        __props__["localGatewayIp"] = local_gateway_ip
+        __props__["localIpv6GatewayIp"] = local_ipv6_gateway_ip
+        __props__["minRxInterval"] = min_rx_interval
+        __props__["minTxInterval"] = min_tx_interval
+        __props__["mtu"] = mtu
+        __props__["peerGatewayIp"] = peer_gateway_ip
+        __props__["peerIpv6GatewayIp"] = peer_ipv6_gateway_ip
+        __props__["peeringIpv6SubnetMask"] = peering_ipv6_subnet_mask
+        __props__["peeringSubnetMask"] = peering_subnet_mask
+        __props__["physicalConnectionId"] = physical_connection_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["routeTableId"] = route_table_id
+        __props__["sitelinkEnable"] = sitelink_enable
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vbrOwnerId"] = vbr_owner_id
+        __props__["virtualBorderRouterName"] = virtual_border_router_name
+        __props__["vlanId"] = vlan_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatedPhysicalConnections")
     @_utilities.deprecated("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")

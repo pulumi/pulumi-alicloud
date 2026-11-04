@@ -429,6 +429,12 @@ func (K8sApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*k8sApplicationState)(nil)).Elem()
 }
 
+// K8sApplicationExists checks whether an existing K8sApplication resource with the given ID exists.
+func K8sApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *K8sApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/k8sApplication:K8sApplication", id, state, "", opts...)
+}
+
 type k8sApplicationArgs struct {
 	// The description of the application
 	ApplicationDescriotion *string `pulumi:"applicationDescriotion"`

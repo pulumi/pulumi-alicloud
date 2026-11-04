@@ -407,6 +407,20 @@ class DedicatedHostAccount(pulumi.CustomResource):
         __props__.__dict__["dedicated_host_id"] = dedicated_host_id
         return DedicatedHostAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["accountType"] = account_type
+        __props__["dedicatedHostId"] = dedicated_host_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[_builtins.str]:

@@ -206,6 +206,12 @@ func (PluginAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pluginAttachmentState)(nil)).Elem()
 }
 
+// PluginAttachmentExists checks whether an existing PluginAttachment resource with the given ID exists.
+func PluginAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PluginAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/pluginAttachment:PluginAttachment", id, state, "", opts...)
+}
+
 type pluginAttachmentArgs struct {
 	// The apiId that plugin attaches to.
 	ApiId string `pulumi:"apiId"`

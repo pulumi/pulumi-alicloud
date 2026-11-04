@@ -246,6 +246,12 @@ func (LakeAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lakeAccountState)(nil)).Elem()
 }
 
+// LakeAccountExists checks whether an existing LakeAccount resource with the given ID exists.
+func LakeAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LakeAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:adb/lakeAccount:LakeAccount", id, state, "", opts...)
+}
+
 type lakeAccountArgs struct {
 	// The description of the account.
 	AccountDescription *string `pulumi:"accountDescription"`

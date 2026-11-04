@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Cddc
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription duration of the host. Valid values: 
+        /// The subscription duration of the host. Valid values:
         /// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
         /// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
         /// * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Cddc
         }
 
         /// <summary>
-        /// The subscription duration of the host. Valid values: 
+        /// The subscription duration of the host. Valid values:
         /// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
         /// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
         /// * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -441,7 +441,7 @@ namespace Pulumi.AliCloud.Cddc
         }
 
         /// <summary>
-        /// The subscription duration of the host. Valid values: 
+        /// The subscription duration of the host. Valid values:
         /// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
         /// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
         /// * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.

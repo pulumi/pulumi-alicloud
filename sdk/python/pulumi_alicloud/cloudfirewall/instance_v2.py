@@ -731,6 +731,44 @@ class InstanceV2(pulumi.CustomResource):
         __props__.__dict__["user_status"] = user_status
         return InstanceV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sdl: pulumi.Input[Optional[_builtins.bool]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cfwLog"] = cfw_log
+        __props__["createTime"] = create_time
+        __props__["endTime"] = end_time
+        __props__["modifyType"] = modify_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["productCode"] = product_code
+        __props__["productType"] = product_type
+        __props__["releaseTime"] = release_time
+        __props__["renewalDuration"] = renewal_duration
+        __props__["renewalDurationUnit"] = renewal_duration_unit
+        __props__["renewalStatus"] = renewal_status
+        __props__["sdl"] = sdl
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["userStatus"] = user_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/instanceV2:InstanceV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cfwLog")
     def cfw_log(self) -> pulumi.Output[_builtins.bool]:

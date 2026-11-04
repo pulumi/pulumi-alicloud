@@ -23,7 +23,7 @@ public final class StoreIndexFullText {
      */
     private @Nullable Boolean includeChinese;
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;
+     * @return The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;
      * 
      */
     private @Nullable String token;
@@ -44,7 +44,7 @@ public final class StoreIndexFullText {
         return Optional.ofNullable(this.includeChinese);
     }
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;
+     * @return The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;
      * 
      */
     public Optional<String> token() {

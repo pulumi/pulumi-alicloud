@@ -542,6 +542,24 @@ class Plugin(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Plugin(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_data: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["pluginData"] = plugin_data
+        __props__["pluginName"] = plugin_name
+        __props__["pluginType"] = plugin_type
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/plugin:Plugin', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

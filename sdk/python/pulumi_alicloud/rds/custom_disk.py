@@ -1130,6 +1130,56 @@ class CustomDisk(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return CustomDisk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["burstingEnabled"] = bursting_enabled
+        __props__["createTime"] = create_time
+        __props__["deleteWithInstance"] = delete_with_instance
+        __props__["description"] = description
+        __props__["diskCategory"] = disk_category
+        __props__["diskName"] = disk_name
+        __props__["dryRun"] = dry_run
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["instanceId"] = instance_id
+        __props__["performanceLevel"] = performance_level
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/customDisk:CustomDisk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

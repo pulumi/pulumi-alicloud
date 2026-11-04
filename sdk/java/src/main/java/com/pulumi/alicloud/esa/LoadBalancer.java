@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .origins(OriginPoolOriginArgs.builder()
  *                 .type("ip_domain")
  *                 .address("www.example.com")
- *                 .header("{\"Host\":[\"www.example.com\"]}")
+ *                 .header("}{&#92;{@code "Host}&#92;{@code ":[}&#92;{@code "www.example.com}&#92;{@code "]}}{@code ")
  *                 .enabled(true)
  *                 .weight(30)
  *                 .name("origin1")
@@ -113,8 +113,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

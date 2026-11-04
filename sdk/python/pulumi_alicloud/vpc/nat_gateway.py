@@ -1226,6 +1226,60 @@ class NatGateway(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NatGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict', 'outputs.NatGatewayAccessMode']]] = None,
+            availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            eip_bind_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            forward_table_ids: pulumi.Input[Optional[_builtins.str]] = None,
+            icmp_reply_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_type: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            private_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            snat_table_ids: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["availabilityMode"] = availability_mode
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["eipBindMode"] = eip_bind_mode
+        __props__["force"] = force
+        __props__["forwardTableIds"] = forward_table_ids
+        __props__["icmpReplyEnabled"] = icmp_reply_enabled
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["name"] = name
+        __props__["natGatewayName"] = nat_gateway_name
+        __props__["natType"] = nat_type
+        __props__["networkType"] = network_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["privateLinkEnabled"] = private_link_enabled
+        __props__["snatTableIds"] = snat_table_ids
+        __props__["specification"] = specification
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/natGateway:NatGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output['outputs.NatGatewayAccessMode']:

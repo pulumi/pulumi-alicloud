@@ -566,6 +566,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword *string `pulumi:"accountPassword"`

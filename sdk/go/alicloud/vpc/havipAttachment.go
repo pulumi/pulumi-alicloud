@@ -224,6 +224,12 @@ func (HAVipAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*havipAttachmentState)(nil)).Elem()
 }
 
+// HAVipAttachmentExists checks whether an existing HAVipAttachment resource with the given ID exists.
+func HAVipAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HAVipAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/hAVipAttachment:HAVipAttachment", id, state, "", opts...)
+}
+
 type havipAttachmentArgs struct {
 	// Specifies whether to force delete the snapshot.
 	Force *bool `pulumi:"force"`

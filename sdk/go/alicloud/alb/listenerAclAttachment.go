@@ -284,6 +284,12 @@ func (ListenerAclAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerAclAttachmentState)(nil)).Elem()
 }
 
+// ListenerAclAttachmentExists checks whether an existing ListenerAclAttachment resource with the given ID exists.
+func ListenerAclAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListenerAclAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/listenerAclAttachment:ListenerAclAttachment", id, state, "", opts...)
+}
+
 type listenerAclAttachmentArgs struct {
 	// The ID list of the access policy group bound by the listener.
 	AclId string `pulumi:"aclId"`

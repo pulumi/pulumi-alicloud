@@ -481,6 +481,26 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         __props__.__dict__["time_points"] = time_points
         return AutoSnapshotPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoSnapshotPolicyName"] = auto_snapshot_policy_name
+        __props__["createTime"] = create_time
+        __props__["fileSystemType"] = file_system_type
+        __props__["repeatWeekdays"] = repeat_weekdays
+        __props__["retentionDays"] = retention_days
+        __props__["status"] = status
+        __props__["timePoints"] = time_points
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
     def auto_snapshot_policy_name(self) -> pulumi.Output[Optional[_builtins.str]]:

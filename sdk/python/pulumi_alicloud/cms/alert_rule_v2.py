@@ -975,6 +975,58 @@ class AlertRuleV2(pulumi.CustomResource):
         __props__.__dict__["workspace"] = workspace
         return AlertRuleV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ActionIntegrationConfigArgs', 'AlertRuleV2ActionIntegrationConfigArgsDict', 'outputs.AlertRuleV2ActionIntegrationConfig']]] = None,
+            alert_rule_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            arms_integration_config: pulumi.Input[Optional[Union['AlertRuleV2ArmsIntegrationConfigArgs', 'AlertRuleV2ArmsIntegrationConfigArgsDict', 'outputs.AlertRuleV2ArmsIntegrationConfig']]] = None,
+            condition_config: pulumi.Input[Optional[Union['AlertRuleV2ConditionConfigArgs', 'AlertRuleV2ConditionConfigArgsDict', 'outputs.AlertRuleV2ConditionConfig']]] = None,
+            content_template: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            datasource_config: pulumi.Input[Optional[Union['AlertRuleV2DatasourceConfigArgs', 'AlertRuleV2DatasourceConfigArgsDict', 'outputs.AlertRuleV2DatasourceConfig']]] = None,
+            datasource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            notify_config: pulumi.Input[Optional[Union['AlertRuleV2NotifyConfigArgs', 'AlertRuleV2NotifyConfigArgsDict', 'outputs.AlertRuleV2NotifyConfig']]] = None,
+            notify_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            observe_resource_global_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+            observe_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_key: pulumi.Input[Optional[_builtins.str]] = None,
+            query_config: pulumi.Input[Optional[Union['AlertRuleV2QueryConfigArgs', 'AlertRuleV2QueryConfigArgsDict', 'outputs.AlertRuleV2QueryConfig']]] = None,
+            schedule_config: pulumi.Input[Optional[Union['AlertRuleV2ScheduleConfigArgs', 'AlertRuleV2ScheduleConfigArgsDict', 'outputs.AlertRuleV2ScheduleConfig']]] = None,
+            severity_levels: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionIntegrationConfig"] = action_integration_config
+        __props__["alertRuleV2Id"] = alert_rule_v2_id
+        __props__["annotations"] = annotations
+        __props__["armsIntegrationConfig"] = arms_integration_config
+        __props__["conditionConfig"] = condition_config
+        __props__["contentTemplate"] = content_template
+        __props__["createdAt"] = created_at
+        __props__["datasourceConfig"] = datasource_config
+        __props__["datasourceType"] = datasource_type
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["labels"] = labels
+        __props__["notifyConfig"] = notify_config
+        __props__["notifyStrategyId"] = notify_strategy_id
+        __props__["observeResourceGlobalScope"] = observe_resource_global_scope
+        __props__["observeResourceType"] = observe_resource_type
+        __props__["partitionKey"] = partition_key
+        __props__["queryConfig"] = query_config
+        __props__["scheduleConfig"] = schedule_config
+        __props__["severityLevels"] = severity_levels
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["workspace"] = workspace
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/alertRuleV2:AlertRuleV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionIntegrationConfig")
     def action_integration_config(self) -> pulumi.Output['outputs.AlertRuleV2ActionIntegrationConfig']:

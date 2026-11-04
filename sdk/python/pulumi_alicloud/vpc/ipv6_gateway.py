@@ -553,6 +553,36 @@ class Ipv6Gateway(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv6Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["businessStatus"] = business_status
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["expiredTime"] = expired_time
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["ipv6GatewayId"] = ipv6_gateway_id
+        __props__["ipv6GatewayName"] = ipv6_gateway_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv6Gateway:Ipv6Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> pulumi.Output[_builtins.str]:

@@ -298,6 +298,12 @@ func (NestServiceInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nestServiceInstanceState)(nil)).Elem()
 }
 
+// NestServiceInstanceExists checks whether an existing NestServiceInstance resource with the given ID exists.
+func NestServiceInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NestServiceInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:compute/nestServiceInstance:NestServiceInstance", id, state, "", opts...)
+}
+
 type nestServiceInstanceArgs struct {
 	// The order information of cloud market. See `commodity` below.
 	Commodity *NestServiceInstanceCommodity `pulumi:"commodity"`

@@ -298,6 +298,12 @@ func (ForwardingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*forwardingRuleState)(nil)).Elem()
 }
 
+// ForwardingRuleExists checks whether an existing ForwardingRule resource with the given ID exists.
+func ForwardingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ForwardingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/forwardingRule:ForwardingRule", id, state, "", opts...)
+}
+
 type forwardingRuleArgs struct {
 	// The ID of the Global Accelerator instance.
 	AcceleratorId string `pulumi:"acceleratorId"`

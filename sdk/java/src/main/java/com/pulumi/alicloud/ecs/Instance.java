@@ -149,11 +149,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
-     * @deprecated
-     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
+     * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      */
-    @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
+    @Deprecated
     @Export(name="allocatePublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allocatePublicIp;
 
@@ -651,11 +650,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      * 
-     * @deprecated
-     * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      * 
      */
-    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
+    @Deprecated
     @Export(name="internetMaxBandwidthIn", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthIn;
 
@@ -1181,11 +1179,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+     * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
+    @Deprecated
     @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 

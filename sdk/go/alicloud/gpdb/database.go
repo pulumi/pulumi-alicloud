@@ -197,6 +197,12 @@ func (DatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseState)(nil)).Elem()
 }
 
+// DatabaseExists checks whether an existing Database resource with the given ID exists.
+func DatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/database:Database", id, state, "", opts...)
+}
+
 type databaseArgs struct {
 	// Character set, default value is UTF8
 	CharacterSetName *string `pulumi:"characterSetName"`

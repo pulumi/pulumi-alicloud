@@ -705,6 +705,40 @@ class HanaInstance(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return HanaInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hana_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_number: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sid: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            validate_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertSetting"] = alert_setting
+        __props__["ecsInstanceIds"] = ecs_instance_ids
+        __props__["hanaInstanceId"] = hana_instance_id
+        __props__["hanaName"] = hana_name
+        __props__["host"] = host
+        __props__["instanceNumber"] = instance_number
+        __props__["password"] = password
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sid"] = sid
+        __props__["status"] = status
+        __props__["useSsl"] = use_ssl
+        __props__["userName"] = user_name
+        __props__["validateCertificate"] = validate_certificate
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/hanaInstance:HanaInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertSetting")
     def alert_setting(self) -> pulumi.Output[_builtins.str]:

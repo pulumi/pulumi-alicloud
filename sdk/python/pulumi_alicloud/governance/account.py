@@ -607,6 +607,30 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict', 'outputs.AccountAccountTag']]]]] = None,
+            baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payer_account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["accountNamePrefix"] = account_name_prefix
+        __props__["accountTags"] = account_tags
+        __props__["baselineId"] = baseline_id
+        __props__["defaultDomainName"] = default_domain_name
+        __props__["displayName"] = display_name
+        __props__["folderId"] = folder_id
+        __props__["payerAccountId"] = payer_account_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:governance/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.int]:

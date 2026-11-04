@@ -188,6 +188,12 @@ func (TrafficMarkingPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficMarkingPolicyState)(nil)).Elem()
 }
 
+// TrafficMarkingPolicyExists checks whether an existing TrafficMarkingPolicy resource with the given ID exists.
+func TrafficMarkingPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficMarkingPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy", id, state, "", opts...)
+}
+
 type trafficMarkingPolicyArgs struct {
 	// TrafficMarkingPolicyDescription
 	Description *string `pulumi:"description"`

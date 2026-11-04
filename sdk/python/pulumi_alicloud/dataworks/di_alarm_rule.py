@@ -656,6 +656,28 @@ class DiAlarmRule(pulumi.CustomResource):
         __props__.__dict__["trigger_conditions"] = trigger_conditions
         return DiAlarmRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            di_alarm_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            di_alarm_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict', 'outputs.DiAlarmRuleNotificationSettings']]] = None,
+            trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict', 'outputs.DiAlarmRuleTriggerCondition']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["diAlarmRuleId"] = di_alarm_rule_id
+        __props__["diAlarmRuleName"] = di_alarm_rule_name
+        __props__["diJobId"] = di_job_id
+        __props__["enabled"] = enabled
+        __props__["metricType"] = metric_type
+        __props__["notificationSettings"] = notification_settings
+        __props__["triggerConditions"] = trigger_conditions
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/diAlarmRule:DiAlarmRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

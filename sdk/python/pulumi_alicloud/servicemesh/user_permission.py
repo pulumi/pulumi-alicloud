@@ -305,6 +305,16 @@ class UserPermission(pulumi.CustomResource):
         __props__.__dict__["sub_account_user_id"] = sub_account_user_id
         return UserPermission(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict', 'outputs.UserPermissionPermission']]]]] = None,
+            sub_account_user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["permissions"] = permissions
+        __props__["subAccountUserId"] = sub_account_user_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:servicemesh/userPermission:UserPermission', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Sequence['outputs.UserPermissionPermission']]:

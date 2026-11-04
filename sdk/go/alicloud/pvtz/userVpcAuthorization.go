@@ -154,6 +154,12 @@ func (UserVpcAuthorizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userVpcAuthorizationState)(nil)).Elem()
 }
 
+// UserVpcAuthorizationExists checks whether an existing UserVpcAuthorization resource with the given ID exists.
+func UserVpcAuthorizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserVpcAuthorizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization", id, state, "", opts...)
+}
+
 type userVpcAuthorizationArgs struct {
 	// The auth channel. Valid values: `RESOURCE_DIRECTORY`.
 	AuthChannel *string `pulumi:"authChannel"`

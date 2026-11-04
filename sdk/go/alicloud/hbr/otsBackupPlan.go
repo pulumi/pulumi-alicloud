@@ -292,6 +292,12 @@ func (OtsBackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*otsBackupPlanState)(nil)).Elem()
 }
 
+// OtsBackupPlanExists checks whether an existing OtsBackupPlan resource with the given ID exists.
+func OtsBackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OtsBackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/otsBackupPlan:OtsBackupPlan", id, state, "", opts...)
+}
+
 type otsBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`

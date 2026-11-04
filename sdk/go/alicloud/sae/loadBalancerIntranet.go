@@ -226,6 +226,12 @@ func (LoadBalancerIntranetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerIntranetState)(nil)).Elem()
 }
 
+// LoadBalancerIntranetExists checks whether an existing LoadBalancerIntranet resource with the given ID exists.
+func LoadBalancerIntranetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerIntranetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet", id, state, "", opts...)
+}
+
 type loadBalancerIntranetArgs struct {
 	// The target application ID that needs to be bound to the SLB.
 	AppId string `pulumi:"appId"`

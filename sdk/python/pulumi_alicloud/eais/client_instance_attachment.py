@@ -531,6 +531,26 @@ class ClientInstanceAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ClientInstanceAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            client_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ei_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["category"] = category
+        __props__["clientInstanceId"] = client_instance_id
+        __props__["createTime"] = create_time
+        __props__["eiInstanceType"] = ei_instance_type
+        __props__["instanceId"] = instance_id
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[_builtins.str]]:

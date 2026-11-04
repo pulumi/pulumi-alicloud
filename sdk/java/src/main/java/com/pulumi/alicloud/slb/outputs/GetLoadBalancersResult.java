@@ -62,11 +62,10 @@ public final class GetLoadBalancersResult {
     /**
      * @return A list of SLBs. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
+     * @deprecated Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
      * 
      */
-    @Deprecated /* Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'. */
+    @Deprecated
     private List<GetLoadBalancersSlb> slbs;
     /**
      * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
@@ -177,11 +176,10 @@ public final class GetLoadBalancersResult {
     /**
      * @return A list of SLBs. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
+     * @deprecated Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
      * 
      */
-    @Deprecated /* Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'. */
+    @Deprecated
     public List<GetLoadBalancersSlb> slbs() {
         return this.slbs;
     }

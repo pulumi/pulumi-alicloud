@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         /// Download the kernel.
         /// - 1:curl
         /// - 0:WinInet
-        /// Default 1.
+        ///   Default 1.
         /// </summary>
         [Input("downloadKernel")]
         public Input<int>? DownloadKernel { get; set; }
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         /// - 1:http1
         /// - 2:http2
         /// - 3:http3
-        /// Default 1.
+        ///   Default 1.
         /// </summary>
         [Input("quickProtocol")]
         public Input<int>? QuickProtocol { get; set; }

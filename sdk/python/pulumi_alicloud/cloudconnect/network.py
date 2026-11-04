@@ -333,6 +333,20 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrBlock"] = cidr_block
+        __props__["description"] = description
+        __props__["isDefault"] = is_default
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudconnect/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[Optional[_builtins.str]]:

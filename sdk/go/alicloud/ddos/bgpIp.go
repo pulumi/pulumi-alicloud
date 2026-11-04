@@ -173,6 +173,12 @@ func (BgpIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpIpState)(nil)).Elem()
 }
 
+// BgpIpExists checks whether an existing BgpIp resource with the given ID exists.
+func BgpIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/bgpIp:BgpIp", id, state, "", opts...)
+}
+
 type bgpIpArgs struct {
 	// The ID of the Anti-DDoS Origin instance.
 	InstanceId string `pulumi:"instanceId"`

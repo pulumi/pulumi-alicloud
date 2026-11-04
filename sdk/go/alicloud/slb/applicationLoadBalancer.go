@@ -323,6 +323,12 @@ func (ApplicationLoadBalancerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationLoadBalancerState)(nil)).Elem()
 }
 
+// ApplicationLoadBalancerExists checks whether an existing ApplicationLoadBalancer resource with the given ID exists.
+func ApplicationLoadBalancerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationLoadBalancerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer", id, state, "", opts...)
+}
+
 type applicationLoadBalancerArgs struct {
 	// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
 	Address *string `pulumi:"address"`

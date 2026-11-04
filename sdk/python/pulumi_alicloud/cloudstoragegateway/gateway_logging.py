@@ -413,6 +413,20 @@ class GatewayLogging(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return GatewayLogging(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["gatewayId"] = gateway_id
+        __props__["slsLogstore"] = sls_logstore
+        __props__["slsProject"] = sls_project
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Output[_builtins.str]:

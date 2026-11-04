@@ -978,6 +978,36 @@ class SyntheticTask(pulumi.CustomResource):
         __props__.__dict__["task_type"] = task_type
         return SyntheticTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            available_assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict', 'outputs.SyntheticTaskAvailableAssertion']]]]] = None,
+            common_setting: pulumi.Input[Optional[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict', 'outputs.SyntheticTaskCommonSetting']]] = None,
+            custom_period: pulumi.Input[Optional[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict', 'outputs.SyntheticTaskCustomPeriod']]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_category: pulumi.Input[Optional[_builtins.int]] = None,
+            monitor_conf: pulumi.Input[Optional[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict', 'outputs.SyntheticTaskMonitorConf']]] = None,
+            monitors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict', 'outputs.SyntheticTaskMonitor']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            synthetic_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            task_type: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availableAssertions"] = available_assertions
+        __props__["commonSetting"] = common_setting
+        __props__["customPeriod"] = custom_period
+        __props__["frequency"] = frequency
+        __props__["monitorCategory"] = monitor_category
+        __props__["monitorConf"] = monitor_conf
+        __props__["monitors"] = monitors
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["syntheticTaskName"] = synthetic_task_name
+        __props__["tags"] = tags
+        __props__["taskType"] = task_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/syntheticTask:SyntheticTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availableAssertions")
     def available_assertions(self) -> pulumi.Output[Optional[Sequence['outputs.SyntheticTaskAvailableAssertion']]]:

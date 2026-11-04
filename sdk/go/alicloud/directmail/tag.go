@@ -114,6 +114,12 @@ func (TagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagState)(nil)).Elem()
 }
 
+// TagExists checks whether an existing Tag resource with the given ID exists.
+func TagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:directmail/tag:Tag", id, state, "", opts...)
+}
+
 type tagArgs struct {
 	// The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
 	TagName string `pulumi:"tagName"`

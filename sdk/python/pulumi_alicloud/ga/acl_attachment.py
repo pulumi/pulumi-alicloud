@@ -395,6 +395,22 @@ class AclAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AclAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclId"] = acl_id
+        __props__["aclType"] = acl_type
+        __props__["dryRun"] = dry_run
+        __props__["listenerId"] = listener_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/aclAttachment:AclAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:

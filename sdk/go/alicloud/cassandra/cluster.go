@@ -274,6 +274,12 @@ func (ClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterState)(nil)).Elem()
 }
 
+// ClusterExists checks whether an existing Cluster resource with the given ID exists.
+func ClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cassandra/cluster:Cluster", id, state, "", opts...)
+}
+
 type clusterArgs struct {
 	// Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`

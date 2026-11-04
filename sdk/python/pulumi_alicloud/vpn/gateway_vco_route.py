@@ -525,6 +525,24 @@ class GatewayVcoRoute(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return GatewayVcoRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            overlay_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["nextHop"] = next_hop
+        __props__["overlayMode"] = overlay_mode
+        __props__["routeDest"] = route_dest
+        __props__["status"] = status
+        __props__["vpnConnectionId"] = vpn_connection_id
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Output[_builtins.str]:

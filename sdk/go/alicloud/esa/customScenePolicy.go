@@ -191,6 +191,12 @@ func (CustomScenePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customScenePolicyState)(nil)).Elem()
 }
 
+// CustomScenePolicyExists checks whether an existing CustomScenePolicy resource with the given ID exists.
+func CustomScenePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomScenePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/customScenePolicy:CustomScenePolicy", id, state, "", opts...)
+}
+
 type customScenePolicyArgs struct {
 	// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
 	//

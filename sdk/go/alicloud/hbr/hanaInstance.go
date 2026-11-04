@@ -226,6 +226,12 @@ func (HanaInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hanaInstanceState)(nil)).Elem()
 }
 
+// HanaInstanceExists checks whether an existing HanaInstance resource with the given ID exists.
+func HanaInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HanaInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/hanaInstance:HanaInstance", id, state, "", opts...)
+}
+
 type hanaInstanceArgs struct {
 	// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
 	AlertSetting *string `pulumi:"alertSetting"`

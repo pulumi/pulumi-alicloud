@@ -145,6 +145,12 @@ func (WafDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafDomainState)(nil)).Elem()
 }
 
+// WafDomainExists checks whether an existing WafDomain resource with the given ID exists.
+func WafDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WafDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/wafDomain:WafDomain", id, state, "", opts...)
+}
+
 type wafDomainArgs struct {
 	// The client ip tag.
 	ClientIpTag *string `pulumi:"clientIpTag"`

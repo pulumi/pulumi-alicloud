@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// </summary>
         public readonly string Effect;
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field `Document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `Ecs`, `Oss`, `Ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        /// (It has been deprecated since version 1.49.0, and use field `Document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `Ecs`, `Oss`, `Ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone` s Alicloud account id or you can use  `*`to replace, the`${relative_id}`is the resource description section which related to the`${service}`.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
 

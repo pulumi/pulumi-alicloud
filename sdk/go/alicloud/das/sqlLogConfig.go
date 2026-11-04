@@ -179,6 +179,12 @@ func (SqlLogConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlLogConfigState)(nil)).Elem()
 }
 
+// SqlLogConfigExists checks whether an existing SqlLogConfig resource with the given ID exists.
+func SqlLogConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlLogConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:das/sqlLogConfig:SqlLogConfig", id, state, "", opts...)
+}
+
 type sqlLogConfigArgs struct {
 	// Specifies whether SQL Explorer is enabled.
 	Enable *bool `pulumi:"enable"`

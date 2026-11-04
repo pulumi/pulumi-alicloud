@@ -149,6 +149,12 @@ func (EnterpriseAuthorityTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseAuthorityTemplateState)(nil)).Elem()
 }
 
+// EnterpriseAuthorityTemplateExists checks whether an existing EnterpriseAuthorityTemplate resource with the given ID exists.
+func EnterpriseAuthorityTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseAuthorityTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate", id, state, "", opts...)
+}
+
 type enterpriseAuthorityTemplateArgs struct {
 	// Permission Template name.
 	AuthorityTemplateName string `pulumi:"authorityTemplateName"`

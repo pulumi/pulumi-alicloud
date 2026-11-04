@@ -707,6 +707,34 @@ class ScheduledScalingRule(pulumi.CustomResource):
         __props__.__dict__["weekly_types"] = weekly_types
         return ScheduledScalingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            duration_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            first_scheduled_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_pub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+            reserved_sub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            weekly_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["durationMinutes"] = duration_minutes
+        __props__["enable"] = enable
+        __props__["firstScheduledTime"] = first_scheduled_time
+        __props__["instanceId"] = instance_id
+        __props__["repeatType"] = repeat_type
+        __props__["reservedPubFlow"] = reserved_pub_flow
+        __props__["reservedSubFlow"] = reserved_sub_flow
+        __props__["ruleName"] = rule_name
+        __props__["scheduleType"] = schedule_type
+        __props__["timeZone"] = time_zone
+        __props__["weeklyTypes"] = weekly_types
+        return pulumi.runtime.exists_resource(None, 'alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="durationMinutes")
     def duration_minutes(self) -> pulumi.Output[_builtins.int]:

@@ -337,6 +337,12 @@ func (WorkspaceDatasetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceDatasetState)(nil)).Elem()
 }
 
+// WorkspaceDatasetExists checks whether an existing WorkspaceDataset resource with the given ID exists.
+func WorkspaceDatasetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceDatasetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceDataset:WorkspaceDataset", id, state, "", opts...)
+}
+
 type workspaceDatasetArgs struct {
 	// Workspace visibility. The following values are supported:
 	// - PRIVATE (default): indicates that the workspace is visible to itself and the administrator.

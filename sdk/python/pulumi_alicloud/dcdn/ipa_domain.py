@@ -387,6 +387,22 @@ class IpaDomain(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return IpaDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpaDomainSourceArgs', 'IpaDomainSourceArgsDict', 'outputs.IpaDomainSource']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["domainName"] = domain_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scope"] = scope
+        __props__["sources"] = sources
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:dcdn/ipaDomain:IpaDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[_builtins.str]:

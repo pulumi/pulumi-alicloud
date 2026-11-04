@@ -641,6 +641,36 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
         __props__.__dict__["traffic_mirror_filter_ingress_rule_id"] = traffic_mirror_filter_ingress_rule_id
         return TrafficMirrorFilterIngressRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_filter_ingress_rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["destinationCidrBlock"] = destination_cidr_block
+        __props__["destinationPortRange"] = destination_port_range
+        __props__["dryRun"] = dry_run
+        __props__["priority"] = priority
+        __props__["protocol"] = protocol
+        __props__["ruleAction"] = rule_action
+        __props__["sourceCidrBlock"] = source_cidr_block
+        __props__["sourcePortRange"] = source_port_range
+        __props__["status"] = status
+        __props__["trafficMirrorFilterId"] = traffic_mirror_filter_id
+        __props__["trafficMirrorFilterIngressRuleId"] = traffic_mirror_filter_ingress_rule_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

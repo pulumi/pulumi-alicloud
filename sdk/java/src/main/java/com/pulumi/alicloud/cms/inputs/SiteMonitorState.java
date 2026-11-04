@@ -52,22 +52,20 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Import(name="alertIds")
     private @Nullable Output<List<String>> alertIds;
 
     /**
      * @return Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     public Optional<Output<List<String>>> alertIds() {
         return Optional.ofNullable(this.alertIds);
     }
@@ -75,22 +73,20 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `createTime` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `createTime` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
      * @return (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `createTime` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `createTime` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
@@ -158,22 +154,20 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
      * 
-     * @deprecated
-     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      * 
      */
-    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+    @Deprecated
     @Import(name="optionsJson")
     private @Nullable Output<String> optionsJson;
 
     /**
      * @return Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
      * 
-     * @deprecated
-     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      * 
      */
-    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+    @Deprecated
     public Optional<Output<String>> optionsJson() {
         return Optional.ofNullable(this.optionsJson);
     }
@@ -211,22 +205,20 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
-     * @deprecated
-     * Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+     * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead. */
+    @Deprecated
     @Import(name="taskState")
     private @Nullable Output<String> taskState;
 
     /**
      * @return (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
-     * @deprecated
-     * Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+     * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead. */
+    @Deprecated
     public Optional<Output<String>> taskState() {
         return Optional.ofNullable(this.taskState);
     }
@@ -249,22 +241,20 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `updateTime` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `updateTime` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
      * @return (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `updateTime` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `updateTime` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -353,11 +343,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder alertIds(@Nullable Output<List<String>> alertIds) {
             $.alertIds = alertIds;
             return this;
@@ -368,11 +357,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder alertIds(List<String> alertIds) {
             return alertIds(Output.of(alertIds));
         }
@@ -382,11 +370,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder alertIds(String... alertIds) {
             return alertIds(List.of(alertIds));
         }
@@ -396,11 +383,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `createTime` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `createTime` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
@@ -411,11 +397,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `createTime` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `createTime` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
@@ -519,11 +504,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+         * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
          * 
          */
-        @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+        @Deprecated
         public Builder optionsJson(@Nullable Output<String> optionsJson) {
             $.optionsJson = optionsJson;
             return this;
@@ -534,11 +518,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+         * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
          * 
          */
-        @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+        @Deprecated
         public Builder optionsJson(String optionsJson) {
             return optionsJson(Output.of(optionsJson));
         }
@@ -590,11 +573,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+         * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
          * 
          */
-        @Deprecated /* Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead. */
+        @Deprecated
         public Builder taskState(@Nullable Output<String> taskState) {
             $.taskState = taskState;
             return this;
@@ -605,11 +587,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+         * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
          * 
          */
-        @Deprecated /* Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead. */
+        @Deprecated
         public Builder taskState(String taskState) {
             return taskState(Output.of(taskState));
         }
@@ -640,11 +621,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `updateTime` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `updateTime` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
@@ -655,11 +635,10 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `updateTime` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `updateTime` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

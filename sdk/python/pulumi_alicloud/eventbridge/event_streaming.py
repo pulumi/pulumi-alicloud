@@ -581,6 +581,30 @@ class EventStreaming(pulumi.CustomResource):
         __props__.__dict__["transforms"] = transforms
         return EventStreaming(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_streaming_name: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            run_options: pulumi.Input[Optional[_builtins.str]] = None,
+            sink: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transforms: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["eventStreamingName"] = event_streaming_name
+        __props__["filterPattern"] = filter_pattern
+        __props__["runOptions"] = run_options
+        __props__["sink"] = sink
+        __props__["source"] = source
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transforms"] = transforms
+        return pulumi.runtime.exists_resource(None, 'alicloud:eventbridge/eventStreaming:EventStreaming', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

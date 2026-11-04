@@ -372,6 +372,22 @@ class HoneypotPreset(pulumi.CustomResource):
         __props__.__dict__["preset_name"] = preset_name
         return HoneypotPreset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_preset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict', 'outputs.HoneypotPresetMeta']]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preset_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["honeypotImageName"] = honeypot_image_name
+        __props__["honeypotPresetId"] = honeypot_preset_id
+        __props__["meta"] = meta
+        __props__["nodeId"] = node_id
+        __props__["presetName"] = preset_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/honeypotPreset:HoneypotPreset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="honeypotImageName")
     def honeypot_image_name(self) -> pulumi.Output[_builtins.str]:

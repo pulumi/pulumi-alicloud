@@ -313,6 +313,12 @@ func (VirtualPhysicalConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualPhysicalConnectionState)(nil)).Elem()
 }
 
+// VirtualPhysicalConnectionExists checks whether an existing VirtualPhysicalConnection resource with the given ID exists.
+func VirtualPhysicalConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualPhysicalConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection", id, state, "", opts...)
+}
+
 type virtualPhysicalConnectionArgs struct {
 	// The description of the physical connection.
 	Description *string `pulumi:"description"`

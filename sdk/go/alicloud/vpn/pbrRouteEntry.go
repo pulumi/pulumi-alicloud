@@ -265,6 +265,12 @@ func (PbrRouteEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pbrRouteEntryState)(nil)).Elem()
 }
 
+// PbrRouteEntryExists checks whether an existing PbrRouteEntry resource with the given ID exists.
+func PbrRouteEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PbrRouteEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/pbrRouteEntry:PbrRouteEntry", id, state, "", opts...)
+}
+
 type pbrRouteEntryArgs struct {
 	// The next hop of the policy-based route.
 	NextHop string `pulumi:"nextHop"`

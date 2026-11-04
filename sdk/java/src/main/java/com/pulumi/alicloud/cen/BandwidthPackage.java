@@ -134,11 +134,10 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
-     * @deprecated
-     * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
+     * @deprecated Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
      * 
      */
-    @Deprecated /* Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead. */
+    @Deprecated
     @Export(name="chargeType", refs={String.class}, tree="[0]")
     private Output<String> chargeType;
 
@@ -208,11 +207,10 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
-     * @deprecated
-     * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
+     * @deprecated Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
+    @Deprecated
     @Export(name="geographicRegionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> geographicRegionIds;
 
@@ -226,11 +224,10 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

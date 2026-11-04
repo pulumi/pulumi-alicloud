@@ -110,6 +110,12 @@ func (DiskEncryptionByDefaultState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskEncryptionByDefaultState)(nil)).Elem()
 }
 
+// DiskEncryptionByDefaultExists checks whether an existing DiskEncryptionByDefault resource with the given ID exists.
+func DiskEncryptionByDefaultExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskEncryptionByDefaultState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/diskEncryptionByDefault:DiskEncryptionByDefault", id, state, "", opts...)
+}
+
 type diskEncryptionByDefaultArgs struct {
 	// Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`

@@ -65,22 +65,20 @@ public final class GetMountTargetsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
-     * @deprecated
-     * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
+     * @deprecated Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
+    @Deprecated
     @Import(name="mountTargetDomain")
     private @Nullable Output<String> mountTargetDomain;
 
     /**
      * @return Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
-     * @deprecated
-     * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
+     * @deprecated Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
+    @Deprecated
     public Optional<Output<String>> mountTargetDomain() {
         return Optional.ofNullable(this.mountTargetDomain);
     }
@@ -133,22 +131,20 @@ public final class GetMountTargetsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
+    @Deprecated
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
+    @Deprecated
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -294,11 +290,10 @@ public final class GetMountTargetsArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
+         * @deprecated Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
+        @Deprecated
         public Builder mountTargetDomain(@Nullable Output<String> mountTargetDomain) {
             $.mountTargetDomain = mountTargetDomain;
             return this;
@@ -309,11 +304,10 @@ public final class GetMountTargetsArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
+         * @deprecated Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
+        @Deprecated
         public Builder mountTargetDomain(String mountTargetDomain) {
             return mountTargetDomain(Output.of(mountTargetDomain));
         }
@@ -386,11 +380,10 @@ public final class GetMountTargetsArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
+         * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
+        @Deprecated
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
@@ -401,11 +394,10 @@ public final class GetMountTargetsArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
+         * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
+        @Deprecated
         public Builder type(String type) {
             return type(Output.of(type));
         }

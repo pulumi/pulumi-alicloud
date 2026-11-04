@@ -196,6 +196,12 @@ func (MetricRuleTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricRuleTemplateState)(nil)).Elem()
 }
 
+// MetricRuleTemplateExists checks whether an existing MetricRuleTemplate resource with the given ID exists.
+func MetricRuleTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetricRuleTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/metricRuleTemplate:MetricRuleTemplate", id, state, "", opts...)
+}
+
 type metricRuleTemplateArgs struct {
 	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates []MetricRuleTemplateAlertTemplate `pulumi:"alertTemplates"`

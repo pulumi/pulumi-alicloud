@@ -114,6 +114,12 @@ func (StorageBundleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageBundleState)(nil)).Elem()
 }
 
+// StorageBundleExists checks whether an existing StorageBundle resource with the given ID exists.
+func StorageBundleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageBundleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/storageBundle:StorageBundle", id, state, "", opts...)
+}
+
 type storageBundleArgs struct {
 	// The description of storage bundle.
 	Description *string `pulumi:"description"`

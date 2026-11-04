@@ -240,6 +240,12 @@ func (HostAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostAccountState)(nil)).Elem()
 }
 
+// HostAccountExists checks whether an existing HostAccount resource with the given ID exists.
+func HostAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/hostAccount:HostAccount", id, state, "", opts...)
+}
+
 type hostAccountArgs struct {
 	// The name of the host account. The name can be up to 128 characters in length.
 	HostAccountName string `pulumi:"hostAccountName"`

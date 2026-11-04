@@ -573,11 +573,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
-     * @deprecated
-     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+     * @deprecated Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
-    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead. */
+    @Deprecated
     @Export(name="cisEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cisEnabled;
 
@@ -901,14 +900,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
      * 
      */
     @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
      * 
      */
     public Output<Optional<Integer>> internetMaxBandwidthOut() {
@@ -1043,11 +1042,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -1061,11 +1059,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      * 
-     * @deprecated
-     * Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
+     * @deprecated Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
      * 
      */
-    @Deprecated /* Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead. */
+    @Deprecated
     @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
@@ -1197,11 +1194,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * Operating system release, using `imageType` instead.
      * 
-     * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
+     * @deprecated Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      * 
      */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead. */
+    @Deprecated
     @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
@@ -1399,11 +1395,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
-     * @deprecated
-     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+     * @deprecated Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
-    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead. */
+    @Deprecated
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 

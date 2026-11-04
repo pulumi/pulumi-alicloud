@@ -1368,6 +1368,70 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["vpc_name"] = vpc_name
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            classic_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_hostname_status: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict', 'outputs.NetworkIpv6CidrBlock']]]]] = None,
+            ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            system_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+            system_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            system_route_table_route_propagation_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrBlock"] = cidr_block
+        __props__["classicLinkEnabled"] = classic_link_enabled
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dnsHostnameStatus"] = dns_hostname_status
+        __props__["dryRun"] = dry_run
+        __props__["enableIpv6"] = enable_ipv6
+        __props__["forceDelete"] = force_delete
+        __props__["ipv4CidrMask"] = ipv4_cidr_mask
+        __props__["ipv4IpamPoolId"] = ipv4_ipam_pool_id
+        __props__["ipv6CidrBlock"] = ipv6_cidr_block
+        __props__["ipv6CidrBlocks"] = ipv6_cidr_blocks
+        __props__["ipv6Isp"] = ipv6_isp
+        __props__["isDefault"] = is_default
+        __props__["name"] = name
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["routeTableId"] = route_table_id
+        __props__["routerId"] = router_id
+        __props__["routerTableId"] = router_table_id
+        __props__["secondaryCidrBlocks"] = secondary_cidr_blocks
+        __props__["secondaryCidrMask"] = secondary_cidr_mask
+        __props__["status"] = status
+        __props__["systemRouteTableDescription"] = system_route_table_description
+        __props__["systemRouteTableName"] = system_route_table_name
+        __props__["systemRouteTableRoutePropagationEnable"] = system_route_table_route_propagation_enable
+        __props__["tags"] = tags
+        __props__["userCidrs"] = user_cidrs
+        __props__["vpcName"] = vpc_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[_builtins.str]:

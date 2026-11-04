@@ -978,6 +978,50 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict', 'outputs.InstanceEcsList']]]]] = None,
+            enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            fs_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            raid_stripe_unit_number: pulumi.Input[Optional[_builtins.int]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            used_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedFeatures"] = advanced_features
+        __props__["category"] = category
+        __props__["createTime"] = create_time
+        __props__["deleteSnapshot"] = delete_snapshot
+        __props__["ecsLists"] = ecs_lists
+        __props__["enableRaid"] = enable_raid
+        __props__["encryption"] = encryption
+        __props__["fsName"] = fs_name
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["performanceLevel"] = performance_level
+        __props__["raidStripeUnitNumber"] = raid_stripe_unit_number
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["usedScene"] = used_scene
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:databasefilesystem/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Output[_builtins.str]:

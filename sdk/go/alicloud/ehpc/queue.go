@@ -417,6 +417,12 @@ func (QueueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueState)(nil)).Elem()
 }
 
+// QueueExists checks whether an existing Queue resource with the given ID exists.
+func QueueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ehpc/queue:Queue", id, state, "", opts...)
+}
+
 type queueArgs struct {
 	// The cluster ID.
 	// You can call the ListClusters operation to query the cluster ID.

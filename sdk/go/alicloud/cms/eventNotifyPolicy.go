@@ -239,6 +239,12 @@ func (EventNotifyPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventNotifyPolicyState)(nil)).Elem()
 }
 
+// EventNotifyPolicyExists checks whether an existing EventNotifyPolicy resource with the given ID exists.
+func EventNotifyPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventNotifyPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/eventNotifyPolicy:EventNotifyPolicy", id, state, "", opts...)
+}
+
 type eventNotifyPolicyArgs struct {
 	// The description of the policy.
 	Description *string `pulumi:"description"`

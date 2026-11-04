@@ -158,6 +158,12 @@ func (ServiceAccountLoggingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceAccountLoggingState)(nil)).Elem()
 }
 
+// ServiceAccountLoggingExists checks whether an existing ServiceAccountLogging resource with the given ID exists.
+func ServiceAccountLoggingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceAccountLoggingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceAccountLogging:ServiceAccountLogging", id, state, "", opts...)
+}
+
 type serviceAccountLoggingArgs struct {
 	// Whether to enable delivering the account operation logs to Simple Log Service (SLS).
 	LogEnabled bool `pulumi:"logEnabled"`

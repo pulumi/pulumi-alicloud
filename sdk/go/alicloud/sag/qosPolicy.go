@@ -242,6 +242,12 @@ func (QosPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosPolicyState)(nil)).Elem()
 }
 
+// QosPolicyExists checks whether an existing QosPolicy resource with the given ID exists.
+func QosPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/qosPolicy:QosPolicy", id, state, "", opts...)
+}
+
 type qosPolicyArgs struct {
 	// The description of the QoS policy.
 	Description *string `pulumi:"description"`

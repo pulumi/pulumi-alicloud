@@ -348,6 +348,20 @@ class ChartNamespace(pulumi.CustomResource):
         __props__.__dict__["namespace_name"] = namespace_name
         return ChartNamespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoCreateRepo"] = auto_create_repo
+        __props__["defaultRepoType"] = default_repo_type
+        __props__["instanceId"] = instance_id
+        __props__["namespaceName"] = namespace_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/chartNamespace:ChartNamespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoCreateRepo")
     def auto_create_repo(self) -> pulumi.Output[_builtins.bool]:

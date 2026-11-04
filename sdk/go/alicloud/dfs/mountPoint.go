@@ -229,6 +229,12 @@ func (MountPointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mountPointState)(nil)).Elem()
 }
 
+// MountPointExists checks whether an existing MountPoint resource with the given ID exists.
+func MountPointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MountPointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dfs/mountPoint:MountPoint", id, state, "", opts...)
+}
+
 type mountPointArgs struct {
 	// The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
 	AccessGroupId string `pulumi:"accessGroupId"`

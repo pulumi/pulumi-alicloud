@@ -236,6 +236,12 @@ func (SecondaryIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secondaryIndexState)(nil)).Elem()
 }
 
+// SecondaryIndexExists checks whether an existing SecondaryIndex resource with the given ID exists.
+func SecondaryIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecondaryIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ots/secondaryIndex:SecondaryIndex", id, state, "", opts...)
+}
+
 type secondaryIndexArgs struct {
 	// A list of defined column for index, referenced from Table's primary keys or predefined columns.
 	DefinedColumns []string `pulumi:"definedColumns"`

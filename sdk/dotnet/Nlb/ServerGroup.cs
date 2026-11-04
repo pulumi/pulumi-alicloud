@@ -210,7 +210,6 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         /// 
-        /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("vpcId")]
@@ -377,7 +376,6 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         /// 
-        /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcId", required: true)]
@@ -517,7 +515,6 @@ namespace Pulumi.AliCloud.Nlb
         /// The ID of the virtual private cloud (VPC) to which the server group belongs.
         /// 
         /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

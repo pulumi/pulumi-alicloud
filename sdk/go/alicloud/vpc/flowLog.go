@@ -312,6 +312,12 @@ func (FlowLogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowLogState)(nil)).Elem()
 }
 
+// FlowLogExists checks whether an existing FlowLog resource with the given ID exists.
+func FlowLogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlowLogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/flowLog:FlowLog", id, state, "", opts...)
+}
+
 type flowLogArgs struct {
 	// The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
 	AggregationInterval *string `pulumi:"aggregationInterval"`

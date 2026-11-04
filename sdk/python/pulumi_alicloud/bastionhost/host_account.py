@@ -519,6 +519,28 @@ class HostAccount(pulumi.CustomResource):
         __props__.__dict__["protocol_name"] = protocol_name
         return HostAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hostAccountId"] = host_account_id
+        __props__["hostAccountName"] = host_account_name
+        __props__["hostId"] = host_id
+        __props__["instanceId"] = instance_id
+        __props__["passPhrase"] = pass_phrase
+        __props__["password"] = password
+        __props__["privateKey"] = private_key
+        __props__["protocolName"] = protocol_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/hostAccount:HostAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="hostAccountId")
     def host_account_id(self) -> pulumi.Output[_builtins.str]:

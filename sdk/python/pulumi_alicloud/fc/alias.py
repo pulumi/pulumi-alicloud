@@ -382,6 +382,22 @@ class Alias(pulumi.CustomResource):
         __props__.__dict__["service_version"] = service_version
         return Alias(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_config: pulumi.Input[Optional[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict', 'outputs.AliasRoutingConfig']]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliasName"] = alias_name
+        __props__["description"] = description
+        __props__["routingConfig"] = routing_config
+        __props__["serviceName"] = service_name
+        __props__["serviceVersion"] = service_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/alias:Alias', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> pulumi.Output[_builtins.str]:

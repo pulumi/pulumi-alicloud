@@ -377,6 +377,12 @@ func (DbInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbInstanceState)(nil)).Elem()
 }
 
+// DbInstanceExists checks whether an existing DbInstance resource with the given ID exists.
+func DbInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:selectdb/dbInstance:DbInstance", id, state, "", opts...)
+}
+
 type dbInstanceArgs struct {
 	// The password for DBInstance using admin account.
 	AdminPass *string `pulumi:"adminPass"`

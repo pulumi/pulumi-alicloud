@@ -667,6 +667,38 @@ class MetricStore(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return MetricStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            encrypt_conf: pulumi.Input[Optional[Union['MetricStoreEncryptConfArgs', 'MetricStoreEncryptConfArgsDict', 'outputs.MetricStoreEncryptConf']]] = None,
+            hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            metric_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appendMeta"] = append_meta
+        __props__["autoSplit"] = auto_split
+        __props__["createTime"] = create_time
+        __props__["encryptConf"] = encrypt_conf
+        __props__["hotTtl"] = hot_ttl
+        __props__["infrequentAccessTtl"] = infrequent_access_ttl
+        __props__["lastModifyTime"] = last_modify_time
+        __props__["maxSplitShardCount"] = max_split_shard_count
+        __props__["metricStoreName"] = metric_store_name
+        __props__["mode"] = mode
+        __props__["projectName"] = project_name
+        __props__["shardCount"] = shard_count
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/metricStore:MetricStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appendMeta")
     def append_meta(self) -> pulumi.Output[Optional[_builtins.bool]]:

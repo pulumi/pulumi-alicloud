@@ -583,6 +583,30 @@ class MountTarget(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return MountTarget(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dual_stack: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroupName"] = access_group_name
+        __props__["dualStack"] = dual_stack
+        __props__["fileSystemId"] = file_system_id
+        __props__["mountTargetDomain"] = mount_target_domain
+        __props__["networkType"] = network_type
+        __props__["securityGroupId"] = security_group_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/mountTarget:MountTarget', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[Optional[_builtins.str]]:

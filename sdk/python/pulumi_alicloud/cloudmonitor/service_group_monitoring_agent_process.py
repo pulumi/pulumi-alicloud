@@ -452,6 +452,24 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         __props__.__dict__["process_name"] = process_name
         return ServiceGroupMonitoringAgentProcess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_monitoring_agent_process_id: pulumi.Input[Optional[_builtins.str]] = None,
+            match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+            match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict', 'outputs.ServiceGroupMonitoringAgentProcessMatchExpress']]]]] = None,
+            process_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertConfigs"] = alert_configs
+        __props__["groupId"] = group_id
+        __props__["groupMonitoringAgentProcessId"] = group_monitoring_agent_process_id
+        __props__["matchExpressFilterRelation"] = match_express_filter_relation
+        __props__["matchExpresses"] = match_expresses
+        __props__["processName"] = process_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertConfigs")
     def alert_configs(self) -> pulumi.Output[Sequence['outputs.ServiceGroupMonitoringAgentProcessAlertConfig']]:

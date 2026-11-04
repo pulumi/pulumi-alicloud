@@ -270,6 +270,16 @@ class MonitorGroupInstances(pulumi.CustomResource):
         __props__.__dict__["instances"] = instances
         return MonitorGroupInstances(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict', 'outputs.MonitorGroupInstancesInstance']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupId"] = group_id
+        __props__["instances"] = instances
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/monitorGroupInstances:MonitorGroupInstances', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:

@@ -414,7 +414,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<bool> EnableDynamodb { get; private set; } = null!;
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
         /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Output("encryptNewTables")]
@@ -461,7 +461,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
         /// &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-        /// &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        /// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         /// </summary>
         [Output("imciSwitch")]
         public Output<string> ImciSwitch { get; private set; } = null!;
@@ -714,7 +714,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
         /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
+        /// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
         /// </summary>
         [Output("storageSpace")]
         public Output<int> StorageSpace { get; private set; } = null!;
@@ -760,7 +760,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// (Available since 1.200.0) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
-        /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+        /// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         /// </summary>
         [Output("tdeRegion")]
         public Output<string> TdeRegion { get; private set; } = null!;
@@ -1012,7 +1012,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<bool>? EnableDynamodb { get; set; }
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
         /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
@@ -1065,7 +1065,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
         /// &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-        /// &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        /// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         /// </summary>
         [Input("imciSwitch")]
         public Input<string>? ImciSwitch { get; set; }
@@ -1318,7 +1318,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
         /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
+        /// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
         /// </summary>
         [Input("storageSpace")]
         public Input<int>? StorageSpace { get; set; }
@@ -1630,7 +1630,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<bool>? EnableDynamodb { get; set; }
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
         /// &gt; **NOTE:** `EncryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
@@ -1683,7 +1683,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
         /// &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-        /// &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        /// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         /// </summary>
         [Input("imciSwitch")]
         public Input<string>? ImciSwitch { get; set; }
@@ -1954,7 +1954,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
         /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
-        /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
+        /// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when PayType is `PrePaid`.
         /// </summary>
         [Input("storageSpace")]
         public Input<int>? StorageSpace { get; set; }
@@ -2006,7 +2006,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// (Available since 1.200.0) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
-        /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+        /// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         /// </summary>
         [Input("tdeRegion")]
         public Input<string>? TdeRegion { get; set; }

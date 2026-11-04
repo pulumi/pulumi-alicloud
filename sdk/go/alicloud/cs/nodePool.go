@@ -1310,6 +1310,12 @@ func (NodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodePoolState)(nil)).Elem()
 }
 
+// NodePoolExists checks whether an existing NodePool resource with the given ID exists.
+func NodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/nodePool:NodePool", id, state, "", opts...)
+}
+
 type nodePoolArgs struct {
 	// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
 	AutoMode *NodePoolAutoMode `pulumi:"autoMode"`

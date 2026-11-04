@@ -634,6 +634,36 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_slb: pulumi.Input[Optional[_builtins.bool]] = None,
+            enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            replica: pulumi.Input[Optional[_builtins.int]] = None,
+            slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict', 'outputs.GatewaySlbList']]]]] = None,
+            slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupVswitchId"] = backup_vswitch_id
+        __props__["deleteSlb"] = delete_slb
+        __props__["enterpriseSecurityGroup"] = enterprise_security_group
+        __props__["gatewayName"] = gateway_name
+        __props__["internetSlbSpec"] = internet_slb_spec
+        __props__["replica"] = replica
+        __props__["slbLists"] = slb_lists
+        __props__["slbSpec"] = slb_spec
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:mse/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupVswitchId")
     def backup_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:

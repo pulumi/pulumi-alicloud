@@ -184,6 +184,12 @@ func (BucketCnameState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketCnameState)(nil)).Elem()
 }
 
+// BucketCnameExists checks whether an existing BucketCname resource with the given ID exists.
+func BucketCnameExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketCnameState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketCname:BucketCname", id, state, "", opts...)
+}
+
 type bucketCnameArgs struct {
 	// The bucket to which the custom domain name belongs
 	Bucket string `pulumi:"bucket"`

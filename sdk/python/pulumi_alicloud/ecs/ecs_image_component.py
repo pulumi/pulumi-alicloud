@@ -617,6 +617,30 @@ class EcsImageComponent(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return EcsImageComponent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            component_type: pulumi.Input[Optional[_builtins.str]] = None,
+            component_version: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            image_component_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["componentType"] = component_type
+        __props__["componentVersion"] = component_version
+        __props__["content"] = content
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["imageComponentName"] = image_component_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["systemType"] = system_type
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsImageComponent:EcsImageComponent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="componentType")
     def component_type(self) -> pulumi.Output[_builtins.str]:

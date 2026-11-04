@@ -369,6 +369,22 @@ class FirewallRule(pulumi.CustomResource):
         __props__.__dict__["rule_protocol"] = rule_protocol
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            firewall_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_protocol: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["firewallRuleId"] = firewall_rule_id
+        __props__["instanceId"] = instance_id
+        __props__["port"] = port
+        __props__["remark"] = remark
+        __props__["ruleProtocol"] = rule_protocol
+        return pulumi.runtime.exists_resource(None, 'alicloud:simpleapplicationserver/firewallRule:FirewallRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="firewallRuleId")
     def firewall_rule_id(self) -> pulumi.Output[_builtins.str]:

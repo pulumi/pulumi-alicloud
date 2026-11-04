@@ -357,6 +357,20 @@ class ServiceAccountLogging(pulumi.CustomResource):
         __props__.__dict__["project_name"] = project_name
         return ServiceAccountLogging(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            log_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+            message_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["logEnabled"] = log_enabled
+        __props__["logStoreName"] = log_store_name
+        __props__["messageTraceEnabled"] = message_trace_enabled
+        __props__["projectName"] = project_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:message/serviceAccountLogging:ServiceAccountLogging', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="logEnabled")
     def log_enabled(self) -> pulumi.Output[_builtins.bool]:

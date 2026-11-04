@@ -759,6 +759,46 @@ class CapacityReservation(pulumi.CustomResource):
         __props__.__dict__["zone_ids"] = zone_ids
         return CapacityReservation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            time_slot: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacityReservationName"] = capacity_reservation_name
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["endTime"] = end_time
+        __props__["endTimeType"] = end_time_type
+        __props__["instanceAmount"] = instance_amount
+        __props__["instanceType"] = instance_type
+        __props__["matchCriteria"] = match_criteria
+        __props__["paymentType"] = payment_type
+        __props__["platform"] = platform
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["startTime"] = start_time
+        __props__["startTimeType"] = start_time_type
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["timeSlot"] = time_slot
+        __props__["zoneIds"] = zone_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/capacityReservation:CapacityReservation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="capacityReservationName")
     def capacity_reservation_name(self) -> pulumi.Output[_builtins.str]:

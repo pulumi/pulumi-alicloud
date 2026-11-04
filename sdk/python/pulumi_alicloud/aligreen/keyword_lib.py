@@ -555,6 +555,30 @@ class KeywordLib(pulumi.CustomResource):
         __props__.__dict__["resource_type"] = resource_type
         return KeywordLib(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            keyword_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            lib_type: pulumi.Input[Optional[_builtins.str]] = None,
+            match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bizTypes"] = biz_types
+        __props__["category"] = category
+        __props__["enable"] = enable
+        __props__["keywordLibName"] = keyword_lib_name
+        __props__["lang"] = lang
+        __props__["language"] = language
+        __props__["libType"] = lib_type
+        __props__["matchMode"] = match_mode
+        __props__["resourceType"] = resource_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:aligreen/keywordLib:KeywordLib', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bizTypes")
     def biz_types(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

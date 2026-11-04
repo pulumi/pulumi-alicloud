@@ -450,6 +450,22 @@ class Notification(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return Notification(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            message_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["messageEncoding"] = message_encoding
+        __props__["notificationArn"] = notification_arn
+        __props__["notificationTypes"] = notification_types
+        __props__["scalingGroupId"] = scaling_group_id
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/notification:Notification', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="messageEncoding")
     def message_encoding(self) -> pulumi.Output[Optional[_builtins.str]]:

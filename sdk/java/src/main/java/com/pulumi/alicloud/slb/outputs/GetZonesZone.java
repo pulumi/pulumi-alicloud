@@ -31,11 +31,10 @@ public final class GetZonesZone {
      * @return (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
      * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
      * 
-     * @deprecated
-     * the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
+     * @deprecated the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
      * 
      */
-    @Deprecated /* the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead. */
+    @Deprecated
     private List<String> slbSlaveZoneIds;
     /**
      * @return (Available in 1.154.0+)A list of available resource which the slb master zone supported.
@@ -69,11 +68,10 @@ public final class GetZonesZone {
      * @return (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
      * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
      * 
-     * @deprecated
-     * the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
+     * @deprecated the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
      * 
      */
-    @Deprecated /* the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead. */
+    @Deprecated
     public List<String> slbSlaveZoneIds() {
         return this.slbSlaveZoneIds;
     }

@@ -274,11 +274,10 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      * 
-     * @deprecated
-     * Field &#39;acl_config&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_listener_acl_attachment&#39;.
+     * @deprecated Field &#39;acl_config&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_alb_listener_acl_attachment&#39;.
      * 
      */
-    @Deprecated /* Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'. */
+    @Deprecated
     @Export(name="aclConfig", refs={ListenerAclConfig.class}, tree="[0]")
     private Output<ListenerAclConfig> aclConfig;
 

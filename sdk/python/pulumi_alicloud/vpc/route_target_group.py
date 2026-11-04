@@ -730,6 +730,30 @@ class RouteTargetGroup(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return RouteTargetGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_target_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            route_target_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            route_target_member_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTargetGroupRouteTargetMemberListArgs', 'RouteTargetGroupRouteTargetMemberListArgsDict', 'outputs.RouteTargetGroupRouteTargetMemberList']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configMode"] = config_mode
+        __props__["createTime"] = create_time
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["routeTargetGroupDescription"] = route_target_group_description
+        __props__["routeTargetGroupName"] = route_target_group_name
+        __props__["routeTargetMemberLists"] = route_target_member_lists
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/routeTargetGroup:RouteTargetGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configMode")
     def config_mode(self) -> pulumi.Output[_builtins.str]:

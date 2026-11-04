@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create a new RAM Policy.
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
@@ -69,28 +69,28 @@ import javax.annotation.Nullable;
  *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("tf-example-%s", default_.get("result")))
  *             .policyDocument("""
- *   {
- *     \"Statement\": [
- *       {
- *         \"Action\": [
- *           \"oss:ListObjects\",
- *           \"oss:GetObject\"
+ *   }{{@code
+ *     }&#92;{@code "Statement}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Action}&#92;{@code ": [
+ *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+ *           }&#92;{@code "oss:GetObject}&#92;{@code "
  *         ],
- *         \"Effect\": \"Allow\",
- *         \"Resource\": [
- *           \"acs:oss:*:*:mybucket\",
- *           \"acs:oss:*:*:mybucket/*\"
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Resource}&#92;{@code ": [
+ *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+ *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
  *         ]
- *       }
+ *       }}{@code
  *     ],
- *       \"Version\": \"1\"
- *   }
+ *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .description("this is a policy test")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -166,11 +166,10 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
-     * @deprecated
-     * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
+     * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead. */
+    @Deprecated
     @Export(name="document", refs={String.class}, tree="[0]")
     private Output<String> document;
 
@@ -198,11 +197,10 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -262,11 +260,10 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
-     * @deprecated
-     * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * @deprecated Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
      * 
      */
-    @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated
     @Export(name="statements", refs={List.class,PolicyStatement.class}, tree="[0,1]")
     private Output<List<PolicyStatement>> statements;
 
@@ -308,11 +305,10 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * @deprecated Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 

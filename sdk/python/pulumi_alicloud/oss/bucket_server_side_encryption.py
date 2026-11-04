@@ -360,6 +360,20 @@ class BucketServerSideEncryption(pulumi.CustomResource):
         __props__.__dict__["sse_algorithm"] = sse_algorithm
         return BucketServerSideEncryption(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_data_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_master_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["kmsDataEncryption"] = kms_data_encryption
+        __props__["kmsMasterKeyId"] = kms_master_key_id
+        __props__["sseAlgorithm"] = sse_algorithm
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

@@ -193,6 +193,12 @@ func (LoadBalancerSecurityGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerSecurityGroupAttachmentState)(nil)).Elem()
 }
 
+// LoadBalancerSecurityGroupAttachmentExists checks whether an existing LoadBalancerSecurityGroupAttachment resource with the given ID exists.
+func LoadBalancerSecurityGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerSecurityGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment", id, state, "", opts...)
+}
+
 type loadBalancerSecurityGroupAttachmentArgs struct {
 	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`

@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether private network access to Kibana is enabled. Valid values:  
+        /// Indicates whether private network access to Kibana is enabled. Valid values:
         /// - true: Enabled
         /// - false: Disabled
         /// </summary>
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<bool> EnableKibanaPrivateNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable public access to Kibana. Valid values:  
+        /// Specifies whether to enable public access to Kibana. Valid values:
         /// - true: Enables public access.
         /// - false: Disables public access.
         /// </summary>
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Edition type:  
+        /// Edition type:
         /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         /// </summary>
@@ -374,7 +374,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> RenewStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of the auto-renewal period. Valid values:  
+        /// The unit of the auto-renewal period. Valid values:
         /// - M: Month.
         /// - Y: Year.
         /// 
@@ -477,7 +477,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> WarmNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -607,7 +607,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicates whether private network access to Kibana is enabled. Valid values:  
+        /// Indicates whether private network access to Kibana is enabled. Valid values:
         /// - true: Enabled
         /// - false: Disabled
         /// </summary>
@@ -615,7 +615,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable public access to Kibana. Valid values:  
+        /// Specifies whether to enable public access to Kibana. Valid values:
         /// - true: Enables public access.
         /// - false: Disables public access.
         /// </summary>
@@ -641,7 +641,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Edition type:  
+        /// Edition type:
         /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         /// </summary>
@@ -812,7 +812,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// The unit of the auto-renewal period. Valid values:  
+        /// The unit of the auto-renewal period. Valid values:
         /// - M: Month.
         /// - Y: Year.
         /// 
@@ -921,7 +921,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -1027,7 +1027,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Indicates whether private network access to Kibana is enabled. Valid values:  
+        /// Indicates whether private network access to Kibana is enabled. Valid values:
         /// - true: Enabled
         /// - false: Disabled
         /// </summary>
@@ -1035,7 +1035,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable public access to Kibana. Valid values:  
+        /// Specifies whether to enable public access to Kibana. Valid values:
         /// - true: Enables public access.
         /// - false: Disables public access.
         /// </summary>
@@ -1061,7 +1061,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Edition type:  
+        /// Edition type:
         /// - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         /// - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         /// </summary>
@@ -1268,7 +1268,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// The unit of the auto-renewal period. Valid values:  
+        /// The unit of the auto-renewal period. Valid values:
         /// - M: Month.
         /// - Y: Year.
         /// 
@@ -1383,7 +1383,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        /// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

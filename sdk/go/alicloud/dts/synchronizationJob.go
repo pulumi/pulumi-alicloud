@@ -699,6 +699,12 @@ func (SynchronizationJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*synchronizationJobState)(nil)).Elem()
 }
 
+// SynchronizationJobExists checks whether an existing SynchronizationJob resource with the given ID exists.
+func SynchronizationJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SynchronizationJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/synchronizationJob:SynchronizationJob", id, state, "", opts...)
+}
+
 type synchronizationJobArgs struct {
 	// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
 	Checkpoint *string `pulumi:"checkpoint"`

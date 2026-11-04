@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Sls.Inputs
         private InputMap<string>? _resourceTags;
 
         /// <summary>
-        /// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+        /// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\
         /// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
         /// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
         /// </summary>

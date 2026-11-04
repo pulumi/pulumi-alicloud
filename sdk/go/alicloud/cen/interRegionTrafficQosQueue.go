@@ -226,6 +226,12 @@ func (InterRegionTrafficQosQueueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interRegionTrafficQosQueueState)(nil)).Elem()
 }
 
+// InterRegionTrafficQosQueueExists checks whether an existing InterRegionTrafficQosQueue resource with the given ID exists.
+func InterRegionTrafficQosQueueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterRegionTrafficQosQueueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue", id, state, "", opts...)
+}
+
 type interRegionTrafficQosQueueArgs struct {
 	// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
 	Bandwidth *string `pulumi:"bandwidth"`

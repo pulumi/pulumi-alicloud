@@ -254,6 +254,12 @@ func (GatewayVcoRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayVcoRouteState)(nil)).Elem()
 }
 
+// GatewayVcoRouteExists checks whether an existing GatewayVcoRoute resource with the given ID exists.
+func GatewayVcoRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayVcoRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute", id, state, "", opts...)
+}
+
 type gatewayVcoRouteArgs struct {
 	// The next hop of the destination route.
 	NextHop string `pulumi:"nextHop"`

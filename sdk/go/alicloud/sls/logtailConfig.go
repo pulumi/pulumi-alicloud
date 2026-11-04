@@ -236,6 +236,12 @@ func (LogtailConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logtailConfigState)(nil)).Elem()
 }
 
+// LogtailConfigExists checks whether an existing LogtailConfig resource with the given ID exists.
+func LogtailConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogtailConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/logtailConfig:LogtailConfig", id, state, "", opts...)
+}
+
 type logtailConfigArgs struct {
 	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`

@@ -212,6 +212,12 @@ func (ServiceSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceSubscriptionState)(nil)).Elem()
 }
 
+// ServiceSubscriptionExists checks whether an existing ServiceSubscription resource with the given ID exists.
+func ServiceSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceSubscription:ServiceSubscription", id, state, "", opts...)
+}
+
 type serviceSubscriptionArgs struct {
 	// The dead-letter queue policy. See `dlqPolicy` below.
 	DlqPolicy *ServiceSubscriptionDlqPolicy `pulumi:"dlqPolicy"`

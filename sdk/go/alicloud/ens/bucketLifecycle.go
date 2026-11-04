@@ -147,6 +147,12 @@ func (BucketLifecycleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketLifecycleState)(nil)).Elem()
 }
 
+// BucketLifecycleExists checks whether an existing BucketLifecycle resource with the given ID exists.
+func BucketLifecycleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketLifecycleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/bucketLifecycle:BucketLifecycle", id, state, "", opts...)
+}
+
 type bucketLifecycleArgs struct {
 	// Whether prefix overlap is allowed. Valid values: `true`, `false`. Default to `false`.
 	AllowSameActionOverlap *bool `pulumi:"allowSameActionOverlap"`

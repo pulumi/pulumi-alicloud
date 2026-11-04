@@ -165,6 +165,12 @@ func (VersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*versionState)(nil)).Elem()
 }
 
+// VersionExists checks whether an existing Version resource with the given ID exists.
+func VersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/version:Version", id, state, "", opts...)
+}
+
 type versionArgs struct {
 	// The Site version's description.
 	Description *string `pulumi:"description"`

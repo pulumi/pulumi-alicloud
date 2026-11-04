@@ -389,6 +389,12 @@ func (RuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleState)(nil)).Elem()
 }
 
+// RuleExists checks whether an existing Rule resource with the given ID exists.
+func RuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/rule:Rule", id, state, "", opts...)
+}
+
 type ruleArgs struct {
 	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
 	// - `Request`: The forwarding rule is applied to the client requests received by ALB.

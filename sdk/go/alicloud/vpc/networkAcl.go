@@ -244,6 +244,12 @@ func (NetworkAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclState)(nil)).Elem()
 }
 
+// NetworkAclExists checks whether an existing NetworkAcl resource with the given ID exists.
+func NetworkAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/networkAcl:NetworkAcl", id, state, "", opts...)
+}
+
 type networkAclArgs struct {
 	// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`. Currently, the description is only returned by the API and is not displayed in the console. To configure the name displayed in the console, use `networkAclName`.
 	Description *string `pulumi:"description"`

@@ -321,6 +321,12 @@ func (EcsSnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsSnapshotState)(nil)).Elem()
 }
 
+// EcsSnapshotExists checks whether an existing EcsSnapshot resource with the given ID exists.
+func EcsSnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsSnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsSnapshot:EcsSnapshot", id, state, "", opts...)
+}
+
 type ecsSnapshotArgs struct {
 	// The category of the snapshot. Valid values:
 	Category *string `pulumi:"category"`

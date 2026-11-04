@@ -1267,6 +1267,60 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["x_attrs"] = x_attrs
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            class_name: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.int]] = None,
+            job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict', 'outputs.JobJobMonitorInfo']]] = None,
+            job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict', 'outputs.JobMapTaskXattrs']]] = None,
+            max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
+            max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict', 'outputs.JobTimeConfig']]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            x_attrs: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attemptInterval"] = attempt_interval
+        __props__["className"] = class_name
+        __props__["content"] = content
+        __props__["description"] = description
+        __props__["executeMode"] = execute_mode
+        __props__["failTimes"] = fail_times
+        __props__["groupId"] = group_id
+        __props__["jobId"] = job_id
+        __props__["jobMonitorInfo"] = job_monitor_info
+        __props__["jobName"] = job_name
+        __props__["jobType"] = job_type
+        __props__["mapTaskXattrs"] = map_task_xattrs
+        __props__["maxAttempt"] = max_attempt
+        __props__["maxConcurrency"] = max_concurrency
+        __props__["namespace"] = namespace
+        __props__["namespaceSource"] = namespace_source
+        __props__["parameters"] = parameters
+        __props__["status"] = status
+        __props__["successNoticeEnable"] = success_notice_enable
+        __props__["taskDispatchMode"] = task_dispatch_mode
+        __props__["template"] = template
+        __props__["timeConfig"] = time_config
+        __props__["timezone"] = timezone
+        __props__["xAttrs"] = x_attrs
+        return pulumi.runtime.exists_resource(None, 'alicloud:schedulerx/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attemptInterval")
     def attempt_interval(self) -> pulumi.Output[Optional[_builtins.int]]:

@@ -281,6 +281,12 @@ func (AdConnectorOfficeSiteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*adConnectorOfficeSiteState)(nil)).Elem()
 }
 
+// AdConnectorOfficeSiteExists checks whether an existing AdConnectorOfficeSite resource with the given ID exists.
+func AdConnectorOfficeSiteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdConnectorOfficeSiteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite", id, state, "", opts...)
+}
+
 type adConnectorOfficeSiteArgs struct {
 	// The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
 	AdConnectorOfficeSiteName string `pulumi:"adConnectorOfficeSiteName"`

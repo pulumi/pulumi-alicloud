@@ -191,6 +191,12 @@ func (QosCarState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosCarState)(nil)).Elem()
 }
 
+// QosCarExists checks whether an existing QosCar resource with the given ID exists.
+func QosCarExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosCarState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rocketmq/qosCar:QosCar", id, state, "", opts...)
+}
+
 type qosCarArgs struct {
 	// The description of the QoS speed limiting rule.
 	Description *string `pulumi:"description"`

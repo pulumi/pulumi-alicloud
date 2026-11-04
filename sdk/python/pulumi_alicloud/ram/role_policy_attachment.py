@@ -382,6 +382,18 @@ class RolePolicyAttachment(pulumi.CustomResource):
         __props__.__dict__["role_name"] = role_name
         return RolePolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["policyName"] = policy_name
+        __props__["policyType"] = policy_type
+        __props__["roleName"] = role_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[_builtins.str]:

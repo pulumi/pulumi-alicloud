@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
  *         final var domainName = config.get("domainName").orElse("alicloud-provider.com");
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         for (var i = 0; i < 2; i++) {
+ *         for (var i = 0; i < 2; i++) }{{@code
  *             new AddressPool("defaultAddressPool-" + i, AddressPoolArgs.builder()
  *                 .addressPoolName(StdFunctions.format(FormatArgs.builder()
  *                     .input(String.format("%s_%d", name))
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *                 .lbaStrategy("RATIO")
  *                 .type("IPV4")
  *                 .addresses(AddressPoolAddressArgs.builder()
- *                     .attributeInfo("{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}")
+ *                     .attributeInfo("}{&#92;{@code "lineCodeRectifyType}&#92;{@code ":}&#92;{@code "RECTIFIED}&#92;{@code ",}&#92;{@code "lineCodes}&#92;{@code ":[}&#92;{@code "os_namerica_us}&#92;{@code "]}}{@code ")
  *                     .remark("address_remark")
  *                     .address("1.1.1.1")
  *                     .mode("SMART")
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         var defaultAccessStrategy = new AccessStrategy("defaultAccessStrategy", AccessStrategyArgs.builder()
  *             .strategyName(name)
  *             .strategyMode("GEO")
@@ -143,8 +143,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

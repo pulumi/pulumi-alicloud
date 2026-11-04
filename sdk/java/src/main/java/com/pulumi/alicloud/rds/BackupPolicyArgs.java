@@ -111,22 +111,20 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field `preferredBackupPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
+     * @deprecated Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
+    @Deprecated
     @Import(name="backupPeriods")
     private @Nullable Output<List<String>> backupPeriods;
 
     /**
      * @return It has been deprecated from version 1.69.0, and use field `preferredBackupPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
+     * @deprecated Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
+    @Deprecated
     public Optional<Output<List<String>>> backupPeriods() {
         return Optional.ofNullable(this.backupPeriods);
     }
@@ -164,22 +162,20 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field `preferredBackupTime` instead.
      * 
-     * @deprecated
-     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
+     * @deprecated Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
+    @Deprecated
     @Import(name="backupTime")
     private @Nullable Output<String> backupTime;
 
     /**
      * @return It has been deprecated from version 1.69.0, and use field `preferredBackupTime` instead.
      * 
-     * @deprecated
-     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
+     * @deprecated Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
+    @Deprecated
     public Optional<Output<String>> backupTime() {
         return Optional.ofNullable(this.backupTime);
     }
@@ -341,22 +337,20 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from version 1.68.0, and use field `enableBackupLog` instead.
      * 
-     * @deprecated
-     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
+     * @deprecated Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      * 
      */
-    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
+    @Deprecated
     @Import(name="logBackup")
     private @Nullable Output<Boolean> logBackup;
 
     /**
      * @return It has been deprecated from version 1.68.0, and use field `enableBackupLog` instead.
      * 
-     * @deprecated
-     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
+     * @deprecated Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      * 
      */
-    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
+    @Deprecated
     public Optional<Output<Boolean>> logBackup() {
         return Optional.ofNullable(this.logBackup);
     }
@@ -417,22 +411,20 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field `logBackupRetentionPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
+     * @deprecated Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
+    @Deprecated
     @Import(name="logRetentionPeriod")
     private @Nullable Output<Integer> logRetentionPeriod;
 
     /**
      * @return It has been deprecated from version 1.69.0, and use field `logBackupRetentionPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
+     * @deprecated Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
+    @Deprecated
     public Optional<Output<Integer>> logRetentionPeriod() {
         return Optional.ofNullable(this.logRetentionPeriod);
     }
@@ -491,22 +483,20 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field `backupRetentionPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
+     * @deprecated Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
+    @Deprecated
     @Import(name="retentionPeriod")
     private @Nullable Output<Integer> retentionPeriod;
 
     /**
      * @return It has been deprecated from version 1.69.0, and use field `backupRetentionPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
+     * @deprecated Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
+    @Deprecated
     public Optional<Output<Integer>> retentionPeriod() {
         return Optional.ofNullable(this.retentionPeriod);
     }
@@ -686,11 +676,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
+         * @deprecated Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
+        @Deprecated
         public Builder backupPeriods(@Nullable Output<List<String>> backupPeriods) {
             $.backupPeriods = backupPeriods;
             return this;
@@ -701,11 +690,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
+         * @deprecated Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
+        @Deprecated
         public Builder backupPeriods(List<String> backupPeriods) {
             return backupPeriods(Output.of(backupPeriods));
         }
@@ -715,11 +703,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
+         * @deprecated Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
+        @Deprecated
         public Builder backupPeriods(String... backupPeriods) {
             return backupPeriods(List.of(backupPeriods));
         }
@@ -771,11 +758,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
+         * @deprecated Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
+        @Deprecated
         public Builder backupTime(@Nullable Output<String> backupTime) {
             $.backupTime = backupTime;
             return this;
@@ -786,11 +772,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
+         * @deprecated Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
          * 
          */
-        @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
+        @Deprecated
         public Builder backupTime(String backupTime) {
             return backupTime(Output.of(backupTime));
         }
@@ -1014,11 +999,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
+         * @deprecated Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
          * 
          */
-        @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
+        @Deprecated
         public Builder logBackup(@Nullable Output<Boolean> logBackup) {
             $.logBackup = logBackup;
             return this;
@@ -1029,11 +1013,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
+         * @deprecated Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
          * 
          */
-        @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
+        @Deprecated
         public Builder logBackup(Boolean logBackup) {
             return logBackup(Output.of(logBackup));
         }
@@ -1114,11 +1097,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
+         * @deprecated Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
+        @Deprecated
         public Builder logRetentionPeriod(@Nullable Output<Integer> logRetentionPeriod) {
             $.logRetentionPeriod = logRetentionPeriod;
             return this;
@@ -1129,11 +1111,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
+         * @deprecated Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
+        @Deprecated
         public Builder logRetentionPeriod(Integer logRetentionPeriod) {
             return logRetentionPeriod(Output.of(logRetentionPeriod));
         }
@@ -1222,11 +1203,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
+         * @deprecated Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
+        @Deprecated
         public Builder retentionPeriod(@Nullable Output<Integer> retentionPeriod) {
             $.retentionPeriod = retentionPeriod;
             return this;
@@ -1237,11 +1217,10 @@ public final class BackupPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
+         * @deprecated Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
          * 
          */
-        @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
+        @Deprecated
         public Builder retentionPeriod(Integer retentionPeriod) {
             return retentionPeriod(Output.of(retentionPeriod));
         }

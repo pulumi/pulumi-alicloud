@@ -391,6 +391,20 @@ class BucketWebsite(pulumi.CustomResource):
         __props__.__dict__["routing_rules"] = routing_rules
         return BucketWebsite(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            error_document: pulumi.Input[Optional[Union['BucketWebsiteErrorDocumentArgs', 'BucketWebsiteErrorDocumentArgsDict', 'outputs.BucketWebsiteErrorDocument']]] = None,
+            index_document: pulumi.Input[Optional[Union['BucketWebsiteIndexDocumentArgs', 'BucketWebsiteIndexDocumentArgsDict', 'outputs.BucketWebsiteIndexDocument']]] = None,
+            routing_rules: pulumi.Input[Optional[Union['BucketWebsiteRoutingRulesArgs', 'BucketWebsiteRoutingRulesArgsDict', 'outputs.BucketWebsiteRoutingRules']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["errorDocument"] = error_document
+        __props__["indexDocument"] = index_document
+        __props__["routingRules"] = routing_rules
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketWebsite:BucketWebsite', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

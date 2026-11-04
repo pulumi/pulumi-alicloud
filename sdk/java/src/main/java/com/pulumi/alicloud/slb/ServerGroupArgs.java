@@ -69,11 +69,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
      * The list of backend servers to be added. See `servers` below.
      * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
-     * @deprecated
-     * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+     * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
-    @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
+    @Deprecated
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
@@ -81,11 +80,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
      * @return The list of backend servers to be added. See `servers` below.
      * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
-     * @deprecated
-     * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+     * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
-    @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
+    @Deprecated
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
         return Optional.ofNullable(this.servers);
     }
@@ -202,11 +200,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+         * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          */
-        @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
+        @Deprecated
         public Builder servers(@Nullable Output<List<ServerGroupServerArgs>> servers) {
             $.servers = servers;
             return this;
@@ -218,11 +215,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+         * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          */
-        @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
+        @Deprecated
         public Builder servers(List<ServerGroupServerArgs> servers) {
             return servers(Output.of(servers));
         }
@@ -233,11 +229,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+         * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          */
-        @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
+        @Deprecated
         public Builder servers(ServerGroupServerArgs... servers) {
             return servers(List.of(servers));
         }

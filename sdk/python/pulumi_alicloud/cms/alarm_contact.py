@@ -447,6 +447,26 @@ class AlarmContact(pulumi.CustomResource):
         __props__.__dict__["lang"] = lang
         return AlarmContact(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alarm_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+            channels_aliim: pulumi.Input[Optional[_builtins.str]] = None,
+            channels_ding_web_hook: pulumi.Input[Optional[_builtins.str]] = None,
+            channels_mail: pulumi.Input[Optional[_builtins.str]] = None,
+            channels_sms: pulumi.Input[Optional[_builtins.str]] = None,
+            describe: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alarmContactName"] = alarm_contact_name
+        __props__["channelsAliim"] = channels_aliim
+        __props__["channelsDingWebHook"] = channels_ding_web_hook
+        __props__["channelsMail"] = channels_mail
+        __props__["channelsSms"] = channels_sms
+        __props__["describe"] = describe
+        __props__["lang"] = lang
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/alarmContact:AlarmContact', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alarmContactName")
     def alarm_contact_name(self) -> pulumi.Output[_builtins.str]:

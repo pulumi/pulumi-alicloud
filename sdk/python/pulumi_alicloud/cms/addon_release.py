@@ -594,6 +594,34 @@ class AddonRelease(pulumi.CustomResource):
         __props__.__dict__["workspace"] = workspace
         return AddonRelease(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addon_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addon_version: pulumi.Input[Optional[_builtins.str]] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addonName"] = addon_name
+        __props__["addonReleaseName"] = addon_release_name
+        __props__["addonVersion"] = addon_version
+        __props__["aliyunLang"] = aliyun_lang
+        __props__["config"] = config
+        __props__["createTime"] = create_time
+        __props__["dryRun"] = dry_run
+        __props__["envType"] = env_type
+        __props__["integrationPolicyId"] = integration_policy_id
+        __props__["regionId"] = region_id
+        __props__["workspace"] = workspace
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/addonRelease:AddonRelease', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addonName")
     def addon_name(self) -> pulumi.Output[_builtins.str]:

@@ -243,6 +243,12 @@ func (VirtualNodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualNodeState)(nil)).Elem()
 }
 
+// VirtualNodeExists checks whether an existing VirtualNode resource with the given ID exists.
+func VirtualNodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualNodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eci/virtualNode:VirtualNode", id, state, "", opts...)
+}
+
 type virtualNodeArgs struct {
 	// The Id of eip.
 	EipInstanceId *string `pulumi:"eipInstanceId"`

@@ -517,6 +517,28 @@ class ImageEventOperation(pulumi.CustomResource):
         __props__.__dict__["source"] = source
         return ImageEventOperation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            conditions: pulumi.Input[Optional[_builtins.str]] = None,
+            event_key: pulumi.Input[Optional[_builtins.str]] = None,
+            event_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_type: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_code: pulumi.Input[Optional[_builtins.str]] = None,
+            scenarios: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["conditions"] = conditions
+        __props__["eventKey"] = event_key
+        __props__["eventName"] = event_name
+        __props__["eventType"] = event_type
+        __props__["note"] = note
+        __props__["operationCode"] = operation_code
+        __props__["scenarios"] = scenarios
+        __props__["source"] = source
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/imageEventOperation:ImageEventOperation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def conditions(self) -> pulumi.Output[_builtins.str]:

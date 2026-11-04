@@ -173,6 +173,12 @@ func (ZnodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*znodeState)(nil)).Elem()
 }
 
+// ZnodeExists checks whether an existing Znode resource with the given ID exists.
+func ZnodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZnodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mse/znode:Znode", id, state, "", opts...)
+}
+
 type znodeArgs struct {
 	// The language type of the returned information. Valid values: `zh` or `en`.
 	AcceptLanguage *string `pulumi:"acceptLanguage"`

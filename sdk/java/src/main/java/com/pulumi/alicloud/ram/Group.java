@@ -141,11 +141,10 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

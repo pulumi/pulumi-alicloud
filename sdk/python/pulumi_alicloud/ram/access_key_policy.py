@@ -329,6 +329,18 @@ class AccessKeyPolicy(pulumi.CustomResource):
         __props__.__dict__["user_principal_name"] = user_principal_name
         return AccessKeyPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            user_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_principal_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKeyPolicy"] = access_key_policy
+        __props__["userAccessKeyId"] = user_access_key_id
+        __props__["userPrincipalName"] = user_principal_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/accessKeyPolicy:AccessKeyPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKeyPolicy")
     def access_key_policy(self) -> pulumi.Output[_builtins.str]:

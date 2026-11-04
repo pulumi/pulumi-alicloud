@@ -202,6 +202,12 @@ func (Ipv6AddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv6AddressState)(nil)).Elem()
 }
 
+// Ipv6AddressExists checks whether an existing Ipv6Address resource with the given ID exists.
+func Ipv6AddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv6AddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipv6Address:Ipv6Address", id, state, "", opts...)
+}
+
 type ipv6AddressArgs struct {
 	// The type of the IPv6 address. Value:
 	// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.

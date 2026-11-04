@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// security group IDs configured to Bastionhost. 
+        /// security group IDs configured to Bastionhost.
         /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
         /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// security group IDs configured to Bastionhost. 
+        /// security group IDs configured to Bastionhost.
         /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
         /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.
@@ -641,7 +641,7 @@ namespace Pulumi.AliCloud.BastionHost
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// security group IDs configured to Bastionhost. 
+        /// security group IDs configured to Bastionhost.
         /// **NOTE:** There is a potential diff error because of the order of `SecurityGroupIds` values indefinite.
         /// So, from version 1.160.0, `SecurityGroupIds` type has been updated as `Set` from `List`,
         /// and you can use tolist to convert it to a list.

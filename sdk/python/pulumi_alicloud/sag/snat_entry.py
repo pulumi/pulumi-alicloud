@@ -296,6 +296,18 @@ class SnatEntry(pulumi.CustomResource):
         __props__.__dict__["snat_ip"] = snat_ip
         return SnatEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_ip: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrBlock"] = cidr_block
+        __props__["sagId"] = sag_id
+        __props__["snatIp"] = snat_ip
+        return pulumi.runtime.exists_resource(None, 'alicloud:sag/snatEntry:SnatEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[_builtins.str]:

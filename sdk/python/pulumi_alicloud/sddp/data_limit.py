@@ -673,6 +673,32 @@ class DataLimit(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return DataLimit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audit_status: pulumi.Input[Optional[_builtins.int]] = None,
+            engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store_day: pulumi.Input[Optional[_builtins.int]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["auditStatus"] = audit_status
+        __props__["engineType"] = engine_type
+        __props__["lang"] = lang
+        __props__["logStoreDay"] = log_store_day
+        __props__["parentId"] = parent_id
+        __props__["password"] = password
+        __props__["port"] = port
+        __props__["resourceType"] = resource_type
+        __props__["serviceRegionId"] = service_region_id
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:sddp/dataLimit:DataLimit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Output[_builtins.int]:

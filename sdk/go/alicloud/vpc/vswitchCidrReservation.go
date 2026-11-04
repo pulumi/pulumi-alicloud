@@ -202,6 +202,12 @@ func (VswitchCidrReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vswitchCidrReservationState)(nil)).Elem()
 }
 
+// VswitchCidrReservationExists checks whether an existing VswitchCidrReservation resource with the given ID exists.
+func VswitchCidrReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VswitchCidrReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation", id, state, "", opts...)
+}
+
 type vswitchCidrReservationArgs struct {
 	// Reserved network segment CIdrBlock.
 	CidrReservationCidr *string `pulumi:"cidrReservationCidr"`

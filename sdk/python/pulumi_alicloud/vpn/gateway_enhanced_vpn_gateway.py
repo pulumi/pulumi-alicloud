@@ -658,6 +658,36 @@ class GatewayEnhancedVpnGateway(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return GatewayEnhancedVpnGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPropagate"] = auto_propagate
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["disasterRecoveryVswitchId"] = disaster_recovery_vswitch_id
+        __props__["gatewayType"] = gateway_type
+        __props__["networkType"] = network_type
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vpnGatewayName"] = vpn_gateway_name
+        __props__["vpnType"] = vpn_type
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/gatewayEnhancedVpnGateway:GatewayEnhancedVpnGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPropagate")
     def auto_propagate(self) -> pulumi.Output[Optional[_builtins.bool]]:

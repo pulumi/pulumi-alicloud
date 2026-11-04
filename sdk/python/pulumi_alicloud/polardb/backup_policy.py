@@ -908,6 +908,48 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["preferred_backup_time"] = preferred_backup_time
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level1_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            data_level1_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            data_level1_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level2_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level2_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            data_level2_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            data_level2_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupFrequency"] = backup_frequency
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["backupRetentionPolicyOnClusterDeletion"] = backup_retention_policy_on_cluster_deletion
+        __props__["dataLevel1BackupFrequency"] = data_level1_backup_frequency
+        __props__["dataLevel1BackupPeriods"] = data_level1_backup_periods
+        __props__["dataLevel1BackupRetentionPeriod"] = data_level1_backup_retention_period
+        __props__["dataLevel1BackupTime"] = data_level1_backup_time
+        __props__["dataLevel2BackupAnotherRegionRegion"] = data_level2_backup_another_region_region
+        __props__["dataLevel2BackupAnotherRegionRetentionPeriod"] = data_level2_backup_another_region_retention_period
+        __props__["dataLevel2BackupPeriods"] = data_level2_backup_periods
+        __props__["dataLevel2BackupRetentionPeriod"] = data_level2_backup_retention_period
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["enableBackupLog"] = enable_backup_log
+        __props__["logBackupAnotherRegionRegion"] = log_backup_another_region_region
+        __props__["logBackupAnotherRegionRetentionPeriod"] = log_backup_another_region_retention_period
+        __props__["logBackupRetentionPeriod"] = log_backup_retention_period
+        __props__["preferredBackupPeriods"] = preferred_backup_periods
+        __props__["preferredBackupTime"] = preferred_backup_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/backupPolicy:BackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupFrequency")
     def backup_frequency(self) -> pulumi.Output[_builtins.str]:

@@ -91,11 +91,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+     * @deprecated Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
+    @Deprecated
     @Export(name="abandonAbleCheckIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> abandonAbleCheckIds;
 

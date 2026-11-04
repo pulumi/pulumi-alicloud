@@ -152,6 +152,12 @@ func (WafPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafPolicyState)(nil)).Elem()
 }
 
+// WafPolicyExists checks whether an existing WafPolicy resource with the given ID exists.
+func WafPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WafPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/wafPolicy:WafPolicy", id, state, "", opts...)
+}
+
 type wafPolicyArgs struct {
 	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 	DefenseScene string `pulumi:"defenseScene"`

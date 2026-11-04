@@ -112,11 +112,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:sslcertificatesservicepca/cert:Cert example &lt;id&gt;
  * ```
  * 
- * @deprecated
- * alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert
+ * @deprecated alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert
  * 
  */
-@Deprecated /* alicloud.sslcertificatesservicepca/cert.Cert has been deprecated in favor of alicloud.sslcertificatesservicepcacert/sslcertificatesservicepcacert.SslCertificatesServicePcaCert */
+@Deprecated
 @ResourceType(type="alicloud:sslcertificatesservicepca/cert:Cert")
 public class Cert extends com.pulumi.resources.CustomResource {
     /**
@@ -224,7 +223,7 @@ public class Cert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.commonName);
     }
     /**
-     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
@@ -232,7 +231,7 @@ public class Cert extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> countryCode;
 
     /**
-     * @return Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+     * @return Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */

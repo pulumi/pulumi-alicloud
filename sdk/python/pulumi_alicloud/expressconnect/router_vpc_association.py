@@ -454,6 +454,28 @@ class RouterVpcAssociation(pulumi.CustomResource):
         __props__.__dict__["vpc_owner_id"] = vpc_owner_id
         return RouterVpcAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedPrefixes"] = allowed_prefixes
+        __props__["associationId"] = association_id
+        __props__["associationRegionId"] = association_region_id
+        __props__["createTime"] = create_time
+        __props__["ecrId"] = ecr_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vpcOwnerId"] = vpc_owner_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
     def allowed_prefixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

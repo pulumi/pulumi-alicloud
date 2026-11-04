@@ -279,6 +279,18 @@ class IndustrialPidProject(pulumi.CustomResource):
         __props__.__dict__["pid_project_name"] = pid_project_name
         return IndustrialPidProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_project_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_project_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["pidOrganizationId"] = pid_organization_id
+        __props__["pidProjectDesc"] = pid_project_desc
+        __props__["pidProjectName"] = pid_project_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:brain/industrialPidProject:IndustrialPidProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="pidOrganizationId")
     def pid_organization_id(self) -> pulumi.Output[_builtins.str]:

@@ -355,6 +355,20 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         __props__.__dict__["yarm_config"] = yarm_config
         return HybridMonitorFcTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            hybrid_monitor_fc_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            yarm_config: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hybridMonitorFcTaskId"] = hybrid_monitor_fc_task_id
+        __props__["namespace"] = namespace
+        __props__["targetUserId"] = target_user_id
+        __props__["yarmConfig"] = yarm_config
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="hybridMonitorFcTaskId")
     def hybrid_monitor_fc_task_id(self) -> pulumi.Output[_builtins.str]:

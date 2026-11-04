@@ -450,6 +450,12 @@ func (StreamingJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamingJobState)(nil)).Elem()
 }
 
+// StreamingJobExists checks whether an existing StreamingJob resource with the given ID exists.
+func StreamingJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamingJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/streamingJob:StreamingJob", id, state, "", opts...)
+}
+
 type streamingJobArgs struct {
 	// The name of the database account.
 	Account *string `pulumi:"account"`

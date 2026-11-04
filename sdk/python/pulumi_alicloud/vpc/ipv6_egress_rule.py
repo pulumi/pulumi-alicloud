@@ -495,6 +495,26 @@ class Ipv6EgressRule(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Ipv6EgressRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_egress_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_egress_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["instanceType"] = instance_type
+        __props__["ipv6EgressRuleId"] = ipv6_egress_rule_id
+        __props__["ipv6EgressRuleName"] = ipv6_egress_rule_name
+        __props__["ipv6GatewayId"] = ipv6_gateway_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv6EgressRule:Ipv6EgressRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

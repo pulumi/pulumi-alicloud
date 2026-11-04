@@ -272,6 +272,16 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
         __props__.__dict__["global_ip_list"] = global_ip_list
         return GlobalSecurityIpGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            global_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            global_ip_list: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["globalIpGroupName"] = global_ip_group_name
+        __props__["globalIpList"] = global_ip_list
+        return pulumi.runtime.exists_resource(None, 'alicloud:redis/globalSecurityIpGroup:GlobalSecurityIpGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="globalIpGroupName")
     def global_ip_group_name(self) -> pulumi.Output[_builtins.str]:

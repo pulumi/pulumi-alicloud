@@ -176,6 +176,12 @@ func (WorkspaceWorkspaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceWorkspaceState)(nil)).Elem()
 }
 
+// WorkspaceWorkspaceExists checks whether an existing WorkspaceWorkspace resource with the given ID exists.
+func WorkspaceWorkspaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceWorkspaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceWorkspace:WorkspaceWorkspace", id, state, "", opts...)
+}
+
 type workspaceWorkspaceArgs struct {
 	// Workspace description, no more than 80 characters.
 	Description string `pulumi:"description"`

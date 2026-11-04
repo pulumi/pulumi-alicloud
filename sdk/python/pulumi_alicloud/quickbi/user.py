@@ -405,6 +405,24 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user_type"] = user_type
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+            nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["accountName"] = account_name
+        __props__["adminUser"] = admin_user
+        __props__["authAdminUser"] = auth_admin_user
+        __props__["nickName"] = nick_name
+        __props__["userType"] = user_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:quickbi/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

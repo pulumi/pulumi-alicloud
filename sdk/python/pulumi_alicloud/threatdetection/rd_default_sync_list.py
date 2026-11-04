@@ -221,6 +221,14 @@ class RdDefaultSyncList(pulumi.CustomResource):
         __props__.__dict__["folder_ids"] = folder_ids
         return RdDefaultSyncList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            folder_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["folderIds"] = folder_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/rdDefaultSyncList:RdDefaultSyncList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="folderIds")
     def folder_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

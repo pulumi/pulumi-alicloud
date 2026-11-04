@@ -694,6 +694,26 @@ class Chain(pulumi.CustomResource):
         __props__.__dict__["repo_namespace_name"] = repo_namespace_name
         return Chain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict', 'outputs.ChainChainConfig']]]]] = None,
+            chain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["chainConfigs"] = chain_configs
+        __props__["chainId"] = chain_id
+        __props__["chainName"] = chain_name
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["repoName"] = repo_name
+        __props__["repoNamespaceName"] = repo_namespace_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/chain:Chain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="chainConfigs")
     def chain_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ChainChainConfig']]]:

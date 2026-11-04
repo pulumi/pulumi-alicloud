@@ -143,11 +143,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecsList` below.
      * 
-     * @deprecated
-     * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * @deprecated Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
      * 
      */
-    @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
+    @Deprecated
     @Export(name="ecsLists", refs={List.class,InstanceEcsList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceEcsList>> ecsLists;
 
@@ -203,11 +202,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * @deprecated Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+    @Deprecated
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 

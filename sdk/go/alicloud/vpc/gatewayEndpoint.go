@@ -210,6 +210,12 @@ func (GatewayEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayEndpointState)(nil)).Elem()
 }
 
+// GatewayEndpointExists checks whether an existing GatewayEndpoint resource with the given ID exists.
+func GatewayEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/gatewayEndpoint:GatewayEndpoint", id, state, "", opts...)
+}
+
 type gatewayEndpointArgs struct {
 	// The description of the VPC gateway endpoint.
 	// The length of the description information is between 1 and 255 characters.

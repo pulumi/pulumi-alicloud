@@ -174,6 +174,12 @@ func (UserAlarmConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userAlarmConfigState)(nil)).Elem()
 }
 
+// UserAlarmConfigExists checks whether an existing UserAlarmConfig resource with the given ID exists.
+func UserAlarmConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserAlarmConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/userAlarmConfig:UserAlarmConfig", id, state, "", opts...)
+}
+
 type userAlarmConfigArgs struct {
 	// The alarm configuration. More details see `alarmConfig` below.
 	AlarmConfigs []UserAlarmConfigAlarmConfig `pulumi:"alarmConfigs"`

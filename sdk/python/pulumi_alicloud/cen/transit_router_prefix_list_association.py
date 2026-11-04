@@ -472,6 +472,26 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         __props__.__dict__["transit_router_table_id"] = transit_router_table_id
         return TransitRouterPrefixListAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["nextHop"] = next_hop
+        __props__["nextHopType"] = next_hop_type
+        __props__["ownerUid"] = owner_uid
+        __props__["prefixListId"] = prefix_list_id
+        __props__["status"] = status
+        __props__["transitRouterId"] = transit_router_id
+        __props__["transitRouterTableId"] = transit_router_table_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Output[_builtins.str]:

@@ -182,6 +182,12 @@ func (PortState) ElementType() reflect.Type {
 	return reflect.TypeOf((*portState)(nil)).Elem()
 }
 
+// PortExists checks whether an existing Port resource with the given ID exists.
+func PortExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PortState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/port:Port", id, state, "", opts...)
+}
+
 type portArgs struct {
 	// The port of the origin server. Valid values: `0` to `65535`.
 	BackendPort *string `pulumi:"backendPort"`

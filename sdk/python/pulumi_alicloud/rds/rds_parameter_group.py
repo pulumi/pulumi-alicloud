@@ -393,6 +393,22 @@ class RdsParameterGroup(pulumi.CustomResource):
         __props__.__dict__["parameter_group_name"] = parameter_group_name
         return RdsParameterGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict', 'outputs.RdsParameterGroupParamDetail']]]]] = None,
+            parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["paramDetails"] = param_details
+        __props__["parameterGroupDesc"] = parameter_group_desc
+        __props__["parameterGroupName"] = parameter_group_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/rdsParameterGroup:RdsParameterGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def engine(self) -> pulumi.Output[_builtins.str]:

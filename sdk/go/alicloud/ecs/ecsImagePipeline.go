@@ -272,6 +272,12 @@ func (EcsImagePipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsImagePipelineState)(nil)).Elem()
 }
 
+// EcsImagePipelineExists checks whether an existing EcsImagePipeline resource with the given ID exists.
+func EcsImagePipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsImagePipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsImagePipeline:EcsImagePipeline", id, state, "", opts...)
+}
+
 type ecsImagePipelineArgs struct {
 	// The ID of Alibaba Cloud account to which to share the created image.
 	AddAccounts []string `pulumi:"addAccounts"`

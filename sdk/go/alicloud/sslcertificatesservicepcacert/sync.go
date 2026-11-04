@@ -171,6 +171,12 @@ func (SyncState) ElementType() reflect.Type {
 	return reflect.TypeOf((*syncState)(nil)).Elem()
 }
 
+// SyncExists checks whether an existing Sync resource with the given ID exists.
+func SyncExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SyncState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservicepcacert/sync:Sync", id, state, "", opts...)
+}
+
 type syncArgs struct {
 	// The identifiers of the PCA client certificates to synchronize to the SSL Certificates service. Multiple identifiers are joined into a single comma-separated request.
 	Ids []string `pulumi:"ids"`

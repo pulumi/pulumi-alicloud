@@ -46,17 +46,17 @@ public final class OssExportSinkConfigurationSink {
      * 
      * The parameter columns is the key of the log in the source logstore.
      * 
-     * The delimiter parameter, which can be &#34;,&#34;,&#34;|&#34;,&#34;&#34;, or &#34;\t&#34;.
+     * The delimiter parameter, which can be &#34;,&#34;,&#34;|&#34;,&#34;&#34;, or &#34;&#92;t&#34;.
      * 
      * The header parameter determines whether the OSS file retains the header. The optional value is true or false.
      * 
-     * The lineFeed parameter. Optional values are &#34;\t&#34;, &#34;\n&#34;, or &#34;&#34;.
+     * The lineFeed parameter. Optional values are &#34;&#92;t&#34;, &#34;&#92;n&#34;, or &#34;&#34;.
      * 
      * The invalid field content parameter is null to specify the delivery content when the field name does not exist.
      * 
      * The escape character parameter &#34;quote&#34;. Optional values are &#34;&#34; &#34;,&#34; &#39;&#34;, or&#34; &#34;.
      * 
-     * Example:{&#34;null&#34;: &#34;-&#34;, &#34;header&#34;: false, &#34;lineFeed&#34;: &#34;\n&#34;, &#34;quote&#34;: &#34;&#34;, &#34;delimiter&#34;: &#34;,&#34;, &#34;columns&#34;: [&#34;a&#34;, &#34;B&#34;, &#34;c&#34;, &#34;d&#34;]}
+     * Example:{&#34;null&#34;: &#34;-&#34;, &#34;header&#34;: false, &#34;lineFeed&#34;: &#34;&#92;n&#34;, &#34;quote&#34;: &#34;&#34;, &#34;delimiter&#34;: &#34;,&#34;, &#34;columns&#34;: [&#34;a&#34;, &#34;B&#34;, &#34;c&#34;, &#34;d&#34;]}
      * 
      * When the contentType value is parquet, the parameters of the contentDetail value are as follows:
      * 
@@ -156,17 +156,17 @@ public final class OssExportSinkConfigurationSink {
      * 
      * The parameter columns is the key of the log in the source logstore.
      * 
-     * The delimiter parameter, which can be &#34;,&#34;,&#34;|&#34;,&#34;&#34;, or &#34;\t&#34;.
+     * The delimiter parameter, which can be &#34;,&#34;,&#34;|&#34;,&#34;&#34;, or &#34;&#92;t&#34;.
      * 
      * The header parameter determines whether the OSS file retains the header. The optional value is true or false.
      * 
-     * The lineFeed parameter. Optional values are &#34;\t&#34;, &#34;\n&#34;, or &#34;&#34;.
+     * The lineFeed parameter. Optional values are &#34;&#92;t&#34;, &#34;&#92;n&#34;, or &#34;&#34;.
      * 
      * The invalid field content parameter is null to specify the delivery content when the field name does not exist.
      * 
      * The escape character parameter &#34;quote&#34;. Optional values are &#34;&#34; &#34;,&#34; &#39;&#34;, or&#34; &#34;.
      * 
-     * Example:{&#34;null&#34;: &#34;-&#34;, &#34;header&#34;: false, &#34;lineFeed&#34;: &#34;\n&#34;, &#34;quote&#34;: &#34;&#34;, &#34;delimiter&#34;: &#34;,&#34;, &#34;columns&#34;: [&#34;a&#34;, &#34;B&#34;, &#34;c&#34;, &#34;d&#34;]}
+     * Example:{&#34;null&#34;: &#34;-&#34;, &#34;header&#34;: false, &#34;lineFeed&#34;: &#34;&#92;n&#34;, &#34;quote&#34;: &#34;&#34;, &#34;delimiter&#34;: &#34;,&#34;, &#34;columns&#34;: [&#34;a&#34;, &#34;B&#34;, &#34;c&#34;, &#34;d&#34;]}
      * 
      * When the contentType value is parquet, the parameters of the contentDetail value are as follows:
      * 

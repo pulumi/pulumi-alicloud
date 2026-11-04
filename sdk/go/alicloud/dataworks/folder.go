@@ -121,6 +121,12 @@ func (FolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderState)(nil)).Elem()
 }
 
+// FolderExists checks whether an existing Folder resource with the given ID exists.
+func FolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dataworks/folder:Folder", id, state, "", opts...)
+}
+
 type folderArgs struct {
 	// Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
 	FolderPath string `pulumi:"folderPath"`

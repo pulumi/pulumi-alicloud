@@ -212,6 +212,12 @@ func (EtlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*etlState)(nil)).Elem()
 }
 
+// EtlExists checks whether an existing Etl resource with the given ID exists.
+func EtlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EtlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/etl:Etl", id, state, "", opts...)
+}
+
 type etlArgs struct {
 	// Detailed configuration of the data processing task.   See `configuration` below.
 	Configuration EtlConfiguration `pulumi:"configuration"`

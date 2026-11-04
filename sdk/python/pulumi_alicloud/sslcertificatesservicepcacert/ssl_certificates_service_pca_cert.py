@@ -1344,6 +1344,58 @@ class SslCertificatesServicePcaCert(pulumi.CustomResource):
         __props__.__dict__["years"] = years
         return SslCertificatesServicePcaCert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            after_time: pulumi.Input[Optional[_builtins.int]] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            before_time: pulumi.Input[Optional[_builtins.int]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            days: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_crl: pulumi.Input[Optional[_builtins.int]] = None,
+            immediately: pulumi.Input[Optional[_builtins.int]] = None,
+            locality: pulumi.Input[Optional[_builtins.str]] = None,
+            months: pulumi.Input[Optional[_builtins.int]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            san_type: pulumi.Input[Optional[_builtins.str]] = None,
+            san_value: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
+            years: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["afterTime"] = after_time
+        __props__["algorithm"] = algorithm
+        __props__["aliasName"] = alias_name
+        __props__["beforeTime"] = before_time
+        __props__["commonName"] = common_name
+        __props__["countryCode"] = country_code
+        __props__["customIdentifier"] = custom_identifier
+        __props__["days"] = days
+        __props__["enableCrl"] = enable_crl
+        __props__["immediately"] = immediately
+        __props__["locality"] = locality
+        __props__["months"] = months
+        __props__["organization"] = organization
+        __props__["organizationUnit"] = organization_unit
+        __props__["parentIdentifier"] = parent_identifier
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sanType"] = san_type
+        __props__["sanValue"] = san_value
+        __props__["state"] = state
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["uploadFlag"] = upload_flag
+        __props__["years"] = years
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesservicepcacert/sslCertificatesServicePcaCert:SslCertificatesServicePcaCert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="afterTime")
     def after_time(self) -> pulumi.Output[Optional[_builtins.int]]:

@@ -291,11 +291,10 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
-     * @deprecated
-     * Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
+     * @deprecated Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
      * 
      */
-    @Deprecated /* Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead. */
+    @Deprecated
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
@@ -309,11 +308,10 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     /**
      * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
+     * @deprecated Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead. */
+    @Deprecated
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
@@ -355,11 +353,10 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -373,11 +370,10 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead. It conflicts with `accountPassword`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
      * 
-     * @deprecated
-     * Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
+     * @deprecated Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
      * 
      */
-    @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
+    @Deprecated
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
@@ -421,11 +417,10 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead. */
+    @Deprecated
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 

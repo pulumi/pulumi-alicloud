@@ -95,6 +95,12 @@ func (CopyImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*copyImageState)(nil)).Elem()
 }
 
+// CopyImageExists checks whether an existing CopyImage resource with the given ID exists.
+func CopyImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CopyImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/copyImage:CopyImage", id, state, "", opts...)
+}
+
 type copyImageArgs struct {
 	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
 	Description        *string `pulumi:"description"`

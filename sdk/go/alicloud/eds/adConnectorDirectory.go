@@ -254,6 +254,12 @@ func (AdConnectorDirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*adConnectorDirectoryState)(nil)).Elem()
 }
 
+// AdConnectorDirectoryExists checks whether an existing AdConnectorDirectory resource with the given ID exists.
+func AdConnectorDirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdConnectorDirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/adConnectorDirectory:AdConnectorDirectory", id, state, "", opts...)
+}
+
 type adConnectorDirectoryArgs struct {
 	// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
 	DesktopAccessType *string `pulumi:"desktopAccessType"`

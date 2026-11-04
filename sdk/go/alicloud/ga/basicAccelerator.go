@@ -200,6 +200,12 @@ func (BasicAcceleratorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*basicAcceleratorState)(nil)).Elem()
 }
 
+// BasicAcceleratorExists checks whether an existing BasicAccelerator resource with the given ID exists.
+func BasicAcceleratorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BasicAcceleratorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/basicAccelerator:BasicAccelerator", id, state, "", opts...)
+}
+
 type basicAcceleratorArgs struct {
 	// Specifies whether to enable automatic payment. Default value: `false`. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`

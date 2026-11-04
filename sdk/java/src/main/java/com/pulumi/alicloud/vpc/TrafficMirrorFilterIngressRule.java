@@ -175,11 +175,10 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
     /**
      * . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+     * @deprecated Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
-    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
+    @Deprecated
     @Export(name="ruleAction", refs={String.class}, tree="[0]")
     private Output<String> ruleAction;
 

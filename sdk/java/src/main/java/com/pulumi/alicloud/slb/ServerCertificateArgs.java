@@ -17,39 +17,35 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
     public static final ServerCertificateArgs Empty = new ServerCertificateArgs();
 
     /**
-     * @deprecated
-     * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it. */
+    @Deprecated
     @Import(name="alicloudCertifacteId")
     private @Nullable Output<String> alicloudCertifacteId;
 
     /**
-     * @deprecated
-     * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it. */
+    @Deprecated
     public Optional<Output<String>> alicloudCertifacteId() {
         return Optional.ofNullable(this.alicloudCertifacteId);
     }
 
     /**
-     * @deprecated
-     * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it. */
+    @Deprecated
     @Import(name="alicloudCertifacteName")
     private @Nullable Output<String> alicloudCertifacteName;
 
     /**
-     * @deprecated
-     * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it. */
+    @Deprecated
     public Optional<Output<String>> alicloudCertifacteName() {
         return Optional.ofNullable(this.alicloudCertifacteName);
     }
@@ -210,11 +206,10 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+         * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it. */
+        @Deprecated
         public Builder alicloudCertifacteId(@Nullable Output<String> alicloudCertifacteId) {
             $.alicloudCertifacteId = alicloudCertifacteId;
             return this;
@@ -223,11 +218,10 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+         * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it. */
+        @Deprecated
         public Builder alicloudCertifacteId(String alicloudCertifacteId) {
             return alicloudCertifacteId(Output.of(alicloudCertifacteId));
         }
@@ -235,11 +229,10 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+         * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it. */
+        @Deprecated
         public Builder alicloudCertifacteName(@Nullable Output<String> alicloudCertifacteName) {
             $.alicloudCertifacteName = alicloudCertifacteName;
             return this;
@@ -248,11 +241,10 @@ public final class ServerCertificateArgs extends com.pulumi.resources.ResourceAr
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+         * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it. */
+        @Deprecated
         public Builder alicloudCertifacteName(String alicloudCertifacteName) {
             return alicloudCertifacteName(Output.of(alicloudCertifacteName));
         }

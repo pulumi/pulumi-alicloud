@@ -543,6 +543,26 @@ class Binding(pulumi.CustomResource):
         __props__.__dict__["virtual_host_name"] = virtual_host_name
         return Binding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            argument: pulumi.Input[Optional[_builtins.str]] = None,
+            binding_key: pulumi.Input[Optional[_builtins.str]] = None,
+            binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["argument"] = argument
+        __props__["bindingKey"] = binding_key
+        __props__["bindingType"] = binding_type
+        __props__["destinationName"] = destination_name
+        __props__["instanceId"] = instance_id
+        __props__["sourceExchange"] = source_exchange
+        __props__["virtualHostName"] = virtual_host_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:amqp/binding:Binding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def argument(self) -> pulumi.Output[_builtins.str]:

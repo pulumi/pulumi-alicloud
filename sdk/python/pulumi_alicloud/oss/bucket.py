@@ -1877,6 +1877,60 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["website"] = website
         return Bucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_monitor: pulumi.Input[Optional[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict', 'outputs.BucketAccessMonitor']]] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict', 'outputs.BucketCorsRule']]]]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            extranet_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            intranet_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_rule_allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict', 'outputs.BucketLifecycleRule']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict', 'outputs.BucketLogging']]] = None,
+            logging_isenable: pulumi.Input[Optional[_builtins.bool]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            referer_config: pulumi.Input[Optional[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict', 'outputs.BucketRefererConfig']]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_side_encryption_rule: pulumi.Input[Optional[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict', 'outputs.BucketServerSideEncryptionRule']]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transfer_acceleration: pulumi.Input[Optional[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict', 'outputs.BucketTransferAcceleration']]] = None,
+            versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict', 'outputs.BucketVersioning']]] = None,
+            website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict', 'outputs.BucketWebsite']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMonitor"] = access_monitor
+        __props__["acl"] = acl
+        __props__["bucket"] = bucket
+        __props__["corsRules"] = cors_rules
+        __props__["creationDate"] = creation_date
+        __props__["extranetEndpoint"] = extranet_endpoint
+        __props__["forceDestroy"] = force_destroy
+        __props__["intranetEndpoint"] = intranet_endpoint
+        __props__["lifecycleRuleAllowSameActionOverlap"] = lifecycle_rule_allow_same_action_overlap
+        __props__["lifecycleRules"] = lifecycle_rules
+        __props__["location"] = location
+        __props__["logging"] = logging
+        __props__["loggingIsenable"] = logging_isenable
+        __props__["owner"] = owner
+        __props__["policy"] = policy
+        __props__["redundancyType"] = redundancy_type
+        __props__["refererConfig"] = referer_config
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["serverSideEncryptionRule"] = server_side_encryption_rule
+        __props__["storageClass"] = storage_class
+        __props__["tags"] = tags
+        __props__["transferAcceleration"] = transfer_acceleration
+        __props__["versioning"] = versioning
+        __props__["website"] = website
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucket:Bucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMonitor")
     def access_monitor(self) -> pulumi.Output['outputs.BucketAccessMonitor']:

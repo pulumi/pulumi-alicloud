@@ -114,6 +114,12 @@ func (IpamServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipamServiceState)(nil)).Elem()
 }
 
+// IpamServiceExists checks whether an existing IpamService resource with the given ID exists.
+func IpamServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpamServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipamService:IpamService", id, state, "", opts...)
+}
+
 type ipamServiceArgs struct {
 }
 

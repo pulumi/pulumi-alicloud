@@ -244,6 +244,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// The description of the user. The description can be up to 1,024 characters in length.
 	Description *string `pulumi:"description"`

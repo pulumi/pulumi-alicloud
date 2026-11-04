@@ -179,6 +179,12 @@ func (ClientUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientUserState)(nil)).Elem()
 }
 
+// ClientUserExists checks whether an existing ClientUser resource with the given ID exists.
+func ClientUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/clientUser:ClientUser", id, state, "", opts...)
+}
+
 type clientUserArgs struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth int `pulumi:"bandwidth"`

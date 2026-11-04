@@ -36,7 +36,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The new description of the access control policy.
-     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (&#92;_), and hyphens (-) and must start with a letter.
      * 
      */
     @Import(name="description")
@@ -44,7 +44,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The new description of the access control policy.
-     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (&#92;_), and hyphens (-) and must start with a letter.
      * 
      */
     public Optional<Output<String>> description() {
@@ -163,7 +163,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description The new description of the access control policy.
-         * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+         * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (&#92;_), and hyphens (-) and must start with a letter.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description The new description of the access control policy.
-         * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+         * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (&#92;_), and hyphens (-) and must start with a letter.
          * 
          * @return builder
          * 

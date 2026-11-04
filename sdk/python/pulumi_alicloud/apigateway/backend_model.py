@@ -409,6 +409,24 @@ class BackendModel(pulumi.CustomResource):
         __props__.__dict__["stage_name"] = stage_name
         return BackendModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_model_data: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendId"] = backend_id
+        __props__["backendModelData"] = backend_model_data
+        __props__["backendModelId"] = backend_model_id
+        __props__["backendType"] = backend_type
+        __props__["description"] = description
+        __props__["stageName"] = stage_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/backendModel:BackendModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendId")
     def backend_id(self) -> pulumi.Output[_builtins.str]:

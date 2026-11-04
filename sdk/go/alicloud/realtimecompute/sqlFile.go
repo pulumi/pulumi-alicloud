@@ -224,6 +224,12 @@ func (SqlFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlFileState)(nil)).Elem()
 }
 
+// SqlFileExists checks whether an existing SqlFile resource with the given ID exists.
+func SqlFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:realtimecompute/sqlFile:SqlFile", id, state, "", opts...)
+}
+
 type sqlFileArgs struct {
 	// Whether the SQL query script runs in batch mode.
 	BatchMode *string `pulumi:"batchMode"`

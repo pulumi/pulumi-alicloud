@@ -945,6 +945,52 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["top_level_domain"] = top_level_domain
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_type: pulumi.Input[Optional[_builtins.str]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            env: pulumi.Input[Optional[_builtins.str]] = None,
+            function_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scene: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+            ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            top_level_domain: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certId"] = cert_id
+        __props__["certName"] = cert_name
+        __props__["certRegion"] = cert_region
+        __props__["certType"] = cert_type
+        __props__["checkUrl"] = check_url
+        __props__["cname"] = cname
+        __props__["createTime"] = create_time
+        __props__["domainName"] = domain_name
+        __props__["env"] = env
+        __props__["functionType"] = function_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scene"] = scene
+        __props__["scope"] = scope
+        __props__["sources"] = sources
+        __props__["sslPri"] = ssl_pri
+        __props__["sslProtocol"] = ssl_protocol
+        __props__["sslPub"] = ssl_pub
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["topLevelDomain"] = top_level_domain
+        return pulumi.runtime.exists_resource(None, 'alicloud:dcdn/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[_builtins.str]:

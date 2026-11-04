@@ -257,6 +257,12 @@ func (RdsInstanceCrossBackupPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsInstanceCrossBackupPolicyState)(nil)).Elem()
 }
 
+// RdsInstanceCrossBackupPolicyExists checks whether an existing RdsInstanceCrossBackupPolicy resource with the given ID exists.
+func RdsInstanceCrossBackupPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsInstanceCrossBackupPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy", id, state, "", opts...)
+}
+
 type rdsInstanceCrossBackupPolicyArgs struct {
 	// The ID of the destination region where the cross-region backup files of the instance are stored.
 	CrossBackupRegion string `pulumi:"crossBackupRegion"`

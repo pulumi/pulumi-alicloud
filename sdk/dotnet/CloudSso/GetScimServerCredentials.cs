@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage
@@ -58,7 +57,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage
@@ -97,7 +95,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// &gt; **NOTE:** Available in v1.138.0+.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
-        /// 
         /// 
         /// ## Example Usage
         /// 

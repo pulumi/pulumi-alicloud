@@ -225,6 +225,12 @@ func (EcsImageComponentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsImageComponentState)(nil)).Elem()
 }
 
+// EcsImageComponentExists checks whether an existing EcsImageComponent resource with the given ID exists.
+func EcsImageComponentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsImageComponentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsImageComponent:EcsImageComponent", id, state, "", opts...)
+}
+
 type ecsImageComponentArgs struct {
 	// The component type. Supports mirrored build components and test components.
 	//

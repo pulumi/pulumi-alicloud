@@ -1771,6 +1771,88 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["used_time"] = used_time
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_log_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_objects: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_rate_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_strategy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_aliyun_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_region: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            duplication_archive_period: pulumi.Input[Optional[_builtins.int]] = None,
+            duplication_infrequent_access_period: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+            used_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupGatewayId"] = backup_gateway_id
+        __props__["backupLogIntervalSeconds"] = backup_log_interval_seconds
+        __props__["backupMethod"] = backup_method
+        __props__["backupObjects"] = backup_objects
+        __props__["backupPeriod"] = backup_period
+        __props__["backupPlanName"] = backup_plan_name
+        __props__["backupRateLimit"] = backup_rate_limit
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["backupSpeedLimit"] = backup_speed_limit
+        __props__["backupStartTime"] = backup_start_time
+        __props__["backupStorageType"] = backup_storage_type
+        __props__["backupStrategyType"] = backup_strategy_type
+        __props__["crossAliyunId"] = cross_aliyun_id
+        __props__["crossRoleName"] = cross_role_name
+        __props__["databaseRegion"] = database_region
+        __props__["databaseType"] = database_type
+        __props__["duplicationArchivePeriod"] = duplication_archive_period
+        __props__["duplicationInfrequentAccessPeriod"] = duplication_infrequent_access_period
+        __props__["enableBackupLog"] = enable_backup_log
+        __props__["instanceClass"] = instance_class
+        __props__["instanceType"] = instance_type
+        __props__["ossBucketName"] = oss_bucket_name
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sourceEndpointDatabaseName"] = source_endpoint_database_name
+        __props__["sourceEndpointInstanceId"] = source_endpoint_instance_id
+        __props__["sourceEndpointInstanceType"] = source_endpoint_instance_type
+        __props__["sourceEndpointIp"] = source_endpoint_ip
+        __props__["sourceEndpointOracleSid"] = source_endpoint_oracle_sid
+        __props__["sourceEndpointPassword"] = source_endpoint_password
+        __props__["sourceEndpointPort"] = source_endpoint_port
+        __props__["sourceEndpointRegion"] = source_endpoint_region
+        __props__["sourceEndpointSid"] = source_endpoint_sid
+        __props__["sourceEndpointUserName"] = source_endpoint_user_name
+        __props__["status"] = status
+        __props__["storageRegion"] = storage_region
+        __props__["usedTime"] = used_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:dbs/backupPlan:BackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupGatewayId")
     def backup_gateway_id(self) -> pulumi.Output[_builtins.str]:

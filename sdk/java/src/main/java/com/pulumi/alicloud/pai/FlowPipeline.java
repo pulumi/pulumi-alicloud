@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform_example");
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
@@ -70,25 +70,25 @@ import javax.annotation.Nullable;
  *         var defaultFlowPipeline = new FlowPipeline("defaultFlowPipeline", FlowPipelineArgs.builder()
  *             .workspaceId(defaultWjQD1e.id())
  *             .manifest("""
- * apiVersion: \"core/v1\"
+ * apiVersion: }&#92;{@code "core/v1}&#92;{@code "
  * metadata:
- *   provider: \"%s\"
- *   version: \"v1\"
- *   identifier: \"my_pipeline\"
- *   name: \"source-transform\"
- *   uuid: \"terraformuuid%s\"
- *   annotations: {}
- *   labels: {}
+ *   provider: }&#92;{@code "%s}&#92;{@code "
+ *   version: }&#92;{@code "v1}&#92;{@code "
+ *   identifier: }&#92;{@code "my_pipeline}&#92;{@code "
+ *   name: }&#92;{@code "source-transform}&#92;{@code "
+ *   uuid: }&#92;{@code "terraformuuid%s}&#92;{@code "
+ *   annotations: }{}{@code
+ *   labels: }{}{@code
  * spec:
  *   inputs:
  *     artifacts: []
  *     parameters:
- *     - name: \"execution_maxcompute\"
- *       type: \"Map\"
+ *     - name: }&#92;{@code "execution_maxcompute}&#92;{@code "
+ *       type: }&#92;{@code "Map}&#92;{@code "
  *       value:
  *         spec:
- *           endpoint: \"http://service.cn.maxcompute.aliyun-inc.com/api\"
- *           odpsProject: \"test_i****\"
+ *           endpoint: }&#92;{@code "http://service.cn.maxcompute.aliyun-inc.com/api}&#92;{@code "
+ *           odpsProject: }&#92;{@code "test_i****}&#92;{@code "
  *   outputs:
  *     artifacts: []
  *     parameters: []
@@ -99,16 +99,16 @@ import javax.annotation.Nullable;
  *   initContainers: []
  *   sideCarContainers: []
  *   pipelines:
- *   - apiVersion: \"core/v1\"
+ *   - apiVersion: }&#92;{@code "core/v1}&#92;{@code "
  *     metadata:
- *       provider: \"pai\"
- *       version: \"v1\"
- *       identifier: \"data_source\"
- *       name: \"data-source\"
- *       uuid: \"2ftahdnzcod2rt6u9q\"
- *       displayName: \"读数据表-1\"
- *       annotations: {}
- *       labels: {}
+ *       provider: }&#92;{@code "pai}&#92;{@code "
+ *       version: }&#92;{@code "v1}&#92;{@code "
+ *       identifier: }&#92;{@code "data_source}&#92;{@code "
+ *       name: }&#92;{@code "data-source}&#92;{@code "
+ *       uuid: }&#92;{@code "2ftahdnzcod2rt6u9q}&#92;{@code "
+ *       displayName: }&#92;{@code "读数据表-1}&#92;{@code "
+ *       annotations: }{}{@code
+ *       labels: }{}{@code
  *     spec:
  *       inputs:
  *         artifacts: []
@@ -119,25 +119,25 @@ import javax.annotation.Nullable;
  *       arguments:
  *         artifacts: []
  *         parameters:
- *         - name: \"inputTableName\"
- *           value: \"pai_online_project.wumai_data\"
- *         - name: \"execution\"
- *           from: \"{{inputs.parameters.execution_maxcompute}}\"
+ *         - name: }&#92;{@code "inputTableName}&#92;{@code "
+ *           value: }&#92;{@code "pai_online_project.wumai_data}&#92;{@code "
+ *         - name: }&#92;{@code "execution}&#92;{@code "
+ *           from: }&#92;{@code "}{{{@code inputs.parameters.execution_maxcompute}}}&#92;{@code "
  *       dependencies: []
  *       initContainers: []
  *       sideCarContainers: []
  *       pipelines: []
  *       volumes: []
- *   - apiVersion: \"core/v1\"
+ *   - apiVersion: }&#92;{@code "core/v1}&#92;{@code "
  *     metadata:
- *       provider: \"pai\"
- *       version: \"v1\"
- *       identifier: \"type_transform\"
- *       name: \"type-transform\"
- *       uuid: \"gacnnnl4ksvbabfh6l\"
- *       displayName: \"类型转换-1\"
- *       annotations: {}
- *       labels: {}
+ *       provider: }&#92;{@code "pai}&#92;{@code "
+ *       version: }&#92;{@code "v1}&#92;{@code "
+ *       identifier: }&#92;{@code "type_transform}&#92;{@code "
+ *       name: }&#92;{@code "type-transform}&#92;{@code "
+ *       uuid: }&#92;{@code "gacnnnl4ksvbabfh6l}&#92;{@code "
+ *       displayName: }&#92;{@code "类型转换-1}&#92;{@code "
+ *       annotations: }{}{@code
+ *       labels: }{}{@code
  *     spec:
  *       inputs:
  *         artifacts: []
@@ -147,15 +147,15 @@ import javax.annotation.Nullable;
  *         parameters: []
  *       arguments:
  *         artifacts:
- *         - name: \"inputTable\"
- *           from: \"{{pipelines.data_source.outputs.artifacts.outputTable}}\"
+ *         - name: }&#92;{@code "inputTable}&#92;{@code "
+ *           from: }&#92;{@code "}{{{@code pipelines.data_source.outputs.artifacts.outputTable}}}&#92;{@code "
  *         parameters:
- *         - name: \"cols_to_double\"
- *           value: \"time,hour,pm2,pm10,so2,co,no2\"
- *         - name: \"execution\"
- *           from: \"{{inputs.parameters.execution_maxcompute}}\"
+ *         - name: }&#92;{@code "cols_to_double}&#92;{@code "
+ *           value: }&#92;{@code "time,hour,pm2,pm10,so2,co,no2}&#92;{@code "
+ *         - name: }&#92;{@code "execution}&#92;{@code "
+ *           from: }&#92;{@code "}{{{@code inputs.parameters.execution_maxcompute}}}&#92;{@code "
  *       dependencies:
- *       - \"data_source\"
+ *       - }&#92;{@code "data_source}&#92;{@code "
  *       initContainers: []
  *       sideCarContainers: []
  *       pipelines: []
@@ -164,8 +164,8 @@ import javax.annotation.Nullable;
  * ", default_.id(),defaultInteger.get("result")))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

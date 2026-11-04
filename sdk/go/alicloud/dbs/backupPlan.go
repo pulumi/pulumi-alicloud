@@ -468,6 +468,12 @@ func (BackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPlanState)(nil)).Elem()
 }
 
+// BackupPlanExists checks whether an existing BackupPlan resource with the given ID exists.
+func BackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dbs/backupPlan:BackupPlan", id, state, "", opts...)
+}
+
 type backupPlanArgs struct {
 	// The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
 	BackupGatewayId *string `pulumi:"backupGatewayId"`

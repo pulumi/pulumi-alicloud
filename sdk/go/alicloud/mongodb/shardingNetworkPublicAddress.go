@@ -187,6 +187,12 @@ func (ShardingNetworkPublicAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shardingNetworkPublicAddressState)(nil)).Elem()
 }
 
+// ShardingNetworkPublicAddressExists checks whether an existing ShardingNetworkPublicAddress resource with the given ID exists.
+func ShardingNetworkPublicAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShardingNetworkPublicAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress", id, state, "", opts...)
+}
+
 type shardingNetworkPublicAddressArgs struct {
 	// The ID of the instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`

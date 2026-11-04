@@ -260,6 +260,12 @@ func (AiclusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiclusterState)(nil)).Elem()
 }
 
+// AiclusterExists checks whether an existing Aicluster resource with the given ID exists.
+func AiclusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiclusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/aicluster:Aicluster", id, state, "", opts...)
+}
+
 type aiclusterArgs struct {
 	// Whether to enable auto-renewal.
 	AutoRenew *string `pulumi:"autoRenew"`

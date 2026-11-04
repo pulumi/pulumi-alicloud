@@ -385,6 +385,12 @@ func (RuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleState)(nil)).Elem()
 }
 
+// RuleExists checks whether an existing Rule resource with the given ID exists.
+func RuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/rule:Rule", id, state, "", opts...)
+}
+
 type ruleArgs struct {
 	// The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie *string `pulumi:"cookie"`

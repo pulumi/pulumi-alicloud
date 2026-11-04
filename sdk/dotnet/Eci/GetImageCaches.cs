@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -26,18 +26,18 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "imc-bp1ef0dyp7ldhb1d****",
-        ///         },
-        ///     });
+        ///    var example = AliCloud.Eci.GetImageCaches.Invoke(new()
+        ///    {
+        ///        Ids = new[]
+        ///        {
+        ///            "imc-bp1ef0dyp7ldhb1d****",
+        ///        },
+        ///    });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
-        ///     };
+        ///    return new Dictionary&lt;string, object?&gt;
+        ///    {
+        ///        ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
+        ///    };
         /// });
         /// ```
         /// </summary>
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -59,18 +59,18 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "imc-bp1ef0dyp7ldhb1d****",
-        ///         },
-        ///     });
+        ///    var example = AliCloud.Eci.GetImageCaches.Invoke(new()
+        ///    {
+        ///        Ids = new[]
+        ///        {
+        ///            "imc-bp1ef0dyp7ldhb1d****",
+        ///        },
+        ///    });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
-        ///     };
+        ///    return new Dictionary&lt;string, object?&gt;
+        ///    {
+        ///        ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
+        ///    };
         /// });
         /// ```
         /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -92,18 +92,18 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "imc-bp1ef0dyp7ldhb1d****",
-        ///         },
-        ///     });
+        ///    var example = AliCloud.Eci.GetImageCaches.Invoke(new()
+        ///    {
+        ///        Ids = new[]
+        ///        {
+        ///            "imc-bp1ef0dyp7ldhb1d****",
+        ///        },
+        ///    });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
-        ///     };
+        ///    return new Dictionary&lt;string, object?&gt;
+        ///    {
+        ///        ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
+        ///    };
         /// });
         /// ```
         /// </summary>

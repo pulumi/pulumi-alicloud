@@ -128,11 +128,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Replaced by `instanceName` after version 1.97.0.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.97.0. Use &#39;instance_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.97.0. Use &#39;instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

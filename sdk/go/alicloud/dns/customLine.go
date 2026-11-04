@@ -139,6 +139,12 @@ func (CustomLineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customLineState)(nil)).Elem()
 }
 
+// CustomLineExists checks whether an existing CustomLine resource with the given ID exists.
+func CustomLineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomLineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/customLine:CustomLine", id, state, "", opts...)
+}
+
 type customLineArgs struct {
 	// The name of the Custom Line.
 	CustomLineName string `pulumi:"customLineName"`

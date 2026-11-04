@@ -217,6 +217,12 @@ func (SynchronizationInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*synchronizationInstanceState)(nil)).Elem()
 }
 
+// SynchronizationInstanceExists checks whether an existing SynchronizationInstance resource with the given ID exists.
+func SynchronizationInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SynchronizationInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/synchronizationInstance:SynchronizationInstance", id, state, "", opts...)
+}
+
 type synchronizationInstanceArgs struct {
 	// Whether to automatically renew when it expires. Valid values: `true`, `false`.
 	AutoPay *string `pulumi:"autoPay"`

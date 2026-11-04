@@ -83,11 +83,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:config/reportTemplate:ReportTemplate example &lt;id&gt;
  * ```
  * 
- * @deprecated
- * alicloud.config/reporttemplate.ReportTemplate has been deprecated in favor of alicloud.cfg/reporttemplate.ReportTemplate
+ * @deprecated alicloud.config/reporttemplate.ReportTemplate has been deprecated in favor of alicloud.cfg/reporttemplate.ReportTemplate
  * 
  */
-@Deprecated /* alicloud.config/reporttemplate.ReportTemplate has been deprecated in favor of alicloud.cfg/reporttemplate.ReportTemplate */
+@Deprecated
 @ResourceType(type="alicloud:config/reportTemplate:ReportTemplate")
 public class ReportTemplate extends com.pulumi.resources.CustomResource {
     /**

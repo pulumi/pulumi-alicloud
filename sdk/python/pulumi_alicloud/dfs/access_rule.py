@@ -421,6 +421,26 @@ class AccessRule(pulumi.CustomResource):
         __props__.__dict__["rw_access_type"] = rw_access_type
         return AccessRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            network_segment: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rw_access_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroupId"] = access_group_id
+        __props__["accessRuleId"] = access_rule_id
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["networkSegment"] = network_segment
+        __props__["priority"] = priority
+        __props__["rwAccessType"] = rw_access_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:dfs/accessRule:AccessRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> pulumi.Output[_builtins.str]:

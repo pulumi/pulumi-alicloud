@@ -629,6 +629,36 @@ class PrometheusAlertRule(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return PrometheusAlertRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict', 'outputs.PrometheusAlertRuleAnnotation']]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dispatch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            expression: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict', 'outputs.PrometheusAlertRuleLabel']]]]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus_alert_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            prometheus_alert_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["clusterId"] = cluster_id
+        __props__["dispatchRuleId"] = dispatch_rule_id
+        __props__["duration"] = duration
+        __props__["expression"] = expression
+        __props__["labels"] = labels
+        __props__["message"] = message
+        __props__["notifyType"] = notify_type
+        __props__["prometheusAlertRuleId"] = prometheus_alert_rule_id
+        __props__["prometheusAlertRuleName"] = prometheus_alert_rule_name
+        __props__["status"] = status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/prometheusAlertRule:PrometheusAlertRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Sequence['outputs.PrometheusAlertRuleAnnotation']]]:

@@ -223,6 +223,12 @@ func (SslVpnClientCertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslVpnClientCertState)(nil)).Elem()
 }
 
+// SslVpnClientCertExists checks whether an existing SslVpnClientCert resource with the given ID exists.
+func SslVpnClientCertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SslVpnClientCertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", id, state, "", opts...)
+}
+
 type sslVpnClientCertArgs struct {
 	// The name of the client certificate.
 	Name *string `pulumi:"name"`

@@ -393,6 +393,24 @@ class Acl(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Acl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict', 'outputs.AclAclEntry']]]]] = None,
+            acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclEntries"] = acl_entries
+        __props__["aclName"] = acl_name
+        __props__["dryRun"] = dry_run
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/acl:Acl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclEntries")
     @_utilities.deprecated("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")

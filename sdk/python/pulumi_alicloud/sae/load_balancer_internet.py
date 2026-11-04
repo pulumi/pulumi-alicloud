@@ -399,6 +399,20 @@ class LoadBalancerInternet(pulumi.CustomResource):
         __props__.__dict__["internets"] = internets
         return LoadBalancerInternet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict', 'outputs.LoadBalancerInternetInternet']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["internetIp"] = internet_ip
+        __props__["internetSlbId"] = internet_slb_id
+        __props__["internets"] = internets
+        return pulumi.runtime.exists_resource(None, 'alicloud:sae/loadBalancerInternet:LoadBalancerInternet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

@@ -121,6 +121,12 @@ func (AccountAliasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountAliasState)(nil)).Elem()
 }
 
+// AccountAliasExists checks whether an existing AccountAlias resource with the given ID exists.
+func AccountAliasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountAliasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/accountAlias:AccountAlias", id, state, "", opts...)
+}
+
 type accountAliasArgs struct {
 	// The alias of the account.
 	// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).

@@ -331,6 +331,12 @@ func (ServerGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupState)(nil)).Elem()
 }
 
+// ServerGroupExists checks whether an existing ServerGroup resource with the given ID exists.
+func ServerGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/serverGroup:ServerGroup", id, state, "", opts...)
+}
+
 type serverGroupArgs struct {
 	// The protocol version. Valid values:
 	AddressIpVersion *string `pulumi:"addressIpVersion"`

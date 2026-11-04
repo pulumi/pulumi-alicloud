@@ -1781,6 +1781,68 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Alert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_description: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_displayname: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]]] = None,
+            auto_annotation: pulumi.Input[Optional[_builtins.bool]] = None,
+            condition: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+            group_configuration: pulumi.Input[Optional[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']]] = None,
+            join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]]] = None,
+            mute_until: pulumi.Input[Optional[_builtins.int]] = None,
+            no_data_fire: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_data_severity: pulumi.Input[Optional[_builtins.int]] = None,
+            notification_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]]] = None,
+            notify_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            policy_configuration: pulumi.Input[Optional[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            query_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
+            schedule_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            send_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+            severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]]] = None,
+            template_configuration: pulumi.Input[Optional[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']]] = None,
+            threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            throttling: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertDescription"] = alert_description
+        __props__["alertDisplayname"] = alert_displayname
+        __props__["alertName"] = alert_name
+        __props__["annotations"] = annotations
+        __props__["autoAnnotation"] = auto_annotation
+        __props__["condition"] = condition
+        __props__["dashboard"] = dashboard
+        __props__["groupConfiguration"] = group_configuration
+        __props__["joinConfigurations"] = join_configurations
+        __props__["labels"] = labels
+        __props__["muteUntil"] = mute_until
+        __props__["noDataFire"] = no_data_fire
+        __props__["noDataSeverity"] = no_data_severity
+        __props__["notificationLists"] = notification_lists
+        __props__["notifyThreshold"] = notify_threshold
+        __props__["policyConfiguration"] = policy_configuration
+        __props__["projectName"] = project_name
+        __props__["queryLists"] = query_lists
+        __props__["schedule"] = schedule
+        __props__["scheduleInterval"] = schedule_interval
+        __props__["scheduleType"] = schedule_type
+        __props__["sendResolved"] = send_resolved
+        __props__["severityConfigurations"] = severity_configurations
+        __props__["templateConfiguration"] = template_configuration
+        __props__["threshold"] = threshold
+        __props__["throttling"] = throttling
+        __props__["type"] = type
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/alert:Alert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertDescription")
     def alert_description(self) -> pulumi.Output[Optional[_builtins.str]]:

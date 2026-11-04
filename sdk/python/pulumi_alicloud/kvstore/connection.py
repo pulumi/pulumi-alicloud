@@ -360,6 +360,20 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionString"] = connection_string
+        __props__["connectionStringPrefix"] = connection_string_prefix
+        __props__["instanceId"] = instance_id
+        __props__["port"] = port
+        return pulumi.runtime.exists_resource(None, 'alicloud:kvstore/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[_builtins.str]:

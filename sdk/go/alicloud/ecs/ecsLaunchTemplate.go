@@ -612,6 +612,12 @@ func (EcsLaunchTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsLaunchTemplateState)(nil)).Elem()
 }
 
+// EcsLaunchTemplateExists checks whether an existing EcsLaunchTemplate resource with the given ID exists.
+func EcsLaunchTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsLaunchTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate", id, state, "", opts...)
+}
+
 type ecsLaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`

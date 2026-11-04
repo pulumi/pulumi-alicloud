@@ -28,22 +28,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
-     * @deprecated
-     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
+     * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      */
-    @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
+    @Deprecated
     @Import(name="allocatePublicIp")
     private @Nullable Output<Boolean> allocatePublicIp;
 
     /**
      * @return Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
-     * @deprecated
-     * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
+     * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
      */
-    @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
+    @Deprecated
     public Optional<Output<Boolean>> allocatePublicIp() {
         return Optional.ofNullable(this.allocatePublicIp);
     }
@@ -567,22 +565,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      * 
-     * @deprecated
-     * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      * 
      */
-    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
+    @Deprecated
     @Import(name="internetMaxBandwidthIn")
     private @Nullable Output<Integer> internetMaxBandwidthIn;
 
     /**
      * @return Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      * 
-     * @deprecated
-     * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
      * 
      */
-    @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
+    @Deprecated
     public Optional<Output<Integer>> internetMaxBandwidthIn() {
         return Optional.ofNullable(this.internetMaxBandwidthIn);
     }
@@ -1135,11 +1131,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+     * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
+    @Deprecated
     @Import(name="roleName")
     private @Nullable Output<String> roleName;
 
@@ -1160,11 +1155,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+     * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
+    @Deprecated
     public Optional<Output<String>> roleName() {
         return Optional.ofNullable(this.roleName);
     }
@@ -1789,11 +1783,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
+         * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
          * 
          */
-        @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
+        @Deprecated
         public Builder allocatePublicIp(@Nullable Output<Boolean> allocatePublicIp) {
             $.allocatePublicIp = allocatePublicIp;
             return this;
@@ -1804,11 +1797,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
+         * @deprecated Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
          * 
          */
-        @Deprecated /* Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance. */
+        @Deprecated
         public Builder allocatePublicIp(Boolean allocatePublicIp) {
             return allocatePublicIp(Output.of(allocatePublicIp));
         }
@@ -2536,11 +2528,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
+         * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
          * 
          */
-        @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
+        @Deprecated
         public Builder internetMaxBandwidthIn(@Nullable Output<Integer> internetMaxBandwidthIn) {
             $.internetMaxBandwidthIn = internetMaxBandwidthIn;
             return this;
@@ -2551,11 +2542,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
+         * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.
          * 
          */
-        @Deprecated /* The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2. */
+        @Deprecated
         public Builder internetMaxBandwidthIn(Integer internetMaxBandwidthIn) {
             return internetMaxBandwidthIn(Output.of(internetMaxBandwidthIn));
         }
@@ -3318,11 +3308,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+         * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
          * 
          */
-        @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
+        @Deprecated
         public Builder roleName(@Nullable Output<String> roleName) {
             $.roleName = roleName;
             return this;
@@ -3347,11 +3336,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
+         * @deprecated Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead.
          * 
          */
-        @Deprecated /* Field `roleName` has been deprecated from provider version 1.275.0. New resource `alicloud.ecs.RamRoleAttachment` instead. */
+        @Deprecated
         public Builder roleName(String roleName) {
             return roleName(Output.of(roleName));
         }

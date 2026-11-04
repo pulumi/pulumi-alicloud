@@ -494,6 +494,22 @@ class DbInstanceIpArray(pulumi.CustomResource):
         __props__.__dict__["security_ip_lists"] = security_ip_lists
         return DbInstanceIpArray(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["dbInstanceIpArrayAttribute"] = db_instance_ip_array_attribute
+        __props__["dbInstanceIpArrayName"] = db_instance_ip_array_name
+        __props__["modifyMode"] = modify_mode
+        __props__["securityIpLists"] = security_ip_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:

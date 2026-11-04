@@ -937,6 +937,66 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         __props__.__dict__["vpconn_ali_uid"] = vpconn_ali_uid
         return VirtualPhysicalConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ad_location: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expect_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            loa_status: pulumi.Input[Optional[_builtins.str]] = None,
+            order_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_physical_connection_ali_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+            port_number: pulumi.Input[Optional[_builtins.str]] = None,
+            port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_physical_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vpconn_ali_uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPointId"] = access_point_id
+        __props__["adLocation"] = ad_location
+        __props__["bandwidth"] = bandwidth
+        __props__["businessStatus"] = business_status
+        __props__["circuitCode"] = circuit_code
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["enabledTime"] = enabled_time
+        __props__["endTime"] = end_time
+        __props__["expectSpec"] = expect_spec
+        __props__["lineOperator"] = line_operator
+        __props__["loaStatus"] = loa_status
+        __props__["orderMode"] = order_mode
+        __props__["parentPhysicalConnectionAliUid"] = parent_physical_connection_ali_uid
+        __props__["parentPhysicalConnectionId"] = parent_physical_connection_id
+        __props__["peerLocation"] = peer_location
+        __props__["portNumber"] = port_number
+        __props__["portType"] = port_type
+        __props__["redundantPhysicalConnectionId"] = redundant_physical_connection_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["virtualPhysicalConnectionName"] = virtual_physical_connection_name
+        __props__["virtualPhysicalConnectionStatus"] = virtual_physical_connection_status
+        __props__["vlanId"] = vlan_id
+        __props__["vpconnAliUid"] = vpconn_ali_uid
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Output[_builtins.str]:

@@ -250,6 +250,12 @@ func (PeerConnectionAccepterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*peerConnectionAccepterState)(nil)).Elem()
 }
 
+// PeerConnectionAccepterExists checks whether an existing PeerConnectionAccepter resource with the given ID exists.
+func PeerConnectionAccepterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PeerConnectionAccepterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter", id, state, "", opts...)
+}
+
 type peerConnectionAccepterArgs struct {
 	// The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
 	Bandwidth *int `pulumi:"bandwidth"`

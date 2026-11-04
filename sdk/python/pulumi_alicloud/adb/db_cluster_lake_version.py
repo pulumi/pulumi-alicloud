@@ -1422,6 +1422,84 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DBClusterLakeVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_default_resource_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            product_form: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            reserved_node_size: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_to_time: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ips: pulumi.Input[Optional[_builtins.str]] = None,
+            source_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupSetId"] = backup_set_id
+        __props__["commodityCode"] = commodity_code
+        __props__["computeResource"] = compute_resource
+        __props__["connectionString"] = connection_string
+        __props__["createTime"] = create_time
+        __props__["dbClusterDescription"] = db_cluster_description
+        __props__["dbClusterVersion"] = db_cluster_version
+        __props__["diskEncryption"] = disk_encryption
+        __props__["enableDefaultResourceGroup"] = enable_default_resource_group
+        __props__["enableSsl"] = enable_ssl
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["expireTime"] = expire_time
+        __props__["expired"] = expired
+        __props__["kmsId"] = kms_id
+        __props__["lockMode"] = lock_mode
+        __props__["lockReason"] = lock_reason
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["port"] = port
+        __props__["productForm"] = product_form
+        __props__["productVersion"] = product_version
+        __props__["reservedNodeCount"] = reserved_node_count
+        __props__["reservedNodeSize"] = reserved_node_size
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["restoreToTime"] = restore_to_time
+        __props__["restoreType"] = restore_type
+        __props__["secondaryVswitchId"] = secondary_vswitch_id
+        __props__["secondaryZoneId"] = secondary_zone_id
+        __props__["securityIps"] = security_ips
+        __props__["sourceDbClusterId"] = source_db_cluster_id
+        __props__["status"] = status
+        __props__["storageResource"] = storage_resource
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupSetId")
     def backup_set_id(self) -> pulumi.Output[Optional[_builtins.str]]:

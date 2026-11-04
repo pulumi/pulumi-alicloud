@@ -162,6 +162,12 @@ func (RoutineCodeDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineCodeDeploymentState)(nil)).Elem()
 }
 
+// RoutineCodeDeploymentExists checks whether an existing RoutineCodeDeployment resource with the given ID exists.
+func RoutineCodeDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineCodeDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/routineCodeDeployment:RoutineCodeDeployment", id, state, "", opts...)
+}
+
 type routineCodeDeploymentArgs struct {
 	// The list of code versions and their traffic percentages. At most two versions are supported, and the percentages must sum to 100. See `codeVersions` below.
 	CodeVersions []RoutineCodeDeploymentCodeVersion `pulumi:"codeVersions"`

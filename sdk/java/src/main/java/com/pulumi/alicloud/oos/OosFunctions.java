@@ -998,12 +998,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1012,14 +1012,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1032,8 +1032,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1068,12 +1068,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1082,14 +1082,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1102,8 +1102,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1138,12 +1138,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1152,14 +1152,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1172,8 +1172,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1208,12 +1208,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1222,14 +1222,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1242,8 +1242,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1278,12 +1278,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1292,14 +1292,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1312,8 +1312,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1348,12 +1348,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1362,14 +1362,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1382,8 +1382,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1418,12 +1418,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Parameter("default", ParameterArgs.builder()
@@ -1432,14 +1432,14 @@ public final class OosFunctions {
      *             .type("String")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1452,8 +1452,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1551,12 +1551,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1565,14 +1565,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1585,8 +1585,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1621,12 +1621,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1635,14 +1635,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1655,8 +1655,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1691,12 +1691,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1705,14 +1705,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1725,8 +1725,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1761,12 +1761,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1775,14 +1775,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1795,8 +1795,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1831,12 +1831,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1845,14 +1845,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1865,8 +1865,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1901,12 +1901,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1915,14 +1915,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1935,8 +1935,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1971,12 +1971,12 @@ public final class OosFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
@@ -1985,14 +1985,14 @@ public final class OosFunctions {
      *             .type("Secret")
      *             .description(name)
      *             .constraints("""
-     *   {
-     *     \"AllowedValues\": [
-     *         \"tf-testacc-oos_secret_parameter\"
+     *   }{{@code
+     *     }&#92;{@code "AllowedValues}&#92;{@code ": [
+     *         }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code "
      *     ],
-     *     \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
-     *     \"MinLength\": 1,
-     *     \"MaxLength\": 100
-     *   }
+     *     }&#92;{@code "AllowedPattern}&#92;{@code ": }&#92;{@code "tf-testacc-oos_secret_parameter}&#92;{@code ",
+     *     }&#92;{@code "MinLength}&#92;{@code ": 1,
+     *     }&#92;{@code "MaxLength}&#92;{@code ": 100
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -2005,8 +2005,8 @@ public final class OosFunctions {
      *             .build());
      * 
      *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

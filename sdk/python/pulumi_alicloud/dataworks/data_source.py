@@ -597,6 +597,36 @@ class DataSource(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return DataSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_properties: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_properties_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            create_user: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            modify_user: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            qualified_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionProperties"] = connection_properties
+        __props__["connectionPropertiesMode"] = connection_properties_mode
+        __props__["createTime"] = create_time
+        __props__["createUser"] = create_user
+        __props__["dataSourceId"] = data_source_id
+        __props__["dataSourceName"] = data_source_name
+        __props__["description"] = description
+        __props__["modifyTime"] = modify_time
+        __props__["modifyUser"] = modify_user
+        __props__["projectId"] = project_id
+        __props__["qualifiedName"] = qualified_name
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/dataSource:DataSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionProperties")
     def connection_properties(self) -> pulumi.Output[_builtins.str]:

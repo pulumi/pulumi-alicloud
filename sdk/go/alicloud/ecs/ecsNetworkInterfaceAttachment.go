@@ -227,6 +227,12 @@ func (EcsNetworkInterfaceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsNetworkInterfaceAttachmentState)(nil)).Elem()
 }
 
+// EcsNetworkInterfaceAttachmentExists checks whether an existing EcsNetworkInterfaceAttachment resource with the given ID exists.
+func EcsNetworkInterfaceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsNetworkInterfaceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment", id, state, "", opts...)
+}
+
 type ecsNetworkInterfaceAttachmentArgs struct {
 	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`

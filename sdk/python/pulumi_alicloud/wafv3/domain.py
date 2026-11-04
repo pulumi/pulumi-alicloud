@@ -487,6 +487,32 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict', 'outputs.DomainListen']]] = None,
+            redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict', 'outputs.DomainRedirect']]] = None,
+            resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessType"] = access_type
+        __props__["cname"] = cname
+        __props__["domain"] = domain
+        __props__["domainId"] = domain_id
+        __props__["instanceId"] = instance_id
+        __props__["listen"] = listen
+        __props__["redirect"] = redirect
+        __props__["resourceManagerResourceGroupId"] = resource_manager_resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:wafv3/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:

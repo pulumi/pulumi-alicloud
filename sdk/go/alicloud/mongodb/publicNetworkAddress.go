@@ -156,6 +156,12 @@ func (PublicNetworkAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicNetworkAddressState)(nil)).Elem()
 }
 
+// PublicNetworkAddressExists checks whether an existing PublicNetworkAddress resource with the given ID exists.
+func PublicNetworkAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicNetworkAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress", id, state, "", opts...)
+}
+
 type publicNetworkAddressArgs struct {
 	// The instance ID.
 	DbInstanceId string `pulumi:"dbInstanceId"`

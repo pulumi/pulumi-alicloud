@@ -589,6 +589,30 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         __props__.__dict__["qualifier"] = qualifier
         return V3AsyncInvokeConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            async_task: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict', 'outputs.V3AsyncInvokeConfigDestinationConfig']]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asyncTask"] = async_task
+        __props__["createTime"] = create_time
+        __props__["destinationConfig"] = destination_config
+        __props__["functionArn"] = function_arn
+        __props__["functionName"] = function_name
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["maxAsyncEventAgeInSeconds"] = max_async_event_age_in_seconds
+        __props__["maxAsyncRetryAttempts"] = max_async_retry_attempts
+        __props__["qualifier"] = qualifier
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="asyncTask")
     def async_task(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -193,11 +193,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field `preferredBackupPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
+     * @deprecated Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead */
+    @Deprecated
     @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
@@ -239,11 +238,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field `preferredBackupTime` instead.
      * 
-     * @deprecated
-     * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
+     * @deprecated Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      * 
      */
-    @Deprecated /* Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead */
+    @Deprecated
     @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
@@ -401,11 +399,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.68.0, and use field `enableBackupLog` instead.
      * 
-     * @deprecated
-     * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
+     * @deprecated Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      * 
      */
-    @Deprecated /* Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead */
+    @Deprecated
     @Export(name="logBackup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> logBackup;
 
@@ -469,11 +466,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field `logBackupRetentionPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
+     * @deprecated Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead */
+    @Deprecated
     @Export(name="logRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> logRetentionPeriod;
 
@@ -535,11 +531,10 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field `backupRetentionPeriod` instead.
      * 
-     * @deprecated
-     * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
+     * @deprecated Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      * 
      */
-    @Deprecated /* Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead */
+    @Deprecated
     @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionPeriod;
 

@@ -185,6 +185,12 @@ func (CustomImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customImageState)(nil)).Elem()
 }
 
+// CustomImageExists checks whether an existing CustomImage resource with the given ID exists.
+func CustomImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:simpleapplicationserver/customImage:CustomImage", id, state, "", opts...)
+}
+
 type customImageArgs struct {
 	// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
 	CustomImageName string `pulumi:"customImageName"`

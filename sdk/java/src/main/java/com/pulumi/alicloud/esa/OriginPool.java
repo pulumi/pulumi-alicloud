@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
  *             .planSubscribeType("enterpriseplan")
  *             .build());
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                 OriginPoolOriginArgs.builder()
  *                     .type("OSS")
  *                     .address("example.oss-cn-beijing.aliyuncs.com")
- *                     .header("{\"Host\":[\"example.oss-cn-beijing.aliyuncs.com\"]}")
+ *                     .header("}{&#92;{@code "Host}&#92;{@code ":[}&#92;{@code "example.oss-cn-beijing.aliyuncs.com}&#92;{@code "]}}{@code ")
  *                     .enabled(true)
  *                     .authConf(OriginPoolOriginAuthConfArgs.builder()
  *                         .secretKey("<SecretKeyId>")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 OriginPoolOriginArgs.builder()
  *                     .address("example.s3.com")
- *                     .header("{\"Host\": [\"example1.com\"]}")
+ *                     .header("}{&#92;{@code "Host}&#92;{@code ": [}&#92;{@code "example1.com}&#92;{@code "]}}{@code ")
  *                     .enabled(true)
  *                     .authConf(OriginPoolOriginAuthConfArgs.builder()
  *                         .version("v2")
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *                 OriginPoolOriginArgs.builder()
  *                     .type("S3")
  *                     .address("example1111.s3.com")
- *                     .header("{\"Host\":[\"example1111.com\"]}")
+ *                     .header("}{&#92;{@code "Host}&#92;{@code ":[}&#92;{@code "example1111.com}&#92;{@code "]}}{@code ")
  *                     .enabled(true)
  *                     .authConf(OriginPoolOriginAuthConfArgs.builder()
  *                         .secretKey("<SecretKeyId>")
@@ -124,8 +124,8 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

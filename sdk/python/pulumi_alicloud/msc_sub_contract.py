@@ -340,6 +340,20 @@ class MscSubContract(pulumi.CustomResource):
         __props__.__dict__["position"] = position
         return MscSubContract(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            mobile: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contactName"] = contact_name
+        __props__["email"] = email
+        __props__["mobile"] = mobile
+        __props__["position"] = position
+        return pulumi.runtime.exists_resource(None, 'alicloud:index/mscSubContract:MscSubContract', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contactName")
     def contact_name(self) -> pulumi.Output[_builtins.str]:

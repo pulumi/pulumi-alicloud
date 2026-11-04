@@ -467,6 +467,28 @@ class IndustrialPidLoop(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return IndustrialPidLoop(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            pid_loop_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_dcs_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_is_crucial: pulumi.Input[Optional[_builtins.bool]] = None,
+            pid_loop_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["pidLoopConfiguration"] = pid_loop_configuration
+        __props__["pidLoopDcsType"] = pid_loop_dcs_type
+        __props__["pidLoopDesc"] = pid_loop_desc
+        __props__["pidLoopIsCrucial"] = pid_loop_is_crucial
+        __props__["pidLoopName"] = pid_loop_name
+        __props__["pidLoopType"] = pid_loop_type
+        __props__["pidProjectId"] = pid_project_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:brain/industrialPidLoop:IndustrialPidLoop', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="pidLoopConfiguration")
     def pid_loop_configuration(self) -> pulumi.Output[_builtins.str]:

@@ -175,6 +175,12 @@ func (MailAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mailAddressState)(nil)).Elem()
 }
 
+// MailAddressExists checks whether an existing MailAddress resource with the given ID exists.
+func MailAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MailAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:directmail/mailAddress:MailAddress", id, state, "", opts...)
+}
+
 type mailAddressArgs struct {
 	// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
 	AccountName string `pulumi:"accountName"`

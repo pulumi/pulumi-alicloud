@@ -183,6 +183,14 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
         __props__.__dict__["storage_region"] = storage_region
         return GlobalEventsStorageRegion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            storage_region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["storageRegion"] = storage_region
+        return pulumi.runtime.exists_resource(None, 'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="storageRegion")
     def storage_region(self) -> pulumi.Output[_builtins.str]:

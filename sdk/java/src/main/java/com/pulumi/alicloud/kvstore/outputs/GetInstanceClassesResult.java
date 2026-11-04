@@ -38,29 +38,26 @@ public final class GetInstanceClassesResult {
     private @Nullable String nodeType;
     private @Nullable String outputFile;
     /**
-     * @deprecated
-     * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
+    @Deprecated
     private @Nullable String packageType;
     /**
-     * @deprecated
-     * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
+    @Deprecated
     private @Nullable String performanceType;
     private @Nullable String productType;
     private @Nullable String seriesType;
     private @Nullable Integer shardNumber;
     private @Nullable String sortedBy;
     /**
-     * @deprecated
-     * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
+    @Deprecated
     private @Nullable String storageType;
     private String zoneId;
 
@@ -108,20 +105,18 @@ public final class GetInstanceClassesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @deprecated
-     * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
+    @Deprecated
     public Optional<String> packageType() {
         return Optional.ofNullable(this.packageType);
     }
     /**
-     * @deprecated
-     * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
+    @Deprecated
     public Optional<String> performanceType() {
         return Optional.ofNullable(this.performanceType);
     }
@@ -138,11 +133,10 @@ public final class GetInstanceClassesResult {
         return Optional.ofNullable(this.sortedBy);
     }
     /**
-     * @deprecated
-     * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
+    @Deprecated
     public Optional<String> storageType() {
         return Optional.ofNullable(this.storageType);
     }

@@ -194,6 +194,12 @@ func (ProtectionModuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*protectionModuleState)(nil)).Elem()
 }
 
+// ProtectionModuleExists checks whether an existing ProtectionModule resource with the given ID exists.
+func ProtectionModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProtectionModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:waf/protectionModule:ProtectionModule", id, state, "", opts...)
+}
+
 type protectionModuleArgs struct {
 	// The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
 	DefenseType string `pulumi:"defenseType"`

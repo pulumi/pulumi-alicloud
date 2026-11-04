@@ -208,6 +208,12 @@ func (PrometheusViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prometheusViewState)(nil)).Elem()
 }
 
+// PrometheusViewExists checks whether an existing PrometheusView resource with the given ID exists.
+func PrometheusViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrometheusViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/prometheusView:PrometheusView", id, state, "", opts...)
+}
+
 type prometheusViewArgs struct {
 	// Read password-free address whitelist policy.
 	AuthFreeReadPolicy *string `pulumi:"authFreeReadPolicy"`

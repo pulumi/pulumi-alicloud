@@ -1099,6 +1099,54 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["webhook"] = webhook
         return Alarm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            composite_expression: pulumi.Input[Optional[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict', 'outputs.AlarmCompositeExpression']]] = None,
+            contact_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            escalations_critical: pulumi.Input[Optional[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict', 'outputs.AlarmEscalationsCritical']]] = None,
+            escalations_info: pulumi.Input[Optional[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict', 'outputs.AlarmEscalationsInfo']]] = None,
+            escalations_warn: pulumi.Input[Optional[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict', 'outputs.AlarmEscalationsWarn']]] = None,
+            metric: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict', 'outputs.AlarmPrometheus']]]]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict', 'outputs.AlarmTarget']]]]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["compositeExpression"] = composite_expression
+        __props__["contactGroups"] = contact_groups
+        __props__["dimensions"] = dimensions
+        __props__["effectiveInterval"] = effective_interval
+        __props__["enabled"] = enabled
+        __props__["endTime"] = end_time
+        __props__["escalationsCritical"] = escalations_critical
+        __props__["escalationsInfo"] = escalations_info
+        __props__["escalationsWarn"] = escalations_warn
+        __props__["metric"] = metric
+        __props__["metricDimensions"] = metric_dimensions
+        __props__["name"] = name
+        __props__["period"] = period
+        __props__["project"] = project
+        __props__["prometheuses"] = prometheuses
+        __props__["silenceTime"] = silence_time
+        __props__["startTime"] = start_time
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["targets"] = targets
+        __props__["webhook"] = webhook
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/alarm:Alarm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="compositeExpression")
     def composite_expression(self) -> pulumi.Output[Optional['outputs.AlarmCompositeExpression']]:

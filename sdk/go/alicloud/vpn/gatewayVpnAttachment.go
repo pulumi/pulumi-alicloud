@@ -466,6 +466,12 @@ func (GatewayVpnAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayVpnAttachmentState)(nil)).Elem()
 }
 
+// GatewayVpnAttachmentExists checks whether an existing GatewayVpnAttachment resource with the given ID exists.
+func GatewayVpnAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayVpnAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment", id, state, "", opts...)
+}
+
 type gatewayVpnAttachmentArgs struct {
 	// Bgp configuration information.
 	// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.

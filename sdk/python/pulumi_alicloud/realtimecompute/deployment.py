@@ -823,6 +823,42 @@ class Deployment(pulumi.CustomResource):
         __props__.__dict__["streaming_resource_setting"] = streaming_resource_setting
         return Deployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            artifact: pulumi.Input[Optional[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict', 'outputs.DeploymentArtifact']]] = None,
+            batch_resource_setting: pulumi.Input[Optional[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict', 'outputs.DeploymentBatchResourceSetting']]] = None,
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_target: pulumi.Input[Optional[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict', 'outputs.DeploymentDeploymentTarget']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            flink_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict', 'outputs.DeploymentLocalVariable']]]]] = None,
+            logging: pulumi.Input[Optional[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict', 'outputs.DeploymentLogging']]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            streaming_resource_setting: pulumi.Input[Optional[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict', 'outputs.DeploymentStreamingResourceSetting']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["artifact"] = artifact
+        __props__["batchResourceSetting"] = batch_resource_setting
+        __props__["deploymentId"] = deployment_id
+        __props__["deploymentName"] = deployment_name
+        __props__["deploymentTarget"] = deployment_target
+        __props__["description"] = description
+        __props__["engineVersion"] = engine_version
+        __props__["executionMode"] = execution_mode
+        __props__["flinkConf"] = flink_conf
+        __props__["labels"] = labels
+        __props__["localVariables"] = local_variables
+        __props__["logging"] = logging
+        __props__["namespace"] = namespace
+        __props__["resourceId"] = resource_id
+        __props__["streamingResourceSetting"] = streaming_resource_setting
+        return pulumi.runtime.exists_resource(None, 'alicloud:realtimecompute/deployment:Deployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def artifact(self) -> pulumi.Output['outputs.DeploymentArtifact']:

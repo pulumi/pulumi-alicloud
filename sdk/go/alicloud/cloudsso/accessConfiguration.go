@@ -191,6 +191,12 @@ func (AccessConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessConfigurationState)(nil)).Elem()
 }
 
+// AccessConfigurationExists checks whether an existing AccessConfiguration resource with the given ID exists.
+func AccessConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/accessConfiguration:AccessConfiguration", id, state, "", opts...)
+}
+
 type accessConfigurationArgs struct {
 	// The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName string `pulumi:"accessConfigurationName"`

@@ -236,6 +236,12 @@ func (HAVipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*havipState)(nil)).Elem()
 }
 
+// HAVipExists checks whether an existing HAVip resource with the given ID exists.
+func HAVipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HAVipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/hAVip:HAVip", id, state, "", opts...)
+}
+
 type havipArgs struct {
 	// The description of the HaVip instance.
 	Description *string `pulumi:"description"`

@@ -29,11 +29,10 @@ public final class GetServiceCertificatesResult {
     private List<String> ids;
     private @Nullable String keyword;
     /**
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     private @Nullable String lang;
     private @Nullable String nameRegex;
     /**
@@ -68,11 +67,10 @@ public final class GetServiceCertificatesResult {
         return Optional.ofNullable(this.keyword);
     }
     /**
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }

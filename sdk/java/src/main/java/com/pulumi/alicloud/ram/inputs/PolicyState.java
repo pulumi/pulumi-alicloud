@@ -83,22 +83,20 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
-     * @deprecated
-     * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
+     * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead. */
+    @Deprecated
     @Import(name="document")
     private @Nullable Output<String> document;
 
     /**
      * @return Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      * 
-     * @deprecated
-     * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
+     * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead. */
+    @Deprecated
     public Optional<Output<String>> document() {
         return Optional.ofNullable(this.document);
     }
@@ -121,22 +119,20 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -193,22 +189,20 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
-     * @deprecated
-     * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * @deprecated Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
      * 
      */
-    @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated
     @Import(name="statements")
     private @Nullable Output<List<PolicyStatementArgs>> statements;
 
     /**
      * @return Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
-     * @deprecated
-     * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * @deprecated Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
      * 
      */
-    @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated
     public Optional<Output<List<PolicyStatementArgs>>> statements() {
         return Optional.ofNullable(this.statements);
     }
@@ -246,22 +240,20 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * @deprecated Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
      * @return Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+     * @deprecated Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+    @Deprecated
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -408,11 +400,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
+         * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead. */
+        @Deprecated
         public Builder document(@Nullable Output<String> document) {
             $.document = document;
             return this;
@@ -423,11 +414,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
+         * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead. */
+        @Deprecated
         public Builder document(String document) {
             return document(Output.of(document));
         }
@@ -458,11 +448,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -473,11 +462,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -554,11 +542,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * @deprecated Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
          * 
          */
-        @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated
         public Builder statements(@Nullable Output<List<PolicyStatementArgs>> statements) {
             $.statements = statements;
             return this;
@@ -569,11 +556,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * @deprecated Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
          * 
          */
-        @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated
         public Builder statements(List<PolicyStatementArgs> statements) {
             return statements(Output.of(statements));
         }
@@ -583,11 +569,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * @deprecated Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
          * 
          */
-        @Deprecated /* Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated
         public Builder statements(PolicyStatementArgs... statements) {
             return statements(List.of(statements));
         }
@@ -639,11 +624,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * @deprecated Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
          * 
          */
-        @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
@@ -654,11 +638,10 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
+         * @deprecated Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
          * 
          */
-        @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
+        @Deprecated
         public Builder version(String version) {
             return version(Output.of(version));
         }

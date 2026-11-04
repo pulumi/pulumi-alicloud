@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// The edition. **Valid values:**
-        /// - standard: `Beta Edition(For internal testing only) `
+        /// - standard: ` Beta Edition(For internal testing only)  `
         /// - personal_edition: Developer Edition
         /// - experts_edition: Pro Edition
         /// - advanced_edition: Advanced Edition
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// The edition. **Valid values:**
-        /// - standard: `Beta Edition(For internal testing only) `
+        /// - standard: ` Beta Edition(For internal testing only)  `
         /// - personal_edition: Developer Edition
         /// - experts_edition: Pro Edition
         /// - advanced_edition: Advanced Edition
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// The edition. **Valid values:**
-        /// - standard: `Beta Edition(For internal testing only) `
+        /// - standard: ` Beta Edition(For internal testing only)  `
         /// - personal_edition: Developer Edition
         /// - experts_edition: Pro Edition
         /// - advanced_edition: Advanced Edition

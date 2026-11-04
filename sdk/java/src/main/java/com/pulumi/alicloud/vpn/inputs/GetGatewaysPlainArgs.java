@@ -34,22 +34,20 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * Indicates whether the IPsec-VPN feature is enabled.
      * 
-     * @deprecated
-     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * @deprecated Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
+    @Deprecated
     @Import(name="enableIpsec")
     private @Nullable Boolean enableIpsec;
 
     /**
      * @return Indicates whether the IPsec-VPN feature is enabled.
      * 
-     * @deprecated
-     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * @deprecated Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
+    @Deprecated
     public Optional<Boolean> enableIpsec() {
         return Optional.ofNullable(this.enableIpsec);
     }
@@ -223,11 +221,10 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+         * @deprecated Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
          * 
          */
-        @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
+        @Deprecated
         public Builder enableIpsec(@Nullable Boolean enableIpsec) {
             $.enableIpsec = enableIpsec;
             return this;

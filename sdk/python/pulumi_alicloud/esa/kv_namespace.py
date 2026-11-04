@@ -259,6 +259,18 @@ class KvNamespace(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return KvNamespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            kv_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["kvNamespace"] = kv_namespace
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/kvNamespace:KvNamespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

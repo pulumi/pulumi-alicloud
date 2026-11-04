@@ -22,22 +22,20 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+     * @deprecated Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
+    @Deprecated
     @Import(name="abandonAbleCheckIds")
     private @Nullable Output<List<String>> abandonAbleCheckIds;
 
     /**
      * @return . Field &#39;abandon_able_check_id&#39; has been deprecated from provider version 1.249.0. New field &#39;abandonable_check_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+     * @deprecated Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
+    @Deprecated
     public Optional<Output<List<String>>> abandonAbleCheckIds() {
         return Optional.ofNullable(this.abandonAbleCheckIds);
     }
@@ -235,11 +233,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+         * @deprecated Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
+        @Deprecated
         public Builder abandonAbleCheckIds(@Nullable Output<List<String>> abandonAbleCheckIds) {
             $.abandonAbleCheckIds = abandonAbleCheckIds;
             return this;
@@ -250,11 +247,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+         * @deprecated Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
+        @Deprecated
         public Builder abandonAbleCheckIds(List<String> abandonAbleCheckIds) {
             return abandonAbleCheckIds(Output.of(abandonAbleCheckIds));
         }
@@ -264,11 +260,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
+         * @deprecated Field &#39;abandon_able_check_id&#39; has been deprecated since provider version 1.248.0. New field &#39;abandonable_check_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead. */
+        @Deprecated
         public Builder abandonAbleCheckIds(String... abandonAbleCheckIds) {
             return abandonAbleCheckIds(List.of(abandonAbleCheckIds));
         }

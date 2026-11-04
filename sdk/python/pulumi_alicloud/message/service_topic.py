@@ -433,6 +433,26 @@ class ServiceTopic(pulumi.CustomResource):
         __props__.__dict__["topic_type"] = topic_type
         return ServiceTopic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["enableLogging"] = enable_logging
+        __props__["loggingEnabled"] = logging_enabled
+        __props__["maxMessageSize"] = max_message_size
+        __props__["tags"] = tags
+        __props__["topicName"] = topic_name
+        __props__["topicType"] = topic_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:message/serviceTopic:ServiceTopic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

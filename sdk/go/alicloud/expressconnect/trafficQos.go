@@ -143,6 +143,12 @@ func (TrafficQosState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficQosState)(nil)).Elem()
 }
 
+// TrafficQosExists checks whether an existing TrafficQos resource with the given ID exists.
+func TrafficQosExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficQosState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/trafficQos:TrafficQos", id, state, "", opts...)
+}
+
 type trafficQosArgs struct {
 	// The description of the QoS policy.
 	// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.

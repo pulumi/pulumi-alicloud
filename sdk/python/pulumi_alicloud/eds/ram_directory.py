@@ -411,6 +411,24 @@ class RamDirectory(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return RamDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            ram_directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["desktopAccessType"] = desktop_access_type
+        __props__["enableAdminAccess"] = enable_admin_access
+        __props__["enableInternetAccess"] = enable_internet_access
+        __props__["ramDirectoryName"] = ram_directory_name
+        __props__["status"] = status
+        __props__["vswitchIds"] = vswitch_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/ramDirectory:RamDirectory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
     def desktop_access_type(self) -> pulumi.Output[_builtins.str]:

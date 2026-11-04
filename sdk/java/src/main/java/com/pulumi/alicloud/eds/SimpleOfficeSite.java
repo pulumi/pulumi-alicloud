@@ -84,11 +84,10 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
     /**
      * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      * 
-     * @deprecated
-     * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
@@ -186,11 +185,10 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
     /**
      * Whether the Open Internet Access Function.
      * 
-     * @deprecated
-     * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     @Export(name="enableInternetAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableInternetAccess;
 

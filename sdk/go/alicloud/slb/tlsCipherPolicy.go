@@ -139,6 +139,12 @@ func (TlsCipherPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tlsCipherPolicyState)(nil)).Elem()
 }
 
+// TlsCipherPolicyExists checks whether an existing TlsCipherPolicy resource with the given ID exists.
+func TlsCipherPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TlsCipherPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/tlsCipherPolicy:TlsCipherPolicy", id, state, "", opts...)
+}
+
 type tlsCipherPolicyArgs struct {
 	// The encryption algorithms supported. It depends on the value of `tlsVersions`.
 	Ciphers []string `pulumi:"ciphers"`

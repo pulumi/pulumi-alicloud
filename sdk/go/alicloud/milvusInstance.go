@@ -405,6 +405,12 @@ func (MilvusInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*milvusInstanceState)(nil)).Elem()
 }
 
+// MilvusInstanceExists checks whether an existing MilvusInstance resource with the given ID exists.
+func MilvusInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MilvusInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:index/milvusInstance:MilvusInstance", id, state, "", opts...)
+}
+
 type milvusInstanceArgs struct {
 	// Whether to enable automatic backup
 	AutoBackup *bool `pulumi:"autoBackup"`

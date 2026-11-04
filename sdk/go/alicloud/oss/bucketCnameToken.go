@@ -143,6 +143,12 @@ func (BucketCnameTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketCnameTokenState)(nil)).Elem()
 }
 
+// BucketCnameTokenExists checks whether an existing BucketCnameToken resource with the given ID exists.
+func BucketCnameTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketCnameTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketCnameToken:BucketCnameToken", id, state, "", opts...)
+}
+
 type bucketCnameTokenArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

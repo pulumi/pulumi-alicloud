@@ -556,6 +556,28 @@ class CustomDomain(pulumi.CustomResource):
         __props__.__dict__["route_configs"] = route_configs
         return CustomDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict', 'outputs.CustomDomainCertConfig']]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict', 'outputs.CustomDomainRouteConfig']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["apiVersion"] = api_version
+        __props__["certConfig"] = cert_config
+        __props__["createdTime"] = created_time
+        __props__["domainName"] = domain_name
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["protocol"] = protocol
+        __props__["routeConfigs"] = route_configs
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/customDomain:CustomDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

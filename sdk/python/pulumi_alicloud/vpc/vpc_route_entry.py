@@ -604,6 +604,30 @@ class VPCRouteEntry(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return VPCRouteEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict', 'outputs.VPCRouteEntryNextHop']]]]] = None,
+            nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict', 'outputs.VPCRouteEntryRoutePublishTarget']]]]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["destinationCidrBlock"] = destination_cidr_block
+        __props__["nextHops"] = next_hops
+        __props__["nexthopId"] = nexthop_id
+        __props__["nexthopType"] = nexthop_type
+        __props__["routeEntryName"] = route_entry_name
+        __props__["routePublishTargets"] = route_publish_targets
+        __props__["routeTableId"] = route_table_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/vPCRouteEntry:VPCRouteEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

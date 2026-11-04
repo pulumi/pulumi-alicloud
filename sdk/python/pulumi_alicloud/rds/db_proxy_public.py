@@ -477,6 +477,22 @@ class DbProxyPublic(pulumi.CustomResource):
         __props__.__dict__["db_proxy_new_connect_string_port"] = db_proxy_new_connect_string_port
         return DbProxyPublic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_connection_string_net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_new_connect_string_port: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionStringPrefix"] = connection_string_prefix
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["dbProxyConnectionStringNetType"] = db_proxy_connection_string_net_type
+        __props__["dbProxyEndpointId"] = db_proxy_endpoint_id
+        __props__["dbProxyNewConnectStringPort"] = db_proxy_new_connect_string_port
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/dbProxyPublic:DbProxyPublic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> pulumi.Output[_builtins.str]:

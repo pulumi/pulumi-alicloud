@@ -109,11 +109,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
  * ```
  * 
- * @deprecated
- * This resource has been deprecated in favour of the ApplicationLoadBalancer resource
+ * @deprecated This resource has been deprecated in favour of the ApplicationLoadBalancer resource
  * 
  */
-@Deprecated /* This resource has been deprecated in favour of the ApplicationLoadBalancer resource */
+@Deprecated
 @ResourceType(type="alicloud:slb/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
@@ -301,11 +300,10 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -379,11 +377,10 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
      * &#34;slb.s3.small&#34;, &#34;slb.s3.medium&#34;, &#34;slb.s3.large&#34; and &#34;slb.s4.large&#34;.
      * 
-     * @deprecated
-     * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
+     * @deprecated Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
      * 
      */
-    @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
+    @Deprecated
     @Export(name="specification", refs={String.class}, tree="[0]")
     private Output<String> specification;
 

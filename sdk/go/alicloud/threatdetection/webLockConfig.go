@@ -179,6 +179,12 @@ func (WebLockConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webLockConfigState)(nil)).Elem()
 }
 
+// WebLockConfigExists checks whether an existing WebLockConfig resource with the given ID exists.
+func WebLockConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebLockConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/webLockConfig:WebLockConfig", id, state, "", opts...)
+}
+
 type webLockConfigArgs struct {
 	// Protection mode. Value:-**block**: Intercept-**audit**: Alarm
 	DefenceMode string `pulumi:"defenceMode"`

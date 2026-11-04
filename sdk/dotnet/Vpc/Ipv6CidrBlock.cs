@@ -96,7 +96,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("ipv6CidrMask")]
@@ -176,7 +175,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("ipv6CidrMask")]
@@ -217,7 +215,6 @@ namespace Pulumi.AliCloud.Vpc
         /// The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
         /// 
         /// &gt; **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>

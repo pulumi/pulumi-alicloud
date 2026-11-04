@@ -427,6 +427,20 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountStatus"] = account_status
+        __props__["instanceId"] = instance_id
+        __props__["password"] = password
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountStatus")
     def account_status(self) -> pulumi.Output[_builtins.str]:

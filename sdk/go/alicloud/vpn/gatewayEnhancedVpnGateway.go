@@ -229,6 +229,12 @@ func (GatewayEnhancedVpnGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayEnhancedVpnGatewayState)(nil)).Elem()
 }
 
+// GatewayEnhancedVpnGatewayExists checks whether an existing GatewayEnhancedVpnGateway resource with the given ID exists.
+func GatewayEnhancedVpnGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayEnhancedVpnGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/gatewayEnhancedVpnGateway:GatewayEnhancedVpnGateway", id, state, "", opts...)
+}
+
 type gatewayEnhancedVpnGatewayArgs struct {
 	// Specifies whether to automatically propagate BGP routes to the VPC
 	AutoPropagate *bool `pulumi:"autoPropagate"`

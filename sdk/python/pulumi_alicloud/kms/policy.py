@@ -469,6 +469,24 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["resources"] = resources
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_control_rules: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessControlRules"] = access_control_rules
+        __props__["description"] = description
+        __props__["kmsInstanceId"] = kms_instance_id
+        __props__["permissions"] = permissions
+        __props__["policyName"] = policy_name
+        __props__["resources"] = resources
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessControlRules")
     def access_control_rules(self) -> pulumi.Output[_builtins.str]:

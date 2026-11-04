@@ -565,6 +565,26 @@ class AddonRelease(pulumi.CustomResource):
         __props__.__dict__["values"] = values
         return AddonRelease(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addon_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addon_version: pulumi.Input[Optional[_builtins.str]] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addonName"] = addon_name
+        __props__["addonReleaseName"] = addon_release_name
+        __props__["addonVersion"] = addon_version
+        __props__["aliyunLang"] = aliyun_lang
+        __props__["createTime"] = create_time
+        __props__["environmentId"] = environment_id
+        __props__["values"] = values
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/addonRelease:AddonRelease', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addonName")
     def addon_name(self) -> pulumi.Output[_builtins.str]:

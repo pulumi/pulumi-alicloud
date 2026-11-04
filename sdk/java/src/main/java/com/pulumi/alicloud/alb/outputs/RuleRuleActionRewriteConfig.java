@@ -22,7 +22,7 @@ public final class RuleRuleActionRewriteConfig {
      */
     private @Nullable String path;
     /**
-     * @return The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+     * @return The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } &#92; | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
      * 
      */
     private @Nullable String query;
@@ -43,7 +43,7 @@ public final class RuleRuleActionRewriteConfig {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+     * @return The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } &#92; | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
      * 
      */
     public Optional<String> query() {

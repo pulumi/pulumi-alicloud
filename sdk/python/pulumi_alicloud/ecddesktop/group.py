@@ -1127,6 +1127,74 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["system_disk_size"] = system_disk_size
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_auto_setup: pulumi.Input[Optional[_builtins.int]] = None,
+            allow_buffer_count: pulumi.Input[Optional[_builtins.int]] = None,
+            bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disk_size: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_type: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_count: pulumi.Input[Optional[_builtins.float]] = None,
+            gpu_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            keep_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            max_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            min_desktops_count: pulumi.Input[Optional[_builtins.int]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+            office_site_type: pulumi.Input[Optional[_builtins.str]] = None,
+            own_bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            res_type: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowAutoSetup"] = allow_auto_setup
+        __props__["allowBufferCount"] = allow_buffer_count
+        __props__["bundleId"] = bundle_id
+        __props__["comments"] = comments
+        __props__["cpu"] = cpu
+        __props__["createTime"] = create_time
+        __props__["creator"] = creator
+        __props__["dataDiskCategory"] = data_disk_category
+        __props__["dataDiskSize"] = data_disk_size
+        __props__["desktopGroupName"] = desktop_group_name
+        __props__["directoryId"] = directory_id
+        __props__["directoryType"] = directory_type
+        __props__["endUserIds"] = end_user_ids
+        __props__["expiredTime"] = expired_time
+        __props__["gpuCount"] = gpu_count
+        __props__["gpuSpec"] = gpu_spec
+        __props__["keepDuration"] = keep_duration
+        __props__["maxDesktopsCount"] = max_desktops_count
+        __props__["memory"] = memory
+        __props__["minDesktopsCount"] = min_desktops_count
+        __props__["officeSiteId"] = office_site_id
+        __props__["officeSiteName"] = office_site_name
+        __props__["officeSiteType"] = office_site_type
+        __props__["ownBundleName"] = own_bundle_name
+        __props__["payType"] = pay_type
+        __props__["policyGroupId"] = policy_group_id
+        __props__["policyGroupName"] = policy_group_name
+        __props__["resType"] = res_type
+        __props__["scaleStrategyId"] = scale_strategy_id
+        __props__["systemDiskCategory"] = system_disk_category
+        __props__["systemDiskSize"] = system_disk_size
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecddesktop/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowAutoSetup")
     def allow_auto_setup(self) -> pulumi.Output[_builtins.int]:

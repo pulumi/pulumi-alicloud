@@ -248,6 +248,12 @@ func (DdosCooInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosCooInstanceState)(nil)).Elem()
 }
 
+// DdosCooInstanceExists checks whether an existing DdosCooInstance resource with the given ID exists.
+func DdosCooInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DdosCooInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/ddosCooInstance:DdosCooInstance", id, state, "", opts...)
+}
+
 type ddosCooInstanceArgs struct {
 	// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
 	AddressType *string `pulumi:"addressType"`

@@ -166,6 +166,12 @@ func (InstanceGrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGrantState)(nil)).Elem()
 }
 
+// InstanceGrantExists checks whether an existing InstanceGrant resource with the given ID exists.
+func InstanceGrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceGrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/instanceGrant:InstanceGrant", id, state, "", opts...)
+}
+
 type instanceGrantArgs struct {
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`

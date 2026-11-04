@@ -263,6 +263,12 @@ func (TransitRouterMulticastDomainSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterMulticastDomainSourceState)(nil)).Elem()
 }
 
+// TransitRouterMulticastDomainSourceExists checks whether an existing TransitRouterMulticastDomainSource resource with the given ID exists.
+func TransitRouterMulticastDomainSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterMulticastDomainSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource", id, state, "", opts...)
+}
+
 type transitRouterMulticastDomainSourceArgs struct {
 	// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
 	GroupIpAddress string `pulumi:"groupIpAddress"`

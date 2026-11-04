@@ -169,6 +169,12 @@ func (EditingProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*editingProjectState)(nil)).Elem()
 }
 
+// EditingProjectExists checks whether an existing EditingProject resource with the given ID exists.
+func EditingProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EditingProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vod/editingProject:EditingProject", id, state, "", opts...)
+}
+
 type editingProjectArgs struct {
 	// The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
 	CoverUrl *string `pulumi:"coverUrl"`

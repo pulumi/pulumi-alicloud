@@ -398,6 +398,12 @@ func (RouteMapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeMapState)(nil)).Elem()
 }
 
+// RouteMapExists checks whether an existing RouteMap resource with the given ID exists.
+func RouteMapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteMapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/routeMap:RouteMap", id, state, "", opts...)
+}
+
 type routeMapArgs struct {
 	// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
 	AsPathMatchMode *string `pulumi:"asPathMatchMode"`

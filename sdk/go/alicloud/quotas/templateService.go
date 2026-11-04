@@ -123,6 +123,12 @@ func (TemplateServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateServiceState)(nil)).Elem()
 }
 
+// TemplateServiceExists checks whether an existing TemplateService resource with the given ID exists.
+func TemplateServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:quotas/templateService:TemplateService", id, state, "", opts...)
+}
+
 type templateServiceArgs struct {
 	// Status of the quota template. Valid values:
 	// - `-1`: disabled.

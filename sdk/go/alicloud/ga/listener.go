@@ -260,6 +260,12 @@ func (ListenerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerState)(nil)).Elem()
 }
 
+// ListenerExists checks whether an existing Listener resource with the given ID exists.
+func ListenerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListenerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/listener:Listener", id, state, "", opts...)
+}
+
 type listenerArgs struct {
 	// The accelerator id.
 	AcceleratorId string `pulumi:"acceleratorId"`

@@ -231,6 +231,12 @@ func (RocketMQTopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rocketMQTopicState)(nil)).Elem()
 }
 
+// RocketMQTopicExists checks whether an existing RocketMQTopic resource with the given ID exists.
+func RocketMQTopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RocketMQTopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rocketmq/rocketMQTopic:RocketMQTopic", id, state, "", opts...)
+}
+
 type rocketMQTopicArgs struct {
 	// Instance ID.
 	InstanceId string `pulumi:"instanceId"`

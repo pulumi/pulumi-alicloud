@@ -734,6 +734,34 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_key: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appKey"] = app_key
+        __props__["diskCategory"] = disk_category
+        __props__["duration"] = duration
+        __props__["engineType"] = engine_type
+        __props__["instanceAlias"] = instance_alias
+        __props__["instanceClass"] = instance_class
+        __props__["instanceStorage"] = instance_storage
+        __props__["paymentType"] = payment_type
+        __props__["status"] = status
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:tsdb/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appKey")
     def app_key(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -205,6 +205,12 @@ func (OriginPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*originPoolState)(nil)).Elem()
 }
 
+// OriginPoolExists checks whether an existing OriginPool resource with the given ID exists.
+func OriginPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OriginPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/originPool:OriginPool", id, state, "", opts...)
+}
+
 type originPoolArgs struct {
 	// Whether the source address pool is enabled:
 	Enabled *bool `pulumi:"enabled"`

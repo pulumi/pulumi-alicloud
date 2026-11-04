@@ -210,6 +210,12 @@ func (TransitRouterRouteTableAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterRouteTableAssociationState)(nil)).Elem()
 }
 
+// TransitRouterRouteTableAssociationExists checks whether an existing TransitRouterRouteTableAssociation resource with the given ID exists.
+func TransitRouterRouteTableAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterRouteTableAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation", id, state, "", opts...)
+}
+
 type transitRouterRouteTableAssociationArgs struct {
 	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun *bool `pulumi:"dryRun"`

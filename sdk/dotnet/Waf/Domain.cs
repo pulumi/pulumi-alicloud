@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Waf
         public Output<ImmutableArray<string>> HttpPorts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
         /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Output("httpToUserIp")]
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Waf
         }
 
         /// <summary>
-        /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
         /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Input("httpToUserIp")]
@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Waf
         }
 
         /// <summary>
-        /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        /// Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
         /// By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         /// </summary>
         [Input("httpToUserIp")]

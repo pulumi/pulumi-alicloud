@@ -363,6 +363,22 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv4CidrBlock(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ipv4IpamPoolId"] = ipv4_ipam_pool_id
+        __props__["regionId"] = region_id
+        __props__["secondaryCidrBlock"] = secondary_cidr_block
+        __props__["secondaryCidrMask"] = secondary_cidr_mask
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ipv4IpamPoolId")
     def ipv4_ipam_pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:

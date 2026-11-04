@@ -554,11 +554,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -786,11 +785,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
@@ -804,11 +802,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output<String> systemDiskDescription;
 
@@ -822,11 +819,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output<String> systemDiskName;
 
@@ -840,11 +836,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      * 
-     * @deprecated
-     * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
@@ -932,11 +927,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.120.0, and use field `userData` instead.
      * 
-     * @deprecated
-     * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
+     * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
      */
-    @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
+    @Deprecated
     @Export(name="userdata", refs={String.class}, tree="[0]")
     private Output<String> userdata;
 

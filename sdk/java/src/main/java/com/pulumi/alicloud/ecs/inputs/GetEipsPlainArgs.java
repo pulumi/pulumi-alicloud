@@ -92,22 +92,20 @@ public final class GetEipsPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A list of EIP public IP addresses.
      * 
-     * @deprecated
-     * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
+     * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
+    @Deprecated
     @Import(name="ipAddresses")
     private @Nullable List<String> ipAddresses;
 
     /**
      * @return A list of EIP public IP addresses.
      * 
-     * @deprecated
-     * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
+     * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
+    @Deprecated
     public Optional<List<String>> ipAddresses() {
         return Optional.ofNullable(this.ipAddresses);
     }
@@ -315,11 +313,10 @@ public final class GetEipsPlainArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
+         * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
+        @Deprecated
         public Builder ipAddresses(@Nullable List<String> ipAddresses) {
             $.ipAddresses = ipAddresses;
             return this;
@@ -330,11 +327,10 @@ public final class GetEipsPlainArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
+         * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
+        @Deprecated
         public Builder ipAddresses(String... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
         }

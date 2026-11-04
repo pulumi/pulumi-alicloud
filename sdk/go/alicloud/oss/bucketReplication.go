@@ -286,6 +286,12 @@ func (BucketReplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketReplicationState)(nil)).Elem()
 }
 
+// BucketReplicationExists checks whether an existing BucketReplication resource with the given ID exists.
+func BucketReplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketReplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketReplication:BucketReplication", id, state, "", opts...)
+}
+
 type bucketReplicationArgs struct {
 	// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
 	Action *string `pulumi:"action"`

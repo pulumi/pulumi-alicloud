@@ -230,6 +230,12 @@ func (VpcAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAccessState)(nil)).Elem()
 }
 
+// VpcAccessExists checks whether an existing VpcAccess resource with the given ID exists.
+func VpcAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/vpcAccess:VpcAccess", id, state, "", opts...)
+}
+
 type vpcAccessArgs struct {
 	// The ID of an ECS or SLB instance in the VPC.
 	InstanceId string `pulumi:"instanceId"`

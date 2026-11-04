@@ -438,6 +438,26 @@ class ScheduledPreloadJob(pulumi.CustomResource):
         __props__.__dict__["url_list"] = url_list
         return ScheduledPreloadJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            insert_way: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_url: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_preload_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url_list: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["insertWay"] = insert_way
+        __props__["ossUrl"] = oss_url
+        __props__["scheduledPreloadJobId"] = scheduled_preload_job_id
+        __props__["scheduledPreloadJobName"] = scheduled_preload_job_name
+        __props__["siteId"] = site_id
+        __props__["urlList"] = url_list
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

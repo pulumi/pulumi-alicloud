@@ -76,7 +76,7 @@ public class GlobalSecurityIpGroup extends com.pulumi.resources.CustomResource {
     /**
      * The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
      * 
-     * - The name can contain lowercase letters, digits, and underscores (\_).
+     * - The name can contain lowercase letters, digits, and underscores (&#92;_).
      * - The name must start with a letter and end with a letter or digit.
      * - The name must be 2 to 120 characters in length.
      * 
@@ -87,7 +87,7 @@ public class GlobalSecurityIpGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
      * 
-     * - The name can contain lowercase letters, digits, and underscores (\_).
+     * - The name can contain lowercase letters, digits, and underscores (&#92;_).
      * - The name must start with a letter and end with a letter or digit.
      * - The name must be 2 to 120 characters in length.
      * 

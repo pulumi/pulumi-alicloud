@@ -33,7 +33,7 @@ public final class FileSystemSmbAcl {
     private @Nullable Boolean encryptData;
     /**
      * @return The user directory home path for each user. The file path format is as follows:
-     * - A forward slash (/) or backslash (\) as a separator.
+     * - A forward slash (/) or backslash (&#92;) as a separator.
      * - Each paragraph cannot contain &#34;:|? *.
      * - The length of each segment ranges from 0 to 255.
      * - The total length range is 0~32767.
@@ -89,7 +89,7 @@ public final class FileSystemSmbAcl {
     }
     /**
      * @return The user directory home path for each user. The file path format is as follows:
-     * - A forward slash (/) or backslash (\) as a separator.
+     * - A forward slash (/) or backslash (&#92;) as a separator.
      * - Each paragraph cannot contain &#34;:|? *.
      * - The length of each segment ranges from 0 to 255.
      * - The total length range is 0~32767.

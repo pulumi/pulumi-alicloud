@@ -316,6 +316,20 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return Config(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["code"] = code
+        __props__["description"] = description
+        __props__["lang"] = lang
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'alicloud:sddp/config:Config', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def code(self) -> pulumi.Output[Optional[_builtins.str]]:

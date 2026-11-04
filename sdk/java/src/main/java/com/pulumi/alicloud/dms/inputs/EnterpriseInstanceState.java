@@ -200,22 +200,20 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
     /**
      * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
+     * @deprecated Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead. */
+    @Deprecated
     @Import(name="instanceAlias")
     private @Nullable Output<String> instanceAlias;
 
     /**
      * @return Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
+     * @deprecated Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead. */
+    @Deprecated
     public Optional<Output<String>> instanceAlias() {
         return Optional.ofNullable(this.instanceAlias);
     }
@@ -407,22 +405,20 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
     /**
      * It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
+     * @deprecated Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'state' has been deprecated from version 1.100.0. Use 'status' instead. */
+    @Deprecated
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
      * @return It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
+     * @deprecated Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'state' has been deprecated from version 1.100.0. Use 'status' instead. */
+    @Deprecated
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -797,11 +793,10 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
+         * @deprecated Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead. */
+        @Deprecated
         public Builder instanceAlias(@Nullable Output<String> instanceAlias) {
             $.instanceAlias = instanceAlias;
             return this;
@@ -812,11 +807,10 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
+         * @deprecated Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead. */
+        @Deprecated
         public Builder instanceAlias(String instanceAlias) {
             return instanceAlias(Output.of(instanceAlias));
         }
@@ -1082,11 +1076,10 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
+         * @deprecated Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
          * 
          */
-        @Deprecated /* Field 'state' has been deprecated from version 1.100.0. Use 'status' instead. */
+        @Deprecated
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
@@ -1097,11 +1090,10 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
+         * @deprecated Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
          * 
          */
-        @Deprecated /* Field 'state' has been deprecated from version 1.100.0. Use 'status' instead. */
+        @Deprecated
         public Builder state(String state) {
             return state(Output.of(state));
         }

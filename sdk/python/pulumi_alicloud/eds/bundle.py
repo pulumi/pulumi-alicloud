@@ -559,6 +559,30 @@ class Bundle(pulumi.CustomResource):
         __props__.__dict__["user_disk_size_gibs"] = user_disk_size_gibs
         return Bundle(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            root_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+            user_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            user_disk_size_gibs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bundleName"] = bundle_name
+        __props__["description"] = description
+        __props__["desktopType"] = desktop_type
+        __props__["imageId"] = image_id
+        __props__["language"] = language
+        __props__["rootDiskPerformanceLevel"] = root_disk_performance_level
+        __props__["rootDiskSizeGib"] = root_disk_size_gib
+        __props__["userDiskPerformanceLevel"] = user_disk_performance_level
+        __props__["userDiskSizeGibs"] = user_disk_size_gibs
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/bundle:Bundle', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bundleName")
     def bundle_name(self) -> pulumi.Output[Optional[_builtins.str]]:

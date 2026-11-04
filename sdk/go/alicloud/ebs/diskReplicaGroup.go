@@ -306,6 +306,12 @@ func (DiskReplicaGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskReplicaGroupState)(nil)).Elem()
 }
 
+// DiskReplicaGroupExists checks whether an existing DiskReplicaGroup resource with the given ID exists.
+func DiskReplicaGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskReplicaGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/diskReplicaGroup:DiskReplicaGroup", id, state, "", opts...)
+}
+
 type diskReplicaGroupArgs struct {
 	// The description of the consistent replication group.
 	Description *string `pulumi:"description"`

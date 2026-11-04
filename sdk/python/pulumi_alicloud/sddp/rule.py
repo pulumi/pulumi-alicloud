@@ -767,6 +767,42 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["warn_level"] = warn_level
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category: pulumi.Input[Optional[_builtins.int]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_category: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_type: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_level_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+            stat_express: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None,
+            warn_level: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["category"] = category
+        __props__["content"] = content
+        __props__["contentCategory"] = content_category
+        __props__["customType"] = custom_type
+        __props__["description"] = description
+        __props__["lang"] = lang
+        __props__["productCode"] = product_code
+        __props__["productId"] = product_id
+        __props__["riskLevelId"] = risk_level_id
+        __props__["ruleName"] = rule_name
+        __props__["ruleType"] = rule_type
+        __props__["statExpress"] = stat_express
+        __props__["status"] = status
+        __props__["target"] = target
+        __props__["warnLevel"] = warn_level
+        return pulumi.runtime.exists_resource(None, 'alicloud:sddp/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[_builtins.int]:

@@ -1838,6 +1838,86 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["structure_initialization"] = structure_initialization
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
+            db_list: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            src_primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            src_secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkpoint"] = checkpoint
+        __props__["dataInitialization"] = data_initialization
+        __props__["dataSynchronization"] = data_synchronization
+        __props__["dbList"] = db_list
+        __props__["destPrimaryVswitchId"] = dest_primary_vswitch_id
+        __props__["destSecondaryVswitchId"] = dest_secondary_vswitch_id
+        __props__["destinationEndpointDatabaseName"] = destination_endpoint_database_name
+        __props__["destinationEndpointEngineName"] = destination_endpoint_engine_name
+        __props__["destinationEndpointInstanceId"] = destination_endpoint_instance_id
+        __props__["destinationEndpointInstanceType"] = destination_endpoint_instance_type
+        __props__["destinationEndpointIp"] = destination_endpoint_ip
+        __props__["destinationEndpointOracleSid"] = destination_endpoint_oracle_sid
+        __props__["destinationEndpointPassword"] = destination_endpoint_password
+        __props__["destinationEndpointPort"] = destination_endpoint_port
+        __props__["destinationEndpointRegion"] = destination_endpoint_region
+        __props__["destinationEndpointSsl"] = destination_endpoint_ssl
+        __props__["destinationEndpointUserName"] = destination_endpoint_user_name
+        __props__["dtsInstanceId"] = dts_instance_id
+        __props__["dtsJobName"] = dts_job_name
+        __props__["instanceClass"] = instance_class
+        __props__["sourceEndpointDatabaseName"] = source_endpoint_database_name
+        __props__["sourceEndpointEngineName"] = source_endpoint_engine_name
+        __props__["sourceEndpointInstanceId"] = source_endpoint_instance_id
+        __props__["sourceEndpointInstanceType"] = source_endpoint_instance_type
+        __props__["sourceEndpointIp"] = source_endpoint_ip
+        __props__["sourceEndpointOracleSid"] = source_endpoint_oracle_sid
+        __props__["sourceEndpointOwnerId"] = source_endpoint_owner_id
+        __props__["sourceEndpointPassword"] = source_endpoint_password
+        __props__["sourceEndpointPort"] = source_endpoint_port
+        __props__["sourceEndpointRegion"] = source_endpoint_region
+        __props__["sourceEndpointRole"] = source_endpoint_role
+        __props__["sourceEndpointSsl"] = source_endpoint_ssl
+        __props__["sourceEndpointUserName"] = source_endpoint_user_name
+        __props__["srcPrimaryVswitchId"] = src_primary_vswitch_id
+        __props__["srcSecondaryVswitchId"] = src_secondary_vswitch_id
+        __props__["status"] = status
+        __props__["structureInitialization"] = structure_initialization
+        return pulumi.runtime.exists_resource(None, 'alicloud:dts/migrationJob:MigrationJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checkpoint(self) -> pulumi.Output[_builtins.str]:

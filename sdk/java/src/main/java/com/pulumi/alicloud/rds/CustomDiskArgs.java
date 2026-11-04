@@ -215,22 +215,20 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `period` has been deprecated from provider version 1.283.0.
      * 
-     * @deprecated
-     * Field `period` has been deprecated from provider version 1.283.0.
+     * @deprecated Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
-    @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
+    @Deprecated
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
      * @return Field `period` has been deprecated from provider version 1.283.0.
      * 
-     * @deprecated
-     * Field `period` has been deprecated from provider version 1.283.0.
+     * @deprecated Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
-    @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
+    @Deprecated
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -238,22 +236,20 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
-     * @deprecated
-     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
-    @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
+    @Deprecated
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
      * @return Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
-     * @deprecated
-     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
-    @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
+    @Deprecated
     public Optional<Output<String>> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
     }
@@ -664,11 +660,10 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `period` has been deprecated from provider version 1.283.0.
+         * @deprecated Field `period` has been deprecated from provider version 1.283.0.
          * 
          */
-        @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
+        @Deprecated
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
@@ -679,11 +674,10 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `period` has been deprecated from provider version 1.283.0.
+         * @deprecated Field `period` has been deprecated from provider version 1.283.0.
          * 
          */
-        @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
+        @Deprecated
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
@@ -693,11 +687,10 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `periodUnit` has been deprecated from provider version 1.283.0.
+         * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
          * 
          */
-        @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
+        @Deprecated
         public Builder periodUnit(@Nullable Output<String> periodUnit) {
             $.periodUnit = periodUnit;
             return this;
@@ -708,11 +701,10 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `periodUnit` has been deprecated from provider version 1.283.0.
+         * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
          * 
          */
-        @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
+        @Deprecated
         public Builder periodUnit(String periodUnit) {
             return periodUnit(Output.of(periodUnit));
         }

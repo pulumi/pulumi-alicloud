@@ -165,6 +165,12 @@ func (RoleUserAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleUserAttachmentState)(nil)).Elem()
 }
 
+// RoleUserAttachmentExists checks whether an existing RoleUserAttachment resource with the given ID exists.
+func RoleUserAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleUserAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:maxcompute/roleUserAttachment:RoleUserAttachment", id, state, "", opts...)
+}
+
 type roleUserAttachmentArgs struct {
 	// Project Name
 	ProjectName string `pulumi:"projectName"`

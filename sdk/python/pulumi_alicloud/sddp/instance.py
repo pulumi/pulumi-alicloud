@@ -869,6 +869,54 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["udc"] = udc
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authed: pulumi.Input[Optional[_builtins.bool]] = None,
+            dataphin: pulumi.Input[Optional[_builtins.str]] = None,
+            dataphin_count: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_num: pulumi.Input[Optional[_builtins.str]] = None,
+            logistics: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            odps_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_bucket_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_size: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            rds_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            remain_days: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sd_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+            sdc: pulumi.Input[Optional[_builtins.str]] = None,
+            sddp_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ud_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+            udc: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authed"] = authed
+        __props__["dataphin"] = dataphin
+        __props__["dataphinCount"] = dataphin_count
+        __props__["instanceNum"] = instance_num
+        __props__["logistics"] = logistics
+        __props__["modifyType"] = modify_type
+        __props__["odpsSet"] = odps_set
+        __props__["ossBucketSet"] = oss_bucket_set
+        __props__["ossSize"] = oss_size
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["rdsSet"] = rds_set
+        __props__["remainDays"] = remain_days
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalStatus"] = renewal_status
+        __props__["sdCbool"] = sd_cbool
+        __props__["sdc"] = sdc
+        __props__["sddpVersion"] = sddp_version
+        __props__["status"] = status
+        __props__["udCbool"] = ud_cbool
+        __props__["udc"] = udc
+        return pulumi.runtime.exists_resource(None, 'alicloud:sddp/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def authed(self) -> pulumi.Output[_builtins.bool]:

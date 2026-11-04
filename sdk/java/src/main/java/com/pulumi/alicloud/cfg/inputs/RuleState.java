@@ -292,22 +292,20 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+     * @deprecated Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
-    @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
+    @Deprecated
     @Import(name="scopeComplianceResourceTypes")
     private @Nullable Output<String> scopeComplianceResourceTypes;
 
     /**
      * @return Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+     * @deprecated Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
-    @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
+    @Deprecated
     public Optional<Output<String>> scopeComplianceResourceTypes() {
         return Optional.ofNullable(this.scopeComplianceResourceTypes);
     }
@@ -315,22 +313,20 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+     * @deprecated Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      */
-    @Deprecated /* Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead. */
+    @Deprecated
     @Import(name="sourceDetailMessageType")
     private @Nullable Output<String> sourceDetailMessageType;
 
     /**
      * @return Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+     * @deprecated Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      */
-    @Deprecated /* Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead. */
+    @Deprecated
     public Optional<Output<String>> sourceDetailMessageType() {
         return Optional.ofNullable(this.sourceDetailMessageType);
     }
@@ -353,22 +349,20 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+     * @deprecated Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      */
-    @Deprecated /* Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead. */
+    @Deprecated
     @Import(name="sourceMaximumExecutionFrequency")
     private @Nullable Output<String> sourceMaximumExecutionFrequency;
 
     /**
      * @return Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+     * @deprecated Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      */
-    @Deprecated /* Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead. */
+    @Deprecated
     public Optional<Output<String>> sourceMaximumExecutionFrequency() {
         return Optional.ofNullable(this.sourceMaximumExecutionFrequency);
     }
@@ -879,11 +873,10 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+         * @deprecated Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
          * 
          */
-        @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
+        @Deprecated
         public Builder scopeComplianceResourceTypes(@Nullable Output<String> scopeComplianceResourceTypes) {
             $.scopeComplianceResourceTypes = scopeComplianceResourceTypes;
             return this;
@@ -894,11 +887,10 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+         * @deprecated Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
          * 
          */
-        @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
+        @Deprecated
         public Builder scopeComplianceResourceTypes(String scopeComplianceResourceTypes) {
             return scopeComplianceResourceTypes(Output.of(scopeComplianceResourceTypes));
         }
@@ -908,11 +900,10 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+         * @deprecated Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
          * 
          */
-        @Deprecated /* Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead. */
+        @Deprecated
         public Builder sourceDetailMessageType(@Nullable Output<String> sourceDetailMessageType) {
             $.sourceDetailMessageType = sourceDetailMessageType;
             return this;
@@ -923,11 +914,10 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+         * @deprecated Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
          * 
          */
-        @Deprecated /* Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead. */
+        @Deprecated
         public Builder sourceDetailMessageType(String sourceDetailMessageType) {
             return sourceDetailMessageType(Output.of(sourceDetailMessageType));
         }
@@ -958,11 +948,10 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+         * @deprecated Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
          * 
          */
-        @Deprecated /* Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead. */
+        @Deprecated
         public Builder sourceMaximumExecutionFrequency(@Nullable Output<String> sourceMaximumExecutionFrequency) {
             $.sourceMaximumExecutionFrequency = sourceMaximumExecutionFrequency;
             return this;
@@ -973,11 +962,10 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+         * @deprecated Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
          * 
          */
-        @Deprecated /* Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead. */
+        @Deprecated
         public Builder sourceMaximumExecutionFrequency(String sourceMaximumExecutionFrequency) {
             return sourceMaximumExecutionFrequency(Output.of(sourceMaximumExecutionFrequency));
         }

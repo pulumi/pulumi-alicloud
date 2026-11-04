@@ -508,6 +508,30 @@ class AccessRule(pulumi.CustomResource):
         __props__.__dict__["user_access_type"] = user_access_type
         return AccessRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            user_access_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroupName"] = access_group_name
+        __props__["accessRuleId"] = access_rule_id
+        __props__["fileSystemType"] = file_system_type
+        __props__["ipv6SourceCidrIp"] = ipv6_source_cidr_ip
+        __props__["priority"] = priority
+        __props__["regionId"] = region_id
+        __props__["rwAccessType"] = rw_access_type
+        __props__["sourceCidrIp"] = source_cidr_ip
+        __props__["userAccessType"] = user_access_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/accessRule:AccessRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[_builtins.str]:

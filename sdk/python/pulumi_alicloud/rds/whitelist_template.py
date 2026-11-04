@@ -248,6 +248,16 @@ class WhitelistTemplate(pulumi.CustomResource):
         __props__.__dict__["template_name"] = template_name
         return WhitelistTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ip_white_list: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ipWhiteList"] = ip_white_list
+        __props__["templateName"] = template_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/whitelistTemplate:WhitelistTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ipWhiteList")
     def ip_white_list(self) -> pulumi.Output[_builtins.str]:

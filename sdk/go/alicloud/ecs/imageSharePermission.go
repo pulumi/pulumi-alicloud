@@ -206,6 +206,12 @@ func (ImageSharePermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageSharePermissionState)(nil)).Elem()
 }
 
+// ImageSharePermissionExists checks whether an existing ImageSharePermission resource with the given ID exists.
+func ImageSharePermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageSharePermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/imageSharePermission:ImageSharePermission", id, state, "", opts...)
+}
+
 type imageSharePermissionArgs struct {
 	// Alibaba Cloud Account ID. It is used to share images.
 	AccountId string `pulumi:"accountId"`

@@ -196,6 +196,12 @@ func (VaultState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vaultState)(nil)).Elem()
 }
 
+// VaultExists checks whether an existing Vault resource with the given ID exists.
+func VaultExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VaultState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/vault:Vault", id, state, "", opts...)
+}
+
 type vaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`

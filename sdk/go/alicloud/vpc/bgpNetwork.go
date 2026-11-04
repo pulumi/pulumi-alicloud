@@ -165,6 +165,12 @@ func (BgpNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpNetworkState)(nil)).Elem()
 }
 
+// BgpNetworkExists checks whether an existing BgpNetwork resource with the given ID exists.
+func BgpNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/bgpNetwork:BgpNetwork", id, state, "", opts...)
+}
+
 type bgpNetworkArgs struct {
 	// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
 	DstCidrBlock string `pulumi:"dstCidrBlock"`

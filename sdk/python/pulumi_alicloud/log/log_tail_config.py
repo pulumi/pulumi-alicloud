@@ -526,6 +526,28 @@ class LogTailConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return LogTailConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            input_type: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+            logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["inputDetail"] = input_detail
+        __props__["inputType"] = input_type
+        __props__["lastModifyTime"] = last_modify_time
+        __props__["logSample"] = log_sample
+        __props__["logstore"] = logstore
+        __props__["name"] = name
+        __props__["outputType"] = output_type
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/logTailConfig:LogTailConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="inputDetail")
     def input_detail(self) -> pulumi.Output[_builtins.str]:

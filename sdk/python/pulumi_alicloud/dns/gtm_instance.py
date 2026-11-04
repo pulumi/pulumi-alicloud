@@ -994,6 +994,52 @@ class GtmInstance(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return GtmInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict', 'outputs.GtmInstanceAlertConfig']]]]] = None,
+            alert_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cname_type: pulumi.Input[Optional[_builtins.str]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_task_count: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            package_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            public_cname_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            public_rr: pulumi.Input[Optional[_builtins.str]] = None,
+            public_user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sms_notification_count: pulumi.Input[Optional[_builtins.int]] = None,
+            strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertConfigs"] = alert_configs
+        __props__["alertGroups"] = alert_groups
+        __props__["cnameType"] = cname_type
+        __props__["forceUpdate"] = force_update
+        __props__["healthCheckTaskCount"] = health_check_task_count
+        __props__["instanceName"] = instance_name
+        __props__["lang"] = lang
+        __props__["packageEdition"] = package_edition
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["publicCnameMode"] = public_cname_mode
+        __props__["publicRr"] = public_rr
+        __props__["publicUserDomainName"] = public_user_domain_name
+        __props__["publicZoneName"] = public_zone_name
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["smsNotificationCount"] = sms_notification_count
+        __props__["strategyMode"] = strategy_mode
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/gtmInstance:GtmInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertConfigs")
     def alert_configs(self) -> pulumi.Output[Optional[Sequence['outputs.GtmInstanceAlertConfig']]]:

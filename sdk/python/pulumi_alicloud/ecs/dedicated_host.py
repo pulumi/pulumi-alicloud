@@ -1019,6 +1019,54 @@ class DedicatedHost(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DedicatedHost(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_on_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_placement: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_over_commit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+            dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detail_fee: pulumi.Input[Optional[_builtins.bool]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            min_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+            network_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict', 'outputs.DedicatedHostNetworkAttribute']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sale_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionOnMaintenance"] = action_on_maintenance
+        __props__["autoPlacement"] = auto_placement
+        __props__["autoReleaseTime"] = auto_release_time
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["cpuOverCommitRatio"] = cpu_over_commit_ratio
+        __props__["dedicatedHostClusterId"] = dedicated_host_cluster_id
+        __props__["dedicatedHostName"] = dedicated_host_name
+        __props__["dedicatedHostType"] = dedicated_host_type
+        __props__["description"] = description
+        __props__["detailFee"] = detail_fee
+        __props__["dryRun"] = dry_run
+        __props__["expiredTime"] = expired_time
+        __props__["minQuantity"] = min_quantity
+        __props__["networkAttributes"] = network_attributes
+        __props__["paymentType"] = payment_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["saleCycle"] = sale_cycle
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/dedicatedHost:DedicatedHost', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionOnMaintenance")
     def action_on_maintenance(self) -> pulumi.Output[Optional[_builtins.str]]:

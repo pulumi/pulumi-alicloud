@@ -574,6 +574,26 @@ class RouteEntry(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return RouteEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+            route_entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["nextHop"] = next_hop
+        __props__["publishVpc"] = publish_vpc
+        __props__["routeDest"] = route_dest
+        __props__["routeEntryType"] = route_entry_type
+        __props__["status"] = status
+        __props__["vpnGatewayId"] = vpn_gateway_id
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/routeEntry:RouteEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Output[_builtins.str]:

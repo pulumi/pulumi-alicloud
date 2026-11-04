@@ -166,6 +166,12 @@ func (DeliveryChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deliveryChannelState)(nil)).Elem()
 }
 
+// DeliveryChannelExists checks whether an existing DeliveryChannel resource with the given ID exists.
+func DeliveryChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeliveryChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/deliveryChannel:DeliveryChannel", id, state, "", opts...)
+}
+
 type deliveryChannelArgs struct {
 	// The description of the delivery channel.
 	DeliveryChannelDescription *string `pulumi:"deliveryChannelDescription"`

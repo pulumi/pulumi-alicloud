@@ -465,6 +465,26 @@ class SiteOriginClientCertificate(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return SiteOriginClientCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_origin_client_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_origin_client_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["createTime"] = create_time
+        __props__["privateKey"] = private_key
+        __props__["siteId"] = site_id
+        __props__["siteOriginClientCertificateId"] = site_origin_client_certificate_id
+        __props__["siteOriginClientCertificateName"] = site_origin_client_certificate_name
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

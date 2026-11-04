@@ -239,22 +239,20 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      * 
-     * @deprecated
-     * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
+     * @deprecated Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
+    @Deprecated
     @Import(name="instanceIds")
     private @Nullable Output<List<String>> instanceIds;
 
     /**
      * @return It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      * 
-     * @deprecated
-     * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
+     * @deprecated Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
+    @Deprecated
     public Optional<Output<List<String>>> instanceIds() {
         return Optional.ofNullable(this.instanceIds);
     }
@@ -382,22 +380,20 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
-     * @deprecated
-     * Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
+    @Deprecated
     @Import(name="ioOptimized")
     private @Nullable Output<String> ioOptimized;
 
     /**
      * @return It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
-     * @deprecated
-     * Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
+    @Deprecated
     public Optional<Output<String>> ioOptimized() {
         return Optional.ofNullable(this.ioOptimized);
     }
@@ -493,14 +489,14 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+     * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=&#92;|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+     * @return The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=&#92;|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
     public Optional<Output<String>> password() {
@@ -1352,11 +1348,10 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
+         * @deprecated Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
+        @Deprecated
         public Builder instanceIds(@Nullable Output<List<String>> instanceIds) {
             $.instanceIds = instanceIds;
             return this;
@@ -1367,11 +1362,10 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
+         * @deprecated Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
+        @Deprecated
         public Builder instanceIds(List<String> instanceIds) {
             return instanceIds(Output.of(instanceIds));
         }
@@ -1381,11 +1375,10 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
+         * @deprecated Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
+        @Deprecated
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
@@ -1593,11 +1586,10 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+         * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
          * 
          */
-        @Deprecated /* Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
+        @Deprecated
         public Builder ioOptimized(@Nullable Output<String> ioOptimized) {
             $.ioOptimized = ioOptimized;
             return this;
@@ -1608,11 +1600,10 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+         * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
          * 
          */
-        @Deprecated /* Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
+        @Deprecated
         public Builder ioOptimized(String ioOptimized) {
             return ioOptimized(Output.of(ioOptimized));
         }
@@ -1754,7 +1745,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param password The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+         * @param password The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=&#92;|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
          * 
          * @return builder
          * 
@@ -1765,7 +1756,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param password The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+         * @param password The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=&#92;|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
          * 
          * @return builder
          * 

@@ -178,6 +178,12 @@ func (ImageEventOperationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageEventOperationState)(nil)).Elem()
 }
 
+// ImageEventOperationExists checks whether an existing ImageEventOperation resource with the given ID exists.
+func ImageEventOperationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageEventOperationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/imageEventOperation:ImageEventOperation", id, state, "", opts...)
+}
+
 type imageEventOperationArgs struct {
 	// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
 	Conditions string `pulumi:"conditions"`

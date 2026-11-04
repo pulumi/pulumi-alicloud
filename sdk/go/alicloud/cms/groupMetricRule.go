@@ -271,6 +271,12 @@ func (GroupMetricRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMetricRuleState)(nil)).Elem()
 }
 
+// GroupMetricRuleExists checks whether an existing GroupMetricRule resource with the given ID exists.
+func GroupMetricRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupMetricRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/groupMetricRule:GroupMetricRule", id, state, "", opts...)
+}
+
 type groupMetricRuleArgs struct {
 	// The abbreviation of the service name.
 	Category *string `pulumi:"category"`

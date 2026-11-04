@@ -272,6 +272,12 @@ func (ScheduledScalingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledScalingRuleState)(nil)).Elem()
 }
 
+// ScheduledScalingRuleExists checks whether an existing ScheduledScalingRule resource with the given ID exists.
+func ScheduledScalingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduledScalingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alikafka/scheduledScalingRule:ScheduledScalingRule", id, state, "", opts...)
+}
+
 type scheduledScalingRuleArgs struct {
 	// The duration (unit: minutes) of a scheduled elastic task.
 	//

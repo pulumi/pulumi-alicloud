@@ -221,6 +221,12 @@ func (HostAccountUserAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostAccountUserAttachmentState)(nil)).Elem()
 }
 
+// HostAccountUserAttachmentExists checks whether an existing HostAccountUserAttachment resource with the given ID exists.
+func HostAccountUserAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostAccountUserAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment", id, state, "", opts...)
+}
+
 type hostAccountUserAttachmentArgs struct {
 	// A list IDs of the host account.
 	HostAccountIds []string `pulumi:"hostAccountIds"`

@@ -164,6 +164,12 @@ func (NetworkGrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkGrantState)(nil)).Elem()
 }
 
+// NetworkGrantExists checks whether an existing NetworkGrant resource with the given ID exists.
+func NetworkGrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkGrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudconnect/networkGrant:NetworkGrant", id, state, "", opts...)
+}
+
 type networkGrantArgs struct {
 	// The ID of the CCN instance.
 	CcnId string `pulumi:"ccnId"`

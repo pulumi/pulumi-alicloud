@@ -476,6 +476,12 @@ func (SubscriptionJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionJobState)(nil)).Elem()
 }
 
+// SubscriptionJobExists checks whether an existing SubscriptionJob resource with the given ID exists.
+func SubscriptionJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubscriptionJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/subscriptionJob:SubscriptionJob", id, state, "", opts...)
+}
+
 type subscriptionJobArgs struct {
 	// Subscription start time in Unix timestamp format.
 	Checkpoint *string `pulumi:"checkpoint"`

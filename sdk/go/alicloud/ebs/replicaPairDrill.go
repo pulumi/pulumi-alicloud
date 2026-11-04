@@ -126,6 +126,12 @@ func (ReplicaPairDrillState) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicaPairDrillState)(nil)).Elem()
 }
 
+// ReplicaPairDrillExists checks whether an existing ReplicaPairDrill resource with the given ID exists.
+func ReplicaPairDrillExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReplicaPairDrillState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/replicaPairDrill:ReplicaPairDrill", id, state, "", opts...)
+}
+
 type replicaPairDrillArgs struct {
 	// Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
 	PairId string `pulumi:"pairId"`

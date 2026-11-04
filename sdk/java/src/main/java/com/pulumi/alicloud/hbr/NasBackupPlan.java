@@ -121,11 +121,10 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
     /**
      * This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
-     * @deprecated
-     * Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
+     * @deprecated Field &#39;create_time&#39; has been deprecated from provider version 1.153.0.
      * 
      */
-    @Deprecated /* Field 'create_time' has been deprecated from provider version 1.153.0. */
+    @Deprecated
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 

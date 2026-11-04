@@ -18,22 +18,20 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
     /**
      * Image Acceleration Status (Deprecated)
      * 
-     * @deprecated
-     * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+     * @deprecated Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
      * 
      */
-    @Deprecated /* Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated) */
+    @Deprecated
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
      * @return Image Acceleration Status (Deprecated)
      * 
-     * @deprecated
-     * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+     * @deprecated Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
      * 
      */
-    @Deprecated /* Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated) */
+    @Deprecated
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -67,11 +65,10 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+         * @deprecated Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
          * 
          */
-        @Deprecated /* Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated) */
+        @Deprecated
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
@@ -82,11 +79,10 @@ public final class V3FunctionCustomContainerConfigAccelerationInfoArgs extends c
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+         * @deprecated Field &#39;status&#39; has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
          * 
          */
-        @Deprecated /* Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated) */
+        @Deprecated
         public Builder status(String status) {
             return status(Output.of(status));
         }

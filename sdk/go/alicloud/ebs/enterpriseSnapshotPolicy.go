@@ -211,6 +211,12 @@ func (EnterpriseSnapshotPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseSnapshotPolicyState)(nil)).Elem()
 }
 
+// EnterpriseSnapshotPolicyExists checks whether an existing EnterpriseSnapshotPolicy resource with the given ID exists.
+func EnterpriseSnapshotPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseSnapshotPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy", id, state, "", opts...)
+}
+
 type enterpriseSnapshotPolicyArgs struct {
 	// Snapshot replication information. See `crossRegionCopyInfo` below.
 	CrossRegionCopyInfo *EnterpriseSnapshotPolicyCrossRegionCopyInfo `pulumi:"crossRegionCopyInfo"`

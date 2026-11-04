@@ -180,6 +180,12 @@ func (AutoSnapShotPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoSnapShotPolicyState)(nil)).Elem()
 }
 
+// AutoSnapShotPolicyExists checks whether an existing AutoSnapShotPolicy resource with the given ID exists.
+func AutoSnapShotPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoSnapShotPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy", id, state, "", opts...)
+}
+
 type autoSnapShotPolicyArgs struct {
 	// Automatic snapshot policy name
 	PolicyName string `pulumi:"policyName"`

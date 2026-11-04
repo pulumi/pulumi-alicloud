@@ -288,6 +288,18 @@ class ApplicationEndpoint(pulumi.CustomResource):
         __props__.__dict__["net_type"] = net_type
         return ApplicationEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["endpointId"] = endpoint_id
+        __props__["netType"] = net_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/applicationEndpoint:ApplicationEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:

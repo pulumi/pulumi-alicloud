@@ -1017,6 +1017,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
 	//

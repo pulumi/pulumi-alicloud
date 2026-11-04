@@ -244,6 +244,12 @@ func (TableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableState)(nil)).Elem()
 }
 
+// TableExists checks whether an existing Table resource with the given ID exists.
+func TableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ots/table:Table", id, state, "", opts...)
+}
+
 type tableArgs struct {
 	// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
 	AllowUpdate *bool `pulumi:"allowUpdate"`

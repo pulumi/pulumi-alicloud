@@ -314,11 +314,10 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
     /**
      * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
+    @Deprecated
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentName;
 
@@ -345,7 +344,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
     }
     /**
      * The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="transitRouterVpnAttachmentName", refs={String.class}, tree="[0]")
@@ -353,7 +352,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
 
     /**
      * @return The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<String> transitRouterVpnAttachmentName() {

@@ -274,6 +274,12 @@ func (QuotaApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaApplicationState)(nil)).Elem()
 }
 
+// QuotaApplicationExists checks whether an existing QuotaApplication resource with the given ID exists.
+func QuotaApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:quotas/quotaApplication:QuotaApplication", id, state, "", opts...)
+}
+
 type quotaApplicationArgs struct {
 	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
 	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.

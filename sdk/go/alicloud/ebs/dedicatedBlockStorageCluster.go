@@ -211,6 +211,12 @@ func (DedicatedBlockStorageClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedBlockStorageClusterState)(nil)).Elem()
 }
 
+// DedicatedBlockStorageClusterExists checks whether an existing DedicatedBlockStorageCluster resource with the given ID exists.
+func DedicatedBlockStorageClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedBlockStorageClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster", id, state, "", opts...)
+}
+
 type dedicatedBlockStorageClusterArgs struct {
 	// The name of the resource
 	DedicatedBlockStorageClusterName string `pulumi:"dedicatedBlockStorageClusterName"`

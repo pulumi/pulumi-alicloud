@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> BackupId { get; private set; } = null!;
 
         /// <summary>
-        /// The backup type. Valid values:  
+        /// The backup type. Valid values:
         /// * `Logical`: logical backup (supported only for MySQL)
         /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
         /// * `Snapshot`: snapshot backup (supported for all database engines)
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> BackupMethod { get; private set; } = null!;
 
         /// <summary>
-        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> BackupStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The backup type. Valid values:  
+        /// The backup type. Valid values:
         /// - FullBackup: full backup
         /// - IncrementalBackup: incremental backup
         /// </summary>
@@ -111,10 +111,9 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of databases, separated by commas (,).  
+        /// A list of databases, separated by commas (,).
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `Db`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
@@ -186,7 +185,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsBackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The backup type. Valid values:  
+        /// The backup type. Valid values:
         /// * `Logical`: logical backup (supported only for MySQL)
         /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
         /// * `Snapshot`: snapshot backup (supported for all database engines)
@@ -201,7 +200,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupMethod { get; set; }
 
         /// <summary>
-        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
@@ -215,7 +214,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupStrategy { get; set; }
 
         /// <summary>
-        /// The backup type. Valid values:  
+        /// The backup type. Valid values:
         /// - FullBackup: full backup
         /// - IncrementalBackup: incremental backup
         /// </summary>
@@ -229,10 +228,9 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A list of databases, separated by commas (,).  
+        /// A list of databases, separated by commas (,).
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `Db`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
@@ -260,7 +258,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupId { get; set; }
 
         /// <summary>
-        /// The backup type. Valid values:  
+        /// The backup type. Valid values:
         /// * `Logical`: logical backup (supported only for MySQL)
         /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
         /// * `Snapshot`: snapshot backup (supported for all database engines)
@@ -275,7 +273,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupMethod { get; set; }
 
         /// <summary>
-        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+        /// When the database engine is SQL Server, `BackupStrategy` is set to `Db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
@@ -289,7 +287,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BackupStrategy { get; set; }
 
         /// <summary>
-        /// The backup type. Valid values:  
+        /// The backup type. Valid values:
         /// - FullBackup: full backup
         /// - IncrementalBackup: incremental backup
         /// </summary>
@@ -303,10 +301,9 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// A list of databases, separated by commas (,).  
+        /// A list of databases, separated by commas (,).
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `Db`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>

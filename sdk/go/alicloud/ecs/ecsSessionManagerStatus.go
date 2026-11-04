@@ -118,6 +118,12 @@ func (EcsSessionManagerStatusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsSessionManagerStatusState)(nil)).Elem()
 }
 
+// EcsSessionManagerStatusExists checks whether an existing EcsSessionManagerStatus resource with the given ID exists.
+func EcsSessionManagerStatusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsSessionManagerStatusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus", id, state, "", opts...)
+}
+
 type ecsSessionManagerStatusArgs struct {
 	// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
 	SessionManagerStatusName string `pulumi:"sessionManagerStatusName"`

@@ -2118,6 +2118,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert

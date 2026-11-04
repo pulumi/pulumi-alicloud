@@ -183,11 +183,10 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
     /**
      * The CIDR block of the ACL entry. Exactly one of `entry` and `entries` must be specified. Field `entry` has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field `entries`.
      * 
-     * @deprecated
-     * Field &#39;entry&#39; has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
+     * @deprecated Field &#39;entry&#39; has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field &#39;entries&#39;.
      * 
      */
-    @Deprecated /* Field 'entry' has been deprecated from provider version 1.292.0 and it will be removed in the future version. Please use the new field 'entries'. */
+    @Deprecated
     @Export(name="entry", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entry;
 

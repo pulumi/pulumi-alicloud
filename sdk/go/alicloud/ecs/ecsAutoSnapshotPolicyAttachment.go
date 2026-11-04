@@ -163,6 +163,12 @@ func (EcsAutoSnapshotPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsAutoSnapshotPolicyAttachmentState)(nil)).Elem()
 }
 
+// EcsAutoSnapshotPolicyAttachmentExists checks whether an existing EcsAutoSnapshotPolicyAttachment resource with the given ID exists.
+func EcsAutoSnapshotPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsAutoSnapshotPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment", id, state, "", opts...)
+}
+
 type ecsAutoSnapshotPolicyAttachmentArgs struct {
 	// The ID of the automatic snapshot policy that is applied to the cloud disk.
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`

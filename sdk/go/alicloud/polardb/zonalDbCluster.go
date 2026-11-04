@@ -333,6 +333,12 @@ func (ZonalDbClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zonalDbClusterState)(nil)).Elem()
 }
 
+// ZonalDbClusterExists checks whether an existing ZonalDbCluster resource with the given ID exists.
+func ZonalDbClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZonalDbClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/zonalDbCluster:ZonalDbCluster", id, state, "", opts...)
+}
+
 type zonalDbClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`

@@ -170,6 +170,12 @@ func (ClientKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientKeyState)(nil)).Elem()
 }
 
+// ClientKeyExists checks whether an existing ClientKey resource with the given ID exists.
+func ClientKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/clientKey:ClientKey", id, state, "", opts...)
+}
+
 type clientKeyArgs struct {
 	// ClientKey's parent Application Access Point name.
 	AapName string `pulumi:"aapName"`

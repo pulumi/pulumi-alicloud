@@ -464,6 +464,24 @@ class Command(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return Command(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            command_content: pulumi.Input[Optional[_builtins.str]] = None,
+            command_type: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commandContent"] = command_content
+        __props__["commandType"] = command_type
+        __props__["contentEncoding"] = content_encoding
+        __props__["desktopId"] = desktop_id
+        __props__["status"] = status
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/command:Command', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="commandContent")
     def command_content(self) -> pulumi.Output[_builtins.str]:

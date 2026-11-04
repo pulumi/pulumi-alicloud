@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetLifecycleHooks
     {
         /// <summary>
-        /// This data source provides available lifecycle hook resources. 
+        /// This data source provides available lifecycle hook resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available lifecycle hook resources. 
+        /// This data source provides available lifecycle hook resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available lifecycle hook resources. 
+        /// This data source provides available lifecycle hook resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 

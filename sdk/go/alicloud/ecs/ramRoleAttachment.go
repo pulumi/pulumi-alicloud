@@ -232,6 +232,12 @@ func (RamRoleAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ramRoleAttachmentState)(nil)).Elem()
 }
 
+// RamRoleAttachmentExists checks whether an existing RamRoleAttachment resource with the given ID exists.
+func RamRoleAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RamRoleAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ramRoleAttachment:RamRoleAttachment", id, state, "", opts...)
+}
+
 type ramRoleAttachmentArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`

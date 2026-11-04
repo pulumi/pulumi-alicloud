@@ -193,6 +193,12 @@ func (ServerCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverCertificateState)(nil)).Elem()
 }
 
+// ServerCertificateExists checks whether an existing ServerCertificate resource with the given ID exists.
+func ServerCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/serverCertificate:ServerCertificate", id, state, "", opts...)
+}
+
 type serverCertificateArgs struct {
 	// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
 	AlicloudCertifacteId *string `pulumi:"alicloudCertifacteId"`

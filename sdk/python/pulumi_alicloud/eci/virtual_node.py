@@ -649,6 +649,34 @@ class VirtualNode(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return VirtualNode(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict', 'outputs.VirtualNodeTaint']]]]] = None,
+            virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["eipInstanceId"] = eip_instance_id
+        __props__["enablePublicNetwork"] = enable_public_network
+        __props__["kubeConfig"] = kube_config
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroupId"] = security_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["taints"] = taints
+        __props__["virtualNodeName"] = virtual_node_name
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:eci/virtualNode:VirtualNode', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
     def eip_instance_id(self) -> pulumi.Output[_builtins.str]:

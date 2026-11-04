@@ -239,6 +239,12 @@ func (GatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayState)(nil)).Elem()
 }
 
+// GatewayExists checks whether an existing Gateway resource with the given ID exists.
+func GatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/gateway:Gateway", id, state, "", opts...)
+}
+
 type gatewayArgs struct {
 	// The description of the gateway.
 	Description *string `pulumi:"description"`

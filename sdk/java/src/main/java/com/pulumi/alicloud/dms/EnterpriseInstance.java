@@ -343,11 +343,10 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
     /**
      * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
+     * @deprecated Field &#39;instance_alias&#39; has been deprecated from version 1.100.0. Use &#39;instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead. */
+    @Deprecated
     @Export(name="instanceAlias", refs={String.class}, tree="[0]")
     private Output<String> instanceAlias;
 
@@ -533,11 +532,10 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
+     * @deprecated Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'state' has been deprecated from version 1.100.0. Use 'status' instead. */
+    @Deprecated
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 

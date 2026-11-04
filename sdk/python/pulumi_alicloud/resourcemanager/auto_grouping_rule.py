@@ -707,6 +707,36 @@ class AutoGroupingRule(pulumi.CustomResource):
         __props__.__dict__["rule_type"] = rule_type
         return AutoGroupingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            exclude_region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict', 'outputs.AutoGroupingRuleRuleContent']]]]] = None,
+            rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["excludeRegionIdsScope"] = exclude_region_ids_scope
+        __props__["excludeResourceGroupIdsScope"] = exclude_resource_group_ids_scope
+        __props__["excludeResourceIdsScope"] = exclude_resource_ids_scope
+        __props__["excludeResourceTypesScope"] = exclude_resource_types_scope
+        __props__["regionIdsScope"] = region_ids_scope
+        __props__["resourceGroupIdsScope"] = resource_group_ids_scope
+        __props__["resourceIdsScope"] = resource_ids_scope
+        __props__["resourceTypesScope"] = resource_types_scope
+        __props__["ruleContents"] = rule_contents
+        __props__["ruleDesc"] = rule_desc
+        __props__["ruleName"] = rule_name
+        __props__["ruleType"] = rule_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="excludeRegionIdsScope")
     def exclude_region_ids_scope(self) -> pulumi.Output[Optional[_builtins.str]]:

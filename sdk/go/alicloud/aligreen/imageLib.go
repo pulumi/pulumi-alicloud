@@ -158,6 +158,12 @@ func (ImageLibState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageLibState)(nil)).Elem()
 }
 
+// ImageLibExists checks whether an existing ImageLib resource with the given ID exists.
+func ImageLibExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageLibState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:aligreen/imageLib:ImageLib", id, state, "", opts...)
+}
+
 type imageLibArgs struct {
 	// List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
 	BizTypes []string `pulumi:"bizTypes"`

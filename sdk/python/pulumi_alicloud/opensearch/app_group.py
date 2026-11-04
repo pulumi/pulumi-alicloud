@@ -577,6 +577,34 @@ class AppGroup(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return AppGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            charge_way: pulumi.Input[Optional[_builtins.str]] = None,
+            current_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict', 'outputs.AppGroupOrder']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict', 'outputs.AppGroupQuota']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appGroupName"] = app_group_name
+        __props__["chargeWay"] = charge_way
+        __props__["currentVersion"] = current_version
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["orderType"] = order_type
+        __props__["orders"] = orders
+        __props__["paymentType"] = payment_type
+        __props__["quota"] = quota
+        __props__["status"] = status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:opensearch/appGroup:AppGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appGroupName")
     def app_group_name(self) -> pulumi.Output[_builtins.str]:

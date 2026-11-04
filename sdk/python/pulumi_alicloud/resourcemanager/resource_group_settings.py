@@ -251,6 +251,16 @@ class ResourceGroupSettings(pulumi.CustomResource):
         __props__.__dict__["resource_group_notification_setting_status"] = resource_group_notification_setting_status
         return ResourceGroupSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            resource_group_admin_setting_status: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_notification_setting_status: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["resourceGroupAdminSettingStatus"] = resource_group_admin_setting_status
+        __props__["resourceGroupNotificationSettingStatus"] = resource_group_notification_setting_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/resourceGroupSettings:ResourceGroupSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="resourceGroupAdminSettingStatus")
     def resource_group_admin_setting_status(self) -> pulumi.Output[_builtins.bool]:

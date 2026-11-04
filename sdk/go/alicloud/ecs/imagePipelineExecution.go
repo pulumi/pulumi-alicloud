@@ -184,6 +184,12 @@ func (ImagePipelineExecutionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imagePipelineExecutionState)(nil)).Elem()
 }
 
+// ImagePipelineExecutionExists checks whether an existing ImagePipelineExecution resource with the given ID exists.
+func ImagePipelineExecutionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImagePipelineExecutionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/imagePipelineExecution:ImagePipelineExecution", id, state, "", opts...)
+}
+
 type imagePipelineExecutionArgs struct {
 	// The ID of the image template.
 	ImagePipelineId string `pulumi:"imagePipelineId"`

@@ -156,6 +156,12 @@ func (BgpPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpPolicyState)(nil)).Elem()
 }
 
+// BgpPolicyExists checks whether an existing BgpPolicy resource with the given ID exists.
+func BgpPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/bgpPolicy:BgpPolicy", id, state, "", opts...)
+}
+
 type bgpPolicyArgs struct {
 	// Configuration Content See `content` below.
 	Content *BgpPolicyContent `pulumi:"content"`

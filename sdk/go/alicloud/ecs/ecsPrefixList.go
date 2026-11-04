@@ -150,6 +150,12 @@ func (EcsPrefixListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsPrefixListState)(nil)).Elem()
 }
 
+// EcsPrefixListExists checks whether an existing EcsPrefixList resource with the given ID exists.
+func EcsPrefixListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsPrefixListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsPrefixList:EcsPrefixList", id, state, "", opts...)
+}
+
 type ecsPrefixListArgs struct {
 	// The IP address family. Valid values: `IPv4`,`IPv6`.
 	AddressFamily string `pulumi:"addressFamily"`

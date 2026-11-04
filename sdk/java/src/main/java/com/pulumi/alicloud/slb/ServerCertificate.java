@@ -104,11 +104,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/serverCertificate:ServerCertificate")
 public class ServerCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * @deprecated
-     * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it. */
+    @Deprecated
     @Export(name="alicloudCertifacteId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertifacteId;
 
@@ -116,11 +115,10 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.alicloudCertifacteId);
     }
     /**
-     * @deprecated
-     * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it. */
+    @Deprecated
     @Export(name="alicloudCertifacteName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertifacteName;
 

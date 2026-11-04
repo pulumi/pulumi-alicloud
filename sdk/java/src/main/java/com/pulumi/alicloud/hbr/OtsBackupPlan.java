@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -105,20 +105,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name("hbrexamplerole")
  *             .document("""
- * \t\t{
- * \t\t\t\"Statement\": [
- * \t\t\t{
- * \t\t\t\t\"Action\": \"sts:AssumeRole\",
- * \t\t\t\t\"Effect\": \"Allow\",
- * \t\t\t\t\"Principal\": {
- * \t\t\t\t\t\"Service\": [
- * \t\t\t\t\t\t\"crossbackup.hbr.aliyuncs.com\"
- * \t\t\t\t\t]
- * \t\t\t\t}
- * \t\t\t}
- * \t\t\t],
- *   \t\t\t\"Version\": \"1\"
- * \t\t}
+ * }&#92;{@code t}&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Principal}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Service}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "crossbackup.hbr.aliyuncs.com}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t]
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t],
+ *   }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}}{@code
  *             """)
  *             .force(true)
  *             .build());
@@ -146,8 +146,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -308,11 +308,10 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * - `startTime` Backup start time, UNIX time seconds.
      * 
-     * @deprecated
-     * Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
+     * @deprecated Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead. */
+    @Deprecated
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 

@@ -233,6 +233,12 @@ func (BasicAccelerateIpEndpointRelationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*basicAccelerateIpEndpointRelationState)(nil)).Elem()
 }
 
+// BasicAccelerateIpEndpointRelationExists checks whether an existing BasicAccelerateIpEndpointRelation resource with the given ID exists.
+func BasicAccelerateIpEndpointRelationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BasicAccelerateIpEndpointRelationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation", id, state, "", opts...)
+}
+
 type basicAccelerateIpEndpointRelationArgs struct {
 	// The ID of the Basic Accelerate IP.
 	AccelerateIpId string `pulumi:"accelerateIpId"`

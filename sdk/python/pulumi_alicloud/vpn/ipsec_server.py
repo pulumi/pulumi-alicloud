@@ -601,6 +601,32 @@ class IpsecServer(pulumi.CustomResource):
         __props__.__dict__["vpn_gateway_id"] = vpn_gateway_id
         return IpsecServer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            ike_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict', 'outputs.IpsecServerIkeConfig']]]]] = None,
+            ipsec_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict', 'outputs.IpsecServerIpsecConfig']]]]] = None,
+            ipsec_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            psk: pulumi.Input[Optional[_builtins.str]] = None,
+            psk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientIpPool"] = client_ip_pool
+        __props__["dryRun"] = dry_run
+        __props__["effectImmediately"] = effect_immediately
+        __props__["ikeConfigs"] = ike_configs
+        __props__["ipsecConfigs"] = ipsec_configs
+        __props__["ipsecServerName"] = ipsec_server_name
+        __props__["localSubnet"] = local_subnet
+        __props__["psk"] = psk
+        __props__["pskEnabled"] = psk_enabled
+        __props__["vpnGatewayId"] = vpn_gateway_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/ipsecServer:IpsecServer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientIpPool")
     def client_ip_pool(self) -> pulumi.Output[_builtins.str]:

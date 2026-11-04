@@ -175,6 +175,12 @@ func (AnycastEipAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*anycastEipAddressState)(nil)).Elem()
 }
 
+// AnycastEipAddressExists checks whether an existing AnycastEipAddress resource with the given ID exists.
+func AnycastEipAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AnycastEipAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress", id, state, "", opts...)
+}
+
 type anycastEipAddressArgs struct {
 	// Anycast EIP instance name.
 	AnycastEipAddressName *string `pulumi:"anycastEipAddressName"`

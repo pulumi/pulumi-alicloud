@@ -209,6 +209,12 @@ func (ServiceMonitoringAgentProcessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceMonitoringAgentProcessState)(nil)).Elem()
 }
 
+// ServiceMonitoringAgentProcessExists checks whether an existing ServiceMonitoringAgentProcess resource with the given ID exists.
+func ServiceMonitoringAgentProcessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceMonitoringAgentProcessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess", id, state, "", opts...)
+}
+
 type serviceMonitoringAgentProcessArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`

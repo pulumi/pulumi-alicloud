@@ -198,6 +198,12 @@ func (IpamIpamPoolAllocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipamIpamPoolAllocationState)(nil)).Elem()
 }
 
+// IpamIpamPoolAllocationExists checks whether an existing IpamIpamPoolAllocation resource with the given ID exists.
+func IpamIpamPoolAllocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpamIpamPoolAllocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation", id, state, "", opts...)
+}
+
 type ipamIpamPoolAllocationArgs struct {
 	// The allocated address segment.
 	Cidr *string `pulumi:"cidr"`

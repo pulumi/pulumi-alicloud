@@ -450,6 +450,12 @@ func (ContainerGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerGroupState)(nil)).Elem()
 }
 
+// ContainerGroupExists checks whether an existing ContainerGroup resource with the given ID exists.
+func ContainerGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContainerGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eci/containerGroup:ContainerGroup", id, state, "", opts...)
+}
+
 type containerGroupArgs struct {
 	// The ACR enterprise edition example properties. See `acrRegistryInfo` below.
 	AcrRegistryInfos []ContainerGroupAcrRegistryInfo `pulumi:"acrRegistryInfos"`

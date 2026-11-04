@@ -164,6 +164,12 @@ func (NatFirewallControlPolicyOrderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natFirewallControlPolicyOrderState)(nil)).Elem()
 }
 
+// NatFirewallControlPolicyOrderExists checks whether an existing NatFirewallControlPolicyOrder resource with the given ID exists.
+func NatFirewallControlPolicyOrderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatFirewallControlPolicyOrderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/natFirewallControlPolicyOrder:NatFirewallControlPolicyOrder", id, state, "", opts...)
+}
+
 type natFirewallControlPolicyOrderArgs struct {
 	// The unique identifier ID of the security access control policy.
 	AclUuid string `pulumi:"aclUuid"`

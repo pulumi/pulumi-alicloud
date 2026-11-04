@@ -230,6 +230,12 @@ func (HanaBackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hanaBackupPlanState)(nil)).Elem()
 }
 
+// HanaBackupPlanExists checks whether an existing HanaBackupPlan resource with the given ID exists.
+func HanaBackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HanaBackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/hanaBackupPlan:HanaBackupPlan", id, state, "", opts...)
+}
+
 type hanaBackupPlanArgs struct {
 	// The backup prefix.
 	BackupPrefix *string `pulumi:"backupPrefix"`

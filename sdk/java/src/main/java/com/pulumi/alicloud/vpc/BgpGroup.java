@@ -120,14 +120,14 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authKey);
     }
     /**
-     * The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="bgpGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bgpGroupName;
 
     /**
-     * @return The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * @return The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<Optional<String>> bgpGroupName() {

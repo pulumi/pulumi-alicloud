@@ -222,7 +222,7 @@ public class SslCertificatesServicePcaCert extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.commonName);
     }
     /**
-     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
@@ -230,7 +230,7 @@ public class SslCertificatesServicePcaCert extends com.pulumi.resources.CustomRe
     private Output</* @Nullable */ String> countryCode;
 
     /**
-     * @return Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+     * @return Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */

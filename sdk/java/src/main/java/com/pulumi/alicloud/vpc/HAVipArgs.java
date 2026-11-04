@@ -50,22 +50,20 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the HaVip instance.
      * 
-     * @deprecated
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @deprecated Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
+    @Deprecated
     @Import(name="havipName")
     private @Nullable Output<String> havipName;
 
     /**
      * @return The name of the HaVip instance.
      * 
-     * @deprecated
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @deprecated Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
+    @Deprecated
     public Optional<Output<String>> havipName() {
         return Optional.ofNullable(this.havipName);
     }
@@ -207,11 +205,10 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * @deprecated Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
+        @Deprecated
         public Builder havipName(@Nullable Output<String> havipName) {
             $.havipName = havipName;
             return this;
@@ -222,11 +219,10 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * @deprecated Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
+        @Deprecated
         public Builder havipName(String havipName) {
             return havipName(Output.of(havipName));
         }

@@ -553,6 +553,30 @@ class AggregateCompliancePack(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AggregateCompliancePack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+            aggregator_compliance_pack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict', 'outputs.AggregateCompliancePackConfigRuleId']]]]] = None,
+            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict', 'outputs.AggregateCompliancePackConfigRule']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregateCompliancePackName"] = aggregate_compliance_pack_name
+        __props__["aggregatorCompliancePackId"] = aggregator_compliance_pack_id
+        __props__["aggregatorId"] = aggregator_id
+        __props__["compliancePackTemplateId"] = compliance_pack_template_id
+        __props__["configRuleIds"] = config_rule_ids
+        __props__["configRules"] = config_rules
+        __props__["description"] = description
+        __props__["riskLevel"] = risk_level
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> pulumi.Output[_builtins.str]:

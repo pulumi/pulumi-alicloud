@@ -853,6 +853,42 @@ class LoadBalancerUdpListener(pulumi.CustomResource):
         __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
         return LoadBalancerUdpListener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_transmit: pulumi.Input[Optional[_builtins.str]] = None,
+            established_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_exp: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_req: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendServerPort"] = backend_server_port
+        __props__["description"] = description
+        __props__["eipTransmit"] = eip_transmit
+        __props__["establishedTimeout"] = established_timeout
+        __props__["healthCheckConnectPort"] = health_check_connect_port
+        __props__["healthCheckConnectTimeout"] = health_check_connect_timeout
+        __props__["healthCheckExp"] = health_check_exp
+        __props__["healthCheckInterval"] = health_check_interval
+        __props__["healthCheckReq"] = health_check_req
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["listenerPort"] = listener_port
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["scheduler"] = scheduler
+        __props__["status"] = status
+        __props__["unhealthyThreshold"] = unhealthy_threshold
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/loadBalancerUdpListener:LoadBalancerUdpListener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendServerPort")
     def backend_server_port(self) -> pulumi.Output[Optional[_builtins.int]]:

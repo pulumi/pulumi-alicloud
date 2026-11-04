@@ -356,6 +356,20 @@ class BucketHttpsConfig(pulumi.CustomResource):
         __props__.__dict__["tls_versions"] = tls_versions
         return BucketHttpsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cipher_suit: pulumi.Input[Optional[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict', 'outputs.BucketHttpsConfigCipherSuit']]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["cipherSuit"] = cipher_suit
+        __props__["enable"] = enable
+        __props__["tlsVersions"] = tls_versions
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketHttpsConfig:BucketHttpsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

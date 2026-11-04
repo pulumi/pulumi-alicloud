@@ -289,6 +289,12 @@ func (AirflowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*airflowState)(nil)).Elem()
 }
 
+// AirflowExists checks whether an existing Airflow resource with the given ID exists.
+func AirflowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AirflowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/airflow:Airflow", id, state, "", opts...)
+}
+
 type airflowArgs struct {
 	// Name of the Airflow instance
 	AirflowName string `pulumi:"airflowName"`

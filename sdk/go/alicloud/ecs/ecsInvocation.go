@@ -280,6 +280,12 @@ func (EcsInvocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsInvocationState)(nil)).Elem()
 }
 
+// EcsInvocationExists checks whether an existing EcsInvocation resource with the given ID exists.
+func EcsInvocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsInvocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsInvocation:EcsInvocation", id, state, "", opts...)
+}
+
 type ecsInvocationArgs struct {
 	// The ID of the command.
 	CommandId string `pulumi:"commandId"`

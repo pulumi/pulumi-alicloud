@@ -249,6 +249,16 @@ class CustomProperty(pulumi.CustomResource):
         __props__.__dict__["property_values"] = property_values
         return CustomProperty(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            property_key: pulumi.Input[Optional[_builtins.str]] = None,
+            property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict', 'outputs.CustomPropertyPropertyValue']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["propertyKey"] = property_key
+        __props__["propertyValues"] = property_values
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/customProperty:CustomProperty', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="propertyKey")
     def property_key(self) -> pulumi.Output[_builtins.str]:

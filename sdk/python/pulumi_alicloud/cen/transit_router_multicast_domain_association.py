@@ -362,6 +362,20 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return TransitRouterMulticastDomainAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["status"] = status
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        __props__["transitRouterMulticastDomainId"] = transit_router_multicast_domain_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:

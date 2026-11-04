@@ -311,6 +311,12 @@ func (DynamoTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dynamoTableState)(nil)).Elem()
 }
 
+// DynamoTableExists checks whether an existing DynamoTable resource with the given ID exists.
+func DynamoTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DynamoTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/dynamoTable:DynamoTable", id, state, "", opts...)
+}
+
 type dynamoTableArgs struct {
 	// The authentication password for PolarDB DynamoDB. Usually references the `dynamodbAuthPassword` attribute of an `polardb.Account` with `accountType = "DynamoDB"`. If not set, it is resolved from the cluster's DynamoDB-type account automatically.
 	AccountAuth *string `pulumi:"accountAuth"`

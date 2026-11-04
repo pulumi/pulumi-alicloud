@@ -189,6 +189,12 @@ func (UserPermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPermissionState)(nil)).Elem()
 }
 
+// UserPermissionExists checks whether an existing UserPermission resource with the given ID exists.
+func UserPermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserPermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicemesh/userPermission:UserPermission", id, state, "", opts...)
+}
+
 type userPermissionArgs struct {
 	// List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
 	Permissions []UserPermissionPermission `pulumi:"permissions"`

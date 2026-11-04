@@ -164,6 +164,12 @@ func (RecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordState)(nil)).Elem()
 }
 
+// RecordExists checks whether an existing Record resource with the given ID exists.
+func RecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/record:Record", id, state, "", opts...)
+}
+
 type recordArgs struct {
 	// Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
 	HostRecord string `pulumi:"hostRecord"`

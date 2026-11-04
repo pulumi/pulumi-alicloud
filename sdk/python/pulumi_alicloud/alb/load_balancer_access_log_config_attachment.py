@@ -414,6 +414,20 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
         __props__.__dict__["log_store"] = log_store
         return LoadBalancerAccessLogConfigAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["logProject"] = log_project
+        __props__["logStore"] = log_store
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

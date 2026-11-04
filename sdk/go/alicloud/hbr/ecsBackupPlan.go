@@ -337,6 +337,12 @@ func (EcsBackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsBackupPlanState)(nil)).Elem()
 }
 
+// EcsBackupPlanExists checks whether an existing EcsBackupPlan resource with the given ID exists.
+func EcsBackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsBackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/ecsBackupPlan:EcsBackupPlan", id, state, "", opts...)
+}
+
 type ecsBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`

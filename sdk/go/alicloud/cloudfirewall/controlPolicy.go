@@ -338,6 +338,12 @@ func (ControlPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlPolicyState)(nil)).Elem()
 }
 
+// ControlPolicyExists checks whether an existing ControlPolicy resource with the given ID exists.
+func ControlPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/controlPolicy:ControlPolicy", id, state, "", opts...)
+}
+
 type controlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`

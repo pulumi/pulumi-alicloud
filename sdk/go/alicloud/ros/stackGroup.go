@@ -210,6 +210,12 @@ func (StackGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackGroupState)(nil)).Elem()
 }
 
+// StackGroupExists checks whether an existing StackGroup resource with the given ID exists.
+func StackGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StackGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/stackGroup:StackGroup", id, state, "", opts...)
+}
+
 type stackGroupArgs struct {
 	// The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
 	AdministrationRoleName *string `pulumi:"administrationRoleName"`

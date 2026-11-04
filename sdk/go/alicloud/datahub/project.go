@@ -129,6 +129,12 @@ func (ProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectState)(nil)).Elem()
 }
 
+// ProjectExists checks whether an existing Project resource with the given ID exists.
+func ProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:datahub/project:Project", id, state, "", opts...)
+}
+
 type projectArgs struct {
 	// Comment of the datahub project. It cannot be longer than 255 characters.
 	Comment *string `pulumi:"comment"`

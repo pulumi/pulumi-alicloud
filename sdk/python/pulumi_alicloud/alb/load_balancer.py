@@ -1010,6 +1010,54 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["zone_mappings"] = zone_mappings
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_log_config: pulumi.Input[Optional[Union['LoadBalancerAccessLogConfigArgs', 'LoadBalancerAccessLogConfigArgsDict', 'outputs.LoadBalancerAccessLogConfig']]] = None,
+            address_allocated_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict', 'outputs.LoadBalancerDeletionProtectionConfig']]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_billing_config: pulumi.Input[Optional[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict', 'outputs.LoadBalancerLoadBalancerBillingConfig']]] = None,
+            load_balancer_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict', 'outputs.LoadBalancerModificationProtectionConfig']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict', 'outputs.LoadBalancerZoneMapping']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLogConfig"] = access_log_config
+        __props__["addressAllocatedMode"] = address_allocated_mode
+        __props__["addressIpVersion"] = address_ip_version
+        __props__["addressType"] = address_type
+        __props__["bandwidthPackageId"] = bandwidth_package_id
+        __props__["createTime"] = create_time
+        __props__["deletionProtectionConfig"] = deletion_protection_config
+        __props__["deletionProtectionEnabled"] = deletion_protection_enabled
+        __props__["dnsName"] = dns_name
+        __props__["dryRun"] = dry_run
+        __props__["ipv6AddressType"] = ipv6_address_type
+        __props__["loadBalancerBillingConfig"] = load_balancer_billing_config
+        __props__["loadBalancerEdition"] = load_balancer_edition
+        __props__["loadBalancerName"] = load_balancer_name
+        __props__["modificationProtectionConfig"] = modification_protection_config
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["zoneMappings"] = zone_mappings
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/loadBalancer:LoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLogConfig")
     def access_log_config(self) -> pulumi.Output[Optional['outputs.LoadBalancerAccessLogConfig']]:

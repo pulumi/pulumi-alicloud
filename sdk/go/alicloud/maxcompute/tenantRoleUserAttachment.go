@@ -148,6 +148,12 @@ func (TenantRoleUserAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantRoleUserAttachmentState)(nil)).Elem()
 }
 
+// TenantRoleUserAttachmentExists checks whether an existing TenantRoleUserAttachment resource with the given ID exists.
+func TenantRoleUserAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TenantRoleUserAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment", id, state, "", opts...)
+}
+
 type tenantRoleUserAttachmentArgs struct {
 	// Account UID
 	//

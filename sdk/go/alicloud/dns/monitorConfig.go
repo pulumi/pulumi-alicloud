@@ -247,6 +247,12 @@ func (MonitorConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorConfigState)(nil)).Elem()
 }
 
+// MonitorConfigExists checks whether an existing MonitorConfig resource with the given ID exists.
+func MonitorConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/monitorConfig:MonitorConfig", id, state, "", opts...)
+}
+
 type monitorConfigArgs struct {
 	// The ID of the address pool.
 	AddrPoolId string `pulumi:"addrPoolId"`

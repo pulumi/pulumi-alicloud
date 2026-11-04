@@ -45,22 +45,20 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
      * 
-     * @deprecated
-     * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+     * @deprecated Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
      * 
      */
-    @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
+    @Deprecated
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
      * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
      * 
-     * @deprecated
-     * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+     * @deprecated Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
      * 
      */
-    @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
+    @Deprecated
     public Optional<Output<String>> acl() {
         return Optional.ofNullable(this.acl);
     }
@@ -218,22 +216,20 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     /**
      * The flag of using logging enable container. Defaults true.
      * 
-     * @deprecated
-     * Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
+     * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      * 
      */
-    @Deprecated /* Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able. */
+    @Deprecated
     @Import(name="loggingIsenable")
     private @Nullable Output<Boolean> loggingIsenable;
 
     /**
      * @return The flag of using logging enable container. Defaults true.
      * 
-     * @deprecated
-     * Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
+     * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      * 
      */
-    @Deprecated /* Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able. */
+    @Deprecated
     public Optional<Output<Boolean>> loggingIsenable() {
         return Optional.ofNullable(this.loggingIsenable);
     }
@@ -476,11 +472,10 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+         * @deprecated Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
          * 
          */
-        @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
+        @Deprecated
         public Builder acl(@Nullable Output<String> acl) {
             $.acl = acl;
             return this;
@@ -491,11 +486,10 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+         * @deprecated Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
          * 
          */
-        @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
+        @Deprecated
         public Builder acl(String acl) {
             return acl(Output.of(acl));
         }
@@ -735,11 +729,10 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
+         * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
          * 
          */
-        @Deprecated /* Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able. */
+        @Deprecated
         public Builder loggingIsenable(@Nullable Output<Boolean> loggingIsenable) {
             $.loggingIsenable = loggingIsenable;
             return this;
@@ -750,11 +743,10 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
+         * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
          * 
          */
-        @Deprecated /* Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able. */
+        @Deprecated
         public Builder loggingIsenable(Boolean loggingIsenable) {
             return loggingIsenable(Output.of(loggingIsenable));
         }

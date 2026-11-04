@@ -337,6 +337,12 @@ func (ClickHouseEnterpriseDbClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clickHouseEnterpriseDbClusterState)(nil)).Elem()
 }
 
+// ClickHouseEnterpriseDbClusterExists checks whether an existing ClickHouseEnterpriseDbCluster resource with the given ID exists.
+func ClickHouseEnterpriseDbClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClickHouseEnterpriseDbClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:clickhouseenterprisedbcluster/clickHouseEnterpriseDbCluster:ClickHouseEnterpriseDbCluster", id, state, "", opts...)
+}
+
 type clickHouseEnterpriseDbClusterArgs struct {
 	// Cluster description.
 	Description *string `pulumi:"description"`

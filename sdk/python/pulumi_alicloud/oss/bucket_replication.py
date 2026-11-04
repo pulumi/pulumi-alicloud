@@ -738,6 +738,36 @@ class BucketReplication(pulumi.CustomResource):
         __props__.__dict__["sync_role"] = sync_role
         return BucketReplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict', 'outputs.BucketReplicationDestination']]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict', 'outputs.BucketReplicationEncryptionConfiguration']]] = None,
+            historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict', 'outputs.BucketReplicationPrefixSet']]] = None,
+            progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict', 'outputs.BucketReplicationProgress']]] = None,
+            rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict', 'outputs.BucketReplicationRtc']]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict', 'outputs.BucketReplicationSourceSelectionCriteria']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["bucket"] = bucket
+        __props__["destination"] = destination
+        __props__["encryptionConfiguration"] = encryption_configuration
+        __props__["historicalObjectReplication"] = historical_object_replication
+        __props__["prefixSet"] = prefix_set
+        __props__["progress"] = progress
+        __props__["rtc"] = rtc
+        __props__["ruleId"] = rule_id
+        __props__["sourceSelectionCriteria"] = source_selection_criteria
+        __props__["status"] = status
+        __props__["syncRole"] = sync_role
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketReplication:BucketReplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[_builtins.str]]:

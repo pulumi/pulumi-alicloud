@@ -160,6 +160,12 @@ func (BucketCorsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketCorsState)(nil)).Elem()
 }
 
+// BucketCorsExists checks whether an existing BucketCors resource with the given ID exists.
+func BucketCorsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketCorsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketCors:BucketCors", id, state, "", opts...)
+}
+
 type bucketCorsArgs struct {
 	// The name of the Bucket.
 	Bucket string `pulumi:"bucket"`

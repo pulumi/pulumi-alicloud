@@ -279,6 +279,12 @@ func (HyperNodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hyperNodeState)(nil)).Elem()
 }
 
+// HyperNodeExists checks whether an existing HyperNode resource with the given ID exists.
+func HyperNodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HyperNodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/hyperNode:HyperNode", id, state, "", opts...)
+}
+
 type hyperNodeArgs struct {
 	// Cluster ID
 	ClusterId *string `pulumi:"clusterId"`

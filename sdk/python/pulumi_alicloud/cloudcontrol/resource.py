@@ -374,6 +374,22 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["resource_id"] = resource_id
         return Resource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            desire_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            product: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_code: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["desireAttributes"] = desire_attributes
+        __props__["product"] = product
+        __props__["resourceAttributes"] = resource_attributes
+        __props__["resourceCode"] = resource_code
+        __props__["resourceId"] = resource_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudcontrol/resource:Resource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="desireAttributes")
     def desire_attributes(self) -> pulumi.Output[Optional[_builtins.str]]:

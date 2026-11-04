@@ -217,6 +217,12 @@ func (DdosBgpInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosBgpInstanceState)(nil)).Elem()
 }
 
+// DdosBgpInstanceExists checks whether an existing DdosBgpInstance resource with the given ID exists.
+func DdosBgpInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DdosBgpInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/ddosBgpInstance:DdosBgpInstance", id, state, "", opts...)
+}
+
 type ddosBgpInstanceArgs struct {
 	// The bandwidth of the package configuration.
 	Bandwidth int `pulumi:"bandwidth"`

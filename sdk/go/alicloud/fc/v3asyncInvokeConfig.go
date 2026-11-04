@@ -259,6 +259,12 @@ func (V3AsyncInvokeConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3asyncInvokeConfigState)(nil)).Elem()
 }
 
+// V3AsyncInvokeConfigExists checks whether an existing V3AsyncInvokeConfig resource with the given ID exists.
+func V3AsyncInvokeConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3AsyncInvokeConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig", id, state, "", opts...)
+}
+
 type v3asyncInvokeConfigArgs struct {
 	// Whether to enable an asynchronous task
 	AsyncTask *bool `pulumi:"asyncTask"`

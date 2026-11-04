@@ -951,6 +951,54 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["update_timestamp"] = update_timestamp
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            express_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ServiceHealthCheckConfigArgs', 'ServiceHealthCheckConfigArgsDict', 'outputs.ServiceHealthCheckConfig']]] = None,
+            health_status: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_panic_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            outlier_detection_config: pulumi.Input[Optional[Union['ServiceOutlierDetectionConfigArgs', 'ServiceOutlierDetectionConfigArgsDict', 'outputs.ServiceOutlierDetectionConfig']]] = None,
+            outlier_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePortArgs', 'ServicePortArgsDict', 'outputs.ServicePort']]]]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_detail_error_code: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_detail_status: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_timestamp: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addresses"] = addresses
+        __props__["createTimestamp"] = create_timestamp
+        __props__["dnsServers"] = dns_servers
+        __props__["expressType"] = express_type
+        __props__["gatewayId"] = gateway_id
+        __props__["healthCheckConfig"] = health_check_config
+        __props__["healthStatus"] = health_status
+        __props__["healthyPanicThreshold"] = healthy_panic_threshold
+        __props__["namespace"] = namespace
+        __props__["outlierDetectionConfig"] = outlier_detection_config
+        __props__["outlierEndpoints"] = outlier_endpoints
+        __props__["ports"] = ports
+        __props__["protocol"] = protocol
+        __props__["qualifier"] = qualifier
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["runtimeDetailErrorCode"] = runtime_detail_error_code
+        __props__["runtimeDetailStatus"] = runtime_detail_status
+        __props__["serviceName"] = service_name
+        __props__["sourceType"] = source_type
+        __props__["unhealthyEndpoints"] = unhealthy_endpoints
+        __props__["updateTimestamp"] = update_timestamp
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/service:Service', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

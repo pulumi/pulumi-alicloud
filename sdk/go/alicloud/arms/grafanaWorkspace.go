@@ -271,6 +271,12 @@ func (GrafanaWorkspaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grafanaWorkspaceState)(nil)).Elem()
 }
 
+// GrafanaWorkspaceExists checks whether an existing GrafanaWorkspace resource with the given ID exists.
+func GrafanaWorkspaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrafanaWorkspaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/grafanaWorkspace:GrafanaWorkspace", id, state, "", opts...)
+}
+
 type grafanaWorkspaceArgs struct {
 	// Value Description:
 	// GrafanaWorkspaceEdition is standard, this parameter is invalid.

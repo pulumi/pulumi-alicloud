@@ -1073,6 +1073,58 @@ class OriginRule(pulumi.CustomResource):
         __props__.__dict__["site_version"] = site_version
         return OriginRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            dns_record: pulumi.Input[Optional[_builtins.str]] = None,
+            follow302_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            follow302_max_tries: pulumi.Input[Optional[_builtins.str]] = None,
+            follow302_retain_args: pulumi.Input[Optional[_builtins.str]] = None,
+            follow302_retain_header: pulumi.Input[Optional[_builtins.str]] = None,
+            follow302_target_host: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_host: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_http_port: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_https_port: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_mtls: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_read_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_verify: pulumi.Input[Optional[_builtins.str]] = None,
+            range: pulumi.Input[Optional[_builtins.str]] = None,
+            range_chunk_size: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configId"] = config_id
+        __props__["dnsRecord"] = dns_record
+        __props__["follow302Enable"] = follow302_enable
+        __props__["follow302MaxTries"] = follow302_max_tries
+        __props__["follow302RetainArgs"] = follow302_retain_args
+        __props__["follow302RetainHeader"] = follow302_retain_header
+        __props__["follow302TargetHost"] = follow302_target_host
+        __props__["originHost"] = origin_host
+        __props__["originHttpPort"] = origin_http_port
+        __props__["originHttpsPort"] = origin_https_port
+        __props__["originMtls"] = origin_mtls
+        __props__["originReadTimeout"] = origin_read_timeout
+        __props__["originScheme"] = origin_scheme
+        __props__["originSni"] = origin_sni
+        __props__["originVerify"] = origin_verify
+        __props__["range"] = range
+        __props__["rangeChunkSize"] = range_chunk_size
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/originRule:OriginRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[_builtins.int]:

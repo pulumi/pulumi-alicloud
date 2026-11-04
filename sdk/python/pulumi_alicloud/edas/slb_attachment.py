@@ -520,6 +520,28 @@ class SlbAttachment(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return SlbAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vserver_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["listenerPort"] = listener_port
+        __props__["slbId"] = slb_id
+        __props__["slbIp"] = slb_ip
+        __props__["slbStatus"] = slb_status
+        __props__["type"] = type
+        __props__["vserverGroupId"] = vserver_group_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/slbAttachment:SlbAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

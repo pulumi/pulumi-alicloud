@@ -229,6 +229,12 @@ func (DbInstanceIpArrayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbInstanceIpArrayState)(nil)).Elem()
 }
 
+// DbInstanceIpArrayExists checks whether an existing DbInstanceIpArray resource with the given ID exists.
+func DbInstanceIpArrayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbInstanceIpArrayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray", id, state, "", opts...)
+}
+
 type dbInstanceIpArrayArgs struct {
 	// The instance ID.
 	//

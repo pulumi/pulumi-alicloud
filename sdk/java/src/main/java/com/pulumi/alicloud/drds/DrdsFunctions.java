@@ -42,20 +42,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -87,20 +87,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -132,20 +132,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -177,20 +177,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -222,20 +222,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -267,20 +267,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -312,20 +312,20 @@ public final class DrdsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *    public static void main(String[] args) {
+     * public class App }{{@code
+     *    public static void main(String[] args) }{{@code
      *        Pulumi.run(App::stack);
-     *    }
+     *    }}{@code
      * 
-     *    public static void stack(Context ctx) {
+     *    public static void stack(Context ctx) }{{@code
      *        final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *            .nameRegex("drds-\\d+")
+     *            .nameRegex("drds-}&#92;&#92;{@code d+")
      *            .ids("drdsabc123456")
      *            .build());
      * 
      *        ctx.export("firstDbInstanceId", drdsInstancesDs.instances()[0].id());
-     *    }
-     * }
+     *    }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

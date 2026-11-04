@@ -212,6 +212,12 @@ func (MessageContactState) ElementType() reflect.Type {
 	return reflect.TypeOf((*messageContactState)(nil)).Elem()
 }
 
+// MessageContactExists checks whether an existing MessageContact resource with the given ID exists.
+func MessageContactExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MessageContactState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/messageContact:MessageContact", id, state, "", opts...)
+}
+
 type messageContactArgs struct {
 	// The email address of the contact.
 	// After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.

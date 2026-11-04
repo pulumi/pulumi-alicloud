@@ -503,6 +503,26 @@ class VpcFirewallIpsConfig(pulumi.CustomResource):
         __props__.__dict__["vpc_firewall_id"] = vpc_firewall_id
         return VpcFirewallIpsConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_all_patch: pulumi.Input[Optional[_builtins.int]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_class: pulumi.Input[Optional[_builtins.str]] = None,
+            run_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basicRules"] = basic_rules
+        __props__["enableAllPatch"] = enable_all_patch
+        __props__["lang"] = lang
+        __props__["memberUid"] = member_uid
+        __props__["ruleClass"] = rule_class
+        __props__["runMode"] = run_mode
+        __props__["vpcFirewallId"] = vpc_firewall_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basicRules")
     def basic_rules(self) -> pulumi.Output[_builtins.int]:

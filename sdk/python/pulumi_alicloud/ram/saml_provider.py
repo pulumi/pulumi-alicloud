@@ -327,6 +327,22 @@ class SamlProvider(pulumi.CustomResource):
         __props__.__dict__["update_date"] = update_date
         return SamlProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encodedsaml_metadata_document: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            update_date: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arn"] = arn
+        __props__["description"] = description
+        __props__["encodedsamlMetadataDocument"] = encodedsaml_metadata_document
+        __props__["samlProviderName"] = saml_provider_name
+        __props__["updateDate"] = update_date
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/samlProvider:SamlProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arn(self) -> pulumi.Output[_builtins.str]:

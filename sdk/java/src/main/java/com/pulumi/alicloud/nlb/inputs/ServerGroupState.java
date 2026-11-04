@@ -52,22 +52,20 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * @deprecated Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
+    @Deprecated
     @Import(name="connectionDrain")
     private @Nullable Output<Boolean> connectionDrain;
 
     /**
      * @return . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * @deprecated Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
+    @Deprecated
     public Optional<Output<Boolean>> connectionDrain() {
         return Optional.ofNullable(this.connectionDrain);
     }
@@ -241,7 +239,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The new name of the server group.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="serverGroupName")
@@ -249,7 +247,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The new name of the server group.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> serverGroupName() {
@@ -417,11 +415,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * @deprecated Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
          * 
          */
-        @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
+        @Deprecated
         public Builder connectionDrain(@Nullable Output<Boolean> connectionDrain) {
             $.connectionDrain = connectionDrain;
             return this;
@@ -432,11 +429,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * @deprecated Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
          * 
          */
-        @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
+        @Deprecated
         public Builder connectionDrain(Boolean connectionDrain) {
             return connectionDrain(Output.of(connectionDrain));
         }
@@ -664,7 +660,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupName The new name of the server group.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -676,7 +672,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupName The new name of the server group.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 

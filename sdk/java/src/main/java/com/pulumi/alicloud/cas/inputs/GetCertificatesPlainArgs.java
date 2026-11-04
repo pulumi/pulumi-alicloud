@@ -46,20 +46,18 @@ public final class GetCertificatesPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     @Import(name="lang")
     private @Nullable String lang;
 
     /**
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -157,11 +155,10 @@ public final class GetCertificatesPlainArgs extends com.pulumi.resources.InvokeA
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `lang` has been deprecated from provider version 1.232.0.
+         * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
          * 
          */
-        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+        @Deprecated
         public Builder lang(@Nullable String lang) {
             $.lang = lang;
             return this;

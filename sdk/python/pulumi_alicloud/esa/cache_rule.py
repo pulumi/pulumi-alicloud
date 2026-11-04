@@ -1390,6 +1390,72 @@ class CacheRule(pulumi.CustomResource):
         __props__.__dict__["user_language"] = user_language
         return CacheRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_cacheable_ports: pulumi.Input[Optional[_builtins.str]] = None,
+            browser_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            browser_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            bypass_cache: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_deception_armor: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_reserve_eligibility: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            check_presence_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            check_presence_header: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_status_code_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            include_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            include_header: pulumi.Input[Optional[_builtins.str]] = None,
+            post_body_cache_key: pulumi.Input[Optional[_builtins.str]] = None,
+            post_body_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            post_cache: pulumi.Input[Optional[_builtins.str]] = None,
+            query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            query_string_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            sort_query_string_for_cache: pulumi.Input[Optional[_builtins.str]] = None,
+            user_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_geo: pulumi.Input[Optional[_builtins.str]] = None,
+            user_language: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalCacheablePorts"] = additional_cacheable_ports
+        __props__["browserCacheMode"] = browser_cache_mode
+        __props__["browserCacheTtl"] = browser_cache_ttl
+        __props__["bypassCache"] = bypass_cache
+        __props__["cacheDeceptionArmor"] = cache_deception_armor
+        __props__["cacheReserveEligibility"] = cache_reserve_eligibility
+        __props__["cacheRuleId"] = cache_rule_id
+        __props__["checkPresenceCookie"] = check_presence_cookie
+        __props__["checkPresenceHeader"] = check_presence_header
+        __props__["edgeCacheMode"] = edge_cache_mode
+        __props__["edgeCacheTtl"] = edge_cache_ttl
+        __props__["edgeStatusCodeCacheTtl"] = edge_status_code_cache_ttl
+        __props__["includeCookie"] = include_cookie
+        __props__["includeHeader"] = include_header
+        __props__["postBodyCacheKey"] = post_body_cache_key
+        __props__["postBodySizeLimit"] = post_body_size_limit
+        __props__["postCache"] = post_cache
+        __props__["queryString"] = query_string
+        __props__["queryStringMode"] = query_string_mode
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["serveStale"] = serve_stale
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        __props__["sortQueryStringForCache"] = sort_query_string_for_cache
+        __props__["userDeviceType"] = user_device_type
+        __props__["userGeo"] = user_geo
+        __props__["userLanguage"] = user_language
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/cacheRule:CacheRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> pulumi.Output[Optional[_builtins.str]]:

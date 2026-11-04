@@ -721,6 +721,38 @@ class Prometheus(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Prometheus(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            grafana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_clusters_json: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["archiveDuration"] = archive_duration
+        __props__["clusterId"] = cluster_id
+        __props__["clusterName"] = cluster_name
+        __props__["clusterType"] = cluster_type
+        __props__["duration"] = duration
+        __props__["grafanaInstanceId"] = grafana_instance_id
+        __props__["paymentType"] = payment_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroupId"] = security_group_id
+        __props__["subClustersJson"] = sub_clusters_json
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/prometheus:Prometheus', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="archiveDuration")
     def archive_duration(self) -> pulumi.Output[_builtins.int]:

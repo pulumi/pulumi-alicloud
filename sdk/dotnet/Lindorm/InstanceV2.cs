@@ -141,7 +141,6 @@ namespace Pulumi.AliCloud.Lindorm
         /// 
         /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `True`.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("autoRenewDuration")]
@@ -348,7 +347,6 @@ namespace Pulumi.AliCloud.Lindorm
         /// 
         /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `True`.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("autoRenewDuration")]
@@ -522,7 +520,6 @@ namespace Pulumi.AliCloud.Lindorm
         /// Value range: `1` to `12`.
         /// 
         /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `True`.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>

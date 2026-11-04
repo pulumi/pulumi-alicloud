@@ -522,6 +522,30 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict', 'outputs.LoadBalancerBackendServer']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendServers"] = backend_servers
+        __props__["createTime"] = create_time
+        __props__["ensRegionId"] = ens_region_id
+        __props__["loadBalancerName"] = load_balancer_name
+        __props__["loadBalancerSpec"] = load_balancer_spec
+        __props__["networkId"] = network_id
+        __props__["paymentType"] = payment_type
+        __props__["status"] = status
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/loadBalancer:LoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendServers")
     def backend_servers(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerBackendServer']]]:

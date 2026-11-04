@@ -100,7 +100,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
@@ -109,7 +109,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> healthCheckHttpCodes;
 
     /**
-     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
@@ -415,7 +415,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
          * 
          * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
@@ -428,7 +428,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
          * 
          * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
@@ -440,7 +440,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http&#92;_2xx` (default), `http&#92;_3xx`, `http&#92;_4xx`, and `http&#92;_5xx`.
          * 
          * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 

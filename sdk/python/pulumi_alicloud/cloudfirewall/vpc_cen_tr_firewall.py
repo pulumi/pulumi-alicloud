@@ -918,6 +918,44 @@ class VpcCenTrFirewall(pulumi.CustomResource):
         __props__.__dict__["transit_router_id"] = transit_router_id
         return VpcCenTrFirewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_description: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_eni_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_vpc_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_vpc_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            region_no: pulumi.Input[Optional[_builtins.str]] = None,
+            route_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_master_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_master_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_slave_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_slave_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["firewallDescription"] = firewall_description
+        __props__["firewallEniId"] = firewall_eni_id
+        __props__["firewallEniVpcId"] = firewall_eni_vpc_id
+        __props__["firewallName"] = firewall_name
+        __props__["firewallSubnetCidr"] = firewall_subnet_cidr
+        __props__["firewallVpcAttachmentId"] = firewall_vpc_attachment_id
+        __props__["firewallVpcCidr"] = firewall_vpc_cidr
+        __props__["regionNo"] = region_no
+        __props__["routeMode"] = route_mode
+        __props__["status"] = status
+        __props__["trAttachmentMasterCidr"] = tr_attachment_master_cidr
+        __props__["trAttachmentMasterZone"] = tr_attachment_master_zone
+        __props__["trAttachmentSlaveCidr"] = tr_attachment_slave_cidr
+        __props__["trAttachmentSlaveZone"] = tr_attachment_slave_zone
+        __props__["transitRouterId"] = transit_router_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

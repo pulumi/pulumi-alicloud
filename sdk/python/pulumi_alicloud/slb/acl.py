@@ -411,6 +411,22 @@ class Acl(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Acl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict', 'outputs.AclEntryList']]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["entryLists"] = entry_lists
+        __props__["ipVersion"] = ip_version
+        __props__["name"] = name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/acl:Acl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="entryLists")
     @_utilities.deprecated("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")

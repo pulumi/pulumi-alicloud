@@ -508,6 +508,32 @@ class DbInstancePlan(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DbInstancePlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict', 'outputs.DbInstancePlanPlanConfig']]]]] = None,
+            plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["dbInstancePlanName"] = db_instance_plan_name
+        __props__["planConfigs"] = plan_configs
+        __props__["planDesc"] = plan_desc
+        __props__["planEndDate"] = plan_end_date
+        __props__["planId"] = plan_id
+        __props__["planScheduleType"] = plan_schedule_type
+        __props__["planStartDate"] = plan_start_date
+        __props__["planType"] = plan_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/dbInstancePlan:DbInstancePlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:

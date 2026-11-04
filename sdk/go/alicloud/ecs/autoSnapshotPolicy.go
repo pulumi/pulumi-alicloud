@@ -257,6 +257,12 @@ func (AutoSnapshotPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoSnapshotPolicyState)(nil)).Elem()
 }
 
+// AutoSnapshotPolicyExists checks whether an existing AutoSnapshotPolicy resource with the given ID exists.
+func AutoSnapshotPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoSnapshotPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy", id, state, "", opts...)
+}
+
 type autoSnapshotPolicyArgs struct {
 	// The association type between the automatic snapshot policy and target resources. Valid values:
 	// - `AssociatedWithDisk`: The automatic snapshot policy is applied to disks.

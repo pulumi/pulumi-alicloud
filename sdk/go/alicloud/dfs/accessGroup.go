@@ -138,6 +138,12 @@ func (AccessGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessGroupState)(nil)).Elem()
 }
 
+// AccessGroupExists checks whether an existing AccessGroup resource with the given ID exists.
+func AccessGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dfs/accessGroup:AccessGroup", id, state, "", opts...)
+}
+
 type accessGroupArgs struct {
 	// The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
 	AccessGroupName string `pulumi:"accessGroupName"`

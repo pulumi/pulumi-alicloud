@@ -164,6 +164,12 @@ func (WafRulesetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafRulesetState)(nil)).Elem()
 }
 
+// WafRulesetExists checks whether an existing WafRuleset resource with the given ID exists.
+func WafRulesetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WafRulesetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/wafRuleset:WafRuleset", id, state, "", opts...)
+}
+
 type wafRulesetArgs struct {
 	// The ruleset name.
 	Name *string `pulumi:"name"`

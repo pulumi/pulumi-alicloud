@@ -144,6 +144,12 @@ func (DbInstancePlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbInstancePlanState)(nil)).Elem()
 }
 
+// DbInstancePlanExists checks whether an existing DbInstancePlan resource with the given ID exists.
+func DbInstancePlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbInstancePlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/dbInstancePlan:DbInstancePlan", id, state, "", opts...)
+}
+
 type dbInstancePlanArgs struct {
 	// The ID of the GPDB instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`

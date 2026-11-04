@@ -123,6 +123,12 @@ func (MetaTagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metaTagState)(nil)).Elem()
 }
 
+// MetaTagExists checks whether an existing MetaTag resource with the given ID exists.
+func MetaTagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetaTagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:tag/metaTag:MetaTag", id, state, "", opts...)
+}
+
 type metaTagArgs struct {
 	// The key of the tag meta tag. key must be 1 to 128 characters in length.
 	Key string `pulumi:"key"`

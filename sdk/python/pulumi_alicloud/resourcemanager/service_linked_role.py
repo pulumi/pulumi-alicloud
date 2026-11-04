@@ -334,6 +334,24 @@ class ServiceLinkedRole(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         return ServiceLinkedRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arn"] = arn
+        __props__["customSuffix"] = custom_suffix
+        __props__["description"] = description
+        __props__["roleId"] = role_id
+        __props__["roleName"] = role_name
+        __props__["serviceName"] = service_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arn(self) -> pulumi.Output[_builtins.str]:

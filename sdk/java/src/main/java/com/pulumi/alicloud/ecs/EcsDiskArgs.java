@@ -36,22 +36,20 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
-     * @deprecated
-     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
+     * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      * 
      */
-    @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
+    @Deprecated
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
      * @return Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      * 
-     * @deprecated
-     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
+     * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      * 
      */
-    @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
+    @Deprecated
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -164,22 +162,20 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
-     * @deprecated
-     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
-    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
+    @Deprecated
     @Import(name="enableAutoSnapshot")
     private @Nullable Output<Boolean> enableAutoSnapshot;
 
     /**
      * @return Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
-     * @deprecated
-     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
-    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
+    @Deprecated
     public Optional<Output<Boolean>> enableAutoSnapshot() {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
@@ -268,11 +264,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -281,11 +276,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -563,11 +557,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
+         * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
          * 
          */
-        @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
+        @Deprecated
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
@@ -578,11 +571,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
+         * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
          * 
          */
-        @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
+        @Deprecated
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
@@ -739,11 +731,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+         * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
          * 
          */
-        @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
+        @Deprecated
         public Builder enableAutoSnapshot(@Nullable Output<Boolean> enableAutoSnapshot) {
             $.enableAutoSnapshot = enableAutoSnapshot;
             return this;
@@ -754,11 +745,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+         * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
          * 
          */
-        @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
+        @Deprecated
         public Builder enableAutoSnapshot(Boolean enableAutoSnapshot) {
             return enableAutoSnapshot(Output.of(enableAutoSnapshot));
         }
@@ -879,11 +869,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -896,11 +885,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

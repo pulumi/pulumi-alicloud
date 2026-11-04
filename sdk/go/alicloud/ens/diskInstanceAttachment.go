@@ -160,6 +160,12 @@ func (DiskInstanceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskInstanceAttachmentState)(nil)).Elem()
 }
 
+// DiskInstanceAttachmentExists checks whether an existing DiskInstanceAttachment resource with the given ID exists.
+func DiskInstanceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskInstanceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment", id, state, "", opts...)
+}
+
 type diskInstanceAttachmentArgs struct {
 	// Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
 	DeleteWithInstance *string `pulumi:"deleteWithInstance"`

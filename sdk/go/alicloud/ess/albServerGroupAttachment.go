@@ -261,6 +261,12 @@ func (AlbServerGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*albServerGroupAttachmentState)(nil)).Elem()
 }
 
+// AlbServerGroupAttachmentExists checks whether an existing AlbServerGroupAttachment resource with the given ID exists.
+func AlbServerGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlbServerGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment", id, state, "", opts...)
+}
+
 type albServerGroupAttachmentArgs struct {
 	// ID of Alb Server Group.
 	AlbServerGroupId string `pulumi:"albServerGroupId"`

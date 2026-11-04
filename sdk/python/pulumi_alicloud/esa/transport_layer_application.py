@@ -491,6 +491,28 @@ class TransportLayerApplication(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return TransportLayerApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.int]] = None,
+            cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+            record_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict', 'outputs.TransportLayerApplicationRule']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["crossBorderOptimization"] = cross_border_optimization
+        __props__["ipAccessRule"] = ip_access_rule
+        __props__["ipv6"] = ipv6
+        __props__["recordName"] = record_name
+        __props__["rules"] = rules
+        __props__["siteId"] = site_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/transportLayerApplication:TransportLayerApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.int]:

@@ -1003,6 +1003,52 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         __props__.__dict__["valid_until"] = valid_until
         return AutoProvisioningGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_provisioning_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_provisioning_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            default_target_capacity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            excess_capacity_termination_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict', 'outputs.AutoProvisioningGroupLaunchTemplateConfig']]]]] = None,
+            launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_spot_price: pulumi.Input[Optional[_builtins.float]] = None,
+            pay_as_you_go_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_as_you_go_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_instance_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_instance_pools_to_use_count: pulumi.Input[Optional[_builtins.int]] = None,
+            spot_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            terminate_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            terminate_instances_with_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+            total_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_from: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_until: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoProvisioningGroupName"] = auto_provisioning_group_name
+        __props__["autoProvisioningGroupType"] = auto_provisioning_group_type
+        __props__["defaultTargetCapacityType"] = default_target_capacity_type
+        __props__["description"] = description
+        __props__["excessCapacityTerminationPolicy"] = excess_capacity_termination_policy
+        __props__["launchTemplateConfigs"] = launch_template_configs
+        __props__["launchTemplateId"] = launch_template_id
+        __props__["launchTemplateVersion"] = launch_template_version
+        __props__["maxSpotPrice"] = max_spot_price
+        __props__["payAsYouGoAllocationStrategy"] = pay_as_you_go_allocation_strategy
+        __props__["payAsYouGoTargetCapacity"] = pay_as_you_go_target_capacity
+        __props__["spotAllocationStrategy"] = spot_allocation_strategy
+        __props__["spotInstanceInterruptionBehavior"] = spot_instance_interruption_behavior
+        __props__["spotInstancePoolsToUseCount"] = spot_instance_pools_to_use_count
+        __props__["spotTargetCapacity"] = spot_target_capacity
+        __props__["terminateInstances"] = terminate_instances
+        __props__["terminateInstancesWithExpiration"] = terminate_instances_with_expiration
+        __props__["totalTargetCapacity"] = total_target_capacity
+        __props__["validFrom"] = valid_from
+        __props__["validUntil"] = valid_until
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoProvisioningGroupName")
     def auto_provisioning_group_name(self) -> pulumi.Output[_builtins.str]:

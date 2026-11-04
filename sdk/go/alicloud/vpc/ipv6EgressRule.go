@@ -246,6 +246,12 @@ func (Ipv6EgressRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv6EgressRuleState)(nil)).Elem()
 }
 
+// Ipv6EgressRuleExists checks whether an existing Ipv6EgressRule resource with the given ID exists.
+func Ipv6EgressRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv6EgressRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipv6EgressRule:Ipv6EgressRule", id, state, "", opts...)
+}
+
 type ipv6EgressRuleArgs struct {
 	// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`

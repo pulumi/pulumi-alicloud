@@ -263,6 +263,12 @@ func (RouteEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeEntryState)(nil)).Elem()
 }
 
+// RouteEntryExists checks whether an existing RouteEntry resource with the given ID exists.
+func RouteEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/routeEntry:RouteEntry", id, state, "", opts...)
+}
+
 type routeEntryArgs struct {
 	// The next hop of the destination route.
 	NextHop string `pulumi:"nextHop"`

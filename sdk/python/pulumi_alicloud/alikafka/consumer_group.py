@@ -419,6 +419,26 @@ class ConsumerGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            consumer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["consumerId"] = consumer_id
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["regionId"] = region_id
+        __props__["remark"] = remark
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:alikafka/consumerGroup:ConsumerGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="consumerId")
     def consumer_id(self) -> pulumi.Output[_builtins.str]:

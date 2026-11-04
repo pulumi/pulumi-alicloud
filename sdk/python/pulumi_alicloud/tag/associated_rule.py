@@ -289,6 +289,18 @@ class AssociatedRule(pulumi.CustomResource):
         __props__.__dict__["tag_keys"] = tag_keys
         return AssociatedRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associated_setting_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatedSettingName"] = associated_setting_name
+        __props__["status"] = status
+        __props__["tagKeys"] = tag_keys
+        return pulumi.runtime.exists_resource(None, 'alicloud:tag/associatedRule:AssociatedRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatedSettingName")
     def associated_setting_name(self) -> pulumi.Output[_builtins.str]:

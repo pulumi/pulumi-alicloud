@@ -217,6 +217,12 @@ func (MonitorTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorTemplateState)(nil)).Elem()
 }
 
+// MonitorTemplateExists checks whether an existing MonitorTemplate resource with the given ID exists.
+func MonitorTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alidnscloudgtm/monitorTemplate:MonitorTemplate", id, state, "", opts...)
+}
+
 type monitorTemplateArgs struct {
 	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 	EvaluationCount int `pulumi:"evaluationCount"`

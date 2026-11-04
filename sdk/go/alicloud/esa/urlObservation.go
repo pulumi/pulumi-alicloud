@@ -157,6 +157,12 @@ func (UrlObservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*urlObservationState)(nil)).Elem()
 }
 
+// UrlObservationExists checks whether an existing UrlObservation resource with the given ID exists.
+func UrlObservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UrlObservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/urlObservation:UrlObservation", id, state, "", opts...)
+}
+
 type urlObservationArgs struct {
 	// SDK integration mode. Value:
 	SdkType string `pulumi:"sdkType"`

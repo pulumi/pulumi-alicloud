@@ -19,22 +19,20 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The version of the policy. Default to v1.
      * 
-     * @deprecated
-     * Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
+     * @deprecated Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
      * 
      */
-    @Deprecated /* Field 'default_version' has been deprecated from provider version 1.90.0 */
+    @Deprecated
     @Import(name="defaultVersion")
     private @Nullable Output<String> defaultVersion;
 
     /**
      * @return The version of the policy. Default to v1.
      * 
-     * @deprecated
-     * Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
+     * @deprecated Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
      * 
      */
-    @Deprecated /* Field 'default_version' has been deprecated from provider version 1.90.0 */
+    @Deprecated
     public Optional<Output<String>> defaultVersion() {
         return Optional.ofNullable(this.defaultVersion);
     }
@@ -116,11 +114,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
+         * @deprecated Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
          * 
          */
-        @Deprecated /* Field 'default_version' has been deprecated from provider version 1.90.0 */
+        @Deprecated
         public Builder defaultVersion(@Nullable Output<String> defaultVersion) {
             $.defaultVersion = defaultVersion;
             return this;
@@ -131,11 +128,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
+         * @deprecated Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
          * 
          */
-        @Deprecated /* Field 'default_version' has been deprecated from provider version 1.90.0 */
+        @Deprecated
         public Builder defaultVersion(String defaultVersion) {
             return defaultVersion(Output.of(defaultVersion));
         }

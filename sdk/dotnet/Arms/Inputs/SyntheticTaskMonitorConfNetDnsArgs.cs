@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         /// The IP address type of the DNS server.
         /// - 0 (default):ipv4
         /// - 1:ipv6
-        /// 2: Automatic.
+        ///   2: Automatic.
         /// </summary>
         [Input("dnsServerIpType")]
         public Input<int>? DnsServerIpType { get; set; }

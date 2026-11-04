@@ -656,6 +656,34 @@ class NetworkAcl(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return NetworkAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict', 'outputs.NetworkAclEgressAclEntry']]]]] = None,
+            ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict', 'outputs.NetworkAclIngressAclEntry']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict', 'outputs.NetworkAclResource']]]]] = None,
+            source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["egressAclEntries"] = egress_acl_entries
+        __props__["ingressAclEntries"] = ingress_acl_entries
+        __props__["name"] = name
+        __props__["networkAclName"] = network_acl_name
+        __props__["resources"] = resources
+        __props__["sourceNetworkAclId"] = source_network_acl_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/networkAcl:NetworkAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

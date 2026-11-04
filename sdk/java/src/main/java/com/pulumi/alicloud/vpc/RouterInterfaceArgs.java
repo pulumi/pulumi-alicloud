@@ -97,22 +97,20 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * It has been deprecated from version 1.11.0.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
+     * @deprecated Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
      * 
      */
-    @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
+    @Deprecated
     @Import(name="oppositeAccessPointId")
     private @Nullable Output<String> oppositeAccessPointId;
 
     /**
      * @return It has been deprecated from version 1.11.0.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
+     * @deprecated Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
      * 
      */
-    @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
+    @Deprecated
     public Optional<Output<String>> oppositeAccessPointId() {
         return Optional.ofNullable(this.oppositeAccessPointId);
     }
@@ -356,11 +354,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
+         * @deprecated Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
          * 
          */
-        @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
+        @Deprecated
         public Builder oppositeAccessPointId(@Nullable Output<String> oppositeAccessPointId) {
             $.oppositeAccessPointId = oppositeAccessPointId;
             return this;
@@ -371,11 +368,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
+         * @deprecated Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
          * 
          */
-        @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
+        @Deprecated
         public Builder oppositeAccessPointId(String oppositeAccessPointId) {
             return oppositeAccessPointId(Output.of(oppositeAccessPointId));
         }

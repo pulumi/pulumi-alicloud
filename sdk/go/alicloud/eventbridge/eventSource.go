@@ -218,6 +218,12 @@ func (EventSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventSourceState)(nil)).Elem()
 }
 
+// EventSourceExists checks whether an existing EventSource resource with the given ID exists.
+func EventSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eventbridge/eventSource:EventSource", id, state, "", opts...)
+}
+
 type eventSourceArgs struct {
 	// The description of the event source.
 	Description *string `pulumi:"description"`

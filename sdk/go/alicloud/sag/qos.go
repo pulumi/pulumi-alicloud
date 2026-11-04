@@ -112,6 +112,12 @@ func (QosState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosState)(nil)).Elem()
 }
 
+// QosExists checks whether an existing Qos resource with the given ID exists.
+func QosExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/qos:Qos", id, state, "", opts...)
+}
+
 type qosArgs struct {
 	// The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
 	Name *string `pulumi:"name"`

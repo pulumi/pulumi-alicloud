@@ -553,6 +553,34 @@ class EngineNamespace(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return EngineNamespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_count: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_show_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[_builtins.int]] = None,
+            service_count: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceptLanguage"] = accept_language
+        __props__["clusterId"] = cluster_id
+        __props__["configCount"] = config_count
+        __props__["instanceId"] = instance_id
+        __props__["namespaceDesc"] = namespace_desc
+        __props__["namespaceId"] = namespace_id
+        __props__["namespaceShowName"] = namespace_show_name
+        __props__["quota"] = quota
+        __props__["serviceCount"] = service_count
+        __props__["sourceType"] = source_type
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:mse/engineNamespace:EngineNamespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
     def accept_language(self) -> pulumi.Output[Optional[_builtins.str]]:

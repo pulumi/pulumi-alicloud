@@ -162,22 +162,20 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     /**
      * Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
-     * @deprecated
-     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
-    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+    @Deprecated
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
      * @return Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
-     * @deprecated
-     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
-    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
@@ -185,22 +183,20 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     /**
      * Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * @deprecated
-     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
-    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+    @Deprecated
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
      * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * @deprecated
-     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
-    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -240,22 +236,20 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     /**
      * Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
+    @Deprecated
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
      * @return Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
+    @Deprecated
     public Optional<Output<String>> transitRouterAttachmentName() {
         return Optional.ofNullable(this.transitRouterAttachmentName);
     }
@@ -277,7 +271,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * The name of the VPC connection.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="transitRouterVpcAttachmentName")
@@ -285,7 +279,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
     /**
      * @return The name of the VPC connection.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> transitRouterVpcAttachmentName() {
@@ -585,11 +579,10 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+         * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
          * 
          */
-        @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+        @Deprecated
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
@@ -600,11 +593,10 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+         * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
          * 
          */
-        @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+        @Deprecated
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
@@ -614,11 +606,10 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+         * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
          * 
          */
-        @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+        @Deprecated
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
@@ -629,11 +620,10 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+         * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
          * 
          */
-        @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+        @Deprecated
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }
@@ -687,11 +677,10 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
+        @Deprecated
         public Builder transitRouterAttachmentName(@Nullable Output<String> transitRouterAttachmentName) {
             $.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
@@ -702,11 +691,10 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
+        @Deprecated
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             return transitRouterAttachmentName(Output.of(transitRouterAttachmentName));
         }
@@ -734,7 +722,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param transitRouterVpcAttachmentName The name of the VPC connection.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -746,7 +734,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param transitRouterVpcAttachmentName The name of the VPC connection.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 

@@ -141,6 +141,12 @@ func (BucketMetaQueryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketMetaQueryState)(nil)).Elem()
 }
 
+// BucketMetaQueryExists checks whether an existing BucketMetaQuery resource with the given ID exists.
+func BucketMetaQueryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketMetaQueryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketMetaQuery:BucketMetaQuery", id, state, "", opts...)
+}
+
 type bucketMetaQueryArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

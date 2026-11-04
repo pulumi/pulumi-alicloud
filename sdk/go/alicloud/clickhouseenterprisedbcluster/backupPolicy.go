@@ -187,6 +187,12 @@ func (BackupPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPolicyState)(nil)).Elem()
 }
 
+// BackupPolicyExists checks whether an existing BackupPolicy resource with the given ID exists.
+func BackupPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy", id, state, "", opts...)
+}
+
 type backupPolicyArgs struct {
 	// Backup retention time.
 	BackupRetentionPeriod int `pulumi:"backupRetentionPeriod"`

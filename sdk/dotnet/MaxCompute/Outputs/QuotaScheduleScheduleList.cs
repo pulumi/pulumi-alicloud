@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// The type of the quota plan. Valid values: daily 
+        /// The type of the quota plan. Valid values: daily
         /// 
         /// &gt; **NOTE:** Currently, only daily is supported.
         /// </summary>

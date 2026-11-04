@@ -464,6 +464,30 @@ class SqlLogConfig(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return SqlLogConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cold_retention: pulumi.Input[Optional[_builtins.int]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            hot_retention: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            log_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            request_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            retention: pulumi.Input[Optional[_builtins.int]] = None,
+            sql_log_visible_time: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["coldRetention"] = cold_retention
+        __props__["enable"] = enable
+        __props__["hotRetention"] = hot_retention
+        __props__["instanceId"] = instance_id
+        __props__["logFilter"] = log_filter
+        __props__["requestEnable"] = request_enable
+        __props__["retention"] = retention
+        __props__["sqlLogVisibleTime"] = sql_log_visible_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'alicloud:das/sqlLogConfig:SqlLogConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="coldRetention")
     def cold_retention(self) -> pulumi.Output[_builtins.int]:

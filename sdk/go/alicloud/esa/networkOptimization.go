@@ -212,6 +212,12 @@ func (NetworkOptimizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkOptimizationState)(nil)).Elem()
 }
 
+// NetworkOptimizationExists checks whether an existing NetworkOptimization resource with the given ID exists.
+func NetworkOptimizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkOptimizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/networkOptimization:NetworkOptimization", id, state, "", opts...)
+}
+
 type networkOptimizationArgs struct {
 	// Whether to enable GRPC, default is disabled. Value range:
 	Grpc *string `pulumi:"grpc"`

@@ -1421,6 +1421,62 @@ class DomainResource(pulumi.CustomResource):
         __props__.__dict__["white_lists"] = white_lists
         return DomainResource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+            black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bw_list_enable: pulumi.Input[Optional[_builtins.int]] = None,
+            cc_global_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            https_ext: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict', 'outputs.DomainResourceProxyType']]]]] = None,
+            real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+            ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ssl_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_protocols: pulumi.Input[Optional[_builtins.str]] = None,
+            tls13_custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aiMode"] = ai_mode
+        __props__["aiTemplate"] = ai_template
+        __props__["blackLists"] = black_lists
+        __props__["bwListEnable"] = bw_list_enable
+        __props__["ccGlobalSwitch"] = cc_global_switch
+        __props__["cert"] = cert
+        __props__["certIdentifier"] = cert_identifier
+        __props__["certName"] = cert_name
+        __props__["certRegion"] = cert_region
+        __props__["cname"] = cname
+        __props__["customCiphers"] = custom_ciphers
+        __props__["customHeaders"] = custom_headers
+        __props__["domain"] = domain
+        __props__["httpsExt"] = https_ext
+        __props__["instanceIds"] = instance_ids
+        __props__["key"] = key
+        __props__["ocspEnabled"] = ocsp_enabled
+        __props__["proxyTypes"] = proxy_types
+        __props__["realServers"] = real_servers
+        __props__["rsType"] = rs_type
+        __props__["ssl13Enabled"] = ssl13_enabled
+        __props__["sslCiphers"] = ssl_ciphers
+        __props__["sslProtocols"] = ssl_protocols
+        __props__["tls13CustomCiphers"] = tls13_custom_ciphers
+        __props__["whiteLists"] = white_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/domainResource:DomainResource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aiMode")
     def ai_mode(self) -> pulumi.Output[_builtins.str]:

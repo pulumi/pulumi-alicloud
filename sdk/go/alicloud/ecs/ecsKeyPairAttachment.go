@@ -232,6 +232,12 @@ func (EcsKeyPairAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsKeyPairAttachmentState)(nil)).Elem()
 }
 
+// EcsKeyPairAttachmentExists checks whether an existing EcsKeyPairAttachment resource with the given ID exists.
+func EcsKeyPairAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsKeyPairAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment", id, state, "", opts...)
+}
+
 type ecsKeyPairAttachmentArgs struct {
 	// Specifies whether to make the key pair effective immediately. Valid values:
 	Force *bool `pulumi:"force"`

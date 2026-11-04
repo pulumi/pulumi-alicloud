@@ -67,11 +67,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:dns/domain:Domain example &#34;aliyun.com&#34;
  * ```
  * 
- * @deprecated
- * This resource has been deprecated in favour of DnsDomain
+ * @deprecated This resource has been deprecated in favour of DnsDomain
  * 
  */
-@Deprecated /* This resource has been deprecated in favour of DnsDomain */
+@Deprecated
 @ResourceType(type="alicloud:dns/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
     /**

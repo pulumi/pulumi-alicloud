@@ -143,6 +143,12 @@ func (EcsDedicatedHostClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsDedicatedHostClusterState)(nil)).Elem()
 }
 
+// EcsDedicatedHostClusterExists checks whether an existing EcsDedicatedHostCluster resource with the given ID exists.
+func EcsDedicatedHostClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsDedicatedHostClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster", id, state, "", opts...)
+}
+
 type ecsDedicatedHostClusterArgs struct {
 	// The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
 	DedicatedHostClusterName *string `pulumi:"dedicatedHostClusterName"`

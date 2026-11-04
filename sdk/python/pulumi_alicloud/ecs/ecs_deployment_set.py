@@ -432,6 +432,24 @@ class EcsDeploymentSet(pulumi.CustomResource):
         __props__.__dict__["strategy"] = strategy
         return EcsDeploymentSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            granularity: pulumi.Input[Optional[_builtins.str]] = None,
+            on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deploymentSetName"] = deployment_set_name
+        __props__["description"] = description
+        __props__["domain"] = domain
+        __props__["granularity"] = granularity
+        __props__["onUnableToRedeployFailedInstance"] = on_unable_to_redeploy_failed_instance
+        __props__["strategy"] = strategy
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deploymentSetName")
     def deployment_set_name(self) -> pulumi.Output[Optional[_builtins.str]]:

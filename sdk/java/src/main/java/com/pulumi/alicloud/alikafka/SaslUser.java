@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -100,9 +100,9 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
  *             .config("""
- *   {
- *     \"enable.acl\": \"true\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "enable.acl}&#92;{@code ": }&#92;{@code "true}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .build());
  * 
@@ -112,8 +112,8 @@ import javax.annotation.Nullable;
  *             .password("tf_example123")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

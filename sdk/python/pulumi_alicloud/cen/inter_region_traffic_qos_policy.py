@@ -413,6 +413,24 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         __props__.__dict__["transit_router_id"] = transit_router_id
         return InterRegionTrafficQosPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_guarantee_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            inter_region_traffic_qos_policy_description: pulumi.Input[Optional[_builtins.str]] = None,
+            inter_region_traffic_qos_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidthGuaranteeMode"] = bandwidth_guarantee_mode
+        __props__["interRegionTrafficQosPolicyDescription"] = inter_region_traffic_qos_policy_description
+        __props__["interRegionTrafficQosPolicyName"] = inter_region_traffic_qos_policy_name
+        __props__["status"] = status
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        __props__["transitRouterId"] = transit_router_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bandwidthGuaranteeMode")
     def bandwidth_guarantee_mode(self) -> pulumi.Output[_builtins.str]:

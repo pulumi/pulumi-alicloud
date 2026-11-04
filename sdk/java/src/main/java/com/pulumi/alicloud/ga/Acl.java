@@ -85,11 +85,10 @@ public class Acl extends com.pulumi.resources.CustomResource {
     /**
      * The entries of the Acl. See `aclEntries` below. **NOTE:** &#34;Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
-     * @deprecated
-     * Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
+     * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      * 
      */
-    @Deprecated /* Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`. */
+    @Deprecated
     @Export(name="aclEntries", refs={List.class,AclAclEntry.class}, tree="[0,1]")
     private Output<List<AclAclEntry>> aclEntries;
 

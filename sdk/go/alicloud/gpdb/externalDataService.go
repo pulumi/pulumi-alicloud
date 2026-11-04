@@ -204,6 +204,12 @@ func (ExternalDataServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalDataServiceState)(nil)).Elem()
 }
 
+// ExternalDataServiceExists checks whether an existing ExternalDataService resource with the given ID exists.
+func ExternalDataServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExternalDataServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/externalDataService:ExternalDataService", id, state, "", opts...)
+}
+
 type externalDataServiceArgs struct {
 	// Instance ID
 	DbInstanceId string `pulumi:"dbInstanceId"`

@@ -107,6 +107,12 @@ func (SubnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetState)(nil)).Elem()
 }
 
+// SubnetExists checks whether an existing Subnet resource with the given ID exists.
+func SubnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/subnet:Subnet", id, state, "", opts...)
+}
+
 type subnetArgs struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone  *string `pulumi:"availabilityZone"`

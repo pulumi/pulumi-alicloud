@@ -76,11 +76,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
  * ```
  * 
- * @deprecated
- * alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry
+ * @deprecated alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry
  * 
  */
-@Deprecated /* alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry */
+@Deprecated
 @ResourceType(type="alicloud:rocketmq/dnatEntry:DnatEntry")
 public class DnatEntry extends com.pulumi.resources.CustomResource {
     /**

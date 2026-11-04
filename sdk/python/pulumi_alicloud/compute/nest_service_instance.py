@@ -793,6 +793,40 @@ class NestServiceInstance(pulumi.CustomResource):
         __props__.__dict__["template_name"] = template_name
         return NestServiceInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict', 'outputs.NestServiceInstanceCommodity']]] = None,
+            enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+            operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict', 'outputs.NestServiceInstanceOperationMetadata']]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_version: pulumi.Input[Optional[_builtins.str]] = None,
+            specification_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commodity"] = commodity
+        __props__["enableInstanceOps"] = enable_instance_ops
+        __props__["enableUserPrometheus"] = enable_user_prometheus
+        __props__["operationMetadata"] = operation_metadata
+        __props__["parameters"] = parameters
+        __props__["paymentType"] = payment_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["serviceId"] = service_id
+        __props__["serviceInstanceName"] = service_instance_name
+        __props__["serviceVersion"] = service_version
+        __props__["specificationName"] = specification_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["templateName"] = template_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:compute/nestServiceInstance:NestServiceInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def commodity(self) -> pulumi.Output[Optional['outputs.NestServiceInstanceCommodity']]:

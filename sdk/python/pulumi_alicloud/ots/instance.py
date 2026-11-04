@@ -576,6 +576,28 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessed_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_source_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            network_type_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessedBy"] = accessed_by
+        __props__["description"] = description
+        __props__["instanceType"] = instance_type
+        __props__["name"] = name
+        __props__["networkSourceAcls"] = network_source_acls
+        __props__["networkTypeAcls"] = network_type_acls
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ots/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessedBy")
     def accessed_by(self) -> pulumi.Output[_builtins.str]:

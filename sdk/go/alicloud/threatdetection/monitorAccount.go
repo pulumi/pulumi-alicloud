@@ -118,6 +118,12 @@ func (MonitorAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorAccountState)(nil)).Elem()
 }
 
+// MonitorAccountExists checks whether an existing MonitorAccount resource with the given ID exists.
+func MonitorAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/monitorAccount:MonitorAccount", id, state, "", opts...)
+}
+
 type monitorAccountArgs struct {
 	// The list of member account IDs in the resource directory. You can call [ListAccountsInResourceDirectory](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListAccountsInResourceDirectory) to obtain the member account IDs. Multiple member account IDs must be separated by commas (,). The monitor account list is fully replaced by the incoming list. If this parameter is not specified, the existing monitor account list is cleared.
 	AccountIds *string `pulumi:"accountIds"`

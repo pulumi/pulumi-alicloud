@@ -178,6 +178,12 @@ func (GatewayRouteTableAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayRouteTableAttachmentState)(nil)).Elem()
 }
 
+// GatewayRouteTableAttachmentExists checks whether an existing GatewayRouteTableAttachment resource with the given ID exists.
+func GatewayRouteTableAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayRouteTableAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment", id, state, "", opts...)
+}
+
 type gatewayRouteTableAttachmentArgs struct {
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun *bool `pulumi:"dryRun"`

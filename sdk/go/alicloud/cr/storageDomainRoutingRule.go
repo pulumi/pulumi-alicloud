@@ -161,6 +161,12 @@ func (StorageDomainRoutingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageDomainRoutingRuleState)(nil)).Elem()
 }
 
+// StorageDomainRoutingRuleExists checks whether an existing StorageDomainRoutingRule resource with the given ID exists.
+func StorageDomainRoutingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageDomainRoutingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule", id, state, "", opts...)
+}
+
 type storageDomainRoutingRuleArgs struct {
 	// The ID of the Container Registry Instance.
 	InstanceId string `pulumi:"instanceId"`

@@ -492,6 +492,24 @@ class MachineGroup(pulumi.CustomResource):
         __props__.__dict__["project_name"] = project_name
         return MachineGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict', 'outputs.MachineGroupGroupAttribute']]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupAttribute"] = group_attribute
+        __props__["groupName"] = group_name
+        __props__["groupType"] = group_type
+        __props__["machineIdentifyType"] = machine_identify_type
+        __props__["machineLists"] = machine_lists
+        __props__["projectName"] = project_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/machineGroup:MachineGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupAttribute")
     def group_attribute(self) -> pulumi.Output[Optional['outputs.MachineGroupGroupAttribute']]:

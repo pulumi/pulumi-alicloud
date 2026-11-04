@@ -717,6 +717,42 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DbInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict', 'outputs.DbInstanceDbInstanceIpArray']]]]] = None,
+            db_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            db_version: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionString"] = connection_string
+        __props__["dbInstanceCategory"] = db_instance_category
+        __props__["dbInstanceDescription"] = db_instance_description
+        __props__["dbInstanceIpArrays"] = db_instance_ip_arrays
+        __props__["dbInstanceNetworkType"] = db_instance_network_type
+        __props__["dbInstanceStorageType"] = db_instance_storage_type
+        __props__["dbNodeClass"] = db_node_class
+        __props__["dbNodeStorage"] = db_node_storage
+        __props__["dbVersion"] = db_version
+        __props__["paymentType"] = payment_type
+        __props__["port"] = port
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:graphdatabase/dbInstance:DbInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[_builtins.str]:

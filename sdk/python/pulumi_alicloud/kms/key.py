@@ -1117,6 +1117,62 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Key(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_date: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection_description: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            key_state: pulumi.Input[Optional[_builtins.str]] = None,
+            key_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            last_rotation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            material_expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            next_rotation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            pending_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+            rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arn"] = arn
+        __props__["automaticRotation"] = automatic_rotation
+        __props__["creationDate"] = creation_date
+        __props__["creator"] = creator
+        __props__["deleteDate"] = delete_date
+        __props__["deletionProtection"] = deletion_protection
+        __props__["deletionProtectionDescription"] = deletion_protection_description
+        __props__["deletionWindowInDays"] = deletion_window_in_days
+        __props__["description"] = description
+        __props__["dkmsInstanceId"] = dkms_instance_id
+        __props__["isEnabled"] = is_enabled
+        __props__["keySpec"] = key_spec
+        __props__["keyState"] = key_state
+        __props__["keyUsage"] = key_usage
+        __props__["lastRotationDate"] = last_rotation_date
+        __props__["materialExpireTime"] = material_expire_time
+        __props__["nextRotationDate"] = next_rotation_date
+        __props__["origin"] = origin
+        __props__["pendingWindowInDays"] = pending_window_in_days
+        __props__["policy"] = policy
+        __props__["primaryKeyVersion"] = primary_key_version
+        __props__["protectionLevel"] = protection_level
+        __props__["rotationInterval"] = rotation_interval
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/key:Key', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arn(self) -> pulumi.Output[_builtins.str]:

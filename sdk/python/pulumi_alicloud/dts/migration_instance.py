@@ -607,6 +607,36 @@ class MigrationInstance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return MigrationInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            database_count: pulumi.Input[Optional[_builtins.int]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computeUnit"] = compute_unit
+        __props__["databaseCount"] = database_count
+        __props__["destinationEndpointEngineName"] = destination_endpoint_engine_name
+        __props__["destinationEndpointRegion"] = destination_endpoint_region
+        __props__["dtsInstanceId"] = dts_instance_id
+        __props__["instanceClass"] = instance_class
+        __props__["paymentType"] = payment_type
+        __props__["sourceEndpointEngineName"] = source_endpoint_engine_name
+        __props__["sourceEndpointRegion"] = source_endpoint_region
+        __props__["status"] = status
+        __props__["syncArchitecture"] = sync_architecture
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:dts/migrationInstance:MigrationInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computeUnit")
     def compute_unit(self) -> pulumi.Output[Optional[_builtins.int]]:

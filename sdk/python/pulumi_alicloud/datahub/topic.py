@@ -562,6 +562,30 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["shard_count"] = shard_count
         return Topic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            life_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_schema: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            record_type: pulumi.Input[Optional[_builtins.str]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["createTime"] = create_time
+        __props__["lastModifyTime"] = last_modify_time
+        __props__["lifeCycle"] = life_cycle
+        __props__["name"] = name
+        __props__["projectName"] = project_name
+        __props__["recordSchema"] = record_schema
+        __props__["recordType"] = record_type
+        __props__["shardCount"] = shard_count
+        return pulumi.runtime.exists_resource(None, 'alicloud:datahub/topic:Topic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

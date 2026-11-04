@@ -517,6 +517,42 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Subnet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_block_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_name: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availabilityZone"] = availability_zone
+        __props__["cidrBlock"] = cidr_block
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["enableIpv6"] = enable_ipv6
+        __props__["ipv6CidrBlock"] = ipv6_cidr_block
+        __props__["ipv6CidrBlockMask"] = ipv6_cidr_block_mask
+        __props__["isDefault"] = is_default
+        __props__["name"] = name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vpcIpv6CidrBlock"] = vpc_ipv6_cidr_block
+        __props__["vswitchName"] = vswitch_name
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/subnet:Subnet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")

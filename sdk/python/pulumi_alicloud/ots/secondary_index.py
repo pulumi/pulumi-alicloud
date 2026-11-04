@@ -563,6 +563,26 @@ class SecondaryIndex(pulumi.CustomResource):
         __props__.__dict__["table_name"] = table_name
         return SecondaryIndex(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            include_base_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_name: pulumi.Input[Optional[_builtins.str]] = None,
+            index_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["definedColumns"] = defined_columns
+        __props__["includeBaseData"] = include_base_data
+        __props__["indexName"] = index_name
+        __props__["indexType"] = index_type
+        __props__["instanceName"] = instance_name
+        __props__["primaryKeys"] = primary_keys
+        __props__["tableName"] = table_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ots/secondaryIndex:SecondaryIndex', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -46,24 +46,24 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = KmsFunctions.getKeys(GetKeysArgs.builder()
- *             .filters("[{\"Key\":\"KeyState\",\"Values\":[\"Enabled\"]}]")
+ *             .filters("[}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "KeyState}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Enabled}&#92;{@code "]}}{@code ]")
  *             .build());
  * 
  *         var defaultDiskDefaultKmsKey = new DiskDefaultKmsKey("defaultDiskDefaultKmsKey", DiskDefaultKmsKeyArgs.builder()
  *             .kmsKeyId(default_.ids()[0])
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

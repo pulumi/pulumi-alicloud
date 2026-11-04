@@ -111,6 +111,12 @@ func (HpcClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hpcClusterState)(nil)).Elem()
 }
 
+// HpcClusterExists checks whether an existing HpcCluster resource with the given ID exists.
+func HpcClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HpcClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/hpcCluster:HpcCluster", id, state, "", opts...)
+}
+
 type hpcClusterArgs struct {
 	// The description of ECS Hpc Cluster.
 	Description *string `pulumi:"description"`

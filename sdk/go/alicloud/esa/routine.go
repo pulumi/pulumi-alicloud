@@ -150,6 +150,12 @@ func (RoutineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineState)(nil)).Elem()
 }
 
+// RoutineExists checks whether an existing Routine resource with the given ID exists.
+func RoutineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/routine:Routine", id, state, "", opts...)
+}
+
 type routineArgs struct {
 	// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
 	Code *string `pulumi:"code"`

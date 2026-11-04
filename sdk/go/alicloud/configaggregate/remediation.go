@@ -281,6 +281,12 @@ func (RemediationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*remediationState)(nil)).Elem()
 }
 
+// RemediationExists checks whether an existing Remediation resource with the given ID exists.
+func RemediationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RemediationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:configaggregate/remediation:Remediation", id, state, "", opts...)
+}
+
 type remediationArgs struct {
 	// The account Group ID.
 	// For more information about how to obtain the account group ID, see ListAggregators.

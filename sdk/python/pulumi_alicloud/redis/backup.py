@@ -371,6 +371,20 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Backup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_id: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupId"] = backup_id
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["instanceId"] = instance_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:redis/backup:Backup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[_builtins.int]:

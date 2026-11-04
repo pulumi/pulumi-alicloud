@@ -636,6 +636,36 @@ class SupabaseProject(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return SupabaseProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountPassword"] = account_password
+        __props__["createTime"] = create_time
+        __props__["diskPerformanceLevel"] = disk_performance_level
+        __props__["projectName"] = project_name
+        __props__["projectSpec"] = project_spec
+        __props__["regionId"] = region_id
+        __props__["securityIpLists"] = security_ip_lists
+        __props__["status"] = status
+        __props__["storageSize"] = storage_size
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/supabaseProject:SupabaseProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[_builtins.str]:

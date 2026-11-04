@@ -241,6 +241,12 @@ func (SupabaseProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*supabaseProjectState)(nil)).Elem()
 }
 
+// SupabaseProjectExists checks whether an existing SupabaseProject resource with the given ID exists.
+func SupabaseProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SupabaseProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/supabaseProject:SupabaseProject", id, state, "", opts...)
+}
+
 type supabaseProjectArgs struct {
 	// The password for the initial account.
 	// - Consists of three or more of uppercase letters, lowercase letters, numbers, and special characters.

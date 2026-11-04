@@ -88,6 +88,12 @@ func (BackendServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendServerState)(nil)).Elem()
 }
 
+// BackendServerExists checks whether an existing BackendServer resource with the given ID exists.
+func BackendServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackendServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/backendServer:BackendServer", id, state, "", opts...)
+}
+
 type backendServerArgs struct {
 	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
 	BackendServers []BackendServerBackendServer `pulumi:"backendServers"`

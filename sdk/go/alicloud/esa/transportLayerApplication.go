@@ -192,6 +192,12 @@ func (TransportLayerApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transportLayerApplicationState)(nil)).Elem()
 }
 
+// TransportLayerApplicationExists checks whether an existing TransportLayerApplication resource with the given ID exists.
+func TransportLayerApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransportLayerApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/transportLayerApplication:TransportLayerApplication", id, state, "", opts...)
+}
+
 type transportLayerApplicationArgs struct {
 	// Whether to enable China mainland network access optimization, default is disabled. Value range:
 	CrossBorderOptimization *string `pulumi:"crossBorderOptimization"`

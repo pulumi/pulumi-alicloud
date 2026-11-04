@@ -257,6 +257,12 @@ func (AccessLogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLogState)(nil)).Elem()
 }
 
+// AccessLogExists checks whether an existing AccessLog resource with the given ID exists.
+func AccessLogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessLogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/accessLog:AccessLog", id, state, "", opts...)
+}
+
 type accessLogArgs struct {
 	// The ID of the global acceleration instance.
 	AcceleratorId string `pulumi:"acceleratorId"`

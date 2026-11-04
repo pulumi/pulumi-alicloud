@@ -262,6 +262,16 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         __props__.__dict__["bucket"] = bucket
         return BucketPublicAccessBlock(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["blockPublicAccess"] = block_public_access
+        __props__["bucket"] = bucket
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="blockPublicAccess")
     def block_public_access(self) -> pulumi.Output[_builtins.bool]:

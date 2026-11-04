@@ -451,6 +451,26 @@ class FcTrigger(pulumi.CustomResource):
         __props__.__dict__["trigger_arn"] = trigger_arn
         return FcTrigger(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            event_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_meta_version: pulumi.Input[Optional[_builtins.str]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_arn: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["eventMetaName"] = event_meta_name
+        __props__["eventMetaVersion"] = event_meta_version
+        __props__["functionArn"] = function_arn
+        __props__["notes"] = notes
+        __props__["roleArn"] = role_arn
+        __props__["sourceArn"] = source_arn
+        __props__["triggerArn"] = trigger_arn
+        return pulumi.runtime.exists_resource(None, 'alicloud:cdn/fcTrigger:FcTrigger', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="eventMetaName")
     def event_meta_name(self) -> pulumi.Output[_builtins.str]:

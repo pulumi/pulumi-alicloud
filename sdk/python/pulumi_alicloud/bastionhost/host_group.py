@@ -339,6 +339,20 @@ class HostGroup(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         return HostGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["hostGroupId"] = host_group_id
+        __props__["hostGroupName"] = host_group_name
+        __props__["instanceId"] = instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/hostGroup:HostGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

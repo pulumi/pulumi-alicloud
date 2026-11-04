@@ -989,6 +989,54 @@ class ElasticInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ElasticInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+            seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionString"] = connection_string
+        __props__["dbInstanceCategory"] = db_instance_category
+        __props__["dbInstanceDescription"] = db_instance_description
+        __props__["encryptionKey"] = encryption_key
+        __props__["encryptionType"] = encryption_type
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["instanceNetworkType"] = instance_network_type
+        __props__["instanceSpec"] = instance_spec
+        __props__["paymentDuration"] = payment_duration
+        __props__["paymentDurationUnit"] = payment_duration_unit
+        __props__["paymentType"] = payment_type
+        __props__["port"] = port
+        __props__["securityIpLists"] = security_ip_lists
+        __props__["segNodeNum"] = seg_node_num
+        __props__["segStorageType"] = seg_storage_type
+        __props__["status"] = status
+        __props__["storageSize"] = storage_size
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/elasticInstance:ElasticInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[_builtins.str]:

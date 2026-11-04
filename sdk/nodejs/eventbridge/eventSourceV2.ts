@@ -75,6 +75,17 @@ export class EventSourceV2 extends pulumi.CustomResource {
         return new EventSourceV2(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing EventSourceV2 resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: EventSourceV2State, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:eventbridge/eventSourceV2:EventSourceV2", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:eventbridge/eventSourceV2:EventSourceV2';
 

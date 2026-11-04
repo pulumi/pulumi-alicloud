@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetScalingConfigurations
     {
         /// <summary>
-        /// This data source provides available scaling configuration resources. 
+        /// This data source provides available scaling configuration resources.
         /// 
         /// &gt; **NOTE:** Available since v1.240.0
         /// 
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? new GetScalingConfigurationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available scaling configuration resources. 
+        /// This data source provides available scaling configuration resources.
         /// 
         /// &gt; **NOTE:** Available since v1.240.0
         /// 
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.Invoke<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? new GetScalingConfigurationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available scaling configuration resources. 
+        /// This data source provides available scaling configuration resources.
         /// 
         /// &gt; **NOTE:** Available since v1.240.0
         /// 

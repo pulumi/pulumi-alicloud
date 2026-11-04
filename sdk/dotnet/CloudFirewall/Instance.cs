@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        /// **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
+        ///   **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        /// **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
+        ///   **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        /// **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
+        ///   **NOTE:** `RenewalStatus` takes effect only if `PaymentType` is set to `Subscription`.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }

@@ -454,6 +454,26 @@ class App(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return App(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            encoded_icon: pulumi.Input[Optional[_builtins.str]] = None,
+            industry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_name: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appName"] = app_name
+        __props__["bundleId"] = bundle_id
+        __props__["encodedIcon"] = encoded_icon
+        __props__["industryId"] = industry_id
+        __props__["packageName"] = package_name
+        __props__["productId"] = product_id
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:mhub/app:App', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appName")
     def app_name(self) -> pulumi.Output[_builtins.str]:

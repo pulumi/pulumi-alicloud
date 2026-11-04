@@ -403,6 +403,22 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         __props__.__dict__["order_type"] = order_type
         return TransitRouterGrantAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["cenOwnerId"] = cen_owner_id
+        __props__["instanceId"] = instance_id
+        __props__["instanceType"] = instance_type
+        __props__["orderType"] = order_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

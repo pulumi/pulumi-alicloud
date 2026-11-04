@@ -174,6 +174,12 @@ func (ClientCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientCertificateState)(nil)).Elem()
 }
 
+// ClientCertificateExists checks whether an existing ClientCertificate resource with the given ID exists.
+func ClientCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/clientCertificate:ClientCertificate", id, state, "", opts...)
+}
+
 type clientCertificateArgs struct {
 	// Certificate signing request content.
 	//

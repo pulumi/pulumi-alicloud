@@ -124,11 +124,10 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;ca_certificate_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;ca_certificate_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

@@ -544,6 +544,30 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dev_environment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dev_role_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pai_task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["devEnvironmentEnabled"] = dev_environment_enabled
+        __props__["devRoleDisabled"] = dev_role_disabled
+        __props__["displayName"] = display_name
+        __props__["paiTaskEnabled"] = pai_task_enabled
+        __props__["projectName"] = project_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/project:Project', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

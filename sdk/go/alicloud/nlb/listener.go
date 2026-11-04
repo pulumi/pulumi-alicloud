@@ -433,6 +433,12 @@ func (ListenerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerState)(nil)).Elem()
 }
 
+// ListenerExists checks whether an existing Listener resource with the given ID exists.
+func ListenerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListenerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/listener:Listener", id, state, "", opts...)
+}
+
 type listenerArgs struct {
 	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	AlpnEnabled *bool `pulumi:"alpnEnabled"`

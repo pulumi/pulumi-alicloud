@@ -292,6 +292,12 @@ func (AlidnsCloudGtmAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsCloudGtmAddressState)(nil)).Elem()
 }
 
+// AlidnsCloudGtmAddressExists checks whether an existing AlidnsCloudGtmAddress resource with the given ID exists.
+func AlidnsCloudGtmAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlidnsCloudGtmAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alidnscloudgtmaddress/alidnsCloudGtmAddress:AlidnsCloudGtmAddress", id, state, "", opts...)
+}
+
 type alidnsCloudGtmAddressArgs struct {
 	// The address value. Must match `type`: an IPv4 address, an IPv6 address, or a domain name.
 	Address string `pulumi:"address"`

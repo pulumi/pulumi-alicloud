@@ -36,11 +36,10 @@ public final class GetInstancesResult {
      */
     private List<GetInstancesInstance> instances;
     /**
-     * @deprecated
-     * Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
+     * @deprecated Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead. */
+    @Deprecated
     private @Nullable String nameRegex;
     private @Nullable String outputFile;
 
@@ -77,11 +76,10 @@ public final class GetInstancesResult {
         return this.instances;
     }
     /**
-     * @deprecated
-     * Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
+     * @deprecated Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead. */
+    @Deprecated
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }

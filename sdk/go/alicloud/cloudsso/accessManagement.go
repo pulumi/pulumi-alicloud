@@ -248,6 +248,12 @@ func (AccessManagementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessManagementState)(nil)).Elem()
 }
 
+// AccessManagementExists checks whether an existing AccessManagement resource with the given ID exists.
+func AccessManagementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessManagementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/accessManagement:AccessManagement", id, state, "", opts...)
+}
+
 type accessManagementArgs struct {
 	// The ID of the access configuration.
 	AccessConfigurationId string `pulumi:"accessConfigurationId"`

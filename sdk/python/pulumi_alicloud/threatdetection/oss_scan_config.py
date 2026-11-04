@@ -767,6 +767,38 @@ class OssScanConfig(pulumi.CustomResource):
         __props__.__dict__["start_time"] = start_time
         return OssScanConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_key_prefix: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            decompress_max_file_count: pulumi.Input[Optional[_builtins.int]] = None,
+            decompress_max_layer: pulumi.Input[Optional[_builtins.int]] = None,
+            decryption_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enable: pulumi.Input[Optional[_builtins.int]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            key_prefix_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            key_suffix_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modified_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            oss_scan_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_day_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allKeyPrefix"] = all_key_prefix
+        __props__["bucketNameLists"] = bucket_name_lists
+        __props__["decompressMaxFileCount"] = decompress_max_file_count
+        __props__["decompressMaxLayer"] = decompress_max_layer
+        __props__["decryptionLists"] = decryption_lists
+        __props__["enable"] = enable
+        __props__["endTime"] = end_time
+        __props__["keyPrefixLists"] = key_prefix_lists
+        __props__["keySuffixLists"] = key_suffix_lists
+        __props__["lastModifiedStartTime"] = last_modified_start_time
+        __props__["ossScanConfigName"] = oss_scan_config_name
+        __props__["scanDayLists"] = scan_day_lists
+        __props__["startTime"] = start_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/ossScanConfig:OssScanConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> pulumi.Output[_builtins.bool]:

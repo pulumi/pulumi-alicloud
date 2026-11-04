@@ -245,6 +245,12 @@ func (VbrPconnAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vbrPconnAssociationState)(nil)).Elem()
 }
 
+// VbrPconnAssociationExists checks whether an existing VbrPconnAssociation resource with the given ID exists.
+func VbrPconnAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VbrPconnAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation", id, state, "", opts...)
+}
+
 type vbrPconnAssociationArgs struct {
 	// Whether IPv6 is enabled. Value:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`

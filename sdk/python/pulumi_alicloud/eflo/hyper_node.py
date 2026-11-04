@@ -1036,6 +1036,56 @@ class HyperNode(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return HyperNode(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict', 'outputs.HyperNodeDataDisk']]]]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["createTime"] = create_time
+        __props__["dataDisks"] = data_disks
+        __props__["hostname"] = hostname
+        __props__["hpnZone"] = hpn_zone
+        __props__["loginPassword"] = login_password
+        __props__["machineType"] = machine_type
+        __props__["nodeGroupId"] = node_group_id
+        __props__["paymentDuration"] = payment_duration
+        __props__["paymentType"] = payment_type
+        __props__["regionId"] = region_id
+        __props__["renewalDuration"] = renewal_duration
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["serverArch"] = server_arch
+        __props__["stageNum"] = stage_num
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["userData"] = user_data
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/hyperNode:HyperNode', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -836,6 +836,46 @@ class VvpInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return VvpInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_spec: pulumi.Input[Optional[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict', 'outputs.VvpInstanceResourceSpec']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage: pulumi.Input[Optional[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict', 'outputs.VvpInstanceStorage']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vvp_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenewDuration"] = auto_renew_duration
+        __props__["createTime"] = create_time
+        __props__["duration"] = duration
+        __props__["paymentType"] = payment_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["renewStatus"] = renew_status
+        __props__["renewalDurationUnit"] = renewal_duration_unit
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resourceId"] = resource_id
+        __props__["resourceSpec"] = resource_spec
+        __props__["status"] = status
+        __props__["storage"] = storage
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchIds"] = vswitch_ids
+        __props__["vvpInstanceName"] = vvp_instance_name
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:realtimecompute/vvpInstance:VvpInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> pulumi.Output[Optional[_builtins.int]]:

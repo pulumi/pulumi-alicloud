@@ -136,6 +136,12 @@ func (MscSubWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mscSubWebhookState)(nil)).Elem()
 }
 
+// MscSubWebhookExists checks whether an existing MscSubWebhook resource with the given ID exists.
+func MscSubWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MscSubWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:index/mscSubWebhook:MscSubWebhook", id, state, "", opts...)
+}
+
 type mscSubWebhookArgs struct {
 	// The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
 	ServerUrl string `pulumi:"serverUrl"`

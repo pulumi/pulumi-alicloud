@@ -151,6 +151,12 @@ func (HoneypotNodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*honeypotNodeState)(nil)).Elem()
 }
 
+// HoneypotNodeExists checks whether an existing HoneypotNode resource with the given ID exists.
+func HoneypotNodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HoneypotNodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/honeypotNode:HoneypotNode", id, state, "", opts...)
+}
+
 type honeypotNodeArgs struct {
 	// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
 	AllowHoneypotAccessInternet *bool `pulumi:"allowHoneypotAccessInternet"`

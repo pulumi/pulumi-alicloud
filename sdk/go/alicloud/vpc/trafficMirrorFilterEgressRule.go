@@ -215,6 +215,12 @@ func (TrafficMirrorFilterEgressRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficMirrorFilterEgressRuleState)(nil)).Elem()
 }
 
+// TrafficMirrorFilterEgressRuleExists checks whether an existing TrafficMirrorFilterEgressRule resource with the given ID exists.
+func TrafficMirrorFilterEgressRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficMirrorFilterEgressRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule", id, state, "", opts...)
+}
+
 type trafficMirrorFilterEgressRuleArgs struct {
 	// The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
 	Action *string `pulumi:"action"`

@@ -273,6 +273,12 @@ func (DedicatedHostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedHostState)(nil)).Elem()
 }
 
+// DedicatedHostExists checks whether an existing DedicatedHost resource with the given ID exists.
+func DedicatedHostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedHostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/dedicatedHost:DedicatedHost", id, state, "", opts...)
+}
+
 type dedicatedHostArgs struct {
 	// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
 	ActionOnMaintenance *string `pulumi:"actionOnMaintenance"`

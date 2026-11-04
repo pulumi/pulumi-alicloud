@@ -287,6 +287,12 @@ func (PrometheusMonitoringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prometheusMonitoringState)(nil)).Elem()
 }
 
+// PrometheusMonitoringExists checks whether an existing PrometheusMonitoring resource with the given ID exists.
+func PrometheusMonitoringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrometheusMonitoringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/prometheusMonitoring:PrometheusMonitoring", id, state, "", opts...)
+}
+
 type prometheusMonitoringArgs struct {
 	// The ID of the prometheus instance.
 	ClusterId string `pulumi:"clusterId"`

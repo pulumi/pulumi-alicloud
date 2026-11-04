@@ -430,6 +430,12 @@ func (GatewayFileShareState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayFileShareState)(nil)).Elem()
 }
 
+// GatewayFileShareExists checks whether an existing GatewayFileShare resource with the given ID exists.
+func GatewayFileShareExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayFileShareState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare", id, state, "", opts...)
+}
+
 type gatewayFileShareArgs struct {
 	// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
 	AccessBasedEnumeration *bool `pulumi:"accessBasedEnumeration"`

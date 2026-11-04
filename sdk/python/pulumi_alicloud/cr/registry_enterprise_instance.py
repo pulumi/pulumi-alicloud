@@ -1186,6 +1186,58 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["vpc_quota"] = vpc_quota
         return RegistryEnterpriseInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict', 'outputs.RegistryEnterpriseInstanceInstanceEndpoint']]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            namespace_quota: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_quota: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["createdTime"] = created_time
+        __props__["customOssBucket"] = custom_oss_bucket
+        __props__["defaultOssBucket"] = default_oss_bucket
+        __props__["endTime"] = end_time
+        __props__["imageScanner"] = image_scanner
+        __props__["instanceEndpoints"] = instance_endpoints
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["kmsEncryptedPassword"] = kms_encrypted_password
+        __props__["kmsEncryptionContext"] = kms_encryption_context
+        __props__["namespaceQuota"] = namespace_quota
+        __props__["password"] = password
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["regionId"] = region_id
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalStatus"] = renewal_status
+        __props__["repoQuota"] = repo_quota
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcQuota"] = vpc_quota
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -266,6 +266,12 @@ func (DbClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbClusterState)(nil)).Elem()
 }
 
+// DbClusterExists checks whether an existing DbCluster resource with the given ID exists.
+func DbClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:selectdb/dbCluster:DbCluster", id, state, "", opts...)
+}
+
 type dbClusterArgs struct {
 	// The desired cache size on creating cluster. The number should be divided by 100.
 	CacheSize int `pulumi:"cacheSize"`

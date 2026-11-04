@@ -271,6 +271,12 @@ func (KubernetesAutoscalerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesAutoscalerState)(nil)).Elem()
 }
 
+// KubernetesAutoscalerExists checks whether an existing KubernetesAutoscaler resource with the given ID exists.
+func KubernetesAutoscalerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesAutoscalerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler", id, state, "", opts...)
+}
+
 type kubernetesAutoscalerArgs struct {
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`

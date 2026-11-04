@@ -33,11 +33,10 @@ public final class GetMountTargetsResult {
     /**
      * @return MountTargetDomain of the MountTarget.
      * 
-     * @deprecated
-     * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
+     * @deprecated Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
+    @Deprecated
     private @Nullable String mountTargetDomain;
     /**
      * @return (Available 1.95.0+) NetworkType of The MountTarget.
@@ -58,11 +57,10 @@ public final class GetMountTargetsResult {
     /**
      * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
+    @Deprecated
     private @Nullable String type;
     /**
      * @return VpcId of The MountTarget.
@@ -103,11 +101,10 @@ public final class GetMountTargetsResult {
     /**
      * @return MountTargetDomain of the MountTarget.
      * 
-     * @deprecated
-     * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
+     * @deprecated Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
+    @Deprecated
     public Optional<String> mountTargetDomain() {
         return Optional.ofNullable(this.mountTargetDomain);
     }
@@ -138,11 +135,10 @@ public final class GetMountTargetsResult {
     /**
      * @return Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
+    @Deprecated
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

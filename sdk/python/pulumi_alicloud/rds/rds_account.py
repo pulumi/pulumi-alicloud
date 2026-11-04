@@ -1089,6 +1089,46 @@ class RdsAccount(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return RdsAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            reset_permission_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountDescription"] = account_description
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["accountPasswordWo"] = account_password_wo
+        __props__["accountPasswordWoVersion"] = account_password_wo_version
+        __props__["accountType"] = account_type
+        __props__["checkPolicy"] = check_policy
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["kmsEncryptedPassword"] = kms_encrypted_password
+        __props__["kmsEncryptionContext"] = kms_encryption_context
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["resetPermissionFlag"] = reset_permission_flag
+        __props__["status"] = status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/rdsAccount:RdsAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[_builtins.str]:

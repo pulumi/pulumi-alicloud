@@ -360,6 +360,12 @@ func (TransitRouterVpcAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterVpcAttachmentState)(nil)).Elem()
 }
 
+// TransitRouterVpcAttachmentExists checks whether an existing TransitRouterVpcAttachment resource with the given ID exists.
+func TransitRouterVpcAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterVpcAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment", id, state, "", opts...)
+}
+
 type transitRouterVpcAttachmentArgs struct {
 	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
 	//

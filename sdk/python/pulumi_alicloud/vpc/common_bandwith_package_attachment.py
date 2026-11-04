@@ -451,6 +451,24 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return CommonBandwithPackageAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_package_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cancel_common_bandwidth_package_ip_bandwidth: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidthPackageBandwidth"] = bandwidth_package_bandwidth
+        __props__["bandwidthPackageId"] = bandwidth_package_id
+        __props__["cancelCommonBandwidthPackageIpBandwidth"] = cancel_common_bandwidth_package_ip_bandwidth
+        __props__["instanceId"] = instance_id
+        __props__["ipType"] = ip_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageBandwidth")
     def bandwidth_package_bandwidth(self) -> pulumi.Output[_builtins.str]:

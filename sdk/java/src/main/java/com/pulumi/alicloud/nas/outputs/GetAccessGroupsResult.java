@@ -56,11 +56,10 @@ public final class GetAccessGroupsResult {
     /**
      * @return (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `accessGroupType` after version 1.95.0.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it. */
+    @Deprecated
     private @Nullable String type;
     private @Nullable Boolean useutcDateTime;
 
@@ -126,11 +125,10 @@ public final class GetAccessGroupsResult {
     /**
      * @return (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `accessGroupType` after version 1.95.0.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it. */
+    @Deprecated
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

@@ -567,6 +567,34 @@ class LayerVersion(pulumi.CustomResource):
         __props__.__dict__["zip_file"] = zip_file
         return LayerVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            code_check_sum: pulumi.Input[Optional[_builtins.str]] = None,
+            compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            zip_file: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["arn"] = arn
+        __props__["codeCheckSum"] = code_check_sum
+        __props__["compatibleRuntimes"] = compatible_runtimes
+        __props__["description"] = description
+        __props__["layerName"] = layer_name
+        __props__["ossBucketName"] = oss_bucket_name
+        __props__["ossObjectName"] = oss_object_name
+        __props__["skipDestroy"] = skip_destroy
+        __props__["version"] = version
+        __props__["zipFile"] = zip_file
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/layerVersion:LayerVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[_builtins.str]:

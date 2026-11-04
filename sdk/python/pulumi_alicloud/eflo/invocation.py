@@ -991,6 +991,42 @@ class Invocation(pulumi.CustomResource):
         __props__.__dict__["working_dir"] = working_dir
         return Invocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            command_content: pulumi.Input[Optional[_builtins.str]] = None,
+            command_id: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            launcher: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            termination_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            working_dir: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commandContent"] = command_content
+        __props__["commandId"] = command_id
+        __props__["contentEncoding"] = content_encoding
+        __props__["description"] = description
+        __props__["enableParameter"] = enable_parameter
+        __props__["frequency"] = frequency
+        __props__["launcher"] = launcher
+        __props__["name"] = name
+        __props__["nodeIdLists"] = node_id_lists
+        __props__["parameters"] = parameters
+        __props__["repeatMode"] = repeat_mode
+        __props__["terminationMode"] = termination_mode
+        __props__["timeout"] = timeout
+        __props__["username"] = username
+        __props__["workingDir"] = working_dir
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/invocation:Invocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="commandContent")
     def command_content(self) -> pulumi.Output[Optional[_builtins.str]]:

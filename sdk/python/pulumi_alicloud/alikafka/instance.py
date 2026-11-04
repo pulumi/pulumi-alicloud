@@ -1774,6 +1774,100 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict', 'outputs.InstanceConfluentConfig']]] = None,
+            default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+            deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_max: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_auto_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auto_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            end_point: pulumi.Input[Optional[_builtins.str]] = None,
+            group_left: pulumi.Input[Optional[_builtins.int]] = None,
+            group_used: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            io_max: pulumi.Input[Optional[_builtins.int]] = None,
+            io_max_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            is_partition_buy: pulumi.Input[Optional[_builtins.int]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            paid_type: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_left: pulumi.Input[Optional[_builtins.int]] = None,
+            partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+            partition_used: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group: pulumi.Input[Optional[_builtins.str]] = None,
+            selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict', 'outputs.InstanceServerlessConfig']]] = None,
+            service_version: pulumi.Input[Optional[_builtins.str]] = None,
+            spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic_left: pulumi.Input[Optional[_builtins.int]] = None,
+            topic_num_of_buy: pulumi.Input[Optional[_builtins.int]] = None,
+            topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
+            topic_used: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["confluentConfig"] = confluent_config
+        __props__["defaultTopicPartitionNum"] = default_topic_partition_num
+        __props__["deployType"] = deploy_type
+        __props__["diskSize"] = disk_size
+        __props__["diskType"] = disk_type
+        __props__["domainEndpoint"] = domain_endpoint
+        __props__["eipMax"] = eip_max
+        __props__["enableAutoGroup"] = enable_auto_group
+        __props__["enableAutoTopic"] = enable_auto_topic
+        __props__["endPoint"] = end_point
+        __props__["groupLeft"] = group_left
+        __props__["groupUsed"] = group_used
+        __props__["instanceType"] = instance_type
+        __props__["ioMax"] = io_max
+        __props__["ioMaxSpec"] = io_max_spec
+        __props__["isPartitionBuy"] = is_partition_buy
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["name"] = name
+        __props__["paidType"] = paid_type
+        __props__["partitionLeft"] = partition_left
+        __props__["partitionNum"] = partition_num
+        __props__["partitionUsed"] = partition_used
+        __props__["password"] = password
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["saslDomainEndpoint"] = sasl_domain_endpoint
+        __props__["securityGroup"] = security_group
+        __props__["selectedZones"] = selected_zones
+        __props__["serverlessConfig"] = serverless_config
+        __props__["serviceVersion"] = service_version
+        __props__["specType"] = spec_type
+        __props__["sslDomainEndpoint"] = ssl_domain_endpoint
+        __props__["sslEndpoint"] = ssl_endpoint
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["topicLeft"] = topic_left
+        __props__["topicNumOfBuy"] = topic_num_of_buy
+        __props__["topicQuota"] = topic_quota
+        __props__["topicUsed"] = topic_used
+        __props__["vpcId"] = vpc_id
+        __props__["vpcSaslDomainEndpoint"] = vpc_sasl_domain_endpoint
+        __props__["vswitchId"] = vswitch_id
+        __props__["vswitchIds"] = vswitch_ids
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:alikafka/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[_builtins.str]:

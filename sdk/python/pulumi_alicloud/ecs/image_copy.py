@@ -632,6 +632,32 @@ class ImageCopy(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ImageCopy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteAutoSnapshot"] = delete_auto_snapshot
+        __props__["description"] = description
+        __props__["encrypted"] = encrypted
+        __props__["force"] = force
+        __props__["imageName"] = image_name
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["name"] = name
+        __props__["sourceImageId"] = source_image_id
+        __props__["sourceRegionId"] = source_region_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/imageCopy:ImageCopy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> pulumi.Output[Optional[_builtins.bool]]:

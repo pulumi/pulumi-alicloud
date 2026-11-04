@@ -959,6 +959,50 @@ class ServerlessInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ServerlessInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            capacity_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_price_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict', 'outputs.ServerlessInstanceSecurityIpGroup']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountPassword"] = account_password
+        __props__["autoRenew"] = auto_renew
+        __props__["capacityUnit"] = capacity_unit
+        __props__["dbInstanceDescription"] = db_instance_description
+        __props__["dbInstanceStorage"] = db_instance_storage
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["maintainEndTime"] = maintain_end_time
+        __props__["maintainStartTime"] = maintain_start_time
+        __props__["period"] = period
+        __props__["periodPriceType"] = period_price_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityIpGroups"] = security_ip_groups
+        __props__["status"] = status
+        __props__["storageEngine"] = storage_engine
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/serverlessInstance:ServerlessInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[_builtins.str]:

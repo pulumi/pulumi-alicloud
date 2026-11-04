@@ -248,6 +248,12 @@ func (EcsBackupClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsBackupClientState)(nil)).Elem()
 }
 
+// EcsBackupClientExists checks whether an existing EcsBackupClient resource with the given ID exists.
+func EcsBackupClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsBackupClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/ecsBackupClient:EcsBackupClient", id, state, "", opts...)
+}
+
 type ecsBackupClientArgs struct {
 	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
 	DataNetworkType *string `pulumi:"dataNetworkType"`

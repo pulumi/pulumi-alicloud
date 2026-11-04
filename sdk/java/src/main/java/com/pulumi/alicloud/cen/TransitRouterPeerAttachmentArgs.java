@@ -196,22 +196,20 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
     /**
      * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
-     * @deprecated
-     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
      * @return Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
-     * @deprecated
-     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
@@ -219,22 +217,20 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
     /**
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
-     * @deprecated
-     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
      * @return Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
-     * @deprecated
-     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -274,22 +270,20 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
     /**
      * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
+    @Deprecated
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
      * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
+    @Deprecated
     public Optional<Output<String>> transitRouterAttachmentName() {
         return Optional.ofNullable(this.transitRouterAttachmentName);
     }
@@ -605,11 +599,10 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+         * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
          * 
          */
-        @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0. */
+        @Deprecated
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
@@ -620,11 +613,10 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+         * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
          * 
          */
-        @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0. */
+        @Deprecated
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
@@ -634,11 +626,10 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+         * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
          * 
          */
-        @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0. */
+        @Deprecated
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
@@ -649,11 +640,10 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+         * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
          * 
          */
-        @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0. */
+        @Deprecated
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }
@@ -707,11 +697,10 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+         * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
+        @Deprecated
         public Builder transitRouterAttachmentName(@Nullable Output<String> transitRouterAttachmentName) {
             $.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
@@ -722,11 +711,10 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+         * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
+        @Deprecated
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             return transitRouterAttachmentName(Output.of(transitRouterAttachmentName));
         }

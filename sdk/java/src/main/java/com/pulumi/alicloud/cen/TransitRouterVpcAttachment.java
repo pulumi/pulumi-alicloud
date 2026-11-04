@@ -297,11 +297,10 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     /**
      * Whether to enabled route table association. **NOTE:** &#34;Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
-     * @deprecated
-     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
-    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
+    @Deprecated
     @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
@@ -315,11 +314,10 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     /**
      * Whether to enabled route table propagation. **NOTE:** &#34;Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
-     * @deprecated
-     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
-    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
+    @Deprecated
     @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
@@ -391,11 +389,10 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     /**
      * Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
+    @Deprecated
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentName;
 
@@ -422,7 +419,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     }
     /**
      * The name of the VPC connection.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="transitRouterVpcAttachmentName", refs={String.class}, tree="[0]")
@@ -430,7 +427,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
 
     /**
      * @return The name of the VPC connection.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<String> transitRouterVpcAttachmentName() {

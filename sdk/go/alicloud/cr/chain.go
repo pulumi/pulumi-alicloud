@@ -359,6 +359,12 @@ func (ChainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*chainState)(nil)).Elem()
 }
 
+// ChainExists checks whether an existing Chain resource with the given ID exists.
+func ChainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/chain:Chain", id, state, "", opts...)
+}
+
 type chainArgs struct {
 	// The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
 	ChainConfigs []ChainChainConfig `pulumi:"chainConfigs"`

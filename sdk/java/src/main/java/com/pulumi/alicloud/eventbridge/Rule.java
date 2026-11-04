@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build()).result();
  * 
  *         final var fnfEndpoint = StdFunctions.format(FormatArgs.builder()
- *             .input("acs:fnf:cn-hangzhou:%s:flow/${flow}")
+ *             .input("acs:fnf:cn-hangzhou:%s:flow/$}{{@code flow}}{@code ")
  *             .args(default_.id())
  *             .build()).result();
  * 
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .eventBusName(defaultEventBus.eventBusName())
  *             .ruleName(name)
  *             .description("example")
- *             .filterPattern("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}")
+ *             .filterPattern("}{&#92;{@code "source}&#92;{@code ":[}&#92;{@code "crmabc.newsletter}&#92;{@code "],}&#92;{@code "type}&#92;{@code ":[}&#92;{@code "UserSignUp}&#92;{@code ", }&#92;{@code "UserLogin}&#92;{@code "]}}{@code ")
  *             .targets(RuleTargetArgs.builder()
  *                 .targetId("tf-example1")
  *                 .endpoint(mnsEndpointA)
@@ -109,8 +109,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

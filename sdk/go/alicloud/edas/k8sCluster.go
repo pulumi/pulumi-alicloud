@@ -250,6 +250,12 @@ func (K8sClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*k8sClusterState)(nil)).Elem()
 }
 
+// K8sClusterExists checks whether an existing K8sCluster resource with the given ID exists.
+func K8sClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *K8sClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/k8sCluster:K8sCluster", id, state, "", opts...)
+}
+
 type k8sClusterArgs struct {
 	// The ID of the alicloud container service kubernetes cluster that you want to import.
 	CsClusterId string `pulumi:"csClusterId"`

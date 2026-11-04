@@ -411,6 +411,12 @@ func (AnycastEipAddressAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*anycastEipAddressAttachmentState)(nil)).Elem()
 }
 
+// AnycastEipAddressAttachmentExists checks whether an existing AnycastEipAddressAttachment resource with the given ID exists.
+func AnycastEipAddressAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AnycastEipAddressAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", id, state, "", opts...)
+}
+
 type anycastEipAddressAttachmentArgs struct {
 	// The ID of the Anycast EIP instance.
 	AnycastId string `pulumi:"anycastId"`

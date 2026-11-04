@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraformexample");
  *         final var partNickName = config.get("partNickName").orElse("TFTest17292");
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Quota("default", QuotaArgs.builder()
  *             .paymentType("Subscription")
  *             .partNickName(partNickName)
- *             .commodityData("{\"CU\":80,\"ord_time\":\"1:Month\",\"autoRenew\":false} ")
+ *             .commodityData("}{&#92;{@code "CU}&#92;{@code ":80,}&#92;{@code "ord_time}&#92;{@code ":}&#92;{@code "1:Month}&#92;{@code ",}&#92;{@code "autoRenew}&#92;{@code ":false}}{@code  ")
  *             .commodityCode("odpsplus")
  *             .subQuotaInfoLists(            
  *                 QuotaSubQuotaInfoListArgs.builder()
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

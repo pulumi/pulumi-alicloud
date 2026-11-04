@@ -179,6 +179,12 @@ func (EcsKeyPairState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsKeyPairState)(nil)).Elem()
 }
 
+// EcsKeyPairExists checks whether an existing EcsKeyPair resource with the given ID exists.
+func EcsKeyPairExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsKeyPairState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsKeyPair:EcsKeyPair", id, state, "", opts...)
+}
+
 type ecsKeyPairArgs struct {
 	// The key file.
 	KeyFile *string `pulumi:"keyFile"`

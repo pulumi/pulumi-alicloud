@@ -236,6 +236,12 @@ func (ExchangeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*exchangeState)(nil)).Elem()
 }
 
+// ExchangeExists checks whether an existing Exchange resource with the given ID exists.
+func ExchangeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExchangeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:amqp/exchange:Exchange", id, state, "", opts...)
+}
+
 type exchangeArgs struct {
 	// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
 	AlternateExchange *string `pulumi:"alternateExchange"`

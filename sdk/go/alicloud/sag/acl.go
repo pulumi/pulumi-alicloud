@@ -106,6 +106,12 @@ func (AclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclState)(nil)).Elem()
 }
 
+// AclExists checks whether an existing Acl resource with the given ID exists.
+func AclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/acl:Acl", id, state, "", opts...)
+}
+
 type aclArgs struct {
 	// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
 	Name *string `pulumi:"name"`

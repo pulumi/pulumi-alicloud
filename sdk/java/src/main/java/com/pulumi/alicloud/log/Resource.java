@@ -41,42 +41,42 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Resource("example", ResourceArgs.builder()
  *             .type("userdefine")
  *             .name("user.tf.resource")
  *             .description("user tf resource desc")
- *             .extInfo("{}")
+ *             .extInfo("}{}{@code ")
  *             .schema("""
- *     {
- *       \"schema\": [
- *         {
- *           \"column\": \"col1\",
- *           \"desc\": \"col1   desc\",
- *           \"ext_info\": {
- *           },
- *           \"required\": true,
- *           \"type\": \"string\"
- *         },
- *         {
- *           \"column\": \"col2\",
- *           \"desc\": \"col2   desc\",
- *           \"ext_info\": \"optional\",
- *           \"required\": true,
- *           \"type\": \"string\"
- *         }
+ *     }{{@code
+ *       }&#92;{@code "schema}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "column}&#92;{@code ": }&#92;{@code "col1}&#92;{@code ",
+ *           }&#92;{@code "desc}&#92;{@code ": }&#92;{@code "col1   desc}&#92;{@code ",
+ *           }&#92;{@code "ext_info}&#92;{@code ": }{{@code
+ *           }}{@code ,
+ *           }&#92;{@code "required}&#92;{@code ": true,
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *         }}{@code ,
+ *         }{{@code
+ *           }&#92;{@code "column}&#92;{@code ": }&#92;{@code "col2}&#92;{@code ",
+ *           }&#92;{@code "desc}&#92;{@code ": }&#92;{@code "col2   desc}&#92;{@code ",
+ *           }&#92;{@code "ext_info}&#92;{@code ": }&#92;{@code "optional}&#92;{@code ",
+ *           }&#92;{@code "required}&#92;{@code ": true,
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
+ *         }}{@code
  *       ]
- *     }
+ *     }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

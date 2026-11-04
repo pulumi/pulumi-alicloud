@@ -74,12 +74,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var queueMinimalExampleVpc = new Network("queueMinimalExampleVpc", NetworkArgs.builder()
@@ -147,67 +147,67 @@ import javax.annotation.Nullable;
  *                 .version("1.0")
  *                 .servicesSpec("""
  * [
- *         {
- *           \"ServiceName\": \"SSH\",
- *           \"NetworkACL\": [
- *             {
- *               \"Port\": 22,
- *               \"SourceCidrIp\": \"0.0.0.0/0\",
- *               \"IpProtocol\": \"TCP\"
- *             }
+ *         }{{@code
+ *           }&#92;{@code "ServiceName}&#92;{@code ": }&#92;{@code "SSH}&#92;{@code ",
+ *           }&#92;{@code "NetworkACL}&#92;{@code ": [
+ *             }{{@code
+ *               }&#92;{@code "Port}&#92;{@code ": 22,
+ *               }&#92;{@code "SourceCidrIp}&#92;{@code ": }&#92;{@code "0.0.0.0/0}&#92;{@code ",
+ *               }&#92;{@code "IpProtocol}&#92;{@code ": }&#92;{@code "TCP}&#92;{@code "
+ *             }}{@code
  *           ]
- *         },
- *         {
- *           \"ServiceName\": \"VNC\",
- *           \"NetworkACL\": [
- *             {
- *               \"Port\": 12016,
- *               \"SourceCidrIp\": \"0.0.0.0/0\",
- *               \"IpProtocol\": \"TCP\"
- *             }
+ *         }}{@code ,
+ *         }{{@code
+ *           }&#92;{@code "ServiceName}&#92;{@code ": }&#92;{@code "VNC}&#92;{@code ",
+ *           }&#92;{@code "NetworkACL}&#92;{@code ": [
+ *             }{{@code
+ *               }&#92;{@code "Port}&#92;{@code ": 12016,
+ *               }&#92;{@code "SourceCidrIp}&#92;{@code ": }&#92;{@code "0.0.0.0/0}&#92;{@code ",
+ *               }&#92;{@code "IpProtocol}&#92;{@code ": }&#92;{@code "TCP}&#92;{@code "
+ *             }}{@code
  *           ]
- *         },
- *         {
- *           \"ServiceName\": \"CLIENT\",
- *           \"ServiceAccessType\": \"URL\",
- *           \"ServiceAccessUrl\": \"https://ehpc-app.oss-cn-hangzhou.aliyuncs.com/ClientRelease/E-HPC-Client-Mac-zh-cn.zip\",
- *           \"NetworkACL\": [
- *             {
- *               \"Port\": 12011,
- *               \"SourceCidrIp\": \"0.0.0.0/0\",
- *               \"IpProtocol\": \"TCP\"
- *             }
+ *         }}{@code ,
+ *         }{{@code
+ *           }&#92;{@code "ServiceName}&#92;{@code ": }&#92;{@code "CLIENT}&#92;{@code ",
+ *           }&#92;{@code "ServiceAccessType}&#92;{@code ": }&#92;{@code "URL}&#92;{@code ",
+ *           }&#92;{@code "ServiceAccessUrl}&#92;{@code ": }&#92;{@code "https://ehpc-app.oss-cn-hangzhou.aliyuncs.com/ClientRelease/E-HPC-Client-Mac-zh-cn.zip}&#92;{@code ",
+ *           }&#92;{@code "NetworkACL}&#92;{@code ": [
+ *             }{{@code
+ *               }&#92;{@code "Port}&#92;{@code ": 12011,
+ *               }&#92;{@code "SourceCidrIp}&#92;{@code ": }&#92;{@code "0.0.0.0/0}&#92;{@code ",
+ *               }&#92;{@code "IpProtocol}&#92;{@code ": }&#92;{@code "TCP}&#92;{@code "
+ *             }}{@code
  *           ]
- *         }
+ *         }}{@code
  *       ]
  *                 """)
  *                 .resourcesSpec("""
- * {
- *         \"EipResource\": {
- *           \"AutoCreate\": true
- *         },
- *         \"EcsResources\": [
- *           {
- *             \"ImageId\": \"centos_7_6_x64_20G_alibase_20211130.vhd\",
- *             \"EnableHT\": true,
- *             \"InstanceChargeType\": \"PostPaid\",
- *             \"InstanceType\": \"ecs.c7.xlarge\",
- *             \"SpotStrategy\": \"NoSpot\",
- *             \"SystemDisk\": {
- *               \"Category\": \"cloud_essd\",
- *               \"Size\": 40,
- *               \"Level\": \"PL0\"
- *             },
- *             \"DataDisks\": [
- *               {
- *                 \"Category\": \"cloud_essd\",
- *                 \"Size\": 40,
- *                 \"Level\": \"PL0\"
- *               }
+ * }{{@code
+ *         }&#92;{@code "EipResource}&#92;{@code ": }{{@code
+ *           }&#92;{@code "AutoCreate}&#92;{@code ": true
+ *         }}{@code ,
+ *         }&#92;{@code "EcsResources}&#92;{@code ": [
+ *           }{{@code
+ *             }&#92;{@code "ImageId}&#92;{@code ": }&#92;{@code "centos_7_6_x64_20G_alibase_20211130.vhd}&#92;{@code ",
+ *             }&#92;{@code "EnableHT}&#92;{@code ": true,
+ *             }&#92;{@code "InstanceChargeType}&#92;{@code ": }&#92;{@code "PostPaid}&#92;{@code ",
+ *             }&#92;{@code "InstanceType}&#92;{@code ": }&#92;{@code "ecs.c7.xlarge}&#92;{@code ",
+ *             }&#92;{@code "SpotStrategy}&#92;{@code ": }&#92;{@code "NoSpot}&#92;{@code ",
+ *             }&#92;{@code "SystemDisk}&#92;{@code ": }{{@code
+ *               }&#92;{@code "Category}&#92;{@code ": }&#92;{@code "cloud_essd}&#92;{@code ",
+ *               }&#92;{@code "Size}&#92;{@code ": 40,
+ *               }&#92;{@code "Level}&#92;{@code ": }&#92;{@code "PL0}&#92;{@code "
+ *             }}{@code ,
+ *             }&#92;{@code "DataDisks}&#92;{@code ": [
+ *               }{{@code
+ *                 }&#92;{@code "Category}&#92;{@code ": }&#92;{@code "cloud_essd}&#92;{@code ",
+ *                 }&#92;{@code "Size}&#92;{@code ": 40,
+ *                 }&#92;{@code "Level}&#92;{@code ": }&#92;{@code "PL0}&#92;{@code "
+ *               }}{@code
  *             ]
- *           }
+ *           }}{@code
  *         ]
- *       }
+ *       }}{@code
  *                 """)
  *                 .name("Login")
  *                 .build())
@@ -274,8 +274,8 @@ import javax.annotation.Nullable;
  *             .queueName("autoque1")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

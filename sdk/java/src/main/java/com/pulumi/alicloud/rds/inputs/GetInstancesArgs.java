@@ -155,7 +155,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A map of tags assigned to the DB instances.
-     * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{\&#34;key1\&#34;:\&#34;value1\&#34;}&#34;`
+     * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{&#92;&#34;key1&#92;&#34;:&#92;&#34;value1&#92;&#34;}&#34;`
      * 
      */
     @Import(name="tags")
@@ -163,7 +163,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A map of tags assigned to the DB instances.
-     * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{\&#34;key1\&#34;:\&#34;value1\&#34;}&#34;`
+     * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{&#92;&#34;key1&#92;&#34;:&#92;&#34;value1&#92;&#34;}&#34;`
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -434,7 +434,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A map of tags assigned to the DB instances.
-         * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{\&#34;key1\&#34;:\&#34;value1\&#34;}&#34;`
+         * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{&#92;&#34;key1&#92;&#34;:&#92;&#34;value1&#92;&#34;}&#34;`
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A map of tags assigned to the DB instances.
-         * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{\&#34;key1\&#34;:\&#34;value1\&#34;}&#34;`
+         * Note: Before 1.60.0, the value&#39;s format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `&#34;{&#92;&#34;key1&#92;&#34;:&#92;&#34;value1&#92;&#34;}&#34;`
          * 
          * @return builder
          * 

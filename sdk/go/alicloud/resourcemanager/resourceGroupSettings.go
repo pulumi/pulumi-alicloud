@@ -121,6 +121,12 @@ func (ResourceGroupSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupSettingsState)(nil)).Elem()
 }
 
+// ResourceGroupSettingsExists checks whether an existing ResourceGroupSettings resource with the given ID exists.
+func ResourceGroupSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceGroupSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/resourceGroupSettings:ResourceGroupSettings", id, state, "", opts...)
+}
+
 type resourceGroupSettingsArgs struct {
 	// Specifies whether to designate the resource creator as the administrator of the resource group. When enabled, the user who creates a resource is automatically set as the administrator of the resource group that the resource belongs to. This maps to the `CreatorAsAdmin` parameter of the UpdateResourceGroupAdminSetting API.
 	ResourceGroupAdminSettingStatus bool `pulumi:"resourceGroupAdminSettingStatus"`

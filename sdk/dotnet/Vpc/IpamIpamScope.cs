@@ -94,7 +94,6 @@ namespace Pulumi.AliCloud.Vpc
         /// IPAM scope of action type:
         /// `Private`.
         /// 
-        /// 
         /// &gt; **NOTE:**  Currently, only the role scope of the private network is supported.
         /// </summary>
         [Output("ipamScopeType")]
@@ -193,7 +192,6 @@ namespace Pulumi.AliCloud.Vpc
         /// IPAM scope of action type:
         /// `Private`.
         /// 
-        /// 
         /// &gt; **NOTE:**  Currently, only the role scope of the private network is supported.
         /// </summary>
         [Input("ipamScopeType")]
@@ -253,7 +251,6 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// IPAM scope of action type:
         /// `Private`.
-        /// 
         /// 
         /// &gt; **NOTE:**  Currently, only the role scope of the private network is supported.
         /// </summary>

@@ -905,6 +905,46 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            resolution: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vnc_password: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["description"] = description
+        __props__["eipBandwidth"] = eip_bandwidth
+        __props__["force"] = force
+        __props__["imageId"] = image_id
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["keyPairName"] = key_pair_name
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["resolution"] = resolution
+        __props__["securityGroupId"] = security_group_id
+        __props__["status"] = status
+        __props__["vncPassword"] = vnc_password
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecp/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

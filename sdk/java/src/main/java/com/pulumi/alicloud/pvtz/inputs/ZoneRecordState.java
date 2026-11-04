@@ -79,22 +79,20 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     /**
      * The resource record of the Private Zone Record.
      * 
-     * @deprecated
-     * Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
+     * @deprecated Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
      * 
      */
-    @Deprecated /* Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead. */
+    @Deprecated
     @Import(name="resourceRecord")
     private @Nullable Output<String> resourceRecord;
 
     /**
      * @return The resource record of the Private Zone Record.
      * 
-     * @deprecated
-     * Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
+     * @deprecated Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
      * 
      */
-    @Deprecated /* Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead. */
+    @Deprecated
     public Optional<Output<String>> resourceRecord() {
         return Optional.ofNullable(this.resourceRecord);
     }
@@ -324,11 +322,10 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
+         * @deprecated Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
          * 
          */
-        @Deprecated /* Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead. */
+        @Deprecated
         public Builder resourceRecord(@Nullable Output<String> resourceRecord) {
             $.resourceRecord = resourceRecord;
             return this;
@@ -339,11 +336,10 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
+         * @deprecated Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
          * 
          */
-        @Deprecated /* Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead. */
+        @Deprecated
         public Builder resourceRecord(String resourceRecord) {
             return resourceRecord(Output.of(resourceRecord));
         }

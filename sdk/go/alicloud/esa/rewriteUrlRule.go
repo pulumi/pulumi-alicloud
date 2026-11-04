@@ -217,6 +217,12 @@ func (RewriteUrlRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rewriteUrlRuleState)(nil)).Elem()
 }
 
+// RewriteUrlRuleExists checks whether an existing RewriteUrlRule resource with the given ID exists.
+func RewriteUrlRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RewriteUrlRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/rewriteUrlRule:RewriteUrlRule", id, state, "", opts...)
+}
+
 type rewriteUrlRuleArgs struct {
 	// The desired query string to which you want to rewrite the query string in the original request.
 	QueryString *string `pulumi:"queryString"`

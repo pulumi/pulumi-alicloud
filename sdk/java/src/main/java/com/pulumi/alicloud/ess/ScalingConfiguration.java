@@ -368,11 +368,10 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      * 
-     * @deprecated
-     * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
+     * @deprecated Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it. */
+    @Deprecated
     @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instanceIds;
 
@@ -498,11 +497,10 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
-     * @deprecated
-     * Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      * 
      */
-    @Deprecated /* Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
+    @Deprecated
     @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
@@ -598,14 +596,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.override);
     }
     /**
-     * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+     * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=&#92;|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+     * @return The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!{@literal @}#$%^&amp;*-_+=&#92;|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
     public Output<Optional<String>> password() {

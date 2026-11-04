@@ -422,6 +422,28 @@ class HoneyPot(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return HoneyPot(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            honeypot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["honeypotId"] = honeypot_id
+        __props__["honeypotImageId"] = honeypot_image_id
+        __props__["honeypotImageName"] = honeypot_image_name
+        __props__["honeypotName"] = honeypot_name
+        __props__["nodeId"] = node_id
+        __props__["presetId"] = preset_id
+        __props__["states"] = states
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/honeyPot:HoneyPot', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="honeypotId")
     def honeypot_id(self) -> pulumi.Output[_builtins.str]:

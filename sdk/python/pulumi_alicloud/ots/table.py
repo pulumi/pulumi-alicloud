@@ -729,6 +729,36 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["time_to_live"] = time_to_live
         return Table(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
+            deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_version: pulumi.Input[Optional[_builtins.int]] = None,
+            primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]]] = None,
+            sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_to_live: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowUpdate"] = allow_update
+        __props__["definedColumns"] = defined_columns
+        __props__["deviationCellVersionInSec"] = deviation_cell_version_in_sec
+        __props__["enableSse"] = enable_sse
+        __props__["instanceName"] = instance_name
+        __props__["maxVersion"] = max_version
+        __props__["primaryKeys"] = primary_keys
+        __props__["sseKeyId"] = sse_key_id
+        __props__["sseKeyType"] = sse_key_type
+        __props__["sseRoleArn"] = sse_role_arn
+        __props__["tableName"] = table_name
+        __props__["timeToLive"] = time_to_live
+        return pulumi.runtime.exists_resource(None, 'alicloud:ots/table:Table', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowUpdate")
     def allow_update(self) -> pulumi.Output[Optional[_builtins.bool]]:

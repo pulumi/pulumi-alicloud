@@ -174,6 +174,12 @@ func (VpdState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpdState)(nil)).Elem()
 }
 
+// VpdExists checks whether an existing Vpd resource with the given ID exists.
+func VpdExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpdState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/vpd:Vpd", id, state, "", opts...)
+}
+
 type vpdArgs struct {
 	// The CIDR block of the VPD.
 	Cidr string `pulumi:"cidr"`

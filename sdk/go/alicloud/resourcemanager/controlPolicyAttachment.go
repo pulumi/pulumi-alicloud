@@ -178,6 +178,12 @@ func (ControlPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlPolicyAttachmentState)(nil)).Elem()
 }
 
+// ControlPolicyAttachmentExists checks whether an existing ControlPolicyAttachment resource with the given ID exists.
+func ControlPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment", id, state, "", opts...)
+}
+
 type controlPolicyAttachmentArgs struct {
 	// The ID of the access control policy.
 	PolicyId string `pulumi:"policyId"`

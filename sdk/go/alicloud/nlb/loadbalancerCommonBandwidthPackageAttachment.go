@@ -209,6 +209,12 @@ func (LoadbalancerCommonBandwidthPackageAttachmentState) ElementType() reflect.T
 	return reflect.TypeOf((*loadbalancerCommonBandwidthPackageAttachmentState)(nil)).Elem()
 }
 
+// LoadbalancerCommonBandwidthPackageAttachmentExists checks whether an existing LoadbalancerCommonBandwidthPackageAttachment resource with the given ID exists.
+func LoadbalancerCommonBandwidthPackageAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadbalancerCommonBandwidthPackageAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment", id, state, "", opts...)
+}
+
 type loadbalancerCommonBandwidthPackageAttachmentArgs struct {
 	// Specifies whether only to precheck the request. Valid values:
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`

@@ -61,6 +61,17 @@ export class DhcpOptionsSetAttachment extends pulumi.CustomResource {
         return new DhcpOptionsSetAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing DhcpOptionsSetAttachment resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DhcpOptionsSetAttachmentState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment';
 

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -27,19 +27,19 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "drds-\\d+",
-        ///         Ids = new[]
-        ///         {
-        ///             "drdsabc123456",
-        ///         },
-        ///     });
+        ///    var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
+        ///    {
+        ///        NameRegex = "drds-\\d+",
+        ///        Ids = new[]
+        ///        {
+        ///            "drdsabc123456",
+        ///        },
+        ///    });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
+        ///    return new Dictionary&lt;string, object?&gt;
+        ///    {
+        ///        ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///    };
         /// });
         /// ```
         /// </summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -62,19 +62,19 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "drds-\\d+",
-        ///         Ids = new[]
-        ///         {
-        ///             "drdsabc123456",
-        ///         },
-        ///     });
+        ///    var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
+        ///    {
+        ///        NameRegex = "drds-\\d+",
+        ///        Ids = new[]
+        ///        {
+        ///            "drdsabc123456",
+        ///        },
+        ///    });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
+        ///    return new Dictionary&lt;string, object?&gt;
+        ///    {
+        ///        ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///    };
         /// });
         /// ```
         /// </summary>
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -97,19 +97,19 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "drds-\\d+",
-        ///         Ids = new[]
-        ///         {
-        ///             "drdsabc123456",
-        ///         },
-        ///     });
+        ///    var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
+        ///    {
+        ///        NameRegex = "drds-\\d+",
+        ///        Ids = new[]
+        ///        {
+        ///            "drdsabc123456",
+        ///        },
+        ///    });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
+        ///    return new Dictionary&lt;string, object?&gt;
+        ///    {
+        ///        ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///    };
         /// });
         /// ```
         /// </summary>

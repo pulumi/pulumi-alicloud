@@ -202,6 +202,12 @@ func (EcsNetworkInterfacePermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsNetworkInterfacePermissionState)(nil)).Elem()
 }
 
+// EcsNetworkInterfacePermissionExists checks whether an existing EcsNetworkInterfacePermission resource with the given ID exists.
+func EcsNetworkInterfacePermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsNetworkInterfacePermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission", id, state, "", opts...)
+}
+
 type ecsNetworkInterfacePermissionArgs struct {
 	// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
 	AccountId string `pulumi:"accountId"`

@@ -197,6 +197,12 @@ func (SimpleOfficeSiteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*simpleOfficeSiteState)(nil)).Elem()
 }
 
+// SimpleOfficeSiteExists checks whether an existing SimpleOfficeSite resource with the given ID exists.
+func SimpleOfficeSiteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SimpleOfficeSiteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/simpleOfficeSite:SimpleOfficeSite", id, state, "", opts...)
+}
+
 type simpleOfficeSiteArgs struct {
 	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 	//

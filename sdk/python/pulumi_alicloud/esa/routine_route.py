@@ -557,6 +557,30 @@ class RoutineRoute(pulumi.CustomResource):
         __props__.__dict__["site_id"] = site_id
         return RoutineRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bypass: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            fallback: pulumi.Input[Optional[_builtins.str]] = None,
+            route_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            routine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bypass"] = bypass
+        __props__["configId"] = config_id
+        __props__["fallback"] = fallback
+        __props__["routeEnable"] = route_enable
+        __props__["routeName"] = route_name
+        __props__["routineName"] = routine_name
+        __props__["rule"] = rule
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/routineRoute:RoutineRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bypass(self) -> pulumi.Output[_builtins.str]:

@@ -157,6 +157,12 @@ func (SecurityPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityPolicyState)(nil)).Elem()
 }
 
+// SecurityPolicyExists checks whether an existing SecurityPolicy resource with the given ID exists.
+func SecurityPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/securityPolicy:SecurityPolicy", id, state, "", opts...)
+}
+
 type securityPolicyArgs struct {
 	// The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
 	Ciphers []string `pulumi:"ciphers"`

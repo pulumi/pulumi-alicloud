@@ -286,6 +286,18 @@ class FaceConfig(pulumi.CustomResource):
         __props__.__dict__["gmt_modified"] = gmt_modified
         return FaceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bizName"] = biz_name
+        __props__["bizType"] = biz_type
+        __props__["gmtModified"] = gmt_modified
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudauth/faceConfig:FaceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bizName")
     def biz_name(self) -> pulumi.Output[_builtins.str]:

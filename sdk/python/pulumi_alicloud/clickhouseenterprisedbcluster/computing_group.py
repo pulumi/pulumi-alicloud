@@ -591,6 +591,34 @@ class ComputingGroup(pulumi.CustomResource):
         __props__.__dict__["node_scale_min"] = node_scale_min
         return ComputingGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            computing_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_group_endpoint_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            computing_group_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            computing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_group_public_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            computing_group_status: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_readonly: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+            node_scale_min: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computingGroupDescription"] = computing_group_description
+        __props__["computingGroupEndpointNames"] = computing_group_endpoint_names
+        __props__["computingGroupEndpoints"] = computing_group_endpoints
+        __props__["computingGroupId"] = computing_group_id
+        __props__["computingGroupPublicEndpoints"] = computing_group_public_endpoints
+        __props__["computingGroupStatus"] = computing_group_status
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["isReadonly"] = is_readonly
+        __props__["nodeCount"] = node_count
+        __props__["nodeScaleMax"] = node_scale_max
+        __props__["nodeScaleMin"] = node_scale_min
+        return pulumi.runtime.exists_resource(None, 'alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computingGroupDescription")
     def computing_group_description(self) -> pulumi.Output[Optional[_builtins.str]]:

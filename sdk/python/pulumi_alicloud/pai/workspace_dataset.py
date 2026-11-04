@@ -942,6 +942,40 @@ class WorkspaceDataset(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return WorkspaceDataset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict', 'outputs.WorkspaceDatasetLabel']]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            property: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessibility"] = accessibility
+        __props__["createTime"] = create_time
+        __props__["dataSourceType"] = data_source_type
+        __props__["dataType"] = data_type
+        __props__["datasetName"] = dataset_name
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["options"] = options
+        __props__["property"] = property
+        __props__["sourceId"] = source_id
+        __props__["sourceType"] = source_type
+        __props__["uri"] = uri
+        __props__["userId"] = user_id
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pai/workspaceDataset:WorkspaceDataset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accessibility(self) -> pulumi.Output[_builtins.str]:

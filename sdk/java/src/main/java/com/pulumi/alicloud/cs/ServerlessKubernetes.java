@@ -148,11 +148,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
-     * @deprecated
-     * Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     * @deprecated Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
-    @Deprecated /* Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it. */
+    @Deprecated
     @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
@@ -166,11 +165,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
-     * @deprecated
-     * Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     * @deprecated Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
-    @Deprecated /* Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it. */
+    @Deprecated
     @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
@@ -184,11 +182,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * @deprecated
-     * Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+     * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
      */
-    @Deprecated /* Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it. */
+    @Deprecated
     @Export(name="clusterCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterCaCert;
 
@@ -328,11 +325,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
-     * @deprecated
-     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+     * @deprecated Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. Please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
-    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+    @Deprecated
     @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubeConfig;
 
@@ -346,11 +342,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
+     * @deprecated Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
+    @Deprecated
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
@@ -364,11 +359,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      * 
-     * @deprecated
-     * Field &#39;logging_type&#39; has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
+     * @deprecated Field &#39;logging_type&#39; has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      * 
      */
-    @Deprecated /* Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging. */
+    @Deprecated
     @Export(name="loggingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loggingType;
 
@@ -456,11 +450,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      * 
-     * @deprecated
-     * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
+     * @deprecated Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
      * 
      */
-    @Deprecated /* Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it. */
+    @Deprecated
     @Export(name="privateZone", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> privateZone;
 
@@ -558,11 +551,10 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      * 
-     * @deprecated
-     * Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
+     * @deprecated Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      * 
      */
-    @Deprecated /* Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name. */
+    @Deprecated
     @Export(name="slsProjectName", refs={String.class}, tree="[0]")
     private Output<String> slsProjectName;
 

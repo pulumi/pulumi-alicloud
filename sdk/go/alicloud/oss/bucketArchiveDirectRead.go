@@ -136,6 +136,12 @@ func (BucketArchiveDirectReadState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketArchiveDirectReadState)(nil)).Elem()
 }
 
+// BucketArchiveDirectReadExists checks whether an existing BucketArchiveDirectRead resource with the given ID exists.
+func BucketArchiveDirectReadExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketArchiveDirectReadState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketArchiveDirectRead:BucketArchiveDirectRead", id, state, "", opts...)
+}
+
 type bucketArchiveDirectReadArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

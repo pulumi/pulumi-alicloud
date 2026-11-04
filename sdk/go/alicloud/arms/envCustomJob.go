@@ -186,6 +186,12 @@ func (EnvCustomJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envCustomJobState)(nil)).Elem()
 }
 
+// EnvCustomJobExists checks whether an existing EnvCustomJob resource with the given ID exists.
+func EnvCustomJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvCustomJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/envCustomJob:EnvCustomJob", id, state, "", opts...)
+}
+
 type envCustomJobArgs struct {
 	// The locale. The default is Chinese zh | en.
 	AliyunLang *string `pulumi:"aliyunLang"`

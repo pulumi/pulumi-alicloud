@@ -575,6 +575,12 @@ func (NatFirewallControlPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natFirewallControlPolicyState)(nil)).Elem()
 }
 
+// NatFirewallControlPolicyExists checks whether an existing NatFirewallControlPolicy resource with the given ID exists.
+func NatFirewallControlPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatFirewallControlPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy", id, state, "", opts...)
+}
+
 type natFirewallControlPolicyArgs struct {
 	// The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
 	AclAction string `pulumi:"aclAction"`

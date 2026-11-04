@@ -128,11 +128,10 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** If `keyPairName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 

@@ -160,6 +160,12 @@ func (EcsDeploymentSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsDeploymentSetState)(nil)).Elem()
 }
 
+// EcsDeploymentSetExists checks whether an existing EcsDeploymentSet resource with the given ID exists.
+func EcsDeploymentSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsDeploymentSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet", id, state, "", opts...)
+}
+
 type ecsDeploymentSetArgs struct {
 	// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
 	DeploymentSetName *string `pulumi:"deploymentSetName"`

@@ -157,6 +157,12 @@ func (LifecyclePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lifecyclePolicyState)(nil)).Elem()
 }
 
+// LifecyclePolicyExists checks whether an existing LifecyclePolicy resource with the given ID exists.
+func LifecyclePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LifecyclePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/lifecyclePolicy:LifecyclePolicy", id, state, "", opts...)
+}
+
 type lifecyclePolicyArgs struct {
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`

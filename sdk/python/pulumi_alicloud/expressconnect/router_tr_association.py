@@ -518,6 +518,30 @@ class RouterTrAssociation(pulumi.CustomResource):
         __props__.__dict__["transit_router_owner_id"] = transit_router_owner_id
         return RouterTrAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_owner_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedPrefixes"] = allowed_prefixes
+        __props__["associationId"] = association_id
+        __props__["associationRegionId"] = association_region_id
+        __props__["cenId"] = cen_id
+        __props__["createTime"] = create_time
+        __props__["ecrId"] = ecr_id
+        __props__["status"] = status
+        __props__["transitRouterId"] = transit_router_id
+        __props__["transitRouterOwnerId"] = transit_router_owner_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
     def allowed_prefixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

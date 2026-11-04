@@ -240,6 +240,12 @@ func (ValidationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*validationState)(nil)).Elem()
 }
 
+// ValidationExists checks whether an existing Validation resource with the given ID exists.
+func ValidationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValidationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservicecertificate/validation:Validation", id, state, "", opts...)
+}
+
 type validationArgs struct {
 	// The ID of the certificate instance whose application is being waited on.
 	InstanceId string `pulumi:"instanceId"`

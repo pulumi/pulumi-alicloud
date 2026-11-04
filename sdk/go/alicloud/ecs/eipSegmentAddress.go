@@ -235,6 +235,12 @@ func (EipSegmentAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipSegmentAddressState)(nil)).Elem()
 }
 
+// EipSegmentAddressExists checks whether an existing EipSegmentAddress resource with the given ID exists.
+func EipSegmentAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EipSegmentAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/eipSegmentAddress:EipSegmentAddress", id, state, "", opts...)
+}
+
 type eipSegmentAddressArgs struct {
 	// The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
 	// - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****

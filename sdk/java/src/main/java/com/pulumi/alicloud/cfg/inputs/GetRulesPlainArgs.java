@@ -20,22 +20,20 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
-     * @deprecated
-     * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
+     * @deprecated Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead. */
+    @Deprecated
     @Import(name="configRuleState")
     private @Nullable String configRuleState;
 
     /**
      * @return Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
-     * @deprecated
-     * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
+     * @deprecated Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead. */
+    @Deprecated
     public Optional<String> configRuleState() {
         return Optional.ofNullable(this.configRuleState);
     }
@@ -181,11 +179,10 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
+         * @deprecated Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
          * 
          */
-        @Deprecated /* Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead. */
+        @Deprecated
         public Builder configRuleState(@Nullable String configRuleState) {
             $.configRuleState = configRuleState;
             return this;

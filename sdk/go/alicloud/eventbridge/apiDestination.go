@@ -163,6 +163,12 @@ func (ApiDestinationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiDestinationState)(nil)).Elem()
 }
 
+// ApiDestinationExists checks whether an existing ApiDestination resource with the given ID exists.
+func ApiDestinationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiDestinationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eventbridge/apiDestination:ApiDestination", id, state, "", opts...)
+}
+
 type apiDestinationArgs struct {
 	// The name of the API destination.
 	ApiDestinationName string `pulumi:"apiDestinationName"`

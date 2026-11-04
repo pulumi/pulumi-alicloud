@@ -122,6 +122,12 @@ func (WhitelistTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*whitelistTemplateState)(nil)).Elem()
 }
 
+// WhitelistTemplateExists checks whether an existing WhitelistTemplate resource with the given ID exists.
+func WhitelistTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WhitelistTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/whitelistTemplate:WhitelistTemplate", id, state, "", opts...)
+}
+
 type whitelistTemplateArgs struct {
 	// IP whitelist, multiple IP addresses should be separated by commas (,) and cannot be duplicated.Supports the following two formats:
 	// - IP address format, for example: 10.23.XX.XX.

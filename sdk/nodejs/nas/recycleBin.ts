@@ -59,6 +59,17 @@ export class RecycleBin extends pulumi.CustomResource {
         return new RecycleBin(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RecycleBin resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RecycleBinState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:nas/recycleBin:RecycleBin", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:nas/recycleBin:RecycleBin';
 

@@ -532,6 +532,48 @@ class ApplicationInfo(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ApplicationInfo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approve_value: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict', 'outputs.ApplicationInfoDimension']]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            env_language: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_description: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approveValue"] = approve_value
+        __props__["auditMode"] = audit_mode
+        __props__["auditReason"] = audit_reason
+        __props__["createTime"] = create_time
+        __props__["desireValue"] = desire_value
+        __props__["dimensions"] = dimensions
+        __props__["effectiveTime"] = effective_time
+        __props__["envLanguage"] = env_language
+        __props__["expireTime"] = expire_time
+        __props__["noticeType"] = notice_type
+        __props__["productCode"] = product_code
+        __props__["quotaActionCode"] = quota_action_code
+        __props__["quotaCategory"] = quota_category
+        __props__["quotaDescription"] = quota_description
+        __props__["quotaName"] = quota_name
+        __props__["quotaUnit"] = quota_unit
+        __props__["reason"] = reason
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:quotas/applicationInfo:ApplicationInfo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approveValue")
     def approve_value(self) -> pulumi.Output[_builtins.str]:

@@ -147,7 +147,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     /**
      * The URL that is used for health checks.
      * 
-     * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] {@literal @} $ ^ : &#39; , + =
+     * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: &#92;_ ; ~ ! ( ) &#92;* &#92;[ ] {@literal @} $ ^ : &#39; , + =
      * 
      * The URL must start with a forward slash (/).
      * 
@@ -160,7 +160,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     /**
      * @return The URL that is used for health checks.
      * 
-     * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] {@literal @} $ ^ : &#39; , + =
+     * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: &#92;_ ; ~ ! ( ) &#92;* &#92;[ ] {@literal @} $ ^ : &#39; , + =
      * 
      * The URL must start with a forward slash (/).
      * 
@@ -446,7 +446,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         /**
          * @param healthCheckPath The URL that is used for health checks.
          * 
-         * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] {@literal @} $ ^ : &#39; , + =
+         * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: &#92;_ ; ~ ! ( ) &#92;* &#92;[ ] {@literal @} $ ^ : &#39; , + =
          * 
          * The URL must start with a forward slash (/).
          * 
@@ -463,7 +463,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         /**
          * @param healthCheckPath The URL that is used for health checks.
          * 
-         * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] {@literal @} $ ^ : &#39; , + =
+         * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: &#92;_ ; ~ ! ( ) &#92;* &#92;[ ] {@literal @} $ ^ : &#39; , + =
          * 
          * The URL must start with a forward slash (/).
          * 

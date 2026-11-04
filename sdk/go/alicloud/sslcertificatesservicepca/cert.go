@@ -394,6 +394,12 @@ func (CertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certState)(nil)).Elem()
 }
 
+// CertExists checks whether an existing Cert resource with the given ID exists.
+func CertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservicepca/cert:Cert", id, state, "", opts...)
+}
+
 type certArgs struct {
 	// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
 	//

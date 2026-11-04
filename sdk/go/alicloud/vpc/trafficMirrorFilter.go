@@ -197,6 +197,12 @@ func (TrafficMirrorFilterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficMirrorFilterState)(nil)).Elem()
 }
 
+// TrafficMirrorFilterExists checks whether an existing TrafficMirrorFilter resource with the given ID exists.
+func TrafficMirrorFilterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficMirrorFilterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter", id, state, "", opts...)
+}
+
 type trafficMirrorFilterArgs struct {
 	// Whether to PreCheck only this request. Value:
 	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.

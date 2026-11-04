@@ -517,6 +517,24 @@ class EnvServiceMonitor(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return EnvServiceMonitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            env_service_monitor_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliyunLang"] = aliyun_lang
+        __props__["configYaml"] = config_yaml
+        __props__["envServiceMonitorName"] = env_service_monitor_name
+        __props__["environmentId"] = environment_id
+        __props__["namespace"] = namespace
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/envServiceMonitor:EnvServiceMonitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
     def aliyun_lang(self) -> pulumi.Output[Optional[_builtins.str]]:

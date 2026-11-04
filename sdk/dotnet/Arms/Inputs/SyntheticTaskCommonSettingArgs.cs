@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         /// <summary>
         /// Whether the monitoring samples are evenly distributed:
         /// - 0: No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         [Input("monitorSamples")]
         public Input<int>? MonitorSamples { get; set; }

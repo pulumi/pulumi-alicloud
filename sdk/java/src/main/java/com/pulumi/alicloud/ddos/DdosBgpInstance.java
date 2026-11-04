@@ -162,11 +162,10 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

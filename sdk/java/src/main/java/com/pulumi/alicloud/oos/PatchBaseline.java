@@ -44,22 +44,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()
  *             .patchBaselineName(name)
  *             .operationSystem("Windows")
- *             .approvalRules("{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}")
+ *             .approvalRules("}{&#92;{@code "PatchRules}&#92;{@code ":[}{&#92;{@code "EnableNonSecurity}&#92;{@code ":true,}&#92;{@code "PatchFilterGroup}&#92;{@code ":[}{&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "*}&#92;{@code "],}&#92;{@code "Key}&#92;{@code ":}&#92;{@code "Product}&#92;{@code "}}{@code ,}{&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Security}&#92;{@code ",}&#92;{@code "Bugfix}&#92;{@code "],}&#92;{@code "Key}&#92;{@code ":}&#92;{@code "Classification}&#92;{@code "}}{@code ,}{&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Critical}&#92;{@code ",}&#92;{@code "Important}&#92;{@code "],}&#92;{@code "Key}&#92;{@code ":}&#92;{@code "Severity}&#92;{@code "}}{@code ],}&#92;{@code "ApproveAfterDays}&#92;{@code ":7,}&#92;{@code "ComplianceLevel}&#92;{@code ":}&#92;{@code "Unspecified}&#92;{@code "}}{@code ]}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

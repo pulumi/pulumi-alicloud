@@ -124,14 +124,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     @Import(name="httpPorts")
     private @Nullable Output<List<Integer>> httpPorts;
 
     /**
-     * @return The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * @return The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     public Optional<Output<List<Integer>>> httpPorts() {
@@ -139,14 +139,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     @Import(name="httpsPorts")
     private @Nullable Output<List<Integer>> httpsPorts;
 
     /**
-     * @return The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * @return The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     public Optional<Output<List<Integer>>> httpsPorts() {
@@ -265,7 +265,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
      * 
      * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
@@ -274,7 +274,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> xffHeaders;
 
     /**
-     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
      * 
      * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
@@ -481,7 +481,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPorts The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+         * @param httpPorts The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPorts The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+         * @param httpPorts The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPorts The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+         * @param httpPorts The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsPorts The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+         * @param httpsPorts The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsPorts The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+         * @param httpsPorts The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsPorts The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+         * @param httpsPorts The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
          * 
          * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          * 
@@ -709,7 +709,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
          * 
          * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          * 
@@ -721,7 +721,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
          * 
          * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          * 

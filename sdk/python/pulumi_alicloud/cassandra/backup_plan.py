@@ -371,6 +371,24 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["retention_period"] = retention_period
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["backupPeriod"] = backup_period
+        __props__["backupTime"] = backup_time
+        __props__["clusterId"] = cluster_id
+        __props__["dataCenterId"] = data_center_id
+        __props__["retentionPeriod"] = retention_period
+        return pulumi.runtime.exists_resource(None, 'alicloud:cassandra/backupPlan:BackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

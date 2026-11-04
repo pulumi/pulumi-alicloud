@@ -433,6 +433,12 @@ func (CollectionPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*collectionPolicyState)(nil)).Elem()
 }
 
+// CollectionPolicyExists checks whether an existing CollectionPolicy resource with the given ID exists.
+func CollectionPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CollectionPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/collectionPolicy:CollectionPolicy", id, state, "", opts...)
+}
+
 type collectionPolicyArgs struct {
 	// Centralized forwarding configuration. See `centralizeConfig` below.
 	CentralizeConfig *CollectionPolicyCentralizeConfig `pulumi:"centralizeConfig"`

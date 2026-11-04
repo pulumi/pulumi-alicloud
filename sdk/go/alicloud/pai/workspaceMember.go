@@ -176,6 +176,12 @@ func (WorkspaceMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceMemberState)(nil)).Elem()
 }
 
+// WorkspaceMemberExists checks whether an existing WorkspaceMember resource with the given ID exists.
+func WorkspaceMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceMember:WorkspaceMember", id, state, "", opts...)
+}
+
 type workspaceMemberArgs struct {
 	// The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
 	Roles []string `pulumi:"roles"`

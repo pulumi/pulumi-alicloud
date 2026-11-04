@@ -280,6 +280,18 @@ class VulWhitelist(pulumi.CustomResource):
         __props__.__dict__["whitelist"] = whitelist
         return VulWhitelist(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            target_info: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["reason"] = reason
+        __props__["targetInfo"] = target_info
+        __props__["whitelist"] = whitelist
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/vulWhitelist:VulWhitelist', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def reason(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -321,6 +321,12 @@ func (VirtualBorderRouterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualBorderRouterState)(nil)).Elem()
 }
 
+// VirtualBorderRouterExists checks whether an existing VirtualBorderRouter resource with the given ID exists.
+func VirtualBorderRouterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualBorderRouterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter", id, state, "", opts...)
+}
+
 type virtualBorderRouterArgs struct {
 	// Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
 	//

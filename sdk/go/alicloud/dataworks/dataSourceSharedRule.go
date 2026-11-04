@@ -239,6 +239,12 @@ func (DataSourceSharedRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataSourceSharedRuleState)(nil)).Elem()
 }
 
+// DataSourceSharedRuleExists checks whether an existing DataSourceSharedRule resource with the given ID exists.
+func DataSourceSharedRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataSourceSharedRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule", id, state, "", opts...)
+}
+
 type dataSourceSharedRuleArgs struct {
 	// The ID of the data source, that is, the unique identifier of the data source.
 	DataSourceId int `pulumi:"dataSourceId"`

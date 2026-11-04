@@ -145,6 +145,12 @@ func (CloudPhoneInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudPhoneInstanceState)(nil)).Elem()
 }
 
+// CloudPhoneInstanceExists checks whether an existing CloudPhoneInstance resource with the given ID exists.
+func CloudPhoneInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudPhoneInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance", id, state, "", opts...)
+}
+
 type cloudPhoneInstanceArgs struct {
 	// The ID of the instance group to which the instance belongs
 	AndroidInstanceGroupId *string `pulumi:"androidInstanceGroupId"`

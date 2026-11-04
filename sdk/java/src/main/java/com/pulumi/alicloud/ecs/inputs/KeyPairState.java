@@ -48,22 +48,20 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     /**
      * The key pair&#39;s name. It is the only in one Alicloud account.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
      * @return The key pair&#39;s name. It is the only in one Alicloud account.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -213,11 +211,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+        @Deprecated
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
@@ -228,11 +225,10 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+        @Deprecated
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }

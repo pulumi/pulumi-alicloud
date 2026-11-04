@@ -166,11 +166,10 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * @deprecated Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead. */
+    @Deprecated
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 

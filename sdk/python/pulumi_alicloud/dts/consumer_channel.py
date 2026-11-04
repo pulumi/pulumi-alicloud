@@ -474,6 +474,22 @@ class ConsumerChannel(pulumi.CustomResource):
         __props__.__dict__["dts_instance_id"] = dts_instance_id
         return ConsumerChannel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_group_password: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_group_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["consumerGroupId"] = consumer_group_id
+        __props__["consumerGroupName"] = consumer_group_name
+        __props__["consumerGroupPassword"] = consumer_group_password
+        __props__["consumerGroupUserName"] = consumer_group_user_name
+        __props__["dtsInstanceId"] = dts_instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dts/consumerChannel:ConsumerChannel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="consumerGroupId")
     def consumer_group_id(self) -> pulumi.Output[_builtins.str]:

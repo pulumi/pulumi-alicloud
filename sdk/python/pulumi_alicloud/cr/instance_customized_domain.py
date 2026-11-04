@@ -449,6 +449,28 @@ class InstanceCustomizedDomain(pulumi.CustomResource):
         __props__.__dict__["region_id"] = region_id
         return InstanceCustomizedDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            module_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certId"] = cert_id
+        __props__["certRegionId"] = cert_region_id
+        __props__["createTime"] = create_time
+        __props__["domain"] = domain
+        __props__["instanceId"] = instance_id
+        __props__["modifiedTime"] = modified_time
+        __props__["moduleName"] = module_name
+        __props__["regionId"] = region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/instanceCustomizedDomain:InstanceCustomizedDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[_builtins.str]:

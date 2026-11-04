@@ -162,6 +162,12 @@ func (V3AliasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3aliasState)(nil)).Elem()
 }
 
+// V3AliasExists checks whether an existing V3Alias resource with the given ID exists.
+func V3AliasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3AliasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3Alias:V3Alias", id, state, "", opts...)
+}
+
 type v3aliasArgs struct {
 	// Grayscale version
 	AdditionalVersionWeight map[string]float64 `pulumi:"additionalVersionWeight"`

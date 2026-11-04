@@ -185,6 +185,12 @@ func (FlowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowState)(nil)).Elem()
 }
 
+// FlowExists checks whether an existing Flow resource with the given ID exists.
+func FlowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fnf/flow:Flow", id, state, "", opts...)
+}
+
 type flowArgs struct {
 	// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
 	Definition string `pulumi:"definition"`

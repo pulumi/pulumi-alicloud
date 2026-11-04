@@ -439,6 +439,12 @@ func (V3CustomDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3customDomainState)(nil)).Elem()
 }
 
+// V3CustomDomainExists checks whether an existing V3CustomDomain resource with the given ID exists.
+func V3CustomDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3CustomDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3CustomDomain:V3CustomDomain", id, state, "", opts...)
+}
+
 type v3customDomainArgs struct {
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig *V3CustomDomainAuthConfig `pulumi:"authConfig"`

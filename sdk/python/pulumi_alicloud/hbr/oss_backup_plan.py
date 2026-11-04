@@ -631,6 +631,34 @@ class OssBackupPlan(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return OssBackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupType"] = backup_type
+        __props__["bucket"] = bucket
+        __props__["crossAccountRoleName"] = cross_account_role_name
+        __props__["crossAccountType"] = cross_account_type
+        __props__["crossAccountUserId"] = cross_account_user_id
+        __props__["disabled"] = disabled
+        __props__["ossBackupPlanName"] = oss_backup_plan_name
+        __props__["prefix"] = prefix
+        __props__["retention"] = retention
+        __props__["schedule"] = schedule
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/ossBackupPlan:OssBackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Output[_builtins.str]:

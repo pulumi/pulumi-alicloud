@@ -636,6 +636,30 @@ class EcsInvocation(pulumi.CustomResource):
         __props__.__dict__["windows_password_name"] = windows_password_name
         return EcsInvocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            command_id: pulumi.Input[Optional[_builtins.str]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timed: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            windows_password_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commandId"] = command_id
+        __props__["frequency"] = frequency
+        __props__["instanceIds"] = instance_ids
+        __props__["parameters"] = parameters
+        __props__["repeatMode"] = repeat_mode
+        __props__["status"] = status
+        __props__["timed"] = timed
+        __props__["username"] = username
+        __props__["windowsPasswordName"] = windows_password_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsInvocation:EcsInvocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="commandId")
     def command_id(self) -> pulumi.Output[_builtins.str]:

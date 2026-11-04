@@ -623,6 +623,42 @@ class SystemGroup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return SystemGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            callback: pulumi.Input[Optional[_builtins.str]] = None,
+            capture_image: pulumi.Input[Optional[_builtins.int]] = None,
+            capture_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            capture_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            capture_oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+            capture_video: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            in_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            lazy_pull: pulumi.Input[Optional[_builtins.bool]] = None,
+            out_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            play_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            push_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["callback"] = callback
+        __props__["captureImage"] = capture_image
+        __props__["captureInterval"] = capture_interval
+        __props__["captureOssBucket"] = capture_oss_bucket
+        __props__["captureOssPath"] = capture_oss_path
+        __props__["captureVideo"] = capture_video
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["groupName"] = group_name
+        __props__["inProtocol"] = in_protocol
+        __props__["lazyPull"] = lazy_pull
+        __props__["outProtocol"] = out_protocol
+        __props__["playDomain"] = play_domain
+        __props__["pushDomain"] = push_domain
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:videosurveillance/systemGroup:SystemGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def callback(self) -> pulumi.Output[Optional[_builtins.str]]:

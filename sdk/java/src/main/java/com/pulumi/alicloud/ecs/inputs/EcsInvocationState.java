@@ -117,22 +117,20 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
     /**
      * Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
      * 
-     * @deprecated
-     * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+     * @deprecated Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
      * 
      */
-    @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
+    @Deprecated
     @Import(name="timed")
     private @Nullable Output<Boolean> timed;
 
     /**
      * @return Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
      * 
-     * @deprecated
-     * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+     * @deprecated Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
      * 
      */
-    @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
+    @Deprecated
     public Optional<Output<Boolean>> timed() {
         return Optional.ofNullable(this.timed);
     }
@@ -352,11 +350,10 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+         * @deprecated Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
          * 
          */
-        @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
+        @Deprecated
         public Builder timed(@Nullable Output<Boolean> timed) {
             $.timed = timed;
             return this;
@@ -367,11 +364,10 @@ public final class EcsInvocationState extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+         * @deprecated Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
          * 
          */
-        @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
+        @Deprecated
         public Builder timed(Boolean timed) {
             return timed(Output.of(timed));
         }

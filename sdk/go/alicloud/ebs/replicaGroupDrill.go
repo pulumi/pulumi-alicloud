@@ -126,6 +126,12 @@ func (ReplicaGroupDrillState) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicaGroupDrillState)(nil)).Elem()
 }
 
+// ReplicaGroupDrillExists checks whether an existing ReplicaGroupDrill resource with the given ID exists.
+func ReplicaGroupDrillExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReplicaGroupDrillState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill", id, state, "", opts...)
+}
+
 type replicaGroupDrillArgs struct {
 	// The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
 	GroupId string `pulumi:"groupId"`

@@ -471,6 +471,30 @@ class KeyPair(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return KeyPair(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            finger_print: pulumi.Input[Optional[_builtins.str]] = None,
+            key_file: pulumi.Input[Optional[_builtins.str]] = None,
+            key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["fingerPrint"] = finger_print
+        __props__["keyFile"] = key_file
+        __props__["keyName"] = key_name
+        __props__["keyNamePrefix"] = key_name_prefix
+        __props__["keyPairName"] = key_pair_name
+        __props__["publicKey"] = public_key
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/keyPair:KeyPair', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -186,7 +186,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The description of the listener.
      * 
-     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
@@ -195,7 +195,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * @return The description of the listener.
      * 
-     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> listenerDescription() {

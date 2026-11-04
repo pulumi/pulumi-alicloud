@@ -574,6 +574,28 @@ class LakeAccount(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return LakeAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict', 'outputs.LakeAccountAccountPrivilege']]]]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_user_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountDescription"] = account_description
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["accountPrivileges"] = account_privileges
+        __props__["accountType"] = account_type
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["ramUserLists"] = ram_user_lists
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:adb/lakeAccount:LakeAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[Optional[_builtins.str]]:

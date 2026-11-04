@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Package name.  
+        /// Package name.
         /// 
         /// For China site accounts:
         /// </summary>
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Package name.  
+        /// Package name.
         /// 
         /// For China site accounts:
         /// </summary>
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Package name.  
+        /// Package name.
         /// 
         /// For China site accounts:
         /// </summary>

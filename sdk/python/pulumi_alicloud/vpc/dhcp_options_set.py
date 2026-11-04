@@ -664,6 +664,36 @@ class DhcpOptionsSet(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DhcpOptionsSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associate_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict', 'outputs.DhcpOptionsSetAssociateVpc']]]]] = None,
+            dhcp_options_set_description: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_options_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name_servers: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv6_lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+            lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associateVpcs"] = associate_vpcs
+        __props__["dhcpOptionsSetDescription"] = dhcp_options_set_description
+        __props__["dhcpOptionsSetName"] = dhcp_options_set_name
+        __props__["domainName"] = domain_name
+        __props__["domainNameServers"] = domain_name_servers
+        __props__["dryRun"] = dry_run
+        __props__["ipv6LeaseTime"] = ipv6_lease_time
+        __props__["leaseTime"] = lease_time
+        __props__["ownerId"] = owner_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associateVpcs")
     @_utilities.deprecated("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")

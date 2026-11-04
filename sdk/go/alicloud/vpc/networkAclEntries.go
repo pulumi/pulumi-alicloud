@@ -184,6 +184,12 @@ func (NetworkAclEntriesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclEntriesState)(nil)).Elem()
 }
 
+// NetworkAclEntriesExists checks whether an existing NetworkAclEntries resource with the given ID exists.
+func NetworkAclEntriesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAclEntriesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/networkAclEntries:NetworkAclEntries", id, state, "", opts...)
+}
+
 type networkAclEntriesArgs struct {
 	// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 	Egresses []NetworkAclEntriesEgress `pulumi:"egresses"`

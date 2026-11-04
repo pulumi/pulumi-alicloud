@@ -551,6 +551,22 @@ class Quota(pulumi.CustomResource):
         __props__.__dict__["sub_quota_info_lists"] = sub_quota_info_lists
         return Quota(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
+            part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict', 'outputs.QuotaSubQuotaInfoList']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commodityCode"] = commodity_code
+        __props__["commodityData"] = commodity_data
+        __props__["partNickName"] = part_nick_name
+        __props__["paymentType"] = payment_type
+        __props__["subQuotaInfoLists"] = sub_quota_info_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:maxcompute/quota:Quota', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="commodityCode")
     def commodity_code(self) -> pulumi.Output[_builtins.str]:

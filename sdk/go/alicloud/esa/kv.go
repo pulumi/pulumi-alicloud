@@ -159,6 +159,12 @@ func (KvState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kvState)(nil)).Elem()
 }
 
+// KvExists checks whether an existing Kv resource with the given ID exists.
+func KvExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KvState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/kv:Kv", id, state, "", opts...)
+}
+
 type kvArgs struct {
 	// The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
 	Expiration *int `pulumi:"expiration"`

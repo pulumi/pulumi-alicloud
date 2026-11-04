@@ -310,6 +310,12 @@ func (PcaCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pcaCertificateState)(nil)).Elem()
 }
 
+// PcaCertificateExists checks whether an existing PcaCertificate resource with the given ID exists.
+func PcaCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PcaCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate", id, state, "", opts...)
+}
+
 type pcaCertificateArgs struct {
 	// The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
 	// - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.

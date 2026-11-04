@@ -142,6 +142,12 @@ func (BizTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bizTypeState)(nil)).Elem()
 }
 
+// BizTypeExists checks whether an existing BizType resource with the given ID exists.
+func BizTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BizTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:aligreen/bizType:BizType", id, state, "", opts...)
+}
+
 type bizTypeArgs struct {
 	// The name of the existing business scenario that was imported from when the business scenario was created.
 	BizTypeImport *string `pulumi:"bizTypeImport"`

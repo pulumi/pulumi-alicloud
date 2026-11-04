@@ -558,6 +558,34 @@ class PrometheusInstance(pulumi.CustomResource):
         __props__.__dict__["workspace"] = workspace
         return PrometheusInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_free_write_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auth_free_write: pulumi.Input[Optional[_builtins.bool]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["archiveDuration"] = archive_duration
+        __props__["authFreeReadPolicy"] = auth_free_read_policy
+        __props__["authFreeWritePolicy"] = auth_free_write_policy
+        __props__["createTime"] = create_time
+        __props__["enableAuthFreeRead"] = enable_auth_free_read
+        __props__["enableAuthFreeWrite"] = enable_auth_free_write
+        __props__["paymentType"] = payment_type
+        __props__["prometheusInstanceName"] = prometheus_instance_name
+        __props__["regionId"] = region_id
+        __props__["storageDuration"] = storage_duration
+        __props__["workspace"] = workspace
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/prometheusInstance:PrometheusInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="archiveDuration")
     def archive_duration(self) -> pulumi.Output[Optional[_builtins.int]]:

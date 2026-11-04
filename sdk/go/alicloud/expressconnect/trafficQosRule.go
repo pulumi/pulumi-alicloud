@@ -383,6 +383,12 @@ func (TrafficQosRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficQosRuleState)(nil)).Elem()
 }
 
+// TrafficQosRuleExists checks whether an existing TrafficQosRule resource with the given ID exists.
+func TrafficQosRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficQosRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/trafficQosRule:TrafficQosRule", id, state, "", opts...)
+}
+
 type trafficQosRuleArgs struct {
 	// The traffic of the QoS rule matches the Destination IPv4 network segment.
 	//

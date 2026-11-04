@@ -240,6 +240,16 @@ class KeyPair(pulumi.CustomResource):
         __props__.__dict__["public_key_body"] = public_key_body
         return KeyPair(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key_body: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["keyPairName"] = key_pair_name
+        __props__["publicKeyBody"] = public_key_body
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecp/keyPair:KeyPair', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[_builtins.str]:

@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:maxcompute/quotaPlan:QuotaPlan")
 public class QuotaPlan extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to take effect immediately. “Valid values: true”\
+     * Whether to take effect immediately. “Valid values: true”&#92;
      * .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      * 
      */
@@ -110,7 +110,7 @@ public class QuotaPlan extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> isEffective;
 
     /**
-     * @return Whether to take effect immediately. “Valid values: true”\
+     * @return Whether to take effect immediately. “Valid values: true”&#92;
      * .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      * 
      */

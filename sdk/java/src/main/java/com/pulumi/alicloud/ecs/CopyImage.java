@@ -55,11 +55,10 @@ public class CopyImage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
-     * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
+     * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

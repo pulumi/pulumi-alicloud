@@ -318,6 +318,18 @@ class LogConfig(pulumi.CustomResource):
         __props__.__dict__["sls_project"] = sls_project
         return LogConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            log_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_log_store: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["logType"] = log_type
+        __props__["slsLogStore"] = sls_log_store
+        __props__["slsProject"] = sls_project
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/logConfig:LogConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="logType")
     def log_type(self) -> pulumi.Output[_builtins.str]:

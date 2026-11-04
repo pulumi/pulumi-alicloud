@@ -154,6 +154,12 @@ func (SharedTargetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedTargetState)(nil)).Elem()
 }
 
+// SharedTargetExists checks whether an existing SharedTarget resource with the given ID exists.
+func SharedTargetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SharedTargetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/sharedTarget:SharedTarget", id, state, "", opts...)
+}
+
 type sharedTargetArgs struct {
 	// The ID of the resource share.
 	ResourceShareId string `pulumi:"resourceShareId"`

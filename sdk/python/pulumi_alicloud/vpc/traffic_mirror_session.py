@@ -812,6 +812,40 @@ class TrafficMirrorSession(pulumi.CustomResource):
         __props__.__dict__["virtual_network_id"] = virtual_network_id
         return TrafficMirrorSession(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            packet_length: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_session_description: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_session_name: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_source_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            traffic_mirror_target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_network_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["enabled"] = enabled
+        __props__["packetLength"] = packet_length
+        __props__["priority"] = priority
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["trafficMirrorFilterId"] = traffic_mirror_filter_id
+        __props__["trafficMirrorSessionDescription"] = traffic_mirror_session_description
+        __props__["trafficMirrorSessionName"] = traffic_mirror_session_name
+        __props__["trafficMirrorSourceIds"] = traffic_mirror_source_ids
+        __props__["trafficMirrorTargetId"] = traffic_mirror_target_id
+        __props__["trafficMirrorTargetType"] = traffic_mirror_target_type
+        __props__["virtualNetworkId"] = virtual_network_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/trafficMirrorSession:TrafficMirrorSession', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

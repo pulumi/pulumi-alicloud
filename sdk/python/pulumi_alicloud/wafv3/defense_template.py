@@ -622,6 +622,34 @@ class DefenseTemplate(pulumi.CustomResource):
         __props__.__dict__["template_type"] = template_type
         return DefenseTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            defense_template_id: pulumi.Input[Optional[_builtins.int]] = None,
+            defense_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            template_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            template_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defenseScene"] = defense_scene
+        __props__["defenseTemplateId"] = defense_template_id
+        __props__["defenseTemplateName"] = defense_template_name
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["resourceGroups"] = resource_groups
+        __props__["resourceManagerResourceGroupId"] = resource_manager_resource_group_id
+        __props__["resources"] = resources
+        __props__["status"] = status
+        __props__["templateOrigin"] = template_origin
+        __props__["templateType"] = template_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:wafv3/defenseTemplate:DefenseTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> pulumi.Output[_builtins.str]:

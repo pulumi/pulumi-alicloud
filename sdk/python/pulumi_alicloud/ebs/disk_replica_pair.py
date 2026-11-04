@@ -1096,6 +1096,52 @@ class DiskReplicaPair(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DiskReplicaPair(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_replica_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+            pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+            rpo: pulumi.Input[Optional[_builtins.int]] = None,
+            source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["destinationDiskId"] = destination_disk_id
+        __props__["destinationRegionId"] = destination_region_id
+        __props__["destinationZoneId"] = destination_zone_id
+        __props__["diskId"] = disk_id
+        __props__["diskReplicaPairName"] = disk_replica_pair_name
+        __props__["oneShot"] = one_shot
+        __props__["pairName"] = pair_name
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["reverseReplicate"] = reverse_replicate
+        __props__["rpo"] = rpo
+        __props__["sourceZoneId"] = source_zone_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ebs/diskReplicaPair:DiskReplicaPair', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[Optional[_builtins.int]]:

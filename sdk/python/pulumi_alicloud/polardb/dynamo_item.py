@@ -655,6 +655,28 @@ class DynamoItem(pulumi.CustomResource):
         __props__.__dict__["table_name"] = table_name
         return DynamoItem(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_auth: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            hash_key: pulumi.Input[Optional[_builtins.str]] = None,
+            item: pulumi.Input[Optional[_builtins.str]] = None,
+            range_key: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountAuth"] = account_auth
+        __props__["accountName"] = account_name
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["endpoint"] = endpoint
+        __props__["hashKey"] = hash_key
+        __props__["item"] = item
+        __props__["rangeKey"] = range_key
+        __props__["tableName"] = table_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/dynamoItem:DynamoItem', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountAuth")
     def account_auth(self) -> pulumi.Output[_builtins.str]:

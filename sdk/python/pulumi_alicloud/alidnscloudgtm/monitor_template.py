@@ -615,6 +615,32 @@ class MonitorTemplate(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return MonitorTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+            failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict', 'outputs.MonitorTemplateIspCityNode']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["evaluationCount"] = evaluation_count
+        __props__["extendInfo"] = extend_info
+        __props__["failureRate"] = failure_rate
+        __props__["interval"] = interval
+        __props__["ipVersion"] = ip_version
+        __props__["ispCityNodes"] = isp_city_nodes
+        __props__["name"] = name
+        __props__["protocol"] = protocol
+        __props__["remark"] = remark
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:alidnscloudgtm/monitorTemplate:MonitorTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="evaluationCount")
     def evaluation_count(self) -> pulumi.Output[_builtins.int]:

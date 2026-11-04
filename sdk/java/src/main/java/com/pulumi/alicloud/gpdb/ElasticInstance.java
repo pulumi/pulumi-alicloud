@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
+ * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.&#92;
  * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
  * 
  * &gt; **NOTE:** Deprecated since v1.147.0.
@@ -235,7 +235,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
         return this.instanceSpec;
     }
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.&#92;
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
@@ -243,7 +243,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> paymentDuration;
 
     /**
-     * @return The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
+     * @return The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.&#92;
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
@@ -251,7 +251,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paymentDuration);
     }
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.&#92;
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
@@ -259,7 +259,7 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> paymentDurationUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
+     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.&#92;
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */

@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
         /// - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
         /// - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
-        /// Default value: `CONSUME_FROM_LAST_OFFSET`.
+        ///   Default value: `CONSUME_FROM_LAST_OFFSET`.
         /// </summary>
         public readonly string? Offset;
         /// <summary>

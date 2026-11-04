@@ -154,14 +154,14 @@ public class Kv extends com.pulumi.resources.CustomResource {
         return this.namespace;
     }
     /**
-     * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+     * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (&#92;&#92;).
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**
-     * @return The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+     * @return The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (&#92;&#92;).
      * 
      */
     public Output<Optional<String>> url() {

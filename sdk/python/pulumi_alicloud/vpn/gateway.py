@@ -1119,6 +1119,62 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disaster_recovery_internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ipsec: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            ssl_vpn_internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoPropagate"] = auto_propagate
+        __props__["bandwidth"] = bandwidth
+        __props__["businessStatus"] = business_status
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["disasterRecoveryInternetIp"] = disaster_recovery_internet_ip
+        __props__["disasterRecoveryVswitchId"] = disaster_recovery_vswitch_id
+        __props__["enableIpsec"] = enable_ipsec
+        __props__["enableSsl"] = enable_ssl
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["internetIp"] = internet_ip
+        __props__["name"] = name
+        __props__["networkType"] = network_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sslConnections"] = ssl_connections
+        __props__["sslVpnInternetIp"] = ssl_vpn_internet_ip
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vpnGatewayName"] = vpn_gateway_name
+        __props__["vpnType"] = vpn_type
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

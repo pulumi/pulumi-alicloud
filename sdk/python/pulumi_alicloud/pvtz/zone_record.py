@@ -626,6 +626,36 @@ class ZoneRecord(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneRecord(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            record_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_record: pulumi.Input[Optional[_builtins.str]] = None,
+            rr: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["lang"] = lang
+        __props__["priority"] = priority
+        __props__["recordId"] = record_id
+        __props__["remark"] = remark
+        __props__["resourceRecord"] = resource_record
+        __props__["rr"] = rr
+        __props__["status"] = status
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        __props__["userClientIp"] = user_client_ip
+        __props__["value"] = value
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/zoneRecord:ZoneRecord', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[_builtins.str]]:

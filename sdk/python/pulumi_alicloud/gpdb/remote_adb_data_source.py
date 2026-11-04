@@ -687,6 +687,34 @@ class RemoteAdbDataSource(pulumi.CustomResource):
         __props__.__dict__["user_password"] = user_password
         return RemoteAdbDataSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            local_database: pulumi.Input[Optional[_builtins.str]] = None,
+            local_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            manager_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            manager_user_password: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_adb_data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            remote_database: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_password: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataSourceName"] = data_source_name
+        __props__["localDatabase"] = local_database
+        __props__["localDbInstanceId"] = local_db_instance_id
+        __props__["managerUserName"] = manager_user_name
+        __props__["managerUserPassword"] = manager_user_password
+        __props__["remoteAdbDataSourceId"] = remote_adb_data_source_id
+        __props__["remoteDatabase"] = remote_database
+        __props__["remoteDbInstanceId"] = remote_db_instance_id
+        __props__["status"] = status
+        __props__["userName"] = user_name
+        __props__["userPassword"] = user_password
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
     def data_source_name(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -391,6 +391,26 @@ class ResourceDirectory(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ResourceDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            member_account_display_name_sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+            member_deletion_status: pulumi.Input[Optional[_builtins.str]] = None,
+            root_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["masterAccountId"] = master_account_id
+        __props__["masterAccountName"] = master_account_name
+        __props__["memberAccountDisplayNameSyncStatus"] = member_account_display_name_sync_status
+        __props__["memberDeletionStatus"] = member_deletion_status
+        __props__["rootFolderId"] = root_folder_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/resourceDirectory:ResourceDirectory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

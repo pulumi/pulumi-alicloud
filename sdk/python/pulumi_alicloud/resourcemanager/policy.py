@@ -368,6 +368,22 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["policy_type"] = policy_type
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultVersion"] = default_version
+        __props__["description"] = description
+        __props__["policyDocument"] = policy_document
+        __props__["policyName"] = policy_name
+        __props__["policyType"] = policy_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultVersion")
     @_utilities.deprecated("""Field 'default_version' has been deprecated from provider version 1.90.0""")

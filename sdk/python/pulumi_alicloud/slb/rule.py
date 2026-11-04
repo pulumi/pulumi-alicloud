@@ -1195,6 +1195,56 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_sync: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cookie"] = cookie
+        __props__["cookieTimeout"] = cookie_timeout
+        __props__["deleteProtectionValidation"] = delete_protection_validation
+        __props__["domain"] = domain
+        __props__["frontendPort"] = frontend_port
+        __props__["healthCheck"] = health_check
+        __props__["healthCheckConnectPort"] = health_check_connect_port
+        __props__["healthCheckDomain"] = health_check_domain
+        __props__["healthCheckHttpCode"] = health_check_http_code
+        __props__["healthCheckInterval"] = health_check_interval
+        __props__["healthCheckTimeout"] = health_check_timeout
+        __props__["healthCheckUri"] = health_check_uri
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["listenerSync"] = listener_sync
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["name"] = name
+        __props__["scheduler"] = scheduler
+        __props__["serverGroupId"] = server_group_id
+        __props__["stickySession"] = sticky_session
+        __props__["stickySessionType"] = sticky_session_type
+        __props__["unhealthyThreshold"] = unhealthy_threshold
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cookie(self) -> pulumi.Output[Optional[_builtins.str]]:

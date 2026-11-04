@@ -205,6 +205,12 @@ func (HandshakeAcceptanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*handshakeAcceptanceState)(nil)).Elem()
 }
 
+// HandshakeAcceptanceExists checks whether an existing HandshakeAcceptance resource with the given ID exists.
+func HandshakeAcceptanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HandshakeAcceptanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/handshakeAcceptance:HandshakeAcceptance", id, state, "", opts...)
+}
+
 type handshakeAcceptanceArgs struct {
 	// The ID of the invitation.
 	HandshakeId string `pulumi:"handshakeId"`

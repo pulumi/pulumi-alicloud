@@ -151,6 +151,12 @@ func (ControlPolicyOrderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlPolicyOrderState)(nil)).Elem()
 }
 
+// ControlPolicyOrderExists checks whether an existing ControlPolicyOrder resource with the given ID exists.
+func ControlPolicyOrderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlPolicyOrderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder", id, state, "", opts...)
+}
+
 type controlPolicyOrderArgs struct {
 	// The unique ID of the access control policy.
 	AclUuid string `pulumi:"aclUuid"`

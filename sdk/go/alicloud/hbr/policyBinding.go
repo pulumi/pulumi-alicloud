@@ -355,6 +355,12 @@ func (PolicyBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyBindingState)(nil)).Elem()
 }
 
+// PolicyBindingExists checks whether an existing PolicyBinding resource with the given ID exists.
+func PolicyBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/policyBinding:PolicyBinding", id, state, "", opts...)
+}
+
 type policyBindingArgs struct {
 	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions *PolicyBindingAdvancedOptions `pulumi:"advancedOptions"`

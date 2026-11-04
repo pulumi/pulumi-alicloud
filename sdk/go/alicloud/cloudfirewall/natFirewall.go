@@ -270,6 +270,12 @@ func (NatFirewallState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natFirewallState)(nil)).Elem()
 }
 
+// NatFirewallExists checks whether an existing NatFirewall resource with the given ID exists.
+func NatFirewallExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatFirewallState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/natFirewall:NatFirewall", id, state, "", opts...)
+}
+
 type natFirewallArgs struct {
 	// Safety protection switch. Value:-**open**: open-**close**: close.
 	FirewallSwitch *string `pulumi:"firewallSwitch"`

@@ -576,6 +576,32 @@ class StateConfiguration(pulumi.CustomResource):
         __props__.__dict__["template_version"] = template_version
         return StateConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configure_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_expression: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            targets: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configureMode"] = configure_mode
+        __props__["description"] = description
+        __props__["parameters"] = parameters
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scheduleExpression"] = schedule_expression
+        __props__["scheduleType"] = schedule_type
+        __props__["tags"] = tags
+        __props__["targets"] = targets
+        __props__["templateName"] = template_name
+        __props__["templateVersion"] = template_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/stateConfiguration:StateConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configureMode")
     def configure_mode(self) -> pulumi.Output[_builtins.str]:

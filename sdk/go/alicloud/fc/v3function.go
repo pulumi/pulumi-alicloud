@@ -445,6 +445,12 @@ func (V3FunctionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3functionState)(nil)).Elem()
 }
 
+// V3FunctionExists checks whether an existing V3Function resource with the given ID exists.
+func V3FunctionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3FunctionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3Function:V3Function", id, state, "", opts...)
+}
+
 type v3functionArgs struct {
 	// Function code ZIP package. code and customContainerConfig. See `code` below.
 	//

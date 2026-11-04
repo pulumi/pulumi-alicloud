@@ -407,11 +407,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -582,11 +581,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
      * 
-     * @deprecated
-     * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
@@ -605,11 +603,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * System disk description. It cannot begin with http:// or https://.
      * 
-     * @deprecated
-     * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output<String> systemDiskDescription;
 
@@ -623,11 +620,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
-     * @deprecated
-     * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output<String> systemDiskName;
 
@@ -641,11 +637,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
      * 
-     * @deprecated
-     * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
+     * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead. */
+    @Deprecated
     @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
@@ -701,11 +696,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
      * 
-     * @deprecated
-     * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
+     * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
      */
-    @Deprecated /* Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead. */
+    @Deprecated
     @Export(name="userdata", refs={String.class}, tree="[0]")
     private Output<String> userdata;
 

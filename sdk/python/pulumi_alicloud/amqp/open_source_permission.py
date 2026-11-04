@@ -510,6 +510,24 @@ class OpenSourcePermission(pulumi.CustomResource):
         __props__.__dict__["write"] = write
         return OpenSourcePermission(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configure: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            read: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vhost: pulumi.Input[Optional[_builtins.str]] = None,
+            write: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configure"] = configure
+        __props__["instanceId"] = instance_id
+        __props__["read"] = read
+        __props__["userName"] = user_name
+        __props__["vhost"] = vhost
+        __props__["write"] = write
+        return pulumi.runtime.exists_resource(None, 'alicloud:amqp/openSourcePermission:OpenSourcePermission', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configure(self) -> pulumi.Output[Optional[_builtins.str]]:

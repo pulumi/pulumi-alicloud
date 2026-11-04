@@ -606,6 +606,32 @@ class ServerCertificate(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ServerCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alicloud_certifacte_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certifacte_name: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certificate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alicloudCertifacteId"] = alicloud_certifacte_id
+        __props__["alicloudCertifacteName"] = alicloud_certifacte_name
+        __props__["alicloudCertificateId"] = alicloud_certificate_id
+        __props__["alicloudCertificateName"] = alicloud_certificate_name
+        __props__["alicloudCertificateRegionId"] = alicloud_certificate_region_id
+        __props__["name"] = name
+        __props__["privateKey"] = private_key
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["serverCertificate"] = server_certificate
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/serverCertificate:ServerCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alicloudCertifacteId")
     @_utilities.deprecated("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")

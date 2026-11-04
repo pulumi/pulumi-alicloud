@@ -133,6 +133,12 @@ func (AdvancedQueryTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*advancedQueryTemplateState)(nil)).Elem()
 }
 
+// AdvancedQueryTemplateExists checks whether an existing AdvancedQueryTemplate resource with the given ID exists.
+func AdvancedQueryTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdvancedQueryTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate", id, state, "", opts...)
+}
+
 type advancedQueryTemplateArgs struct {
 	// Distinguish whether the current template is a simple query
 	SimpleQuery bool `pulumi:"simpleQuery"`

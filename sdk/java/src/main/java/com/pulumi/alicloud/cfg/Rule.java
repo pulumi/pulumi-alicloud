@@ -349,11 +349,10 @@ public class Rule extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+     * @deprecated Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
-    @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
+    @Deprecated
     @Export(name="scopeComplianceResourceTypes", refs={String.class}, tree="[0]")
     private Output<String> scopeComplianceResourceTypes;
 
@@ -367,11 +366,10 @@ public class Rule extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+     * @deprecated Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      */
-    @Deprecated /* Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead. */
+    @Deprecated
     @Export(name="sourceDetailMessageType", refs={String.class}, tree="[0]")
     private Output<String> sourceDetailMessageType;
 
@@ -399,11 +397,10 @@ public class Rule extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+     * @deprecated Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      */
-    @Deprecated /* Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead. */
+    @Deprecated
     @Export(name="sourceMaximumExecutionFrequency", refs={String.class}, tree="[0]")
     private Output<String> sourceMaximumExecutionFrequency;
 

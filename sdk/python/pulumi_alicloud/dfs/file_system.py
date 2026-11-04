@@ -704,6 +704,40 @@ class FileSystem(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return FileSystem(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_throughput_in_mi_bps: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            space_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            throughput_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataRedundancyType"] = data_redundancy_type
+        __props__["dedicatedClusterId"] = dedicated_cluster_id
+        __props__["description"] = description
+        __props__["fileSystemName"] = file_system_name
+        __props__["partitionNumber"] = partition_number
+        __props__["protocolType"] = protocol_type
+        __props__["provisionedThroughputInMiBps"] = provisioned_throughput_in_mi_bps
+        __props__["regionId"] = region_id
+        __props__["spaceCapacity"] = space_capacity
+        __props__["storageSetName"] = storage_set_name
+        __props__["storageType"] = storage_type
+        __props__["throughputMode"] = throughput_mode
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dfs/fileSystem:FileSystem', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

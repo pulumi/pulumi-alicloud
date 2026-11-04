@@ -523,6 +523,26 @@ class LifecycleHook(pulumi.CustomResource):
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         return LifecycleHook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_result: pulumi.Input[Optional[_builtins.str]] = None,
+            heartbeat_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            lifecycle_transition: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultResult"] = default_result
+        __props__["heartbeatTimeout"] = heartbeat_timeout
+        __props__["lifecycleTransition"] = lifecycle_transition
+        __props__["name"] = name
+        __props__["notificationArn"] = notification_arn
+        __props__["notificationMetadata"] = notification_metadata
+        __props__["scalingGroupId"] = scaling_group_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/lifecycleHook:LifecycleHook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultResult")
     def default_result(self) -> pulumi.Output[Optional[_builtins.str]]:

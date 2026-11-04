@@ -451,6 +451,28 @@ class Store(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Store(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacity"] = capacity
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["hpnZone"] = hpn_zone
+        __props__["name"] = name
+        __props__["paymentType"] = payment_type
+        __props__["status"] = status
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:kvcachestorekvcache/store:Store', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[_builtins.int]:

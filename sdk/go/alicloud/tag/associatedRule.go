@@ -133,6 +133,12 @@ func (AssociatedRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*associatedRuleState)(nil)).Elem()
 }
 
+// AssociatedRuleExists checks whether an existing AssociatedRule resource with the given ID exists.
+func AssociatedRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssociatedRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:tag/associatedRule:AssociatedRule", id, state, "", opts...)
+}
+
 type associatedRuleArgs struct {
 	// The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
 	AssociatedSettingName string `pulumi:"associatedSettingName"`

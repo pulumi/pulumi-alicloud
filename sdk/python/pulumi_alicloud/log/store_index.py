@@ -548,6 +548,28 @@ class StoreIndex(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return StoreIndex(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            field_searches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict', 'outputs.StoreIndexFieldSearch']]]]] = None,
+            full_text: pulumi.Input[Optional[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict', 'outputs.StoreIndexFullText']]] = None,
+            log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            max_text_len: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fieldSearches"] = field_searches
+        __props__["fullText"] = full_text
+        __props__["logReduce"] = log_reduce
+        __props__["logReduceBlackLists"] = log_reduce_black_lists
+        __props__["logReduceWhiteLists"] = log_reduce_white_lists
+        __props__["logstore"] = logstore
+        __props__["maxTextLen"] = max_text_len
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/storeIndex:StoreIndex', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="fieldSearches")
     def field_searches(self) -> pulumi.Output[Optional[Sequence['outputs.StoreIndexFieldSearch']]]:

@@ -138,6 +138,12 @@ func (SnatEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snatEntryState)(nil)).Elem()
 }
 
+// SnatEntryExists checks whether an existing SnatEntry resource with the given ID exists.
+func SnatEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnatEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rocketmq/snatEntry:SnatEntry", id, state, "", opts...)
+}
+
 type snatEntryArgs struct {
 	// The destination CIDR block.
 	CidrBlock string `pulumi:"cidrBlock"`
