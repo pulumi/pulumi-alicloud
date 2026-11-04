@@ -254,6 +254,12 @@ func (OssExportSinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ossExportSinkState)(nil)).Elem()
 }
 
+// OssExportSinkExists checks whether an existing OssExportSink resource with the given ID exists.
+func OssExportSinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OssExportSinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/ossExportSink:OssExportSink", id, state, "", opts...)
+}
+
 type ossExportSinkArgs struct {
 	// OSSExportConfiguration See `configuration` below.
 	Configuration OssExportSinkConfiguration `pulumi:"configuration"`

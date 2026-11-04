@@ -339,6 +339,20 @@ class UserGroup(pulumi.CustomResource):
         __props__.__dict__["user_group_name"] = user_group_name
         return UserGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["instanceId"] = instance_id
+        __props__["userGroupId"] = user_group_id
+        __props__["userGroupName"] = user_group_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/userGroup:UserGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

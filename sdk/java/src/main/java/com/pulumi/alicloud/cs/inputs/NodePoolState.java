@@ -84,22 +84,20 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
-     * @deprecated
-     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+     * @deprecated Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
-    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead. */
+    @Deprecated
     @Import(name="cisEnabled")
     private @Nullable Output<Boolean> cisEnabled;
 
     /**
      * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
-     * @deprecated
-     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+     * @deprecated Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      * 
      */
-    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> cisEnabled() {
         return Optional.ofNullable(this.cisEnabled);
     }
@@ -436,14 +434,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -588,22 +586,20 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -611,22 +607,20 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      * 
-     * @deprecated
-     * Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
+     * @deprecated Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
      * 
      */
-    @Deprecated /* Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead. */
+    @Deprecated
     @Import(name="nodeCount")
     private @Nullable Output<Integer> nodeCount;
 
     /**
      * @return The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      * 
-     * @deprecated
-     * Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
+     * @deprecated Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
      * 
      */
-    @Deprecated /* Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead. */
+    @Deprecated
     public Optional<Output<Integer>> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
@@ -760,22 +754,20 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * Operating system release, using `imageType` instead.
      * 
-     * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
+     * @deprecated Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      * 
      */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead. */
+    @Deprecated
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
      * @return Operating system release, using `imageType` instead.
      * 
-     * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
+     * @deprecated Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      * 
      */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead. */
+    @Deprecated
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -979,22 +971,20 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
-     * @deprecated
-     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+     * @deprecated Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
-    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead. */
+    @Deprecated
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
      * @return The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
-     * @deprecated
-     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+     * @deprecated Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      * 
      */
-    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead. */
+    @Deprecated
     public Optional<Output<String>> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
@@ -1601,11 +1591,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+         * @deprecated Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
          * 
          */
-        @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead. */
+        @Deprecated
         public Builder cisEnabled(@Nullable Output<Boolean> cisEnabled) {
             $.cisEnabled = cisEnabled;
             return this;
@@ -1616,11 +1605,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+         * @deprecated Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
          * 
          */
-        @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead. */
+        @Deprecated
         public Builder cisEnabled(Boolean cisEnabled) {
             return cisEnabled(Output.of(cisEnabled));
         }
@@ -2111,7 +2099,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
          * 
          * @return builder
          * 
@@ -2122,7 +2110,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
          * 
          * @return builder
          * 
@@ -2335,11 +2323,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -2350,11 +2337,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -2364,11 +2350,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
+         * @deprecated Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
          * 
          */
-        @Deprecated /* Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead. */
+        @Deprecated
         public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
             $.nodeCount = nodeCount;
             return this;
@@ -2379,11 +2364,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
+         * @deprecated Field &#39;node_count&#39; has been deprecated from provider version 1.158.0. New field &#39;desired_size&#39; instead.
          * 
          */
-        @Deprecated /* Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead. */
+        @Deprecated
         public Builder nodeCount(Integer nodeCount) {
             return nodeCount(Output.of(nodeCount));
         }
@@ -2567,11 +2551,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
+         * @deprecated Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
          * 
          */
-        @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead. */
+        @Deprecated
         public Builder platform(@Nullable Output<String> platform) {
             $.platform = platform;
             return this;
@@ -2582,11 +2565,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
+         * @deprecated Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
          * 
          */
-        @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead. */
+        @Deprecated
         public Builder platform(String platform) {
             return platform(Output.of(platform));
         }
@@ -2874,11 +2856,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+         * @deprecated Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
          * 
          */
-        @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead. */
+        @Deprecated
         public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
             $.securityGroupId = securityGroupId;
             return this;
@@ -2889,11 +2870,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+         * @deprecated Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
          * 
          */
-        @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead. */
+        @Deprecated
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
         }

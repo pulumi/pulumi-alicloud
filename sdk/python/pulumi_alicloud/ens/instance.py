@@ -2010,6 +2010,90 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            carrier: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict', 'outputs.InstanceDataDisk']]]]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_stop: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            include_data_disks: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            net_district_code: pulumi.Input[Optional[_builtins.str]] = None,
+            net_work_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_identification: pulumi.Input[Optional[_builtins.bool]] = None,
+            schedule_area_level: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_price_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk: pulumi.Input[Optional[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict', 'outputs.InstanceSystemDisk']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amount"] = amount
+        __props__["autoReleaseTime"] = auto_release_time
+        __props__["autoRenew"] = auto_renew
+        __props__["autoUseCoupon"] = auto_use_coupon
+        __props__["billingCycle"] = billing_cycle
+        __props__["carrier"] = carrier
+        __props__["dataDisks"] = data_disks
+        __props__["ensRegionId"] = ens_region_id
+        __props__["forceStop"] = force_stop
+        __props__["hostName"] = host_name
+        __props__["imageId"] = image_id
+        __props__["includeDataDisks"] = include_data_disks
+        __props__["instanceChargeStrategy"] = instance_charge_strategy
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["internetMaxBandwidthOut"] = internet_max_bandwidth_out
+        __props__["ipType"] = ip_type
+        __props__["keyPairName"] = key_pair_name
+        __props__["netDistrictCode"] = net_district_code
+        __props__["netWorkId"] = net_work_id
+        __props__["password"] = password
+        __props__["passwordInherit"] = password_inherit
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["publicIpIdentification"] = public_ip_identification
+        __props__["scheduleAreaLevel"] = schedule_area_level
+        __props__["schedulingPriceStrategy"] = scheduling_price_strategy
+        __props__["schedulingStrategy"] = scheduling_strategy
+        __props__["securityId"] = security_id
+        __props__["spotStrategy"] = spot_strategy
+        __props__["status"] = status
+        __props__["systemDisk"] = system_disk
+        __props__["tags"] = tags
+        __props__["uniqueSuffix"] = unique_suffix
+        __props__["userData"] = user_data
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def amount(self) -> pulumi.Output[Optional[_builtins.int]]:

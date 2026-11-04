@@ -614,6 +614,30 @@ class DataFlow(pulumi.CustomResource):
         __props__.__dict__["throughput"] = throughput
         return DataFlow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_security_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            throughput: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dataFlowId"] = data_flow_id
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["fileSystemId"] = file_system_id
+        __props__["fsetId"] = fset_id
+        __props__["sourceSecurityType"] = source_security_type
+        __props__["sourceStorage"] = source_storage
+        __props__["status"] = status
+        __props__["throughput"] = throughput
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/dataFlow:DataFlow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dataFlowId")
     def data_flow_id(self) -> pulumi.Output[_builtins.str]:

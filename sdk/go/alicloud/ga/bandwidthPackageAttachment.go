@@ -149,6 +149,12 @@ func (BandwidthPackageAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthPackageAttachmentState)(nil)).Elem()
 }
 
+// BandwidthPackageAttachmentExists checks whether an existing BandwidthPackageAttachment resource with the given ID exists.
+func BandwidthPackageAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BandwidthPackageAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment", id, state, "", opts...)
+}
+
 type bandwidthPackageAttachmentArgs struct {
 	// The ID of the Global Accelerator instance.
 	AcceleratorId string `pulumi:"acceleratorId"`

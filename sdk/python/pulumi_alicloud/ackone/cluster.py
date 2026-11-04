@@ -403,6 +403,24 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict', 'outputs.ClusterNetwork']]] = None,
+            profile: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["argocdEnabled"] = argocd_enabled
+        __props__["clusterName"] = cluster_name
+        __props__["createTime"] = create_time
+        __props__["network"] = network
+        __props__["profile"] = profile
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ackone/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="argocdEnabled")
     def argocd_enabled(self) -> pulumi.Output[_builtins.bool]:

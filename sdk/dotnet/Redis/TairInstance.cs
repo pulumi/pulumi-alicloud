@@ -154,7 +154,6 @@ namespace Pulumi.AliCloud.Redis
         /// 
         /// &gt; **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
         [Output("encryptionKey")]
@@ -164,7 +163,6 @@ namespace Pulumi.AliCloud.Redis
         /// The encryption algorithm. The default value is AES-CTR-256.
         /// 
         /// &gt; **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
@@ -348,7 +346,6 @@ namespace Pulumi.AliCloud.Redis
         /// &gt; **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
         /// 
         /// &gt; **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
@@ -586,7 +583,6 @@ namespace Pulumi.AliCloud.Redis
         /// 
         /// &gt; **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
         [Input("encryptionKey")]
@@ -596,7 +592,6 @@ namespace Pulumi.AliCloud.Redis
         /// The encryption algorithm. The default value is AES-CTR-256.
         /// 
         /// &gt; **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
@@ -772,7 +767,6 @@ namespace Pulumi.AliCloud.Redis
         /// &gt; **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
         /// 
         /// &gt; **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
@@ -980,7 +974,6 @@ namespace Pulumi.AliCloud.Redis
         /// 
         /// &gt; **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
         /// 
-        /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
         [Input("encryptionKey")]
@@ -990,7 +983,6 @@ namespace Pulumi.AliCloud.Redis
         /// The encryption algorithm. The default value is AES-CTR-256.
         /// 
         /// &gt; **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>
@@ -1184,7 +1176,6 @@ namespace Pulumi.AliCloud.Redis
         /// &gt; **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
         /// 
         /// &gt; **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         /// </summary>

@@ -360,6 +360,18 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return LoadbalancerCommonBandwidthPackageAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidthPackageId"] = bandwidth_package_id
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Output[_builtins.str]:

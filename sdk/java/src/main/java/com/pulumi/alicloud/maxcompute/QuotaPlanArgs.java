@@ -19,7 +19,7 @@ public final class QuotaPlanArgs extends com.pulumi.resources.ResourceArgs {
     public static final QuotaPlanArgs Empty = new QuotaPlanArgs();
 
     /**
-     * Whether to take effect immediately. “Valid values: true”\
+     * Whether to take effect immediately. “Valid values: true”&#92;
      * .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      * 
      */
@@ -27,7 +27,7 @@ public final class QuotaPlanArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> isEffective;
 
     /**
-     * @return Whether to take effect immediately. “Valid values: true”\
+     * @return Whether to take effect immediately. “Valid values: true”&#92;
      * .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      * 
      */
@@ -108,7 +108,7 @@ public final class QuotaPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEffective Whether to take effect immediately. “Valid values: true”\
+         * @param isEffective Whether to take effect immediately. “Valid values: true”&#92;
          * .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
          * 
          * @return builder
@@ -120,7 +120,7 @@ public final class QuotaPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEffective Whether to take effect immediately. “Valid values: true”\
+         * @param isEffective Whether to take effect immediately. “Valid values: true”&#92;
          * .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
          * 
          * @return builder

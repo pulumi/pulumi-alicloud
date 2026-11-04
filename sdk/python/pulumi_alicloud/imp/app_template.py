@@ -401,6 +401,24 @@ class AppTemplate(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AppTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            component_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict', 'outputs.AppTemplateConfigList']]]]] = None,
+            integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scene: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appTemplateName"] = app_template_name
+        __props__["componentLists"] = component_lists
+        __props__["configLists"] = config_lists
+        __props__["integrationMode"] = integration_mode
+        __props__["scene"] = scene
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:imp/appTemplate:AppTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appTemplateName")
     def app_template_name(self) -> pulumi.Output[_builtins.str]:

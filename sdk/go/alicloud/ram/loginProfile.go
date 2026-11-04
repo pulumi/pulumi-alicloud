@@ -159,6 +159,12 @@ func (LoginProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loginProfileState)(nil)).Elem()
 }
 
+// LoginProfileExists checks whether an existing LoginProfile resource with the given ID exists.
+func LoginProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoginProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/loginProfile:LoginProfile", id, state, "", opts...)
+}
+
 type loginProfileArgs struct {
 	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
 	// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.

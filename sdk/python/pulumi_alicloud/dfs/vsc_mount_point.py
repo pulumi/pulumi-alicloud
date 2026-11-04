@@ -354,6 +354,22 @@ class VscMountPoint(pulumi.CustomResource):
         __props__.__dict__["mount_point_id"] = mount_point_id
         return VscMountPoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict', 'outputs.VscMountPointInstance']]]]] = None,
+            mount_point_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliasPrefix"] = alias_prefix
+        __props__["description"] = description
+        __props__["fileSystemId"] = file_system_id
+        __props__["instances"] = instances
+        __props__["mountPointId"] = mount_point_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dfs/vscMountPoint:VscMountPoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliasPrefix")
     def alias_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -347,6 +347,12 @@ func (AuditState) ElementType() reflect.Type {
 	return reflect.TypeOf((*auditState)(nil)).Elem()
 }
 
+// AuditExists checks whether an existing Audit resource with the given ID exists.
+func AuditExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuditState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/audit:Audit", id, state, "", opts...)
+}
+
 type auditArgs struct {
 	// Aliuid value of your account.
 	Aliuid string `pulumi:"aliuid"`

@@ -432,6 +432,24 @@ class BucketReferer(pulumi.CustomResource):
         __props__.__dict__["truncate_path"] = truncate_path
         return BucketReferer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_empty_referer: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_truncate_query_string: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            referer_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            referer_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            truncate_path: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowEmptyReferer"] = allow_empty_referer
+        __props__["allowTruncateQueryString"] = allow_truncate_query_string
+        __props__["bucket"] = bucket
+        __props__["refererBlacklists"] = referer_blacklists
+        __props__["refererLists"] = referer_lists
+        __props__["truncatePath"] = truncate_path
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketReferer:BucketReferer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowEmptyReferer")
     def allow_empty_referer(self) -> pulumi.Output[_builtins.bool]:

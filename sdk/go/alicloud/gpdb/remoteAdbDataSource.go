@@ -298,6 +298,12 @@ func (RemoteAdbDataSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*remoteAdbDataSourceState)(nil)).Elem()
 }
 
+// RemoteAdbDataSourceExists checks whether an existing RemoteAdbDataSource resource with the given ID exists.
+func RemoteAdbDataSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RemoteAdbDataSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource", id, state, "", opts...)
+}
+
 type remoteAdbDataSourceArgs struct {
 	// Data Source Name
 	DataSourceName *string `pulumi:"dataSourceName"`

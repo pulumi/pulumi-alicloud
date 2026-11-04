@@ -65,6 +65,17 @@ export class FaceConfig extends pulumi.CustomResource {
         return new FaceConfig(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FaceConfig resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FaceConfigState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:cloudauth/faceConfig:FaceConfig", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:cloudauth/faceConfig:FaceConfig';
 

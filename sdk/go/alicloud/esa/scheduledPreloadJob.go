@@ -180,6 +180,12 @@ func (ScheduledPreloadJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduledPreloadJobState)(nil)).Elem()
 }
 
+// ScheduledPreloadJobExists checks whether an existing ScheduledPreloadJob resource with the given ID exists.
+func ScheduledPreloadJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduledPreloadJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob", id, state, "", opts...)
+}
+
 type scheduledPreloadJobArgs struct {
 	// The method to submit the URLs to be prefetched.
 	InsertWay string `pulumi:"insertWay"`

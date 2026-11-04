@@ -77,39 +77,35 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field `instantAccess` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     @Import(name="instantAccess")
     private @Nullable Output<Boolean> instantAccess;
 
     /**
-     * @deprecated
-     * Field `instantAccess` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     public Optional<Output<Boolean>> instantAccess() {
         return Optional.ofNullable(this.instantAccess);
     }
 
     /**
-     * @deprecated
-     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     @Import(name="instantAccessRetentionDays")
     private @Nullable Output<Integer> instantAccessRetentionDays;
 
     /**
-     * @deprecated
-     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     public Optional<Output<Integer>> instantAccessRetentionDays() {
         return Optional.ofNullable(this.instantAccessRetentionDays);
     }
@@ -118,11 +114,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -130,11 +125,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
      * @return The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -324,11 +318,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `instantAccess` has been deprecated from provider version 1.231.0.
+         * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
+        @Deprecated
         public Builder instantAccess(@Nullable Output<Boolean> instantAccess) {
             $.instantAccess = instantAccess;
             return this;
@@ -337,11 +330,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `instantAccess` has been deprecated from provider version 1.231.0.
+         * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
+        @Deprecated
         public Builder instantAccess(Boolean instantAccess) {
             return instantAccess(Output.of(instantAccess));
         }
@@ -349,11 +341,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+         * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
+        @Deprecated
         public Builder instantAccessRetentionDays(@Nullable Output<Integer> instantAccessRetentionDays) {
             $.instantAccessRetentionDays = instantAccessRetentionDays;
             return this;
@@ -362,11 +353,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+         * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
          * 
          */
-        @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
+        @Deprecated
         public Builder instantAccessRetentionDays(Integer instantAccessRetentionDays) {
             return instantAccessRetentionDays(Output.of(instantAccessRetentionDays));
         }
@@ -377,11 +367,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -393,11 +382,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

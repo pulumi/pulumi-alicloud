@@ -119,11 +119,10 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use &#39;zone_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

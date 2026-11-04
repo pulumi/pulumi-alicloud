@@ -48,22 +48,20 @@ public final class EcsDeploymentSetArgs extends com.pulumi.resources.ResourceArg
     /**
      * Field `domain` has been deprecated from provider version 1.243.0.
      * 
-     * @deprecated
-     * Field `domain` has been deprecated from provider version 1.243.0.
+     * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
-    @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
+    @Deprecated
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
      * @return Field `domain` has been deprecated from provider version 1.243.0.
      * 
-     * @deprecated
-     * Field `domain` has been deprecated from provider version 1.243.0.
+     * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
-    @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
+    @Deprecated
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -71,22 +69,20 @@ public final class EcsDeploymentSetArgs extends com.pulumi.resources.ResourceArg
     /**
      * Field `granularity` has been deprecated from provider version 1.243.0.
      * 
-     * @deprecated
-     * Field `granularity` has been deprecated from provider version 1.243.0.
+     * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
-    @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
+    @Deprecated
     @Import(name="granularity")
     private @Nullable Output<String> granularity;
 
     /**
      * @return Field `granularity` has been deprecated from provider version 1.243.0.
      * 
-     * @deprecated
-     * Field `granularity` has been deprecated from provider version 1.243.0.
+     * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
-    @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
+    @Deprecated
     public Optional<Output<String>> granularity() {
         return Optional.ofNullable(this.granularity);
     }
@@ -201,11 +197,10 @@ public final class EcsDeploymentSetArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `domain` has been deprecated from provider version 1.243.0.
+         * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
          * 
          */
-        @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
+        @Deprecated
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
@@ -216,11 +211,10 @@ public final class EcsDeploymentSetArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `domain` has been deprecated from provider version 1.243.0.
+         * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
          * 
          */
-        @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
+        @Deprecated
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
@@ -230,11 +224,10 @@ public final class EcsDeploymentSetArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `granularity` has been deprecated from provider version 1.243.0.
+         * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
          * 
          */
-        @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
+        @Deprecated
         public Builder granularity(@Nullable Output<String> granularity) {
             $.granularity = granularity;
             return this;
@@ -245,11 +238,10 @@ public final class EcsDeploymentSetArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `granularity` has been deprecated from provider version 1.243.0.
+         * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
          * 
          */
-        @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
+        @Deprecated
         public Builder granularity(String granularity) {
             return granularity(Output.of(granularity));
         }

@@ -94,7 +94,7 @@ public final class GetKubernetesNodePoolsNodepool {
      */
     private String internetChargeType;
     /**
-     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
      * 
      */
     private Integer internetMaxBandwidthOut;
@@ -444,7 +444,7 @@ public final class GetKubernetesNodePoolsNodepool {
         return this.internetChargeType;
     }
     /**
-     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:&#92;[1,100&#92;]
      * 
      */
     public Integer internetMaxBandwidthOut() {

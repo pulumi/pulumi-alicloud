@@ -942,6 +942,48 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["waiting_room_type"] = waiting_room_type
         return WaitingRoom(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name_and_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomHostNameAndPathArgs', 'WaitingRoomHostNameAndPathArgsDict', 'outputs.WaitingRoomHostNameAndPath']]]]] = None,
+            json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_all_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            queuing_method: pulumi.Input[Optional[_builtins.str]] = None,
+            queuing_status_code: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            total_active_users: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_name: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cookieName"] = cookie_name
+        __props__["customPageHtml"] = custom_page_html
+        __props__["description"] = description
+        __props__["disableSessionRenewalEnable"] = disable_session_renewal_enable
+        __props__["hostNameAndPaths"] = host_name_and_paths
+        __props__["jsonResponseEnable"] = json_response_enable
+        __props__["language"] = language
+        __props__["newUsersPerMinute"] = new_users_per_minute
+        __props__["queueAllEnable"] = queue_all_enable
+        __props__["queuingMethod"] = queuing_method
+        __props__["queuingStatusCode"] = queuing_status_code
+        __props__["sessionDuration"] = session_duration
+        __props__["siteId"] = site_id
+        __props__["status"] = status
+        __props__["totalActiveUsers"] = total_active_users
+        __props__["waitingRoomId"] = waiting_room_id
+        __props__["waitingRoomName"] = waiting_room_name
+        __props__["waitingRoomType"] = waiting_room_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/waitingRoom:WaitingRoom', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> pulumi.Output[_builtins.str]:

@@ -462,6 +462,22 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["network_parameters"] = network_parameters
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict', 'outputs.ConnectionAuthParameters']]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict', 'outputs.ConnectionNetworkParameters']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authParameters"] = auth_parameters
+        __props__["connectionName"] = connection_name
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["networkParameters"] = network_parameters
+        return pulumi.runtime.exists_resource(None, 'alicloud:eventbridge/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authParameters")
     def auth_parameters(self) -> pulumi.Output[Optional['outputs.ConnectionAuthParameters']]:

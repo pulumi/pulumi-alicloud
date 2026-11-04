@@ -2045,6 +2045,86 @@ class Custom(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Custom(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_extra_param: pulumi.Input[Optional[_builtins.str]] = None,
+            create_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict', 'outputs.CustomDataDisk']]]]] = None,
+            deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_stop: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            support_case: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict', 'outputs.CustomSystemDisk']]] = None,
+            system_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amount"] = amount
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["createExtraParam"] = create_extra_param
+        __props__["createMode"] = create_mode
+        __props__["dataDisks"] = data_disks
+        __props__["deploymentSetId"] = deployment_set_id
+        __props__["description"] = description
+        __props__["direction"] = direction
+        __props__["dryRun"] = dry_run
+        __props__["force"] = force
+        __props__["forceStop"] = force_stop
+        __props__["hostName"] = host_name
+        __props__["imageId"] = image_id
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["internetMaxBandwidthOut"] = internet_max_bandwidth_out
+        __props__["ioOptimized"] = io_optimized
+        __props__["keyPairName"] = key_pair_name
+        __props__["password"] = password
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityEnhancementStrategy"] = security_enhancement_strategy
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["spotStrategy"] = spot_strategy
+        __props__["status"] = status
+        __props__["supportCase"] = support_case
+        __props__["systemDisk"] = system_disk
+        __props__["systemDiskId"] = system_disk_id
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/custom:Custom', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def amount(self) -> pulumi.Output[Optional[_builtins.int]]:

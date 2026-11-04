@@ -371,6 +371,12 @@ func (SyntheticTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*syntheticTaskState)(nil)).Elem()
 }
 
+// SyntheticTaskExists checks whether an existing SyntheticTask resource with the given ID exists.
+func SyntheticTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SyntheticTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/syntheticTask:SyntheticTask", id, state, "", opts...)
+}
+
 type syntheticTaskArgs struct {
 	// Assertion List. See `availableAssertions` below.
 	AvailableAssertions []SyntheticTaskAvailableAssertion `pulumi:"availableAssertions"`

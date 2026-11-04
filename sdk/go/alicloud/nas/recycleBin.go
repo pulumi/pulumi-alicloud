@@ -137,6 +137,12 @@ func (RecycleBinState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recycleBinState)(nil)).Elem()
 }
 
+// RecycleBinExists checks whether an existing RecycleBin resource with the given ID exists.
+func RecycleBinExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecycleBinState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/recycleBin:RecycleBin", id, state, "", opts...)
+}
+
 type recycleBinArgs struct {
 	// The ID of the file system for which you want to enable the recycle bin feature.
 	FileSystemId string `pulumi:"fileSystemId"`

@@ -302,6 +302,20 @@ class ShortUrl(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ShortUrl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            effective_days: pulumi.Input[Optional[_builtins.int]] = None,
+            short_url_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_url: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["effectiveDays"] = effective_days
+        __props__["shortUrlName"] = short_url_name
+        __props__["sourceUrl"] = source_url
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:sms/shortUrl:ShortUrl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="effectiveDays")
     def effective_days(self) -> pulumi.Output[_builtins.int]:

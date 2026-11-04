@@ -146,6 +146,12 @@ func (V3ConcurrencyConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3concurrencyConfigState)(nil)).Elem()
 }
 
+// V3ConcurrencyConfigExists checks whether an existing V3ConcurrencyConfig resource with the given ID exists.
+func V3ConcurrencyConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3ConcurrencyConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig", id, state, "", opts...)
+}
+
 type v3concurrencyConfigArgs struct {
 	// Function Name
 	FunctionName string `pulumi:"functionName"`

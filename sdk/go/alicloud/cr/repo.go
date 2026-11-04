@@ -164,6 +164,12 @@ func (RepoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repoState)(nil)).Elem()
 }
 
+// RepoExists checks whether an existing Repo resource with the given ID exists.
+func RepoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/repo:Repo", id, state, "", opts...)
+}
+
 type repoArgs struct {
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail *string `pulumi:"detail"`

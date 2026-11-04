@@ -967,6 +967,56 @@ class Aicluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Aicluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            extension: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_type: pulumi.Input[Optional[_builtins.str]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            model_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_code: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            used_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiKey"] = api_key
+        __props__["autoRenew"] = auto_renew
+        __props__["autoUseCoupon"] = auto_use_coupon
+        __props__["connectionString"] = connection_string
+        __props__["dbClusterDescription"] = db_cluster_description
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["dbNodeClass"] = db_node_class
+        __props__["extension"] = extension
+        __props__["inferenceEngine"] = inference_engine
+        __props__["kubeType"] = kube_type
+        __props__["modelName"] = model_name
+        __props__["modelType"] = model_type
+        __props__["payType"] = pay_type
+        __props__["period"] = period
+        __props__["promotionCode"] = promotion_code
+        __props__["regionId"] = region_id
+        __props__["securityGroupId"] = security_group_id
+        __props__["status"] = status
+        __props__["usedTime"] = used_time
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/aicluster:Aicluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[_builtins.str]:

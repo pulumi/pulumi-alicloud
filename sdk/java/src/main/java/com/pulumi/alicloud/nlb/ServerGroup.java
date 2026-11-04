@@ -145,11 +145,10 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * @deprecated Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead. */
+    @Deprecated
     @Export(name="connectionDrain", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> connectionDrain;
 
@@ -320,7 +319,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The new name of the server group.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="serverGroupName", refs={String.class}, tree="[0]")
@@ -328,7 +327,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The new name of the server group.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> serverGroupName() {

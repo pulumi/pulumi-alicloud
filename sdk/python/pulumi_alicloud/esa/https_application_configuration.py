@@ -972,6 +972,52 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         __props__.__dict__["site_version"] = site_version
         return HttpsApplicationConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alt_svc: pulumi.Input[Optional[_builtins.str]] = None,
+            alt_svc_clear: pulumi.Input[Optional[_builtins.str]] = None,
+            alt_svc_ma: pulumi.Input[Optional[_builtins.str]] = None,
+            alt_svc_persist: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            hsts: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_include_subdomains: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_max_age: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_preload: pulumi.Input[Optional[_builtins.str]] = None,
+            https_force: pulumi.Input[Optional[_builtins.str]] = None,
+            https_force_code: pulumi.Input[Optional[_builtins.str]] = None,
+            https_no_sni_deny: pulumi.Input[Optional[_builtins.str]] = None,
+            https_sni_verify: pulumi.Input[Optional[_builtins.str]] = None,
+            https_sni_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["altSvc"] = alt_svc
+        __props__["altSvcClear"] = alt_svc_clear
+        __props__["altSvcMa"] = alt_svc_ma
+        __props__["altSvcPersist"] = alt_svc_persist
+        __props__["configId"] = config_id
+        __props__["hsts"] = hsts
+        __props__["hstsIncludeSubdomains"] = hsts_include_subdomains
+        __props__["hstsMaxAge"] = hsts_max_age
+        __props__["hstsPreload"] = hsts_preload
+        __props__["httpsForce"] = https_force
+        __props__["httpsForceCode"] = https_force_code
+        __props__["httpsNoSniDeny"] = https_no_sni_deny
+        __props__["httpsSniVerify"] = https_sni_verify
+        __props__["httpsSniWhitelist"] = https_sni_whitelist
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="altSvc")
     def alt_svc(self) -> pulumi.Output[Optional[_builtins.str]]:

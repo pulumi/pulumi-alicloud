@@ -469,6 +469,28 @@ class Fileset(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Fileset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_path: pulumi.Input[Optional[_builtins.str]] = None,
+            fileset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionProtection"] = deletion_protection
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["fileSystemId"] = file_system_id
+        __props__["fileSystemPath"] = file_system_path
+        __props__["filesetId"] = fileset_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/fileset:Fileset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

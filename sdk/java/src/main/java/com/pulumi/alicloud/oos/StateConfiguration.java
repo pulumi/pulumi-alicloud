@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .build());
  * 
@@ -60,16 +60,16 @@ import javax.annotation.Nullable;
  *             .scheduleType("rate")
  *             .scheduleExpression("1 hour")
  *             .resourceGroupId(default_.ids()[0])
- *             .targets("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}")
- *             .parameters("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}")
+ *             .targets("}{&#92;{@code "Filters}&#92;{@code ": [}{&#92;{@code "Type}&#92;{@code ": }&#92;{@code "All}&#92;{@code ", }&#92;{@code "Parameters}&#92;{@code ": }{&#92;{@code "InstanceChargeType}&#92;{@code ": }&#92;{@code "PrePaid}&#92;{@code "}}}{@code ], }&#92;{@code "ResourceType}&#92;{@code ": }&#92;{@code "ALIYUN::ECS::Instance}&#92;{@code "}}{@code ")
+ *             .parameters("}{&#92;{@code "policy}&#92;{@code ": }{&#92;{@code "ACS:Application}&#92;{@code ": }{&#92;{@code "Collection}&#92;{@code ": }&#92;{@code "Enabled}&#92;{@code "}}}}{@code ")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

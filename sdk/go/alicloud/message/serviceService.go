@@ -104,6 +104,12 @@ func (ServiceServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceServiceState)(nil)).Elem()
 }
 
+// ServiceServiceExists checks whether an existing ServiceService resource with the given ID exists.
+func ServiceServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceService:ServiceService", id, state, "", opts...)
+}
+
 type serviceServiceArgs struct {
 }
 

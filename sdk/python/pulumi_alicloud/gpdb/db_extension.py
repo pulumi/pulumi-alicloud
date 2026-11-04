@@ -529,6 +529,32 @@ class DbExtension(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DbExtension(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            current_version: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_id: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_install_need_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_latest_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            latest_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["currentVersion"] = current_version
+        __props__["databaseName"] = database_name
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["description"] = description
+        __props__["extensionId"] = extension_id
+        __props__["extensionName"] = extension_name
+        __props__["isInstallNeedRestart"] = is_install_need_restart
+        __props__["isLatestVersion"] = is_latest_version
+        __props__["latestVersion"] = latest_version
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/dbExtension:DbExtension', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="currentVersion")
     def current_version(self) -> pulumi.Output[_builtins.str]:

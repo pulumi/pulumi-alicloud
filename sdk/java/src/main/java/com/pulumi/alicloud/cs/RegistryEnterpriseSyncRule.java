@@ -179,11 +179,10 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
     /**
      * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -253,11 +252,10 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
     /**
      * (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      * 
-     * @deprecated
-     * Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
+     * @deprecated Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      * 
      */
-    @Deprecated /* Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead. */
+    @Deprecated
     @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 

@@ -144,6 +144,12 @@ func (ServiceEndpointAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceEndpointAclState)(nil)).Elem()
 }
 
+// ServiceEndpointAclExists checks whether an existing ServiceEndpointAcl resource with the given ID exists.
+func ServiceEndpointAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceEndpointAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceEndpointAcl:ServiceEndpointAcl", id, state, "", opts...)
+}
+
 type serviceEndpointAclArgs struct {
 	// The ACL policy. Valid value:
 	// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)

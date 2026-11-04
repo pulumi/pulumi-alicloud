@@ -182,6 +182,12 @@ func (V3LayerVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3layerVersionState)(nil)).Elem()
 }
 
+// V3LayerVersionExists checks whether an existing V3LayerVersion resource with the given ID exists.
+func V3LayerVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3LayerVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3LayerVersion:V3LayerVersion", id, state, "", opts...)
+}
+
 type v3layerVersionArgs struct {
 	// The access permission of the layer, 1: public, 0: private, default is private
 	Acl *string `pulumi:"acl"`

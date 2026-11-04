@@ -432,6 +432,28 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return IpamIpamResourceDiscovery(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_resource_discovery_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_resource_discovery_name: pulumi.Input[Optional[_builtins.str]] = None,
+            operating_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["ipamResourceDiscoveryDescription"] = ipam_resource_discovery_description
+        __props__["ipamResourceDiscoveryName"] = ipam_resource_discovery_name
+        __props__["operatingRegionLists"] = operating_region_lists
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

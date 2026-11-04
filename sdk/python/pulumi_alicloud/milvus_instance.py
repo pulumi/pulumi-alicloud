@@ -1381,6 +1381,72 @@ class MilvusInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return MilvusInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict', 'outputs.MilvusInstanceComponent']]]]] = None,
+            configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            db_version: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_multi_az_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            load_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            multi_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            order_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_no: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            running_time: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict', 'outputs.MilvusInstanceVswitchId']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoBackup"] = auto_backup
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["components"] = components
+        __props__["configuration"] = configuration
+        __props__["createTime"] = create_time
+        __props__["dbAdminPassword"] = db_admin_password
+        __props__["dbVersion"] = db_version
+        __props__["encrypted"] = encrypted
+        __props__["expireTime"] = expire_time
+        __props__["ha"] = ha
+        __props__["instanceName"] = instance_name
+        __props__["isMultiAzStorage"] = is_multi_az_storage
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["loadReplicas"] = load_replicas
+        __props__["multiZoneMode"] = multi_zone_mode
+        __props__["orderId"] = order_id
+        __props__["paymentDuration"] = payment_duration
+        __props__["paymentDurationUnit"] = payment_duration_unit
+        __props__["paymentType"] = payment_type
+        __props__["promotionNo"] = promotion_no
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["runningTime"] = running_time
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchIds"] = vswitch_ids
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:index/milvusInstance:MilvusInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoBackup")
     def auto_backup(self) -> pulumi.Output[_builtins.bool]:

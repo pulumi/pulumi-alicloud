@@ -575,6 +575,28 @@ class Pool(pulumi.CustomResource):
         __props__.__dict__["sequence_lb_strategy_mode"] = sequence_lb_strategy_mode
         return Pool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            address_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressLbStrategy"] = address_lb_strategy
+        __props__["addressPoolName"] = address_pool_name
+        __props__["addressPoolType"] = address_pool_type
+        __props__["createTime"] = create_time
+        __props__["enableStatus"] = enable_status
+        __props__["healthJudgement"] = health_judgement
+        __props__["remark"] = remark
+        __props__["sequenceLbStrategyMode"] = sequence_lb_strategy_mode
+        return pulumi.runtime.exists_resource(None, 'alicloud:alidnscloudgtmaddress/pool:Pool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressLbStrategy")
     def address_lb_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -247,6 +247,12 @@ func (GreyTagRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*greyTagRouteState)(nil)).Elem()
 }
 
+// GreyTagRouteExists checks whether an existing GreyTagRoute resource with the given ID exists.
+func GreyTagRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GreyTagRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sae/greyTagRoute:GreyTagRoute", id, state, "", opts...)
+}
+
 type greyTagRouteArgs struct {
 	// The ID  of the SAE Application.
 	AppId string `pulumi:"appId"`

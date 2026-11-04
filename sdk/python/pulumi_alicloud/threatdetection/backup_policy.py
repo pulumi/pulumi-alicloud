@@ -385,6 +385,24 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["uuid_lists"] = uuid_lists
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupPolicyName"] = backup_policy_name
+        __props__["policy"] = policy
+        __props__["policyRegionId"] = policy_region_id
+        __props__["policyVersion"] = policy_version
+        __props__["status"] = status
+        __props__["uuidLists"] = uuid_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/backupPolicy:BackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupPolicyName")
     def backup_policy_name(self) -> pulumi.Output[_builtins.str]:

@@ -153,6 +153,12 @@ func (AppTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appTemplateState)(nil)).Elem()
 }
 
+// AppTemplateExists checks whether an existing AppTemplate resource with the given ID exists.
+func AppTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:imp/appTemplate:AppTemplate", id, state, "", opts...)
+}
+
 type appTemplateArgs struct {
 	// The name of the resource.
 	AppTemplateName string `pulumi:"appTemplateName"`

@@ -481,12 +481,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -495,13 +495,13 @@ import javax.annotation.Nullable;
  *         var bucket_policy = new Bucket("bucket-policy", BucketArgs.builder()
  *             .bucket(String.format("example-policy-%s", default_.get("result")))
  *             .policy("""
- *   {\"Statement\":
- *       [{\"Action\":
- *           [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],
- *         \"Effect\":\"Allow\",
- *         \"Resource\":
- *             [\"acs:oss:*:*:*\"]}],
- *    \"Version\":\"1\"}
+ *   }{&#92;{@code "Statement}&#92;{@code ":
+ *       [}{&#92;{@code "Action}&#92;{@code ":
+ *           [}&#92;{@code "oss:PutObject}&#92;{@code ", }&#92;{@code "oss:GetObject}&#92;{@code ", }&#92;{@code "oss:DeleteBucket}&#92;{@code "],
+ *         }&#92;{@code "Effect}&#92;{@code ":}&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Resource}&#92;{@code ":
+ *             [}&#92;{@code "acs:oss:*:*:*}&#92;{@code "]}}{@code ],
+ *    }&#92;{@code "Version}&#92;{@code ":}&#92;{@code "1}&#92;{@code "}}{@code
  *             """)
  *             .build());
  * 
@@ -510,8 +510,8 @@ import javax.annotation.Nullable;
  *             .acl("private")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -971,11 +971,10 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
      * 
-     * @deprecated
-     * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+     * @deprecated Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
      * 
      */
-    @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
+    @Deprecated
     @Export(name="acl", refs={String.class}, tree="[0]")
     private Output<String> acl;
 
@@ -1129,11 +1128,10 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     /**
      * The flag of using logging enable container. Defaults true.
      * 
-     * @deprecated
-     * Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
+     * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      * 
      */
-    @Deprecated /* Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able. */
+    @Deprecated
     @Export(name="loggingIsenable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> loggingIsenable;
 

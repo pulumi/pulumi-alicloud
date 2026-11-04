@@ -275,6 +275,12 @@ func (AggTaskGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggTaskGroupState)(nil)).Elem()
 }
 
+// AggTaskGroupExists checks whether an existing AggTaskGroup resource with the given ID exists.
+func AggTaskGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AggTaskGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/aggTaskGroup:AggTaskGroup", id, state, "", opts...)
+}
+
 type aggTaskGroupArgs struct {
 	// The configuration of the aggregation task group.
 	AggTaskGroupConfig string `pulumi:"aggTaskGroupConfig"`

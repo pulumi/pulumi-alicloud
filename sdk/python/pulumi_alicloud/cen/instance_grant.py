@@ -312,6 +312,18 @@ class InstanceGrant(pulumi.CustomResource):
         __props__.__dict__["child_instance_id"] = child_instance_id
         return InstanceGrant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["cenOwnerId"] = cen_owner_id
+        __props__["childInstanceId"] = child_instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/instanceGrant:InstanceGrant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

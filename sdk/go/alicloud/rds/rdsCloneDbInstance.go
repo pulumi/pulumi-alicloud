@@ -763,6 +763,12 @@ func (RdsCloneDbInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsCloneDbInstanceState)(nil)).Elem()
 }
 
+// RdsCloneDbInstanceExists checks whether an existing RdsCloneDbInstance resource with the given ID exists.
+func RdsCloneDbInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsCloneDbInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance", id, state, "", opts...)
+}
+
 type rdsCloneDbInstanceArgs struct {
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
 	Acl *string `pulumi:"acl"`

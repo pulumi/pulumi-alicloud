@@ -811,6 +811,50 @@ class VpcEndpointService(pulumi.CustomResource):
         __props__.__dict__["zone_affinity_enabled"] = zone_affinity_enabled
         return VpcEndpointService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_accept_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+            connect_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            payer: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResourceArgsDict', 'outputs.VpcEndpointServiceResource']]]]] = None,
+            service_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            service_description: pulumi.Input[Optional[_builtins.str]] = None,
+            service_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressIpVersion"] = address_ip_version
+        __props__["autoAcceptConnection"] = auto_accept_connection
+        __props__["connectBandwidth"] = connect_bandwidth
+        __props__["createTime"] = create_time
+        __props__["dryRun"] = dry_run
+        __props__["payer"] = payer
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resources"] = resources
+        __props__["serviceBusinessStatus"] = service_business_status
+        __props__["serviceDescription"] = service_description
+        __props__["serviceDomain"] = service_domain
+        __props__["serviceResourceType"] = service_resource_type
+        __props__["serviceSupportIpv6"] = service_support_ipv6
+        __props__["status"] = status
+        __props__["supportedRegionLists"] = supported_region_lists
+        __props__["tags"] = tags
+        __props__["vpcEndpointServiceName"] = vpc_endpoint_service_name
+        __props__["zoneAffinityEnabled"] = zone_affinity_enabled
+        return pulumi.runtime.exists_resource(None, 'alicloud:privatelink/vpcEndpointService:VpcEndpointService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[_builtins.str]:

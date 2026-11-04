@@ -915,6 +915,52 @@ class DdosCooInstance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DdosCooInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            base_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_count: pulumi.Input[Optional[_builtins.str]] = None,
+            edition_sale: pulumi.Input[Optional[_builtins.str]] = None,
+            function_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            normal_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            normal_qps: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port_count: pulumi.Input[Optional[_builtins.str]] = None,
+            product_plan: pulumi.Input[Optional[_builtins.str]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressType"] = address_type
+        __props__["bandwidth"] = bandwidth
+        __props__["bandwidthMode"] = bandwidth_mode
+        __props__["baseBandwidth"] = base_bandwidth
+        __props__["createTime"] = create_time
+        __props__["domainCount"] = domain_count
+        __props__["editionSale"] = edition_sale
+        __props__["functionVersion"] = function_version
+        __props__["ip"] = ip
+        __props__["modifyType"] = modify_type
+        __props__["name"] = name
+        __props__["normalBandwidth"] = normal_bandwidth
+        __props__["normalQps"] = normal_qps
+        __props__["period"] = period
+        __props__["portCount"] = port_count
+        __props__["productPlan"] = product_plan
+        __props__["productType"] = product_type
+        __props__["serviceBandwidth"] = service_bandwidth
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/ddosCooInstance:DdosCooInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Output[_builtins.str]:

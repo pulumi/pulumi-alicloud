@@ -611,6 +611,30 @@ class SearchIndex(pulumi.CustomResource):
         __props__.__dict__["time_to_live"] = time_to_live
         return SearchIndex(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            current_sync_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            index_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict', 'outputs.SearchIndexSchema']]]]] = None,
+            sync_phase: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_to_live: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["currentSyncTimestamp"] = current_sync_timestamp
+        __props__["indexId"] = index_id
+        __props__["indexName"] = index_name
+        __props__["instanceName"] = instance_name
+        __props__["schemas"] = schemas
+        __props__["syncPhase"] = sync_phase
+        __props__["tableName"] = table_name
+        __props__["timeToLive"] = time_to_live
+        return pulumi.runtime.exists_resource(None, 'alicloud:ots/searchIndex:SearchIndex', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:

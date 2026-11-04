@@ -204,6 +204,12 @@ func (MultiAccountDeliveryChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*multiAccountDeliveryChannelState)(nil)).Elem()
 }
 
+// MultiAccountDeliveryChannelExists checks whether an existing MultiAccountDeliveryChannel resource with the given ID exists.
+func MultiAccountDeliveryChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MultiAccountDeliveryChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel", id, state, "", opts...)
+}
+
 type multiAccountDeliveryChannelArgs struct {
 	// The description of the delivery channel.
 	DeliveryChannelDescription string `pulumi:"deliveryChannelDescription"`

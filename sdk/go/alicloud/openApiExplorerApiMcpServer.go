@@ -456,6 +456,12 @@ func (OpenApiExplorerApiMcpServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openApiExplorerApiMcpServerState)(nil)).Elem()
 }
 
+// OpenApiExplorerApiMcpServerExists checks whether an existing OpenApiExplorerApiMcpServer resource with the given ID exists.
+func OpenApiExplorerApiMcpServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenApiExplorerApiMcpServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer", id, state, "", opts...)
+}
+
 type openApiExplorerApiMcpServerArgs struct {
 	// Additional OpenAPI description information that can override the default behavior of APIs, including:
 	// - API name

@@ -186,6 +186,12 @@ func (AccountPrivilegeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountPrivilegeState)(nil)).Elem()
 }
 
+// AccountPrivilegeExists checks whether an existing AccountPrivilege resource with the given ID exists.
+func AccountPrivilegeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountPrivilegeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/accountPrivilege:AccountPrivilege", id, state, "", opts...)
+}
+
 type accountPrivilegeArgs struct {
 	// A specified account name.
 	AccountName string `pulumi:"accountName"`

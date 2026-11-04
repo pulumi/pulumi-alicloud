@@ -653,6 +653,38 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["zone_name"] = zone_name
         return Zone(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dns_group: pulumi.Input[Optional[_builtins.str]] = None,
+            is_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            record_count: pulumi.Input[Optional[_builtins.int]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            user_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict', 'outputs.ZoneUserInfo']]]]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dnsGroup"] = dns_group
+        __props__["isPtr"] = is_ptr
+        __props__["lang"] = lang
+        __props__["name"] = name
+        __props__["proxyPattern"] = proxy_pattern
+        __props__["recordCount"] = record_count
+        __props__["remark"] = remark
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["syncStatus"] = sync_status
+        __props__["tags"] = tags
+        __props__["userClientIp"] = user_client_ip
+        __props__["userInfos"] = user_infos
+        __props__["zoneName"] = zone_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/zone:Zone', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dnsGroup")
     def dns_group(self) -> pulumi.Output[_builtins.str]:

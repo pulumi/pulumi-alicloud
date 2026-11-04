@@ -229,6 +229,12 @@ func (EventStreamingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventStreamingState)(nil)).Elem()
 }
 
+// EventStreamingExists checks whether an existing EventStreaming resource with the given ID exists.
+func EventStreamingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventStreamingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eventbridge/eventStreaming:EventStreaming", id, state, "", opts...)
+}
+
 type eventStreamingArgs struct {
 	// The description of the event streaming.
 	Description *string `pulumi:"description"`

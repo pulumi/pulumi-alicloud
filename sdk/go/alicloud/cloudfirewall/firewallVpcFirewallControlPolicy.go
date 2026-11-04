@@ -403,6 +403,12 @@ func (FirewallVpcFirewallControlPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallVpcFirewallControlPolicyState)(nil)).Elem()
 }
 
+// FirewallVpcFirewallControlPolicyExists checks whether an existing FirewallVpcFirewallControlPolicy resource with the given ID exists.
+func FirewallVpcFirewallControlPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallVpcFirewallControlPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy", id, state, "", opts...)
+}
+
 type firewallVpcFirewallControlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`

@@ -312,6 +312,12 @@ func (ElasticityAssuranceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*elasticityAssuranceState)(nil)).Elem()
 }
 
+// ElasticityAssuranceExists checks whether an existing ElasticityAssurance resource with the given ID exists.
+func ElasticityAssuranceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ElasticityAssuranceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/elasticityAssurance:ElasticityAssurance", id, state, "", opts...)
+}
+
 type elasticityAssuranceArgs struct {
 	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes *string `pulumi:"assuranceTimes"`

@@ -153,6 +153,12 @@ func (CiphertextState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ciphertextState)(nil)).Elem()
 }
 
+// CiphertextExists checks whether an existing Ciphertext resource with the given ID exists.
+func CiphertextExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CiphertextState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/ciphertext:Ciphertext", id, state, "", opts...)
+}
+
 type ciphertextArgs struct {
 	// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`

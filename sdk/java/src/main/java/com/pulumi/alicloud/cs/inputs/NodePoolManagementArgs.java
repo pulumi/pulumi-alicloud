@@ -125,14 +125,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
      * 
      */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
     /**
-     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
      * 
      */
     public Optional<Output<Integer>> maxUnavailable() {
@@ -142,22 +142,20 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     /**
      * Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     @Import(name="surge")
     private @Nullable Output<Integer> surge;
 
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     public Optional<Output<Integer>> surge() {
         return Optional.ofNullable(this.surge);
     }
@@ -165,22 +163,20 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     /**
      * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     @Import(name="surgePercentage")
     private @Nullable Output<Integer> surgePercentage;
 
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     public Optional<Output<Integer>> surgePercentage() {
         return Optional.ofNullable(this.surgePercentage);
     }
@@ -366,7 +362,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxUnavailable Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+         * @param maxUnavailable Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
          * 
          * @return builder
          * 
@@ -377,7 +373,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxUnavailable Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+         * @param maxUnavailable Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
          * 
          * @return builder
          * 
@@ -391,11 +387,10 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+         * @deprecated Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
          * 
          */
-        @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
+        @Deprecated
         public Builder surge(@Nullable Output<Integer> surge) {
             $.surge = surge;
             return this;
@@ -406,11 +401,10 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+         * @deprecated Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
          * 
          */
-        @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
+        @Deprecated
         public Builder surge(Integer surge) {
             return surge(Output.of(surge));
         }
@@ -420,11 +414,10 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         * @deprecated Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
          * 
          */
-        @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
+        @Deprecated
         public Builder surgePercentage(@Nullable Output<Integer> surgePercentage) {
             $.surgePercentage = surgePercentage;
             return this;
@@ -435,11 +428,10 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         * @deprecated Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
          * 
          */
-        @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
+        @Deprecated
         public Builder surgePercentage(Integer surgePercentage) {
             return surgePercentage(Output.of(surgePercentage));
         }

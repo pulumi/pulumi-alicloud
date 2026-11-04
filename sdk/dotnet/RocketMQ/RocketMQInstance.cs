@@ -283,8 +283,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
         /// - serverless：Serverless instance
-        /// **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
-        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
+        ///   **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
+        ///   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
         /// </summary>
         [Output("subSeriesCode")]
         public Output<string> SubSeriesCode { get; private set; } = null!;
@@ -486,8 +486,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
         /// - serverless：Serverless instance
-        /// **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
-        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
+        ///   **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
+        ///   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
         /// </summary>
         [Input("subSeriesCode", required: true)]
         public Input<string> SubSeriesCode { get; set; } = null!;
@@ -675,8 +675,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
         /// - serverless：Serverless instance
-        /// **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
-        /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
+        ///   **NOTE:** From version 1.245.0, `SubSeriesCode` can be set to `Serverless`.
+        ///   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as ClusterHa (Cluster High Availability Edition).
         /// </summary>
         [Input("subSeriesCode")]
         public Input<string>? SubSeriesCode { get; set; }

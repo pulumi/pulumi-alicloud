@@ -449,6 +449,26 @@ class Kv(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return Kv(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            expiration: pulumi.Input[Optional[_builtins.int]] = None,
+            expiration_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            isbase: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["expiration"] = expiration
+        __props__["expirationTtl"] = expiration_ttl
+        __props__["isbase"] = isbase
+        __props__["key"] = key
+        __props__["namespace"] = namespace
+        __props__["url"] = url
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/kv:Kv', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def expiration(self) -> pulumi.Output[Optional[_builtins.int]]:

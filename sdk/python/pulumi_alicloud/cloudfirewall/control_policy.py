@@ -1256,6 +1256,64 @@ class ControlPolicy(pulumi.CustomResource):
         __props__.__dict__["start_time"] = start_time
         return ControlPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_action: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            proto: pulumi.Input[Optional[_builtins.str]] = None,
+            release: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclAction"] = acl_action
+        __props__["aclUuid"] = acl_uuid
+        __props__["applicationName"] = application_name
+        __props__["applicationNameLists"] = application_name_lists
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["destPort"] = dest_port
+        __props__["destPortGroup"] = dest_port_group
+        __props__["destPortType"] = dest_port_type
+        __props__["destination"] = destination
+        __props__["destinationType"] = destination_type
+        __props__["direction"] = direction
+        __props__["domainResolveType"] = domain_resolve_type
+        __props__["endTime"] = end_time
+        __props__["ipVersion"] = ip_version
+        __props__["lang"] = lang
+        __props__["proto"] = proto
+        __props__["release"] = release
+        __props__["repeatDays"] = repeat_days
+        __props__["repeatEndTime"] = repeat_end_time
+        __props__["repeatStartTime"] = repeat_start_time
+        __props__["repeatType"] = repeat_type
+        __props__["source"] = source
+        __props__["sourceIp"] = source_ip
+        __props__["sourceType"] = source_type
+        __props__["startTime"] = start_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/controlPolicy:ControlPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclAction")
     def acl_action(self) -> pulumi.Output[_builtins.str]:

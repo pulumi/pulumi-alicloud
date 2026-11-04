@@ -607,6 +607,12 @@ func (CustomState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customState)(nil)).Elem()
 }
 
+// CustomExists checks whether an existing Custom resource with the given ID exists.
+func CustomExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/custom:Custom", id, state, "", opts...)
+}
+
 type customArgs struct {
 	// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
 	// Valid values: `1` to `5`. Default value: `1`.

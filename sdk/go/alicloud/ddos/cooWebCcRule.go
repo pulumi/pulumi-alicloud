@@ -207,6 +207,12 @@ func (CooWebCcRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cooWebCcRuleState)(nil)).Elem()
 }
 
+// CooWebCcRuleExists checks whether an existing CooWebCcRule resource with the given ID exists.
+func CooWebCcRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CooWebCcRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/cooWebCcRule:CooWebCcRule", id, state, "", opts...)
+}
+
 type cooWebCcRuleArgs struct {
 	// The domain name of the website service.
 	//

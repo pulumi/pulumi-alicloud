@@ -1497,6 +1497,60 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_ids"] = zone_ids
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict', 'outputs.InstanceBindVpc']]]]] = None,
+            ca_certificate_chain_pem: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_num: pulumi.Input[Optional[_builtins.int]] = None,
+            log: pulumi.Input[Optional[_builtins.str]] = None,
+            log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            product_version: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_num: pulumi.Input[Optional[_builtins.int]] = None,
+            spec: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_num: pulumi.Input[Optional[_builtins.int]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bindVpcs"] = bind_vpcs
+        __props__["caCertificateChainPem"] = ca_certificate_chain_pem
+        __props__["createTime"] = create_time
+        __props__["deletionProtection"] = deletion_protection
+        __props__["endDate"] = end_date
+        __props__["forceDeleteWithoutBackup"] = force_delete_without_backup
+        __props__["instanceName"] = instance_name
+        __props__["keyNum"] = key_num
+        __props__["log"] = log
+        __props__["logStorage"] = log_storage
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["productVersion"] = product_version
+        __props__["renewPeriod"] = renew_period
+        __props__["renewStatus"] = renew_status
+        __props__["renewalPeriodUnit"] = renewal_period_unit
+        __props__["secretNum"] = secret_num
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vpcNum"] = vpc_num
+        __props__["vswitchIds"] = vswitch_ids
+        __props__["zoneIds"] = zone_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceBindVpc']]]:

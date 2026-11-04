@@ -174,6 +174,12 @@ func (TemplateScratchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateScratchState)(nil)).Elem()
 }
 
+// TemplateScratchExists checks whether an existing TemplateScratch resource with the given ID exists.
+func TemplateScratchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateScratchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/templateScratch:TemplateScratch", id, state, "", opts...)
+}
+
 type templateScratchArgs struct {
 	// The Description of the Template Scratch.
 	Description *string `pulumi:"description"`

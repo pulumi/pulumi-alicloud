@@ -658,6 +658,36 @@ class NetworkOptimization(pulumi.CustomResource):
         __props__.__dict__["websocket"] = websocket
         return NetworkOptimization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            grpc: pulumi.Input[Optional[_builtins.str]] = None,
+            http2_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            smart_routing: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_max_filesize: pulumi.Input[Optional[_builtins.str]] = None,
+            websocket: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configId"] = config_id
+        __props__["grpc"] = grpc
+        __props__["http2Origin"] = http2_origin
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        __props__["smartRouting"] = smart_routing
+        __props__["uploadMaxFilesize"] = upload_max_filesize
+        __props__["websocket"] = websocket
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/networkOptimization:NetworkOptimization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[_builtins.int]:

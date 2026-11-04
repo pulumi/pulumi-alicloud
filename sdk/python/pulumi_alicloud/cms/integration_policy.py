@@ -410,6 +410,24 @@ class IntegrationPolicy(pulumi.CustomResource):
         __props__.__dict__["workspace"] = workspace
         return IntegrationPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict', 'outputs.IntegrationPolicyEntityGroup']]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["entityGroup"] = entity_group
+        __props__["force"] = force
+        __props__["integrationPolicyName"] = integration_policy_name
+        __props__["policyType"] = policy_type
+        __props__["regionId"] = region_id
+        __props__["workspace"] = workspace
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/integrationPolicy:IntegrationPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="entityGroup")
     def entity_group(self) -> pulumi.Output['outputs.IntegrationPolicyEntityGroup']:

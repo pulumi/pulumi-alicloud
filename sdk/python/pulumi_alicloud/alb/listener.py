@@ -1221,6 +1221,54 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         return Listener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict', 'outputs.ListenerAccessLogTracingConfig']]] = None,
+            acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict', 'outputs.ListenerAclConfig']]] = None,
+            ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict', 'outputs.ListenerCaCertificate']]]]] = None,
+            ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict', 'outputs.ListenerCertificates']]] = None,
+            default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict', 'outputs.ListenerDefaultAction']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict', 'outputs.ListenerQuicConfig']]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict', 'outputs.ListenerXForwardedForConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLogRecordCustomizedHeadersEnabled"] = access_log_record_customized_headers_enabled
+        __props__["accessLogTracingConfig"] = access_log_tracing_config
+        __props__["aclConfig"] = acl_config
+        __props__["caCertificates"] = ca_certificates
+        __props__["caEnabled"] = ca_enabled
+        __props__["certificates"] = certificates
+        __props__["defaultActions"] = default_actions
+        __props__["dryRun"] = dry_run
+        __props__["gzipEnabled"] = gzip_enabled
+        __props__["http2Enabled"] = http2_enabled
+        __props__["idleTimeout"] = idle_timeout
+        __props__["listenerDescription"] = listener_description
+        __props__["listenerPort"] = listener_port
+        __props__["listenerProtocol"] = listener_protocol
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["quicConfig"] = quic_config
+        __props__["requestTimeout"] = request_timeout
+        __props__["securityPolicyId"] = security_policy_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["xForwardedForConfig"] = x_forwarded_for_config
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/listener:Listener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
     def access_log_record_customized_headers_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

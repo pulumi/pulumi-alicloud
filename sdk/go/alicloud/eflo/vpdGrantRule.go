@@ -167,6 +167,12 @@ func (VpdGrantRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpdGrantRuleState)(nil)).Elem()
 }
 
+// VpdGrantRuleExists checks whether an existing VpdGrantRule resource with the given ID exists.
+func VpdGrantRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpdGrantRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/vpdGrantRule:VpdGrantRule", id, state, "", opts...)
+}
+
 type vpdGrantRuleArgs struct {
 	// The ID of the ER instance under the cross-account tenant.
 	ErId string `pulumi:"erId"`

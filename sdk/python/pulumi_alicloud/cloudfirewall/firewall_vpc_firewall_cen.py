@@ -494,6 +494,30 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         __props__.__dict__["vpc_region"] = vpc_region
         return FirewallVpcFirewallCen(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallCenLocalVpcArgs', 'FirewallVpcFirewallCenLocalVpcArgsDict', 'outputs.FirewallVpcFirewallCenLocalVpc']]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["connectType"] = connect_type
+        __props__["lang"] = lang
+        __props__["localVpc"] = local_vpc
+        __props__["memberUid"] = member_uid
+        __props__["status"] = status
+        __props__["vpcFirewallId"] = vpc_firewall_id
+        __props__["vpcFirewallName"] = vpc_firewall_name
+        __props__["vpcRegion"] = vpc_region
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/firewallVpcFirewallCen:FirewallVpcFirewallCen', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

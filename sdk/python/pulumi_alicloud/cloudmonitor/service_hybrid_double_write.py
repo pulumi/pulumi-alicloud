@@ -338,6 +338,20 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return ServiceHybridDoubleWrite(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            source_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["namespace"] = namespace
+        __props__["sourceNamespace"] = source_namespace
+        __props__["sourceUserId"] = source_user_id
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> pulumi.Output[_builtins.str]:

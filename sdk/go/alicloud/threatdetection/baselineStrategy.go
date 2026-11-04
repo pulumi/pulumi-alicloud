@@ -204,6 +204,12 @@ func (BaselineStrategyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*baselineStrategyState)(nil)).Elem()
 }
 
+// BaselineStrategyExists checks whether an existing BaselineStrategy resource with the given ID exists.
+func BaselineStrategyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BaselineStrategyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/baselineStrategy:BaselineStrategy", id, state, "", opts...)
+}
+
 type baselineStrategyArgs struct {
 	// Policy name.
 	BaselineStrategyName string `pulumi:"baselineStrategyName"`

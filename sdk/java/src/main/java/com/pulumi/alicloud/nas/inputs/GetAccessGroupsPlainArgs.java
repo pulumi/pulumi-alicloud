@@ -108,22 +108,20 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it. */
+    @Deprecated
     @Import(name="type")
     private @Nullable String type;
 
     /**
      * @return Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it. */
+    @Deprecated
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -245,11 +243,10 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
+         * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;access_group_type&#39; replaces it.
          * 
          */
-        @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it. */
+        @Deprecated
         public Builder type(@Nullable String type) {
             $.type = type;
             return this;

@@ -971,6 +971,50 @@ class OssShipper(pulumi.CustomResource):
         __props__.__dict__["shipper_name"] = shipper_name
         return OssShipper(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            buffer_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+            csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_nullidentifier: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            parquet_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OssShipperParquetConfigArgs', 'OssShipperParquetConfigArgsDict', 'outputs.OssShipperParquetConfig']]]]] = None,
+            path_format: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            shipper_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bufferInterval"] = buffer_interval
+        __props__["bufferSize"] = buffer_size
+        __props__["compressType"] = compress_type
+        __props__["csvConfigColumns"] = csv_config_columns
+        __props__["csvConfigDelimiter"] = csv_config_delimiter
+        __props__["csvConfigHeader"] = csv_config_header
+        __props__["csvConfigLinefeed"] = csv_config_linefeed
+        __props__["csvConfigNullidentifier"] = csv_config_nullidentifier
+        __props__["csvConfigQuote"] = csv_config_quote
+        __props__["format"] = format
+        __props__["jsonEnableTag"] = json_enable_tag
+        __props__["logstoreName"] = logstore_name
+        __props__["ossBucket"] = oss_bucket
+        __props__["ossPrefix"] = oss_prefix
+        __props__["parquetConfigs"] = parquet_configs
+        __props__["pathFormat"] = path_format
+        __props__["projectName"] = project_name
+        __props__["roleArn"] = role_arn
+        __props__["shipperName"] = shipper_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/ossShipper:OssShipper', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bufferInterval")
     def buffer_interval(self) -> pulumi.Output[_builtins.int]:

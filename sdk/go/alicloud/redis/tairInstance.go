@@ -644,6 +644,12 @@ func (TairInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tairInstanceState)(nil)).Elem()
 }
 
+// TairInstanceExists checks whether an existing TairInstance resource with the given ID exists.
+func TairInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TairInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:redis/tairInstance:TairInstance", id, state, "", opts...)
+}
+
 type tairInstanceArgs struct {
 	// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
 	AutoRenew *string `pulumi:"autoRenew"`

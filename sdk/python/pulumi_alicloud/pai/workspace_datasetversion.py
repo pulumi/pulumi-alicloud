@@ -811,6 +811,38 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
         __props__.__dict__["version_name"] = version_name
         return WorkspaceDatasetversion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_count: pulumi.Input[Optional[_builtins.int]] = None,
+            data_size: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict', 'outputs.WorkspaceDatasetversionLabel']]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            property: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataCount"] = data_count
+        __props__["dataSize"] = data_size
+        __props__["dataSourceType"] = data_source_type
+        __props__["datasetId"] = dataset_id
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["options"] = options
+        __props__["property"] = property
+        __props__["sourceId"] = source_id
+        __props__["sourceType"] = source_type
+        __props__["uri"] = uri
+        __props__["versionName"] = version_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

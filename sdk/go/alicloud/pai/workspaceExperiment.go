@@ -158,6 +158,12 @@ func (WorkspaceExperimentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceExperimentState)(nil)).Elem()
 }
 
+// WorkspaceExperimentExists checks whether an existing WorkspaceExperiment resource with the given ID exists.
+func WorkspaceExperimentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceExperimentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceExperiment:WorkspaceExperiment", id, state, "", opts...)
+}
+
 type workspaceExperimentArgs struct {
 	// Experimental Visibility
 	Accessibility *string `pulumi:"accessibility"`

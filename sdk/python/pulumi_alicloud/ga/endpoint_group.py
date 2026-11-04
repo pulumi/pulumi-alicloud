@@ -1198,6 +1198,52 @@ class EndpointGroup(pulumi.CustomResource):
         __props__.__dict__["traffic_percentage"] = traffic_percentage
         return EndpointGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict', 'outputs.EndpointGroupEndpointConfiguration']]]]] = None,
+            endpoint_group_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_protocol_version: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_request_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_path: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_overrides: pulumi.Input[Optional[Union['EndpointGroupPortOverridesArgs', 'EndpointGroupPortOverridesArgsDict', 'outputs.EndpointGroupPortOverrides']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            threshold_count: pulumi.Input[Optional[_builtins.int]] = None,
+            traffic_percentage: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorId"] = accelerator_id
+        __props__["description"] = description
+        __props__["endpointConfigurations"] = endpoint_configurations
+        __props__["endpointGroupIpLists"] = endpoint_group_ip_lists
+        __props__["endpointGroupRegion"] = endpoint_group_region
+        __props__["endpointGroupType"] = endpoint_group_type
+        __props__["endpointProtocolVersion"] = endpoint_protocol_version
+        __props__["endpointRequestProtocol"] = endpoint_request_protocol
+        __props__["healthCheckEnabled"] = health_check_enabled
+        __props__["healthCheckIntervalSeconds"] = health_check_interval_seconds
+        __props__["healthCheckPath"] = health_check_path
+        __props__["healthCheckPort"] = health_check_port
+        __props__["healthCheckProtocol"] = health_check_protocol
+        __props__["listenerId"] = listener_id
+        __props__["name"] = name
+        __props__["portOverrides"] = port_overrides
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["thresholdCount"] = threshold_count
+        __props__["trafficPercentage"] = traffic_percentage
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/endpointGroup:EndpointGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[_builtins.str]:

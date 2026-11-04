@@ -37,22 +37,20 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
      * 
-     * @deprecated
-     * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+     * @deprecated Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
      * 
      */
-    @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
+    @Deprecated
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
      * @return . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
      * 
-     * @deprecated
-     * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+     * @deprecated Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
      * 
      */
-    @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
+    @Deprecated
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
     }
@@ -195,22 +193,20 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
      * 
-     * @deprecated
-     * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+     * @deprecated Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
      * 
      */
-    @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
+    @Deprecated
     @Import(name="oppositeInterfaceId")
     private @Nullable Output<String> oppositeInterfaceId;
 
     /**
      * @return . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
      * 
-     * @deprecated
-     * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+     * @deprecated Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
      * 
      */
-    @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
+    @Deprecated
     public Optional<Output<String>> oppositeInterfaceId() {
         return Optional.ofNullable(this.oppositeInterfaceId);
     }
@@ -608,11 +604,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+         * @deprecated Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
          * 
          */
-        @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
+        @Deprecated
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
             $.autoPay = autoPay;
             return this;
@@ -623,11 +618,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+         * @deprecated Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
          * 
          */
-        @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
+        @Deprecated
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
         }
@@ -826,11 +820,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+         * @deprecated Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
          * 
          */
-        @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
+        @Deprecated
         public Builder oppositeInterfaceId(@Nullable Output<String> oppositeInterfaceId) {
             $.oppositeInterfaceId = oppositeInterfaceId;
             return this;
@@ -841,11 +834,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+         * @deprecated Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
          * 
          */
-        @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
+        @Deprecated
         public Builder oppositeInterfaceId(String oppositeInterfaceId) {
             return oppositeInterfaceId(Output.of(oppositeInterfaceId));
         }

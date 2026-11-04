@@ -249,6 +249,12 @@ func (HostShareKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostShareKeyState)(nil)).Elem()
 }
 
+// HostShareKeyExists checks whether an existing HostShareKey resource with the given ID exists.
+func HostShareKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostShareKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/hostShareKey:HostShareKey", id, state, "", opts...)
+}
+
 type hostShareKeyArgs struct {
 	// The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
 	HostShareKeyName string `pulumi:"hostShareKeyName"`

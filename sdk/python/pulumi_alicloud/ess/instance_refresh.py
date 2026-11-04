@@ -815,6 +815,36 @@ class InstanceRefresh(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return InstanceRefresh(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checkpoint_pause_time: pulumi.Input[Optional[_builtins.int]] = None,
+            checkpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshCheckpointArgs', 'InstanceRefreshCheckpointArgsDict', 'outputs.InstanceRefreshCheckpoint']]]]] = None,
+            desired_configuration_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationContainerArgs', 'InstanceRefreshDesiredConfigurationContainerArgsDict', 'outputs.InstanceRefreshDesiredConfigurationContainer']]]]] = None,
+            desired_configuration_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_configuration_launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_configuration_launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs', 'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict', 'outputs.InstanceRefreshDesiredConfigurationLaunchTemplateOverride']]]]] = None,
+            desired_configuration_launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            min_healthy_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_matching: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkpointPauseTime"] = checkpoint_pause_time
+        __props__["checkpoints"] = checkpoints
+        __props__["desiredConfigurationContainers"] = desired_configuration_containers
+        __props__["desiredConfigurationImageId"] = desired_configuration_image_id
+        __props__["desiredConfigurationLaunchTemplateId"] = desired_configuration_launch_template_id
+        __props__["desiredConfigurationLaunchTemplateOverrides"] = desired_configuration_launch_template_overrides
+        __props__["desiredConfigurationLaunchTemplateVersion"] = desired_configuration_launch_template_version
+        __props__["maxHealthyPercentage"] = max_healthy_percentage
+        __props__["minHealthyPercentage"] = min_healthy_percentage
+        __props__["scalingGroupId"] = scaling_group_id
+        __props__["skipMatching"] = skip_matching
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/instanceRefresh:InstanceRefresh', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="checkpointPauseTime")
     def checkpoint_pause_time(self) -> pulumi.Output[_builtins.int]:

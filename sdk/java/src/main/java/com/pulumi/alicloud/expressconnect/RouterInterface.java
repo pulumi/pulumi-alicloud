@@ -159,11 +159,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
      * 
-     * @deprecated
-     * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+     * @deprecated Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
      * 
      */
-    @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
+    @Deprecated
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
@@ -429,11 +428,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
      * 
-     * @deprecated
-     * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+     * @deprecated Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
      * 
      */
-    @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
+    @Deprecated
     @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceId;
 

@@ -339,6 +339,12 @@ func (EcsNetworkInterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsNetworkInterfaceState)(nil)).Elem()
 }
 
+// EcsNetworkInterfaceExists checks whether an existing EcsNetworkInterface resource with the given ID exists.
+func EcsNetworkInterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsNetworkInterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface", id, state, "", opts...)
+}
+
 type ecsNetworkInterfaceArgs struct {
 	// Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
 	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`

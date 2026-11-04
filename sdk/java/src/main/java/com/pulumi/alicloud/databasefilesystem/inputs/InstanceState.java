@@ -83,22 +83,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecsList` below.
      * 
-     * @deprecated
-     * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * @deprecated Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
      * 
      */
-    @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
+    @Deprecated
     @Import(name="ecsLists")
     private @Nullable Output<List<InstanceEcsListArgs>> ecsLists;
 
     /**
      * @return The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecsList` below.
      * 
-     * @deprecated
-     * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * @deprecated Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
      * 
      */
-    @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
+    @Deprecated
     public Optional<Output<List<InstanceEcsListArgs>>> ecsLists() {
         return Optional.ofNullable(this.ecsLists);
     }
@@ -151,22 +149,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * @deprecated Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+    @Deprecated
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
      * @return . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * @deprecated Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+    @Deprecated
     public Optional<Output<String>> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }
@@ -476,11 +472,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+         * @deprecated Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
          * 
          */
-        @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
+        @Deprecated
         public Builder ecsLists(@Nullable Output<List<InstanceEcsListArgs>> ecsLists) {
             $.ecsLists = ecsLists;
             return this;
@@ -491,11 +486,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+         * @deprecated Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
          * 
          */
-        @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
+        @Deprecated
         public Builder ecsLists(List<InstanceEcsListArgs> ecsLists) {
             return ecsLists(Output.of(ecsLists));
         }
@@ -505,11 +499,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+         * @deprecated Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
          * 
          */
-        @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
+        @Deprecated
         public Builder ecsLists(InstanceEcsListArgs... ecsLists) {
             return ecsLists(List.of(ecsLists));
         }
@@ -582,11 +575,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+         * @deprecated Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+        @Deprecated
         public Builder instanceName(@Nullable Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
@@ -597,11 +589,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+         * @deprecated Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+        @Deprecated
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }

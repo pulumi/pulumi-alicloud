@@ -444,6 +444,26 @@ class GatewayCacheDisk(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return GatewayCacheDisk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cache_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_disk_size_in_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cacheDiskCategory"] = cache_disk_category
+        __props__["cacheDiskSizeInGb"] = cache_disk_size_in_gb
+        __props__["cacheId"] = cache_id
+        __props__["gatewayId"] = gateway_id
+        __props__["localFilePath"] = local_file_path
+        __props__["performanceLevel"] = performance_level
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cacheDiskCategory")
     def cache_disk_category(self) -> pulumi.Output[_builtins.str]:

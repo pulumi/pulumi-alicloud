@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud
         /// The duration unit for purchasing:
         /// - Month
         /// - Year
-        /// This is only meaningful when PayType is set to PrePaid.
+        ///   This is only meaningful when PayType is set to PrePaid.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud
         /// The duration unit for purchasing:
         /// - Month
         /// - Year
-        /// This is only meaningful when PayType is set to PrePaid.
+        ///   This is only meaningful when PayType is set to PrePaid.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
@@ -617,7 +617,7 @@ namespace Pulumi.AliCloud
         /// The duration unit for purchasing:
         /// - Month
         /// - Year
-        /// This is only meaningful when PayType is set to PrePaid.
+        ///   This is only meaningful when PayType is set to PrePaid.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }

@@ -514,6 +514,12 @@ func (ScalingGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingGroupState)(nil)).Elem()
 }
 
+// ScalingGroupExists checks whether an existing ScalingGroup resource with the given ID exists.
+func ScalingGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScalingGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/scalingGroup:ScalingGroup", id, state, "", opts...)
+}
+
 type scalingGroupArgs struct {
 	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
 	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`

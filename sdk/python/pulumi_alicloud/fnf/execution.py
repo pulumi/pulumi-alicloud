@@ -386,6 +386,20 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Execution(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            execution_name: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["executionName"] = execution_name
+        __props__["flowName"] = flow_name
+        __props__["input"] = input
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:fnf/execution:Execution', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="executionName")
     def execution_name(self) -> pulumi.Output[_builtins.str]:

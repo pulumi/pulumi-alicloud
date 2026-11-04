@@ -198,6 +198,12 @@ func (Ipv4GatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv4GatewayState)(nil)).Elem()
 }
 
+// Ipv4GatewayExists checks whether an existing Ipv4Gateway resource with the given ID exists.
+func Ipv4GatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv4GatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipv4Gateway:Ipv4Gateway", id, state, "", opts...)
+}
+
 type ipv4GatewayArgs struct {
 	// Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
 	DryRun *bool `pulumi:"dryRun"`

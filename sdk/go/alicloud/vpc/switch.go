@@ -337,6 +337,12 @@ func (SwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*switchState)(nil)).Elem()
 }
 
+// SwitchExists checks whether an existing Switch resource with the given ID exists.
+func SwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/switch:Switch", id, state, "", opts...)
+}
+
 type switchArgs struct {
 	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 	//

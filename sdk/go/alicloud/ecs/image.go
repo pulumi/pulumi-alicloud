@@ -380,6 +380,12 @@ func (ImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageState)(nil)).Elem()
 }
 
+// ImageExists checks whether an existing Image resource with the given ID exists.
+func ImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/image:Image", id, state, "", opts...)
+}
+
 type imageArgs struct {
 	// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
 	Architecture *string `pulumi:"architecture"`

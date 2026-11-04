@@ -214,6 +214,12 @@ func (CustomResponseCodeRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customResponseCodeRuleState)(nil)).Elem()
 }
 
+// CustomResponseCodeRuleExists checks whether an existing CustomResponseCodeRule resource with the given ID exists.
+func CustomResponseCodeRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomResponseCodeRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/customResponseCodeRule:CustomResponseCodeRule", id, state, "", opts...)
+}
+
 type customResponseCodeRuleArgs struct {
 	// Response page.
 	PageId string `pulumi:"pageId"`

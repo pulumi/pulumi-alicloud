@@ -239,6 +239,12 @@ func (NacosConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nacosConfigState)(nil)).Elem()
 }
 
+// NacosConfigExists checks whether an existing NacosConfig resource with the given ID exists.
+func NacosConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NacosConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mse/nacosConfig:NacosConfig", id, state, "", opts...)
+}
+
 type nacosConfigArgs struct {
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage *string `pulumi:"acceptLanguage"`

@@ -531,6 +531,22 @@ class DomainExtension(pulumi.CustomResource):
         __props__.__dict__["server_certificate_id"] = server_certificate_id
         return DomainExtension(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteProtectionValidation"] = delete_protection_validation
+        __props__["domain"] = domain
+        __props__["frontendPort"] = frontend_port
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["serverCertificateId"] = server_certificate_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/domainExtension:DomainExtension', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> pulumi.Output[Optional[_builtins.bool]]:

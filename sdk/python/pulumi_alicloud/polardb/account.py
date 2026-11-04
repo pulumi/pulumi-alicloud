@@ -743,6 +743,38 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_lock_state: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamodb_auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountDescription"] = account_description
+        __props__["accountLockState"] = account_lock_state
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["accountPasswordValidTime"] = account_password_valid_time
+        __props__["accountPasswordWo"] = account_password_wo
+        __props__["accountPasswordWoVersion"] = account_password_wo_version
+        __props__["accountType"] = account_type
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["dynamodbAuthPassword"] = dynamodb_auth_password
+        __props__["kmsEncryptedPassword"] = kms_encrypted_password
+        __props__["kmsEncryptionContext"] = kms_encryption_context
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[Optional[_builtins.str]]:

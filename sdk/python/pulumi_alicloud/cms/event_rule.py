@@ -662,6 +662,36 @@ class EventRule(pulumi.CustomResource):
         __props__.__dict__["webhook_parameters"] = webhook_parameters
         return EventRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            contact_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict', 'outputs.EventRuleContactParameter']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_pattern: pulumi.Input[Optional[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict', 'outputs.EventRuleEventPattern']]] = None,
+            fc_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict', 'outputs.EventRuleFcParameter']]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mns_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict', 'outputs.EventRuleMnsParameter']]]]] = None,
+            open_api_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict', 'outputs.EventRuleOpenApiParameter']]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            sls_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict', 'outputs.EventRuleSlsParameter']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict', 'outputs.EventRuleWebhookParameter']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contactParameters"] = contact_parameters
+        __props__["description"] = description
+        __props__["eventPattern"] = event_pattern
+        __props__["fcParameters"] = fc_parameters
+        __props__["groupId"] = group_id
+        __props__["mnsParameters"] = mns_parameters
+        __props__["openApiParameters"] = open_api_parameters
+        __props__["ruleName"] = rule_name
+        __props__["silenceTime"] = silence_time
+        __props__["slsParameters"] = sls_parameters
+        __props__["status"] = status
+        __props__["webhookParameters"] = webhook_parameters
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/eventRule:EventRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contactParameters")
     def contact_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.EventRuleContactParameter']]]:

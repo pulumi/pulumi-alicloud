@@ -219,6 +219,16 @@ class ServiceLinkedRole(pulumi.CustomResource):
         __props__.__dict__["service_linked_role"] = service_linked_role
         return ServiceLinkedRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            role_status: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_linked_role: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["roleStatus"] = role_status
+        __props__["serviceLinkedRole"] = service_linked_role
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="roleStatus")
     def role_status(self) -> pulumi.Output[_builtins.bool]:

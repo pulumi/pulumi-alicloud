@@ -166,6 +166,12 @@ func (BucketServerSideEncryptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketServerSideEncryptionState)(nil)).Elem()
 }
 
+// BucketServerSideEncryptionExists checks whether an existing BucketServerSideEncryption resource with the given ID exists.
+func BucketServerSideEncryptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketServerSideEncryptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption", id, state, "", opts...)
+}
+
 type bucketServerSideEncryptionArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

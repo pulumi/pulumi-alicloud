@@ -171,6 +171,12 @@ func (ConfigMapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configMapState)(nil)).Elem()
 }
 
+// ConfigMapExists checks whether an existing ConfigMap resource with the given ID exists.
+func ConfigMapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigMapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sae/configMap:ConfigMap", id, state, "", opts...)
+}
+
 type configMapArgs struct {
 	// ConfigMap instance data.
 	Data string `pulumi:"data"`

@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
@@ -63,11 +63,11 @@ import javax.annotation.Nullable;
  *             .stackName(String.format("tf-example-%s", default_.get("result")))
  *             .changeSetType("CREATE")
  *             .description("Test From Terraform")
- *             .templateBody("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}")
+ *             .templateBody("}{&#92;{@code "ROSTemplateFormatVersion}&#92;{@code ":}&#92;{@code "2015-09-01}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

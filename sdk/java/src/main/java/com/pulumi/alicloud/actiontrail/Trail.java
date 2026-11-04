@@ -205,11 +205,10 @@ public class Trail extends com.pulumi.resources.CustomResource {
     /**
      * Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
      * 
-     * @deprecated
-     * Field `mnsTopicArn` has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
+    @Deprecated
     @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
@@ -223,11 +222,10 @@ public class Trail extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -297,11 +295,10 @@ public class Trail extends com.pulumi.resources.CustomResource {
     /**
      * Field `roleName` has been deprecated from provider version 1.118.0.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
+    @Deprecated
     @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleName;
 

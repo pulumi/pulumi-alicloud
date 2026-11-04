@@ -165,6 +165,12 @@ func (DiskAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskAttachmentState)(nil)).Elem()
 }
 
+// DiskAttachmentExists checks whether an existing DiskAttachment resource with the given ID exists.
+func DiskAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/diskAttachment:DiskAttachment", id, state, "", opts...)
+}
+
 type diskAttachmentArgs struct {
 	Bootable           *bool `pulumi:"bootable"`
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`

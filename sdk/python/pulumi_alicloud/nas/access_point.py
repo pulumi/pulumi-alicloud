@@ -681,6 +681,38 @@ class AccessPoint(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return AccessPoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group: pulumi.Input[Optional[_builtins.str]] = None,
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict', 'outputs.AccessPointPosixUser']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_path: pulumi.Input[Optional[_builtins.str]] = None,
+            root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict', 'outputs.AccessPointRootPathPermission']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroup"] = access_group
+        __props__["accessPointId"] = access_point_id
+        __props__["accessPointName"] = access_point_name
+        __props__["createTime"] = create_time
+        __props__["enabledRam"] = enabled_ram
+        __props__["fileSystemId"] = file_system_id
+        __props__["posixUser"] = posix_user
+        __props__["regionId"] = region_id
+        __props__["rootPath"] = root_path
+        __props__["rootPathPermission"] = root_path_permission
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/accessPoint:AccessPoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroup")
     def access_group(self) -> pulumi.Output[_builtins.str]:

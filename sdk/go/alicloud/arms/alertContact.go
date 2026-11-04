@@ -131,6 +131,12 @@ func (AlertContactState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertContactState)(nil)).Elem()
 }
 
+// AlertContactExists checks whether an existing AlertContact resource with the given ID exists.
+func AlertContactExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertContactState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/alertContact:AlertContact", id, state, "", opts...)
+}
+
 type alertContactArgs struct {
 	// The name of the alert contact.
 	AlertContactName *string `pulumi:"alertContactName"`

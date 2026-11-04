@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ImageEventOperation("default", ImageEventOperationArgs.builder()
@@ -56,25 +56,25 @@ import javax.annotation.Nullable;
  *             .operationCode("whitelist")
  *             .eventKey("alibabacloud_ak")
  *             .scenarios("""
- * {
- *   \"type\":\"default\",
- *   \"value\":\"\"
- * }
+ * }{{@code
+ *   }&#92;{@code "type}&#92;{@code ":}&#92;{@code "default}&#92;{@code ",
+ *   }&#92;{@code "value}&#92;{@code ":}&#92;{@code "}&#92;{@code "
+ * }}{@code
  *             """)
  *             .eventName("阿里云AK")
  *             .conditions("""
  * [
- *   {
- *       \"condition\":\"MD5\",
- *       \"type\":\"equals\",
- *       \"value\":\"0083a31cc0083a31ccf7c10367a6e783e\"
- *   }
+ *   }{{@code
+ *       }&#92;{@code "condition}&#92;{@code ":}&#92;{@code "MD5}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ":}&#92;{@code "equals}&#92;{@code ",
+ *       }&#92;{@code "value}&#92;{@code ":}&#92;{@code "0083a31cc0083a31ccf7c10367a6e783e}&#92;{@code "
+ *   }}{@code
  * ]
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

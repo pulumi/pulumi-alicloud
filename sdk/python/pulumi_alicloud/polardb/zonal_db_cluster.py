@@ -1067,6 +1067,60 @@ class ZonalDbCluster(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return ZonalDbCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_latest_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_nodes_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            db_cluster_nodes_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            db_cluster_nodes_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_space: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            used_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["clusterLatestVersion"] = cluster_latest_version
+        __props__["clusterVersion"] = cluster_version
+        __props__["createTime"] = create_time
+        __props__["creationCategory"] = creation_category
+        __props__["dbClusterNodesAttributes"] = db_cluster_nodes_attributes
+        __props__["dbClusterNodesConfigs"] = db_cluster_nodes_configs
+        __props__["dbClusterNodesIds"] = db_cluster_nodes_ids
+        __props__["dbMinorVersion"] = db_minor_version
+        __props__["dbNodeClass"] = db_node_class
+        __props__["dbType"] = db_type
+        __props__["dbVersion"] = db_version
+        __props__["description"] = description
+        __props__["ensRegionId"] = ens_region_id
+        __props__["payType"] = pay_type
+        __props__["regionId"] = region_id
+        __props__["renewalStatus"] = renewal_status
+        __props__["storagePayType"] = storage_pay_type
+        __props__["storageSpace"] = storage_space
+        __props__["storageType"] = storage_type
+        __props__["targetMinorVersion"] = target_minor_version
+        __props__["usedTime"] = used_time
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/zonalDbCluster:ZonalDbCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[Optional[_builtins.int]]:

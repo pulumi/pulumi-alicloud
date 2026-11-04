@@ -420,6 +420,28 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         __props__.__dict__["transit_router_route_table_type"] = transit_router_route_table_type
         return TransitRouterRouteTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transitRouterId"] = transit_router_id
+        __props__["transitRouterRouteTableDescription"] = transit_router_route_table_description
+        __props__["transitRouterRouteTableId"] = transit_router_route_table_id
+        __props__["transitRouterRouteTableName"] = transit_router_route_table_name
+        __props__["transitRouterRouteTableType"] = transit_router_route_table_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

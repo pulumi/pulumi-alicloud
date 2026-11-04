@@ -116,6 +116,12 @@ func (AiTrafficAnalysisStatusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiTrafficAnalysisStatusState)(nil)).Elem()
 }
 
+// AiTrafficAnalysisStatusExists checks whether an existing AiTrafficAnalysisStatus resource with the given ID exists.
+func AiTrafficAnalysisStatusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiTrafficAnalysisStatusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus", id, state, "", opts...)
+}
+
 type aiTrafficAnalysisStatusArgs struct {
 	// Status
 	Status *string `pulumi:"status"`

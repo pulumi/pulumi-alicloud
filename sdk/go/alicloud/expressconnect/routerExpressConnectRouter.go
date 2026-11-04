@@ -165,6 +165,12 @@ func (RouterExpressConnectRouterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerExpressConnectRouterState)(nil)).Elem()
 }
 
+// RouterExpressConnectRouterExists checks whether an existing RouterExpressConnectRouter resource with the given ID exists.
+func RouterExpressConnectRouterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterExpressConnectRouterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter", id, state, "", opts...)
+}
+
 type routerExpressConnectRouterArgs struct {
 	// ASN representing resources.
 	AlibabaSideAsn int `pulumi:"alibabaSideAsn"`

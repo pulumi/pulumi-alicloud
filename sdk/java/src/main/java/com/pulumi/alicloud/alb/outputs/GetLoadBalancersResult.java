@@ -41,11 +41,10 @@ public final class GetLoadBalancersResult {
     /**
      * @return (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
+     * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
+    @Deprecated
     private @Nullable String loadBalancerBussinessStatus;
     private @Nullable List<String> loadBalancerIds;
     /**
@@ -125,11 +124,10 @@ public final class GetLoadBalancersResult {
     /**
      * @return (Deprecated since v1.142.0) Load Balancing of the Service Status. **NOTE:** Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
+     * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
+    @Deprecated
     public Optional<String> loadBalancerBussinessStatus() {
         return Optional.ofNullable(this.loadBalancerBussinessStatus);
     }

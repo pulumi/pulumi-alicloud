@@ -209,11 +209,10 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
     /**
      * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
-     * @deprecated
-     * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * @deprecated Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
      */
-    @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
+    @Deprecated
     @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 

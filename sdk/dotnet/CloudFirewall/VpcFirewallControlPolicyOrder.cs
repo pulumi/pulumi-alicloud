@@ -61,14 +61,14 @@ namespace Pulumi.AliCloud.CloudFirewall
     public partial class VpcFirewallControlPolicyOrder : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The unique identifier ID of the access control policy.  
+        /// The unique identifier ID of the access control policy.\
         /// When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
         /// </summary>
         [Output("aclUuid")]
         public Output<string> AclUuid { get; private set; } = null!;
 
         /// <summary>
-        /// The language type used for requests and responses.  
+        /// The language type used for requests and responses.
         /// 
         /// Valid values:
         /// </summary>
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The new priority of the access control policy after modification.  
+        /// The new priority of the access control policy after modification.
         /// 
         /// &gt; **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
         /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Order { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        /// The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
         /// 
         /// Valid values:
         /// - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -144,14 +144,14 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class VpcFirewallControlPolicyOrderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier ID of the access control policy.  
+        /// The unique identifier ID of the access control policy.\
         /// When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
         /// </summary>
         [Input("aclUuid")]
         public Input<string>? AclUuid { get; set; }
 
         /// <summary>
-        /// The language type used for requests and responses.  
+        /// The language type used for requests and responses.
         /// 
         /// Valid values:
         /// </summary>
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The new priority of the access control policy after modification.  
+        /// The new priority of the access control policy after modification.
         /// 
         /// &gt; **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Order { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        /// The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
         /// 
         /// Valid values:
         /// - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -189,14 +189,14 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class VpcFirewallControlPolicyOrderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier ID of the access control policy.  
+        /// The unique identifier ID of the access control policy.\
         /// When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
         /// </summary>
         [Input("aclUuid")]
         public Input<string>? AclUuid { get; set; }
 
         /// <summary>
-        /// The language type used for requests and responses.  
+        /// The language type used for requests and responses.
         /// 
         /// Valid values:
         /// </summary>
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The new priority of the access control policy after modification.  
+        /// The new priority of the access control policy after modification.
         /// 
         /// &gt; **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
         /// </summary>
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        /// The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
         /// 
         /// Valid values:
         /// - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.

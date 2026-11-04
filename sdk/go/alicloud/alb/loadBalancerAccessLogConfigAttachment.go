@@ -249,6 +249,12 @@ func (LoadBalancerAccessLogConfigAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerAccessLogConfigAttachmentState)(nil)).Elem()
 }
 
+// LoadBalancerAccessLogConfigAttachmentExists checks whether an existing LoadBalancerAccessLogConfigAttachment resource with the given ID exists.
+func LoadBalancerAccessLogConfigAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerAccessLogConfigAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment", id, state, "", opts...)
+}
+
 type loadBalancerAccessLogConfigAttachmentArgs struct {
 	// The ID of the load balancing instance.
 	LoadBalancerId string `pulumi:"loadBalancerId"`

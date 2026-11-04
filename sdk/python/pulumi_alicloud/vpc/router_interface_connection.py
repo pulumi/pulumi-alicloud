@@ -449,6 +449,22 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         __props__.__dict__["opposite_router_type"] = opposite_router_type
         return RouterInterfaceConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["interfaceId"] = interface_id
+        __props__["oppositeInterfaceId"] = opposite_interface_id
+        __props__["oppositeInterfaceOwnerId"] = opposite_interface_owner_id
+        __props__["oppositeRouterId"] = opposite_router_id
+        __props__["oppositeRouterType"] = opposite_router_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="interfaceId")
     def interface_id(self) -> pulumi.Output[_builtins.str]:

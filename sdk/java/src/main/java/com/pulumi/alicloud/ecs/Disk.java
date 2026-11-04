@@ -87,11 +87,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
     /**
      * The Zone to create the disk in.
      * 
-     * @deprecated
-     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
+     * @deprecated Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead
      * 
      */
-    @Deprecated /* Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead */
+    @Deprecated
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
@@ -185,11 +184,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      * 
-     * @deprecated
-     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
-    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
+    @Deprecated
     @Export(name="enableAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAutoSnapshot;
 
@@ -249,11 +247,10 @@ public class Disk extends com.pulumi.resources.CustomResource {
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

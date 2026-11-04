@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var instance = new RatePlanInstance("instance", RatePlanInstanceArgs.builder()
@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .siteId(site.id())
  *             .ruleEnable("off")
- *             .rule("(http.request.uri eq \"/content?page=1234\")")
+ *             .rule("(http.request.uri eq }&#92;{@code "/content?page=1234}&#92;{@code ")")
  *             .siteVersion(0)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -143,7 +143,7 @@ public class HttpRequestHeaderModificationRule extends com.pulumi.resources.Cust
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
-     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
@@ -152,7 +152,7 @@ public class HttpRequestHeaderModificationRule extends com.pulumi.resources.Cust
     /**
      * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
-     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
      * 
      */
     public Output<Optional<String>> rule() {

@@ -852,6 +852,46 @@ class PrivateDns(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return PrivateDns(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            firewall_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            primary_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_dns_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_no: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessInstanceId"] = access_instance_id
+        __props__["accessInstanceName"] = access_instance_name
+        __props__["domainNameLists"] = domain_name_lists
+        __props__["firewallTypes"] = firewall_types
+        __props__["ipProtocol"] = ip_protocol
+        __props__["memberUid"] = member_uid
+        __props__["port"] = port
+        __props__["primaryDns"] = primary_dns
+        __props__["primaryVswitchId"] = primary_vswitch_id
+        __props__["primaryVswitchIp"] = primary_vswitch_ip
+        __props__["privateDnsType"] = private_dns_type
+        __props__["regionNo"] = region_no
+        __props__["standbyDns"] = standby_dns
+        __props__["standbyVswitchId"] = standby_vswitch_id
+        __props__["standbyVswitchIp"] = standby_vswitch_ip
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/privateDns:PrivateDns', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessInstanceId")
     def access_instance_id(self) -> pulumi.Output[_builtins.str]:

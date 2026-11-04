@@ -49,12 +49,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
@@ -63,27 +63,27 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .roleName(String.format("terraform-example-%s", default_.get("result")))
  *             .assumeRolePolicyDocument("""
- *   {
- *     \"Statement\": [
- *       {
- *         \"Action\": \"sts:AssumeRole\",
- *         \"Effect\": \"Allow\",
- *         \"Principal\": {
- *           \"Service\": [
- *             \"apigateway.aliyuncs.com\",
- *             \"ecs.aliyuncs.com\"
+ *   }{{@code
+ *     }&#92;{@code "Statement}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *           }&#92;{@code "Service}&#92;{@code ": [
+ *             }&#92;{@code "apigateway.aliyuncs.com}&#92;{@code ",
+ *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
  *           ]
- *         }
- *       }
+ *         }}{@code
+ *       }}{@code
  *     ],
- *     \"Version\": \"1\"
- *   }
+ *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .description("this is a role test.")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -159,11 +159,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
-     * @deprecated
-     * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+     * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
+    @Deprecated
     @Export(name="document", refs={String.class}, tree="[0]")
     private Output<String> document;
 
@@ -205,11 +204,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -223,11 +221,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     @Export(name="ramUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ramUsers;
 
@@ -269,11 +266,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> services;
 
@@ -301,11 +297,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 

@@ -208,6 +208,12 @@ func (VariableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*variableState)(nil)).Elem()
 }
 
+// VariableExists checks whether an existing Variable resource with the given ID exists.
+func VariableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VariableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:realtimecompute/variable:Variable", id, state, "", opts...)
+}
+
 type variableArgs struct {
 	// The description of the variable.
 	Description *string `pulumi:"description"`

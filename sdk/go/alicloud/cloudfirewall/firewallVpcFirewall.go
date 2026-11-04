@@ -208,6 +208,12 @@ func (FirewallVpcFirewallState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallVpcFirewallState)(nil)).Elem()
 }
 
+// FirewallVpcFirewallExists checks whether an existing FirewallVpcFirewall resource with the given ID exists.
+func FirewallVpcFirewallExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallVpcFirewallState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall", id, state, "", opts...)
+}
+
 type firewallVpcFirewallArgs struct {
 	// The language type of the requested and received messages. Valid values:
 	Lang *string `pulumi:"lang"`

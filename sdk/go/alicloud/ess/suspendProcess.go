@@ -209,6 +209,12 @@ func (SuspendProcessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*suspendProcessState)(nil)).Elem()
 }
 
+// SuspendProcessExists checks whether an existing SuspendProcess resource with the given ID exists.
+func SuspendProcessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SuspendProcessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/suspendProcess:SuspendProcess", id, state, "", opts...)
+}
+
 type suspendProcessArgs struct {
 	// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
 	Process string `pulumi:"process"`

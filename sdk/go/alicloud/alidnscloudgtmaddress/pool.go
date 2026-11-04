@@ -221,6 +221,12 @@ func (PoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolState)(nil)).Elem()
 }
 
+// PoolExists checks whether an existing Pool resource with the given ID exists.
+func PoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alidnscloudgtmaddress/pool:Pool", id, state, "", opts...)
+}
+
 type poolArgs struct {
 	// Load balancing strategy among addresses in the address pool:
 	// - round_robin: Round robin. For any incoming DNS query, all addresses are returned, and their order is rotated with each request.

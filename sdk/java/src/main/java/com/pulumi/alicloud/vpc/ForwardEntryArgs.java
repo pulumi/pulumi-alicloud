@@ -137,22 +137,20 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -368,11 +366,10 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -383,11 +380,10 @@ public final class ForwardEntryArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

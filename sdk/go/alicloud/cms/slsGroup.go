@@ -187,6 +187,12 @@ func (SlsGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*slsGroupState)(nil)).Elem()
 }
 
+// SlsGroupExists checks whether an existing SlsGroup resource with the given ID exists.
+func SlsGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SlsGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/slsGroup:SlsGroup", id, state, "", opts...)
+}
+
 type slsGroupArgs struct {
 	// The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
 	SlsGroupConfigs []SlsGroupSlsGroupConfig `pulumi:"slsGroupConfigs"`

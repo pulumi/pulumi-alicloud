@@ -327,6 +327,12 @@ func (CacheRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cacheRuleState)(nil)).Elem()
 }
 
+// CacheRuleExists checks whether an existing CacheRule resource with the given ID exists.
+func CacheRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CacheRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/cacheRule:CacheRule", id, state, "", opts...)
+}
+
 type cacheRuleArgs struct {
 	// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 	AdditionalCacheablePorts *string `pulumi:"additionalCacheablePorts"`

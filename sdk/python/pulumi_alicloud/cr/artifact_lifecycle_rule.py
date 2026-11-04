@@ -596,6 +596,34 @@ class ArtifactLifecycleRule(pulumi.CustomResource):
         __props__.__dict__["tag_regexp"] = tag_regexp
         return ArtifactLifecycleRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            artifact_lifecycle_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_tag_count: pulumi.Input[Optional[_builtins.int]] = None,
+            schedule_time: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_regexp: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["artifactLifecycleRuleId"] = artifact_lifecycle_rule_id
+        __props__["auto"] = auto
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["modifiedTime"] = modified_time
+        __props__["namespaceName"] = namespace_name
+        __props__["repoName"] = repo_name
+        __props__["retentionTagCount"] = retention_tag_count
+        __props__["scheduleTime"] = schedule_time
+        __props__["scope"] = scope
+        __props__["tagRegexp"] = tag_regexp
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="artifactLifecycleRuleId")
     def artifact_lifecycle_rule_id(self) -> pulumi.Output[_builtins.str]:

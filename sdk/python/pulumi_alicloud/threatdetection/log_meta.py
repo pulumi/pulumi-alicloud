@@ -380,6 +380,16 @@ class LogMeta(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return LogMeta(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            log_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["logMetaName"] = log_meta_name
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/logMeta:LogMeta', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="logMetaName")
     def log_meta_name(self) -> pulumi.Output[_builtins.str]:

@@ -358,6 +358,12 @@ func (StoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeState)(nil)).Elem()
 }
 
+// StoreExists checks whether an existing Store resource with the given ID exists.
+func StoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/store:Store", id, state, "", opts...)
+}
+
 type storeArgs struct {
 	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta *bool `pulumi:"appendMeta"`

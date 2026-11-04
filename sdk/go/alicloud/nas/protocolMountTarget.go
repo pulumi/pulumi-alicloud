@@ -320,6 +320,12 @@ func (ProtocolMountTargetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*protocolMountTargetState)(nil)).Elem()
 }
 
+// ProtocolMountTargetExists checks whether an existing ProtocolMountTarget resource with the given ID exists.
+func ProtocolMountTargetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProtocolMountTargetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/protocolMountTarget:ProtocolMountTarget", id, state, "", opts...)
+}
+
 type protocolMountTargetArgs struct {
 	// The permission group name.
 	// Default value: DEFAULT_VPC_GROUP_NAME

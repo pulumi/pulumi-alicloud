@@ -478,6 +478,26 @@ class ReplicaSetRole(pulumi.CustomResource):
         __props__.__dict__["role_id"] = role_id
         return ReplicaSetRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_port: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_set_role: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionDomain"] = connection_domain
+        __props__["connectionPort"] = connection_port
+        __props__["connectionPrefix"] = connection_prefix
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["networkType"] = network_type
+        __props__["replicaSetRole"] = replica_set_role
+        __props__["roleId"] = role_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/replicaSetRole:ReplicaSetRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionDomain")
     def connection_domain(self) -> pulumi.Output[_builtins.str]:

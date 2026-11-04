@@ -441,6 +441,26 @@ class Command(pulumi.CustomResource):
         __props__.__dict__["working_dir"] = working_dir
         return Command(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            command_content: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            working_dir: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commandContent"] = command_content
+        __props__["description"] = description
+        __props__["enableParameter"] = enable_parameter
+        __props__["name"] = name
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        __props__["workingDir"] = working_dir
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/command:Command', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="commandContent")
     def command_content(self) -> pulumi.Output[_builtins.str]:

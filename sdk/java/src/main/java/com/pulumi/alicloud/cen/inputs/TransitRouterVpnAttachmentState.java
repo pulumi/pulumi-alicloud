@@ -167,22 +167,20 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     /**
      * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
+    @Deprecated
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
      * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
+    @Deprecated
     public Optional<Output<String>> transitRouterAttachmentName() {
         return Optional.ofNullable(this.transitRouterAttachmentName);
     }
@@ -204,7 +202,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
 
     /**
      * The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="transitRouterVpnAttachmentName")
@@ -212,7 +210,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
 
     /**
      * @return The name of the VPN attachment.
-     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> transitRouterVpnAttachmentName() {
@@ -520,11 +518,10 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+         * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
+        @Deprecated
         public Builder transitRouterAttachmentName(@Nullable Output<String> transitRouterAttachmentName) {
             $.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
@@ -535,11 +532,10 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
+         * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.274.0. New field &#39;transit_router_vpn_attachment_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead. */
+        @Deprecated
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             return transitRouterAttachmentName(Output.of(transitRouterAttachmentName));
         }
@@ -567,7 +563,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
 
         /**
          * @param transitRouterVpnAttachmentName The name of the VPN attachment.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -579,7 +575,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
 
         /**
          * @param transitRouterVpnAttachmentName The name of the VPN attachment.
-         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 

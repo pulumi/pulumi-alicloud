@@ -1019,6 +1019,42 @@ class HadoopDataSource(pulumi.CustomResource):
         __props__.__dict__["yarn_conf"] = yarn_conf
         return HadoopDataSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            emr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hadoop_core_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            hadoop_create_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hadoop_hosts_address: pulumi.Input[Optional[_builtins.str]] = None,
+            hdfs_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            hive_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            map_reduce_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            yarn_conf: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dataSourceDescription"] = data_source_description
+        __props__["dataSourceId"] = data_source_id
+        __props__["dataSourceName"] = data_source_name
+        __props__["dataSourceType"] = data_source_type
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["emrInstanceId"] = emr_instance_id
+        __props__["hadoopCoreConf"] = hadoop_core_conf
+        __props__["hadoopCreateType"] = hadoop_create_type
+        __props__["hadoopHostsAddress"] = hadoop_hosts_address
+        __props__["hdfsConf"] = hdfs_conf
+        __props__["hiveConf"] = hive_conf
+        __props__["mapReduceConf"] = map_reduce_conf
+        __props__["status"] = status
+        __props__["yarnConf"] = yarn_conf
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/hadoopDataSource:HadoopDataSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

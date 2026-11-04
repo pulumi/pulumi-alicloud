@@ -177,7 +177,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("period")]
@@ -237,7 +236,6 @@ namespace Pulumi.AliCloud.CR
         /// The number of VPC access controls.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -391,7 +389,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
@@ -445,7 +442,6 @@ namespace Pulumi.AliCloud.CR
         /// The number of VPC access controls.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -587,7 +583,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
@@ -653,7 +648,6 @@ namespace Pulumi.AliCloud.CR
         /// The number of VPC access controls.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

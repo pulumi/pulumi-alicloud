@@ -47,7 +47,7 @@ public final class GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationT
      */
     private String localId;
     /**
-     * @return The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. &#39;&#39;&#39;~! \&#39;{@literal @}#$%^&amp; *()_-+ ={}[]|;:&#39;,./? &#39;&#39;&#39;-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
+     * @return The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. &#39;&#39;&#39;~! &#92;&#39;{@literal @}#$%^&amp; *()_-+ ={}[]|;:&#39;,./? &#39;&#39;&#39;-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
      * 
      */
     private String psk;
@@ -108,7 +108,7 @@ public final class GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationT
         return this.localId;
     }
     /**
-     * @return The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. &#39;&#39;&#39;~! \&#39;{@literal @}#$%^&amp; *()_-+ ={}[]|;:&#39;,./? &#39;&#39;&#39;-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
+     * @return The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. &#39;&#39;&#39;~! &#92;&#39;{@literal @}#$%^&amp; *()_-+ ={}[]|;:&#39;,./? &#39;&#39;&#39;-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
      * 
      */
     public String psk() {

@@ -594,6 +594,32 @@ class BasicEndpoint(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BasicEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            basic_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_sub_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorId"] = accelerator_id
+        __props__["basicEndpointName"] = basic_endpoint_name
+        __props__["endpointAddress"] = endpoint_address
+        __props__["endpointGroupId"] = endpoint_group_id
+        __props__["endpointId"] = endpoint_id
+        __props__["endpointSubAddress"] = endpoint_sub_address
+        __props__["endpointSubAddressType"] = endpoint_sub_address_type
+        __props__["endpointType"] = endpoint_type
+        __props__["endpointZoneId"] = endpoint_zone_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/basicEndpoint:BasicEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[_builtins.str]:

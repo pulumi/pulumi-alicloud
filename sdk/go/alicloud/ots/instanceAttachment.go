@@ -172,6 +172,12 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceAttachmentState)(nil)).Elem()
 }
 
+// InstanceAttachmentExists checks whether an existing InstanceAttachment resource with the given ID exists.
+func InstanceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ots/instanceAttachment:InstanceAttachment", id, state, "", opts...)
+}
+
 type instanceAttachmentArgs struct {
 	// The name of the OTS instance.
 	InstanceName string `pulumi:"instanceName"`

@@ -337,6 +337,24 @@ class InstanceMember(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return InstanceMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            member_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            member_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["memberDesc"] = member_desc
+        __props__["memberDisplayName"] = member_display_name
+        __props__["memberUid"] = member_uid
+        __props__["modifyTime"] = modify_time
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/instanceMember:InstanceMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:

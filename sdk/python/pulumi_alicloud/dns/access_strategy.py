@@ -998,6 +998,48 @@ class AccessStrategy(pulumi.CustomResource):
         __props__.__dict__["strategy_name"] = strategy_name
         return AccessStrategy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            default_addr_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+            default_addr_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessStrategyDefaultAddrPoolArgs', 'AccessStrategyDefaultAddrPoolArgsDict', 'outputs.AccessStrategyDefaultAddrPool']]]]] = None,
+            default_latency_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            default_lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            default_max_return_addr_num: pulumi.Input[Optional[_builtins.int]] = None,
+            default_min_available_addr_num: pulumi.Input[Optional[_builtins.int]] = None,
+            failover_addr_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_addr_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessStrategyFailoverAddrPoolArgs', 'AccessStrategyFailoverAddrPoolArgsDict', 'outputs.AccessStrategyFailoverAddrPool']]]]] = None,
+            failover_latency_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_max_return_addr_num: pulumi.Input[Optional[_builtins.int]] = None,
+            failover_min_available_addr_num: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            lines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessStrategyLineArgs', 'AccessStrategyLineArgsDict', 'outputs.AccessStrategyLine']]]]] = None,
+            strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["defaultAddrPoolType"] = default_addr_pool_type
+        __props__["defaultAddrPools"] = default_addr_pools
+        __props__["defaultLatencyOptimization"] = default_latency_optimization
+        __props__["defaultLbaStrategy"] = default_lba_strategy
+        __props__["defaultMaxReturnAddrNum"] = default_max_return_addr_num
+        __props__["defaultMinAvailableAddrNum"] = default_min_available_addr_num
+        __props__["failoverAddrPoolType"] = failover_addr_pool_type
+        __props__["failoverAddrPools"] = failover_addr_pools
+        __props__["failoverLatencyOptimization"] = failover_latency_optimization
+        __props__["failoverLbaStrategy"] = failover_lba_strategy
+        __props__["failoverMaxReturnAddrNum"] = failover_max_return_addr_num
+        __props__["failoverMinAvailableAddrNum"] = failover_min_available_addr_num
+        __props__["instanceId"] = instance_id
+        __props__["lang"] = lang
+        __props__["lines"] = lines
+        __props__["strategyMode"] = strategy_mode
+        __props__["strategyName"] = strategy_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/accessStrategy:AccessStrategy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[_builtins.str]:

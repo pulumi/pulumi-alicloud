@@ -383,6 +383,12 @@ func (RdsAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsAccountState)(nil)).Elem()
 }
 
+// RdsAccountExists checks whether an existing RdsAccount resource with the given ID exists.
+func RdsAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsAccount:RdsAccount", id, state, "", opts...)
+}
+
 type rdsAccountArgs struct {
 	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
 	//

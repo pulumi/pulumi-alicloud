@@ -121,11 +121,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Field `availabilityZone` has been deprecated from provider version 1.187.0. New field `zoneId` instead.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
+    @Deprecated
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
@@ -341,11 +340,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      * 
-     * @deprecated
-     * Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+     * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead. */
+    @Deprecated
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -471,11 +469,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
-     * @deprecated
-     * Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `masterNodeNum` has been deprecated from provider version 1.213.0. */
+    @Deprecated
     @Export(name="masterNodeNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> masterNodeNum;
 
@@ -563,11 +560,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
-     * @deprecated
-     * Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      * 
      */
-    @Deprecated /* Field `privateIpAddress` has been deprecated from provider version 1.213.0. */
+    @Deprecated
     @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;
 
@@ -623,11 +619,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      * 
-     * @deprecated
-     * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+     * @deprecated Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
      * 
      */
-    @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+    @Deprecated
     @Export(name="securityIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityIpLists;
 

@@ -865,6 +865,46 @@ class WafRule(pulumi.CustomResource):
         __props__.__dict__["waf_group_ids"] = waf_group_ids
         return WafRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            cc_status: pulumi.Input[Optional[_builtins.str]] = None,
+            cn_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict', 'outputs.WafRuleCondition']]]]] = None,
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            effect: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            other_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rate_limit: pulumi.Input[Optional[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict', 'outputs.WafRuleRateLimit']]] = None,
+            regular_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            regular_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            remote_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            waf_group_ids: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["ccStatus"] = cc_status
+        __props__["cnRegionList"] = cn_region_list
+        __props__["conditions"] = conditions
+        __props__["defenseScene"] = defense_scene
+        __props__["effect"] = effect
+        __props__["gmtModified"] = gmt_modified
+        __props__["otherRegionList"] = other_region_list
+        __props__["policyId"] = policy_id
+        __props__["rateLimit"] = rate_limit
+        __props__["regularRules"] = regular_rules
+        __props__["regularTypes"] = regular_types
+        __props__["remoteAddrs"] = remote_addrs
+        __props__["ruleName"] = rule_name
+        __props__["scenes"] = scenes
+        __props__["status"] = status
+        __props__["wafGroupIds"] = waf_group_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:dcdn/wafRule:WafRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[_builtins.str]]:

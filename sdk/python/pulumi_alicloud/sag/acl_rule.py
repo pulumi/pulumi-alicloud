@@ -588,6 +588,32 @@ class AclRule(pulumi.CustomResource):
         __props__.__dict__["source_port_range"] = source_port_range
         return AclRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port_range: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclId"] = acl_id
+        __props__["description"] = description
+        __props__["destCidr"] = dest_cidr
+        __props__["destPortRange"] = dest_port_range
+        __props__["direction"] = direction
+        __props__["ipProtocol"] = ip_protocol
+        __props__["policy"] = policy
+        __props__["priority"] = priority
+        __props__["sourceCidr"] = source_cidr
+        __props__["sourcePortRange"] = source_port_range
+        return pulumi.runtime.exists_resource(None, 'alicloud:sag/aclRule:AclRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:

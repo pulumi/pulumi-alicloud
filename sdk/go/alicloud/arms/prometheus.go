@@ -240,6 +240,12 @@ func (PrometheusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prometheusState)(nil)).Elem()
 }
 
+// PrometheusExists checks whether an existing Prometheus resource with the given ID exists.
+func PrometheusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrometheusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/prometheus:Prometheus", id, state, "", opts...)
+}
+
 type prometheusArgs struct {
 	// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
 	ArchiveDuration *int `pulumi:"archiveDuration"`

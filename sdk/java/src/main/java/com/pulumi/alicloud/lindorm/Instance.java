@@ -772,11 +772,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
-     * @deprecated
-     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+     * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      */
-    @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
+    @Deprecated
     @Export(name="timeSeriresEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> timeSeriresEngineSpecification;
 

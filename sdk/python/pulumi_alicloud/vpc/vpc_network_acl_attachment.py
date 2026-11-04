@@ -330,6 +330,20 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return VpcNetworkAclAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["networkAclId"] = network_acl_id
+        __props__["resourceId"] = resource_id
+        __props__["resourceType"] = resource_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="networkAclId")
     def network_acl_id(self) -> pulumi.Output[_builtins.str]:

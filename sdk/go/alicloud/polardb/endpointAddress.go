@@ -190,6 +190,12 @@ func (EndpointAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointAddressState)(nil)).Elem()
 }
 
+// EndpointAddressExists checks whether an existing EndpointAddress resource with the given ID exists.
+func EndpointAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/endpointAddress:EndpointAddress", id, state, "", opts...)
+}
+
 type endpointAddressArgs struct {
 	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`

@@ -645,6 +645,28 @@ class ApplicationScalingRule(pulumi.CustomResource):
         __props__.__dict__["scaling_rule_type"] = scaling_rule_type
         return ApplicationScalingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict', 'outputs.ApplicationScalingRuleScalingRuleMetric']]] = None,
+            scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict', 'outputs.ApplicationScalingRuleScalingRuleTimer']]] = None,
+            scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["minReadyInstanceRatio"] = min_ready_instance_ratio
+        __props__["minReadyInstances"] = min_ready_instances
+        __props__["scalingRuleEnable"] = scaling_rule_enable
+        __props__["scalingRuleMetric"] = scaling_rule_metric
+        __props__["scalingRuleName"] = scaling_rule_name
+        __props__["scalingRuleTimer"] = scaling_rule_timer
+        __props__["scalingRuleType"] = scaling_rule_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:sae/applicationScalingRule:ApplicationScalingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

@@ -456,6 +456,24 @@ class Port(pulumi.CustomResource):
         __props__.__dict__["real_servers"] = real_servers
         return Port(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_port: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict', 'outputs.PortConfig']]] = None,
+            frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
+            frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendPort"] = backend_port
+        __props__["config"] = config
+        __props__["frontendPort"] = frontend_port
+        __props__["frontendProtocol"] = frontend_protocol
+        __props__["instanceId"] = instance_id
+        __props__["realServers"] = real_servers
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/port:Port', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> pulumi.Output[Optional[_builtins.str]]:

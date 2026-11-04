@@ -204,6 +204,14 @@ class Tag(pulumi.CustomResource):
         __props__.__dict__["tag_name"] = tag_name
         return Tag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["tagName"] = tag_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:directmail/tag:Tag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="tagName")
     def tag_name(self) -> pulumi.Output[_builtins.str]:

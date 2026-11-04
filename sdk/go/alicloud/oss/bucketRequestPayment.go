@@ -140,6 +140,12 @@ func (BucketRequestPaymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketRequestPaymentState)(nil)).Elem()
 }
 
+// BucketRequestPaymentExists checks whether an existing BucketRequestPayment resource with the given ID exists.
+func BucketRequestPaymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketRequestPaymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketRequestPayment:BucketRequestPayment", id, state, "", opts...)
+}
+
 type bucketRequestPaymentArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

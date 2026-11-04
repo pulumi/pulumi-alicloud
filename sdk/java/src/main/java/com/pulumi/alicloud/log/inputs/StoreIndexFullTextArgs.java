@@ -47,14 +47,14 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The string of several split words, like &#34;\r&#34;, &#34;#&#34;
+     * The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;
+     * @return The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;
      * 
      */
     public Optional<Output<String>> token() {
@@ -130,7 +130,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param token The string of several split words, like &#34;\r&#34;, &#34;#&#34;
+         * @param token The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param token The string of several split words, like &#34;\r&#34;, &#34;#&#34;
+         * @param token The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;
          * 
          * @return builder
          * 

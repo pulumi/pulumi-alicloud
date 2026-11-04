@@ -278,6 +278,12 @@ func (ZoneAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneAttachmentState)(nil)).Elem()
 }
 
+// ZoneAttachmentExists checks whether an existing ZoneAttachment resource with the given ID exists.
+func ZoneAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pvtz/zoneAttachment:ZoneAttachment", id, state, "", opts...)
+}
+
 type zoneAttachmentArgs struct {
 	// The language of code.
 	Lang *string `pulumi:"lang"`

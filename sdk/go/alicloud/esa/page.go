@@ -138,6 +138,12 @@ func (PageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pageState)(nil)).Elem()
 }
 
+// PageExists checks whether an existing Page resource with the given ID exists.
+func PageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/page:Page", id, state, "", opts...)
+}
+
 type pageArgs struct {
 	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	Content *string `pulumi:"content"`

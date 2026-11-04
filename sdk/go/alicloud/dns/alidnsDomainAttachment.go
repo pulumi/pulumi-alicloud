@@ -143,6 +143,12 @@ func (AlidnsDomainAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsDomainAttachmentState)(nil)).Elem()
 }
 
+// AlidnsDomainAttachmentExists checks whether an existing AlidnsDomainAttachment resource with the given ID exists.
+func AlidnsDomainAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlidnsDomainAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment", id, state, "", opts...)
+}
+
 type alidnsDomainAttachmentArgs struct {
 	// The domain names bound to the DNS instance.
 	DomainNames []string `pulumi:"domainNames"`

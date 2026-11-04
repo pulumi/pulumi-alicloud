@@ -577,6 +577,36 @@ class Ipv4Gateway(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv4Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            internet_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_gateway_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_gateway_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dryRun"] = dry_run
+        __props__["enabled"] = enabled
+        __props__["internetMode"] = internet_mode
+        __props__["ipv4GatewayDescription"] = ipv4_gateway_description
+        __props__["ipv4GatewayId"] = ipv4_gateway_id
+        __props__["ipv4GatewayName"] = ipv4_gateway_name
+        __props__["ipv4GatewayRouteTableId"] = ipv4_gateway_route_table_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv4Gateway:Ipv4Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

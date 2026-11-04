@@ -197,6 +197,12 @@ func (ZoneRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneRecordState)(nil)).Elem()
 }
 
+// ZoneRecordExists checks whether an existing ZoneRecord resource with the given ID exists.
+func ZoneRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pvtz/zoneRecord:ZoneRecord", id, state, "", opts...)
+}
+
 type zoneRecordArgs struct {
 	// User language.
 	Lang *string `pulumi:"lang"`

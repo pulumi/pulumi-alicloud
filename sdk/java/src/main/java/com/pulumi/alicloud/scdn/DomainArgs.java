@@ -22,22 +22,20 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Attribute perm has been deprecated and suggest removing it from your template.
      * 
-     * @deprecated
-     * Attribute bizName has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
+    @Deprecated
     @Import(name="bizName")
     private @Nullable Output<String> bizName;
 
     /**
      * @return Attribute perm has been deprecated and suggest removing it from your template.
      * 
-     * @deprecated
-     * Attribute bizName has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
+    @Deprecated
     public Optional<Output<String>> bizName() {
         return Optional.ofNullable(this.bizName);
     }
@@ -183,11 +181,10 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute bizName has been deprecated and suggest removing it from your template.
+         * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
+        @Deprecated
         public Builder bizName(@Nullable Output<String> bizName) {
             $.bizName = bizName;
             return this;
@@ -198,11 +195,10 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute bizName has been deprecated and suggest removing it from your template.
+         * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute bizName has been deprecated and suggest removing it from your template. */
+        @Deprecated
         public Builder bizName(String bizName) {
             return bizName(Output.of(bizName));
         }

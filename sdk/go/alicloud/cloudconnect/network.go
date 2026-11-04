@@ -137,6 +137,12 @@ func (NetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkState)(nil)).Elem()
 }
 
+// NetworkExists checks whether an existing Network resource with the given ID exists.
+func NetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudconnect/network:Network", id, state, "", opts...)
+}
+
 type networkArgs struct {
 	// The CidrBlock of the CCN instance. Defaults to null.
 	CidrBlock *string `pulumi:"cidrBlock"`

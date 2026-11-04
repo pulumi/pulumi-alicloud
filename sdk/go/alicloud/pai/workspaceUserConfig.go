@@ -140,6 +140,12 @@ func (WorkspaceUserConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceUserConfigState)(nil)).Elem()
 }
 
+// WorkspaceUserConfigExists checks whether an existing WorkspaceUserConfig resource with the given ID exists.
+func WorkspaceUserConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceUserConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceUserConfig:WorkspaceUserConfig", id, state, "", opts...)
+}
+
 type workspaceUserConfigArgs struct {
 	// The category. Valid values: `DataPrivacyConfig`.
 	CategoryName string `pulumi:"categoryName"`

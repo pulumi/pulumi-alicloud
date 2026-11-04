@@ -169,6 +169,12 @@ func (NasFileSystemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nasFileSystemState)(nil)).Elem()
 }
 
+// NasFileSystemExists checks whether an existing NasFileSystem resource with the given ID exists.
+func NasFileSystemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NasFileSystemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/nasFileSystem:NasFileSystem", id, state, "", opts...)
+}
+
 type nasFileSystemArgs struct {
 	// The description of nas file system.
 	Description *string `pulumi:"description"`

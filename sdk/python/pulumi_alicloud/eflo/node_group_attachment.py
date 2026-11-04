@@ -538,6 +538,30 @@ class NodeGroupAttachment(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NodeGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict', 'outputs.NodeGroupAttachmentDataDisk']]]]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["dataDisks"] = data_disks
+        __props__["hostname"] = hostname
+        __props__["loginPassword"] = login_password
+        __props__["nodeGroupId"] = node_group_id
+        __props__["nodeId"] = node_id
+        __props__["userData"] = user_data
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

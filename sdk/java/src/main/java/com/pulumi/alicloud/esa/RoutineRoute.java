@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultRoutineRoute = new RoutineRoute("defaultRoutineRoute", RoutineRouteArgs.builder()
  *             .routeEnable("on")
- *             .rule("(http.host eq \"video.example1.com\")")
+ *             .rule("(http.host eq }&#92;{@code "video.example1.com}&#92;{@code ")")
  *             .sequence(1)
  *             .routineName(defaultRoutine.name())
  *             .siteId(defaultSite.id())
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  *             .routeName("example_routine")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

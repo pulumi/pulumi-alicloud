@@ -289,6 +289,12 @@ func (AdditionalCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*additionalCertificateState)(nil)).Elem()
 }
 
+// AdditionalCertificateExists checks whether an existing AdditionalCertificate resource with the given ID exists.
+func AdditionalCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdditionalCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/additionalCertificate:AdditionalCertificate", id, state, "", opts...)
+}
+
 type additionalCertificateArgs struct {
 	// The ID of the GA instance.
 	AcceleratorId string `pulumi:"acceleratorId"`

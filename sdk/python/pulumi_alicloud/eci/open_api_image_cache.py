@@ -428,6 +428,36 @@ class OpenApiImageCache(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return OpenApiImageCache(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_cache_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+            image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiImageCacheImageRegistryCredentialArgs', 'OpenApiImageCacheImageRegistryCredentialArgsDict', 'outputs.OpenApiImageCacheImageRegistryCredential']]]]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerGroupId"] = container_group_id
+        __props__["eipInstanceId"] = eip_instance_id
+        __props__["imageCacheName"] = image_cache_name
+        __props__["imageCacheSize"] = image_cache_size
+        __props__["imageRegistryCredentials"] = image_registry_credentials
+        __props__["images"] = images
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["retentionDays"] = retention_days
+        __props__["securityGroupId"] = security_group_id
+        __props__["status"] = status
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:eci/openApiImageCache:OpenApiImageCache', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerGroupId")
     def container_group_id(self) -> pulumi.Output[_builtins.str]:

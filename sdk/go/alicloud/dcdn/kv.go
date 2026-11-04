@@ -149,6 +149,12 @@ func (KvState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kvState)(nil)).Elem()
 }
 
+// KvExists checks whether an existing Kv resource with the given ID exists.
+func KvExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KvState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/kv:Kv", id, state, "", opts...)
+}
+
 type kvArgs struct {
 	// The name of the key to Put, the longest 512, cannot contain spaces.
 	Key string `pulumi:"key"`

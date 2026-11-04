@@ -199,6 +199,12 @@ func (MigrationInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*migrationInstanceState)(nil)).Elem()
 }
 
+// MigrationInstanceExists checks whether an existing MigrationInstance resource with the given ID exists.
+func MigrationInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MigrationInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/migrationInstance:MigrationInstance", id, state, "", opts...)
+}
+
 type migrationInstanceArgs struct {
 	// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
 	ComputeUnit *int `pulumi:"computeUnit"`

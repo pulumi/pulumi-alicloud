@@ -121,6 +121,12 @@ func (KvNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kvNamespaceState)(nil)).Elem()
 }
 
+// KvNamespaceExists checks whether an existing KvNamespace resource with the given ID exists.
+func KvNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KvNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/kvNamespace:KvNamespace", id, state, "", opts...)
+}
+
 type kvNamespaceArgs struct {
 	// The description of the namespace.
 	Description *string `pulumi:"description"`

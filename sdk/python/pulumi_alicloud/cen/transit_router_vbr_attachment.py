@@ -826,6 +826,46 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         __props__.__dict__["vbr_owner_id"] = vbr_owner_id
         return TransitRouterVbrAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPublishRouteEnabled"] = auto_publish_route_enabled
+        __props__["cenId"] = cen_id
+        __props__["createTime"] = create_time
+        __props__["dryRun"] = dry_run
+        __props__["orderType"] = order_type
+        __props__["regionId"] = region_id
+        __props__["resourceType"] = resource_type
+        __props__["routeTableAssociationEnabled"] = route_table_association_enabled
+        __props__["routeTablePropagationEnabled"] = route_table_propagation_enabled
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transitRouterAttachmentDescription"] = transit_router_attachment_description
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        __props__["transitRouterAttachmentName"] = transit_router_attachment_name
+        __props__["transitRouterId"] = transit_router_id
+        __props__["vbrId"] = vbr_id
+        __props__["vbrOwnerId"] = vbr_owner_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

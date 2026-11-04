@@ -291,11 +291,10 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     /**
      * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -373,11 +372,10 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
      * 
      * &gt; **NOTE:** This parameter `instanceChargeType` is only valid for China sites and only if the `paymentType` value is `PayAsYouGo`.
      * 
-     * @deprecated
-     * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
+     * @deprecated Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
      * 
      */
-    @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
+    @Deprecated
     @Export(name="specification", refs={String.class}, tree="[0]")
     private Output<String> specification;
 

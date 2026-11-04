@@ -152,11 +152,10 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
     /**
      * Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Export(name="alertIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> alertIds;
 
@@ -170,11 +169,10 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
     /**
      * (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `createTime` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `createTime` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
@@ -244,11 +242,10 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
     /**
      * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
      * 
-     * @deprecated
-     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      * 
      */
-    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+    @Deprecated
     @Export(name="optionsJson", refs={String.class}, tree="[0]")
     private Output<String> optionsJson;
 
@@ -290,11 +287,10 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
     /**
      * (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
-     * @deprecated
-     * Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+     * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
      */
-    @Deprecated /* Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead. */
+    @Deprecated
     @Export(name="taskState", refs={String.class}, tree="[0]")
     private Output<String> taskState;
 
@@ -322,11 +318,10 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
     /**
      * (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `updateTime` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `updateTime` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 

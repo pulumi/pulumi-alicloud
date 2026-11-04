@@ -595,6 +595,34 @@ class MountPoint(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return MountPoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroupId"] = access_group_id
+        __props__["aliasPrefix"] = alias_prefix
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["fileSystemId"] = file_system_id
+        __props__["mountPointId"] = mount_point_id
+        __props__["networkType"] = network_type
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dfs/mountPoint:MountPoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> pulumi.Output[_builtins.str]:

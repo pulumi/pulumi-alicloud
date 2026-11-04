@@ -181,6 +181,12 @@ func (HostGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostGroupState)(nil)).Elem()
 }
 
+// HostGroupExists checks whether an existing HostGroup resource with the given ID exists.
+func HostGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/hostGroup:HostGroup", id, state, "", opts...)
+}
+
 type hostGroupArgs struct {
 	// Specify the New Host Group of Notes, Supports up to 500 Characters.
 	Comment *string `pulumi:"comment"`

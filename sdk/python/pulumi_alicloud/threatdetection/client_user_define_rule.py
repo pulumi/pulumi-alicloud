@@ -865,6 +865,44 @@ class ClientUserDefineRule(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return ClientUserDefineRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_type: pulumi.Input[Optional[_builtins.int]] = None,
+            client_user_define_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            hash: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            new_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            port_str: pulumi.Input[Optional[_builtins.str]] = None,
+            proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_content: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_key: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionType"] = action_type
+        __props__["clientUserDefineRuleName"] = client_user_define_rule_name
+        __props__["cmdline"] = cmdline
+        __props__["createTime"] = create_time
+        __props__["filePath"] = file_path
+        __props__["hash"] = hash
+        __props__["ip"] = ip
+        __props__["newFilePath"] = new_file_path
+        __props__["parentCmdline"] = parent_cmdline
+        __props__["parentProcPath"] = parent_proc_path
+        __props__["platform"] = platform
+        __props__["portStr"] = port_str
+        __props__["procPath"] = proc_path
+        __props__["registryContent"] = registry_content
+        __props__["registryKey"] = registry_key
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionType")
     def action_type(self) -> pulumi.Output[_builtins.int]:

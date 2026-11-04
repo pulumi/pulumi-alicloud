@@ -272,6 +272,18 @@ class HdMonitorRegionConfig(pulumi.CustomResource):
         __props__.__dict__["region_id"] = region_id
         return HdMonitorRegionConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_store: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["logProject"] = log_project
+        __props__["metricStore"] = metric_store
+        __props__["regionId"] = region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:nlb/hdMonitorRegionConfig:HdMonitorRegionConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="logProject")
     def log_project(self) -> pulumi.Output[_builtins.str]:

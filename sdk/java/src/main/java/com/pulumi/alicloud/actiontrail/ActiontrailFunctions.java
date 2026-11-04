@@ -1732,12 +1732,12 @@ public final class ActiontrailFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -1772,9 +1772,9 @@ public final class ActiontrailFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroup(defaultSecurityGroup.id())
      *             .config("""
-     *   {
-     *     \"enable.acl\": \"true\"
-     *   }
+     *   }{{@code
+     *     }&#92;{@code "enable.acl}&#92;{@code ": }&#92;{@code "true}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .build());
      * 
@@ -1790,8 +1790,8 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1836,12 +1836,12 @@ public final class ActiontrailFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -1876,9 +1876,9 @@ public final class ActiontrailFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroup(defaultSecurityGroup.id())
      *             .config("""
-     *   {
-     *     \"enable.acl\": \"true\"
-     *   }
+     *   }{{@code
+     *     }&#92;{@code "enable.acl}&#92;{@code ": }&#92;{@code "true}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .build());
      * 
@@ -1894,8 +1894,8 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1940,12 +1940,12 @@ public final class ActiontrailFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -1980,9 +1980,9 @@ public final class ActiontrailFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroup(defaultSecurityGroup.id())
      *             .config("""
-     *   {
-     *     \"enable.acl\": \"true\"
-     *   }
+     *   }{{@code
+     *     }&#92;{@code "enable.acl}&#92;{@code ": }&#92;{@code "true}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .build());
      * 
@@ -1998,8 +1998,8 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2044,12 +2044,12 @@ public final class ActiontrailFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -2084,9 +2084,9 @@ public final class ActiontrailFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroup(defaultSecurityGroup.id())
      *             .config("""
-     *   {
-     *     \"enable.acl\": \"true\"
-     *   }
+     *   }{{@code
+     *     }&#92;{@code "enable.acl}&#92;{@code ": }&#92;{@code "true}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .build());
      * 
@@ -2102,8 +2102,8 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2148,12 +2148,12 @@ public final class ActiontrailFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -2188,9 +2188,9 @@ public final class ActiontrailFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroup(defaultSecurityGroup.id())
      *             .config("""
-     *   {
-     *     \"enable.acl\": \"true\"
-     *   }
+     *   }{{@code
+     *     }&#92;{@code "enable.acl}&#92;{@code ": }&#92;{@code "true}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .build());
      * 
@@ -2206,8 +2206,8 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -2780,11 +2780,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static Output<GetTrailsDeprecatedResult> getTrailsDeprecated() {
         return getTrailsDeprecated(GetTrailsDeprecatedArgs.Empty, InvokeOptions.Empty);
     }
@@ -2827,11 +2826,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static CompletableFuture<GetTrailsDeprecatedResult> getTrailsDeprecatedPlain() {
         return getTrailsDeprecatedPlain(GetTrailsDeprecatedPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -2874,11 +2872,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static Output<GetTrailsDeprecatedResult> getTrailsDeprecated(GetTrailsDeprecatedArgs args) {
         return getTrailsDeprecated(args, InvokeOptions.Empty);
     }
@@ -2921,11 +2918,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static CompletableFuture<GetTrailsDeprecatedResult> getTrailsDeprecatedPlain(GetTrailsDeprecatedPlainArgs args) {
         return getTrailsDeprecatedPlain(args, InvokeOptions.Empty);
     }
@@ -2968,11 +2964,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static Output<GetTrailsDeprecatedResult> getTrailsDeprecated(GetTrailsDeprecatedArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
     }
@@ -3015,11 +3010,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static Output<GetTrailsDeprecatedResult> getTrailsDeprecated(GetTrailsDeprecatedArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
     }
@@ -3062,11 +3056,10 @@ public final class ActiontrailFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * DataSource has been renamed to `getTrails`
+     * @deprecated DataSource has been renamed to `getTrails`
      * 
      */
-    @Deprecated /* DataSource has been renamed to `getTrails` */
+    @Deprecated
     public static CompletableFuture<GetTrailsDeprecatedResult> getTrailsDeprecatedPlain(GetTrailsDeprecatedPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
     }

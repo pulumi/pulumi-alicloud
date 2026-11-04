@@ -645,6 +645,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
 	BindVpcs []InstanceBindVpc `pulumi:"bindVpcs"`

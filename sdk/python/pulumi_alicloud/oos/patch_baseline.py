@@ -688,6 +688,36 @@ class PatchBaseline(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return PatchBaseline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approval_rules: pulumi.Input[Optional[_builtins.str]] = None,
+            approved_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            approved_patches_enable_non_security: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_system: pulumi.Input[Optional[_builtins.str]] = None,
+            patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rejected_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rejected_patches_action: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approvalRules"] = approval_rules
+        __props__["approvedPatches"] = approved_patches
+        __props__["approvedPatchesEnableNonSecurity"] = approved_patches_enable_non_security
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["operationSystem"] = operation_system
+        __props__["patchBaselineName"] = patch_baseline_name
+        __props__["rejectedPatches"] = rejected_patches
+        __props__["rejectedPatchesAction"] = rejected_patches_action
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sources"] = sources
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/patchBaseline:PatchBaseline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Output[_builtins.str]:

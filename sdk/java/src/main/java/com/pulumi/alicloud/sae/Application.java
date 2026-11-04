@@ -277,11 +277,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
-     * @deprecated
-     * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     * @deprecated Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      */
-    @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
+    @Deprecated
     @Export(name="commandArgs", refs={String.class}, tree="[0]")
     private Output<String> commandArgs;
 
@@ -309,11 +308,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
-     * @deprecated
-     * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     * @deprecated Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      */
-    @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
+    @Deprecated
     @Export(name="configMapMountDesc", refs={String.class}, tree="[0]")
     private Output<String> configMapMountDesc;
 
@@ -355,11 +353,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
-     * @deprecated
-     * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     * @deprecated Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      */
-    @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
+    @Deprecated
     @Export(name="customHostAlias", refs={String.class}, tree="[0]")
     private Output<String> customHostAlias;
 
@@ -542,11 +539,10 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
-     * @deprecated
-     * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+     * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      */
-    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
+    @Deprecated
     @Export(name="liveness", refs={String.class}, tree="[0]")
     private Output<String> liveness;
 
@@ -691,11 +687,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
-     * @deprecated
-     * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     * @deprecated Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      */
-    @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
+    @Deprecated
     @Export(name="ossMountDescs", refs={String.class}, tree="[0]")
     private Output<String> ossMountDescs;
 
@@ -821,11 +816,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
-     * @deprecated
-     * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     * @deprecated Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      */
-    @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
+    @Deprecated
     @Export(name="postStart", refs={String.class}, tree="[0]")
     private Output<String> postStart;
 
@@ -853,11 +847,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
-     * @deprecated
-     * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     * @deprecated Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      */
-    @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
+    @Deprecated
     @Export(name="preStop", refs={String.class}, tree="[0]")
     private Output<String> preStop;
 
@@ -914,11 +907,10 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
-     * @deprecated
-     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+     * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      */
-    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
+    @Deprecated
     @Export(name="readiness", refs={String.class}, tree="[0]")
     private Output<String> readiness;
 
@@ -1068,11 +1060,10 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
-     * @deprecated
-     * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+     * @deprecated Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      */
-    @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
+    @Deprecated
     @Export(name="tomcatConfig", refs={String.class}, tree="[0]")
     private Output<String> tomcatConfig;
 
@@ -1101,11 +1092,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
-     * @deprecated
-     * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     * @deprecated Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      */
-    @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
+    @Deprecated
     @Export(name="updateStrategy", refs={String.class}, tree="[0]")
     private Output<String> updateStrategy;
 

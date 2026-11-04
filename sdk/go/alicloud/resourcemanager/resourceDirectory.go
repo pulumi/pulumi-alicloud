@@ -169,6 +169,12 @@ func (ResourceDirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceDirectoryState)(nil)).Elem()
 }
 
+// ResourceDirectoryExists checks whether an existing ResourceDirectory resource with the given ID exists.
+func ResourceDirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceDirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/resourceDirectory:ResourceDirectory", id, state, "", opts...)
+}
+
 type resourceDirectoryArgs struct {
 	// The status of the Member Display Name Synchronization feature. Valid values:
 	// - Enabled

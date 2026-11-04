@@ -1287,6 +1287,50 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         __props__.__dict__["vpn_attachment_name"] = vpn_attachment_name
         return GatewayVpnAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bgp_config: pulumi.Input[Optional[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict', 'outputs.GatewayVpnAttachmentBgpConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_dpd: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_nat_traversal: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_tunnels_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_config: pulumi.Input[Optional[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict', 'outputs.GatewayVpnAttachmentHealthCheckConfig']]] = None,
+            ike_config: pulumi.Input[Optional[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict', 'outputs.GatewayVpnAttachmentIkeConfig']]] = None,
+            ipsec_config: pulumi.Input[Optional[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict', 'outputs.GatewayVpnAttachmentIpsecConfig']]] = None,
+            local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tunnel_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayVpnAttachmentTunnelOptionsSpecificationArgs', 'GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict', 'outputs.GatewayVpnAttachmentTunnelOptionsSpecification']]]]] = None,
+            vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bgpConfig"] = bgp_config
+        __props__["createTime"] = create_time
+        __props__["customerGatewayId"] = customer_gateway_id
+        __props__["effectImmediately"] = effect_immediately
+        __props__["enableDpd"] = enable_dpd
+        __props__["enableNatTraversal"] = enable_nat_traversal
+        __props__["enableTunnelsBgp"] = enable_tunnels_bgp
+        __props__["healthCheckConfig"] = health_check_config
+        __props__["ikeConfig"] = ike_config
+        __props__["ipsecConfig"] = ipsec_config
+        __props__["localSubnet"] = local_subnet
+        __props__["networkType"] = network_type
+        __props__["remoteSubnet"] = remote_subnet
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["tunnelBandwidth"] = tunnel_bandwidth
+        __props__["tunnelOptionsSpecifications"] = tunnel_options_specifications
+        __props__["vpnAttachmentName"] = vpn_attachment_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentBgpConfig']:

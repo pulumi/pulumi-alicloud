@@ -270,6 +270,16 @@ class BucketAcl(pulumi.CustomResource):
         __props__.__dict__["bucket"] = bucket
         return BucketAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["bucket"] = bucket
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketAcl:BucketAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[_builtins.str]:

@@ -376,6 +376,18 @@ class BandwidthLimit(pulumi.CustomResource):
         __props__.__dict__["region_ids"] = region_ids
         return BandwidthLimit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidthLimit"] = bandwidth_limit
+        __props__["instanceId"] = instance_id
+        __props__["regionIds"] = region_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/bandwidthLimit:BandwidthLimit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bandwidthLimit")
     def bandwidth_limit(self) -> pulumi.Output[_builtins.int]:

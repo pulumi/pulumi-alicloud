@@ -987,6 +987,54 @@ class Stack(pulumi.CustomResource):
         __props__.__dict__["use_previous_parameters"] = use_previous_parameters
         return Stack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_option: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+            notification_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict', 'outputs.StackParameter']]]]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            replacement_option: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_all_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            stack_name: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_policy_body: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_policy_during_update_body: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_policy_during_update_url: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_policy_url: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_body: pulumi.Input[Optional[_builtins.str]] = None,
+            template_url: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            use_previous_parameters: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createOption"] = create_option
+        __props__["deletionProtection"] = deletion_protection
+        __props__["disableRollback"] = disable_rollback
+        __props__["notificationUrls"] = notification_urls
+        __props__["parameters"] = parameters
+        __props__["ramRoleName"] = ram_role_name
+        __props__["replacementOption"] = replacement_option
+        __props__["retainAllResources"] = retain_all_resources
+        __props__["retainResources"] = retain_resources
+        __props__["stackName"] = stack_name
+        __props__["stackPolicyBody"] = stack_policy_body
+        __props__["stackPolicyDuringUpdateBody"] = stack_policy_during_update_body
+        __props__["stackPolicyDuringUpdateUrl"] = stack_policy_during_update_url
+        __props__["stackPolicyUrl"] = stack_policy_url
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["templateBody"] = template_body
+        __props__["templateUrl"] = template_url
+        __props__["templateVersion"] = template_version
+        __props__["timeoutInMinutes"] = timeout_in_minutes
+        __props__["usePreviousParameters"] = use_previous_parameters
+        return pulumi.runtime.exists_resource(None, 'alicloud:ros/stack:Stack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createOption")
     def create_option(self) -> pulumi.Output[Optional[_builtins.str]]:

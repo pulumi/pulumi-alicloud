@@ -617,6 +617,32 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return EcsSnapshotGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            exclude_disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["diskIds"] = disk_ids
+        __props__["excludeDiskIds"] = exclude_disk_ids
+        __props__["instanceId"] = instance_id
+        __props__["instantAccess"] = instant_access
+        __props__["instantAccessRetentionDays"] = instant_access_retention_days
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["snapshotGroupName"] = snapshot_group_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

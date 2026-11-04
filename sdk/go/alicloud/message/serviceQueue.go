@@ -227,6 +227,12 @@ func (ServiceQueueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceQueueState)(nil)).Elem()
 }
 
+// ServiceQueueExists checks whether an existing ServiceQueue resource with the given ID exists.
+func ServiceQueueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceQueueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceQueue:ServiceQueue", id, state, "", opts...)
+}
+
 type serviceQueueArgs struct {
 	// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`

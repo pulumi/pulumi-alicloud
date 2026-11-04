@@ -146,6 +146,12 @@ func (InternetEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*internetEndpointState)(nil)).Elem()
 }
 
+// InternetEndpointExists checks whether an existing InternetEndpoint resource with the given ID exists.
+func InternetEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InternetEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/internetEndpoint:InternetEndpoint", id, state, "", opts...)
+}
+
 type internetEndpointArgs struct {
 	// The ACL entries of the Internet endpoint. See `entries` below.
 	Entries []InternetEndpointEntry `pulumi:"entries"`

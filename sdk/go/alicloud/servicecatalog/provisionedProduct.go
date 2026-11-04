@@ -262,6 +262,12 @@ func (ProvisionedProductState) ElementType() reflect.Type {
 	return reflect.TypeOf((*provisionedProductState)(nil)).Elem()
 }
 
+// ProvisionedProductExists checks whether an existing ProvisionedProduct resource with the given ID exists.
+func ProvisionedProductExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProvisionedProductState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct", id, state, "", opts...)
+}
+
 type provisionedProductArgs struct {
 	// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
 	Parameters []ProvisionedProductParameter `pulumi:"parameters"`

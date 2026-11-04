@@ -896,6 +896,46 @@ class GatewayBlockVolume(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return GatewayBlockVolume(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            chap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            chap_in_password: pulumi.Input[Optional[_builtins.str]] = None,
+            chap_in_user: pulumi.Input[Optional[_builtins.str]] = None,
+            chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_block_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_source_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_path: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cacheMode"] = cache_mode
+        __props__["chapEnabled"] = chap_enabled
+        __props__["chapInPassword"] = chap_in_password
+        __props__["chapInUser"] = chap_in_user
+        __props__["chunkSize"] = chunk_size
+        __props__["gatewayBlockVolumeName"] = gateway_block_volume_name
+        __props__["gatewayId"] = gateway_id
+        __props__["indexId"] = index_id
+        __props__["isSourceDeletion"] = is_source_deletion
+        __props__["localPath"] = local_path
+        __props__["ossBucketName"] = oss_bucket_name
+        __props__["ossBucketSsl"] = oss_bucket_ssl
+        __props__["ossEndpoint"] = oss_endpoint
+        __props__["protocol"] = protocol
+        __props__["recovery"] = recovery
+        __props__["size"] = size
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> pulumi.Output[_builtins.str]:

@@ -32,7 +32,7 @@ public final class OpenApiExplorerApiMcpServerAdditionalApiDescription {
      */
     private @Nullable String apiVersion;
     /**
-     * @return Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
+     * @return Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.&#92;
      * Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
      * 
      */
@@ -86,7 +86,7 @@ public final class OpenApiExplorerApiMcpServerAdditionalApiDescription {
         return Optional.ofNullable(this.apiVersion);
     }
     /**
-     * @return Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
+     * @return Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.&#92;
      * Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
      * 
      */

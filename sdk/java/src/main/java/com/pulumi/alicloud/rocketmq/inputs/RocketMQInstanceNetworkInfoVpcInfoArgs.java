@@ -51,22 +51,20 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
     /**
      * VPC switch id.
      * 
-     * @deprecated
-     * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
+     * @deprecated Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
      * 
      */
-    @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead. */
+    @Deprecated
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
      * @return VPC switch id.
      * 
-     * @deprecated
-     * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
+     * @deprecated Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
      * 
      */
-    @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead. */
+    @Deprecated
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
@@ -160,11 +158,10 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
+         * @deprecated Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
          * 
          */
-        @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead. */
+        @Deprecated
         public Builder vswitchId(@Nullable Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
@@ -175,11 +172,10 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
+         * @deprecated Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
          * 
          */
-        @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead. */
+        @Deprecated
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
         }

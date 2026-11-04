@@ -37,7 +37,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The description of the listener.
      * 
-     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
      * 
      */
     @Import(name="listenerDescription")
@@ -46,7 +46,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The description of the listener.
      * 
-     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> listenerDescription() {
@@ -166,7 +166,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param listenerDescription The description of the listener.
          * 
-         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param listenerDescription The description of the listener.
          * 
-         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
          * 
          * @return builder
          * 

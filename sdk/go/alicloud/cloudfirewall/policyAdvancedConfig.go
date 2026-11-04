@@ -120,6 +120,12 @@ func (PolicyAdvancedConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyAdvancedConfigState)(nil)).Elem()
 }
 
+// PolicyAdvancedConfigExists checks whether an existing PolicyAdvancedConfig resource with the given ID exists.
+func PolicyAdvancedConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyAdvancedConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig", id, state, "", opts...)
+}
+
 type policyAdvancedConfigArgs struct {
 	// Access control policy strict mode of on-state. Valid values:
 	InternetSwitch string `pulumi:"internetSwitch"`

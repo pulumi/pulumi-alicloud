@@ -507,6 +507,26 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["topic_name"] = topic_name
         return Topic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message_type: pulumi.Input[Optional[_builtins.int]] = None,
+            perm: pulumi.Input[Optional[_builtins.int]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["instanceId"] = instance_id
+        __props__["messageType"] = message_type
+        __props__["perm"] = perm
+        __props__["remark"] = remark
+        __props__["tags"] = tags
+        __props__["topic"] = topic
+        __props__["topicName"] = topic_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/topic:Topic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:

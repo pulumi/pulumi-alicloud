@@ -760,11 +760,10 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.7.1, and new field &#39;vswitch_ids&#39; can replace it.
+     * @deprecated Field &#39;vswitch_id&#39; has been deprecated from provider version 1.7.1, and new field &#39;vswitch_ids&#39; can replace it.
      * 
      */
-    @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it. */
+    @Deprecated
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 

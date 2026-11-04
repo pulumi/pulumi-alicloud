@@ -67,20 +67,18 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * @deprecated
-     * Field `mnsTopicArn` has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
+    @Deprecated
     @Import(name="mnsTopicArn")
     private @Nullable Output<String> mnsTopicArn;
 
     /**
-     * @deprecated
-     * Field `mnsTopicArn` has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
+    @Deprecated
     public Optional<Output<String>> mnsTopicArn() {
         return Optional.ofNullable(this.mnsTopicArn);
     }
@@ -88,22 +86,20 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The name of the trail to be created, which must be unique for an account.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the trail to be created, which must be unique for an account.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -148,22 +144,20 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The RAM role in ActionTrail permitted by the user.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
+    @Deprecated
     @Import(name="roleName")
     private @Nullable Output<String> roleName;
 
     /**
      * @return The RAM role in ActionTrail permitted by the user.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
+    @Deprecated
     public Optional<Output<String>> roleName() {
         return Optional.ofNullable(this.roleName);
     }
@@ -332,11 +326,10 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `mnsTopicArn` has been deprecated from version 1.118.0
+         * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
          * 
          */
-        @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
+        @Deprecated
         public Builder mnsTopicArn(@Nullable Output<String> mnsTopicArn) {
             $.mnsTopicArn = mnsTopicArn;
             return this;
@@ -345,11 +338,10 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `mnsTopicArn` has been deprecated from version 1.118.0
+         * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
          * 
          */
-        @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
+        @Deprecated
         public Builder mnsTopicArn(String mnsTopicArn) {
             return mnsTopicArn(Output.of(mnsTopicArn));
         }
@@ -359,11 +351,10 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -374,11 +365,10 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -439,11 +429,10 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `roleName` has been deprecated from version 1.118.0
+         * @deprecated Field `roleName` has been deprecated from version 1.118.0
          * 
          */
-        @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
+        @Deprecated
         public Builder roleName(@Nullable Output<String> roleName) {
             $.roleName = roleName;
             return this;
@@ -454,11 +443,10 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `roleName` has been deprecated from version 1.118.0
+         * @deprecated Field `roleName` has been deprecated from version 1.118.0
          * 
          */
-        @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
+        @Deprecated
         public Builder roleName(String roleName) {
             return roleName(Output.of(roleName));
         }

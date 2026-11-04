@@ -777,6 +777,44 @@ class StackGroup(pulumi.CustomResource):
         __props__.__dict__["template_version"] = template_version
         return StackGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict', 'outputs.StackGroupAutoDeployment']]] = None,
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict', 'outputs.StackGroupParameter']]]]] = None,
+            permission_model: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_body: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_url: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["administrationRoleName"] = administration_role_name
+        __props__["autoDeployment"] = auto_deployment
+        __props__["capabilities"] = capabilities
+        __props__["description"] = description
+        __props__["executionRoleName"] = execution_role_name
+        __props__["parameters"] = parameters
+        __props__["permissionModel"] = permission_model
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["stackGroupId"] = stack_group_id
+        __props__["stackGroupName"] = stack_group_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["templateBody"] = template_body
+        __props__["templateId"] = template_id
+        __props__["templateUrl"] = template_url
+        __props__["templateVersion"] = template_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:ros/stackGroup:StackGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="administrationRoleName")
     def administration_role_name(self) -> pulumi.Output[_builtins.str]:

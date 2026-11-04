@@ -194,6 +194,12 @@ func (BgpPeerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpPeerState)(nil)).Elem()
 }
 
+// BgpPeerExists checks whether an existing BgpPeer resource with the given ID exists.
+func BgpPeerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpPeerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/bgpPeer:BgpPeer", id, state, "", opts...)
+}
+
 type bgpPeerArgs struct {
 	// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
 	BfdMultiHop *int `pulumi:"bfdMultiHop"`

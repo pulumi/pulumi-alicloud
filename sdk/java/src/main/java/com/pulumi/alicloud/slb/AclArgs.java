@@ -21,22 +21,20 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
      * 
-     * @deprecated
-     * Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
+     * @deprecated Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
      * 
      */
-    @Deprecated /* Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'. */
+    @Deprecated
     @Import(name="entryLists")
     private @Nullable Output<List<AclEntryListArgs>> entryLists;
 
     /**
      * @return A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
      * 
-     * @deprecated
-     * Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
+     * @deprecated Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
      * 
      */
-    @Deprecated /* Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'. */
+    @Deprecated
     public Optional<Output<List<AclEntryListArgs>>> entryLists() {
         return Optional.ofNullable(this.entryLists);
     }
@@ -134,11 +132,10 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
+         * @deprecated Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
          * 
          */
-        @Deprecated /* Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'. */
+        @Deprecated
         public Builder entryLists(@Nullable Output<List<AclEntryListArgs>> entryLists) {
             $.entryLists = entryLists;
             return this;
@@ -149,11 +146,10 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
+         * @deprecated Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
          * 
          */
-        @Deprecated /* Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'. */
+        @Deprecated
         public Builder entryLists(List<AclEntryListArgs> entryLists) {
             return entryLists(Output.of(entryLists));
         }
@@ -163,11 +159,10 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
+         * @deprecated Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
          * 
          */
-        @Deprecated /* Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'. */
+        @Deprecated
         public Builder entryLists(AclEntryListArgs... entryLists) {
             return entryLists(List.of(entryLists));
         }

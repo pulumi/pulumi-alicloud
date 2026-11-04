@@ -870,6 +870,46 @@ class FlowLog(pulumi.CustomResource):
         __props__.__dict__["traffic_type"] = traffic_type
         return FlowLog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_log_id: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            traffic_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            traffic_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregationInterval"] = aggregation_interval
+        __props__["businessStatus"] = business_status
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["flowLogId"] = flow_log_id
+        __props__["flowLogName"] = flow_log_name
+        __props__["ipVersion"] = ip_version
+        __props__["logStoreName"] = log_store_name
+        __props__["projectName"] = project_name
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resourceId"] = resource_id
+        __props__["resourceType"] = resource_type
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["trafficPaths"] = traffic_paths
+        __props__["trafficType"] = traffic_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/flowLog:FlowLog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> pulumi.Output[_builtins.str]:

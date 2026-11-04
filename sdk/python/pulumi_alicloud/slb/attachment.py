@@ -462,6 +462,24 @@ class Attachment(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return Attachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_servers: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendServers"] = backend_servers
+        __props__["deleteProtectionValidation"] = delete_protection_validation
+        __props__["instanceIds"] = instance_ids
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["serverType"] = server_type
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'alicloud:slb/attachment:Attachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendServers")
     def backend_servers(self) -> pulumi.Output[_builtins.str]:

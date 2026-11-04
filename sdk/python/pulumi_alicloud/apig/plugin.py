@@ -376,6 +376,20 @@ class Plugin(pulumi.CustomResource):
         __props__.__dict__["plugin_class_name"] = plugin_class_name
         return Plugin(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_class_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_class_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["gatewayId"] = gateway_id
+        __props__["gatewayName"] = gateway_name
+        __props__["pluginClassId"] = plugin_class_id
+        __props__["pluginClassName"] = plugin_class_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/plugin:Plugin', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Output[_builtins.str]:

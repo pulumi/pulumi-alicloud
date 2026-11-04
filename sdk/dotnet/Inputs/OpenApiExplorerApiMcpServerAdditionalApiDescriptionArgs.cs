@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? ApiName { get; set; }
 
         /// <summary>
-        /// API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+        /// API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
         /// 
         /// &gt; **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.&gt;
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Inputs
         private InputList<Inputs.OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs>? _constParameters;
 
         /// <summary>
-        /// Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+        /// Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
         /// Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `ConstParameters` below.
         /// </summary>
         public InputList<Inputs.OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs> ConstParameters
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Inputs
         }
 
         /// <summary>
-        /// By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+        /// By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
         /// 
         /// &gt; **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.&gt;
         /// </summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Inputs
         public Input<bool>? EnableOutputSchema { get; set; }
 
         /// <summary>
-        /// Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+        /// Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
         /// - SSE protocol: up to 30 minutes
         /// - Streamable HTTP protocol: up to 1 minute
         /// 

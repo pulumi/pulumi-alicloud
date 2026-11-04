@@ -162,6 +162,12 @@ func (AiModelProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiModelProviderState)(nil)).Elem()
 }
 
+// AiModelProviderExists checks whether an existing AiModelProvider resource with the given ID exists.
+func AiModelProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiModelProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apig/aiModelProvider:AiModelProvider", id, state, "", opts...)
+}
+
 type aiModelProviderArgs struct {
 	// Model supplier presentation name. Required, no more than 128 characters in length.
 	DisplayName string `pulumi:"displayName"`

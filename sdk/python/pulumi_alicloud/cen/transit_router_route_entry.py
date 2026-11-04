@@ -564,6 +564,30 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         __props__.__dict__["transit_router_route_table_id"] = transit_router_route_table_id
         return TransitRouterRouteEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_next_hop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["status"] = status
+        __props__["transitRouterRouteEntryDescription"] = transit_router_route_entry_description
+        __props__["transitRouterRouteEntryDestinationCidrBlock"] = transit_router_route_entry_destination_cidr_block
+        __props__["transitRouterRouteEntryId"] = transit_router_route_entry_id
+        __props__["transitRouterRouteEntryName"] = transit_router_route_entry_name
+        __props__["transitRouterRouteEntryNextHopId"] = transit_router_route_entry_next_hop_id
+        __props__["transitRouterRouteEntryNextHopType"] = transit_router_route_entry_next_hop_type
+        __props__["transitRouterRouteTableId"] = transit_router_route_table_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

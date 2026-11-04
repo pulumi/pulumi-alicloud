@@ -450,6 +450,26 @@ class AntiBruteForceRule(pulumi.CustomResource):
         __props__.__dict__["uuid_lists"] = uuid_lists
         return AntiBruteForceRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anti_brute_force_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+            fail_count: pulumi.Input[Optional[_builtins.int]] = None,
+            forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict', 'outputs.AntiBruteForceRuleProtocolType']]] = None,
+            span: pulumi.Input[Optional[_builtins.int]] = None,
+            uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["antiBruteForceRuleName"] = anti_brute_force_rule_name
+        __props__["defaultRule"] = default_rule
+        __props__["failCount"] = fail_count
+        __props__["forbiddenTime"] = forbidden_time
+        __props__["protocolType"] = protocol_type
+        __props__["span"] = span
+        __props__["uuidLists"] = uuid_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="antiBruteForceRuleName")
     def anti_brute_force_rule_name(self) -> pulumi.Output[_builtins.str]:

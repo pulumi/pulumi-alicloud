@@ -736,6 +736,28 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Alert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            configuration: pulumi.Input[Optional[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict', 'outputs.AlertConfiguration']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertName"] = alert_name
+        __props__["configuration"] = configuration
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["projectName"] = project_name
+        __props__["schedule"] = schedule
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/alert:Alert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertName")
     def alert_name(self) -> pulumi.Output[_builtins.str]:

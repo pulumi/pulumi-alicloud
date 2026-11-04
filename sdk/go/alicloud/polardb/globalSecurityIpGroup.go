@@ -150,6 +150,12 @@ func (GlobalSecurityIpGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalSecurityIpGroupState)(nil)).Elem()
 }
 
+// GlobalSecurityIpGroupExists checks whether an existing GlobalSecurityIpGroup resource with the given ID exists.
+func GlobalSecurityIpGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalSecurityIpGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup", id, state, "", opts...)
+}
+
 type globalSecurityIpGroupArgs struct {
 	// The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
 	//

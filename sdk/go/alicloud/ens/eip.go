@@ -176,6 +176,12 @@ func (EipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipState)(nil)).Elem()
 }
 
+// EipExists checks whether an existing Eip resource with the given ID exists.
+func EipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/eip:Eip", id, state, "", opts...)
+}
+
 type eipArgs struct {
 	// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`

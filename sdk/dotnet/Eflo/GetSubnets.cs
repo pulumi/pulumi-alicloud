@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Eflo
         public string? SubnetName { get; set; }
 
         /// <summary>
-        /// Eflo subnet usage type, optional value: 
+        /// Eflo subnet usage type, optional value:
         /// - General type is not filled in
         /// - OOB:OOB type
         /// - LB: LB type
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? SubnetName { get; set; }
 
         /// <summary>
-        /// Eflo subnet usage type, optional value: 
+        /// Eflo subnet usage type, optional value:
         /// - General type is not filled in
         /// - OOB:OOB type
         /// - LB: LB type

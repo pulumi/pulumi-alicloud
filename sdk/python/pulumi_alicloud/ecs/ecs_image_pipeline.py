@@ -827,6 +827,42 @@ class EcsImagePipeline(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return EcsImagePipeline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            add_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            base_image: pulumi.Input[Optional[_builtins.str]] = None,
+            base_image_type: pulumi.Input[Optional[_builtins.str]] = None,
+            build_content: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_instance_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            to_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addAccounts"] = add_accounts
+        __props__["baseImage"] = base_image
+        __props__["baseImageType"] = base_image_type
+        __props__["buildContent"] = build_content
+        __props__["deleteInstanceOnFailure"] = delete_instance_on_failure
+        __props__["description"] = description
+        __props__["imageName"] = image_name
+        __props__["instanceType"] = instance_type
+        __props__["internetMaxBandwidthOut"] = internet_max_bandwidth_out
+        __props__["name"] = name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["systemDiskSize"] = system_disk_size
+        __props__["tags"] = tags
+        __props__["toRegionIds"] = to_region_ids
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsImagePipeline:EcsImagePipeline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addAccounts")
     def add_accounts(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

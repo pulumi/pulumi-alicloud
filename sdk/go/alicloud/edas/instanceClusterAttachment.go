@@ -209,6 +209,12 @@ func (InstanceClusterAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceClusterAttachmentState)(nil)).Elem()
 }
 
+// InstanceClusterAttachmentExists checks whether an existing InstanceClusterAttachment resource with the given ID exists.
+func InstanceClusterAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceClusterAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment", id, state, "", opts...)
+}
+
 type instanceClusterAttachmentArgs struct {
 	// The ID of the cluster that you want to create the application.
 	ClusterId string `pulumi:"clusterId"`

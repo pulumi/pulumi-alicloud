@@ -245,6 +245,12 @@ func (HostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostState)(nil)).Elem()
 }
 
+// HostExists checks whether an existing Host resource with the given ID exists.
+func HostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/host:Host", id, state, "", opts...)
+}
+
 type hostArgs struct {
 	// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
 	ActiveAddressType string `pulumi:"activeAddressType"`

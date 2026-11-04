@@ -230,6 +230,12 @@ func (AccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountState)(nil)).Elem()
 }
 
+// AccountExists checks whether an existing Account resource with the given ID exists.
+func AccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:governance/account:Account", id, state, "", opts...)
+}
+
 type accountArgs struct {
 	// The ID of the enrolled account.
 	// - If you are creating a new resource account, this parameter is not required.

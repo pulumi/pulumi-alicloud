@@ -1195,6 +1195,72 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Disk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_set_partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advancedFeatures"] = advanced_features
+        __props__["availabilityZone"] = availability_zone
+        __props__["burstingEnabled"] = bursting_enabled
+        __props__["category"] = category
+        __props__["createTime"] = create_time
+        __props__["deleteAutoSnapshot"] = delete_auto_snapshot
+        __props__["deleteWithInstance"] = delete_with_instance
+        __props__["description"] = description
+        __props__["diskName"] = disk_name
+        __props__["dryRun"] = dry_run
+        __props__["enableAutoSnapshot"] = enable_auto_snapshot
+        __props__["encryptAlgorithm"] = encrypt_algorithm
+        __props__["encrypted"] = encrypted
+        __props__["instanceId"] = instance_id
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["multiAttach"] = multi_attach
+        __props__["name"] = name
+        __props__["paymentType"] = payment_type
+        __props__["performanceLevel"] = performance_level
+        __props__["provisionedIops"] = provisioned_iops
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        __props__["status"] = status
+        __props__["storageSetId"] = storage_set_id
+        __props__["storageSetPartitionNumber"] = storage_set_partition_number
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/disk:Disk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
     def advanced_features(self) -> pulumi.Output[Optional[_builtins.str]]:

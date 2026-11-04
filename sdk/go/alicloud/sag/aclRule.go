@@ -206,6 +206,12 @@ func (AclRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclRuleState)(nil)).Elem()
 }
 
+// AclRuleExists checks whether an existing AclRule resource with the given ID exists.
+func AclRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/aclRule:AclRule", id, state, "", opts...)
+}
+
 type aclRuleArgs struct {
 	// The ID of the ACL.
 	AclId string `pulumi:"aclId"`

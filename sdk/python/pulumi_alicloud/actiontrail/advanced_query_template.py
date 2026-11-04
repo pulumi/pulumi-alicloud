@@ -293,6 +293,18 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
         __props__.__dict__["template_sql"] = template_sql
         return AdvancedQueryTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            simple_query: pulumi.Input[Optional[_builtins.bool]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_sql: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["simpleQuery"] = simple_query
+        __props__["templateName"] = template_name
+        __props__["templateSql"] = template_sql
+        return pulumi.runtime.exists_resource(None, 'alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="simpleQuery")
     def simple_query(self) -> pulumi.Output[_builtins.bool]:

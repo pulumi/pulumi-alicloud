@@ -226,6 +226,12 @@ func (OpenSourcePermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openSourcePermissionState)(nil)).Elem()
 }
 
+// OpenSourcePermissionExists checks whether an existing OpenSourcePermission resource with the given ID exists.
+func OpenSourcePermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenSourcePermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:amqp/openSourcePermission:OpenSourcePermission", id, state, "", opts...)
+}
+
 type openSourcePermissionArgs struct {
 	// Permission configuration, such as .*
 	Configure *string `pulumi:"configure"`

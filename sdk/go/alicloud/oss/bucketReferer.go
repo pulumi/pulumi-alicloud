@@ -172,6 +172,12 @@ func (BucketRefererState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketRefererState)(nil)).Elem()
 }
 
+// BucketRefererExists checks whether an existing BucketReferer resource with the given ID exists.
+func BucketRefererExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketRefererState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketReferer:BucketReferer", id, state, "", opts...)
+}
+
 type bucketRefererArgs struct {
 	// Whether to allow empty Referer request headers.
 	AllowEmptyReferer bool `pulumi:"allowEmptyReferer"`

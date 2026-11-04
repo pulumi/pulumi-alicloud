@@ -285,6 +285,12 @@ func (HybridMonitorSlsTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hybridMonitorSlsTaskState)(nil)).Elem()
 }
 
+// HybridMonitorSlsTaskExists checks whether an existing HybridMonitorSlsTask resource with the given ID exists.
+func HybridMonitorSlsTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HybridMonitorSlsTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask", id, state, "", opts...)
+}
+
 type hybridMonitorSlsTaskArgs struct {
 	// The label of the monitoring task. See `attachLabels` below.
 	AttachLabels []HybridMonitorSlsTaskAttachLabel `pulumi:"attachLabels"`

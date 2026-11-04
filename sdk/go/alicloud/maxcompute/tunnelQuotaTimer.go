@@ -171,6 +171,12 @@ func (TunnelQuotaTimerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelQuotaTimerState)(nil)).Elem()
 }
 
+// TunnelQuotaTimerExists checks whether an existing TunnelQuotaTimer resource with the given ID exists.
+func TunnelQuotaTimerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelQuotaTimerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer", id, state, "", opts...)
+}
+
 type tunnelQuotaTimerArgs struct {
 	// The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
 	Nickname string `pulumi:"nickname"`

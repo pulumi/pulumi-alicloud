@@ -136,7 +136,7 @@ import (
 //						}
 //						return pulumi.String(tmp4), nil
 //					}).(pulumi.StringOutput),
-//					VswitcheLists: pulumi.StringArray{
+//					VswitcheLists: pulumi.Array{
 //						pulumi.All(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (pulumi.Int, error) {
 //							return pulumi.Int(len(defaultGetSwitches.Ids)), nil
 //						}).(pulumi.IntOutput), defaultGetSwitches, defaultSwitch[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
@@ -259,6 +259,12 @@ type ExtensionProviderState struct {
 
 func (ExtensionProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*extensionProviderState)(nil)).Elem()
+}
+
+// ExtensionProviderExists checks whether an existing ExtensionProvider resource with the given ID exists.
+func ExtensionProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExtensionProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicemesh/extensionProvider:ExtensionProvider", id, state, "", opts...)
 }
 
 type extensionProviderArgs struct {

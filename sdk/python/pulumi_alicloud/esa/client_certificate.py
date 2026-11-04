@@ -439,6 +439,26 @@ class ClientCertificate(pulumi.CustomResource):
         __props__.__dict__["validity_days"] = validity_days
         return ClientCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            pkey_type: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_days: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientCertId"] = client_cert_id
+        __props__["createTime"] = create_time
+        __props__["csr"] = csr
+        __props__["pkeyType"] = pkey_type
+        __props__["siteId"] = site_id
+        __props__["status"] = status
+        __props__["validityDays"] = validity_days
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/clientCertificate:ClientCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientCertId")
     def client_cert_id(self) -> pulumi.Output[_builtins.str]:

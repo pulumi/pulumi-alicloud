@@ -65,12 +65,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -99,20 +99,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", defaultInteger.get("result")))
  *             .document("""
- *   {
- *       \"Statement\": [
- *         {
- *           \"Action\": \"sts:AssumeRole\",
- *           \"Effect\": \"Allow\",
- *           \"Principal\": {
- *             \"Service\": [
- *               \"fc.aliyuncs.com\"
+ *   }{{@code
+ *       }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *               }&#92;{@code "fc.aliyuncs.com}&#92;{@code "
  *             ]
- *           }
- *         }
+ *           }}{@code
+ *         }}{@code
  *       ],
- *       \"Version\": \"1\"
- *   }
+ *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .description("this is a example")
  *             .force(true)
@@ -170,37 +170,37 @@ import javax.annotation.Nullable;
  *             .role(defaultRole.arn())
  *             .sourceArn(defaultProject.projectName().applyValue(_projectName -> String.format("acs:log:%s:%s:project/%s", defaultGetRegions.regions()[0].id(),default_.id(),_projectName)))
  *             .type("log")
- *             .config(Output.tuple(sourceStore.logstoreName(), defaultProject.projectName(), defaultStore.logstoreName()).applyValue(values -> {
+ *             .config(Output.tuple(sourceStore.logstoreName(), defaultProject.projectName(), defaultStore.logstoreName()).applyValue(values -> }{{@code
  *                 var sourceStoreLogstoreName = values.t1;
  *                 var projectName = values.t2;
  *                 var defaultStoreLogstoreName = values.t3;
  *                 return """
- *     {
- *         \"sourceConfig\": {
- *             \"logstore\": \"%s\",
- *             \"startTime\": null
- *         },
- *         \"jobConfig\": {
- *             \"maxRetryTime\": 3,
- *             \"triggerInterval\": 60
- *         },
- *         \"functionParameter\": {
- *             \"a\": \"b\",
- *             \"c\": \"d\"
- *         },
- *         \"logConfig\": {
- *              \"project\": \"%s\",
- *             \"logstore\": \"%s\"
- *         },
- *         \"enable\": true
- *     }
+ *     }{{@code
+ *         }&#92;{@code "sourceConfig}&#92;{@code ": }{{@code
+ *             }&#92;{@code "logstore}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+ *             }&#92;{@code "startTime}&#92;{@code ": null
+ *         }}{@code ,
+ *         }&#92;{@code "jobConfig}&#92;{@code ": }{{@code
+ *             }&#92;{@code "maxRetryTime}&#92;{@code ": 3,
+ *             }&#92;{@code "triggerInterval}&#92;{@code ": 60
+ *         }}{@code ,
+ *         }&#92;{@code "functionParameter}&#92;{@code ": }{{@code
+ *             }&#92;{@code "a}&#92;{@code ": }&#92;{@code "b}&#92;{@code ",
+ *             }&#92;{@code "c}&#92;{@code ": }&#92;{@code "d}&#92;{@code "
+ *         }}{@code ,
+ *         }&#92;{@code "logConfig}&#92;{@code ": }{{@code
+ *              }&#92;{@code "project}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+ *             }&#92;{@code "logstore}&#92;{@code ": }&#92;{@code "%s}&#92;{@code "
+ *         }}{@code ,
+ *         }&#92;{@code "enable}&#92;{@code ": true
+ *     }}{@code
  *   
  * ", sourceStoreLogstoreName,projectName,defaultStoreLogstoreName);
- *             }))
+ *             }}{@code ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -240,12 +240,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -264,20 +264,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", defaultInteger.get("result")))
  *             .document("""
- *   {
- *       \"Statement\": [
- *         {
- *           \"Action\": \"sts:AssumeRole\",
- *           \"Effect\": \"Allow\",
- *           \"Principal\": {
- *             \"Service\": [
- *               \"mns.aliyuncs.com\"
+ *   }{{@code
+ *       }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *               }&#92;{@code "mns.aliyuncs.com}&#92;{@code "
  *             ]
- *           }
- *         }
+ *           }}{@code
+ *         }}{@code
  *       ],
- *       \"Version\": \"1\"
- *   }
+ *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .description("this is a example")
  *             .force(true)
@@ -330,16 +330,16 @@ import javax.annotation.Nullable;
  *             .sourceArn(defaultTopic.name().applyValue(_name -> String.format("acs:mns:%s:%s:/topics/%s", defaultGetRegions.regions()[0].id(),default_.id(),_name)))
  *             .type("mns_topic")
  *             .configMns("""
- *   {
- *     \"filterTag\":\"exampleTag\",
- *     \"notifyContentFormat\":\"STREAM\",
- *     \"notifyStrategy\":\"BACKOFF_RETRY\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "filterTag}&#92;{@code ":}&#92;{@code "exampleTag}&#92;{@code ",
+ *     }&#92;{@code "notifyContentFormat}&#92;{@code ":}&#92;{@code "STREAM}&#92;{@code ",
+ *     }&#92;{@code "notifyStrategy}&#92;{@code ":}&#92;{@code "BACKOFF_RETRY}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -417,18 +417,18 @@ import javax.annotation.Nullable;
  *             .name(String.format("fcservicerole-%s", defaultInteger.get("result")))
  *             .document("""
  *     }{{@code
- *       \"Statement\": [
+ *       }&#92;{@code "Statement}&#92;{@code ": [
  *         }{{@code
- *           \"Action\": \"sts:AssumeRole\",
- *           \"Effect\": \"Allow\",
- *           \"Principal\": }{{@code
- *             \"Service\": [
- *               \"cdn.aliyuncs.com\"
+ *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *               }&#92;{@code "cdn.aliyuncs.com}&#92;{@code "
  *             ]
  *           }}{@code
  *         }}{@code
  *       ],
- *       \"Version\": \"1\"
+ *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
  *   }}{@code
  *             """)
  *             .description("this is a example")
@@ -439,17 +439,17 @@ import javax.annotation.Nullable;
  *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.get("result")))
  *             .policyDocument(defaultService.name().applyValue(_name -> """
  *     }{{@code
- *         \"Version\": \"1\",
- *         \"Statement\": [
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code ",
+ *         }&#92;{@code "Statement}&#92;{@code ": [
  *         }{{@code
- *             \"Action\": [
- *             \"fc:InvokeFunction\"
+ *             }&#92;{@code "Action}&#92;{@code ": [
+ *             }&#92;{@code "fc:InvokeFunction}&#92;{@code "
  *             ],
- *         \"Resource\": [
- *             \"acs:fc:*:*:services/%s/functions/*\",
- *             \"acs:fc:*:*:services/%s.*}&#47;{@code functions/*\"
+ *         }&#92;{@code "Resource}&#92;{@code ": [
+ *             }&#92;{@code "acs:fc:*:*:services/%s/functions/*}&#92;{@code ",
+ *             }&#92;{@code "acs:fc:*:*:services/%s.*}&#47;{@code functions/*}&#92;{@code "
  *         ],
- *         \"Effect\": \"Allow\"
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code "
  *         }}{@code
  *         ]
  *     }}{@code
@@ -499,11 +499,11 @@ import javax.annotation.Nullable;
  *             .sourceArn(String.format("acs:cdn:*:%s", default_.id()))
  *             .type("cdn_events")
  *             .config(defaultDomainNew.domainName().applyValue(_domainName -> """
- *       }{{@code \"eventName\":\"LogFileCreated\",
- *      \"eventVersion\":\"1.0.0\",
- *      \"notes\":\"cdn events trigger\",
- *      \"filter\":}{{@code
- *         \"domain\": [\"%s\"]
+ *       }{&#92;{@code "eventName}&#92;{@code ":}&#92;{@code "LogFileCreated}&#92;{@code ",
+ *      }&#92;{@code "eventVersion}&#92;{@code ":}&#92;{@code "1.0.0}&#92;{@code ",
+ *      }&#92;{@code "notes}&#92;{@code ":}&#92;{@code "cdn events trigger}&#92;{@code ",
+ *      }&#92;{@code "filter}&#92;{@code ":}{{@code
+ *         }&#92;{@code "domain}&#92;{@code ": [}&#92;{@code "%s}&#92;{@code "]
  *         }}{@code
  *     }}{@code
  * ", _domainName)))
@@ -555,12 +555,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -621,7 +621,7 @@ import javax.annotation.Nullable;
  *                     jsonProperty("eventSourceConfig", jsonObject(
  *                         jsonProperty("eventSourceType", "Default")
  *                     )),
- *                     jsonProperty("eventRuleFilterPattern", "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}"),
+ *                     jsonProperty("eventRuleFilterPattern", "}{&#92;{@code "source}&#92;{@code ":[}&#92;{@code "acs.oss}&#92;{@code "],}&#92;{@code "type}&#92;{@code ":[}&#92;{@code "oss:BucketCreated:PutBucket}&#92;{@code "]}}{@code "),
  *                     jsonProperty("eventSinkConfig", jsonObject(
  *                         jsonProperty("deliveryOption", jsonObject(
  *                             jsonProperty("mode", "event-driven"),
@@ -657,7 +657,7 @@ import javax.annotation.Nullable;
  *                             ))
  *                         ))
  *                     )),
- *                     jsonProperty("eventRuleFilterPattern", "{}"),
+ *                     jsonProperty("eventRuleFilterPattern", "}{}{@code "),
  *                     jsonProperty("eventSinkConfig", jsonObject(
  *                         jsonProperty("deliveryOption", jsonObject(
  *                             jsonProperty("mode", "event-driven"),
@@ -697,7 +697,7 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example-rocketmq")
  *             .type("eventbridge")
- *             .config(Output.tuple(defaultInstance.id(), defaultGroup.groupName(), defaultTopic.topicName()).applyValue(values -> {
+ *             .config(Output.tuple(defaultInstance.id(), defaultGroup.groupName(), defaultTopic.topicName()).applyValue(values -> }{{@code
  *                 var id = values.t1;
  *                 var groupName = values.t2;
  *                 var topicName = values.t3;
@@ -705,7 +705,7 @@ import javax.annotation.Nullable;
  *                     jsonObject(
  *                         jsonProperty("triggerEnable", false),
  *                         jsonProperty("asyncInvocationType", false),
- *                         jsonProperty("eventRuleFilterPattern", "{}"),
+ *                         jsonProperty("eventRuleFilterPattern", "}{}{@code "),
  *                         jsonProperty("eventSinkConfig", jsonObject(
  *                             jsonProperty("deliveryOption", jsonObject(
  *                                 jsonProperty("mode", "event-driven"),
@@ -734,7 +734,7 @@ import javax.annotation.Nullable;
  *                             jsonProperty("mode", "event-driven")
  *                         ))
  *                     ));
- *             }))
+ *             }}{@code ))
  *             .build());
  * 
  *         var defaultInstance2 = new com.pulumi.alicloud.amqp.Instance("defaultInstance2", com.pulumi.alicloud.amqp.InstanceArgs.builder()
@@ -764,7 +764,7 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example-rabbitmq")
  *             .type("eventbridge")
- *             .config(Output.tuple(defaultInstance2.id(), defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -> {
+ *             .config(Output.tuple(defaultInstance2.id(), defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -> }{{@code
  *                 var id = values.t1;
  *                 var virtualHostName = values.t2;
  *                 var queueName = values.t3;
@@ -772,7 +772,7 @@ import javax.annotation.Nullable;
  *                     jsonObject(
  *                         jsonProperty("triggerEnable", false),
  *                         jsonProperty("asyncInvocationType", false),
- *                         jsonProperty("eventRuleFilterPattern", "{}"),
+ *                         jsonProperty("eventRuleFilterPattern", "}{}{@code "),
  *                         jsonProperty("eventSourceConfig", jsonObject(
  *                             jsonProperty("eventSourceType", "RabbitMQ"),
  *                             jsonProperty("eventSourceParameters", jsonObject(
@@ -798,11 +798,11 @@ import javax.annotation.Nullable;
  *                             jsonProperty("mode", "event-driven")
  *                         ))
  *                     ));
- *             }))
+ *             }}{@code ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

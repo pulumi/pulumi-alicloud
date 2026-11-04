@@ -352,6 +352,12 @@ func (RouteTargetGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTargetGroupState)(nil)).Elem()
 }
 
+// RouteTargetGroupExists checks whether an existing RouteTargetGroup resource with the given ID exists.
+func RouteTargetGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteTargetGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/routeTargetGroup:RouteTargetGroup", id, state, "", opts...)
+}
+
 type routeTargetGroupArgs struct {
 	// The configuration mode of the route target group. Supported modes include:
 	// - **Active-Standby**: active-standby mode.

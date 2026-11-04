@@ -98,6 +98,12 @@ func (GlobalEventsStorageRegionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalEventsStorageRegionState)(nil)).Elem()
 }
 
+// GlobalEventsStorageRegionExists checks whether an existing GlobalEventsStorageRegion resource with the given ID exists.
+func GlobalEventsStorageRegionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalEventsStorageRegionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion", id, state, "", opts...)
+}
+
 type globalEventsStorageRegionArgs struct {
 	// Global Events Storage Region.
 	StorageRegion *string `pulumi:"storageRegion"`

@@ -485,6 +485,26 @@ class CustomScenePolicy(pulumi.CustomResource):
         __props__.__dict__["template"] = template
         return CustomScenePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_scene_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            site_ids: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["customScenePolicyName"] = custom_scene_policy_name
+        __props__["endTime"] = end_time
+        __props__["siteIds"] = site_ids
+        __props__["startTime"] = start_time
+        __props__["status"] = status
+        __props__["template"] = template
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/customScenePolicy:CustomScenePolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""")

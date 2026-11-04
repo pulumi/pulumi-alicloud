@@ -30,11 +30,10 @@ public final class AlertQueryList {
     /**
      * @return Query logstore, use store for new alert, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use store
+     * @deprecated Deprecated from 1.161.0+, use store
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use store */
+    @Deprecated
     private @Nullable String logstore;
     /**
      * @return default disable, whether to use power sql. support auto, enable, disable.
@@ -107,11 +106,10 @@ public final class AlertQueryList {
     /**
      * @return Query logstore, use store for new alert, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use store
+     * @deprecated Deprecated from 1.161.0+, use store
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use store */
+    @Deprecated
     public Optional<String> logstore() {
         return Optional.ofNullable(this.logstore);
     }

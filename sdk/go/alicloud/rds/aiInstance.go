@@ -260,6 +260,12 @@ func (AiInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiInstanceState)(nil)).Elem()
 }
 
+// AiInstanceExists checks whether an existing AiInstance resource with the given ID exists.
+func AiInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/aiInstance:AiInstance", id, state, "", opts...)
+}
+
 type aiInstanceArgs struct {
 	// The name of the new AI application.
 	AppName string `pulumi:"appName"`

@@ -316,6 +316,18 @@ class AccessControlList(pulumi.CustomResource):
         __props__.__dict__["address_ip_version"] = address_ip_version
         return AccessControlList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_control_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict', 'outputs.AccessControlListAclEntry']]]]] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessControlListName"] = access_control_list_name
+        __props__["aclEntrys"] = acl_entrys
+        __props__["addressIpVersion"] = address_ip_version
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/accessControlList:AccessControlList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessControlListName")
     def access_control_list_name(self) -> pulumi.Output[_builtins.str]:

@@ -454,6 +454,24 @@ class WaitingRoomRule(pulumi.CustomResource):
         __props__.__dict__["waiting_room_rule_id"] = waiting_room_rule_id
         return WaitingRoomRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_rule_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["rule"] = rule
+        __props__["ruleName"] = rule_name
+        __props__["siteId"] = site_id
+        __props__["status"] = status
+        __props__["waitingRoomId"] = waiting_room_id
+        __props__["waitingRoomRuleId"] = waiting_room_rule_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/waitingRoomRule:WaitingRoomRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def rule(self) -> pulumi.Output[_builtins.str]:

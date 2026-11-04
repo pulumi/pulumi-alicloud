@@ -157,6 +157,12 @@ func (ScimServerCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scimServerCredentialState)(nil)).Elem()
 }
 
+// ScimServerCredentialExists checks whether an existing ScimServerCredential resource with the given ID exists.
+func ScimServerCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScimServerCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/scimServerCredential:ScimServerCredential", id, state, "", opts...)
+}
+
 type scimServerCredentialArgs struct {
 	// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
 	CredentialSecretFile *string `pulumi:"credentialSecretFile"`

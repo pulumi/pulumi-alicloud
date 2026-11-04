@@ -264,6 +264,12 @@ func (SlbAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*slbAttachmentState)(nil)).Elem()
 }
 
+// SlbAttachmentExists checks whether an existing SlbAttachment resource with the given ID exists.
+func SlbAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SlbAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/slbAttachment:SlbAttachment", id, state, "", opts...)
+}
+
 type slbAttachmentArgs struct {
 	// The ID of the application to which you want to bind an SLB instance.
 	AppId string `pulumi:"appId"`

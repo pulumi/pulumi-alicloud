@@ -228,6 +228,12 @@ func (ChangeSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*changeSetState)(nil)).Elem()
 }
 
+// ChangeSetExists checks whether an existing ChangeSet resource with the given ID exists.
+func ChangeSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChangeSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/changeSet:ChangeSet", id, state, "", opts...)
+}
+
 type changeSetArgs struct {
 	// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	ChangeSetName string `pulumi:"changeSetName"`

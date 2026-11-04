@@ -212,6 +212,14 @@ class FileUploadLimit(pulumi.CustomResource):
         __props__.__dict__["limit"] = limit
         return FileUploadLimit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            limit: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["limit"] = limit
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/fileUploadLimit:FileUploadLimit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def limit(self) -> pulumi.Output[_builtins.int]:

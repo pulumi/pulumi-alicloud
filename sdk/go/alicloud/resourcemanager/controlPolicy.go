@@ -197,6 +197,12 @@ func (ControlPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*controlPolicyState)(nil)).Elem()
 }
 
+// ControlPolicyExists checks whether an existing ControlPolicy resource with the given ID exists.
+func ControlPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ControlPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/controlPolicy:ControlPolicy", id, state, "", opts...)
+}
+
 type controlPolicyArgs struct {
 	// The new name of the access control policy.
 	// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.

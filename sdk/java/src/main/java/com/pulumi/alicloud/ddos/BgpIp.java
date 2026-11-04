@@ -139,11 +139,10 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
     /**
      * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      * 
-     * @deprecated
-     * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+     * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      * 
      */
-    @Deprecated /* Field `resourceGroupId` has been deprecated from provider version 1.259.0. */
+    @Deprecated
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 

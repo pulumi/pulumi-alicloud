@@ -77,11 +77,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:sslcertificatesservicepca/certificate:Certificate example &lt;identifier&gt;
  * ```
  * 
- * @deprecated
- * alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate
+ * @deprecated alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate
  * 
  */
-@Deprecated /* alicloud.sslcertificatesservicepca/certificate.Certificate has been deprecated in favor of alicloud.sslcertificatesservice/pcacertificate.PcaCertificate */
+@Deprecated
 @ResourceType(type="alicloud:sslcertificatesservicepca/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {
     /**

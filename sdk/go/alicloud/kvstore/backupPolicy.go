@@ -176,6 +176,12 @@ func (BackupPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPolicyState)(nil)).Elem()
 }
 
+// BackupPolicyExists checks whether an existing BackupPolicy resource with the given ID exists.
+func BackupPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kvstore/backupPolicy:BackupPolicy", id, state, "", opts...)
+}
+
 type backupPolicyArgs struct {
 	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 	BackupPeriods []string `pulumi:"backupPeriods"`

@@ -388,6 +388,12 @@ func (EcsDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsDiskState)(nil)).Elem()
 }
 
+// EcsDiskExists checks whether an existing EcsDisk resource with the given ID exists.
+func EcsDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsDisk:EcsDisk", id, state, "", opts...)
+}
+
 type ecsDiskArgs struct {
 	// The advanced features configured for the disk.
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`

@@ -73,7 +73,6 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         /// <summary>
         /// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
         /// 
-        /// 
         /// &gt; **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         /// </summary>
         [Input("keepaliveRequests")]

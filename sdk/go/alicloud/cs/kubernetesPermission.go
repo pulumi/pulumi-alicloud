@@ -237,6 +237,12 @@ func (KubernetesPermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesPermissionState)(nil)).Elem()
 }
 
+// KubernetesPermissionExists checks whether an existing KubernetesPermission resource with the given ID exists.
+func KubernetesPermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesPermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/kubernetesPermission:KubernetesPermission", id, state, "", opts...)
+}
+
 type kubernetesPermissionArgs struct {
 	// A list of user permission. See `permissions` below.
 	Permissions []KubernetesPermissionPermission `pulumi:"permissions"`

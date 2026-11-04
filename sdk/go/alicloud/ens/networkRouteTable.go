@@ -183,6 +183,12 @@ func (NetworkRouteTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkRouteTableState)(nil)).Elem()
 }
 
+// NetworkRouteTableExists checks whether an existing NetworkRouteTable resource with the given ID exists.
+func NetworkRouteTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkRouteTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/networkRouteTable:NetworkRouteTable", id, state, "", opts...)
+}
+
 type networkRouteTableArgs struct {
 	// The binding type of the created routing table. Value: `Gateway`.
 	AssociateType string `pulumi:"associateType"`

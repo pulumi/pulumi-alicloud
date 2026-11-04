@@ -425,6 +425,12 @@ func (NodeGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeGroupState)(nil)).Elem()
 }
 
+// NodeGroupExists checks whether an existing NodeGroup resource with the given ID exists.
+func NodeGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/nodeGroup:NodeGroup", id, state, "", opts...)
+}
+
 type nodeGroupArgs struct {
 	// Az
 	Az string `pulumi:"az"`

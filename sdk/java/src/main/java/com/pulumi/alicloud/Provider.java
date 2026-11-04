@@ -99,11 +99,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.ecsRoleName);
     }
     /**
-     * @deprecated
-     * Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
+    @Deprecated
     @Export(name="fc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fc;
 
@@ -111,11 +110,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.fc);
     }
     /**
-     * @deprecated
-     * Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
+    @Deprecated
     @Export(name="logEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logEndpoint;
 
@@ -123,11 +121,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.logEndpoint);
     }
     /**
-     * @deprecated
-     * Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead. */
+    @Deprecated
     @Export(name="mnsEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsEndpoint;
 
@@ -135,11 +132,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.mnsEndpoint);
     }
     /**
-     * @deprecated
-     * Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
+     * @deprecated Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead. */
+    @Deprecated
     @Export(name="otsInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> otsInstanceName;
 

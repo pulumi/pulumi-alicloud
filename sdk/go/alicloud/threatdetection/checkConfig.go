@@ -205,6 +205,12 @@ func (CheckConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*checkConfigState)(nil)).Elem()
 }
 
+// CheckConfigExists checks whether an existing CheckConfig resource with the given ID exists.
+func CheckConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CheckConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/checkConfig:CheckConfig", id, state, "", opts...)
+}
+
 type checkConfigArgs struct {
 	// The configuration of the check item. Valid value:
 	Configure *string `pulumi:"configure"`

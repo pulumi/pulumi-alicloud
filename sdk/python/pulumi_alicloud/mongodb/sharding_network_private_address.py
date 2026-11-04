@@ -492,6 +492,24 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ShardingNetworkPrivateAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingNetworkPrivateAddressNetworkAddressArgs', 'ShardingNetworkPrivateAddressNetworkAddressArgsDict', 'outputs.ShardingNetworkPrivateAddressNetworkAddress']]]]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["networkAddresses"] = network_addresses
+        __props__["nodeId"] = node_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[Optional[_builtins.str]]:

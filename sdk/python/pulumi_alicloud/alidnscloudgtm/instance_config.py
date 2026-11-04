@@ -661,6 +661,34 @@ class InstanceConfig(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return InstanceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_pool_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_rr_type: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressPoolLbStrategy"] = address_pool_lb_strategy
+        __props__["configId"] = config_id
+        __props__["enableStatus"] = enable_status
+        __props__["instanceId"] = instance_id
+        __props__["remark"] = remark
+        __props__["scheduleHostName"] = schedule_host_name
+        __props__["scheduleRrType"] = schedule_rr_type
+        __props__["scheduleZoneMode"] = schedule_zone_mode
+        __props__["scheduleZoneName"] = schedule_zone_name
+        __props__["sequenceLbStrategyMode"] = sequence_lb_strategy_mode
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'alicloud:alidnscloudgtm/instanceConfig:InstanceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressPoolLbStrategy")
     def address_pool_lb_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:

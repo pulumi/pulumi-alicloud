@@ -22,11 +22,10 @@ public final class PolicyVersionArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
      * 
-     * @deprecated
-     * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
+     * @deprecated Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
      * 
      */
-    @Deprecated /* Field 'is_default_version' has been deprecated from provider version 1.90.0 */
+    @Deprecated
     @Import(name="isDefaultVersion")
     private @Nullable Output<Boolean> isDefaultVersion;
 
@@ -35,11 +34,10 @@ public final class PolicyVersionArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
      * 
-     * @deprecated
-     * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
+     * @deprecated Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
      * 
      */
-    @Deprecated /* Field 'is_default_version' has been deprecated from provider version 1.90.0 */
+    @Deprecated
     public Optional<Output<Boolean>> isDefaultVersion() {
         return Optional.ofNullable(this.isDefaultVersion);
     }
@@ -107,11 +105,10 @@ public final class PolicyVersionArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
+         * @deprecated Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
          * 
          */
-        @Deprecated /* Field 'is_default_version' has been deprecated from provider version 1.90.0 */
+        @Deprecated
         public Builder isDefaultVersion(@Nullable Output<Boolean> isDefaultVersion) {
             $.isDefaultVersion = isDefaultVersion;
             return this;
@@ -124,11 +121,10 @@ public final class PolicyVersionArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
+         * @deprecated Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
          * 
          */
-        @Deprecated /* Field 'is_default_version' has been deprecated from provider version 1.90.0 */
+        @Deprecated
         public Builder isDefaultVersion(Boolean isDefaultVersion) {
             return isDefaultVersion(Output.of(isDefaultVersion));
         }

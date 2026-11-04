@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .configName(String.format("%s-%s", name,default_.get("result")))
  *             .inputs(Map.ofEntries(
  *                 Map.entry("Type", "input_file"),
- *                 Map.entry("FilePaths", "[\\\"/home/*.log\\\"]"),
+ *                 Map.entry("FilePaths", "[}&#92;&#92;&#92;{@code "/home/*.log}&#92;&#92;&#92;{@code "]"),
  *                 Map.entry("EnableContainerDiscovery", "false"),
  *                 Map.entry("MaxDirSearchDepth", "0"),
  *                 Map.entry("FileEncoding", "utf8")
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("Type", "processor_parse_regex_native"),
  *                 Map.entry("SourceKey", "content"),
  *                 Map.entry("Regex", ".*"),
- *                 Map.entry("Keys", "[\\\"key1\\\",\\\"key2\\\"]")
+ *                 Map.entry("Keys", "[}&#92;&#92;&#92;{@code "key1}&#92;&#92;&#92;{@code ",}&#92;&#92;&#92;{@code "key2}&#92;&#92;&#92;{@code "]")
  *             ))
  *             .flushers(Map.ofEntries(
  *                 Map.entry("Type", "flusher_sls"),
@@ -107,8 +107,8 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -473,6 +473,28 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return IpamIpamPoolAllocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_allocation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_allocation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidr"] = cidr
+        __props__["cidrMask"] = cidr_mask
+        __props__["createTime"] = create_time
+        __props__["ipamPoolAllocationDescription"] = ipam_pool_allocation_description
+        __props__["ipamPoolAllocationName"] = ipam_pool_allocation_name
+        __props__["ipamPoolId"] = ipam_pool_id
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:

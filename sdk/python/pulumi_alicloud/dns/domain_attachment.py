@@ -242,6 +242,16 @@ class DomainAttachment(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         return DomainAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["domainNames"] = domain_names
+        __props__["instanceId"] = instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/domainAttachment:DomainAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> pulumi.Output[Sequence[_builtins.str]]:

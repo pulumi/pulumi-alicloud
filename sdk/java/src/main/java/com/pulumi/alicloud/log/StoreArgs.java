@@ -171,22 +171,20 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return . Field &#39;name&#39; has been deprecated from provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -194,22 +192,20 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
+     * @deprecated Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
+    @Deprecated
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
      * @return . Field &#39;project&#39; has been deprecated from provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
+     * @deprecated Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
+    @Deprecated
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -532,11 +528,10 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -547,11 +542,10 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;logstore_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -561,11 +555,10 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
+         * @deprecated Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
+        @Deprecated
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
@@ -576,11 +569,10 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
+         * @deprecated Field &#39;project&#39; has been deprecated since provider version 1.215.0. New field &#39;project_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead. */
+        @Deprecated
         public Builder project(String project) {
             return project(Output.of(project));
         }

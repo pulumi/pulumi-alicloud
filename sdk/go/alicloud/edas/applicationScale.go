@@ -250,6 +250,12 @@ func (ApplicationScaleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationScaleState)(nil)).Elem()
 }
 
+// ApplicationScaleExists checks whether an existing ApplicationScale resource with the given ID exists.
+func ApplicationScaleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationScaleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/applicationScale:ApplicationScale", id, state, "", opts...)
+}
+
 type applicationScaleArgs struct {
 	// The ID of the application that you want to deploy.
 	AppId string `pulumi:"appId"`

@@ -273,6 +273,12 @@ func (ProtocolServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*protocolServiceState)(nil)).Elem()
 }
 
+// ProtocolServiceExists checks whether an existing ProtocolService resource with the given ID exists.
+func ProtocolServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProtocolServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/protocolService:ProtocolService", id, state, "", opts...)
+}
+
 type protocolServiceArgs struct {
 	// Description of the agreement service.
 	//

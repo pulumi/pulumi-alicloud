@@ -222,6 +222,12 @@ func (OpenSourceAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openSourceAccountState)(nil)).Elem()
 }
 
+// OpenSourceAccountExists checks whether an existing OpenSourceAccount resource with the given ID exists.
+func OpenSourceAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenSourceAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:amqp/openSourceAccount:OpenSourceAccount", id, state, "", opts...)
+}
+
 type openSourceAccountArgs struct {
 	// Description
 	Description *string `pulumi:"description"`

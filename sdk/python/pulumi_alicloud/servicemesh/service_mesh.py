@@ -748,6 +748,44 @@ class ServiceMesh(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return ServiceMesh(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict', 'outputs.ServiceMeshExtraConfiguration']]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict', 'outputs.ServiceMeshLoadBalancer']]] = None,
+            mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict', 'outputs.ServiceMeshMeshConfig']]] = None,
+            network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict', 'outputs.ServiceMeshNetwork']]] = None,
+            prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
+            service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterIds"] = cluster_ids
+        __props__["clusterSpec"] = cluster_spec
+        __props__["createTime"] = create_time
+        __props__["customizedPrometheus"] = customized_prometheus
+        __props__["edition"] = edition
+        __props__["extraConfiguration"] = extra_configuration
+        __props__["force"] = force
+        __props__["kubeconfig"] = kubeconfig
+        __props__["loadBalancer"] = load_balancer
+        __props__["meshConfig"] = mesh_config
+        __props__["network"] = network
+        __props__["prometheusUrl"] = prometheus_url
+        __props__["serviceMeshName"] = service_mesh_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'alicloud:servicemesh/serviceMesh:ServiceMesh', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterIds")
     def cluster_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

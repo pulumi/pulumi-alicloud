@@ -118,6 +118,12 @@ func (TopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicState)(nil)).Elem()
 }
 
+// TopicExists checks whether an existing Topic resource with the given ID exists.
+func TopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mns/topic:Topic", id, state, "", opts...)
+}
+
 type topicArgs struct {
 	// Is logging enabled? true or false. Default value to false.
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`

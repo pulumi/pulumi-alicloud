@@ -329,6 +329,12 @@ func (CommonBandwithPackageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*commonBandwithPackageState)(nil)).Elem()
 }
 
+// CommonBandwithPackageExists checks whether an existing CommonBandwithPackage resource with the given ID exists.
+func CommonBandwithPackageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommonBandwithPackageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/commonBandwithPackage:CommonBandwithPackage", id, state, "", opts...)
+}
+
 type commonBandwithPackageArgs struct {
 	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	// Valid values: `1` to `1000`. Default value: `1`.

@@ -18,19 +18,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * This resource has been deprecated and replaced by the Switch resource.
+ * @deprecated This resource has been deprecated and replaced by the Switch resource.
  * 
  */
-@Deprecated /* This resource has been deprecated and replaced by the Switch resource. */
+@Deprecated
 @ResourceType(type="alicloud:vpc/subnet:Subnet")
 public class Subnet extends com.pulumi.resources.CustomResource {
     /**
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead. */
+    @Deprecated
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
@@ -80,11 +78,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.isDefault;
     }
     /**
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

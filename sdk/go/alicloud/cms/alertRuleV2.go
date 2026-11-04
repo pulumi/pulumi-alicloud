@@ -296,6 +296,12 @@ func (AlertRuleV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRuleV2State)(nil)).Elem()
 }
 
+// AlertRuleV2Exists checks whether an existing AlertRuleV2 resource with the given ID exists.
+func AlertRuleV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertRuleV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/alertRuleV2:AlertRuleV2", id, state, "", opts...)
+}
+
 type alertRuleV2Args struct {
 	// Action integration configuration. See `actionIntegrationConfig` below.
 	ActionIntegrationConfig *AlertRuleV2ActionIntegrationConfig `pulumi:"actionIntegrationConfig"`

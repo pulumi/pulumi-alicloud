@@ -1144,6 +1144,54 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["usable"] = usable
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detection_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict', 'outputs.ImageDiskDeviceMapping']]]]] = None,
+            features: pulumi.Input[Optional[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict', 'outputs.ImageFeatures']]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_family: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_version: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            usable: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["architecture"] = architecture
+        __props__["bootMode"] = boot_mode
+        __props__["createTime"] = create_time
+        __props__["deleteAutoSnapshot"] = delete_auto_snapshot
+        __props__["description"] = description
+        __props__["detectionStrategy"] = detection_strategy
+        __props__["diskDeviceMappings"] = disk_device_mappings
+        __props__["features"] = features
+        __props__["force"] = force
+        __props__["imageFamily"] = image_family
+        __props__["imageName"] = image_name
+        __props__["imageVersion"] = image_version
+        __props__["instanceId"] = instance_id
+        __props__["licenseType"] = license_type
+        __props__["name"] = name
+        __props__["platform"] = platform
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["snapshotId"] = snapshot_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["usable"] = usable
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/image:Image', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def architecture(self) -> pulumi.Output[Optional[_builtins.str]]:

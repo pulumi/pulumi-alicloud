@@ -1422,6 +1422,78 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         __props__.__dict__["vpc_firewall_id"] = vpc_firewall_id
         return FirewallVpcFirewallControlPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_action: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_group_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_group_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            hit_times: pulumi.Input[Optional[_builtins.int]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None,
+            proto: pulumi.Input[Optional[_builtins.str]] = None,
+            release: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_group_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclAction"] = acl_action
+        __props__["aclUuid"] = acl_uuid
+        __props__["applicationId"] = application_id
+        __props__["applicationName"] = application_name
+        __props__["applicationNameLists"] = application_name_lists
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["destPort"] = dest_port
+        __props__["destPortGroup"] = dest_port_group
+        __props__["destPortGroupPorts"] = dest_port_group_ports
+        __props__["destPortType"] = dest_port_type
+        __props__["destination"] = destination
+        __props__["destinationGroupCidrs"] = destination_group_cidrs
+        __props__["destinationGroupType"] = destination_group_type
+        __props__["destinationType"] = destination_type
+        __props__["domainResolveType"] = domain_resolve_type
+        __props__["endTime"] = end_time
+        __props__["hitTimes"] = hit_times
+        __props__["lang"] = lang
+        __props__["memberUid"] = member_uid
+        __props__["order"] = order
+        __props__["proto"] = proto
+        __props__["release"] = release
+        __props__["repeatDays"] = repeat_days
+        __props__["repeatEndTime"] = repeat_end_time
+        __props__["repeatStartTime"] = repeat_start_time
+        __props__["repeatType"] = repeat_type
+        __props__["source"] = source
+        __props__["sourceGroupCidrs"] = source_group_cidrs
+        __props__["sourceGroupType"] = source_group_type
+        __props__["sourceType"] = source_type
+        __props__["startTime"] = start_time
+        __props__["vpcFirewallId"] = vpc_firewall_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclAction")
     def acl_action(self) -> pulumi.Output[_builtins.str]:

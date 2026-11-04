@@ -142,6 +142,12 @@ func (ModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*modelState)(nil)).Elem()
 }
 
+// ModelExists checks whether an existing Model resource with the given ID exists.
+func ModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/model:Model", id, state, "", opts...)
+}
+
 type modelArgs struct {
 	// The description of the model.
 	Description *string `pulumi:"description"`

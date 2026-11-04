@@ -957,6 +957,42 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict', 'outputs.ServerGroupConnectionDrainConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            draining_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupDrainingServerArgs', 'ServerGroupDrainingServerArgsDict', 'outputs.ServerGroupDrainingServer']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict', 'outputs.ServerGroupHealthCheckConfig']]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_failover_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict', 'outputs.ServerGroupServer']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionDrainConfig"] = connection_drain_config
+        __props__["createTime"] = create_time
+        __props__["drainingServers"] = draining_servers
+        __props__["dryRun"] = dry_run
+        __props__["healthCheckConfig"] = health_check_config
+        __props__["protocol"] = protocol
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scheduler"] = scheduler
+        __props__["serverFailoverMode"] = server_failover_mode
+        __props__["serverGroupName"] = server_group_name
+        __props__["serverGroupType"] = server_group_type
+        __props__["servers"] = servers
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:gwlb/serverGroup:ServerGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionDrainConfig")
     def connection_drain_config(self) -> pulumi.Output['outputs.ServerGroupConnectionDrainConfig']:

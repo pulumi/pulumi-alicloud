@@ -340,6 +340,24 @@ class PublishTask(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return PublishTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_key: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentKey"] = agent_key
+        __props__["bizType"] = biz_type
+        __props__["createTime"] = create_time
+        __props__["dataIdLists"] = data_id_lists
+        __props__["modifyTime"] = modify_time
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:chatbot/publishTask:PublishTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentKey")
     def agent_key(self) -> pulumi.Output[_builtins.str]:

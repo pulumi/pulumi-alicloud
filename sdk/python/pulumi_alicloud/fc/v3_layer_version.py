@@ -538,6 +538,34 @@ class V3LayerVersion(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return V3LayerVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict', 'outputs.V3LayerVersionCode']]] = None,
+            code_size: pulumi.Input[Optional[_builtins.str]] = None,
+            compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            layer_version_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["code"] = code
+        __props__["codeSize"] = code_size
+        __props__["compatibleRuntimes"] = compatible_runtimes
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["layerName"] = layer_name
+        __props__["layerVersionArn"] = layer_version_arn
+        __props__["license"] = license
+        __props__["public"] = public
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3LayerVersion:V3LayerVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[_builtins.str]]:

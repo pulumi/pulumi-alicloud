@@ -147,6 +147,12 @@ func (TrafficQosAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficQosAssociationState)(nil)).Elem()
 }
 
+// TrafficQosAssociationExists checks whether an existing TrafficQosAssociation resource with the given ID exists.
+func TrafficQosAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficQosAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation", id, state, "", opts...)
+}
+
 type trafficQosAssociationArgs struct {
 	// The ID of the associated instance.
 	InstanceId *string `pulumi:"instanceId"`

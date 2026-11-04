@@ -513,6 +513,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// The number of instances created, with a minimum of 1 and a maximum of 100
 	Amount *int `pulumi:"amount"`

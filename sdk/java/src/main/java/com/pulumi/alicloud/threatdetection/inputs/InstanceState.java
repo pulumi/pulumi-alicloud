@@ -38,11 +38,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
-     * @deprecated
-     * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+     * @deprecated Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
-    @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
+    @Deprecated
     @Import(name="containerImageScan")
     private @Nullable Output<String> containerImageScan;
 
@@ -51,11 +50,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
-     * @deprecated
-     * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+     * @deprecated Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
-    @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
+    @Deprecated
     public Optional<Output<String>> containerImageScan() {
         return Optional.ofNullable(this.containerImageScan);
     }
@@ -246,11 +244,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - Value: `0` means off, `1` means on
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
-     * @deprecated
-     * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+     * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      */
-    @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
+    @Deprecated
     @Import(name="postPayModuleSwitch")
     private @Nullable Output<String> postPayModuleSwitch;
 
@@ -270,11 +267,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - Value: `0` means off, `1` means on
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
-     * @deprecated
-     * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+     * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      */
-    @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
+    @Deprecated
     public Optional<Output<String>> postPayModuleSwitch() {
         return Optional.ofNullable(this.postPayModuleSwitch);
     }
@@ -841,11 +837,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+         * @deprecated Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
          * 
          */
-        @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
+        @Deprecated
         public Builder containerImageScan(@Nullable Output<String> containerImageScan) {
             $.containerImageScan = containerImageScan;
             return this;
@@ -858,11 +853,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+         * @deprecated Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
          * 
          */
-        @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
+        @Deprecated
         public Builder containerImageScan(String containerImageScan) {
             return containerImageScan(Output.of(containerImageScan));
         }
@@ -1115,11 +1109,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+         * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
          * 
          */
-        @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
+        @Deprecated
         public Builder postPayModuleSwitch(@Nullable Output<String> postPayModuleSwitch) {
             $.postPayModuleSwitch = postPayModuleSwitch;
             return this;
@@ -1143,11 +1136,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+         * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
          * 
          */
-        @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
+        @Deprecated
         public Builder postPayModuleSwitch(String postPayModuleSwitch) {
             return postPayModuleSwitch(Output.of(postPayModuleSwitch));
         }

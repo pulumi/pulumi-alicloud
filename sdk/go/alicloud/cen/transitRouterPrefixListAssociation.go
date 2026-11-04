@@ -206,6 +206,12 @@ func (TransitRouterPrefixListAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterPrefixListAssociationState)(nil)).Elem()
 }
 
+// TransitRouterPrefixListAssociationExists checks whether an existing TransitRouterPrefixListAssociation resource with the given ID exists.
+func TransitRouterPrefixListAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterPrefixListAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation", id, state, "", opts...)
+}
+
 type transitRouterPrefixListAssociationArgs struct {
 	// The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
 	NextHop string `pulumi:"nextHop"`

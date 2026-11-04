@@ -203,11 +203,10 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     /**
      * The name of the HaVip instance.
      * 
-     * @deprecated
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @deprecated Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
+    @Deprecated
     @Export(name="havipName", refs={String.class}, tree="[0]")
     private Output<String> havipName;
 

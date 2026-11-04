@@ -212,6 +212,12 @@ func (HostAccountShareKeyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostAccountShareKeyAttachmentState)(nil)).Elem()
 }
 
+// HostAccountShareKeyAttachmentExists checks whether an existing HostAccountShareKeyAttachment resource with the given ID exists.
+func HostAccountShareKeyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostAccountShareKeyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment", id, state, "", opts...)
+}
+
 type hostAccountShareKeyAttachmentArgs struct {
 	// The ID list of the host account.
 	HostAccountId string `pulumi:"hostAccountId"`

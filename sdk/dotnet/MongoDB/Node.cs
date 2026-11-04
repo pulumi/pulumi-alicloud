@@ -145,7 +145,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// &gt; **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("accountPassword")]
@@ -325,7 +324,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// &gt; **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
         /// 
-        /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("accountPassword")]
@@ -454,7 +452,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// - Length is 8~32 characters.
         /// 
         /// &gt; **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>

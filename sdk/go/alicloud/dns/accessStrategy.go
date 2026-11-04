@@ -335,6 +335,12 @@ func (AccessStrategyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessStrategyState)(nil)).Elem()
 }
 
+// AccessStrategyExists checks whether an existing AccessStrategy resource with the given ID exists.
+func AccessStrategyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessStrategyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/accessStrategy:AccessStrategy", id, state, "", opts...)
+}
+
 type accessStrategyArgs struct {
 	// The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
 	AccessMode *string `pulumi:"accessMode"`

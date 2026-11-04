@@ -612,6 +612,30 @@ class Exchange(pulumi.CustomResource):
         __props__.__dict__["x_delayed_type"] = x_delayed_type
         return Exchange(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
+            exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internal: pulumi.Input[Optional[_builtins.bool]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            x_delayed_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alternateExchange"] = alternate_exchange
+        __props__["autoDeleteState"] = auto_delete_state
+        __props__["createTime"] = create_time
+        __props__["exchangeName"] = exchange_name
+        __props__["exchangeType"] = exchange_type
+        __props__["instanceId"] = instance_id
+        __props__["internal"] = internal
+        __props__["virtualHostName"] = virtual_host_name
+        __props__["xDelayedType"] = x_delayed_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:amqp/exchange:Exchange', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alternateExchange")
     def alternate_exchange(self) -> pulumi.Output[Optional[_builtins.str]]:

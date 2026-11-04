@@ -251,11 +251,10 @@ public class EcsInvocation extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to periodically run the command. Default value: `false`. **NOTE:** This parameter has been deprecated by the ECS API and no longer takes effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency` instead. Existing configurations in which `timed` is set to `true` together with `frequency` are not affected because the command runs periodically as long as `frequency` is specified.
      * 
-     * @deprecated
-     * Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
+     * @deprecated Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`.
      * 
      */
-    @Deprecated /* Field `timed` has been deprecated because it is deprecated in the ECS API and takes no effect. To run a command periodically, set `repeatMode` to `Period` and specify `frequency`. */
+    @Deprecated
     @Export(name="timed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> timed;
 

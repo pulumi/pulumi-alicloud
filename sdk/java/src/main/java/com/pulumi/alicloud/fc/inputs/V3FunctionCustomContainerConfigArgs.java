@@ -23,22 +23,20 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     /**
      * (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+     * @deprecated Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
+    @Deprecated
     @Import(name="accelerationInfo")
     private @Nullable Output<V3FunctionCustomContainerConfigAccelerationInfoArgs> accelerationInfo;
 
     /**
      * @return (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+     * @deprecated Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
+    @Deprecated
     public Optional<Output<V3FunctionCustomContainerConfigAccelerationInfoArgs>> accelerationInfo() {
         return Optional.ofNullable(this.accelerationInfo);
     }
@@ -46,22 +44,20 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     /**
      * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+     * @deprecated Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
+    @Deprecated
     @Import(name="accelerationType")
     private @Nullable Output<String> accelerationType;
 
     /**
      * @return Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+     * @deprecated Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
+    @Deprecated
     public Optional<Output<String>> accelerationType() {
         return Optional.ofNullable(this.accelerationType);
     }
@@ -69,22 +65,20 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     /**
      * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+     * @deprecated Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete) */
+    @Deprecated
     @Import(name="acrInstanceId")
     private @Nullable Output<String> acrInstanceId;
 
     /**
      * @return ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
-     * @deprecated
-     * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+     * @deprecated Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
      * 
      */
-    @Deprecated /* Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete) */
+    @Deprecated
     public Optional<Output<String>> acrInstanceId() {
         return Optional.ofNullable(this.acrInstanceId);
     }
@@ -232,11 +226,10 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+         * @deprecated Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          * 
          */
-        @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
+        @Deprecated
         public Builder accelerationInfo(@Nullable Output<V3FunctionCustomContainerConfigAccelerationInfoArgs> accelerationInfo) {
             $.accelerationInfo = accelerationInfo;
             return this;
@@ -247,11 +240,10 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+         * @deprecated Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          * 
          */
-        @Deprecated /* Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete) */
+        @Deprecated
         public Builder accelerationInfo(V3FunctionCustomContainerConfigAccelerationInfoArgs accelerationInfo) {
             return accelerationInfo(Output.of(accelerationInfo));
         }
@@ -261,11 +253,10 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+         * @deprecated Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          * 
          */
-        @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
+        @Deprecated
         public Builder accelerationType(@Nullable Output<String> accelerationType) {
             $.accelerationType = accelerationType;
             return this;
@@ -276,11 +267,10 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+         * @deprecated Field &#39;acceleration_type&#39; has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
          * 
          */
-        @Deprecated /* Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete) */
+        @Deprecated
         public Builder accelerationType(String accelerationType) {
             return accelerationType(Output.of(accelerationType));
         }
@@ -290,11 +280,10 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+         * @deprecated Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          * 
          */
-        @Deprecated /* Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete) */
+        @Deprecated
         public Builder acrInstanceId(@Nullable Output<String> acrInstanceId) {
             $.acrInstanceId = acrInstanceId;
             return this;
@@ -305,11 +294,10 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+         * @deprecated Field &#39;acr_instance_id&#39; has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
          * 
          */
-        @Deprecated /* Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete) */
+        @Deprecated
         public Builder acrInstanceId(String acrInstanceId) {
             return acrInstanceId(Output.of(acrInstanceId));
         }

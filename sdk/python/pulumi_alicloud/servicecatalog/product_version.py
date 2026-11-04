@@ -487,6 +487,28 @@ class ProductVersion(pulumi.CustomResource):
         __props__.__dict__["template_url"] = template_url
         return ProductVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            guidance: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_type: pulumi.Input[Optional[_builtins.str]] = None,
+            template_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["guidance"] = guidance
+        __props__["productId"] = product_id
+        __props__["productVersionName"] = product_version_name
+        __props__["templateType"] = template_type
+        __props__["templateUrl"] = template_url
+        return pulumi.runtime.exists_resource(None, 'alicloud:servicecatalog/productVersion:ProductVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[Optional[_builtins.bool]]:

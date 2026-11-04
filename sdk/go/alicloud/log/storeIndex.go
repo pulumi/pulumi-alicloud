@@ -202,6 +202,12 @@ func (StoreIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeIndexState)(nil)).Elem()
 }
 
+// StoreIndexExists checks whether an existing StoreIndex resource with the given ID exists.
+func StoreIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StoreIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/storeIndex:StoreIndex", id, state, "", opts...)
+}
+
 type storeIndexArgs struct {
 	// List configurations of field search index. See `fieldSearch` below.
 	//

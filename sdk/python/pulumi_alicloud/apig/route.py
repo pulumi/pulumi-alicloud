@@ -719,6 +719,38 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Route(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend: pulumi.Input[Optional[Union['RouteBackendArgs', 'RouteBackendArgsDict', 'outputs.RouteBackend']]] = None,
+            builtin: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            environment_info: pulumi.Input[Optional[Union['RouteEnvironmentInfoArgs', 'RouteEnvironmentInfoArgsDict', 'outputs.RouteEnvironmentInfo']]] = None,
+            gateway_status: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            http_api_id: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[Union['RouteMatchArgs', 'RouteMatchArgsDict', 'outputs.RouteMatch']]] = None,
+            route_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backend"] = backend
+        __props__["builtin"] = builtin
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["domainIds"] = domain_ids
+        __props__["environmentInfo"] = environment_info
+        __props__["gatewayStatus"] = gateway_status
+        __props__["httpApiId"] = http_api_id
+        __props__["match"] = match
+        __props__["routeId"] = route_id
+        __props__["routeName"] = route_name
+        __props__["status"] = status
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/route:Route', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def backend(self) -> pulumi.Output[Optional['outputs.RouteBackend']]:

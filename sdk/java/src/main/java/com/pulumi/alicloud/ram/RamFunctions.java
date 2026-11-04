@@ -1121,12 +1121,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1139,16 +1139,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1161,8 +1161,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1199,12 +1199,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1217,16 +1217,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1239,8 +1239,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1277,12 +1277,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1295,16 +1295,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1317,8 +1317,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1355,12 +1355,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1373,16 +1373,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1395,8 +1395,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1433,12 +1433,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1451,16 +1451,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1473,8 +1473,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1511,12 +1511,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1529,16 +1529,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1551,8 +1551,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1589,12 +1589,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -1607,16 +1607,16 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Effect\": \"Allow\",
-     *         \"Action\": \"*\",
-     *         \"Resource\": \"*\"
-     *       }
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -1629,8 +1629,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -3811,32 +3811,32 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("roleName")
      *             .document("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": \"sts:AssumeRole\",
-     *           \"Effect\": \"Allow\",
-     *           \"Principal\": {
-     *             \"Service\": [
-     *               \"apigateway.aliyuncs.com\", 
-     *               \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *       }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *               }&#92;{@code "apigateway.aliyuncs.com}&#92;{@code ", 
+     *               }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *           }
-     *         }
+     *           }}{@code
+     *         }}{@code
      *       ],
-     *       \"Version\": \"1\"
-     *     }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .build());
@@ -3849,22 +3849,22 @@ public final class RamFunctions {
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": [
-     *           \"oss:ListObjects\",
-     *           \"oss:GetObject\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": [
+     *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+     *           }&#92;{@code "oss:GetObject}&#92;{@code "
      *         ],
-     *         \"Effect\": \"Allow\",
-     *         \"Resource\": [
-     *           \"acs:oss:*:*:mybucket\",
-     *           \"acs:oss:*:*:mybucket/*\"
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": [
+     *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
      *         ]
-     *       }
+     *       }}{@code
      *     ],
-     *       \"Version\": \"1\"
-     *   }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .description("this is a policy test")
      *             .build());
@@ -3881,8 +3881,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -3921,32 +3921,32 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("roleName")
      *             .document("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": \"sts:AssumeRole\",
-     *           \"Effect\": \"Allow\",
-     *           \"Principal\": {
-     *             \"Service\": [
-     *               \"apigateway.aliyuncs.com\", 
-     *               \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *       }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *               }&#92;{@code "apigateway.aliyuncs.com}&#92;{@code ", 
+     *               }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *           }
-     *         }
+     *           }}{@code
+     *         }}{@code
      *       ],
-     *       \"Version\": \"1\"
-     *     }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .build());
@@ -3959,22 +3959,22 @@ public final class RamFunctions {
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": [
-     *           \"oss:ListObjects\",
-     *           \"oss:GetObject\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": [
+     *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+     *           }&#92;{@code "oss:GetObject}&#92;{@code "
      *         ],
-     *         \"Effect\": \"Allow\",
-     *         \"Resource\": [
-     *           \"acs:oss:*:*:mybucket\",
-     *           \"acs:oss:*:*:mybucket/*\"
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": [
+     *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
      *         ]
-     *       }
+     *       }}{@code
      *     ],
-     *       \"Version\": \"1\"
-     *   }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .description("this is a policy test")
      *             .build());
@@ -3991,8 +3991,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4031,32 +4031,32 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("roleName")
      *             .document("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": \"sts:AssumeRole\",
-     *           \"Effect\": \"Allow\",
-     *           \"Principal\": {
-     *             \"Service\": [
-     *               \"apigateway.aliyuncs.com\", 
-     *               \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *       }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *               }&#92;{@code "apigateway.aliyuncs.com}&#92;{@code ", 
+     *               }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *           }
-     *         }
+     *           }}{@code
+     *         }}{@code
      *       ],
-     *       \"Version\": \"1\"
-     *     }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .build());
@@ -4069,22 +4069,22 @@ public final class RamFunctions {
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": [
-     *           \"oss:ListObjects\",
-     *           \"oss:GetObject\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": [
+     *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+     *           }&#92;{@code "oss:GetObject}&#92;{@code "
      *         ],
-     *         \"Effect\": \"Allow\",
-     *         \"Resource\": [
-     *           \"acs:oss:*:*:mybucket\",
-     *           \"acs:oss:*:*:mybucket/*\"
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": [
+     *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
      *         ]
-     *       }
+     *       }}{@code
      *     ],
-     *       \"Version\": \"1\"
-     *   }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .description("this is a policy test")
      *             .build());
@@ -4101,8 +4101,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4141,32 +4141,32 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("roleName")
      *             .document("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": \"sts:AssumeRole\",
-     *           \"Effect\": \"Allow\",
-     *           \"Principal\": {
-     *             \"Service\": [
-     *               \"apigateway.aliyuncs.com\", 
-     *               \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *       }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *               }&#92;{@code "apigateway.aliyuncs.com}&#92;{@code ", 
+     *               }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *           }
-     *         }
+     *           }}{@code
+     *         }}{@code
      *       ],
-     *       \"Version\": \"1\"
-     *     }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .build());
@@ -4179,22 +4179,22 @@ public final class RamFunctions {
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": [
-     *           \"oss:ListObjects\",
-     *           \"oss:GetObject\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": [
+     *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+     *           }&#92;{@code "oss:GetObject}&#92;{@code "
      *         ],
-     *         \"Effect\": \"Allow\",
-     *         \"Resource\": [
-     *           \"acs:oss:*:*:mybucket\",
-     *           \"acs:oss:*:*:mybucket/*\"
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": [
+     *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
      *         ]
-     *       }
+     *       }}{@code
      *     ],
-     *       \"Version\": \"1\"
-     *   }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .description("this is a policy test")
      *             .build());
@@ -4211,8 +4211,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4251,32 +4251,32 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("roleName")
      *             .document("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": \"sts:AssumeRole\",
-     *           \"Effect\": \"Allow\",
-     *           \"Principal\": {
-     *             \"Service\": [
-     *               \"apigateway.aliyuncs.com\", 
-     *               \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *       }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *           }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *           }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *               }&#92;{@code "apigateway.aliyuncs.com}&#92;{@code ", 
+     *               }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *           }
-     *         }
+     *           }}{@code
+     *         }}{@code
      *       ],
-     *       \"Version\": \"1\"
-     *     }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .build());
@@ -4289,22 +4289,22 @@ public final class RamFunctions {
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName(String.format("tf-example-%s", defaultInteger.get("result")))
      *             .policyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": [
-     *           \"oss:ListObjects\",
-     *           \"oss:GetObject\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": [
+     *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+     *           }&#92;{@code "oss:GetObject}&#92;{@code "
      *         ],
-     *         \"Effect\": \"Allow\",
-     *         \"Resource\": [
-     *           \"acs:oss:*:*:mybucket\",
-     *           \"acs:oss:*:*:mybucket/*\"
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Resource}&#92;{@code ": [
+     *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
      *         ]
-     *       }
+     *       }}{@code
      *     ],
-     *       \"Version\": \"1\"
-     *   }
+     *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .description("this is a policy test")
      *             .build());
@@ -4321,8 +4321,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudRamRolePolicyAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4359,12 +4359,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4377,20 +4377,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4403,8 +4403,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4441,12 +4441,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4459,20 +4459,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4485,8 +4485,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4523,12 +4523,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4541,20 +4541,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4567,8 +4567,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4605,12 +4605,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4623,20 +4623,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4649,8 +4649,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4687,12 +4687,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4705,20 +4705,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4731,8 +4731,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4769,12 +4769,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4787,20 +4787,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4813,8 +4813,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -4851,12 +4851,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -4869,20 +4869,20 @@ public final class RamFunctions {
      *             .description(String.format("%s-%s", name,default_.get("result")))
      *             .force(true)
      *             .assumeRolePolicyDocument("""
-     *   {
-     *     \"Statement\": [
-     *       {
-     *         \"Action\": \"sts:AssumeRole\",
-     *         \"Effect\": \"Allow\",
-     *         \"Principal\": {
-     *           \"Service\": [
-     *             \"ecs.aliyuncs.com\"
+     *   }{{@code
+     *     }&#92;{@code "Statement}&#92;{@code ": [
+     *       }{{@code
+     *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *           }&#92;{@code "Service}&#92;{@code ": [
+     *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *           ]
-     *         }
-     *       }
+     *         }}{@code
+     *       }}{@code
      *     ],
-     *     \"Version\": \"1\"
-     *   }
+     *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *   }}{@code
      *             """)
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
@@ -4895,8 +4895,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -5602,22 +5602,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5708,22 +5708,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5814,22 +5814,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5920,22 +5920,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -6026,22 +6026,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -6132,22 +6132,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -6238,22 +6238,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * \t\t\t}{{@code
-     * \t\t\t\t\"Statement\": [
-     * \t\t\t\t }{{@code
-     * \t\t\t\t\t\"Action\": [
-     * \t\t\t\t\t\"oss:ListObjects\",
-     * \t\t\t\t\t\"oss:ListObjects\"
-     * \t\t\t  \t\t],
-     * \t\t\t  \t\t\"Effect\": \"Deny\",
-     * \t\t\t  \t\t\"Resource\": [
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
-     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
-     * \t\t\t  \t\t]
-     * \t\t\t\t }}{@code
-     * \t\t  \t\t],
-     * \t\t\t\t\"Version\": \"1\"
-     * \t\t\t}}{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }{{@code
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "oss:ListObjects}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t]
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t }}{@code
+     * }&#92;{@code t}&#92;{@code t  }&#92;{@code t}&#92;{@code t],
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)

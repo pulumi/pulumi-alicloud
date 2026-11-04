@@ -733,6 +733,36 @@ class TemplateApplications(pulumi.CustomResource):
         __props__.__dict__["reason"] = reason
         return TemplateApplications(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict', 'outputs.TemplateApplicationsDimension']]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            env_language: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_application_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict', 'outputs.TemplateApplicationsQuotaApplicationDetail']]]]] = None,
+            quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliyunUids"] = aliyun_uids
+        __props__["desireValue"] = desire_value
+        __props__["dimensions"] = dimensions
+        __props__["effectiveTime"] = effective_time
+        __props__["envLanguage"] = env_language
+        __props__["expireTime"] = expire_time
+        __props__["noticeType"] = notice_type
+        __props__["productCode"] = product_code
+        __props__["quotaActionCode"] = quota_action_code
+        __props__["quotaApplicationDetails"] = quota_application_details
+        __props__["quotaCategory"] = quota_category
+        __props__["reason"] = reason
+        return pulumi.runtime.exists_resource(None, 'alicloud:quotas/templateApplications:TemplateApplications', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliyunUids")
     def aliyun_uids(self) -> pulumi.Output[Sequence[_builtins.str]]:

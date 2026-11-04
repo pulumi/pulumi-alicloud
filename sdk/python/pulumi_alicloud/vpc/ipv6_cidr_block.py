@@ -409,6 +409,20 @@ class Ipv6CidrBlock(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv6CidrBlock(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv6_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ipv6CidrBlock"] = ipv6_cidr_block
+        __props__["ipv6CidrMask"] = ipv6_cidr_mask
+        __props__["ipv6IpamPoolId"] = ipv6_ipam_pool_id
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv6CidrBlock:Ipv6CidrBlock', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> pulumi.Output[_builtins.str]:

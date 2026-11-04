@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Rds
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the DB instances. 
+        /// A map of tags assigned to the DB instances.
         /// Note: Before 1.60.0, the value's format is a `Json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
         /// </summary>
         public Dictionary<string, string> Tags
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the DB instances. 
+        /// A map of tags assigned to the DB instances.
         /// Note: Before 1.60.0, the value's format is a `Json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
         /// </summary>
         public InputMap<string> Tags

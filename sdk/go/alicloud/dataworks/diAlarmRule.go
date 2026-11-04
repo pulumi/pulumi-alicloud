@@ -301,6 +301,12 @@ func (DiAlarmRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diAlarmRuleState)(nil)).Elem()
 }
 
+// DiAlarmRuleExists checks whether an existing DiAlarmRule resource with the given ID exists.
+func DiAlarmRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiAlarmRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dataworks/diAlarmRule:DiAlarmRule", id, state, "", opts...)
+}
+
 type diAlarmRuleArgs struct {
 	Description *string `pulumi:"description"`
 	// Data Integration alarm rule name

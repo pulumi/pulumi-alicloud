@@ -816,6 +816,46 @@ class DataCenter(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DataCenter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center_name: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            public_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["clusterId"] = cluster_id
+        __props__["dataCenterId"] = data_center_id
+        __props__["dataCenterName"] = data_center_name
+        __props__["diskSize"] = disk_size
+        __props__["diskType"] = disk_type
+        __props__["enablePublic"] = enable_public
+        __props__["instanceType"] = instance_type
+        __props__["nodeCount"] = node_count
+        __props__["payType"] = pay_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["publicPoints"] = public_points
+        __props__["status"] = status
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cassandra/dataCenter:DataCenter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -562,6 +562,48 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["using_product_lists"] = using_product_lists
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.int]] = None,
+            certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_source: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_status: pulumi.Input[Optional[_builtins.str]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            exist_private_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            finger_print: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            key_size: pulumi.Input[Optional[_builtins.int]] = None,
+            not_after: pulumi.Input[Optional[_builtins.int]] = None,
+            not_before: pulumi.Input[Optional[_builtins.int]] = None,
+            serial: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            using_product_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["certIdentifier"] = cert_identifier
+        __props__["certificateId"] = certificate_id
+        __props__["certificateName"] = certificate_name
+        __props__["certificateSource"] = certificate_source
+        __props__["certificateStatus"] = certificate_status
+        __props__["commonName"] = common_name
+        __props__["domain"] = domain
+        __props__["existPrivateKey"] = exist_private_key
+        __props__["fingerPrint"] = finger_print
+        __props__["instanceId"] = instance_id
+        __props__["issuer"] = issuer
+        __props__["keySize"] = key_size
+        __props__["notAfter"] = not_after
+        __props__["notBefore"] = not_before
+        __props__["serial"] = serial
+        __props__["subjectAlternativeNames"] = subject_alternative_names
+        __props__["usingProductLists"] = using_product_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesserviceinstance/certificate:Certificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

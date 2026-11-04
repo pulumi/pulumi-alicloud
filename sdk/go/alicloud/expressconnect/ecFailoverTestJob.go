@@ -173,6 +173,12 @@ func (EcFailoverTestJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecFailoverTestJobState)(nil)).Elem()
 }
 
+// EcFailoverTestJobExists checks whether an existing EcFailoverTestJob resource with the given ID exists.
+func EcFailoverTestJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcFailoverTestJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob", id, state, "", opts...)
+}
+
 type ecFailoverTestJobArgs struct {
 	// Job description.
 	Description *string `pulumi:"description"`

@@ -153,6 +153,12 @@ func (GroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupState)(nil)).Elem()
 }
 
+// GroupExists checks whether an existing Group resource with the given ID exists.
+func GroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/group:Group", id, state, "", opts...)
+}
+
 type groupArgs struct {
 	// The Group comment information. The maximum length is 128 characters.
 	Comments *string `pulumi:"comments"`

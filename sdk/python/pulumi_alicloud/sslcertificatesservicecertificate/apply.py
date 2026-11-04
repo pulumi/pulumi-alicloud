@@ -567,6 +567,34 @@ class Apply(pulumi.CustomResource):
         __props__.__dict__["validation_method"] = validation_method
         return Apply(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.int]] = None,
+            certificate_status: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_validation_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplyDomainValidationListArgs', 'ApplyDomainValidationListArgsDict', 'outputs.ApplyDomainValidationList']]]]] = None,
+            generate_csr_method: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            pending_result: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_method: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certIdentifier"] = cert_identifier
+        __props__["certificateId"] = certificate_id
+        __props__["certificateStatus"] = certificate_status
+        __props__["csr"] = csr
+        __props__["domain"] = domain
+        __props__["domainValidationLists"] = domain_validation_lists
+        __props__["generateCsrMethod"] = generate_csr_method
+        __props__["instanceId"] = instance_id
+        __props__["keyAlgorithm"] = key_algorithm
+        __props__["pendingResult"] = pending_result
+        __props__["validationMethod"] = validation_method
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesservicecertificate/apply:Apply', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certIdentifier")
     def cert_identifier(self) -> pulumi.Output[_builtins.str]:

@@ -367,6 +367,20 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
         __props__.__dict__["process_user"] = process_user
         return ServiceMonitoringAgentProcess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            process_id: pulumi.Input[Optional[_builtins.str]] = None,
+            process_name: pulumi.Input[Optional[_builtins.str]] = None,
+            process_user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["instanceId"] = instance_id
+        __props__["processId"] = process_id
+        __props__["processName"] = process_name
+        __props__["processUser"] = process_user
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:

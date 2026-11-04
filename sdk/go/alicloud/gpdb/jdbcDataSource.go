@@ -238,6 +238,12 @@ func (JdbcDataSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jdbcDataSourceState)(nil)).Elem()
 }
 
+// JdbcDataSourceExists checks whether an existing JdbcDataSource resource with the given ID exists.
+func JdbcDataSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JdbcDataSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/jdbcDataSource:JdbcDataSource", id, state, "", opts...)
+}
+
 type jdbcDataSourceArgs struct {
 	// Data Source Description
 	DataSourceDescription *string `pulumi:"dataSourceDescription"`

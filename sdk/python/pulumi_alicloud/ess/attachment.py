@@ -592,6 +592,24 @@ class Attachment(pulumi.CustomResource):
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         return Attachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            entrusted: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lifecycle_hook: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["entrusted"] = entrusted
+        __props__["force"] = force
+        __props__["instanceIds"] = instance_ids
+        __props__["lifecycleHook"] = lifecycle_hook
+        __props__["loadBalancerWeights"] = load_balancer_weights
+        __props__["scalingGroupId"] = scaling_group_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/attachment:Attachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def entrusted(self) -> pulumi.Output[Optional[_builtins.bool]]:

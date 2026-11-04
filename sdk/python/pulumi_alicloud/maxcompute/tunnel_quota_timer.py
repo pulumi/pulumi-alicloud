@@ -376,6 +376,18 @@ class TunnelQuotaTimer(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return TunnelQuotaTimer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict', 'outputs.TunnelQuotaTimerQuotaTimer']]]]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["nickname"] = nickname
+        __props__["quotaTimers"] = quota_timers
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def nickname(self) -> pulumi.Output[_builtins.str]:

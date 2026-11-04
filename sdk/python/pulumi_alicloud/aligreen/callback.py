@@ -413,6 +413,24 @@ class Callback(pulumi.CustomResource):
         __props__.__dict__["crypt_type"] = crypt_type
         return Callback(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+            callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypt_type: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["callbackName"] = callback_name
+        __props__["callbackSuggestions"] = callback_suggestions
+        __props__["callbackTypes"] = callback_types
+        __props__["callbackUrl"] = callback_url
+        __props__["createTime"] = create_time
+        __props__["cryptType"] = crypt_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:aligreen/callback:Callback', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="callbackName")
     def callback_name(self) -> pulumi.Output[_builtins.str]:

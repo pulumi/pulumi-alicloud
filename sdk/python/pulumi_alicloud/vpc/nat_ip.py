@@ -490,6 +490,28 @@ class NatIp(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return NatIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_description: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["natGatewayId"] = nat_gateway_id
+        __props__["natIp"] = nat_ip
+        __props__["natIpCidr"] = nat_ip_cidr
+        __props__["natIpDescription"] = nat_ip_description
+        __props__["natIpId"] = nat_ip_id
+        __props__["natIpName"] = nat_ip_name
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/natIp:NatIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

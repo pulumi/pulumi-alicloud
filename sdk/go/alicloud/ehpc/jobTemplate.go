@@ -208,6 +208,12 @@ func (JobTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobTemplateState)(nil)).Elem()
 }
 
+// JobTemplateExists checks whether an existing JobTemplate resource with the given ID exists.
+func JobTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ehpc/jobTemplate:JobTemplate", id, state, "", opts...)
+}
+
 type jobTemplateArgs struct {
 	// Queue Jobs, Is of the Form: 1-10:2.
 	ArrayRequest *string `pulumi:"arrayRequest"`

@@ -14,42 +14,38 @@ public final class InstanceParameter {
     /**
      * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     private @Nullable String name;
     /**
      * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     private @Nullable String value;
 
     private InstanceParameter() {}
     /**
      * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
      * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

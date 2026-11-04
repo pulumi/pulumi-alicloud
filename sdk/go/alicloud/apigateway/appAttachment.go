@@ -190,6 +190,12 @@ func (AppAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appAttachmentState)(nil)).Elem()
 }
 
+// AppAttachmentExists checks whether an existing AppAttachment resource with the given ID exists.
+func AppAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/appAttachment:AppAttachment", id, state, "", opts...)
+}
+
 type appAttachmentArgs struct {
 	// The apiId that app apply to access.
 	ApiId string `pulumi:"apiId"`

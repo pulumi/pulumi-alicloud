@@ -224,6 +224,12 @@ func (VPCRouteEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcrouteEntryState)(nil)).Elem()
 }
 
+// VPCRouteEntryExists checks whether an existing VPCRouteEntry resource with the given ID exists.
+func VPCRouteEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VPCRouteEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/vPCRouteEntry:VPCRouteEntry", id, state, "", opts...)
+}
+
 type vpcrouteEntryArgs struct {
 	// Description of the route entry.
 	Description *string `pulumi:"description"`

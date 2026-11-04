@@ -585,6 +585,44 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DedicatedBlockStorageCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            available_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_block_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_block_storage_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_category: pulumi.Input[Optional[_builtins.str]] = None,
+            total_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            used_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availableCapacity"] = available_capacity
+        __props__["category"] = category
+        __props__["createTime"] = create_time
+        __props__["dedicatedBlockStorageClusterId"] = dedicated_block_storage_cluster_id
+        __props__["dedicatedBlockStorageClusterName"] = dedicated_block_storage_cluster_name
+        __props__["deliveryCapacity"] = delivery_capacity
+        __props__["description"] = description
+        __props__["expiredTime"] = expired_time
+        __props__["performanceLevel"] = performance_level
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["supportedCategory"] = supported_category
+        __props__["totalCapacity"] = total_capacity
+        __props__["type"] = type
+        __props__["usedCapacity"] = used_capacity
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availableCapacity")
     def available_capacity(self) -> pulumi.Output[_builtins.str]:

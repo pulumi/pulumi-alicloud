@@ -129,6 +129,12 @@ func (AssetBindState) ElementType() reflect.Type {
 	return reflect.TypeOf((*assetBindState)(nil)).Elem()
 }
 
+// AssetBindExists checks whether an existing AssetBind resource with the given ID exists.
+func AssetBindExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AssetBindState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/assetBind:AssetBind", id, state, "", opts...)
+}
+
 type assetBindArgs struct {
 	// Bind version.
 	AuthVersion *int `pulumi:"authVersion"`

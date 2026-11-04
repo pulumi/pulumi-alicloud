@@ -230,6 +230,12 @@ func (VbrHealthCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vbrHealthCheckState)(nil)).Elem()
 }
 
+// VbrHealthCheckExists checks whether an existing VbrHealthCheck resource with the given ID exists.
+func VbrHealthCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VbrHealthCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/vbrHealthCheck:VbrHealthCheck", id, state, "", opts...)
+}
+
 type vbrHealthCheckArgs struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`

@@ -1068,6 +1068,46 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            az: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict', 'outputs.NodeGroupIpAllocationPolicy']]]]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict', 'outputs.NodeGroupNode']]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["az"] = az
+        __props__["clusterId"] = cluster_id
+        __props__["createTime"] = create_time
+        __props__["ignoreFailedNodeTasks"] = ignore_failed_node_tasks
+        __props__["imageId"] = image_id
+        __props__["ipAllocationPolicies"] = ip_allocation_policies
+        __props__["keyPairName"] = key_pair_name
+        __props__["loginPassword"] = login_password
+        __props__["machineType"] = machine_type
+        __props__["nodeGroupDescription"] = node_group_description
+        __props__["nodeGroupId"] = node_group_id
+        __props__["nodeGroupName"] = node_group_name
+        __props__["nodes"] = nodes
+        __props__["userData"] = user_data
+        __props__["vpdSubnets"] = vpd_subnets
+        __props__["vswitchZoneId"] = vswitch_zone_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/nodeGroup:NodeGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def az(self) -> pulumi.Output[_builtins.str]:

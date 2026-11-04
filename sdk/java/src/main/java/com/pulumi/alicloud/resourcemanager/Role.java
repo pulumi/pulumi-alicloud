@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
  *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
@@ -53,25 +53,25 @@ import javax.annotation.Nullable;
  *         var example = new Role("example", RoleArgs.builder()
  *             .roleName(name)
  *             .assumeRolePolicyDocument("""
- *      {
- *           \"Statement\": [
- *                {
- *                     \"Action\": \"sts:AssumeRole\",
- *                     \"Effect\": \"Allow\",
- *                     \"Principal\": {
- *                         \"RAM\":[
- *                                 \"acs:ram::%s:root\"
+ *      }{{@code
+ *           }&#92;{@code "Statement}&#92;{@code ": [
+ *                }{{@code
+ *                     }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *                     }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *                     }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *                         }&#92;{@code "RAM}&#92;{@code ":[
+ *                                 }&#92;{@code "acs:ram::%s:root}&#92;{@code "
  *                         ]
- *                     }
- *                 }
+ *                     }}{@code
+ *                 }}{@code
  *           ],
- *           \"Version\": \"1\"
- *      }
+ *           }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *      }}{@code
  * ", default_.id()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

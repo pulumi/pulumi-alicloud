@@ -323,6 +323,20 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return DhcpOptionsSetAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dhcpOptionsSetId"] = dhcp_options_set_id
+        __props__["dryRun"] = dry_run
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> pulumi.Output[_builtins.str]:

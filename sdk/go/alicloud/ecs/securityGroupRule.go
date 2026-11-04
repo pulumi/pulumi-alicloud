@@ -237,6 +237,12 @@ func (SecurityGroupRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupRuleState)(nil)).Elem()
 }
 
+// SecurityGroupRuleExists checks whether an existing SecurityGroupRule resource with the given ID exists.
+func SecurityGroupRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGroupRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/securityGroupRule:SecurityGroupRule", id, state, "", opts...)
+}
+
 type securityGroupRuleArgs struct {
 	// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = "0.0.0.0/0"` explicitly.
 	CidrIp *string `pulumi:"cidrIp"`

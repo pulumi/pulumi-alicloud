@@ -273,6 +273,12 @@ func (IngressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ingressState)(nil)).Elem()
 }
 
+// IngressExists checks whether an existing Ingress resource with the given ID exists.
+func IngressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IngressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sae/ingress:Ingress", id, state, "", opts...)
+}
+
 type ingressArgs struct {
 	// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 	CertId *string `pulumi:"certId"`

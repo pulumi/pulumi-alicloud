@@ -52,22 +52,20 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
-     * @deprecated
-     * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+     * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
+    @Deprecated
     @Import(name="document")
     private @Nullable Output<String> document;
 
     /**
      * @return Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      * 
-     * @deprecated
-     * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+     * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
+    @Deprecated
     public Optional<Output<String>> document() {
         return Optional.ofNullable(this.document);
     }
@@ -105,22 +103,20 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -128,22 +124,20 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     @Import(name="ramUsers")
     private @Nullable Output<List<String>> ramUsers;
 
     /**
      * @return Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     public Optional<Output<List<String>>> ramUsers() {
         return Optional.ofNullable(this.ramUsers);
     }
@@ -166,22 +160,20 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
      * @return Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
@@ -204,22 +196,20 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
      * @return Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
-     * @deprecated
-     * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+     * @deprecated Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
      * 
      */
-    @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+    @Deprecated
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -305,11 +295,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+         * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
+        @Deprecated
         public Builder document(@Nullable Output<String> document) {
             $.document = document;
             return this;
@@ -320,11 +309,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
+         * @deprecated Field &#39;document&#39; has been deprecated from provider version 1.252.0. New field &#39;assume_role_policy_document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead. */
+        @Deprecated
         public Builder document(String document) {
             return document(Output.of(document));
         }
@@ -376,11 +364,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -391,11 +378,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.252.0. New field &#39;role_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -405,11 +391,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder ramUsers(@Nullable Output<List<String>> ramUsers) {
             $.ramUsers = ramUsers;
             return this;
@@ -420,11 +405,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder ramUsers(List<String> ramUsers) {
             return ramUsers(Output.of(ramUsers));
         }
@@ -434,11 +418,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;ram_users&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder ramUsers(String... ramUsers) {
             return ramUsers(List.of(ramUsers));
         }
@@ -469,11 +452,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
@@ -484,11 +466,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
@@ -498,11 +479,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;services&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder services(String... services) {
             return services(List.of(services));
         }
@@ -533,11 +513,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
@@ -548,11 +527,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
+         * @deprecated Field &#39;version&#39; has been deprecated from provider version 1.49.0. New field &#39;document&#39; instead.
          * 
          */
-        @Deprecated /* Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead. */
+        @Deprecated
         public Builder version(String version) {
             return version(Output.of(version));
         }

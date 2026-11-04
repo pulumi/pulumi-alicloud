@@ -156,6 +156,12 @@ func (BasicIpSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*basicIpSetState)(nil)).Elem()
 }
 
+// BasicIpSetExists checks whether an existing BasicIpSet resource with the given ID exists.
+func BasicIpSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BasicIpSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/basicIpSet:BasicIpSet", id, state, "", opts...)
+}
+
 type basicIpSetArgs struct {
 	// The ID of the acceleration region.
 	AccelerateRegionId string `pulumi:"accelerateRegionId"`

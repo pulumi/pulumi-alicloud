@@ -40,7 +40,7 @@ public final class GetEcsBackupPlansPlan {
      */
     private String ecsBackupPlanName;
     /**
-     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     private String exclude;
@@ -50,7 +50,7 @@ public final class GetEcsBackupPlansPlan {
      */
     private String id;
     /**
-     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     private String include;
@@ -144,7 +144,7 @@ public final class GetEcsBackupPlansPlan {
         return this.ecsBackupPlanName;
     }
     /**
-     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     public String exclude() {
@@ -158,7 +158,7 @@ public final class GetEcsBackupPlansPlan {
         return this.id;
     }
     /**
-     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     public String include() {

@@ -258,6 +258,12 @@ func (KubernetesAddonState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesAddonState)(nil)).Elem()
 }
 
+// KubernetesAddonExists checks whether an existing KubernetesAddon resource with the given ID exists.
+func KubernetesAddonExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesAddonState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/kubernetesAddon:KubernetesAddon", id, state, "", opts...)
+}
+
 type kubernetesAddonArgs struct {
 	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
 	CleanupCloudResources *bool `pulumi:"cleanupCloudResources"`

@@ -198,6 +198,12 @@ func (PublicIpAddressPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpAddressPoolState)(nil)).Elem()
 }
 
+// PublicIpAddressPoolExists checks whether an existing PublicIpAddressPool resource with the given ID exists.
+func PublicIpAddressPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicIpAddressPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/publicIpAddressPool:PublicIpAddressPool", id, state, "", opts...)
+}
+
 type publicIpAddressPoolArgs struct {
 	// The name of the VPC Public IP address pool.
 	BizType *string `pulumi:"bizType"`

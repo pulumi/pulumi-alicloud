@@ -197,6 +197,12 @@ func (TransitRouterMulticastDomainAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterMulticastDomainAssociationState)(nil)).Elem()
 }
 
+// TransitRouterMulticastDomainAssociationExists checks whether an existing TransitRouterMulticastDomainAssociation resource with the given ID exists.
+func TransitRouterMulticastDomainAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterMulticastDomainAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation", id, state, "", opts...)
+}
+
 type transitRouterMulticastDomainAssociationArgs struct {
 	// The ID of the VPC connection.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`

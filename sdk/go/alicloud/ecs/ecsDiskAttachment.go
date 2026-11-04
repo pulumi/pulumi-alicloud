@@ -237,6 +237,12 @@ func (EcsDiskAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsDiskAttachmentState)(nil)).Elem()
 }
 
+// EcsDiskAttachmentExists checks whether an existing EcsDiskAttachment resource with the given ID exists.
+func EcsDiskAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsDiskAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment", id, state, "", opts...)
+}
+
 type ecsDiskAttachmentArgs struct {
 	// Whether to mount as a system disk. Default to: `false`.
 	Bootable *bool `pulumi:"bootable"`

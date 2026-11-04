@@ -248,6 +248,12 @@ func (BasicEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*basicEndpointState)(nil)).Elem()
 }
 
+// BasicEndpointExists checks whether an existing BasicEndpoint resource with the given ID exists.
+func BasicEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BasicEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/basicEndpoint:BasicEndpoint", id, state, "", opts...)
+}
+
 type basicEndpointArgs struct {
 	// The ID of the Basic GA instance.
 	AcceleratorId string `pulumi:"acceleratorId"`

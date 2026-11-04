@@ -151,14 +151,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
     /**
-     * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+     * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86&#92;_64`, `arm64`. Default value: `x86&#92;_64`.
      * 
      */
     @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
-     * @return The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+     * @return The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86&#92;_64`, `arm64`. Default value: `x86&#92;_64`.
      * 
      */
     public Output<Optional<String>> architecture() {
@@ -309,28 +309,28 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+     * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (&#92;_), and hyphens (-). By default, this parameter is empty.
      * 
      */
     @Export(name="imageFamily", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageFamily;
 
     /**
-     * @return The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+     * @return The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (&#92;_), and hyphens (-). By default, this parameter is empty.
      * 
      */
     public Output<Optional<String>> imageFamily() {
         return Codegen.optional(this.imageFamily);
     }
     /**
-     * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
+     * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (&#92;_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      * 
      */
     @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     /**
-     * @return The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
+     * @return The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (&#92;_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      * 
      */
     public Output<String> imageName() {
@@ -385,11 +385,10 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

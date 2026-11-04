@@ -290,6 +290,12 @@ func (AutoProvisioningGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoProvisioningGroupState)(nil)).Elem()
 }
 
+// AutoProvisioningGroupExists checks whether an existing AutoProvisioningGroup resource with the given ID exists.
+func AutoProvisioningGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoProvisioningGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup", id, state, "", opts...)
+}
+
 type autoProvisioningGroupArgs struct {
 	// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
 	AutoProvisioningGroupName *string `pulumi:"autoProvisioningGroupName"`

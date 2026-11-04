@@ -127,11 +127,10 @@ public class EnterpriseUser extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from 1.100.0 and use `userName` instead.
      * 
-     * @deprecated
-     * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
+     * @deprecated Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead. */
+    @Deprecated
     @Export(name="nickName", refs={String.class}, tree="[0]")
     private Output<String> nickName;
 

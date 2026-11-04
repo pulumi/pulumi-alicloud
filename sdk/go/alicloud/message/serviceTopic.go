@@ -158,6 +158,12 @@ func (ServiceTopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceTopicState)(nil)).Elem()
 }
 
+// ServiceTopicExists checks whether an existing ServiceTopic resource with the given ID exists.
+func ServiceTopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceTopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceTopic:ServiceTopic", id, state, "", opts...)
+}
+
 type serviceTopicArgs struct {
 	// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
 	EnableLogging *bool `pulumi:"enableLogging"`

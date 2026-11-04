@@ -111,7 +111,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * The EIP name.
      * 
-     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
@@ -122,7 +122,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * @return The EIP name.
      * 
-     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
@@ -253,11 +253,10 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
+    @Deprecated
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -401,11 +400,10 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

@@ -443,6 +443,26 @@ class NasFileSystem(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return NasFileSystem(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reset: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["fileSystemId"] = file_system_id
+        __props__["mountTargetDomain"] = mount_target_domain
+        __props__["nasFileSystemName"] = nas_file_system_name
+        __props__["officeSiteId"] = office_site_id
+        __props__["reset"] = reset
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/nasFileSystem:NasFileSystem', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

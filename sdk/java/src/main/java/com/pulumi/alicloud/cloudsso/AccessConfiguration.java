@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
@@ -66,24 +66,24 @@ import javax.annotation.Nullable;
  *                 .permissionPolicyType("Inline")
  *                 .permissionPolicyName(name)
  *                 .permissionPolicyDocument("""
- *     {
- *         \"Statement\":[
- *       {
- *         \"Action\":\"ecs:Get*\",
- *         \"Effect\":\"Allow\",
- *         \"Resource\":[
- *             \"*\"
+ *     }{{@code
+ *         }&#92;{@code "Statement}&#92;{@code ":[
+ *       }{{@code
+ *         }&#92;{@code "Action}&#92;{@code ":}&#92;{@code "ecs:Get*}&#92;{@code ",
+ *         }&#92;{@code "Effect}&#92;{@code ":}&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Resource}&#92;{@code ":[
+ *             }&#92;{@code "*}&#92;{@code "
  *         ]
- *       }
+ *       }}{@code
  *       ],
- *         \"Version\": \"1\"
- *     }
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *                 """)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -208,6 +208,12 @@ func (ReportTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reportTemplateState)(nil)).Elem()
 }
 
+// ReportTemplateExists checks whether an existing ReportTemplate resource with the given ID exists.
+func ReportTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReportTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:config/reportTemplate:ReportTemplate", id, state, "", opts...)
+}
+
 type reportTemplateArgs struct {
 	// Report Format
 	ReportFileFormats *string `pulumi:"reportFileFormats"`

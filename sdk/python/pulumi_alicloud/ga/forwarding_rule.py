@@ -620,6 +620,28 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["rule_conditions"] = rule_conditions
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_status: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict', 'outputs.ForwardingRuleRuleAction']]]]] = None,
+            rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict', 'outputs.ForwardingRuleRuleCondition']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorId"] = accelerator_id
+        __props__["forwardingRuleId"] = forwarding_rule_id
+        __props__["forwardingRuleName"] = forwarding_rule_name
+        __props__["forwardingRuleStatus"] = forwarding_rule_status
+        __props__["listenerId"] = listener_id
+        __props__["priority"] = priority
+        __props__["ruleActions"] = rule_actions
+        __props__["ruleConditions"] = rule_conditions
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/forwardingRule:ForwardingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[_builtins.str]:

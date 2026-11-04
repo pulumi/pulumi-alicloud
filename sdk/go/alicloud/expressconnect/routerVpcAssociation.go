@@ -192,6 +192,12 @@ func (RouterVpcAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerVpcAssociationState)(nil)).Elem()
 }
 
+// RouterVpcAssociationExists checks whether an existing RouterVpcAssociation resource with the given ID exists.
+func RouterVpcAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterVpcAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation", id, state, "", opts...)
+}
+
 type routerVpcAssociationArgs struct {
 	// The list of allowed route prefixes.
 	AllowedPrefixes []string `pulumi:"allowedPrefixes"`

@@ -68,22 +68,20 @@ public final class CompliancePackArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
-     * @deprecated
-     * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+     * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
-    @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
+    @Deprecated
     @Import(name="configRules")
     private @Nullable Output<List<CompliancePackConfigRuleArgs>> configRules;
 
     /**
      * @return A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
-     * @deprecated
-     * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+     * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      * 
      */
-    @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
+    @Deprecated
     public Optional<Output<List<CompliancePackConfigRuleArgs>>> configRules() {
         return Optional.ofNullable(this.configRules);
     }
@@ -225,11 +223,10 @@ public final class CompliancePackArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+         * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          */
-        @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
+        @Deprecated
         public Builder configRules(@Nullable Output<List<CompliancePackConfigRuleArgs>> configRules) {
             $.configRules = configRules;
             return this;
@@ -240,11 +237,10 @@ public final class CompliancePackArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+         * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          */
-        @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
+        @Deprecated
         public Builder configRules(List<CompliancePackConfigRuleArgs> configRules) {
             return configRules(Output.of(configRules));
         }
@@ -254,11 +250,10 @@ public final class CompliancePackArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+         * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
          * 
          */
-        @Deprecated /* Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead. */
+        @Deprecated
         public Builder configRules(CompliancePackConfigRuleArgs... configRules) {
             return configRules(List.of(configRules));
         }

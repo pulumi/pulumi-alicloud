@@ -238,6 +238,12 @@ func (SolutionInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*solutionInstanceState)(nil)).Elem()
 }
 
+// SolutionInstanceExists checks whether an existing SolutionInstance resource with the given ID exists.
+func SolutionInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SolutionInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/solutionInstance:SolutionInstance", id, state, "", opts...)
+}
+
 type solutionInstanceArgs struct {
 	// Solution Instance Description.
 	Description *string `pulumi:"description"`

@@ -108,6 +108,12 @@ func (ServiceEnterprisePublicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceEnterprisePublicState)(nil)).Elem()
 }
 
+// ServiceEnterprisePublicExists checks whether an existing ServiceEnterprisePublic resource with the given ID exists.
+func ServiceEnterprisePublicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceEnterprisePublicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic", id, state, "", opts...)
+}
+
 type serviceEnterprisePublicArgs struct {
 }
 

@@ -344,6 +344,12 @@ func (RegistryEnterpriseSyncRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseSyncRuleState)(nil)).Elem()
 }
 
+// RegistryEnterpriseSyncRuleExists checks whether an existing RegistryEnterpriseSyncRule resource with the given ID exists.
+func RegistryEnterpriseSyncRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegistryEnterpriseSyncRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", id, state, "", opts...)
+}
+
 type registryEnterpriseSyncRuleArgs struct {
 	// The ID of the Container Registry source instance.
 	InstanceId string `pulumi:"instanceId"`

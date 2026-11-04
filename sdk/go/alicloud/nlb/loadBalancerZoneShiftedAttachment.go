@@ -188,6 +188,12 @@ func (LoadBalancerZoneShiftedAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerZoneShiftedAttachmentState)(nil)).Elem()
 }
 
+// LoadBalancerZoneShiftedAttachmentExists checks whether an existing LoadBalancerZoneShiftedAttachment resource with the given ID exists.
+func LoadBalancerZoneShiftedAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerZoneShiftedAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment", id, state, "", opts...)
+}
+
 type loadBalancerZoneShiftedAttachmentArgs struct {
 	// Network load balancer id
 	LoadBalancerId string `pulumi:"loadBalancerId"`

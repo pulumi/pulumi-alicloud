@@ -412,6 +412,24 @@ class DbNode(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DbNode(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            class_code: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_role: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["classCode"] = class_code
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["nodeId"] = node_id
+        __props__["nodeRegionId"] = node_region_id
+        __props__["nodeRole"] = node_role
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/dbNode:DbNode', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="classCode")
     def class_code(self) -> pulumi.Output[_builtins.str]:

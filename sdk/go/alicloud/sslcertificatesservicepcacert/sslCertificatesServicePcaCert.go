@@ -398,6 +398,12 @@ func (SslCertificatesServicePcaCertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslCertificatesServicePcaCertState)(nil)).Elem()
 }
 
+// SslCertificatesServicePcaCertExists checks whether an existing SslCertificatesServicePcaCert resource with the given ID exists.
+func SslCertificatesServicePcaCertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SslCertificatesServicePcaCertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservicepcacert/sslCertificatesServicePcaCert:SslCertificatesServicePcaCert", id, state, "", opts...)
+}
+
 type sslCertificatesServicePcaCertArgs struct {
 	// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
 	//

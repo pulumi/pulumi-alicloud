@@ -164,6 +164,12 @@ func (GatewayEndpointRouteTableAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayEndpointRouteTableAttachmentState)(nil)).Elem()
 }
 
+// GatewayEndpointRouteTableAttachmentExists checks whether an existing GatewayEndpointRouteTableAttachment resource with the given ID exists.
+func GatewayEndpointRouteTableAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayEndpointRouteTableAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/gatewayEndpointRouteTableAttachment:GatewayEndpointRouteTableAttachment", id, state, "", opts...)
+}
+
 type gatewayEndpointRouteTableAttachmentArgs struct {
 	// The ID of the gateway endpoint instance to which you want to associate the route table.
 	GatewayEndpointId string `pulumi:"gatewayEndpointId"`

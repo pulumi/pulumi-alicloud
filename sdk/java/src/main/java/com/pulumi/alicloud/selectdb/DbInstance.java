@@ -530,11 +530,10 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
     /**
      * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
-     * @deprecated
-     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+     * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
-    @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
+    @Deprecated
     @Export(name="upgradedEngineMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> upgradedEngineMinorVersion;
 

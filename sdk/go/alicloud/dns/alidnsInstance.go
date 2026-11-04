@@ -159,6 +159,12 @@ func (AlidnsInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alidnsInstanceState)(nil)).Elem()
 }
 
+// AlidnsInstanceExists checks whether an existing AlidnsInstance resource with the given ID exists.
+func AlidnsInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlidnsInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/alidnsInstance:AlidnsInstance", id, state, "", opts...)
+}
+
 type alidnsInstanceArgs struct {
 	// Alidns security level. Valid values: `no`, `basic`, `advanced`.
 	DnsSecurity string `pulumi:"dnsSecurity"`

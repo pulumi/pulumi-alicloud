@@ -380,7 +380,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+&#92;|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
     @Import(name="connectionStringPrefix")
@@ -388,7 +388,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+&#92;|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
     public Optional<Output<String>> connectionStringPrefix() {
@@ -1187,22 +1187,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
-     * @deprecated
-     * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      */
-    @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
+    @Deprecated
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
      * @return It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
-     * @deprecated
-     * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      */
-    @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
+    @Deprecated
     public Optional<Output<String>> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
@@ -1763,11 +1761,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
-     * @deprecated
-     * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+     * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      * 
      */
-    @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
+    @Deprecated
     @Import(name="upgradeDbInstanceKernelVersion")
     private @Nullable Output<Boolean> upgradeDbInstanceKernelVersion;
 
@@ -1782,11 +1779,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
-     * @deprecated
-     * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+     * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      * 
      */
-    @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> upgradeDbInstanceKernelVersion() {
         return Optional.ofNullable(this.upgradeDbInstanceKernelVersion);
     }
@@ -2513,7 +2509,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionStringPrefix The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+&#92;|{};:&#39;&#34;,&lt;&gt;/?
          * 
          * @return builder
          * 
@@ -2525,7 +2521,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionStringPrefix The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+&#92;|{};:&#39;&#34;,&lt;&gt;/?
          * 
          * @return builder
          * 
@@ -3596,11 +3592,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+         * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
          * 
          */
-        @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
+        @Deprecated
         public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
             $.securityGroupId = securityGroupId;
             return this;
@@ -3611,11 +3606,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+         * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
          * 
          */
-        @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
+        @Deprecated
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
         }
@@ -4414,11 +4408,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+         * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
          * 
          */
-        @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
+        @Deprecated
         public Builder upgradeDbInstanceKernelVersion(@Nullable Output<Boolean> upgradeDbInstanceKernelVersion) {
             $.upgradeDbInstanceKernelVersion = upgradeDbInstanceKernelVersion;
             return this;
@@ -4437,11 +4430,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+         * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
          * 
          */
-        @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
+        @Deprecated
         public Builder upgradeDbInstanceKernelVersion(Boolean upgradeDbInstanceKernelVersion) {
             return upgradeDbInstanceKernelVersion(Output.of(upgradeDbInstanceKernelVersion));
         }

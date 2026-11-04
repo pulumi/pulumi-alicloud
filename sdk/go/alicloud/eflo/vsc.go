@@ -148,6 +148,12 @@ func (VscState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vscState)(nil)).Elem()
 }
 
+// VscExists checks whether an existing Vsc resource with the given ID exists.
+func VscExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VscState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/vsc:Vsc", id, state, "", opts...)
+}
+
 type vscArgs struct {
 	// The ID of the Node.
 	NodeId string `pulumi:"nodeId"`

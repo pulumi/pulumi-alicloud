@@ -528,6 +528,32 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         __props__.__dict__["vpc_firewall_name"] = vpc_firewall_name
         return FirewallVpcFirewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            connect_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict', 'outputs.FirewallVpcFirewallLocalVpc']]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict', 'outputs.FirewallVpcFirewallPeerVpc']]] = None,
+            region_status: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["connectType"] = connect_type
+        __props__["lang"] = lang
+        __props__["localVpc"] = local_vpc
+        __props__["memberUid"] = member_uid
+        __props__["peerVpc"] = peer_vpc
+        __props__["regionStatus"] = region_status
+        __props__["status"] = status
+        __props__["vpcFirewallId"] = vpc_firewall_id
+        __props__["vpcFirewallName"] = vpc_firewall_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:

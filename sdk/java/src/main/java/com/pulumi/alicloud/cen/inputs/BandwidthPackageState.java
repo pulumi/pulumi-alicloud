@@ -74,22 +74,20 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     /**
      * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
-     * @deprecated
-     * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
+     * @deprecated Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
      * 
      */
-    @Deprecated /* Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead. */
+    @Deprecated
     @Import(name="chargeType")
     private @Nullable Output<String> chargeType;
 
     /**
      * @return Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      * 
-     * @deprecated
-     * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
+     * @deprecated Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
      * 
      */
-    @Deprecated /* Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead. */
+    @Deprecated
     public Optional<Output<String>> chargeType() {
         return Optional.ofNullable(this.chargeType);
     }
@@ -157,22 +155,20 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     /**
      * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
-     * @deprecated
-     * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
+     * @deprecated Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
+    @Deprecated
     @Import(name="geographicRegionIds")
     private @Nullable Output<List<String>> geographicRegionIds;
 
     /**
      * @return Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      * 
-     * @deprecated
-     * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
+     * @deprecated Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
+    @Deprecated
     public Optional<Output<List<String>>> geographicRegionIds() {
         return Optional.ofNullable(this.geographicRegionIds);
     }
@@ -180,22 +176,20 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     /**
      * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -359,11 +353,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
+         * @deprecated Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
          * 
          */
-        @Deprecated /* Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead. */
+        @Deprecated
         public Builder chargeType(@Nullable Output<String> chargeType) {
             $.chargeType = chargeType;
             return this;
@@ -374,11 +367,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
+         * @deprecated Field &#39;charge_type&#39; has been deprecated from version 1.98.0. Use &#39;payment_type&#39; and instead.
          * 
          */
-        @Deprecated /* Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead. */
+        @Deprecated
         public Builder chargeType(String chargeType) {
             return chargeType(Output.of(chargeType));
         }
@@ -472,11 +464,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
+         * @deprecated Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
+        @Deprecated
         public Builder geographicRegionIds(@Nullable Output<List<String>> geographicRegionIds) {
             $.geographicRegionIds = geographicRegionIds;
             return this;
@@ -487,11 +478,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
+         * @deprecated Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
+        @Deprecated
         public Builder geographicRegionIds(List<String> geographicRegionIds) {
             return geographicRegionIds(Output.of(geographicRegionIds));
         }
@@ -501,11 +491,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
+         * @deprecated Field &#39;geographic_region_ids&#39; has been deprecated from version 1.98.0. Use &#39;geographic_region_a_id&#39; and &#39;geographic_region_b_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead. */
+        @Deprecated
         public Builder geographicRegionIds(String... geographicRegionIds) {
             return geographicRegionIds(List.of(geographicRegionIds));
         }
@@ -515,11 +504,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -530,11 +518,10 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_bandwidth_package_name&#39; and instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

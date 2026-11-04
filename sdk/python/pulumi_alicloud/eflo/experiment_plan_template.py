@@ -417,6 +417,24 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
         __props__.__dict__["template_pipelines"] = template_pipelines
         return ExperimentPlanTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
+            template_description: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict', 'outputs.ExperimentPlanTemplateTemplatePipeline']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["privacyLevel"] = privacy_level
+        __props__["templateDescription"] = template_description
+        __props__["templateId"] = template_id
+        __props__["templateName"] = template_name
+        __props__["templatePipelines"] = template_pipelines
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

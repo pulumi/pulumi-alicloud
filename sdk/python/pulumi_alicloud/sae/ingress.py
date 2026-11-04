@@ -664,6 +664,32 @@ class Ingress(pulumi.CustomResource):
         __props__.__dict__["slb_id"] = slb_id
         return Ingress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
+            default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict', 'outputs.IngressDefaultRule']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict', 'outputs.IngressRule']]]]] = None,
+            slb_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certId"] = cert_id
+        __props__["certIds"] = cert_ids
+        __props__["defaultRule"] = default_rule
+        __props__["description"] = description
+        __props__["listenerPort"] = listener_port
+        __props__["listenerProtocol"] = listener_protocol
+        __props__["loadBalanceType"] = load_balance_type
+        __props__["namespaceId"] = namespace_id
+        __props__["rules"] = rules
+        __props__["slbId"] = slb_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:sae/ingress:Ingress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[Optional[_builtins.str]]:

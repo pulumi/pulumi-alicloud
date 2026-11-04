@@ -289,6 +289,12 @@ func (InstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceState)(nil)).Elem()
 }
 
+// InstanceExists checks whether an existing Instance resource with the given ID exists.
+func InstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecp/instance:Instance", id, state, "", opts...)
+}
+
 type instanceArgs struct {
 	// Specifies whether to enable the auto-payment feature. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`

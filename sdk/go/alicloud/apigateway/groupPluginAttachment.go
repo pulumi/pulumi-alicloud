@@ -160,6 +160,12 @@ func (GroupPluginAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupPluginAttachmentState)(nil)).Elem()
 }
 
+// GroupPluginAttachmentExists checks whether an existing GroupPluginAttachment resource with the given ID exists.
+func GroupPluginAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupPluginAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/groupPluginAttachment:GroupPluginAttachment", id, state, "", opts...)
+}
+
 type groupPluginAttachmentArgs struct {
 	// The group that plugin attaches to.
 	GroupId string `pulumi:"groupId"`

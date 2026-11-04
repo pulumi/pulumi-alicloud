@@ -260,6 +260,16 @@ class AssetBind(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return AssetBind(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_version: pulumi.Input[Optional[_builtins.int]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authVersion"] = auth_version
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/assetBind:AssetBind', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authVersion")
     def auth_version(self) -> pulumi.Output[Optional[_builtins.int]]:

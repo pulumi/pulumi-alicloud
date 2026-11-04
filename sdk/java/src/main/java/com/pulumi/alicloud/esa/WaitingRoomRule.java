@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
  *             .planSubscribeType("enterpriseplan")
  *             .build());
@@ -90,15 +90,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultWaitingRoomRule = new WaitingRoomRule("defaultWaitingRoomRule", WaitingRoomRuleArgs.builder()
- *             .rule("(http.host eq \"video.example.com\")")
+ *             .rule("(http.host eq }&#92;{@code "video.example.com}&#92;{@code ")")
  *             .waitingRoomId(defaultWaitingRoom.waitingRoomId())
  *             .ruleName("WaitingRoomRule_example1")
  *             .status("off")
  *             .siteId(defaultSite.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

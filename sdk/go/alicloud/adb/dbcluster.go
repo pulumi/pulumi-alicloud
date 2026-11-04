@@ -372,6 +372,12 @@ func (DBClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbclusterState)(nil)).Elem()
 }
 
+// DBClusterExists checks whether an existing DBCluster resource with the given ID exists.
+func DBClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DBClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:adb/dBCluster:DBCluster", id, state, "", opts...)
+}
+
 type dbclusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`

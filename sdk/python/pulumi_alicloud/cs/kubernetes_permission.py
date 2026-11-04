@@ -373,6 +373,16 @@ class KubernetesPermission(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return KubernetesPermission(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict', 'outputs.KubernetesPermissionPermission']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["permissions"] = permissions
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/kubernetesPermission:KubernetesPermission', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesPermissionPermission']]]:

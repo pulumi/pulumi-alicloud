@@ -70,11 +70,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
  * ```
  * 
- * @deprecated
- * Resource renamed to `Trail`
+ * @deprecated Resource renamed to `Trail`
  * 
  */
-@Deprecated /* Resource renamed to `Trail` */
+@Deprecated
 @ResourceType(type="alicloud:actiontrail/trailDeprecated:TrailDeprecated")
 public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     @Export(name="createTime", refs={String.class}, tree="[0]")
@@ -128,11 +127,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
         return this.maxComputeWriteRoleArn;
     }
     /**
-     * @deprecated
-     * Field `mnsTopicArn` has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `mnsTopicArn` has been deprecated from version 1.118.0 */
+    @Deprecated
     @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
@@ -142,11 +140,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     /**
      * The name of the trail to be created, which must be unique for an account.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -200,11 +197,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     /**
      * The RAM role in ActionTrail permitted by the user.
      * 
-     * @deprecated
-     * Field `roleName` has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field `roleName` has been deprecated from version 1.118.0 */
+    @Deprecated
     @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleName;
 

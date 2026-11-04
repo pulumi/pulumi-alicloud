@@ -152,6 +152,12 @@ func (MonitorGroupInstancesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorGroupInstancesState)(nil)).Elem()
 }
 
+// MonitorGroupInstancesExists checks whether an existing MonitorGroupInstances resource with the given ID exists.
+func MonitorGroupInstancesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorGroupInstancesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/monitorGroupInstances:MonitorGroupInstances", id, state, "", opts...)
+}
+
 type monitorGroupInstancesArgs struct {
 	// The id of Cms Group.
 	GroupId string `pulumi:"groupId"`

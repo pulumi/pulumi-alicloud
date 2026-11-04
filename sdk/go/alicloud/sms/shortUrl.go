@@ -134,6 +134,12 @@ func (ShortUrlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shortUrlState)(nil)).Elem()
 }
 
+// ShortUrlExists checks whether an existing ShortUrl resource with the given ID exists.
+func ShortUrlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShortUrlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sms/shortUrl:ShortUrl", id, state, "", opts...)
+}
+
 type shortUrlArgs struct {
 	// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
 	EffectiveDays int `pulumi:"effectiveDays"`

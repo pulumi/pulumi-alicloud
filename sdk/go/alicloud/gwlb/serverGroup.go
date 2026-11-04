@@ -364,6 +364,12 @@ func (ServerGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupState)(nil)).Elem()
 }
 
+// ServerGroupExists checks whether an existing ServerGroup resource with the given ID exists.
+func ServerGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gwlb/serverGroup:ServerGroup", id, state, "", opts...)
+}
+
 type serverGroupArgs struct {
 	// Connected graceful interrupt configuration. See `connectionDrainConfig` below.
 	ConnectionDrainConfig *ServerGroupConnectionDrainConfig `pulumi:"connectionDrainConfig"`

@@ -1094,6 +1094,64 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["tag_value_scope"] = tag_value_scope
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            compliance: pulumi.Input[Optional[Union['RuleComplianceArgs', 'RuleComplianceArgsDict', 'outputs.RuleCompliance']]] = None,
+            compliance_pack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_source: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_types_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_compliance_resource_types: pulumi.Input[Optional[_builtins.str]] = None,
+            source_detail_message_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            source_maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            source_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["compliance"] = compliance
+        __props__["compliancePackId"] = compliance_pack_id
+        __props__["configRuleArn"] = config_rule_arn
+        __props__["configRuleId"] = config_rule_id
+        __props__["configRuleTriggerTypes"] = config_rule_trigger_types
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["eventSource"] = event_source
+        __props__["excludeResourceIdsScope"] = exclude_resource_ids_scope
+        __props__["inputParameters"] = input_parameters
+        __props__["maximumExecutionFrequency"] = maximum_execution_frequency
+        __props__["modifiedTimestamp"] = modified_timestamp
+        __props__["regionIdsScope"] = region_ids_scope
+        __props__["resourceGroupIdsScope"] = resource_group_ids_scope
+        __props__["resourceTypesScopes"] = resource_types_scopes
+        __props__["riskLevel"] = risk_level
+        __props__["ruleName"] = rule_name
+        __props__["scopeComplianceResourceTypes"] = scope_compliance_resource_types
+        __props__["sourceDetailMessageType"] = source_detail_message_type
+        __props__["sourceIdentifier"] = source_identifier
+        __props__["sourceMaximumExecutionFrequency"] = source_maximum_execution_frequency
+        __props__["sourceOwner"] = source_owner
+        __props__["status"] = status
+        __props__["tagKeyScope"] = tag_key_scope
+        __props__["tagValueScope"] = tag_value_scope
+        return pulumi.runtime.exists_resource(None, 'alicloud:cfg/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.int]:

@@ -186,6 +186,12 @@ func (AggregatorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggregatorState)(nil)).Elem()
 }
 
+// AggregatorExists checks whether an existing Aggregator resource with the given ID exists.
+func AggregatorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AggregatorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/aggregator:Aggregator", id, state, "", opts...)
+}
+
 type aggregatorArgs struct {
 	// The member accounts of the account group. See `aggregatorAccounts` below.
 	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.

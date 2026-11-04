@@ -567,6 +567,30 @@ class BucketInventory(pulumi.CustomResource):
         __props__.__dict__["schedule"] = schedule
         return BucketInventory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['BucketInventoryDestinationArgs', 'BucketInventoryDestinationArgsDict', 'outputs.BucketInventoryDestination']]] = None,
+            filter: pulumi.Input[Optional[Union['BucketInventoryFilterArgs', 'BucketInventoryFilterArgsDict', 'outputs.BucketInventoryFilter']]] = None,
+            included_object_versions: pulumi.Input[Optional[_builtins.str]] = None,
+            incremental_inventory: pulumi.Input[Optional[Union['BucketInventoryIncrementalInventoryArgs', 'BucketInventoryIncrementalInventoryArgsDict', 'outputs.BucketInventoryIncrementalInventory']]] = None,
+            inventory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            optional_fields: pulumi.Input[Optional[Union['BucketInventoryOptionalFieldsArgs', 'BucketInventoryOptionalFieldsArgsDict', 'outputs.BucketInventoryOptionalFields']]] = None,
+            schedule: pulumi.Input[Optional[Union['BucketInventoryScheduleArgs', 'BucketInventoryScheduleArgsDict', 'outputs.BucketInventorySchedule']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["destination"] = destination
+        __props__["filter"] = filter
+        __props__["includedObjectVersions"] = included_object_versions
+        __props__["incrementalInventory"] = incremental_inventory
+        __props__["inventoryId"] = inventory_id
+        __props__["isEnabled"] = is_enabled
+        __props__["optionalFields"] = optional_fields
+        __props__["schedule"] = schedule
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketInventory:BucketInventory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

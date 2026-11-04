@@ -132,7 +132,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * -  Match all incoming requests: value set to true
-     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
      * 
      */
     @Import(name="rule")
@@ -141,7 +141,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
     /**
      * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * -  Match all incoming requests: value set to true
-     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -477,7 +477,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
         /**
          * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
          * -  Match all incoming requests: value set to true
-         * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+         * -  Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
         /**
          * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
          * -  Match all incoming requests: value set to true
-         * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+         * -  Match specified request: Set the value to a custom expression, for example: (http.host eq &#92;&#34;video.example.com&#92;&#34;)
          * 
          * @return builder
          * 

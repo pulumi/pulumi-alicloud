@@ -161,6 +161,12 @@ func (ImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageState)(nil)).Elem()
 }
 
+// ImageExists checks whether an existing Image resource with the given ID exists.
+func ImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudphone/image:Image", id, state, "", opts...)
+}
+
 type imageArgs struct {
 	// The image name.
 	ImageName string `pulumi:"imageName"`

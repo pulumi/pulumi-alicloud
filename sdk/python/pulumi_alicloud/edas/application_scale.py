@@ -425,6 +425,22 @@ class ApplicationScale(pulumi.CustomResource):
         __props__.__dict__["force_status"] = force_status
         return ApplicationScale(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_group: pulumi.Input[Optional[_builtins.str]] = None,
+            ecc_info: pulumi.Input[Optional[_builtins.str]] = None,
+            ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            force_status: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["deployGroup"] = deploy_group
+        __props__["eccInfo"] = ecc_info
+        __props__["ecuInfos"] = ecu_infos
+        __props__["forceStatus"] = force_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/applicationScale:ApplicationScale', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

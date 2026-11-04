@@ -239,11 +239,10 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Node Model
      * 
-     * @deprecated
-     * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * @deprecated Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
+    @Deprecated
     @Export(name="computingServer", refs={String.class}, tree="[0]")
     private Output<String> computingServer;
 

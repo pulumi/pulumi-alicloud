@@ -596,6 +596,30 @@ class ServerBackupPlan(pulumi.CustomResource):
         __props__.__dict__["schedule"] = schedule
         return ServerBackupPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerBackupPlanDetailArgs', 'ServerBackupPlanDetailArgsDict', 'outputs.ServerBackupPlanDetail']]]]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecs_server_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.int]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["crossAccountRoleName"] = cross_account_role_name
+        __props__["crossAccountType"] = cross_account_type
+        __props__["crossAccountUserId"] = cross_account_user_id
+        __props__["details"] = details
+        __props__["disabled"] = disabled
+        __props__["ecsServerBackupPlanName"] = ecs_server_backup_plan_name
+        __props__["instanceId"] = instance_id
+        __props__["retention"] = retention
+        __props__["schedule"] = schedule
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/serverBackupPlan:ServerBackupPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
     def cross_account_role_name(self) -> pulumi.Output[Optional[_builtins.str]]:

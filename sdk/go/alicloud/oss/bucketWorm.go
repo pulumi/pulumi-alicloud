@@ -160,6 +160,12 @@ func (BucketWormState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketWormState)(nil)).Elem()
 }
 
+// BucketWormExists checks whether an existing BucketWorm resource with the given ID exists.
+func BucketWormExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketWormState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketWorm:BucketWorm", id, state, "", opts...)
+}
+
 type bucketWormArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

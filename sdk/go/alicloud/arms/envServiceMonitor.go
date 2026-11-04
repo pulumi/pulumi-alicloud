@@ -290,6 +290,12 @@ func (EnvServiceMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*envServiceMonitorState)(nil)).Elem()
 }
 
+// EnvServiceMonitorExists checks whether an existing EnvServiceMonitor resource with the given ID exists.
+func EnvServiceMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvServiceMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/envServiceMonitor:EnvServiceMonitor", id, state, "", opts...)
+}
+
 type envServiceMonitorArgs struct {
 	// Language environment, default is Chinese zh | en.
 	AliyunLang *string `pulumi:"aliyunLang"`

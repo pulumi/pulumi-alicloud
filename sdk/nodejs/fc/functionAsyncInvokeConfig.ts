@@ -143,6 +143,17 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
         return new FunctionAsyncInvokeConfig(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FunctionAsyncInvokeConfig resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FunctionAsyncInvokeConfigState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig';
 

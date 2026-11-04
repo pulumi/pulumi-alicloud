@@ -139,6 +139,12 @@ func (CrossAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*crossAccountState)(nil)).Elem()
 }
 
+// CrossAccountExists checks whether an existing CrossAccount resource with the given ID exists.
+func CrossAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CrossAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/crossAccount:CrossAccount", id, state, "", opts...)
+}
+
 type crossAccountArgs struct {
 	// Backup account alias
 	Alias *string `pulumi:"alias"`

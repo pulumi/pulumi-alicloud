@@ -244,6 +244,12 @@ func (GatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayState)(nil)).Elem()
 }
 
+// GatewayExists checks whether an existing Gateway resource with the given ID exists.
+func GatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/gateway:Gateway", id, state, "", opts...)
+}
+
 type gatewayArgs struct {
 	// Whether to enable automatic renewal for a subscription gateway. Default value: `false`.
 	AutoRenew *bool `pulumi:"autoRenew"`

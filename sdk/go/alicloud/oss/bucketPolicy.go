@@ -163,6 +163,12 @@ func (BucketPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketPolicyState)(nil)).Elem()
 }
 
+// BucketPolicyExists checks whether an existing BucketPolicy resource with the given ID exists.
+func BucketPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketPolicy:BucketPolicy", id, state, "", opts...)
+}
+
 type bucketPolicyArgs struct {
 	// The name of the Bucket.
 	Bucket string `pulumi:"bucket"`

@@ -455,6 +455,12 @@ func (EipAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipAddressState)(nil)).Elem()
 }
 
+// EipAddressExists checks whether an existing EipAddress resource with the given ID exists.
+func EipAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EipAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/eipAddress:EipAddress", id, state, "", opts...)
+}
+
 type eipAddressArgs struct {
 	// The promotion code. This parameter is not required.
 	ActivityId *string `pulumi:"activityId"`

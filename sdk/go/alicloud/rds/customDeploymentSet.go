@@ -185,6 +185,12 @@ func (CustomDeploymentSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDeploymentSetState)(nil)).Elem()
 }
 
+// CustomDeploymentSetExists checks whether an existing CustomDeploymentSet resource with the given ID exists.
+func CustomDeploymentSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDeploymentSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/customDeploymentSet:CustomDeploymentSet", id, state, "", opts...)
+}
+
 type customDeploymentSetArgs struct {
 	// The name of the resource
 	CustomDeploymentSetName *string `pulumi:"customDeploymentSetName"`

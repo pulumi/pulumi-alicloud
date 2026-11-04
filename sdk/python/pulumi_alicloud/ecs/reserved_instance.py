@@ -912,6 +912,54 @@ class ReservedInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ReservedInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            offering_type: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_locks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservedInstanceOperationLockArgs', 'ReservedInstanceOperationLockArgsDict', 'outputs.ReservedInstanceOperationLock']]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocationStatus"] = allocation_status
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["expiredTime"] = expired_time
+        __props__["instanceAmount"] = instance_amount
+        __props__["instanceType"] = instance_type
+        __props__["name"] = name
+        __props__["offeringType"] = offering_type
+        __props__["operationLocks"] = operation_locks
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["platform"] = platform
+        __props__["renewalStatus"] = renewal_status
+        __props__["reservedInstanceName"] = reserved_instance_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scope"] = scope
+        __props__["startTime"] = start_time
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/reservedInstance:ReservedInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocationStatus")
     def allocation_status(self) -> pulumi.Output[_builtins.str]:

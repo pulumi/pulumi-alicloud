@@ -711,6 +711,30 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return AnycastEipAddressAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anycast_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_time: pulumi.Input[Optional[_builtins.str]] = None,
+            pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict', 'outputs.AnycastEipAddressAttachmentPopLocation']]]]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["anycastId"] = anycast_id
+        __props__["associationMode"] = association_mode
+        __props__["bindInstanceId"] = bind_instance_id
+        __props__["bindInstanceRegionId"] = bind_instance_region_id
+        __props__["bindInstanceType"] = bind_instance_type
+        __props__["bindTime"] = bind_time
+        __props__["popLocations"] = pop_locations
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="anycastId")
     def anycast_id(self) -> pulumi.Output[_builtins.str]:

@@ -539,6 +539,30 @@ class QuotaAlarm(pulumi.CustomResource):
         __props__.__dict__["web_hook"] = web_hook
         return QuotaAlarm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_alarm_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict', 'outputs.QuotaAlarmQuotaDimension']]]]] = None,
+            threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            threshold_percent: pulumi.Input[Optional[_builtins.float]] = None,
+            threshold_type: pulumi.Input[Optional[_builtins.str]] = None,
+            web_hook: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["productCode"] = product_code
+        __props__["quotaActionCode"] = quota_action_code
+        __props__["quotaAlarmName"] = quota_alarm_name
+        __props__["quotaDimensions"] = quota_dimensions
+        __props__["threshold"] = threshold
+        __props__["thresholdPercent"] = threshold_percent
+        __props__["thresholdType"] = threshold_type
+        __props__["webHook"] = web_hook
+        return pulumi.runtime.exists_resource(None, 'alicloud:quotas/quotaAlarm:QuotaAlarm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

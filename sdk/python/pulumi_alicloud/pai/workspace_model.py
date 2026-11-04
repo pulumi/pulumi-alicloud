@@ -699,6 +699,36 @@ class WorkspaceModel(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return WorkspaceModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict', 'outputs.WorkspaceModelLabel']]]]] = None,
+            model_description: pulumi.Input[Optional[_builtins.str]] = None,
+            model_doc: pulumi.Input[Optional[_builtins.str]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            model_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_number: pulumi.Input[Optional[_builtins.int]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            task: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessibility"] = accessibility
+        __props__["domain"] = domain
+        __props__["extraInfo"] = extra_info
+        __props__["labels"] = labels
+        __props__["modelDescription"] = model_description
+        __props__["modelDoc"] = model_doc
+        __props__["modelName"] = model_name
+        __props__["modelType"] = model_type
+        __props__["orderNumber"] = order_number
+        __props__["origin"] = origin
+        __props__["task"] = task
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pai/workspaceModel:WorkspaceModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accessibility(self) -> pulumi.Output[_builtins.str]:

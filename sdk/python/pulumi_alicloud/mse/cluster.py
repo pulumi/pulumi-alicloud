@@ -1162,6 +1162,58 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+            mse_version: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            private_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            pub_network_flow: pulumi.Input[Optional[_builtins.str]] = None,
+            pub_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            request_pars: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclEntryLists"] = acl_entry_lists
+        __props__["appVersion"] = app_version
+        __props__["clusterAliasName"] = cluster_alias_name
+        __props__["clusterId"] = cluster_id
+        __props__["clusterSpecification"] = cluster_specification
+        __props__["clusterType"] = cluster_type
+        __props__["clusterVersion"] = cluster_version
+        __props__["connectionType"] = connection_type
+        __props__["diskType"] = disk_type
+        __props__["instanceCount"] = instance_count
+        __props__["mseVersion"] = mse_version
+        __props__["netType"] = net_type
+        __props__["paymentType"] = payment_type
+        __props__["privateSlbSpecification"] = private_slb_specification
+        __props__["pubNetworkFlow"] = pub_network_flow
+        __props__["pubSlbSpecification"] = pub_slb_specification
+        __props__["requestPars"] = request_pars
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["versionCode"] = version_code
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:mse/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclEntryLists")
     def acl_entry_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -619,6 +619,34 @@ class MetricRuleTemplate(pulumi.CustomResource):
         __props__.__dict__["webhook"] = webhook
         return MetricRuleTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict', 'outputs.MetricRuleTemplateAlertTemplate']]]]] = None,
+            apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_rule_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_level: pulumi.Input[Optional[_builtins.str]] = None,
+            rest_version: pulumi.Input[Optional[_builtins.str]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertTemplates"] = alert_templates
+        __props__["applyMode"] = apply_mode
+        __props__["description"] = description
+        __props__["enableEndTime"] = enable_end_time
+        __props__["enableStartTime"] = enable_start_time
+        __props__["groupId"] = group_id
+        __props__["metricRuleTemplateName"] = metric_rule_template_name
+        __props__["notifyLevel"] = notify_level
+        __props__["restVersion"] = rest_version
+        __props__["silenceTime"] = silence_time
+        __props__["webhook"] = webhook
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/metricRuleTemplate:MetricRuleTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertTemplates")
     def alert_templates(self) -> pulumi.Output[Optional[Sequence['outputs.MetricRuleTemplateAlertTemplate']]]:

@@ -94,14 +94,14 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+     * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (&#92;&#92;).
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+     * @return The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (&#92;&#92;).
      * 
      */
     public Optional<Output<String>> url() {
@@ -259,7 +259,7 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+         * @param url The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (&#92;&#92;).
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class KvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
+         * @param url The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (&#92;&#92;).
          * 
          * @return builder
          * 

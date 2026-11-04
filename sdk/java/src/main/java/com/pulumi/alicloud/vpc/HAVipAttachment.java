@@ -172,11 +172,10 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * @deprecated Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
+    @Deprecated
     @Export(name="havipId", refs={String.class}, tree="[0]")
     private Output<String> havipId;
 

@@ -1174,6 +1174,60 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_vswitch_security_groups"] = zone_vswitch_security_groups
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connect_cidr_blocks: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_vpc_ip_block: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            egress_ipv6_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            https_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            to_connect_vpc_ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict', 'outputs.InstanceToConnectVpcIpBlock']]]]] = None,
+            user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict', 'outputs.InstanceZoneVswitchSecurityGroup']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectCidrBlocks"] = connect_cidr_blocks
+        __props__["createTime"] = create_time
+        __props__["deleteVpcIpBlock"] = delete_vpc_ip_block
+        __props__["duration"] = duration
+        __props__["egressIpv6Enable"] = egress_ipv6_enable
+        __props__["httpsPolicy"] = https_policy
+        __props__["ingressVpcId"] = ingress_vpc_id
+        __props__["ingressVpcOwnerId"] = ingress_vpc_owner_id
+        __props__["ingressVswitchId"] = ingress_vswitch_id
+        __props__["instanceCidr"] = instance_cidr
+        __props__["instanceName"] = instance_name
+        __props__["instanceSpec"] = instance_spec
+        __props__["instanceType"] = instance_type
+        __props__["ipv6Enabled"] = ipv6_enabled
+        __props__["paymentType"] = payment_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["skipWaitSwitch"] = skip_wait_switch
+        __props__["status"] = status
+        __props__["supportIpv6"] = support_ipv6
+        __props__["toConnectVpcIpBlocks"] = to_connect_vpc_ip_blocks
+        __props__["userVpcId"] = user_vpc_id
+        __props__["vpcSlbIntranetEnable"] = vpc_slb_intranet_enable
+        __props__["zoneId"] = zone_id
+        __props__["zoneVswitchSecurityGroups"] = zone_vswitch_security_groups
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectCidrBlocks")
     def connect_cidr_blocks(self) -> pulumi.Output[_builtins.str]:

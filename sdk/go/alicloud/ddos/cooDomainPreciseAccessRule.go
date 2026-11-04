@@ -189,6 +189,12 @@ func (CooDomainPreciseAccessRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cooDomainPreciseAccessRuleState)(nil)).Elem()
 }
 
+// CooDomainPreciseAccessRuleExists checks whether an existing CooDomainPreciseAccessRule resource with the given ID exists.
+func CooDomainPreciseAccessRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CooDomainPreciseAccessRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule", id, state, "", opts...)
+}
+
 type cooDomainPreciseAccessRuleArgs struct {
 	// Action to take on match. Valid values:
 	Action string `pulumi:"action"`

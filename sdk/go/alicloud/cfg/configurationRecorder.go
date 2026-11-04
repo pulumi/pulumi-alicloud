@@ -136,6 +136,12 @@ func (ConfigurationRecorderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationRecorderState)(nil)).Elem()
 }
 
+// ConfigurationRecorderExists checks whether an existing ConfigurationRecorder resource with the given ID exists.
+func ConfigurationRecorderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigurationRecorderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/configurationRecorder:ConfigurationRecorder", id, state, "", opts...)
+}
+
 type configurationRecorderArgs struct {
 	// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 	EnterpriseEdition *bool `pulumi:"enterpriseEdition"`

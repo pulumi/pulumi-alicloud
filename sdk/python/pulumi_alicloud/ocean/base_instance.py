@@ -1374,6 +1374,58 @@ class BaseInstance(pulumi.CustomResource):
         __props__.__dict__["zones"] = zones
         return BaseInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retain_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_arch: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_num: pulumi.Input[Optional[_builtins.str]] = None,
+            ob_version: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            series: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_spec_native: pulumi.Input[Optional[_builtins.bool]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["backupRetainMode"] = backup_retain_mode
+        __props__["commodityCode"] = commodity_code
+        __props__["cpu"] = cpu
+        __props__["cpuArch"] = cpu_arch
+        __props__["createTime"] = create_time
+        __props__["diskSize"] = disk_size
+        __props__["diskType"] = disk_type
+        __props__["instanceClass"] = instance_class
+        __props__["instanceName"] = instance_name
+        __props__["nodeNum"] = node_num
+        __props__["obVersion"] = ob_version
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["primaryInstance"] = primary_instance
+        __props__["primaryRegion"] = primary_region
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["series"] = series
+        __props__["status"] = status
+        __props__["upgradeSpecNative"] = upgrade_spec_native
+        __props__["zones"] = zones
+        return pulumi.runtime.exists_resource(None, 'alicloud:ocean/baseInstance:BaseInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

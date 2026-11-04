@@ -80,22 +80,20 @@ public final class CustomerGatewayArgs extends com.pulumi.resources.ResourceArgs
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;customer_gateway_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;customer_gateway_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -237,11 +235,10 @@ public final class CustomerGatewayArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -252,11 +249,10 @@ public final class CustomerGatewayArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.210.0. New field &#39;customer_gateway_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

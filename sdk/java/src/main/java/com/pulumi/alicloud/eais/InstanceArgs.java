@@ -53,22 +53,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to force the deletion when the instance status does not meet the deletion conditions.
      * 
-     * @deprecated
-     * Field &#39;force&#39; is deprecated and will be removed in a future release.
+     * @deprecated Field &#39;force&#39; is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
      * @return Whether to force the deletion when the instance status does not meet the deletion conditions.
      * 
-     * @deprecated
-     * Field &#39;force&#39; is deprecated and will be removed in a future release.
+     * @deprecated Field &#39;force&#39; is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
@@ -284,11 +282,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;force&#39; is deprecated and will be removed in a future release.
+         * @deprecated Field &#39;force&#39; is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
@@ -299,11 +296,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;force&#39; is deprecated and will be removed in a future release.
+         * @deprecated Field &#39;force&#39; is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }

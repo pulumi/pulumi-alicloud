@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example-oss");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -95,12 +95,12 @@ import javax.annotation.Nullable;
  *             .remediationTemplateId("ACS-OSS-PutBucketAcl")
  *             .remediationSourceType("ALIYUN")
  *             .invokeType("MANUAL_EXECUTION")
- *             .params(defaultBucket.bucket().applyValue(_bucket -> String.format("{{\"bucketName\": \"%s\", \"regionId\": \"%s\", \"permissionName\": \"private\"}}", _bucket,default_.regions()[0].id())))
+ *             .params(defaultBucket.bucket().applyValue(_bucket -> String.format("}{{&#92;{@code "bucketName}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ", }&#92;{@code "regionId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ", }&#92;{@code "permissionName}&#92;{@code ": }&#92;{@code "private}&#92;{@code "}}}{@code ", _bucket,default_.regions()[0].id())))
  *             .remediationType("OOS")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

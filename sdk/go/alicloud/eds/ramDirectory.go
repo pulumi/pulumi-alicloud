@@ -175,6 +175,12 @@ func (RamDirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ramDirectoryState)(nil)).Elem()
 }
 
+// RamDirectoryExists checks whether an existing RamDirectory resource with the given ID exists.
+func RamDirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RamDirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/ramDirectory:RamDirectory", id, state, "", opts...)
+}
+
 type ramDirectoryArgs struct {
 	// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
 	DesktopAccessType *string `pulumi:"desktopAccessType"`

@@ -693,6 +693,42 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Project(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_quota: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict', 'outputs.ProjectIpWhiteList']]] = None,
+            is_logical: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict', 'outputs.ProjectProperties']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict', 'outputs.ProjectSecurityProperties']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["createTime"] = create_time
+        __props__["defaultQuota"] = default_quota
+        __props__["ipWhiteList"] = ip_white_list
+        __props__["isLogical"] = is_logical
+        __props__["owner"] = owner
+        __props__["productType"] = product_type
+        __props__["projectName"] = project_name
+        __props__["properties"] = properties
+        __props__["regionId"] = region_id
+        __props__["securityProperties"] = security_properties
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["threeTierModel"] = three_tier_model
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:maxcompute/project:Project', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

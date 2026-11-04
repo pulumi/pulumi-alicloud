@@ -53,22 +53,20 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     @Import(name="alertIds")
     private @Nullable Output<List<String>> alertIds;
 
     /**
      * @return Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
-     * @deprecated
-     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
-    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+    @Deprecated
     public Optional<Output<List<String>>> alertIds() {
         return Optional.ofNullable(this.alertIds);
     }
@@ -136,22 +134,20 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
      * 
-     * @deprecated
-     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      * 
      */
-    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+    @Deprecated
     @Import(name="optionsJson")
     private @Nullable Output<String> optionsJson;
 
     /**
      * @return Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
      * 
-     * @deprecated
-     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      * 
      */
-    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+    @Deprecated
     public Optional<Output<String>> optionsJson() {
         return Optional.ofNullable(this.optionsJson);
     }
@@ -282,11 +278,10 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder alertIds(@Nullable Output<List<String>> alertIds) {
             $.alertIds = alertIds;
             return this;
@@ -297,11 +292,10 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder alertIds(List<String> alertIds) {
             return alertIds(Output.of(alertIds));
         }
@@ -311,11 +305,10 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          */
-        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        @Deprecated
         public Builder alertIds(String... alertIds) {
             return alertIds(List.of(alertIds));
         }
@@ -419,11 +412,10 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+         * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
          * 
          */
-        @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+        @Deprecated
         public Builder optionsJson(@Nullable Output<String> optionsJson) {
             $.optionsJson = optionsJson;
             return this;
@@ -434,11 +426,10 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+         * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
          * 
          */
-        @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+        @Deprecated
         public Builder optionsJson(String optionsJson) {
             return optionsJson(Output.of(optionsJson));
         }

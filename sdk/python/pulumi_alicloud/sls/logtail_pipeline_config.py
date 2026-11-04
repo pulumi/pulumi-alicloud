@@ -603,6 +603,30 @@ class LogtailPipelineConfig(pulumi.CustomResource):
         __props__.__dict__["task"] = task
         return LogtailPipelineConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregators: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            flushers: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            globals: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+            processors: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            task: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregators"] = aggregators
+        __props__["configName"] = config_name
+        __props__["flushers"] = flushers
+        __props__["globals"] = globals
+        __props__["inputs"] = inputs
+        __props__["logSample"] = log_sample
+        __props__["processors"] = processors
+        __props__["project"] = project
+        __props__["task"] = task
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aggregators(self) -> pulumi.Output[Optional[Sequence[Mapping[str, _builtins.str]]]]:

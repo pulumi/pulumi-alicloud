@@ -513,6 +513,28 @@ class AccessConfiguration(pulumi.CustomResource):
         __props__.__dict__["session_duration"] = session_duration
         return AccessConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+            permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict', 'outputs.AccessConfigurationPermissionPolicy']]]]] = None,
+            relay_state: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessConfigurationId"] = access_configuration_id
+        __props__["accessConfigurationName"] = access_configuration_name
+        __props__["description"] = description
+        __props__["directoryId"] = directory_id
+        __props__["forceRemovePermissionPolicies"] = force_remove_permission_policies
+        __props__["permissionPolicies"] = permission_policies
+        __props__["relayState"] = relay_state
+        __props__["sessionDuration"] = session_duration
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudsso/accessConfiguration:AccessConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> pulumi.Output[_builtins.str]:

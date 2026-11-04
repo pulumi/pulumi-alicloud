@@ -139,6 +139,12 @@ func (BucketPublicAccessBlockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketPublicAccessBlockState)(nil)).Elem()
 }
 
+// BucketPublicAccessBlockExists checks whether an existing BucketPublicAccessBlock resource with the given ID exists.
+func BucketPublicAccessBlockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketPublicAccessBlockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock", id, state, "", opts...)
+}
+
 type bucketPublicAccessBlockArgs struct {
 	// Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
 	BlockPublicAccess bool `pulumi:"blockPublicAccess"`

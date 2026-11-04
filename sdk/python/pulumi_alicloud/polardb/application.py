@@ -1250,6 +1250,64 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Application(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ai_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_type: pulumi.Input[Optional[_builtins.str]] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            component_id: pulumi.Input[Optional[_builtins.str]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationComponentArgs', 'ApplicationComponentArgsDict', 'outputs.ApplicationComponent']]]]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            model_api: pulumi.Input[Optional[_builtins.str]] = None,
+            model_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            model_base_url: pulumi.Input[Optional[_builtins.str]] = None,
+            model_from: pulumi.Input[Optional[_builtins.str]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationParameterArgs', 'ApplicationParameterArgsDict', 'outputs.ApplicationParameter']]]]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aiDbClusterId"] = ai_db_cluster_id
+        __props__["applicationType"] = application_type
+        __props__["architecture"] = architecture
+        __props__["autoRenew"] = auto_renew
+        __props__["componentId"] = component_id
+        __props__["components"] = components
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["description"] = description
+        __props__["modelApi"] = model_api
+        __props__["modelApiKey"] = model_api_key
+        __props__["modelBaseUrl"] = model_base_url
+        __props__["modelFrom"] = model_from
+        __props__["modelName"] = model_name
+        __props__["modifyMode"] = modify_mode
+        __props__["parameters"] = parameters
+        __props__["payType"] = pay_type
+        __props__["period"] = period
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityIpArrayName"] = security_ip_array_name
+        __props__["securityIpLists"] = security_ip_lists
+        __props__["status"] = status
+        __props__["upgradeVersion"] = upgrade_version
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/application:Application', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aiDbClusterId")
     def ai_db_cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -218,6 +218,12 @@ func (RouterTrAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerTrAssociationState)(nil)).Elem()
 }
 
+// RouterTrAssociationExists checks whether an existing RouterTrAssociation resource with the given ID exists.
+func RouterTrAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterTrAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/routerTrAssociation:RouterTrAssociation", id, state, "", opts...)
+}
+
 type routerTrAssociationArgs struct {
 	// List of allowed route prefixes.
 	AllowedPrefixes []string `pulumi:"allowedPrefixes"`

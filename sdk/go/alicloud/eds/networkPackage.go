@@ -147,6 +147,12 @@ func (NetworkPackageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPackageState)(nil)).Elem()
 }
 
+// NetworkPackageExists checks whether an existing NetworkPackage resource with the given ID exists.
+func NetworkPackageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkPackageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/networkPackage:NetworkPackage", id, state, "", opts...)
+}
+
 type networkPackageArgs struct {
 	// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
 	Bandwidth int `pulumi:"bandwidth"`

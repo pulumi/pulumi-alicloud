@@ -64,7 +64,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     /**
      * The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
-     * - SQLServer: 2~8 \(Supports integers only\).
+     * - SQLServer: 2~8 &#92;(Supports integers only&#92;).
      * - PostgreSQL: 0.5~12
      * 
      */
@@ -74,7 +74,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
     /**
      * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
      * - MySQL: 0.5~8
-     * - SQLServer: 2~8 \(Supports integers only\).
+     * - SQLServer: 2~8 &#92;(Supports integers only&#92;).
      * - PostgreSQL: 0.5~12
      * 
      */
@@ -191,7 +191,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         /**
          * @param minCapacity The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
          * - MySQL: 0.5~8
-         * - SQLServer: 2~8 \(Supports integers only\).
+         * - SQLServer: 2~8 &#92;(Supports integers only&#92;).
          * - PostgreSQL: 0.5~12
          * 
          * @return builder
@@ -205,7 +205,7 @@ public final class InstanceServerlessConfigArgs extends com.pulumi.resources.Res
         /**
          * @param minCapacity The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
          * - MySQL: 0.5~8
-         * - SQLServer: 2~8 \(Supports integers only\).
+         * - SQLServer: 2~8 &#92;(Supports integers only&#92;).
          * - PostgreSQL: 0.5~12
          * 
          * @return builder

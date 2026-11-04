@@ -388,6 +388,22 @@ class AlertRobot(pulumi.CustomResource):
         __props__.__dict__["robot_type"] = robot_type
         return AlertRobot(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_robot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            daily_noc: pulumi.Input[Optional[_builtins.bool]] = None,
+            daily_noc_time: pulumi.Input[Optional[_builtins.str]] = None,
+            robot_addr: pulumi.Input[Optional[_builtins.str]] = None,
+            robot_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertRobotName"] = alert_robot_name
+        __props__["dailyNoc"] = daily_noc
+        __props__["dailyNocTime"] = daily_noc_time
+        __props__["robotAddr"] = robot_addr
+        __props__["robotType"] = robot_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/alertRobot:AlertRobot', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertRobotName")
     def alert_robot_name(self) -> pulumi.Output[_builtins.str]:

@@ -254,7 +254,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the VPC peering connection.
-     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="peerConnectionName", refs={String.class}, tree="[0]")
@@ -262,7 +262,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the VPC peering connection.
-     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<String> peerConnectionName() {

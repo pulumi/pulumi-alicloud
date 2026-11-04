@@ -146,11 +146,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
-     * @deprecated
-     * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
+    @Deprecated
     @Export(name="clientNodeAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> clientNodeAmount;
 
@@ -178,11 +177,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The client node spec. If specified, client node will be created.
      * 
-     * @deprecated
-     * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
+    @Deprecated
     @Export(name="clientNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> clientNodeSpec;
 
@@ -210,11 +208,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
      * 
-     * @deprecated
-     * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
+    @Deprecated
     @Export(name="dataNodeAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataNodeAmount;
 
@@ -242,11 +239,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+     * @deprecated Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
+    @Deprecated
     @Export(name="dataNodeDiskEncrypted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dataNodeDiskEncrypted;
 
@@ -260,11 +256,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+     * @deprecated Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
+    @Deprecated
     @Export(name="dataNodeDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> dataNodeDiskPerformanceLevel;
 
@@ -278,11 +273,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The single data node storage space.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+     * @deprecated Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
+    @Deprecated
     @Export(name="dataNodeDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataNodeDiskSize;
 
@@ -296,11 +290,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
+    @Deprecated
     @Export(name="dataNodeDiskType", refs={String.class}, tree="[0]")
     private Output<String> dataNodeDiskType;
 
@@ -314,11 +307,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The data node specifications of the Elasticsearch instance.
      * 
-     * @deprecated
-     * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
+    @Deprecated
     @Export(name="dataNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> dataNodeSpec;
 
@@ -454,11 +446,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
+    @Deprecated
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -500,11 +491,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
-     * @deprecated
-     * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+     * @deprecated Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
+    @Deprecated
     @Export(name="kibanaNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> kibanaNodeSpec;
 
@@ -630,11 +620,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      * 
-     * @deprecated
-     * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
+    @Deprecated
     @Export(name="masterNodeDiskType", refs={String.class}, tree="[0]")
     private Output<String> masterNodeDiskType;
 
@@ -648,11 +637,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      * 
-     * @deprecated
-     * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+     * @deprecated Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
+    @Deprecated
     @Export(name="masterNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> masterNodeSpec;
 
@@ -988,11 +976,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
+    @Deprecated
     @Export(name="warmNodeAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> warmNodeAmount;
 
@@ -1020,11 +1007,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
+    @Deprecated
     @Export(name="warmNodeDiskEncrypted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> warmNodeDiskEncrypted;
 
@@ -1038,11 +1024,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The single warm node storage space, should between 500 and 20480
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
+    @Deprecated
     @Export(name="warmNodeDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> warmNodeDiskSize;
 
@@ -1056,11 +1041,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
+    @Deprecated
     @Export(name="warmNodeDiskType", refs={String.class}, tree="[0]")
     private Output<String> warmNodeDiskType;
 
@@ -1074,11 +1058,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The warm node specifications of the Elasticsearch instance.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
+    @Deprecated
     @Export(name="warmNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> warmNodeSpec;
 

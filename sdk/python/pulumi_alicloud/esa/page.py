@@ -330,6 +330,20 @@ class Page(pulumi.CustomResource):
         __props__.__dict__["page_name"] = page_name
         return Page(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            page_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["content"] = content
+        __props__["contentType"] = content_type
+        __props__["description"] = description
+        __props__["pageName"] = page_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/page:Page', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Output[Optional[_builtins.str]]:

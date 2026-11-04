@@ -390,6 +390,24 @@ class Vsc(pulumi.CustomResource):
         __props__.__dict__["vsc_type"] = vsc_type
         return Vsc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vsc_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vsc_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["nodeId"] = node_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vscName"] = vsc_name
+        __props__["vscType"] = vsc_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/vsc:Vsc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> pulumi.Output[_builtins.str]:

@@ -576,6 +576,34 @@ class Directory(pulumi.CustomResource):
         __props__.__dict__["user_provisioning_configuration"] = user_provisioning_configuration
         return Directory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+            login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict', 'outputs.DirectoryLoginPreference']]] = None,
+            mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict', 'outputs.DirectoryMfaAuthenticationSettingInfo']]] = None,
+            mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+            password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict', 'outputs.DirectoryPasswordPolicy']]] = None,
+            saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict', 'outputs.DirectorySamlIdentityProviderConfiguration']]] = None,
+            saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict', 'outputs.DirectorySamlServiceProvider']]] = None,
+            scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict', 'outputs.DirectoryUserProvisioningConfiguration']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["directoryGlobalAccessStatus"] = directory_global_access_status
+        __props__["directoryName"] = directory_name
+        __props__["loginPreference"] = login_preference
+        __props__["mfaAuthenticationSettingInfo"] = mfa_authentication_setting_info
+        __props__["mfaAuthenticationStatus"] = mfa_authentication_status
+        __props__["passwordPolicy"] = password_policy
+        __props__["samlIdentityProviderConfiguration"] = saml_identity_provider_configuration
+        __props__["samlServiceProvider"] = saml_service_provider
+        __props__["scimSynchronizationStatus"] = scim_synchronization_status
+        __props__["userProvisioningConfiguration"] = user_provisioning_configuration
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudsso/directory:Directory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

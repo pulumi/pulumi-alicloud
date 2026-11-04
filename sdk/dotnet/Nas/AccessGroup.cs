@@ -92,7 +92,6 @@ namespace Pulumi.AliCloud.Nas
         /// - standard (default): Universal NAS
         /// - extreme: extreme NAS
         /// 
-        /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("fileSystemType")]
@@ -187,7 +186,6 @@ namespace Pulumi.AliCloud.Nas
         /// - standard (default): Universal NAS
         /// - extreme: extreme NAS
         /// 
-        /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("fileSystemType")]
@@ -243,7 +241,6 @@ namespace Pulumi.AliCloud.Nas
         /// Value:
         /// - standard (default): Universal NAS
         /// - extreme: extreme NAS
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

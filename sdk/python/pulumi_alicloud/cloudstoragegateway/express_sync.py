@@ -486,6 +486,22 @@ class ExpressSync(pulumi.CustomResource):
         __props__.__dict__["express_sync_name"] = express_sync_name
         return ExpressSync(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_region: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            express_sync_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucketName"] = bucket_name
+        __props__["bucketPrefix"] = bucket_prefix
+        __props__["bucketRegion"] = bucket_region
+        __props__["description"] = description
+        __props__["expressSyncName"] = express_sync_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudstoragegateway/expressSync:ExpressSync', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[_builtins.str]:

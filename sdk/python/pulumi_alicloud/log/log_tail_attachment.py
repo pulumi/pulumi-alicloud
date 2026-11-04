@@ -368,6 +368,18 @@ class LogTailAttachment(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return LogTailAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["logtailConfigName"] = logtail_config_name
+        __props__["machineGroupName"] = machine_group_name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/logTailAttachment:LogTailAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="logtailConfigName")
     def logtail_config_name(self) -> pulumi.Output[_builtins.str]:

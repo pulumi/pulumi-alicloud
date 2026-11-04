@@ -207,6 +207,12 @@ func (SecretParameterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretParameterState)(nil)).Elem()
 }
 
+// SecretParameterExists checks whether an existing SecretParameter resource with the given ID exists.
+func SecretParameterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretParameterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/secretParameter:SecretParameter", id, state, "", opts...)
+}
+
 type secretParameterArgs struct {
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
 	// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.

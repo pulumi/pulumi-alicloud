@@ -164,6 +164,12 @@ func (AntiBruteForceRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*antiBruteForceRuleState)(nil)).Elem()
 }
 
+// AntiBruteForceRuleExists checks whether an existing AntiBruteForceRule resource with the given ID exists.
+func AntiBruteForceRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AntiBruteForceRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule", id, state, "", opts...)
+}
+
 type antiBruteForceRuleArgs struct {
 	// The name of the defense rule.
 	AntiBruteForceRuleName string `pulumi:"antiBruteForceRuleName"`

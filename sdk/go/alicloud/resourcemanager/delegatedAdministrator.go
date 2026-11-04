@@ -124,6 +124,12 @@ func (DelegatedAdministratorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*delegatedAdministratorState)(nil)).Elem()
 }
 
+// DelegatedAdministratorExists checks whether an existing DelegatedAdministrator resource with the given ID exists.
+func DelegatedAdministratorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DelegatedAdministratorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator", id, state, "", opts...)
+}
+
 type delegatedAdministratorArgs struct {
 	// The Alibaba Cloud account ID of the member in the resource directory.
 	AccountId string `pulumi:"accountId"`

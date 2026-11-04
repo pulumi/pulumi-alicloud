@@ -286,11 +286,10 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
     /**
      * Field `period` has been deprecated from provider version 1.283.0.
      * 
-     * @deprecated
-     * Field `period` has been deprecated from provider version 1.283.0.
+     * @deprecated Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
-    @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
+    @Deprecated
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
@@ -304,11 +303,10 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
     /**
      * Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
-     * @deprecated
-     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
-    @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
+    @Deprecated
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 

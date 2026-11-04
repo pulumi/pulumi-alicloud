@@ -179,6 +179,12 @@ func (EdgeContainerAppRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeContainerAppRecordState)(nil)).Elem()
 }
 
+// EdgeContainerAppRecordExists checks whether an existing EdgeContainerAppRecord resource with the given ID exists.
+func EdgeContainerAppRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeContainerAppRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord", id, state, "", opts...)
+}
+
 type edgeContainerAppRecordArgs struct {
 	// The application ID
 	AppId string `pulumi:"appId"`

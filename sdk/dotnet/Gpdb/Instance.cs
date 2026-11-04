@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
+        /// **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Output("instanceSpec")]
         public Output<string> InstanceSpec { get; private set; } = null!;
@@ -568,7 +568,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
+        /// **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }
@@ -916,7 +916,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
         /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        /// &gt; **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
+        /// **NOTE:** For `ServerlessPro` instances, `InstanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `ServerlessResource` and `CacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }

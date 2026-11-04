@@ -128,11 +128,10 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * @deprecated
-     * Field `instantAccess` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccess` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
@@ -140,11 +139,10 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instantAccess);
     }
     /**
-     * @deprecated
-     * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
-    @Deprecated /* Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0. */
+    @Deprecated
     @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
@@ -155,11 +153,10 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

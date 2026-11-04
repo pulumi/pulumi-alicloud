@@ -359,6 +359,20 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         __props__.__dict__["site_id"] = site_id
         return EdgeContainerAppRecord(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            record_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["createTime"] = create_time
+        __props__["recordName"] = record_name
+        __props__["siteId"] = site_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

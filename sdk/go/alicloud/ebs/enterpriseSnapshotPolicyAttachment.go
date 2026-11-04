@@ -149,6 +149,12 @@ func (EnterpriseSnapshotPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseSnapshotPolicyAttachmentState)(nil)).Elem()
 }
 
+// EnterpriseSnapshotPolicyAttachmentExists checks whether an existing EnterpriseSnapshotPolicyAttachment resource with the given ID exists.
+func EnterpriseSnapshotPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseSnapshotPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment", id, state, "", opts...)
+}
+
 type enterpriseSnapshotPolicyAttachmentArgs struct {
 	// Cloud Disk ID.
 	DiskId *string `pulumi:"diskId"`

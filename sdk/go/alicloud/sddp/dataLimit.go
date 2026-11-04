@@ -279,6 +279,12 @@ func (DataLimitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataLimitState)(nil)).Elem()
 }
 
+// DataLimitExists checks whether an existing DataLimit resource with the given ID exists.
+func DataLimitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataLimitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sddp/dataLimit:DataLimit", id, state, "", opts...)
+}
+
 type dataLimitArgs struct {
 	// Whether to enable the log auditing feature. Valid values: `0`, `1`.
 	AuditStatus *int `pulumi:"auditStatus"`

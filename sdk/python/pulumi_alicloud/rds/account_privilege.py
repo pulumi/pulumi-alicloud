@@ -421,6 +421,20 @@ class AccountPrivilege(pulumi.CustomResource):
         __props__.__dict__["privilege"] = privilege
         return AccountPrivilege(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privilege: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["dbNames"] = db_names
+        __props__["instanceId"] = instance_id
+        __props__["privilege"] = privilege
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/accountPrivilege:AccountPrivilege', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[_builtins.str]:

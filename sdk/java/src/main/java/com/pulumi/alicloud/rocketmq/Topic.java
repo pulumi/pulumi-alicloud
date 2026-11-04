@@ -122,11 +122,10 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * This attribute has been deprecated.
      * 
-     * @deprecated
-     * Attribute perm has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute perm has been deprecated and suggest removing it from your template. */
+    @Deprecated
     @Export(name="perm", refs={Integer.class}, tree="[0]")
     private Output<Integer> perm;
 
@@ -176,11 +175,10 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * Replaced by `topicName` after version 1.97.0.
      * 
-     * @deprecated
-     * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
+     * @deprecated Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead. */
+    @Deprecated
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 

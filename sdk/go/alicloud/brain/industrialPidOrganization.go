@@ -114,6 +114,12 @@ func (IndustrialPidOrganizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*industrialPidOrganizationState)(nil)).Elem()
 }
 
+// IndustrialPidOrganizationExists checks whether an existing IndustrialPidOrganization resource with the given ID exists.
+func IndustrialPidOrganizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IndustrialPidOrganizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization", id, state, "", opts...)
+}
+
 type industrialPidOrganizationArgs struct {
 	// The ID of parent pid organization.
 	ParentPidOrganizationId *string `pulumi:"parentPidOrganizationId"`

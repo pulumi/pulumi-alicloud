@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// It specifies whether to disable automatic installation. 
+        /// It specifies whether to disable automatic installation.
         /// 
         /// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
         /// 

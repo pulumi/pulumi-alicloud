@@ -633,6 +633,36 @@ class SmartagFlowLog(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return SmartagFlowLog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_aging: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inactive_aging: pulumi.Input[Optional[_builtins.int]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            netflow_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            netflow_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+            netflow_version: pulumi.Input[Optional[_builtins.str]] = None,
+            output_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeAging"] = active_aging
+        __props__["description"] = description
+        __props__["flowLogName"] = flow_log_name
+        __props__["inactiveAging"] = inactive_aging
+        __props__["logstoreName"] = logstore_name
+        __props__["netflowServerIp"] = netflow_server_ip
+        __props__["netflowServerPort"] = netflow_server_port
+        __props__["netflowVersion"] = netflow_version
+        __props__["outputType"] = output_type
+        __props__["projectName"] = project_name
+        __props__["slsRegionId"] = sls_region_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:sag/smartagFlowLog:SmartagFlowLog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeAging")
     def active_aging(self) -> pulumi.Output[_builtins.int]:

@@ -214,6 +214,12 @@ func (RoutineRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routineRouteState)(nil)).Elem()
 }
 
+// RoutineRouteExists checks whether an existing RoutineRoute resource with the given ID exists.
+func RoutineRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutineRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/routineRoute:RoutineRoute", id, state, "", opts...)
+}
+
 type routineRouteArgs struct {
 	// Bypass mode. Value range:
 	// - on: Open

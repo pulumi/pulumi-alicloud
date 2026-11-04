@@ -313,6 +313,12 @@ func (KubernetesPolicyInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesPolicyInstanceState)(nil)).Elem()
 }
 
+// KubernetesPolicyInstanceExists checks whether an existing KubernetesPolicyInstance resource with the given ID exists.
+func KubernetesPolicyInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesPolicyInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance", id, state, "", opts...)
+}
+
 type kubernetesPolicyInstanceArgs struct {
 	// Policy Governance Implementation Actions
 	Action *string `pulumi:"action"`

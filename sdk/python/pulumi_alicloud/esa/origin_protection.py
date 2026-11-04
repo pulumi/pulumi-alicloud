@@ -277,6 +277,16 @@ class OriginProtection(pulumi.CustomResource):
         __props__.__dict__["site_id"] = site_id
         return OriginProtection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            origin_converge: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["originConverge"] = origin_converge
+        __props__["siteId"] = site_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/originProtection:OriginProtection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="originConverge")
     def origin_converge(self) -> pulumi.Output[Optional[_builtins.str]]:

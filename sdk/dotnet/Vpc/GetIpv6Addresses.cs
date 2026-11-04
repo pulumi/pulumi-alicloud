@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the IPv6 address. Valid values:`Pending` or `Available`. 
+        /// The status of the IPv6 address. Valid values:`Pending` or `Available`.
         /// - `Pending`: The IPv6 address is being configured.
         /// - `Available`: The IPv6 address is available.
         /// </summary>
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the IPv6 address. Valid values:`Pending` or `Available`. 
+        /// The status of the IPv6 address. Valid values:`Pending` or `Available`.
         /// - `Pending`: The IPv6 address is being configured.
         /// - `Available`: The IPv6 address is available.
         /// </summary>

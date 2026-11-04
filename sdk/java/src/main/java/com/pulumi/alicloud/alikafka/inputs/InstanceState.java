@@ -604,11 +604,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: &lt;`topicQuota`&gt; = 1000 + &lt;`partitionNum`&gt;.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      * 
-     * @deprecated
-     * Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
+     * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      * 
      */
-    @Deprecated /* Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead. */
+    @Deprecated
     @Import(name="topicQuota")
     private @Nullable Output<Integer> topicQuota;
 
@@ -618,11 +617,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: &lt;`topicQuota`&gt; = 1000 + &lt;`partitionNum`&gt;.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      * 
-     * @deprecated
-     * Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
+     * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      * 
      */
-    @Deprecated /* Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead. */
+    @Deprecated
     public Optional<Output<Integer>> topicQuota() {
         return Optional.ofNullable(this.topicQuota);
     }
@@ -1603,11 +1601,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
+         * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
          * 
          */
-        @Deprecated /* Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead. */
+        @Deprecated
         public Builder topicQuota(@Nullable Output<Integer> topicQuota) {
             $.topicQuota = topicQuota;
             return this;
@@ -1621,11 +1618,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
+         * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
          * 
          */
-        @Deprecated /* Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead. */
+        @Deprecated
         public Builder topicQuota(Integer topicQuota) {
             return topicQuota(Output.of(topicQuota));
         }

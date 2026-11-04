@@ -238,6 +238,12 @@ func (QuotaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaState)(nil)).Elem()
 }
 
+// QuotaExists checks whether an existing Quota resource with the given ID exists.
+func QuotaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:maxcompute/quota:Quota", id, state, "", opts...)
+}
+
 type quotaArgs struct {
 	// Valid values: odps_intl/odpsplus_intl/odps/odpsplus
 	// - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment

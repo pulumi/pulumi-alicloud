@@ -326,6 +326,12 @@ func (OssExportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ossExportState)(nil)).Elem()
 }
 
+// OssExportExists checks whether an existing OssExport resource with the given ID exists.
+func OssExportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OssExportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/ossExport:OssExport", id, state, "", opts...)
+}
+
 type ossExportArgs struct {
 	// The name of the oss bucket.
 	Bucket string `pulumi:"bucket"`

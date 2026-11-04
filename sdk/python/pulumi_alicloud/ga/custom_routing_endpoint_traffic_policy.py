@@ -493,6 +493,28 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return CustomRoutingEndpointTrafficPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_routing_endpoint_traffic_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict', 'outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorId"] = accelerator_id
+        __props__["address"] = address
+        __props__["customRoutingEndpointTrafficPolicyId"] = custom_routing_endpoint_traffic_policy_id
+        __props__["endpointGroupId"] = endpoint_group_id
+        __props__["endpointId"] = endpoint_id
+        __props__["listenerId"] = listener_id
+        __props__["portRanges"] = port_ranges
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[_builtins.str]:

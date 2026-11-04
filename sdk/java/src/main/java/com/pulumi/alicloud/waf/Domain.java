@@ -132,11 +132,10 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
-     * @deprecated
-     * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
+     * @deprecated Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead. */
+    @Deprecated
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 

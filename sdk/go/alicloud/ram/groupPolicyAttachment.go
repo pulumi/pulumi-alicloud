@@ -176,6 +176,12 @@ func (GroupPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupPolicyAttachmentState)(nil)).Elem()
 }
 
+// GroupPolicyAttachmentExists checks whether an existing GroupPolicyAttachment resource with the given ID exists.
+func GroupPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment", id, state, "", opts...)
+}
+
 type groupPolicyAttachmentArgs struct {
 	// The name of the group.
 	GroupName string `pulumi:"groupName"`

@@ -247,6 +247,12 @@ func (EcsSnapshotGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsSnapshotGroupState)(nil)).Elem()
 }
 
+// EcsSnapshotGroupExists checks whether an existing EcsSnapshotGroup resource with the given ID exists.
+func EcsSnapshotGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsSnapshotGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup", id, state, "", opts...)
+}
+
 type ecsSnapshotGroupArgs struct {
 	// The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`

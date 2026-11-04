@@ -495,6 +495,28 @@ class StudioApplication(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return StudioApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict', 'outputs.StudioApplicationInstance']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationName"] = application_name
+        __props__["areaId"] = area_id
+        __props__["configuration"] = configuration
+        __props__["instances"] = instances
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["templateId"] = template_id
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'alicloud:bp/studioApplication:StudioApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationName")
     def application_name(self) -> pulumi.Output[_builtins.str]:

@@ -187,6 +187,12 @@ func (StateConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stateConfigurationState)(nil)).Elem()
 }
 
+// StateConfigurationExists checks whether an existing StateConfiguration resource with the given ID exists.
+func StateConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StateConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/stateConfiguration:StateConfiguration", id, state, "", opts...)
+}
+
 type stateConfigurationArgs struct {
 	// Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
 	ConfigureMode *string `pulumi:"configureMode"`

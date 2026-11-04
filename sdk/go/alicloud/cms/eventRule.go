@@ -206,6 +206,12 @@ func (EventRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventRuleState)(nil)).Elem()
 }
 
+// EventRuleExists checks whether an existing EventRule resource with the given ID exists.
+func EventRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/eventRule:EventRule", id, state, "", opts...)
+}
+
 type eventRuleArgs struct {
 	// The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
 	ContactParameters []EventRuleContactParameter `pulumi:"contactParameters"`

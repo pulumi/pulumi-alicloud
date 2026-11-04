@@ -249,6 +249,12 @@ func (PasswordPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*passwordPolicyState)(nil)).Elem()
 }
 
+// PasswordPolicyExists checks whether an existing PasswordPolicy resource with the given ID exists.
+func PasswordPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PasswordPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/passwordPolicy:PasswordPolicy", id, state, "", opts...)
+}
+
 type passwordPolicyArgs struct {
 	// Whether to restrict logon after the password expires. Value:
 	// - true: After the password expires, you cannot log in to the console. You must reset the password of the RAM user through the main account or a RAM user with administrator permissions to log on normally.

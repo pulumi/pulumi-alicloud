@@ -70,20 +70,20 @@ import javax.annotation.Nullable;
  *             .policyName(String.format("tf-example-%s", default_.get("result")))
  *             .policyDocument("""
  *   }{{@code
- *     \"Statement\": [
+ *     }&#92;{@code "Statement}&#92;{@code ": [
  *       }{{@code
- *         \"Action\": [
- *           \"oss:ListObjects\",
- *           \"oss:GetObject\"
+ *         }&#92;{@code "Action}&#92;{@code ": [
+ *           }&#92;{@code "oss:ListObjects}&#92;{@code ",
+ *           }&#92;{@code "oss:GetObject}&#92;{@code "
  *         ],
- *         \"Effect\": \"Allow\",
- *         \"Resource\": [
- *           \"acs:oss:*:*:mybucket\",
- *           \"acs:oss:*:*:mybucket/*\"
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Resource}&#92;{@code ": [
+ *           }&#92;{@code "acs:oss:*:*:mybucket}&#92;{@code ",
+ *           }&#92;{@code "acs:oss:*:*:mybucket/*}&#92;{@code "
  *         ]
  *       }}{@code
  *     ],
- *       \"Version\": \"1\"
+ *       }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
  *   }}{@code
  *             """)
  *             .description("this is a policy test")

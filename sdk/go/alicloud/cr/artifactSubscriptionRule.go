@@ -260,6 +260,12 @@ func (ArtifactSubscriptionRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*artifactSubscriptionRuleState)(nil)).Elem()
 }
 
+// ArtifactSubscriptionRuleExists checks whether an existing ArtifactSubscriptionRule resource with the given ID exists.
+func ArtifactSubscriptionRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ArtifactSubscriptionRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/artifactSubscriptionRule:ArtifactSubscriptionRule", id, state, "", opts...)
+}
+
 type artifactSubscriptionRuleArgs struct {
 	// Whether to enable acceleration
 	Accelerate *bool `pulumi:"accelerate"`

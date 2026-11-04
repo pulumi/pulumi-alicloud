@@ -42,12 +42,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         var example = new ControlPolicy("example", ControlPolicyArgs.builder()
@@ -55,26 +55,26 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .effectScope("RAM")
  *             .policyDocument("""
- *   {
- *     \"Version\": \"1\",
- *     \"Statement\": [
- *       {
- *         \"Effect\": \"Deny\",
- *         \"Action\": [
- *           \"ram:UpdateRole\",
- *           \"ram:DeleteRole\",
- *           \"ram:AttachPolicyToRole\",
- *           \"ram:DetachPolicyFromRole\"
+ *   }{{@code
+ *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code ",
+ *     }&#92;{@code "Statement}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Deny}&#92;{@code ",
+ *         }&#92;{@code "Action}&#92;{@code ": [
+ *           }&#92;{@code "ram:UpdateRole}&#92;{@code ",
+ *           }&#92;{@code "ram:DeleteRole}&#92;{@code ",
+ *           }&#92;{@code "ram:AttachPolicyToRole}&#92;{@code ",
+ *           }&#92;{@code "ram:DetachPolicyFromRole}&#92;{@code "
  *         ],
- *         \"Resource\": \"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\"
- *       }
+ *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole}&#92;{@code "
+ *       }}{@code
  *     ]
- *   }
+ *   }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -123,7 +123,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The new description of the access control policy.
-     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (&#92;_), and hyphens (-) and must start with a letter.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
@@ -131,7 +131,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The new description of the access control policy.
-     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+     * The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (&#92;_), and hyphens (-) and must start with a letter.
      * 
      */
     public Output<Optional<String>> description() {

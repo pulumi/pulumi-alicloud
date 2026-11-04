@@ -817,6 +817,12 @@ func (DdrInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddrInstanceState)(nil)).Elem()
 }
 
+// DdrInstanceExists checks whether an existing DdrInstance resource with the given ID exists.
+func DdrInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DdrInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/ddrInstance:DdrInstance", id, state, "", opts...)
+}
+
 type ddrInstanceArgs struct {
 	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - cert

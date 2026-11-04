@@ -844,6 +844,36 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mobile: pulumi.Input[Optional[_builtins.str]] = None,
+            mobile_country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["displayName"] = display_name
+        __props__["email"] = email
+        __props__["instanceId"] = instance_id
+        __props__["mobile"] = mobile
+        __props__["mobileCountryCode"] = mobile_country_code
+        __props__["password"] = password
+        __props__["source"] = source
+        __props__["sourceUserId"] = source_user_id
+        __props__["status"] = status
+        __props__["userId"] = user_id
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

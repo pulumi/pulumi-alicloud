@@ -496,6 +496,28 @@ class SnatEntry(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return SnatEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            eip_affinity: pulumi.Input[Optional[_builtins.int]] = None,
+            snat_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            source_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["eipAffinity"] = eip_affinity
+        __props__["snatEntryId"] = snat_entry_id
+        __props__["snatEntryName"] = snat_entry_name
+        __props__["snatIp"] = snat_ip
+        __props__["snatTableId"] = snat_table_id
+        __props__["sourceCidr"] = source_cidr
+        __props__["sourceVswitchId"] = source_vswitch_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/snatEntry:SnatEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="eipAffinity")
     def eip_affinity(self) -> pulumi.Output[Optional[_builtins.int]]:

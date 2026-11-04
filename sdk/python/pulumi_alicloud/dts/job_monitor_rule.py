@@ -561,6 +561,22 @@ class JobMonitorRule(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return JobMonitorRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            phone: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["delayRuleTime"] = delay_rule_time
+        __props__["dtsJobId"] = dts_job_id
+        __props__["phone"] = phone
+        __props__["state"] = state
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:dts/jobMonitorRule:JobMonitorRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="delayRuleTime")
     def delay_rule_time(self) -> pulumi.Output[_builtins.str]:

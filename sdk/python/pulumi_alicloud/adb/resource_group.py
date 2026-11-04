@@ -867,6 +867,50 @@ class ResourceGroup(pulumi.CustomResource):
         __props__.__dict__["users"] = users
         return ResourceGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_size_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            min_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+            min_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            node_num: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterMode"] = cluster_mode
+        __props__["clusterSizeResource"] = cluster_size_resource
+        __props__["connectionString"] = connection_string
+        __props__["createTime"] = create_time
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["engine"] = engine
+        __props__["engineParams"] = engine_params
+        __props__["groupName"] = group_name
+        __props__["groupType"] = group_type
+        __props__["maxClusterCount"] = max_cluster_count
+        __props__["maxComputeResource"] = max_compute_resource
+        __props__["minClusterCount"] = min_cluster_count
+        __props__["minComputeResource"] = min_compute_resource
+        __props__["nodeNum"] = node_num
+        __props__["port"] = port
+        __props__["status"] = status
+        __props__["updateTime"] = update_time
+        __props__["user"] = user
+        __props__["users"] = users
+        return pulumi.runtime.exists_resource(None, 'alicloud:adb/resourceGroup:ResourceGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterMode")
     def cluster_mode(self) -> pulumi.Output[_builtins.str]:

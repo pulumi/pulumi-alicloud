@@ -222,6 +222,14 @@ class TemplateService(pulumi.CustomResource):
         __props__.__dict__["service_status"] = service_status
         return TemplateService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            service_status: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["serviceStatus"] = service_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:quotas/templateService:TemplateService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="serviceStatus")
     def service_status(self) -> pulumi.Output[_builtins.int]:

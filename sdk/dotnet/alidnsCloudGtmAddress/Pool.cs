@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtmAddress
         public Output<string> EnableStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Conditions for determining the health status of the address pool:  
+        /// Conditions for determining the health status of the address pool:
         /// - any_ok: At least one address in the address pool is available.
         /// - p30_ok: At least 30% of the addresses in the address pool are available.
         /// - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtmAddress
         public Output<string?> Remark { get; private set; } = null!;
 
         /// <summary>
-        /// Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        /// Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
         /// - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
         /// - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtmAddress
         public Input<string> EnableStatus { get; set; } = null!;
 
         /// <summary>
-        /// Conditions for determining the health status of the address pool:  
+        /// Conditions for determining the health status of the address pool:
         /// - any_ok: At least one address in the address pool is available.
         /// - p30_ok: At least 30% of the addresses in the address pool are available.
         /// - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtmAddress
         public Input<string>? Remark { get; set; }
 
         /// <summary>
-        /// Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        /// Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
         /// - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
         /// - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         /// </summary>
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtmAddress
         public Input<string>? EnableStatus { get; set; }
 
         /// <summary>
-        /// Conditions for determining the health status of the address pool:  
+        /// Conditions for determining the health status of the address pool:
         /// - any_ok: At least one address in the address pool is available.
         /// - p30_ok: At least 30% of the addresses in the address pool are available.
         /// - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtmAddress
         public Input<string>? Remark { get; set; }
 
         /// <summary>
-        /// Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        /// Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
         /// - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
         /// - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         /// </summary>

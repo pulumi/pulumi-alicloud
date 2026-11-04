@@ -118,6 +118,12 @@ func (DomainGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainGroupState)(nil)).Elem()
 }
 
+// DomainGroupExists checks whether an existing DomainGroup resource with the given ID exists.
+func DomainGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/domainGroup:DomainGroup", id, state, "", opts...)
+}
+
 type domainGroupArgs struct {
 	// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
 	DomainGroupName *string `pulumi:"domainGroupName"`

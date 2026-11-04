@@ -150,6 +150,12 @@ func (BucketUserDefinedLogFieldsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketUserDefinedLogFieldsState)(nil)).Elem()
 }
 
+// BucketUserDefinedLogFieldsExists checks whether an existing BucketUserDefinedLogFields resource with the given ID exists.
+func BucketUserDefinedLogFieldsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketUserDefinedLogFieldsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields", id, state, "", opts...)
+}
+
 type bucketUserDefinedLogFieldsArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

@@ -217,6 +217,12 @@ func (OssBackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ossBackupPlanState)(nil)).Elem()
 }
 
+// OssBackupPlanExists checks whether an existing OssBackupPlan resource with the given ID exists.
+func OssBackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OssBackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/ossBackupPlan:OssBackupPlan", id, state, "", opts...)
+}
+
 type ossBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`

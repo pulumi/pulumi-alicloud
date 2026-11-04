@@ -157,6 +157,12 @@ func (IpamIpamPoolCidrState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipamIpamPoolCidrState)(nil)).Elem()
 }
 
+// IpamIpamPoolCidrExists checks whether an existing IpamIpamPoolCidr resource with the given ID exists.
+func IpamIpamPoolCidrExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpamIpamPoolCidrState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr", id, state, "", opts...)
+}
+
 type ipamIpamPoolCidrArgs struct {
 	// The CIDR address segment to be preset.
 	Cidr *string `pulumi:"cidr"`

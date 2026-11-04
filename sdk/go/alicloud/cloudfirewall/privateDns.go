@@ -271,6 +271,12 @@ func (PrivateDnsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateDnsState)(nil)).Elem()
 }
 
+// PrivateDnsExists checks whether an existing PrivateDns resource with the given ID exists.
+func PrivateDnsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivateDnsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/privateDns:PrivateDns", id, state, "", opts...)
+}
+
 type privateDnsArgs struct {
 	// The name of Private DNS instance
 	AccessInstanceName string `pulumi:"accessInstanceName"`

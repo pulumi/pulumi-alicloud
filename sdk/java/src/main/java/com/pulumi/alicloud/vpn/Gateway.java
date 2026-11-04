@@ -267,11 +267,10 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
+    @Deprecated
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -299,11 +298,10 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

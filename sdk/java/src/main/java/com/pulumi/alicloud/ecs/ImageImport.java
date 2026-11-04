@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-image-import-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .content("""
  *     # -*- coding: utf-8 -*-
  *     def handler(event, context):
- *     print \"hello world\"
+ *     print }&#92;{@code "hello world}&#92;{@code "
  *     return 'hello world'
  *             """)
  *             .build());
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

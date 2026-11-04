@@ -161,6 +161,12 @@ func (RouteTableAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableAttachmentState)(nil)).Elem()
 }
 
+// RouteTableAttachmentExists checks whether an existing RouteTableAttachment resource with the given ID exists.
+func RouteTableAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteTableAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/routeTableAttachment:RouteTableAttachment", id, state, "", opts...)
+}
+
 type routeTableAttachmentArgs struct {
 	// The ID of the route table to be bound to the switch.
 	RouteTableId string `pulumi:"routeTableId"`

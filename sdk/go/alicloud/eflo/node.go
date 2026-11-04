@@ -478,6 +478,12 @@ func (NodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeState)(nil)).Elem()
 }
 
+// NodeExists checks whether an existing Node resource with the given ID exists.
+func NodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/node:Node", id, state, "", opts...)
+}
+
 type nodeArgs struct {
 	// Billing cycle
 	//

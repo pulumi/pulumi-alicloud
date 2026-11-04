@@ -128,7 +128,7 @@ public final class CertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
@@ -136,7 +136,7 @@ public final class CertArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+     * @return Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      * 
      */
@@ -619,7 +619,7 @@ public final class CertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+         * @param countryCode Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
          * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
          * 
          * @return builder
@@ -631,7 +631,7 @@ public final class CertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
+         * @param countryCode Country code of the organization associated with the subordinate CA certificate that issued this certificate.&#92;
          * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
          * 
          * @return builder

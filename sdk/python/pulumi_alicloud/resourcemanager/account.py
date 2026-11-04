@@ -743,6 +743,42 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            abandon_able_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            abandonable_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            join_method: pulumi.Input[Optional[_builtins.str]] = None,
+            join_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payer_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resell_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["abandonAbleCheckIds"] = abandon_able_check_ids
+        __props__["abandonableCheckIds"] = abandonable_check_ids
+        __props__["accountNamePrefix"] = account_name_prefix
+        __props__["displayName"] = display_name
+        __props__["folderId"] = folder_id
+        __props__["forceDelete"] = force_delete
+        __props__["joinMethod"] = join_method
+        __props__["joinTime"] = join_time
+        __props__["modifyTime"] = modify_time
+        __props__["payerAccountId"] = payer_account_id
+        __props__["resellAccountType"] = resell_account_type
+        __props__["resourceDirectoryId"] = resource_directory_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="abandonAbleCheckIds")
     @_utilities.deprecated("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")

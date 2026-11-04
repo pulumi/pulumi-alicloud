@@ -220,6 +220,12 @@ func (VpcEndpointServiceConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointServiceConnectionState)(nil)).Elem()
 }
 
+// VpcEndpointServiceConnectionExists checks whether an existing VpcEndpointServiceConnection resource with the given ID exists.
+func VpcEndpointServiceConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcEndpointServiceConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection", id, state, "", opts...)
+}
+
 type vpcEndpointServiceConnectionArgs struct {
 	// The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
 	//

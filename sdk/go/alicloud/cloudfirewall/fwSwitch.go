@@ -229,6 +229,12 @@ func (FwSwitchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fwSwitchState)(nil)).Elem()
 }
 
+// FwSwitchExists checks whether an existing FwSwitch resource with the given ID exists.
+func FwSwitchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FwSwitchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/fwSwitch:FwSwitch", id, state, "", opts...)
+}
+
 type fwSwitchArgs struct {
 	// Specifies whether to precheck the request only. Valid values: `true`, `false`.
 	//

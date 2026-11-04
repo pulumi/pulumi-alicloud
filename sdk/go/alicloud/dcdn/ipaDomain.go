@@ -160,6 +160,12 @@ func (IpaDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipaDomainState)(nil)).Elem()
 }
 
+// IpaDomainExists checks whether an existing IpaDomain resource with the given ID exists.
+func IpaDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpaDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/ipaDomain:IpaDomain", id, state, "", opts...)
+}
+
 type ipaDomainArgs struct {
 	// The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
 	DomainName string `pulumi:"domainName"`

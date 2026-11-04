@@ -459,6 +459,22 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["zone_name"] = zone_name
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict', 'outputs.RuleForwardIp']]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpointId"] = endpoint_id
+        __props__["forwardIps"] = forward_ips
+        __props__["ruleName"] = rule_name
+        __props__["type"] = type
+        __props__["zoneName"] = zone_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Output[_builtins.str]:

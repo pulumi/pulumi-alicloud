@@ -841,6 +841,44 @@ class EdgeContainerApp(pulumi.CustomResource):
         __props__.__dict__["target_port"] = target_port
         return EdgeContainerApp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_container_app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_succ_times: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            remarks: pulumi.Input[Optional[_builtins.str]] = None,
+            service_port: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_port: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["edgeContainerAppName"] = edge_container_app_name
+        __props__["healthCheckFailTimes"] = health_check_fail_times
+        __props__["healthCheckHost"] = health_check_host
+        __props__["healthCheckHttpCode"] = health_check_http_code
+        __props__["healthCheckInterval"] = health_check_interval
+        __props__["healthCheckMethod"] = health_check_method
+        __props__["healthCheckPort"] = health_check_port
+        __props__["healthCheckSuccTimes"] = health_check_succ_times
+        __props__["healthCheckTimeout"] = health_check_timeout
+        __props__["healthCheckType"] = health_check_type
+        __props__["healthCheckUri"] = health_check_uri
+        __props__["remarks"] = remarks
+        __props__["servicePort"] = service_port
+        __props__["status"] = status
+        __props__["targetPort"] = target_port
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/edgeContainerApp:EdgeContainerApp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

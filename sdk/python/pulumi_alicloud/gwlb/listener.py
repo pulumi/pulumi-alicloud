@@ -594,6 +594,28 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["tcp_idle_timeout"] = tcp_idle_timeout
         return Listener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tcp_idle_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["listenerDescription"] = listener_description
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["regionId"] = region_id
+        __props__["serverGroupId"] = server_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["tcpIdleTimeout"] = tcp_idle_timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:gwlb/listener:Listener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

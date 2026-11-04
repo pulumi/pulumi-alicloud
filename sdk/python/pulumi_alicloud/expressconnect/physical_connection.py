@@ -821,6 +821,40 @@ class PhysicalConnection(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return PhysicalConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            order_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPointId"] = access_point_id
+        __props__["bandwidth"] = bandwidth
+        __props__["circuitCode"] = circuit_code
+        __props__["description"] = description
+        __props__["lineOperator"] = line_operator
+        __props__["orderId"] = order_id
+        __props__["peerLocation"] = peer_location
+        __props__["period"] = period
+        __props__["physicalConnectionName"] = physical_connection_name
+        __props__["portType"] = port_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["redundantPhysicalConnectionId"] = redundant_physical_connection_id
+        __props__["status"] = status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/physicalConnection:PhysicalConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Output[_builtins.str]:

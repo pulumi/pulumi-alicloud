@@ -459,6 +459,28 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return RouterExpressConnectRouter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alibaba_side_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alibabaSideAsn"] = alibaba_side_asn
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["ecrName"] = ecr_name
+        __props__["regions"] = regions
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alibabaSideAsn")
     def alibaba_side_asn(self) -> pulumi.Output[_builtins.int]:

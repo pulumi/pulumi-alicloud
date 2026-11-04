@@ -269,6 +269,12 @@ func (TransitRouterVbrAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterVbrAttachmentState)(nil)).Elem()
 }
 
+// TransitRouterVbrAttachmentExists checks whether an existing TransitRouterVbrAttachment resource with the given ID exists.
+func TransitRouterVbrAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterVbrAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment", id, state, "", opts...)
+}
+
 type transitRouterVbrAttachmentArgs struct {
 	// AutoPublishRouteEnabled
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`

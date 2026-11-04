@@ -1000,6 +1000,56 @@ class ElasticityAssurance(pulumi.CustomResource):
         __props__.__dict__["zone_ids"] = zone_ids
         return ElasticityAssurance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assurance_times: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticity_assurance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            private_pool_options_match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+            private_pool_options_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            used_assurance_times: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assuranceTimes"] = assurance_times
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["autoRenewPeriodUnit"] = auto_renew_period_unit
+        __props__["description"] = description
+        __props__["elasticityAssuranceId"] = elasticity_assurance_id
+        __props__["endTime"] = end_time
+        __props__["instanceAmount"] = instance_amount
+        __props__["instanceChargeType"] = instance_charge_type
+        __props__["instanceType"] = instance_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["privatePoolOptionsMatchCriteria"] = private_pool_options_match_criteria
+        __props__["privatePoolOptionsName"] = private_pool_options_name
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["startTime"] = start_time
+        __props__["startTimeType"] = start_time_type
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["usedAssuranceTimes"] = used_assurance_times
+        __props__["zoneIds"] = zone_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/elasticityAssurance:ElasticityAssurance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assuranceTimes")
     def assurance_times(self) -> pulumi.Output[_builtins.str]:

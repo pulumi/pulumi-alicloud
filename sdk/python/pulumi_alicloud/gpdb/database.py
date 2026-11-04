@@ -496,6 +496,26 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            collate: pulumi.Input[Optional[_builtins.str]] = None,
+            ctype: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["characterSetName"] = character_set_name
+        __props__["collate"] = collate
+        __props__["ctype"] = ctype
+        __props__["databaseName"] = database_name
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["description"] = description
+        __props__["owner"] = owner
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/database:Database', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="characterSetName")
     def character_set_name(self) -> pulumi.Output[Optional[_builtins.str]]:

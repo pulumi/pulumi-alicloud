@@ -556,6 +556,26 @@ class ReportTemplate(pulumi.CustomResource):
         __props__.__dict__["subscription_frequency"] = subscription_frequency
         return ReportTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
+            report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
+            report_language: pulumi.Input[Optional[_builtins.str]] = None,
+            report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict', 'outputs.ReportTemplateReportScope']]]]] = None,
+            report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
+            report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["reportFileFormats"] = report_file_formats
+        __props__["reportGranularity"] = report_granularity
+        __props__["reportLanguage"] = report_language
+        __props__["reportScopes"] = report_scopes
+        __props__["reportTemplateDescription"] = report_template_description
+        __props__["reportTemplateName"] = report_template_name
+        __props__["subscriptionFrequency"] = subscription_frequency
+        return pulumi.runtime.exists_resource(None, 'alicloud:config/reportTemplate:ReportTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="reportFileFormats")
     def report_file_formats(self) -> pulumi.Output[Optional[_builtins.str]]:

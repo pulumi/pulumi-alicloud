@@ -263,6 +263,12 @@ func (StreamingDataSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamingDataSourceState)(nil)).Elem()
 }
 
+// StreamingDataSourceExists checks whether an existing StreamingDataSource resource with the given ID exists.
+func StreamingDataSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamingDataSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/streamingDataSource:StreamingDataSource", id, state, "", opts...)
+}
+
 type streamingDataSourceArgs struct {
 	// The configurations of the data source.
 	DataSourceConfig string `pulumi:"dataSourceConfig"`

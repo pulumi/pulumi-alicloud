@@ -188,6 +188,12 @@ func (HistoryDeliveryJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*historyDeliveryJobState)(nil)).Elem()
 }
 
+// HistoryDeliveryJobExists checks whether an existing HistoryDeliveryJob resource with the given ID exists.
+func HistoryDeliveryJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HistoryDeliveryJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob", id, state, "", opts...)
+}
+
 type historyDeliveryJobArgs struct {
 	// The Track Name.
 	TrailName string `pulumi:"trailName"`

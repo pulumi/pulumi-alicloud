@@ -220,6 +220,12 @@ func (KeyPairAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairAttachmentState)(nil)).Elem()
 }
 
+// KeyPairAttachmentExists checks whether an existing KeyPairAttachment resource with the given ID exists.
+func KeyPairAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyPairAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/keyPairAttachment:KeyPairAttachment", id, state, "", opts...)
+}
+
 type keyPairAttachmentArgs struct {
 	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 	Force *bool `pulumi:"force"`

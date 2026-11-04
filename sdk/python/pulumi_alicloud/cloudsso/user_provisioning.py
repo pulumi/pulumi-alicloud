@@ -635,6 +635,36 @@ class UserProvisioning(pulumi.CustomResource):
         __props__.__dict__["user_provisioning_statistics"] = user_provisioning_statistics
         return UserProvisioning(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            duplication_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_provisioning_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_provisioning_statistics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict', 'outputs.UserProvisioningUserProvisioningStatistic']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["deletionStrategy"] = deletion_strategy
+        __props__["description"] = description
+        __props__["directoryId"] = directory_id
+        __props__["duplicationStrategy"] = duplication_strategy
+        __props__["principalId"] = principal_id
+        __props__["principalType"] = principal_type
+        __props__["status"] = status
+        __props__["targetId"] = target_id
+        __props__["targetType"] = target_type
+        __props__["userProvisioningId"] = user_provisioning_id
+        __props__["userProvisioningStatistics"] = user_provisioning_statistics
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudsso/userProvisioning:UserProvisioning', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -585,6 +585,32 @@ class SecretParameter(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return SecretParameter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            constraints: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_parameter_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["constraints"] = constraints
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dkmsInstanceId"] = dkms_instance_id
+        __props__["keyId"] = key_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["secretParameterName"] = secret_parameter_name
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/secretParameter:SecretParameter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def constraints(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -207,6 +207,12 @@ func (TransitRouterEcrAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterEcrAttachmentState)(nil)).Elem()
 }
 
+// TransitRouterEcrAttachmentExists checks whether an existing TransitRouterEcrAttachment resource with the given ID exists.
+func TransitRouterEcrAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterEcrAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment", id, state, "", opts...)
+}
+
 type transitRouterEcrAttachmentArgs struct {
 	// CenId
 	CenId *string `pulumi:"cenId"`

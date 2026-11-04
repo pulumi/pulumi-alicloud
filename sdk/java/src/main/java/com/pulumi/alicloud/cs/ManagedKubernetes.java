@@ -96,12 +96,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example-");
  *         final var vpcId = config.get("vpcId").orElse("");
@@ -120,19 +120,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var default = KmsFunctions.getKeys(GetKeysArgs.builder()
- *             .filters("[{\"Key\":\"KeyState\",\"Values\":[\"Enabled\"]},{\"Key\":\"KeySpec\",\"Values\":[\"Aliyun_AES_256\"]},{\"Key\":\"KeyUsage\",\"Values\":[\"ENCRYPT/DECRYPT\"]},{\"Key\":\"CreatorType\",\"Values\":[\"User\"]}]")
+ *             .filters("[}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "KeyState}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Enabled}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "KeySpec}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "Aliyun_AES_256}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "KeyUsage}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "ENCRYPT/DECRYPT}&#92;{@code "]}}{@code ,}{&#92;{@code "Key}&#92;{@code ":}&#92;{@code "CreatorType}&#92;{@code ",}&#92;{@code "Values}&#92;{@code ":[}&#92;{@code "User}&#92;{@code "]}}{@code ]")
  *             .build());
  * 
  *         // If there is not specifying vpc_id, the module will launch a new vpc
- *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) }{{@code
  *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // According to the vswitch cidr blocks to launch several vswitches
- *         for (var i = 0; i < (vswitchIds.size() > 0 ? 0 : vswitchCidrs.size()); i++) {
+ *         for (var i = 0; i < (vswitchIds.size() > 0 ? 0 : vswitchCidrs.size()); i++) }{{@code
  *             new Switch("vswitches-" + i, SwitchArgs.builder()
  *                 .vpcId(vpcId == "" ? StdFunctions.join(JoinArgs.builder()
  *                     .separator("")
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // According to the vswitch cidr blocks to launch several vswitches
- *         for (var i = 0; i < (terwayVswitchIds.size() > 0 ? 0 : terwayVswitchCidrs.size()); i++) {
+ *         for (var i = 0; i < (terwayVswitchIds.size() > 0 ? 0 : terwayVswitchCidrs.size()); i++) }{{@code
  *             new Switch("terwayVswitches-" + i, SwitchArgs.builder()
  *                 .vpcId(vpcId == "" ? StdFunctions.join(JoinArgs.builder()
  *                     .separator("")
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         var k8s = new ManagedKubernetes("k8s", ManagedKubernetesArgs.builder()
  *             .namePrefix(name)
  *             .clusterSpec("ack.pro.small")
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -562,11 +562,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * (List, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      * 
-     * @deprecated
-     * Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+     * @deprecated Field &#39;certificate_authority&#39; has been deprecated from provider version 1.248.0. Please use the attribute &#39;certificate_authority&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
-    @Deprecated /* Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+    @Deprecated
     @Export(name="certificateAuthorities", refs={List.class,ManagedKubernetesCertificateAuthority.class}, tree="[0,1]")
     private Output<List<ManagedKubernetesCertificateAuthority>> certificateAuthorities;
 
@@ -580,11 +579,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
-     * @deprecated
-     * Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
+     * @deprecated Field &#39;client_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      * 
      */
-    @Deprecated /* Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it. */
+    @Deprecated
     @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
@@ -598,11 +596,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
-     * @deprecated
-     * Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
+     * @deprecated Field &#39;client_key&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.client_key&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      * 
      */
-    @Deprecated /* Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it. */
+    @Deprecated
     @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
@@ -618,11 +615,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      * 
      * *Removed params*
      * 
-     * @deprecated
-     * Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
+     * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
      */
-    @Deprecated /* Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it. */
+    @Deprecated
     @Export(name="clusterCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterCaCert;
 
@@ -874,11 +870,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
+     * @deprecated Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU */
+    @Deprecated
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
@@ -1360,11 +1355,10 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      * 
-     * @deprecated
-     * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
+     * @deprecated Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
      * 
      */
-    @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
+    @Deprecated
     @Export(name="workerVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> workerVswitchIds;
 

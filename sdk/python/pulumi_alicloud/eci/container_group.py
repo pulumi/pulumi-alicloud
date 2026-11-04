@@ -1586,6 +1586,78 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ContainerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict', 'outputs.ContainerGroupAcrRegistryInfo']]]]] = None,
+            auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict', 'outputs.ContainerGroupContainer']]]]] = None,
+            cpu: pulumi.Input[Optional[_builtins.float]] = None,
+            dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict', 'outputs.ContainerGroupDnsConfig']]] = None,
+            dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict', 'outputs.ContainerGroupHostAlias']]]]] = None,
+            image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict', 'outputs.ContainerGroupImageRegistryCredential']]]]] = None,
+            init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict', 'outputs.ContainerGroupInitContainer']]]]] = None,
+            insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            intranet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.float]] = None,
+            plain_http_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict', 'outputs.ContainerGroupSecurityContext']]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict', 'outputs.ContainerGroupVolume']]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acrRegistryInfos"] = acr_registry_infos
+        __props__["autoCreateEip"] = auto_create_eip
+        __props__["autoMatchImageCache"] = auto_match_image_cache
+        __props__["containerGroupName"] = container_group_name
+        __props__["containers"] = containers
+        __props__["cpu"] = cpu
+        __props__["dnsConfig"] = dns_config
+        __props__["dnsPolicy"] = dns_policy
+        __props__["eipBandwidth"] = eip_bandwidth
+        __props__["eipInstanceId"] = eip_instance_id
+        __props__["ephemeralStorage"] = ephemeral_storage
+        __props__["hostAliases"] = host_aliases
+        __props__["imageRegistryCredentials"] = image_registry_credentials
+        __props__["initContainers"] = init_containers
+        __props__["insecureRegistry"] = insecure_registry
+        __props__["instanceType"] = instance_type
+        __props__["internetIp"] = internet_ip
+        __props__["intranetIp"] = intranet_ip
+        __props__["memory"] = memory
+        __props__["plainHttpRegistry"] = plain_http_registry
+        __props__["ramRoleName"] = ram_role_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["restartPolicy"] = restart_policy
+        __props__["securityContext"] = security_context
+        __props__["securityGroupId"] = security_group_id
+        __props__["spotPriceLimit"] = spot_price_limit
+        __props__["spotStrategy"] = spot_strategy
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["terminationGracePeriodSeconds"] = termination_grace_period_seconds
+        __props__["volumes"] = volumes
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:eci/containerGroup:ContainerGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupAcrRegistryInfo']]]:

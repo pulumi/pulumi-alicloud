@@ -1007,6 +1007,48 @@ class PcaCertificate(pulumi.CustomResource):
         __props__.__dict__["years"] = years
         return PcaCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            crl_day: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_crl: pulumi.Input[Optional[_builtins.bool]] = None,
+            extended_key_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            locality: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            path_len_constraint: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            years: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["aliasName"] = alias_name
+        __props__["certificateType"] = certificate_type
+        __props__["commonName"] = common_name
+        __props__["countryCode"] = country_code
+        __props__["crlDay"] = crl_day
+        __props__["enableCrl"] = enable_crl
+        __props__["extendedKeyUsages"] = extended_key_usages
+        __props__["locality"] = locality
+        __props__["organization"] = organization
+        __props__["organizationUnit"] = organization_unit
+        __props__["parentIdentifier"] = parent_identifier
+        __props__["pathLenConstraint"] = path_len_constraint
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["state"] = state
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["years"] = years
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

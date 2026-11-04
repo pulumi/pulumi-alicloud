@@ -243,11 +243,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
      * 
-     * @deprecated
-     * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+     * @deprecated Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
+    @Deprecated
     @Export(name="totalDatabases", refs={String.class}, tree="[0]")
     private Output<String> totalDatabases;
 
@@ -261,11 +260,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
      * 
-     * @deprecated
-     * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+     * @deprecated Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
+    @Deprecated
     @Export(name="totalDictionaries", refs={String.class}, tree="[0]")
     private Output<String> totalDictionaries;
 

@@ -424,6 +424,22 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return VpcEndpointServiceConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["dryRun"] = dry_run
+        __props__["endpointId"] = endpoint_id
+        __props__["serviceId"] = service_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:

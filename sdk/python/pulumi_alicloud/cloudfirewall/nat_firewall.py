@@ -727,6 +727,36 @@ class NatFirewall(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NatFirewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict', 'outputs.NatFirewallNatRouteEntryList']]]]] = None,
+            proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_no: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_auto: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["firewallSwitch"] = firewall_switch
+        __props__["lang"] = lang
+        __props__["natGatewayId"] = nat_gateway_id
+        __props__["natRouteEntryLists"] = nat_route_entry_lists
+        __props__["proxyName"] = proxy_name
+        __props__["regionNo"] = region_no
+        __props__["status"] = status
+        __props__["strictMode"] = strict_mode
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchAuto"] = vswitch_auto
+        __props__["vswitchCidr"] = vswitch_cidr
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/natFirewall:NatFirewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="firewallSwitch")
     def firewall_switch(self) -> pulumi.Output[Optional[_builtins.str]]:

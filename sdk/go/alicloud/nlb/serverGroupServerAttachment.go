@@ -233,6 +233,12 @@ func (ServerGroupServerAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupServerAttachmentState)(nil)).Elem()
 }
 
+// ServerGroupServerAttachmentExists checks whether an existing ServerGroupServerAttachment resource with the given ID exists.
+func ServerGroupServerAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerGroupServerAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment", id, state, "", opts...)
+}
+
 type serverGroupServerAttachmentArgs struct {
 	// The description of the servers.
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).

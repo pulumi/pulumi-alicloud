@@ -379,6 +379,24 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["remark"] = remark
         return Disk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["diskName"] = disk_name
+        __props__["diskSize"] = disk_size
+        __props__["instanceId"] = instance_id
+        __props__["regionId"] = region_id
+        __props__["remark"] = remark
+        return pulumi.runtime.exists_resource(None, 'alicloud:simpleapplicationserver/disk:Disk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

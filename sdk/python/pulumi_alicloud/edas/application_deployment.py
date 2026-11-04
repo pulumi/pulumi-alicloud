@@ -407,6 +407,22 @@ class ApplicationDeployment(pulumi.CustomResource):
         __props__.__dict__["war_url"] = war_url
         return ApplicationDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            war_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["groupId"] = group_id
+        __props__["lastPackageVersion"] = last_package_version
+        __props__["packageVersion"] = package_version
+        __props__["warUrl"] = war_url
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/applicationDeployment:ApplicationDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

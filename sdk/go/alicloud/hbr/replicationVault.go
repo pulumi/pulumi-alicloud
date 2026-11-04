@@ -192,6 +192,12 @@ func (ReplicationVaultState) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationVaultState)(nil)).Elem()
 }
 
+// ReplicationVaultExists checks whether an existing ReplicationVault resource with the given ID exists.
+func ReplicationVaultExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReplicationVaultState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/replicationVault:ReplicationVault", id, state, "", opts...)
+}
+
 type replicationVaultArgs struct {
 	// The description of the backup vault.
 	Description *string `pulumi:"description"`

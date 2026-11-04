@@ -161,6 +161,12 @@ func (LogConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logConfigState)(nil)).Elem()
 }
 
+// LogConfigExists checks whether an existing LogConfig resource with the given ID exists.
+func LogConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/logConfig:LogConfig", id, state, "", opts...)
+}
+
 type logConfigArgs struct {
 	// The type the of log. Valid values: `PROVIDER`.
 	LogType string `pulumi:"logType"`

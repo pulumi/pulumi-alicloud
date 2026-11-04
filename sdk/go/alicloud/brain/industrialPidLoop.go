@@ -170,6 +170,12 @@ func (IndustrialPidLoopState) ElementType() reflect.Type {
 	return reflect.TypeOf((*industrialPidLoopState)(nil)).Elem()
 }
 
+// IndustrialPidLoopExists checks whether an existing IndustrialPidLoop resource with the given ID exists.
+func IndustrialPidLoopExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IndustrialPidLoopState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:brain/industrialPidLoop:IndustrialPidLoop", id, state, "", opts...)
+}
+
 type industrialPidLoopArgs struct {
 	// The Pid Loop Configuration.
 	PidLoopConfiguration string `pulumi:"pidLoopConfiguration"`

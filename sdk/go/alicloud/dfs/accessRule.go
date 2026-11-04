@@ -171,6 +171,12 @@ func (AccessRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessRuleState)(nil)).Elem()
 }
 
+// AccessRuleExists checks whether an existing AccessRule resource with the given ID exists.
+func AccessRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dfs/accessRule:AccessRule", id, state, "", opts...)
+}
+
 type accessRuleArgs struct {
 	// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
 	AccessGroupId string `pulumi:"accessGroupId"`

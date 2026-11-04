@@ -265,6 +265,12 @@ func (EnterpriseProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseProxyState)(nil)).Elem()
 }
 
+// EnterpriseProxyExists checks whether an existing EnterpriseProxy resource with the given ID exists.
+func EnterpriseProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/enterpriseProxy:EnterpriseProxy", id, state, "", opts...)
+}
+
 type enterpriseProxyArgs struct {
 	// The ID of the database instance.
 	InstanceId string `pulumi:"instanceId"`

@@ -474,6 +474,38 @@ class HandshakeAcceptance(pulumi.CustomResource):
         __props__.__dict__["target_type"] = target_type
         return HandshakeAcceptance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            handshake_id: pulumi.Input[Optional[_builtins.str]] = None,
+            invited_account_real_name: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_real_name: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_entity: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["expireTime"] = expire_time
+        __props__["handshakeId"] = handshake_id
+        __props__["invitedAccountRealName"] = invited_account_real_name
+        __props__["masterAccountId"] = master_account_id
+        __props__["masterAccountName"] = master_account_name
+        __props__["masterAccountRealName"] = master_account_real_name
+        __props__["modifyTime"] = modify_time
+        __props__["note"] = note
+        __props__["resourceDirectoryId"] = resource_directory_id
+        __props__["status"] = status
+        __props__["targetEntity"] = target_entity
+        __props__["targetType"] = target_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/handshakeAcceptance:HandshakeAcceptance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

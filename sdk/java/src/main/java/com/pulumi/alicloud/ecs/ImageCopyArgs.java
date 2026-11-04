@@ -105,20 +105,18 @@ public final class ImageCopyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
+     * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
+     * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -322,11 +320,10 @@ public final class ImageCopyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
+         * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
          * 
          */
-        @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -335,11 +332,10 @@ public final class ImageCopyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
+         * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
          * 
          */
-        @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

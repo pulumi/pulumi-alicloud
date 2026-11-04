@@ -436,6 +436,12 @@ func (RocketMQInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rocketMQInstanceState)(nil)).Elem()
 }
 
+// RocketMQInstanceExists checks whether an existing RocketMQInstance resource with the given ID exists.
+func RocketMQInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RocketMQInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rocketmq/rocketMQInstance:RocketMQInstance", id, state, "", opts...)
+}
+
 type rocketMQInstanceArgs struct {
 	// The access control list for the instance. See `aclInfo` below.
 	AclInfo *RocketMQInstanceAclInfo `pulumi:"aclInfo"`

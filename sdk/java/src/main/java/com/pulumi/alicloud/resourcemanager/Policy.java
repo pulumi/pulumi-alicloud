@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Resource Manager Policy resource.\
+ * Provides a Resource Manager Policy resource.&#92;
  * For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
  * 
  * &gt; **NOTE:** Available since v1.83.0.
@@ -40,30 +40,30 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
  *         var example = new Policy("example", PolicyArgs.builder()
  *             .policyName(name)
  *             .policyDocument("""
- * \t\t{
- * \t\t\t\"Statement\": [{
- * \t\t\t\t\"Action\": [\"oss:*\"],
- * \t\t\t\t\"Effect\": \"Allow\",
- * \t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]
- * \t\t\t}],
- * \t\t\t\"Version\": \"1\"
- * \t\t}
+ * }&#92;{@code t}&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": [}&#92;{@code "oss:*}&#92;{@code "],
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": [}&#92;{@code "acs:oss:*:*:*}&#92;{@code "]
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code ],
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -83,11 +83,10 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * The version of the policy. Default to v1.
      * 
-     * @deprecated
-     * Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
+     * @deprecated Field &#39;default_version&#39; has been deprecated from provider version 1.90.0
      * 
      */
-    @Deprecated /* Field 'default_version' has been deprecated from provider version 1.90.0 */
+    @Deprecated
     @Export(name="defaultVersion", refs={String.class}, tree="[0]")
     private Output<String> defaultVersion;
 

@@ -1368,6 +1368,60 @@ class StreamingJob(pulumi.CustomResource):
         __props__.__dict__["write_mode"] = write_mode
         return StreamingJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            consistency: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dest_database: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_table: pulumi.Input[Optional[_builtins.str]] = None,
+            error_limit_count: pulumi.Input[Optional[_builtins.int]] = None,
+            fallback_offset: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_config: pulumi.Input[Optional[_builtins.str]] = None,
+            job_description: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            src_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            try_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            update_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            write_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["consistency"] = consistency
+        __props__["createTime"] = create_time
+        __props__["dataSourceId"] = data_source_id
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["destColumns"] = dest_columns
+        __props__["destDatabase"] = dest_database
+        __props__["destSchema"] = dest_schema
+        __props__["destTable"] = dest_table
+        __props__["errorLimitCount"] = error_limit_count
+        __props__["fallbackOffset"] = fallback_offset
+        __props__["groupName"] = group_name
+        __props__["jobConfig"] = job_config
+        __props__["jobDescription"] = job_description
+        __props__["jobId"] = job_id
+        __props__["jobName"] = job_name
+        __props__["matchColumns"] = match_columns
+        __props__["mode"] = mode
+        __props__["password"] = password
+        __props__["srcColumns"] = src_columns
+        __props__["status"] = status
+        __props__["tryRun"] = try_run
+        __props__["updateColumns"] = update_columns
+        __props__["writeMode"] = write_mode
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/streamingJob:StreamingJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output[Optional[_builtins.str]]:

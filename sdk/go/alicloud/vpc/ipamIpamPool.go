@@ -260,6 +260,12 @@ func (IpamIpamPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipamIpamPoolState)(nil)).Elem()
 }
 
+// IpamIpamPoolExists checks whether an existing IpamIpamPool resource with the given ID exists.
+func IpamIpamPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpamIpamPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipamIpamPool:IpamIpamPool", id, state, "", opts...)
+}
+
 type ipamIpamPoolArgs struct {
 	// The default network mask assigned by the IPAM address pool.
 	// IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.

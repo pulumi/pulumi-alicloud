@@ -394,6 +394,26 @@ class ClientCaCertificate(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ClientCaCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_certificate_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["clientCaCertId"] = client_ca_cert_id
+        __props__["clientCaCertName"] = client_ca_cert_name
+        __props__["clientCaCertificateHostnames"] = client_ca_certificate_hostnames
+        __props__["createTime"] = create_time
+        __props__["siteId"] = site_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/clientCaCertificate:ClientCaCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

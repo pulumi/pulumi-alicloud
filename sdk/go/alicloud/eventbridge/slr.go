@@ -62,6 +62,12 @@ func (SlrState) ElementType() reflect.Type {
 	return reflect.TypeOf((*slrState)(nil)).Elem()
 }
 
+// SlrExists checks whether an existing Slr resource with the given ID exists.
+func SlrExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SlrState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eventbridge/slr:Slr", id, state, "", opts...)
+}
+
 type slrArgs struct {
 	ProductName string `pulumi:"productName"`
 }

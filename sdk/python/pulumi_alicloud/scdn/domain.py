@@ -504,6 +504,28 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_set: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bizName"] = biz_name
+        __props__["certInfos"] = cert_infos
+        __props__["checkUrl"] = check_url
+        __props__["domainName"] = domain_name
+        __props__["forceSet"] = force_set
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sources"] = sources
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:scdn/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bizName")
     @_utilities.deprecated("""Attribute biz_name has been deprecated and suggest removing it from your template.""")

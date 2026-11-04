@@ -495,6 +495,12 @@ func (LaunchTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*launchTemplateState)(nil)).Elem()
 }
 
+// LaunchTemplateExists checks whether an existing LaunchTemplate resource with the given ID exists.
+func LaunchTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LaunchTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/launchTemplate:LaunchTemplate", id, state, "", opts...)
+}
+
 type launchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`

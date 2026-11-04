@@ -322,6 +322,16 @@ class SuspendProcess(pulumi.CustomResource):
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         return SuspendProcess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            process: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["process"] = process
+        __props__["scalingGroupId"] = scaling_group_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/suspendProcess:SuspendProcess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def process(self) -> pulumi.Output[_builtins.str]:

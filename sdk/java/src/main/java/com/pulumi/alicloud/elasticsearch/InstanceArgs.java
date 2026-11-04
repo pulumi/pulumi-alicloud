@@ -43,22 +43,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
-     * @deprecated
-     * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
+    @Deprecated
     @Import(name="clientNodeAmount")
     private @Nullable Output<Integer> clientNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
-     * @deprecated
-     * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
+    @Deprecated
     public Optional<Output<Integer>> clientNodeAmount() {
         return Optional.ofNullable(this.clientNodeAmount);
     }
@@ -81,22 +79,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The client node spec. If specified, client node will be created.
      * 
-     * @deprecated
-     * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
+    @Deprecated
     @Import(name="clientNodeSpec")
     private @Nullable Output<String> clientNodeSpec;
 
     /**
      * @return The client node spec. If specified, client node will be created.
      * 
-     * @deprecated
-     * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
+    @Deprecated
     public Optional<Output<String>> clientNodeSpec() {
         return Optional.ofNullable(this.clientNodeSpec);
     }
@@ -104,22 +100,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
      * 
-     * @deprecated
-     * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
+    @Deprecated
     @Import(name="dataNodeAmount")
     private @Nullable Output<Integer> dataNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
      * 
-     * @deprecated
-     * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
+    @Deprecated
     public Optional<Output<Integer>> dataNodeAmount() {
         return Optional.ofNullable(this.dataNodeAmount);
     }
@@ -142,22 +136,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+     * @deprecated Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
+    @Deprecated
     @Import(name="dataNodeDiskEncrypted")
     private @Nullable Output<Boolean> dataNodeDiskEncrypted;
 
     /**
      * @return If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+     * @deprecated Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
+    @Deprecated
     public Optional<Output<Boolean>> dataNodeDiskEncrypted() {
         return Optional.ofNullable(this.dataNodeDiskEncrypted);
     }
@@ -165,22 +157,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+     * @deprecated Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
+    @Deprecated
     @Import(name="dataNodeDiskPerformanceLevel")
     private @Nullable Output<String> dataNodeDiskPerformanceLevel;
 
     /**
      * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+     * @deprecated Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
+    @Deprecated
     public Optional<Output<String>> dataNodeDiskPerformanceLevel() {
         return Optional.ofNullable(this.dataNodeDiskPerformanceLevel);
     }
@@ -188,22 +178,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The single data node storage space.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+     * @deprecated Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
+    @Deprecated
     @Import(name="dataNodeDiskSize")
     private @Nullable Output<Integer> dataNodeDiskSize;
 
     /**
      * @return The single data node storage space.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+     * @deprecated Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
+    @Deprecated
     public Optional<Output<Integer>> dataNodeDiskSize() {
         return Optional.ofNullable(this.dataNodeDiskSize);
     }
@@ -211,22 +199,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
+    @Deprecated
     @Import(name="dataNodeDiskType")
     private @Nullable Output<String> dataNodeDiskType;
 
     /**
      * @return The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
-     * @deprecated
-     * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
+    @Deprecated
     public Optional<Output<String>> dataNodeDiskType() {
         return Optional.ofNullable(this.dataNodeDiskType);
     }
@@ -234,22 +220,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The data node specifications of the Elasticsearch instance.
      * 
-     * @deprecated
-     * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
+    @Deprecated
     @Import(name="dataNodeSpec")
     private @Nullable Output<String> dataNodeSpec;
 
     /**
      * @return The data node specifications of the Elasticsearch instance.
      * 
-     * @deprecated
-     * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
+    @Deprecated
     public Optional<Output<String>> dataNodeSpec() {
         return Optional.ofNullable(this.dataNodeSpec);
     }
@@ -371,22 +355,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
+    @Deprecated
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `paymentType` instead with values `PayAsYouGo` or `Subscription`.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
+    @Deprecated
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -409,22 +391,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
-     * @deprecated
-     * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+     * @deprecated Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
+    @Deprecated
     @Import(name="kibanaNodeSpec")
     private @Nullable Output<String> kibanaNodeSpec;
 
     /**
      * @return The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
-     * @deprecated
-     * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+     * @deprecated Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
+    @Deprecated
     public Optional<Output<String>> kibanaNodeSpec() {
         return Optional.ofNullable(this.kibanaNodeSpec);
     }
@@ -522,22 +502,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      * 
-     * @deprecated
-     * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
+    @Deprecated
     @Import(name="masterNodeDiskType")
     private @Nullable Output<String> masterNodeDiskType;
 
     /**
      * @return The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      * 
-     * @deprecated
-     * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
+    @Deprecated
     public Optional<Output<String>> masterNodeDiskType() {
         return Optional.ofNullable(this.masterNodeDiskType);
     }
@@ -545,22 +523,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      * 
-     * @deprecated
-     * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+     * @deprecated Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
+    @Deprecated
     @Import(name="masterNodeSpec")
     private @Nullable Output<String> masterNodeSpec;
 
     /**
      * @return The dedicated master node spec. If specified, dedicated master node will be created.
      * 
-     * @deprecated
-     * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+     * @deprecated Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
+    @Deprecated
     public Optional<Output<String>> masterNodeSpec() {
         return Optional.ofNullable(this.masterNodeSpec);
     }
@@ -849,22 +825,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
+    @Deprecated
     @Import(name="warmNodeAmount")
     private @Nullable Output<Integer> warmNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
+    @Deprecated
     public Optional<Output<Integer>> warmNodeAmount() {
         return Optional.ofNullable(this.warmNodeAmount);
     }
@@ -887,22 +861,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
+    @Deprecated
     @Import(name="warmNodeDiskEncrypted")
     private @Nullable Output<Boolean> warmNodeDiskEncrypted;
 
     /**
      * @return If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
+    @Deprecated
     public Optional<Output<Boolean>> warmNodeDiskEncrypted() {
         return Optional.ofNullable(this.warmNodeDiskEncrypted);
     }
@@ -910,22 +882,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The single warm node storage space, should between 500 and 20480
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
+    @Deprecated
     @Import(name="warmNodeDiskSize")
     private @Nullable Output<Integer> warmNodeDiskSize;
 
     /**
      * @return The single warm node storage space, should between 500 and 20480
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
+    @Deprecated
     public Optional<Output<Integer>> warmNodeDiskSize() {
         return Optional.ofNullable(this.warmNodeDiskSize);
     }
@@ -933,22 +903,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
+    @Deprecated
     @Import(name="warmNodeDiskType")
     private @Nullable Output<String> warmNodeDiskType;
 
     /**
      * @return The warm node disk type. Supported values:  cloud_efficiency.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
+    @Deprecated
     public Optional<Output<String>> warmNodeDiskType() {
         return Optional.ofNullable(this.warmNodeDiskType);
     }
@@ -956,22 +924,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The warm node specifications of the Elasticsearch instance.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
+    @Deprecated
     @Import(name="warmNodeSpec")
     private @Nullable Output<String> warmNodeSpec;
 
     /**
      * @return The warm node specifications of the Elasticsearch instance.
      * 
-     * @deprecated
-     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+     * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
      * 
      */
-    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
+    @Deprecated
     public Optional<Output<String>> warmNodeSpec() {
         return Optional.ofNullable(this.warmNodeSpec);
     }
@@ -1094,11 +1060,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+         * @deprecated Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
          * 
          */
-        @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
+        @Deprecated
         public Builder clientNodeAmount(@Nullable Output<Integer> clientNodeAmount) {
             $.clientNodeAmount = clientNodeAmount;
             return this;
@@ -1109,11 +1074,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+         * @deprecated Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
          * 
          */
-        @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
+        @Deprecated
         public Builder clientNodeAmount(Integer clientNodeAmount) {
             return clientNodeAmount(Output.of(clientNodeAmount));
         }
@@ -1144,11 +1108,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+         * @deprecated Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
+        @Deprecated
         public Builder clientNodeSpec(@Nullable Output<String> clientNodeSpec) {
             $.clientNodeSpec = clientNodeSpec;
             return this;
@@ -1159,11 +1122,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+         * @deprecated Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
+        @Deprecated
         public Builder clientNodeSpec(String clientNodeSpec) {
             return clientNodeSpec(Output.of(clientNodeSpec));
         }
@@ -1173,11 +1135,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+         * @deprecated Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
+        @Deprecated
         public Builder dataNodeAmount(@Nullable Output<Integer> dataNodeAmount) {
             $.dataNodeAmount = dataNodeAmount;
             return this;
@@ -1188,11 +1149,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+         * @deprecated Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
+        @Deprecated
         public Builder dataNodeAmount(Integer dataNodeAmount) {
             return dataNodeAmount(Output.of(dataNodeAmount));
         }
@@ -1223,11 +1183,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+         * @deprecated Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
+        @Deprecated
         public Builder dataNodeDiskEncrypted(@Nullable Output<Boolean> dataNodeDiskEncrypted) {
             $.dataNodeDiskEncrypted = dataNodeDiskEncrypted;
             return this;
@@ -1238,11 +1197,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+         * @deprecated Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
+        @Deprecated
         public Builder dataNodeDiskEncrypted(Boolean dataNodeDiskEncrypted) {
             return dataNodeDiskEncrypted(Output.of(dataNodeDiskEncrypted));
         }
@@ -1252,11 +1210,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+         * @deprecated Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
+        @Deprecated
         public Builder dataNodeDiskPerformanceLevel(@Nullable Output<String> dataNodeDiskPerformanceLevel) {
             $.dataNodeDiskPerformanceLevel = dataNodeDiskPerformanceLevel;
             return this;
@@ -1267,11 +1224,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+         * @deprecated Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
+        @Deprecated
         public Builder dataNodeDiskPerformanceLevel(String dataNodeDiskPerformanceLevel) {
             return dataNodeDiskPerformanceLevel(Output.of(dataNodeDiskPerformanceLevel));
         }
@@ -1281,11 +1237,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+         * @deprecated Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
+        @Deprecated
         public Builder dataNodeDiskSize(@Nullable Output<Integer> dataNodeDiskSize) {
             $.dataNodeDiskSize = dataNodeDiskSize;
             return this;
@@ -1296,11 +1251,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+         * @deprecated Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
+        @Deprecated
         public Builder dataNodeDiskSize(Integer dataNodeDiskSize) {
             return dataNodeDiskSize(Output.of(dataNodeDiskSize));
         }
@@ -1310,11 +1264,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+         * @deprecated Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
+        @Deprecated
         public Builder dataNodeDiskType(@Nullable Output<String> dataNodeDiskType) {
             $.dataNodeDiskType = dataNodeDiskType;
             return this;
@@ -1325,11 +1278,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+         * @deprecated Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
+        @Deprecated
         public Builder dataNodeDiskType(String dataNodeDiskType) {
             return dataNodeDiskType(Output.of(dataNodeDiskType));
         }
@@ -1339,11 +1291,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+         * @deprecated Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
+        @Deprecated
         public Builder dataNodeSpec(@Nullable Output<String> dataNodeSpec) {
             $.dataNodeSpec = dataNodeSpec;
             return this;
@@ -1354,11 +1305,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+         * @deprecated Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
+        @Deprecated
         public Builder dataNodeSpec(String dataNodeSpec) {
             return dataNodeSpec(Output.of(dataNodeSpec));
         }
@@ -1518,11 +1468,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+         * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
+        @Deprecated
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -1533,11 +1482,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+         * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
+        @Deprecated
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -1568,11 +1516,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+         * @deprecated Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
+        @Deprecated
         public Builder kibanaNodeSpec(@Nullable Output<String> kibanaNodeSpec) {
             $.kibanaNodeSpec = kibanaNodeSpec;
             return this;
@@ -1583,11 +1530,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+         * @deprecated Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
+        @Deprecated
         public Builder kibanaNodeSpec(String kibanaNodeSpec) {
             return kibanaNodeSpec(Output.of(kibanaNodeSpec));
         }
@@ -1743,11 +1689,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+         * @deprecated Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
+        @Deprecated
         public Builder masterNodeDiskType(@Nullable Output<String> masterNodeDiskType) {
             $.masterNodeDiskType = masterNodeDiskType;
             return this;
@@ -1758,11 +1703,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+         * @deprecated Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
+        @Deprecated
         public Builder masterNodeDiskType(String masterNodeDiskType) {
             return masterNodeDiskType(Output.of(masterNodeDiskType));
         }
@@ -1772,11 +1716,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+         * @deprecated Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
+        @Deprecated
         public Builder masterNodeSpec(@Nullable Output<String> masterNodeSpec) {
             $.masterNodeSpec = masterNodeSpec;
             return this;
@@ -1787,11 +1730,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+         * @deprecated Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
+        @Deprecated
         public Builder masterNodeSpec(String masterNodeSpec) {
             return masterNodeSpec(Output.of(masterNodeSpec));
         }
@@ -2192,11 +2134,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
+        @Deprecated
         public Builder warmNodeAmount(@Nullable Output<Integer> warmNodeAmount) {
             $.warmNodeAmount = warmNodeAmount;
             return this;
@@ -2207,11 +2148,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
+        @Deprecated
         public Builder warmNodeAmount(Integer warmNodeAmount) {
             return warmNodeAmount(Output.of(warmNodeAmount));
         }
@@ -2242,11 +2182,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
+        @Deprecated
         public Builder warmNodeDiskEncrypted(@Nullable Output<Boolean> warmNodeDiskEncrypted) {
             $.warmNodeDiskEncrypted = warmNodeDiskEncrypted;
             return this;
@@ -2257,11 +2196,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
+        @Deprecated
         public Builder warmNodeDiskEncrypted(Boolean warmNodeDiskEncrypted) {
             return warmNodeDiskEncrypted(Output.of(warmNodeDiskEncrypted));
         }
@@ -2271,11 +2209,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
+        @Deprecated
         public Builder warmNodeDiskSize(@Nullable Output<Integer> warmNodeDiskSize) {
             $.warmNodeDiskSize = warmNodeDiskSize;
             return this;
@@ -2286,11 +2223,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
+        @Deprecated
         public Builder warmNodeDiskSize(Integer warmNodeDiskSize) {
             return warmNodeDiskSize(Output.of(warmNodeDiskSize));
         }
@@ -2300,11 +2236,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
+        @Deprecated
         public Builder warmNodeDiskType(@Nullable Output<String> warmNodeDiskType) {
             $.warmNodeDiskType = warmNodeDiskType;
             return this;
@@ -2315,11 +2250,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
+        @Deprecated
         public Builder warmNodeDiskType(String warmNodeDiskType) {
             return warmNodeDiskType(Output.of(warmNodeDiskType));
         }
@@ -2329,11 +2263,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
+        @Deprecated
         public Builder warmNodeSpec(@Nullable Output<String> warmNodeSpec) {
             $.warmNodeSpec = warmNodeSpec;
             return this;
@@ -2344,11 +2277,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+         * @deprecated Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
          * 
          */
-        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
+        @Deprecated
         public Builder warmNodeSpec(String warmNodeSpec) {
             return warmNodeSpec(Output.of(warmNodeSpec));
         }

@@ -174,6 +174,12 @@ func (SchedulerRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schedulerRuleState)(nil)).Elem()
 }
 
+// SchedulerRuleExists checks whether an existing SchedulerRule resource with the given ID exists.
+func SchedulerRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchedulerRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/schedulerRule:SchedulerRule", id, state, "", opts...)
+}
+
 type schedulerRuleArgs struct {
 	// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
 	Param *string `pulumi:"param"`

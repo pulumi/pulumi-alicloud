@@ -551,6 +551,34 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         __props__.__dict__["retention"] = retention
         return RdsInstanceCrossBackupPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_backup_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+            retent_type: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupEnabled"] = backup_enabled
+        __props__["backupEnabledTime"] = backup_enabled_time
+        __props__["crossBackupRegion"] = cross_backup_region
+        __props__["crossBackupType"] = cross_backup_type
+        __props__["dbInstanceStatus"] = db_instance_status
+        __props__["instanceId"] = instance_id
+        __props__["lockMode"] = lock_mode
+        __props__["logBackupEnabled"] = log_backup_enabled
+        __props__["logBackupEnabledTime"] = log_backup_enabled_time
+        __props__["retentType"] = retent_type
+        __props__["retention"] = retention
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/rdsInstanceCrossBackupPolicy:RdsInstanceCrossBackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupEnabled")
     def backup_enabled(self) -> pulumi.Output[_builtins.str]:

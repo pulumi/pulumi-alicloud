@@ -170,6 +170,12 @@ func (DirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryState)(nil)).Elem()
 }
 
+// DirectoryExists checks whether an existing Directory resource with the given ID exists.
+func DirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/directory:Directory", id, state, "", opts...)
+}
+
 type directoryArgs struct {
 	// Directory Global Acceleration activation status
 	DirectoryGlobalAccessStatus *string `pulumi:"directoryGlobalAccessStatus"`

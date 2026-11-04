@@ -396,6 +396,26 @@ class StaticAccount(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return StaticAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKey"] = access_key
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["masterUid"] = master_uid
+        __props__["password"] = password
+        __props__["secretKey"] = secret_key
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:amqp/staticAccount:StaticAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[_builtins.str]:

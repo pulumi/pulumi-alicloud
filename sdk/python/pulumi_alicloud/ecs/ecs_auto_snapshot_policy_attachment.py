@@ -306,6 +306,18 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         __props__.__dict__["region_id"] = region_id
         return EcsAutoSnapshotPolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoSnapshotPolicyId"] = auto_snapshot_policy_id
+        __props__["diskId"] = disk_id
+        __props__["regionId"] = region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> pulumi.Output[_builtins.str]:

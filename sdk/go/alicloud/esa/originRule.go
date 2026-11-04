@@ -263,6 +263,12 @@ func (OriginRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*originRuleState)(nil)).Elem()
 }
 
+// OriginRuleExists checks whether an existing OriginRule resource with the given ID exists.
+func OriginRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OriginRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/originRule:OriginRule", id, state, "", opts...)
+}
+
 type originRuleArgs struct {
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord *string `pulumi:"dnsRecord"`

@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Output<string?> InstanceAlias { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of the instance. 
+        /// The specification of the instance.
         /// - Following enumerative value for TSDB for InfluxDB️ standart edition:
         /// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
         /// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? InstanceAlias { get; set; }
 
         /// <summary>
-        /// The specification of the instance. 
+        /// The specification of the instance.
         /// - Following enumerative value for TSDB for InfluxDB️ standart edition:
         /// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
         /// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? InstanceAlias { get; set; }
 
         /// <summary>
-        /// The specification of the instance. 
+        /// The specification of the instance.
         /// - Following enumerative value for TSDB for InfluxDB️ standart edition:
         /// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
         /// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;

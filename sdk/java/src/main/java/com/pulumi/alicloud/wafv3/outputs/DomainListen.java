@@ -50,12 +50,12 @@ public final class DomainListen {
      */
     private @Nullable Boolean http2Enabled;
     /**
-     * @return The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * @return The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     private @Nullable List<Integer> httpPorts;
     /**
-     * @return The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * @return The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     private @Nullable List<Integer> httpsPorts;
@@ -98,7 +98,7 @@ public final class DomainListen {
      */
     private @Nullable Integer xffHeaderMode;
     /**
-     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
      * 
      * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
@@ -156,14 +156,14 @@ public final class DomainListen {
         return Optional.ofNullable(this.http2Enabled);
     }
     /**
-     * @return The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * @return The HTTP listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     public List<Integer> httpPorts() {
         return this.httpPorts == null ? List.of() : this.httpPorts;
     }
     /**
-     * @return The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
+     * @return The HTTPS listener ports. Specify the value in the &#92;[**port1,port2,...**] format.
      * 
      */
     public List<Integer> httpsPorts() {
@@ -222,7 +222,7 @@ public final class DomainListen {
         return Optional.ofNullable(this.xffHeaderMode);
     }
     /**
-     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **&#92;[&#34;header1&#34;,&#34;header2&#34;,...]** format.
      * 
      * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 

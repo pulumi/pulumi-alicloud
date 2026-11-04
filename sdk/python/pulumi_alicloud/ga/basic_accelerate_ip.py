@@ -312,6 +312,20 @@ class BasicAccelerateIp(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BasicAccelerateIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerate_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accelerateIpAddress"] = accelerate_ip_address
+        __props__["acceleratorId"] = accelerator_id
+        __props__["ipSetId"] = ip_set_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/basicAccelerateIp:BasicAccelerateIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accelerateIpAddress")
     def accelerate_ip_address(self) -> pulumi.Output[_builtins.str]:

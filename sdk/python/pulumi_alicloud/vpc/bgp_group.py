@@ -662,6 +662,36 @@ class BgpGroup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BgpGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+            bgp_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            clear_auth_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            is_fake_asn: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authKey"] = auth_key
+        __props__["bgpGroupName"] = bgp_group_name
+        __props__["clearAuthKey"] = clear_auth_key
+        __props__["description"] = description
+        __props__["ipVersion"] = ip_version
+        __props__["isFakeAsn"] = is_fake_asn
+        __props__["localAsn"] = local_asn
+        __props__["peerAsn"] = peer_asn
+        __props__["regionId"] = region_id
+        __props__["routeLimit"] = route_limit
+        __props__["routerId"] = router_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/bgpGroup:BgpGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authKey")
     def auth_key(self) -> pulumi.Output[Optional[_builtins.str]]:

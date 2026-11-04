@@ -241,6 +241,12 @@ func (TransitRouterMulticastDomainMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterMulticastDomainMemberState)(nil)).Elem()
 }
 
+// TransitRouterMulticastDomainMemberExists checks whether an existing TransitRouterMulticastDomainMember resource with the given ID exists.
+func TransitRouterMulticastDomainMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterMulticastDomainMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember", id, state, "", opts...)
+}
+
 type transitRouterMulticastDomainMemberArgs struct {
 	// Specifies whether only to precheck the request.
 	DryRun *bool `pulumi:"dryRun"`

@@ -577,6 +577,28 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["policy_name"] = policy_name
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attach_resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            attach_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_class_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_class_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_config: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachResourceIds"] = attach_resource_ids
+        __props__["attachResourceType"] = attach_resource_type
+        __props__["environmentId"] = environment_id
+        __props__["gatewayId"] = gateway_id
+        __props__["policyClassId"] = policy_class_id
+        __props__["policyClassName"] = policy_class_name
+        __props__["policyConfig"] = policy_config
+        __props__["policyName"] = policy_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attachResourceIds")
     def attach_resource_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:

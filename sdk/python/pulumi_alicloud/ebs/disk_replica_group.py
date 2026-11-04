@@ -927,6 +927,42 @@ class DiskReplicaGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DiskReplicaGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_rtc: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+            pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+            rpo: pulumi.Input[Optional[_builtins.int]] = None,
+            source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["destinationRegionId"] = destination_region_id
+        __props__["destinationZoneId"] = destination_zone_id
+        __props__["diskReplicaGroupName"] = disk_replica_group_name
+        __props__["enableRtc"] = enable_rtc
+        __props__["groupName"] = group_name
+        __props__["oneShot"] = one_shot
+        __props__["pairIds"] = pair_ids
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["reverseReplicate"] = reverse_replicate
+        __props__["rpo"] = rpo
+        __props__["sourceRegionId"] = source_region_id
+        __props__["sourceZoneId"] = source_zone_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ebs/diskReplicaGroup:DiskReplicaGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

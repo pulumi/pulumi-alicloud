@@ -435,6 +435,24 @@ class HostShareKey(pulumi.CustomResource):
         __props__.__dict__["private_key_finger_print"] = private_key_finger_print
         return HostShareKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_share_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_finger_print: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hostShareKeyId"] = host_share_key_id
+        __props__["hostShareKeyName"] = host_share_key_name
+        __props__["instanceId"] = instance_id
+        __props__["passPhrase"] = pass_phrase
+        __props__["privateKey"] = private_key
+        __props__["privateKeyFingerPrint"] = private_key_finger_print
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/hostShareKey:HostShareKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="hostShareKeyId")
     def host_share_key_id(self) -> pulumi.Output[_builtins.str]:

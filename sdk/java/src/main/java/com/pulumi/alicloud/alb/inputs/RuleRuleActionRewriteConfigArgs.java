@@ -46,14 +46,14 @@ public final class RuleRuleActionRewriteConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+     * The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } &#92; | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
      * 
      */
     @Import(name="query")
     private @Nullable Output<String> query;
 
     /**
-     * @return The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+     * @return The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } &#92; | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
      * 
      */
     public Optional<Output<String>> query() {
@@ -129,7 +129,7 @@ public final class RuleRuleActionRewriteConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param query The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         * @param query The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } &#92; | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RuleRuleActionRewriteConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param query The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+         * @param query The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } &#92; | &lt; &gt; &amp;. Default value: ${query}. This value can be used only once. You can use it with a valid string.
          * 
          * @return builder
          * 

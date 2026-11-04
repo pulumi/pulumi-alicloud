@@ -135,6 +135,12 @@ func (ApplicationAccessPointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationAccessPointState)(nil)).Elem()
 }
 
+// ApplicationAccessPointExists checks whether an existing ApplicationAccessPoint resource with the given ID exists.
+func ApplicationAccessPointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationAccessPointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/applicationAccessPoint:ApplicationAccessPoint", id, state, "", opts...)
+}
+
 type applicationAccessPointArgs struct {
 	// Application Access Point Name.
 	ApplicationAccessPointName string `pulumi:"applicationAccessPointName"`

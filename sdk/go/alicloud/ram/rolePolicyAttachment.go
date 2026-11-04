@@ -194,6 +194,12 @@ func (RolePolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolePolicyAttachmentState)(nil)).Elem()
 }
 
+// RolePolicyAttachmentExists checks whether an existing RolePolicyAttachment resource with the given ID exists.
+func RolePolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RolePolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment", id, state, "", opts...)
+}
+
 type rolePolicyAttachmentArgs struct {
 	// The name of the policy.
 	PolicyName string `pulumi:"policyName"`

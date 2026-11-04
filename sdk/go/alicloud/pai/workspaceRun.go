@@ -171,6 +171,12 @@ func (WorkspaceRunState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceRunState)(nil)).Elem()
 }
 
+// WorkspaceRunExists checks whether an existing WorkspaceRun resource with the given ID exists.
+func WorkspaceRunExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceRunState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceRun:WorkspaceRun", id, state, "", opts...)
+}
+
 type workspaceRunArgs struct {
 	// Resource attribute field of the experiment ID to which Run belongs
 	ExperimentId string `pulumi:"experimentId"`

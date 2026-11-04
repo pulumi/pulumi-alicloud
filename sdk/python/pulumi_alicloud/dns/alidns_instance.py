@@ -460,6 +460,28 @@ class AlidnsInstance(pulumi.CustomResource):
         __props__.__dict__["version_name"] = version_name
         return AlidnsInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dns_security: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_numbers: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dnsSecurity"] = dns_security
+        __props__["domainNumbers"] = domain_numbers
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalStatus"] = renewal_status
+        __props__["versionCode"] = version_code
+        __props__["versionName"] = version_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/alidnsInstance:AlidnsInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dnsSecurity")
     def dns_security(self) -> pulumi.Output[_builtins.str]:

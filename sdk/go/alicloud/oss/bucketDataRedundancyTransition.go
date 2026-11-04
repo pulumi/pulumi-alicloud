@@ -147,6 +147,12 @@ func (BucketDataRedundancyTransitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketDataRedundancyTransitionState)(nil)).Elem()
 }
 
+// BucketDataRedundancyTransitionExists checks whether an existing BucketDataRedundancyTransition resource with the given ID exists.
+func BucketDataRedundancyTransitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketDataRedundancyTransitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition", id, state, "", opts...)
+}
+
 type bucketDataRedundancyTransitionArgs struct {
 	// Storage space name.
 	Bucket string `pulumi:"bucket"`

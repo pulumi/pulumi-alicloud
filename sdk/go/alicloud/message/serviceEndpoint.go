@@ -125,6 +125,12 @@ func (ServiceEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceEndpointState)(nil)).Elem()
 }
 
+// ServiceEndpointExists checks whether an existing ServiceEndpoint resource with the given ID exists.
+func ServiceEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceEndpoint:ServiceEndpoint", id, state, "", opts...)
+}
+
 type serviceEndpointArgs struct {
 	// Specifies whether the endpoint is enabled. Valid values:
 	EndpointEnabled bool `pulumi:"endpointEnabled"`

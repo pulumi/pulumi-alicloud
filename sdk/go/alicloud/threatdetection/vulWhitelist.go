@@ -122,6 +122,12 @@ func (VulWhitelistState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vulWhitelistState)(nil)).Elem()
 }
 
+// VulWhitelistExists checks whether an existing VulWhitelist resource with the given ID exists.
+func VulWhitelistExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VulWhitelistState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/vulWhitelist:VulWhitelist", id, state, "", opts...)
+}
+
 type vulWhitelistArgs struct {
 	// Reason for adding whitelist.
 	Reason *string `pulumi:"reason"`

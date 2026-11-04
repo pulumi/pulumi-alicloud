@@ -432,6 +432,12 @@ func (RdsDbProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsDbProxyState)(nil)).Elem()
 }
 
+// RdsDbProxyExists checks whether an existing RdsDbProxy resource with the given ID exists.
+func RdsDbProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsDbProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsDbProxy:RdsDbProxy", id, state, "", opts...)
+}
+
 type rdsDbProxyArgs struct {
 	// The port number that is associated with the proxy endpoint.
 	DbProxyConnectStringPort *int `pulumi:"dbProxyConnectStringPort"`

@@ -224,6 +224,12 @@ func (VpcEndpointZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointZoneState)(nil)).Elem()
 }
 
+// VpcEndpointZoneExists checks whether an existing VpcEndpointZone resource with the given ID exists.
+func VpcEndpointZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcEndpointZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:privatelink/vpcEndpointZone:VpcEndpointZone", id, state, "", opts...)
+}
+
 type vpcEndpointZoneArgs struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`

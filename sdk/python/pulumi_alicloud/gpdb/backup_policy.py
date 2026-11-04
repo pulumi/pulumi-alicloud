@@ -595,6 +595,24 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["recovery_point_period"] = recovery_point_period
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_recovery_point: pulumi.Input[Optional[_builtins.bool]] = None,
+            preferred_backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery_point_period: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["enableRecoveryPoint"] = enable_recovery_point
+        __props__["preferredBackupPeriod"] = preferred_backup_period
+        __props__["preferredBackupTime"] = preferred_backup_time
+        __props__["recoveryPointPeriod"] = recovery_point_period
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/backupPolicy:BackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
     def backup_retention_period(self) -> pulumi.Output[_builtins.int]:

@@ -1679,6 +1679,78 @@ class OssStockTask(pulumi.CustomResource):
         __props__.__dict__["video_voice_antispam_freeze_config"] = video_voice_antispam_freeze_config
         return OssStockTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audio_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            audio_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            audio_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            audio_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            audio_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            audio_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_freeze_type: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            buckets: pulumi.Input[Optional[_builtins.str]] = None,
+            callback_id: pulumi.Input[Optional[_builtins.int]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            image_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            image_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            image_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            image_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            image_scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            image_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_image_no_file_type: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            video_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            video_frame_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            video_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_max_frames: pulumi.Input[Optional[_builtins.int]] = None,
+            video_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            video_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            video_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            video_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+            video_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_voice_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["audioAntispamFreezeConfig"] = audio_antispam_freeze_config
+        __props__["audioAutoFreezeOpened"] = audio_auto_freeze_opened
+        __props__["audioMaxSize"] = audio_max_size
+        __props__["audioOpened"] = audio_opened
+        __props__["audioScanLimit"] = audio_scan_limit
+        __props__["audioScenes"] = audio_scenes
+        __props__["autoFreezeType"] = auto_freeze_type
+        __props__["bizType"] = biz_type
+        __props__["buckets"] = buckets
+        __props__["callbackId"] = callback_id
+        __props__["endDate"] = end_date
+        __props__["imageAdFreezeConfig"] = image_ad_freeze_config
+        __props__["imageAutoFreezeOpened"] = image_auto_freeze_opened
+        __props__["imageLiveFreezeConfig"] = image_live_freeze_config
+        __props__["imageOpened"] = image_opened
+        __props__["imagePornFreezeConfig"] = image_porn_freeze_config
+        __props__["imageScanLimit"] = image_scan_limit
+        __props__["imageScenes"] = image_scenes
+        __props__["imageTerrorismFreezeConfig"] = image_terrorism_freeze_config
+        __props__["scanImageNoFileType"] = scan_image_no_file_type
+        __props__["startDate"] = start_date
+        __props__["videoAdFreezeConfig"] = video_ad_freeze_config
+        __props__["videoAutoFreezeOpened"] = video_auto_freeze_opened
+        __props__["videoFrameInterval"] = video_frame_interval
+        __props__["videoLiveFreezeConfig"] = video_live_freeze_config
+        __props__["videoMaxFrames"] = video_max_frames
+        __props__["videoMaxSize"] = video_max_size
+        __props__["videoOpened"] = video_opened
+        __props__["videoPornFreezeConfig"] = video_porn_freeze_config
+        __props__["videoScanLimit"] = video_scan_limit
+        __props__["videoScenes"] = video_scenes
+        __props__["videoTerrorismFreezeConfig"] = video_terrorism_freeze_config
+        __props__["videoVoiceAntispamFreezeConfig"] = video_voice_antispam_freeze_config
+        return pulumi.runtime.exists_resource(None, 'alicloud:aligreen/ossStockTask:OssStockTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="audioAntispamFreezeConfig")
     def audio_antispam_freeze_config(self) -> pulumi.Output[Optional[_builtins.str]]:

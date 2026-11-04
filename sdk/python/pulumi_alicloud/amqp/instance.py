@@ -1675,6 +1675,76 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_model: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
+            max_tps: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.str]] = None,
+            support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+            support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authModel"] = auth_model
+        __props__["autoRenew"] = auto_renew
+        __props__["createTime"] = create_time
+        __props__["edition"] = edition
+        __props__["encryptedInstance"] = encrypted_instance
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["listenerMode"] = listener_mode
+        __props__["maxConnections"] = max_connections
+        __props__["maxEipTps"] = max_eip_tps
+        __props__["maxTps"] = max_tps
+        __props__["modifyType"] = modify_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodCycle"] = period_cycle
+        __props__["provisionedCapacity"] = provisioned_capacity
+        __props__["queueCapacity"] = queue_capacity
+        __props__["renewalDuration"] = renewal_duration
+        __props__["renewalDurationUnit"] = renewal_duration_unit
+        __props__["renewalStatus"] = renewal_status
+        __props__["securityGroupId"] = security_group_id
+        __props__["serverlessChargeType"] = serverless_charge_type
+        __props__["serverlessSwitch"] = serverless_switch
+        __props__["status"] = status
+        __props__["storageSize"] = storage_size
+        __props__["supportEip"] = support_eip
+        __props__["supportTracing"] = support_tracing
+        __props__["tags"] = tags
+        __props__["tracingStorageTime"] = tracing_storage_time
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchIds"] = vswitch_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:amqp/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authModel")
     def auth_model(self) -> pulumi.Output[Optional[_builtins.str]]:

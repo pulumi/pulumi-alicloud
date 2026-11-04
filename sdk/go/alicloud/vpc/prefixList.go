@@ -201,6 +201,12 @@ func (PrefixListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prefixListState)(nil)).Elem()
 }
 
+// PrefixListExists checks whether an existing PrefixList resource with the given ID exists.
+func PrefixListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrefixListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/prefixList:PrefixList", id, state, "", opts...)
+}
+
 type prefixListArgs struct {
 	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 	Entrys []PrefixListEntry `pulumi:"entrys"`

@@ -217,6 +217,12 @@ func (MetricStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricStoreState)(nil)).Elem()
 }
 
+// MetricStoreExists checks whether an existing MetricStore resource with the given ID exists.
+func MetricStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MetricStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/metricStore:MetricStore", id, state, "", opts...)
+}
+
 type metricStoreArgs struct {
 	// Specifies whether to record the IP address of the requester. Default value: `false`.
 	AppendMeta *bool `pulumi:"appendMeta"`

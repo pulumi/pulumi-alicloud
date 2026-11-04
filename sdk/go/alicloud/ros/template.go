@@ -133,6 +133,12 @@ func (TemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateState)(nil)).Elem()
 }
 
+// TemplateExists checks whether an existing Template resource with the given ID exists.
+func TemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/template:Template", id, state, "", opts...)
+}
+
 type templateArgs struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description *string `pulumi:"description"`

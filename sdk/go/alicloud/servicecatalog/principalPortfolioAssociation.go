@@ -171,6 +171,12 @@ func (PrincipalPortfolioAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*principalPortfolioAssociationState)(nil)).Elem()
 }
 
+// PrincipalPortfolioAssociationExists checks whether an existing PrincipalPortfolioAssociation resource with the given ID exists.
+func PrincipalPortfolioAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrincipalPortfolioAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation", id, state, "", opts...)
+}
+
 type principalPortfolioAssociationArgs struct {
 	// Product Portfolio ID
 	PortfolioId string `pulumi:"portfolioId"`

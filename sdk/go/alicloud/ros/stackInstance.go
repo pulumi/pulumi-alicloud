@@ -241,6 +241,12 @@ func (StackInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackInstanceState)(nil)).Elem()
 }
 
+// StackInstanceExists checks whether an existing StackInstance resource with the given ID exists.
+func StackInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StackInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/stackInstance:StackInstance", id, state, "", opts...)
+}
+
 type stackInstanceArgs struct {
 	// The operation description.
 	OperationDescription *string `pulumi:"operationDescription"`

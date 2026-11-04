@@ -158,20 +158,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
+    @Deprecated
     @Import(name="fc")
     private @Nullable Output<String> fc;
 
     /**
-     * @deprecated
-     * Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
+    @Deprecated
     public Optional<Output<String>> fc() {
         return Optional.ofNullable(this.fc);
     }
@@ -192,20 +190,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
+    @Deprecated
     @Import(name="logEndpoint")
     private @Nullable Output<String> logEndpoint;
 
     /**
-     * @deprecated
-     * Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
+    @Deprecated
     public Optional<Output<String>> logEndpoint() {
         return Optional.ofNullable(this.logEndpoint);
     }
@@ -226,39 +222,35 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead. */
+    @Deprecated
     @Import(name="mnsEndpoint")
     private @Nullable Output<String> mnsEndpoint;
 
     /**
-     * @deprecated
-     * Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
+     * @deprecated Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
      * 
      */
-    @Deprecated /* Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead. */
+    @Deprecated
     public Optional<Output<String>> mnsEndpoint() {
         return Optional.ofNullable(this.mnsEndpoint);
     }
 
     /**
-     * @deprecated
-     * Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
+     * @deprecated Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead. */
+    @Deprecated
     @Import(name="otsInstanceName")
     private @Nullable Output<String> otsInstanceName;
 
     /**
-     * @deprecated
-     * Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
+     * @deprecated Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead. */
+    @Deprecated
     public Optional<Output<String>> otsInstanceName() {
         return Optional.ofNullable(this.otsInstanceName);
     }
@@ -645,11 +637,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
+         * @deprecated Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
          * 
          */
-        @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
+        @Deprecated
         public Builder fc(@Nullable Output<String> fc) {
             $.fc = fc;
             return this;
@@ -658,11 +649,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
+         * @deprecated Field &#39;fc&#39; has been deprecated from provider version 1.28.0. New field &#39;fc&#39; which in nested endpoints instead.
          * 
          */
-        @Deprecated /* Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead. */
+        @Deprecated
         public Builder fc(String fc) {
             return fc(Output.of(fc));
         }
@@ -691,11 +681,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
+         * @deprecated Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
          * 
          */
-        @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
+        @Deprecated
         public Builder logEndpoint(@Nullable Output<String> logEndpoint) {
             $.logEndpoint = logEndpoint;
             return this;
@@ -704,11 +693,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
+         * @deprecated Field &#39;log_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;log&#39; which in nested endpoints instead.
          * 
          */
-        @Deprecated /* Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead. */
+        @Deprecated
         public Builder logEndpoint(String logEndpoint) {
             return logEndpoint(Output.of(logEndpoint));
         }
@@ -737,11 +725,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
+         * @deprecated Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
          * 
          */
-        @Deprecated /* Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead. */
+        @Deprecated
         public Builder mnsEndpoint(@Nullable Output<String> mnsEndpoint) {
             $.mnsEndpoint = mnsEndpoint;
             return this;
@@ -750,11 +737,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
+         * @deprecated Field &#39;mns_endpoint&#39; has been deprecated from provider version 1.28.0. New field &#39;mns&#39; which in nested endpoints instead.
          * 
          */
-        @Deprecated /* Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead. */
+        @Deprecated
         public Builder mnsEndpoint(String mnsEndpoint) {
             return mnsEndpoint(Output.of(mnsEndpoint));
         }
@@ -762,11 +748,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
+         * @deprecated Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead. */
+        @Deprecated
         public Builder otsInstanceName(@Nullable Output<String> otsInstanceName) {
             $.otsInstanceName = otsInstanceName;
             return this;
@@ -775,11 +760,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
+         * @deprecated Field &#39;ots_instance_name&#39; has been deprecated from provider version 1.10.0. New field &#39;instance_name&#39; of resource &#39;alicloud_ots_table&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead. */
+        @Deprecated
         public Builder otsInstanceName(String otsInstanceName) {
             return otsInstanceName(Output.of(otsInstanceName));
         }

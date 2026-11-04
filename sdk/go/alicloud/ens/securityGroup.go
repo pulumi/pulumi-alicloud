@@ -129,6 +129,12 @@ func (SecurityGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupState)(nil)).Elem()
 }
 
+// SecurityGroupExists checks whether an existing SecurityGroup resource with the given ID exists.
+func SecurityGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/securityGroup:SecurityGroup", id, state, "", opts...)
+}
+
 type securityGroupArgs struct {
 	// Security group description information
 	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://

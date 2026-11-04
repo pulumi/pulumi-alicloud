@@ -697,6 +697,38 @@ class PluginClass(pulumi.CustomResource):
         __props__.__dict__["wasm_url"] = wasm_url
         return PluginClass(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            document: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            execute_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_class_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_min_gateway_version: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            version_description: pulumi.Input[Optional[_builtins.str]] = None,
+            wasm_language: pulumi.Input[Optional[_builtins.str]] = None,
+            wasm_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alias"] = alias
+        __props__["description"] = description
+        __props__["document"] = document
+        __props__["executePriority"] = execute_priority
+        __props__["executeStage"] = execute_stage
+        __props__["pluginClassName"] = plugin_class_name
+        __props__["status"] = status
+        __props__["supportedMinGatewayVersion"] = supported_min_gateway_version
+        __props__["type"] = type
+        __props__["version"] = version
+        __props__["versionDescription"] = version_description
+        __props__["wasmLanguage"] = wasm_language
+        __props__["wasmUrl"] = wasm_url
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/pluginClass:PluginClass', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alias(self) -> pulumi.Output[Optional[_builtins.str]]:

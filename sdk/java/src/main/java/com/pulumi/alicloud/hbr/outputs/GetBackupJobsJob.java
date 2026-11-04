@@ -84,7 +84,7 @@ public final class GetBackupJobsJob {
      */
     private String errorMessage;
     /**
-     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     private String exclude;
@@ -99,7 +99,7 @@ public final class GetBackupJobsJob {
      */
     private String id;
     /**
-     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     private String include;
@@ -270,7 +270,7 @@ public final class GetBackupJobsJob {
         return this.errorMessage;
     }
     /**
-     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     public String exclude() {
@@ -291,7 +291,7 @@ public final class GetBackupJobsJob {
         return this.id;
     }
     /**
-     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     public String include() {

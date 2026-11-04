@@ -206,6 +206,12 @@ func (GatewaySmbUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewaySmbUserState)(nil)).Elem()
 }
 
+// GatewaySmbUserExists checks whether an existing GatewaySmbUser resource with the given ID exists.
+func GatewaySmbUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewaySmbUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser", id, state, "", opts...)
+}
+
 type gatewaySmbUserArgs struct {
 	// The Gateway ID of the Gateway SMB User.
 	GatewayId string `pulumi:"gatewayId"`

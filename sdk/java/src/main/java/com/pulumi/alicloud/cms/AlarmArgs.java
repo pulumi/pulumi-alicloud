@@ -59,22 +59,20 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
-     * @deprecated
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
-    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
+    @Deprecated
     @Import(name="dimensions")
     private @Nullable Output<Map<String,String>> dimensions;
 
     /**
      * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
-     * @deprecated
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
-    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
+    @Deprecated
     public Optional<Output<Map<String,String>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
@@ -114,11 +112,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
-     * @deprecated
-     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+    @Deprecated
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
@@ -127,11 +124,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
-     * @deprecated
-     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+    @Deprecated
     public Optional<Output<Integer>> endTime() {
         return Optional.ofNullable(this.endTime);
     }
@@ -291,22 +287,20 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
-     * @deprecated
-     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+    @Deprecated
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
      * @return Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
-     * @deprecated
-     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+    @Deprecated
     public Optional<Output<Integer>> startTime() {
         return Optional.ofNullable(this.startTime);
     }
@@ -456,11 +450,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
+         * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
          * 
          */
-        @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
+        @Deprecated
         public Builder dimensions(@Nullable Output<Map<String,String>> dimensions) {
             $.dimensions = dimensions;
             return this;
@@ -471,11 +464,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
+         * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
          * 
          */
-        @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
+        @Deprecated
         public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
@@ -529,11 +521,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+         * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+        @Deprecated
         public Builder endTime(@Nullable Output<Integer> endTime) {
             $.endTime = endTime;
             return this;
@@ -546,11 +537,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+         * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+        @Deprecated
         public Builder endTime(Integer endTime) {
             return endTime(Output.of(endTime));
         }
@@ -782,11 +772,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+         * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+        @Deprecated
         public Builder startTime(@Nullable Output<Integer> startTime) {
             $.startTime = startTime;
             return this;
@@ -797,11 +786,10 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+         * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
          * 
          */
-        @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+        @Deprecated
         public Builder startTime(Integer startTime) {
             return startTime(Output.of(startTime));
         }

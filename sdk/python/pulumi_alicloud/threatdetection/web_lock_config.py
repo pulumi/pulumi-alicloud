@@ -526,6 +526,30 @@ class WebLockConfig(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return WebLockConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            defence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            dir: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_file: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+            inclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+            local_backup_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defenceMode"] = defence_mode
+        __props__["dir"] = dir
+        __props__["exclusiveDir"] = exclusive_dir
+        __props__["exclusiveFile"] = exclusive_file
+        __props__["exclusiveFileType"] = exclusive_file_type
+        __props__["inclusiveFileType"] = inclusive_file_type
+        __props__["localBackupDir"] = local_backup_dir
+        __props__["mode"] = mode
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/webLockConfig:WebLockConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defenceMode")
     def defence_mode(self) -> pulumi.Output[_builtins.str]:

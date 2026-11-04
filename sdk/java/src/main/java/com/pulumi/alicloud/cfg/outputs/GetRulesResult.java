@@ -19,11 +19,10 @@ public final class GetRulesResult {
     /**
      * @return The state of the Config Rule.
      * 
-     * @deprecated
-     * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
+     * @deprecated Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead. */
+    @Deprecated
     private @Nullable String configRuleState;
     private @Nullable Boolean enableDetails;
     /**
@@ -68,11 +67,10 @@ public final class GetRulesResult {
     /**
      * @return The state of the Config Rule.
      * 
-     * @deprecated
-     * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
+     * @deprecated Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead. */
+    @Deprecated
     public Optional<String> configRuleState() {
         return Optional.ofNullable(this.configRuleState);
     }

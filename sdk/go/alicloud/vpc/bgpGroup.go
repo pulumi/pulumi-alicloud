@@ -229,6 +229,12 @@ func (BgpGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpGroupState)(nil)).Elem()
 }
 
+// BgpGroupExists checks whether an existing BgpGroup resource with the given ID exists.
+func BgpGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/bgpGroup:BgpGroup", id, state, "", opts...)
+}
+
 type bgpGroupArgs struct {
 	// The authentication key of the BGP group.
 	AuthKey *string `pulumi:"authKey"`

@@ -125,22 +125,20 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     /**
      * It has been deprecated from 1.68.0.
      * 
-     * @deprecated
-     * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
+    @Deprecated
     @Import(name="packageType")
     private @Nullable Output<String> packageType;
 
     /**
      * @return It has been deprecated from 1.68.0.
      * 
-     * @deprecated
-     * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
+    @Deprecated
     public Optional<Output<String>> packageType() {
         return Optional.ofNullable(this.packageType);
     }
@@ -148,22 +146,20 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     /**
      * It has been deprecated from 1.68.0.
      * 
-     * @deprecated
-     * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
+    @Deprecated
     @Import(name="performanceType")
     private @Nullable Output<String> performanceType;
 
     /**
      * @return It has been deprecated from 1.68.0.
      * 
-     * @deprecated
-     * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
+    @Deprecated
     public Optional<Output<String>> performanceType() {
         return Optional.ofNullable(this.performanceType);
     }
@@ -227,22 +223,20 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     /**
      * It has been deprecated from 1.68.0.
      * 
-     * @deprecated
-     * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
+    @Deprecated
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
      * @return It has been deprecated from 1.68.0.
      * 
-     * @deprecated
-     * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
+     * @deprecated The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
      * 
      */
-    @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
+    @Deprecated
     public Optional<Output<String>> storageType() {
         return Optional.ofNullable(this.storageType);
     }
@@ -452,11 +446,10 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
+         * @deprecated The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
          * 
          */
-        @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
+        @Deprecated
         public Builder packageType(@Nullable Output<String> packageType) {
             $.packageType = packageType;
             return this;
@@ -467,11 +460,10 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
+         * @deprecated The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
          * 
          */
-        @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
+        @Deprecated
         public Builder packageType(String packageType) {
             return packageType(Output.of(packageType));
         }
@@ -481,11 +473,10 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
+         * @deprecated The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
          * 
          */
-        @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
+        @Deprecated
         public Builder performanceType(@Nullable Output<String> performanceType) {
             $.performanceType = performanceType;
             return this;
@@ -496,11 +487,10 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
+         * @deprecated The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
          * 
          */
-        @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
+        @Deprecated
         public Builder performanceType(String performanceType) {
             return performanceType(Output.of(performanceType));
         }
@@ -586,11 +576,10 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
+         * @deprecated The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
          * 
          */
-        @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
+        @Deprecated
         public Builder storageType(@Nullable Output<String> storageType) {
             $.storageType = storageType;
             return this;
@@ -601,11 +590,10 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
+         * @deprecated The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
          * 
          */
-        @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
+        @Deprecated
         public Builder storageType(String storageType) {
             return storageType(Output.of(storageType));
         }

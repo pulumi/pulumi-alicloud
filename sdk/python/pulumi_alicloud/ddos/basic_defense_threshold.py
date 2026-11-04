@@ -500,6 +500,30 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         __props__.__dict__["pps"] = pps
         return BasicDefenseThreshold(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bps: pulumi.Input[Optional[_builtins.int]] = None,
+            ddos_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            is_auto: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_bps: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pps: pulumi.Input[Optional[_builtins.int]] = None,
+            pps: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bps"] = bps
+        __props__["ddosType"] = ddos_type
+        __props__["instanceId"] = instance_id
+        __props__["instanceType"] = instance_type
+        __props__["internetIp"] = internet_ip
+        __props__["isAuto"] = is_auto
+        __props__["maxBps"] = max_bps
+        __props__["maxPps"] = max_pps
+        __props__["pps"] = pps
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bps(self) -> pulumi.Output[_builtins.int]:

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The operator used in the dispatch rule. Valid values: 
+        /// The operator used in the dispatch rule. Valid values:
         /// * eq: equals to.
         /// * re: matches a regular expression.
         /// </summary>

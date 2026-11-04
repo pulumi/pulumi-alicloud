@@ -267,6 +267,12 @@ func (AccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountState)(nil)).Elem()
 }
 
+// AccountExists checks whether an existing Account resource with the given ID exists.
+func AccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kvstore/account:Account", id, state, "", opts...)
+}
+
 type accountArgs struct {
 	// The name of the account. The name must meet the following requirements:
 	// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).

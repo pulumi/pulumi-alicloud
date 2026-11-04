@@ -838,6 +838,38 @@ class ProtocolMountTarget(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return ProtocolMountTarget(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessGroupName"] = access_group_name
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["exportId"] = export_id
+        __props__["fileSystemId"] = file_system_id
+        __props__["fsetId"] = fset_id
+        __props__["path"] = path
+        __props__["protocolServiceId"] = protocol_service_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["vswitchIds"] = vswitch_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/protocolMountTarget:ProtocolMountTarget', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[_builtins.str]:

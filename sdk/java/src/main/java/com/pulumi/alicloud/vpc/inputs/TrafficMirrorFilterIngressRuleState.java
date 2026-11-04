@@ -114,22 +114,20 @@ public final class TrafficMirrorFilterIngressRuleState extends com.pulumi.resour
     /**
      * . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+     * @deprecated Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
-    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
+    @Deprecated
     @Import(name="ruleAction")
     private @Nullable Output<String> ruleAction;
 
     /**
      * @return . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+     * @deprecated Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
-    @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
+    @Deprecated
     public Optional<Output<String>> ruleAction() {
         return Optional.ofNullable(this.ruleAction);
     }
@@ -383,11 +381,10 @@ public final class TrafficMirrorFilterIngressRuleState extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+         * @deprecated Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
          * 
          */
-        @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
+        @Deprecated
         public Builder ruleAction(@Nullable Output<String> ruleAction) {
             $.ruleAction = ruleAction;
             return this;
@@ -398,11 +395,10 @@ public final class TrafficMirrorFilterIngressRuleState extends com.pulumi.resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
+         * @deprecated Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
          * 
          */
-        @Deprecated /* Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead. */
+        @Deprecated
         public Builder ruleAction(String ruleAction) {
             return ruleAction(Output.of(ruleAction));
         }

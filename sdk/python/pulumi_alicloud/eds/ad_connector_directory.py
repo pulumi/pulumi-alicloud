@@ -710,6 +710,38 @@ class AdConnectorDirectory(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return AdConnectorDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            specification: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["desktopAccessType"] = desktop_access_type
+        __props__["directoryName"] = directory_name
+        __props__["dnsAddresses"] = dns_addresses
+        __props__["domainName"] = domain_name
+        __props__["domainPassword"] = domain_password
+        __props__["domainUserName"] = domain_user_name
+        __props__["enableAdminAccess"] = enable_admin_access
+        __props__["mfaEnabled"] = mfa_enabled
+        __props__["specification"] = specification
+        __props__["status"] = status
+        __props__["subDomainDnsAddresses"] = sub_domain_dns_addresses
+        __props__["subDomainName"] = sub_domain_name
+        __props__["vswitchIds"] = vswitch_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/adConnectorDirectory:AdConnectorDirectory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
     def desktop_access_type(self) -> pulumi.Output[_builtins.str]:

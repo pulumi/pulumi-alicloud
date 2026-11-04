@@ -655,6 +655,36 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         __props__.__dict__["target_type"] = target_type
         return EnterpriseSnapshotPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict', 'outputs.EnterpriseSnapshotPolicyCrossRegionCopyInfo']]] = None,
+            desc: pulumi.Input[Optional[_builtins.str]] = None,
+            enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyRetainRule']]] = None,
+            schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict', 'outputs.EnterpriseSnapshotPolicySchedule']]] = None,
+            special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict', 'outputs.EnterpriseSnapshotPolicySpecialRetainRules']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict', 'outputs.EnterpriseSnapshotPolicyStorageRule']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["crossRegionCopyInfo"] = cross_region_copy_info
+        __props__["desc"] = desc
+        __props__["enterpriseSnapshotPolicyName"] = enterprise_snapshot_policy_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["retainRule"] = retain_rule
+        __props__["schedule"] = schedule
+        __props__["specialRetainRules"] = special_retain_rules
+        __props__["status"] = status
+        __props__["storageRule"] = storage_rule
+        __props__["tags"] = tags
+        __props__["targetType"] = target_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

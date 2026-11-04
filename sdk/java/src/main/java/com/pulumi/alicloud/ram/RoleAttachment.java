@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")
@@ -124,20 +124,20 @@ import javax.annotation.Nullable;
  *         var role = new Role("role", RoleArgs.builder()
  *             .name("terraform-example")
  *             .document("""
- *   {
- *     \"Statement\": [
- *       {
- *         \"Action\": \"sts:AssumeRole\",
- *         \"Effect\": \"Allow\",
- *         \"Principal\": {
- *           \"Service\": [
- *             \"ecs.aliyuncs.com\"
+ *   }{{@code
+ *     }&#92;{@code "Statement}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *           }&#92;{@code "Service}&#92;{@code ": [
+ *             }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
  *           ]
- *         }
- *       }
+ *         }}{@code
+ *       }}{@code
  *     ],
- *     \"Version\": \"1\"
- *   }
+ *     }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *   }}{@code
  * 
  *             """)
  *             .description("this is a test")
@@ -149,8 +149,8 @@ import javax.annotation.Nullable;
  *             .instanceIds(foo.stream().map(element -> element.id()).collect(toList()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
-        /// **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
+        ///   **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
         /// </summary>
         [Output("httpEndpoint")]
         public Output<string> HttpEndpoint { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        /// **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
+        ///   **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
         /// </summary>
         [Output("httpTokens")]
         public Output<string> HttpTokens { get; private set; } = null!;
@@ -608,7 +608,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
-        /// **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
+        ///   **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
@@ -625,7 +625,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        /// **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
+        ///   **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
@@ -978,7 +978,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
-        /// **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
+        ///   **NOTE:** From version 1.260.0, `HttpEndpoint` can be modified.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
@@ -995,7 +995,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        /// **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
+        ///   **NOTE:** From version 1.260.0, `HttpTokens` can be modified.
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }

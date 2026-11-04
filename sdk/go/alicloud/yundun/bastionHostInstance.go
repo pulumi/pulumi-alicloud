@@ -131,6 +131,12 @@ func (BastionHostInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bastionHostInstanceState)(nil)).Elem()
 }
 
+// BastionHostInstanceExists checks whether an existing BastionHostInstance resource with the given ID exists.
+func BastionHostInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BastionHostInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:yundun/bastionHostInstance:BastionHostInstance", id, state, "", opts...)
+}
+
 type bastionHostInstanceArgs struct {
 	AdAuthServers      []BastionHostInstanceAdAuthServer   `pulumi:"adAuthServers"`
 	Bandwidth          string                              `pulumi:"bandwidth"`

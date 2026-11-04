@@ -270,6 +270,12 @@ func (ConsumerChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumerChannelState)(nil)).Elem()
 }
 
+// ConsumerChannelExists checks whether an existing ConsumerChannel resource with the given ID exists.
+func ConsumerChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsumerChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/consumerChannel:ConsumerChannel", id, state, "", opts...)
+}
+
 type consumerChannelArgs struct {
 	// The name of the consumer group.
 	ConsumerGroupName string `pulumi:"consumerGroupName"`

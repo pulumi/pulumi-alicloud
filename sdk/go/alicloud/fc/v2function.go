@@ -257,6 +257,12 @@ func (V2FunctionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2functionState)(nil)).Elem()
 }
 
+// V2FunctionExists checks whether an existing V2Function resource with the given ID exists.
+func V2FunctionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2FunctionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v2Function:V2Function", id, state, "", opts...)
+}
+
 type v2functionArgs struct {
 	// The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
 	CaPort *int `pulumi:"caPort"`

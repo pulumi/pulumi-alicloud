@@ -350,6 +350,20 @@ class BucketLogging(pulumi.CustomResource):
         __props__.__dict__["target_prefix"] = target_prefix
         return BucketLogging(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_role: pulumi.Input[Optional[_builtins.str]] = None,
+            target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            target_prefix: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["loggingRole"] = logging_role
+        __props__["targetBucket"] = target_bucket
+        __props__["targetPrefix"] = target_prefix
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketLogging:BucketLogging', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:

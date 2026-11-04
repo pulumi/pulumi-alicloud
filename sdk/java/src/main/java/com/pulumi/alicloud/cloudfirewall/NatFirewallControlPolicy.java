@@ -344,7 +344,7 @@ public class NatFirewallControlPolicy extends com.pulumi.resources.CustomResourc
      * - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
      * - When DestinationType IS group, Destination is the name of the Destination address book. For example: dbGroup
      * - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
-     * - When DestinationType is location, Destination is the Destination region. For example: \[&#34;BJ11&#34;, &#34;ZB&#34;\].
+     * - When DestinationType is location, Destination is the Destination region. For example: &#92;[&#34;BJ11&#34;, &#34;ZB&#34;&#92;].
      * 
      */
     @Export(name="destination", refs={String.class}, tree="[0]")
@@ -355,7 +355,7 @@ public class NatFirewallControlPolicy extends com.pulumi.resources.CustomResourc
      * - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
      * - When DestinationType IS group, Destination is the name of the Destination address book. For example: dbGroup
      * - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
-     * - When DestinationType is location, Destination is the Destination region. For example: \[&#34;BJ11&#34;, &#34;ZB&#34;\].
+     * - When DestinationType is location, Destination is the Destination region. For example: &#92;[&#34;BJ11&#34;, &#34;ZB&#34;&#92;].
      * 
      */
     public Output<String> destination() {

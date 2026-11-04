@@ -50,22 +50,20 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * @deprecated Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
+    @Deprecated
     @Import(name="havipId")
     private @Nullable Output<String> havipId;
 
     /**
      * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * @deprecated Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
+    @Deprecated
     public Optional<Output<String>> havipId() {
         return Optional.ofNullable(this.havipId);
     }
@@ -175,11 +173,10 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * @deprecated Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
+        @Deprecated
         public Builder havipId(@Nullable Output<String> havipId) {
             $.havipId = havipId;
             return this;
@@ -190,11 +187,10 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * @deprecated Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
+        @Deprecated
         public Builder havipId(String havipId) {
             return havipId(Output.of(havipId));
         }

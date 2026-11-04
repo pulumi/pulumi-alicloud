@@ -214,22 +214,20 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -301,11 +299,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
      * &#34;slb.s3.small&#34;, &#34;slb.s3.medium&#34;, &#34;slb.s3.large&#34; and &#34;slb.s4.large&#34;.
      * 
-     * @deprecated
-     * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
+     * @deprecated Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
      * 
      */
-    @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
+    @Deprecated
     @Import(name="specification")
     private @Nullable Output<String> specification;
 
@@ -314,11 +311,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
      * &#34;slb.s3.small&#34;, &#34;slb.s3.medium&#34;, &#34;slb.s3.large&#34; and &#34;slb.s4.large&#34;.
      * 
-     * @deprecated
-     * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
+     * @deprecated Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
      * 
      */
-    @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
+    @Deprecated
     public Optional<Output<String>> specification() {
         return Optional.ofNullable(this.specification);
     }
@@ -695,11 +691,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -710,11 +705,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -812,11 +806,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
+         * @deprecated Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
          * 
          */
-        @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
+        @Deprecated
         public Builder specification(@Nullable Output<String> specification) {
             $.specification = specification;
             return this;
@@ -829,11 +822,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
+         * @deprecated Field &#39;specification&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_spec&#39; instead
          * 
          */
-        @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
+        @Deprecated
         public Builder specification(String specification) {
             return specification(Output.of(specification));
         }

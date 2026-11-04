@@ -238,6 +238,12 @@ func (HttpApiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpApiState)(nil)).Elem()
 }
 
+// HttpApiExists checks whether an existing HttpApi resource with the given ID exists.
+func HttpApiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HttpApiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apig/httpApi:HttpApi", id, state, "", opts...)
+}
+
 type httpApiArgs struct {
 	// AI API protocols. Currently the supported value is `OpenAI/v1`.
 	//

@@ -562,6 +562,40 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Backup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_db_names: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_download_url: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_intranet_download_url: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_size: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupDbNames"] = backup_db_names
+        __props__["backupDownloadUrl"] = backup_download_url
+        __props__["backupEndTime"] = backup_end_time
+        __props__["backupId"] = backup_id
+        __props__["backupIntranetDownloadUrl"] = backup_intranet_download_url
+        __props__["backupJobId"] = backup_job_id
+        __props__["backupMethod"] = backup_method
+        __props__["backupMode"] = backup_mode
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["backupSize"] = backup_size
+        __props__["backupStartTime"] = backup_start_time
+        __props__["backupType"] = backup_type
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/backup:Backup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupDbNames")
     def backup_db_names(self) -> pulumi.Output[_builtins.str]:

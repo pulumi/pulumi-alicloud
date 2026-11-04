@@ -102,6 +102,12 @@ func (ServiceLinkedRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceLinkedRoleState)(nil)).Elem()
 }
 
+// ServiceLinkedRoleExists checks whether an existing ServiceLinkedRole resource with the given ID exists.
+func ServiceLinkedRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceLinkedRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole", id, state, "", opts...)
+}
+
 type serviceLinkedRoleArgs struct {
 }
 

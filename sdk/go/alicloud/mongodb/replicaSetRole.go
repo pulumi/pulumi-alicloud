@@ -224,6 +224,12 @@ func (ReplicaSetRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicaSetRoleState)(nil)).Elem()
 }
 
+// ReplicaSetRoleExists checks whether an existing ReplicaSetRole resource with the given ID exists.
+func ReplicaSetRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReplicaSetRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/replicaSetRole:ReplicaSetRole", id, state, "", opts...)
+}
+
 type replicaSetRoleArgs struct {
 	// The port of the connection string, will be computed if not specified.`
 	ConnectionPort *int `pulumi:"connectionPort"`

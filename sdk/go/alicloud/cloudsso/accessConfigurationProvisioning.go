@@ -217,6 +217,12 @@ func (AccessConfigurationProvisioningState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessConfigurationProvisioningState)(nil)).Elem()
 }
 
+// AccessConfigurationProvisioningExists checks whether an existing AccessConfigurationProvisioning resource with the given ID exists.
+func AccessConfigurationProvisioningExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessConfigurationProvisioningState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning", id, state, "", opts...)
+}
+
 type accessConfigurationProvisioningArgs struct {
 	// The Access configuration ID.
 	AccessConfigurationId string `pulumi:"accessConfigurationId"`

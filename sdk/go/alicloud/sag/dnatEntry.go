@@ -179,6 +179,12 @@ func (DnatEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnatEntryState)(nil)).Elem()
 }
 
+// DnatEntryExists checks whether an existing DnatEntry resource with the given ID exists.
+func DnatEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnatEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/dnatEntry:DnatEntry", id, state, "", opts...)
+}
+
 type dnatEntryArgs struct {
 	// The external public IP address.when "type" is "Internet",automatically identify the external ip.
 	ExternalIp *string `pulumi:"externalIp"`

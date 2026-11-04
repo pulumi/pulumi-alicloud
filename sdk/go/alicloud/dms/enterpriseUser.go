@@ -180,6 +180,12 @@ func (EnterpriseUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseUserState)(nil)).Elem()
 }
 
+// EnterpriseUserExists checks whether an existing EnterpriseUser resource with the given ID exists.
+func EnterpriseUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/enterpriseUser:EnterpriseUser", id, state, "", opts...)
+}
+
 type enterpriseUserArgs struct {
 	// Maximum number of inquiries on the day.
 	MaxExecuteCount *int `pulumi:"maxExecuteCount"`

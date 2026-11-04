@@ -152,6 +152,12 @@ func (DhcpOptionsSetAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dhcpOptionsSetAttachmentState)(nil)).Elem()
 }
 
+// DhcpOptionsSetAttachmentExists checks whether an existing DhcpOptionsSetAttachment resource with the given ID exists.
+func DhcpOptionsSetAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DhcpOptionsSetAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment", id, state, "", opts...)
+}
+
 type dhcpOptionsSetAttachmentArgs struct {
 	// The ID of the DHCP options set.
 	DhcpOptionsSetId string `pulumi:"dhcpOptionsSetId"`

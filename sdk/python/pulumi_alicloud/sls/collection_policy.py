@@ -790,6 +790,30 @@ class CollectionPolicy(pulumi.CustomResource):
         __props__.__dict__["resource_directory"] = resource_directory
         return CollectionPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict', 'outputs.CollectionPolicyCentralizeConfig']]] = None,
+            centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_code: pulumi.Input[Optional[_builtins.str]] = None,
+            data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict', 'outputs.CollectionPolicyDataConfig']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict', 'outputs.CollectionPolicyPolicyConfig']]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict', 'outputs.CollectionPolicyResourceDirectory']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["centralizeConfig"] = centralize_config
+        __props__["centralizeEnabled"] = centralize_enabled
+        __props__["dataCode"] = data_code
+        __props__["dataConfig"] = data_config
+        __props__["enabled"] = enabled
+        __props__["policyConfig"] = policy_config
+        __props__["policyName"] = policy_name
+        __props__["productCode"] = product_code
+        __props__["resourceDirectory"] = resource_directory
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/collectionPolicy:CollectionPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="centralizeConfig")
     def centralize_config(self) -> pulumi.Output['outputs.CollectionPolicyCentralizeConfig']:

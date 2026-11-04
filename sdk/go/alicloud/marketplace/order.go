@@ -162,6 +162,12 @@ func (OrderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*orderState)(nil)).Elem()
 }
 
+// OrderExists checks whether an existing Order resource with the given ID exists.
+func OrderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:marketplace/order:Order", id, state, "", opts...)
+}
+
 type orderArgs struct {
 	// Service providers customize additional components.
 	Components map[string]string `pulumi:"components"`

@@ -389,6 +389,20 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         __props__.__dict__["transit_router_route_table_id"] = transit_router_route_table_id
         return TransitRouterRouteTableAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["status"] = status
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        __props__["transitRouterRouteTableId"] = transit_router_route_table_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -204,6 +204,12 @@ func (MachineGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineGroupState)(nil)).Elem()
 }
 
+// MachineGroupExists checks whether an existing MachineGroup resource with the given ID exists.
+func MachineGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MachineGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/machineGroup:MachineGroup", id, state, "", opts...)
+}
+
 type machineGroupArgs struct {
 	// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
 	GroupAttribute *MachineGroupGroupAttribute `pulumi:"groupAttribute"`

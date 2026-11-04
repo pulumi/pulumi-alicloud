@@ -346,6 +346,18 @@ class PublicEndpoint(pulumi.CustomResource):
         __props__.__dict__["net_type"] = net_type
         return PublicEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionStringPrefix"] = connection_string_prefix
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["netType"] = net_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> pulumi.Output[_builtins.str]:

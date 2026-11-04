@@ -835,6 +835,46 @@ class IpamIpamPool(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return IpamIpamPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            allocation_max_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            allocation_min_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            clear_allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocationDefaultCidrMask"] = allocation_default_cidr_mask
+        __props__["allocationMaxCidrMask"] = allocation_max_cidr_mask
+        __props__["allocationMinCidrMask"] = allocation_min_cidr_mask
+        __props__["autoImport"] = auto_import
+        __props__["clearAllocationDefaultCidrMask"] = clear_allocation_default_cidr_mask
+        __props__["createTime"] = create_time
+        __props__["ipVersion"] = ip_version
+        __props__["ipamPoolDescription"] = ipam_pool_description
+        __props__["ipamPoolName"] = ipam_pool_name
+        __props__["ipamScopeId"] = ipam_scope_id
+        __props__["ipv6Isp"] = ipv6_isp
+        __props__["poolRegionId"] = pool_region_id
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sourceIpamPoolId"] = source_ipam_pool_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipamIpamPool:IpamIpamPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocationDefaultCidrMask")
     def allocation_default_cidr_mask(self) -> pulumi.Output[Optional[_builtins.int]]:

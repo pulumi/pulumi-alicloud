@@ -425,6 +425,22 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Ipv6InternetBandwidth(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["ipv6AddressId"] = ipv6_address_id
+        __props__["ipv6GatewayId"] = ipv6_gateway_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:

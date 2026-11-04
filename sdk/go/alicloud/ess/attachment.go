@@ -303,6 +303,12 @@ func (AttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachmentState)(nil)).Elem()
 }
 
+// AttachmentExists checks whether an existing Attachment resource with the given ID exists.
+func AttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/attachment:Attachment", id, state, "", opts...)
+}
+
 type attachmentArgs struct {
 	// Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
 	Entrusted *bool `pulumi:"entrusted"`

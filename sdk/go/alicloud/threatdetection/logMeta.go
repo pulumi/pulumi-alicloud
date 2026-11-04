@@ -190,6 +190,12 @@ func (LogMetaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logMetaState)(nil)).Elem()
 }
 
+// LogMetaExists checks whether an existing LogMeta resource with the given ID exists.
+func LogMetaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogMetaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/logMeta:LogMeta", id, state, "", opts...)
+}
+
 type logMetaArgs struct {
 	// The name of the exclusive Logstore where logs are stored. Value:
 	// - aegis-log-client: client event log

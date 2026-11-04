@@ -200,6 +200,12 @@ func (ServiceGroupMonitoringAgentProcessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceGroupMonitoringAgentProcessState)(nil)).Elem()
 }
 
+// ServiceGroupMonitoringAgentProcessExists checks whether an existing ServiceGroupMonitoringAgentProcess resource with the given ID exists.
+func ServiceGroupMonitoringAgentProcessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceGroupMonitoringAgentProcessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess", id, state, "", opts...)
+}
+
 type serviceGroupMonitoringAgentProcessArgs struct {
 	// The alert rule configurations. See `alertConfig` below.
 	AlertConfigs []ServiceGroupMonitoringAgentProcessAlertConfig `pulumi:"alertConfigs"`

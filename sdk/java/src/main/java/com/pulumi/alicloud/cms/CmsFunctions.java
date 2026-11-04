@@ -6139,12 +6139,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6162,21 +6162,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6186,8 +6186,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -6223,12 +6223,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6246,21 +6246,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6270,8 +6270,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -6307,12 +6307,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6330,21 +6330,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6354,8 +6354,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -6391,12 +6391,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6414,21 +6414,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6438,8 +6438,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -6475,12 +6475,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6498,21 +6498,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6522,8 +6522,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -6559,12 +6559,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6582,21 +6582,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6606,8 +6606,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -6643,12 +6643,12 @@ public final class CmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_example");
      *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -6666,21 +6666,21 @@ public final class CmsFunctions {
      *                 .isp("465")
      *                 .build())
      *             .optionsJson("""
-     * {
-     *     \"http_method\": \"get\",
-     *     \"waitTime_after_completion\": null,
-     *     \"ipv6_task\": false,
-     *     \"diagnosis_ping\": false,
-     *     \"diagnosis_mtr\": false,
-     *     \"assertions\": [
-     *         {
-     *             \"operator\": \"lessThan\",
-     *             \"type\": \"response_time\",
-     *             \"target\": 1000
-     *         }
+     * }{{@code
+     *     }&#92;{@code "http_method}&#92;{@code ": }&#92;{@code "get}&#92;{@code ",
+     *     }&#92;{@code "waitTime_after_completion}&#92;{@code ": null,
+     *     }&#92;{@code "ipv6_task}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_ping}&#92;{@code ": false,
+     *     }&#92;{@code "diagnosis_mtr}&#92;{@code ": false,
+     *     }&#92;{@code "assertions}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "lessThan}&#92;{@code ",
+     *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "response_time}&#92;{@code ",
+     *             }&#92;{@code "target}&#92;{@code ": 1000
+     *         }}{@code
      *     ],
-     *     \"time_out\": 30000
-     * }
+     *     }&#92;{@code "time_out}&#92;{@code ": 30000
+     * }}{@code
      *             """)
      *             .build());
      * 
@@ -6690,8 +6690,8 @@ public final class CmsFunctions {
      *             .build());
      * 
      *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(_default_ -> _default_.monitors().get(0).taskId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

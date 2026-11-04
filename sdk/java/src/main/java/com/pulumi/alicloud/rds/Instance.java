@@ -1151,7 +1151,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+&#92;|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
     @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
@@ -1159,7 +1159,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+&#92;|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
     public Output<String> connectionStringPrefix() {
@@ -1916,11 +1916,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
-     * @deprecated
-     * Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * 
      */
-    @Deprecated /* Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead. */
+    @Deprecated
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
@@ -2456,11 +2455,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** Activation Stage: Supports only during instance creation or when enabling write optimization features for existing  (high-availability/cluster series) instances.
      * 
-     * @deprecated
-     * Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+     * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      * 
      */
-    @Deprecated /* Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead. */
+    @Deprecated
     @Export(name="upgradeDbInstanceKernelVersion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> upgradeDbInstanceKernelVersion;
 

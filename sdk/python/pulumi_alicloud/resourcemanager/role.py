@@ -434,6 +434,26 @@ class Role(pulumi.CustomResource):
         __props__.__dict__["update_date"] = update_date
         return Role(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            update_date: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arn"] = arn
+        __props__["assumeRolePolicyDocument"] = assume_role_policy_document
+        __props__["description"] = description
+        __props__["maxSessionDuration"] = max_session_duration
+        __props__["roleId"] = role_id
+        __props__["roleName"] = role_name
+        __props__["updateDate"] = update_date
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/role:Role', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def arn(self) -> pulumi.Output[_builtins.str]:

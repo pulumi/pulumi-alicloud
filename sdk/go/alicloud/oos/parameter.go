@@ -196,6 +196,12 @@ func (ParameterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*parameterState)(nil)).Elem()
 }
 
+// ParameterExists checks whether an existing Parameter resource with the given ID exists.
+func ParameterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ParameterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/parameter:Parameter", id, state, "", opts...)
+}
+
 type parameterArgs struct {
 	// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
 	// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.

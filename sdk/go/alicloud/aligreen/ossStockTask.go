@@ -508,6 +508,12 @@ func (OssStockTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ossStockTaskState)(nil)).Elem()
 }
 
+// OssStockTaskExists checks whether an existing OssStockTask resource with the given ID exists.
+func OssStockTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OssStockTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:aligreen/ossStockTask:OssStockTask", id, state, "", opts...)
+}
+
 type ossStockTaskArgs struct {
 	// Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
 	AudioAntispamFreezeConfig *string `pulumi:"audioAntispamFreezeConfig"`

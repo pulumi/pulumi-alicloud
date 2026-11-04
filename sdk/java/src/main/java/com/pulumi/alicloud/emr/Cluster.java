@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
  *             .build());
  * 
@@ -100,24 +100,24 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
- *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) }{{@code
  *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
- * }
- *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ * }}{@code
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) }{{@code
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // VSwitch Resource for Module
- *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) }{{@code
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
@@ -126,26 +126,26 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // Ram role Resource for Module
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
- *     {
- *         \"Statement\": [
- *         {
- *             \"Action\": \"sts:AssumeRole\",
- *             \"Effect\": \"Allow\",
- *             \"Principal\": {
- *             \"Service\": [
- *                 \"emr.aliyuncs.com\",
- *                 \"ecs.aliyuncs.com\"
+ *     }{{@code
+ *         }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+ *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
  *             ]
- *             }
- *         }
+ *             }}{@code
+ *         }}{@code
  *         ],
- *         \"Version\": \"1\"
- *     }
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .description("this is a role test.")
  *             .force(true)
@@ -200,8 +200,8 @@ import javax.annotation.Nullable;
  *             .masterPwd("ABCtest1234!")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -245,12 +245,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
  *             .build());
  * 
@@ -281,24 +281,24 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
- *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) }{{@code
  *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
- * }
- *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ * }}{@code
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) }{{@code
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // VSwitch Resource for Module
- *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) }{{@code
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
@@ -307,26 +307,26 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // Ram role Resource for Module
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
- *     {
- *         \"Statement\": [
- *         {
- *             \"Action\": \"sts:AssumeRole\",
- *             \"Effect\": \"Allow\",
- *             \"Principal\": {
- *             \"Service\": [
- *                 \"emr.aliyuncs.com\",
- *                 \"ecs.aliyuncs.com\"
+ *     }{{@code
+ *         }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+ *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
  *             ]
- *             }
- *         }
+ *             }}{@code
+ *         }}{@code
  *         ],
- *         \"Version\": \"1\"
- *     }
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .description("this is a role test.")
  *             .force(true)
@@ -381,8 +381,8 @@ import javax.annotation.Nullable;
  *             .masterPwd("ABCtest1234!")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -424,12 +424,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
  *             .build());
  * 
@@ -460,24 +460,24 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
- *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) }{{@code
  *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
- * }
- *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ * }}{@code
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) }{{@code
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // VSwitch Resource for Module
- *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) }{{@code
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
@@ -486,26 +486,26 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // Ram role Resource for Module
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
- *     {
- *         \"Statement\": [
- *         {
- *             \"Action\": \"sts:AssumeRole\",
- *             \"Effect\": \"Allow\",
- *             \"Principal\": {
- *             \"Service\": [
- *                 \"emr.aliyuncs.com\",
- *                 \"ecs.aliyuncs.com\"
+ *     }{{@code
+ *         }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+ *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
  *             ]
- *             }
- *         }
+ *             }}{@code
+ *         }}{@code
  *         ],
- *         \"Version\": \"1\"
- *     }
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .description("this is a role test.")
  *             .force(true)
@@ -560,8 +560,8 @@ import javax.annotation.Nullable;
  *             .masterPwd("ABCtest1234!")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -597,12 +597,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
  *             .build());
  * 
@@ -630,24 +630,24 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
- *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) }{{@code
  *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
- * }
- *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ * }}{@code
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) }{{@code
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc.get(0).id() : vpcId)
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // VSwitch Resource for Module
- *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) }{{@code
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
@@ -656,26 +656,26 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         
- * }
+ * }}{@code
  *         // Ram role Resource for Module
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
- *     {
- *         \"Statement\": [
- *         {
- *             \"Action\": \"sts:AssumeRole\",
- *             \"Effect\": \"Allow\",
- *             \"Principal\": {
- *             \"Service\": [
- *                 \"emr.aliyuncs.com\",
- *                 \"ecs.aliyuncs.com\"
+ *     }{{@code
+ *         }&#92;{@code "Statement}&#92;{@code ": [
+ *         }{{@code
+ *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+ *             }&#92;{@code "Service}&#92;{@code ": [
+ *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+ *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
  *             ]
- *             }
- *         }
+ *             }}{@code
+ *         }}{@code
  *         ],
- *         \"Version\": \"1\"
- *     }
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .description("this is a role test.")
  *             .force(true)
@@ -708,8 +708,8 @@ import javax.annotation.Nullable;
  *             .relatedClusterId(relatedClusterId)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

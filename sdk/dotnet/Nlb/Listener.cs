@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string?> AlpnPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
         /// 
         /// &gt; **NOTE:**  Only one CA certificate is supported.
         /// </summary>
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<bool> CaEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         /// </summary>
@@ -381,7 +381,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _caCertificateIds;
 
         /// <summary>
-        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
         /// 
         /// &gt; **NOTE:**  Only one CA certificate is supported.
         /// </summary>
@@ -401,7 +401,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         /// </summary>
@@ -557,7 +557,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _caCertificateIds;
 
         /// <summary>
-        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        /// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
         /// 
         /// &gt; **NOTE:**  Only one CA certificate is supported.
         /// </summary>
@@ -577,7 +577,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputList<string>? _certificateIds;
 
         /// <summary>
-        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        /// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         /// </summary>

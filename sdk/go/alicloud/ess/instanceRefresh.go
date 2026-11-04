@@ -322,6 +322,12 @@ func (InstanceRefreshState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceRefreshState)(nil)).Elem()
 }
 
+// InstanceRefreshExists checks whether an existing InstanceRefresh resource with the given ID exists.
+func InstanceRefreshExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceRefreshState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/instanceRefresh:InstanceRefresh", id, state, "", opts...)
+}
+
 type instanceRefreshArgs struct {
 	// The duration of the pause when the task reaches a checkpoint. Unit: minutes.
 	CheckpointPauseTime *int `pulumi:"checkpointPauseTime"`

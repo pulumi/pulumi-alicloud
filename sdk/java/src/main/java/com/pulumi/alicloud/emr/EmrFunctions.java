@@ -66,12 +66,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -125,21 +125,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -207,8 +207,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -258,12 +258,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -317,21 +317,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -399,8 +399,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -450,12 +450,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -509,21 +509,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -591,8 +591,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -642,12 +642,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -701,21 +701,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -783,8 +783,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -834,12 +834,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -893,21 +893,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -975,8 +975,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1026,12 +1026,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -1085,21 +1085,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -1167,8 +1167,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1218,12 +1218,12 @@ public final class EmrFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccClusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -1277,21 +1277,21 @@ public final class EmrFunctions {
      *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
-     *     {
-     *         \"Statement\": [
-     *         {
-     *             \"Action\": \"sts:AssumeRole\",
-     *             \"Effect\": \"Allow\",
-     *             \"Principal\": {
-     *             \"Service\": [
-     *                 \"emr.aliyuncs.com\",
-     *                 \"ecs.aliyuncs.com\"
+     *     }{{@code
+     *         }&#92;{@code "Statement}&#92;{@code ": [
+     *         }{{@code
+     *             }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+     *             }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+     *             }&#92;{@code "Principal}&#92;{@code ": }{{@code
+     *             }&#92;{@code "Service}&#92;{@code ": [
+     *                 }&#92;{@code "emr.aliyuncs.com}&#92;{@code ",
+     *                 }&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
      *             ]
-     *             }
-     *         }
+     *             }}{@code
+     *         }}{@code
      *         ],
-     *         \"Version\": \"1\"
-     *     }
+     *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+     *     }}{@code
      *             """)
      *             .description("this is a role test.")
      *             .force(true)
@@ -1359,8 +1359,8 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         ctx.export("emrClusterId2", nameRegex.applyValue(_nameRegex -> _nameRegex.clusters().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

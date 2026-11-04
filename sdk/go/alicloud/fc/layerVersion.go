@@ -210,6 +210,12 @@ func (LayerVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*layerVersionState)(nil)).Elem()
 }
 
+// LayerVersionExists checks whether an existing LayerVersion resource with the given ID exists.
+func LayerVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LayerVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/layerVersion:LayerVersion", id, state, "", opts...)
+}
+
 type layerVersionArgs struct {
 	// The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
 	CompatibleRuntimes []string `pulumi:"compatibleRuntimes"`

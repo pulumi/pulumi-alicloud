@@ -219,6 +219,12 @@ func (CustomRoutingEndpointGroupDestinationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customRoutingEndpointGroupDestinationState)(nil)).Elem()
 }
 
+// CustomRoutingEndpointGroupDestinationExists checks whether an existing CustomRoutingEndpointGroupDestination resource with the given ID exists.
+func CustomRoutingEndpointGroupDestinationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomRoutingEndpointGroupDestinationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination", id, state, "", opts...)
+}
+
 type customRoutingEndpointGroupDestinationArgs struct {
 	// The ID of the endpoint group.
 	EndpointGroupId string `pulumi:"endpointGroupId"`

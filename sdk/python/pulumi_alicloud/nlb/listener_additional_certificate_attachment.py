@@ -601,6 +601,20 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ListenerAdditionalCertificateAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateId"] = certificate_id
+        __props__["dryRun"] = dry_run
+        __props__["listenerId"] = listener_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[_builtins.str]:

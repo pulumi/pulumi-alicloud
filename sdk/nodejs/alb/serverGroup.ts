@@ -125,6 +125,17 @@ export class ServerGroup extends pulumi.CustomResource {
         return new ServerGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ServerGroup resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ServerGroupState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("alicloud:alb/serverGroup:ServerGroup", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'alicloud:alb/serverGroup:ServerGroup';
 

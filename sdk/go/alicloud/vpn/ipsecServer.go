@@ -220,6 +220,12 @@ func (IpsecServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipsecServerState)(nil)).Elem()
 }
 
+// IpsecServerExists checks whether an existing IpsecServer resource with the given ID exists.
+func IpsecServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpsecServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/ipsecServer:IpsecServer", id, state, "", opts...)
+}
+
 type ipsecServerArgs struct {
 	// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
 	ClientIpPool string `pulumi:"clientIpPool"`

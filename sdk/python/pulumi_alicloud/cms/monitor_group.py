@@ -367,6 +367,22 @@ class MonitorGroup(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return MonitorGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            contact_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            monitor_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contactGroups"] = contact_groups
+        __props__["monitorGroupName"] = monitor_group_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resourceGroupName"] = resource_group_name
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/monitorGroup:MonitorGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contactGroups")
     def contact_groups(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

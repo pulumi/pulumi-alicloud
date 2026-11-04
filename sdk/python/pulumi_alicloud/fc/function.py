@@ -991,6 +991,58 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return Function(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+            code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_container_config: pulumi.Input[Optional[Union['FunctionCustomContainerConfigArgs', 'FunctionCustomContainerConfigArgsDict', 'outputs.FunctionCustomContainerConfig']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            filename: pulumi.Input[Optional[_builtins.str]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_id: pulumi.Input[Optional[_builtins.str]] = None,
+            handler: pulumi.Input[Optional[_builtins.str]] = None,
+            initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            initializer: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_key: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["caPort"] = ca_port
+        __props__["codeChecksum"] = code_checksum
+        __props__["customContainerConfig"] = custom_container_config
+        __props__["description"] = description
+        __props__["environmentVariables"] = environment_variables
+        __props__["filename"] = filename
+        __props__["functionArn"] = function_arn
+        __props__["functionId"] = function_id
+        __props__["handler"] = handler
+        __props__["initializationTimeout"] = initialization_timeout
+        __props__["initializer"] = initializer
+        __props__["instanceConcurrency"] = instance_concurrency
+        __props__["instanceType"] = instance_type
+        __props__["lastModified"] = last_modified
+        __props__["layers"] = layers
+        __props__["memorySize"] = memory_size
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["ossBucket"] = oss_bucket
+        __props__["ossKey"] = oss_key
+        __props__["runtime"] = runtime
+        __props__["service"] = service
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/function:Function', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="caPort")
     def ca_port(self) -> pulumi.Output[Optional[_builtins.int]]:

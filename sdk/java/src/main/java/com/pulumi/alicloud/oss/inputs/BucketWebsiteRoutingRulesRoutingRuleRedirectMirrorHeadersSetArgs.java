@@ -23,14 +23,14 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetA
     }
 
     /**
-     * Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+     * Set the value of the Header to 1024 bytes at most. &#92;r&#92;n. It takes effect only when the RedirectType is set to Mirror.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+     * @return Set the value of the Header to 1024 bytes at most. &#92;r&#92;n. It takes effect only when the RedirectType is set to Mirror.
      * 
      */
     public Optional<Output<String>> value() {
@@ -72,7 +72,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetA
         }
 
         /**
-         * @param value Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+         * @param value Set the value of the Header to 1024 bytes at most. &#92;r&#92;n. It takes effect only when the RedirectType is set to Mirror.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetA
         }
 
         /**
-         * @param value Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+         * @param value Set the value of the Header to 1024 bytes at most. &#92;r&#92;n. It takes effect only when the RedirectType is set to Mirror.
          * 
          * @return builder
          * 

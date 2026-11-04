@@ -280,6 +280,12 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceState)(nil)).Elem()
 }
 
+// NetworkInterfaceExists checks whether an existing NetworkInterface resource with the given ID exists.
+func NetworkInterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkInterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/networkInterface:NetworkInterface", id, state, "", opts...)
+}
+
 type networkInterfaceArgs struct {
 	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.

@@ -25,11 +25,10 @@ public final class GetEipsResult {
     /**
      * @return A list of EIPs. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
+     * @deprecated Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
      * 
      */
-    @Deprecated /* Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead. */
+    @Deprecated
     private List<GetEipsEip> eips;
     private @Nullable Boolean enableDetails;
     /**
@@ -49,11 +48,10 @@ public final class GetEipsResult {
      */
     private @Nullable String ipAddress;
     /**
-     * @deprecated
-     * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
+     * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
+    @Deprecated
     private @Nullable List<String> ipAddresses;
     private @Nullable String isp;
     private @Nullable String lockReason;
@@ -97,11 +95,10 @@ public final class GetEipsResult {
     /**
      * @return A list of EIPs. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
+     * @deprecated Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
      * 
      */
-    @Deprecated /* Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead. */
+    @Deprecated
     public List<GetEipsEip> eips() {
         return this.eips;
     }
@@ -133,11 +130,10 @@ public final class GetEipsResult {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
-     * @deprecated
-     * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
+     * @deprecated Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
+    @Deprecated
     public List<String> ipAddresses() {
         return this.ipAddresses == null ? List.of() : this.ipAddresses;
     }

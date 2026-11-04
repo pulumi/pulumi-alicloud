@@ -159,6 +159,12 @@ func (ServiceSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceSettingState)(nil)).Elem()
 }
 
+// ServiceSettingExists checks whether an existing ServiceSetting resource with the given ID exists.
+func ServiceSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/serviceSetting:ServiceSetting", id, state, "", opts...)
+}
+
 type serviceSettingArgs struct {
 	// The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
 	DeliveryOssBucketName *string `pulumi:"deliveryOssBucketName"`

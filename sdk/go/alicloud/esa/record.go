@@ -238,6 +238,12 @@ func (RecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordState)(nil)).Elem()
 }
 
+// RecordExists checks whether an existing Record resource with the given ID exists.
+func RecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/record:Record", id, state, "", opts...)
+}
+
 type recordArgs struct {
 	// The origin authentication information of the CNAME record. See `authConf` below.
 	AuthConf *RecordAuthConf `pulumi:"authConf"`

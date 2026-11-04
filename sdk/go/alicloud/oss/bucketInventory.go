@@ -193,6 +193,12 @@ func (BucketInventoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketInventoryState)(nil)).Elem()
 }
 
+// BucketInventoryExists checks whether an existing BucketInventory resource with the given ID exists.
+func BucketInventoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketInventoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketInventory:BucketInventory", id, state, "", opts...)
+}
+
 type bucketInventoryArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`

@@ -281,6 +281,12 @@ func (ApplicationScalingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationScalingRuleState)(nil)).Elem()
 }
 
+// ApplicationScalingRuleExists checks whether an existing ApplicationScalingRule resource with the given ID exists.
+func ApplicationScalingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationScalingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sae/applicationScalingRule:ApplicationScalingRule", id, state, "", opts...)
+}
+
 type applicationScalingRuleArgs struct {
 	// Application ID.
 	AppId string `pulumi:"appId"`

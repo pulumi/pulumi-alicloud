@@ -138,6 +138,12 @@ func (ActivationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*activationState)(nil)).Elem()
 }
 
+// ActivationExists checks whether an existing Activation resource with the given ID exists.
+func ActivationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ActivationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/activation:Activation", id, state, "", opts...)
+}
+
 type activationArgs struct {
 	// The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`

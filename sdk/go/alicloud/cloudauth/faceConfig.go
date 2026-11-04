@@ -159,6 +159,12 @@ func (FaceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*faceConfigState)(nil)).Elem()
 }
 
+// FaceConfigExists checks whether an existing FaceConfig resource with the given ID exists.
+func FaceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FaceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudauth/faceConfig:FaceConfig", id, state, "", opts...)
+}
+
 type faceConfigArgs struct {
 	// Scene name.
 	BizName string `pulumi:"bizName"`

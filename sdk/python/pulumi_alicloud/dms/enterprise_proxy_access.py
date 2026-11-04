@@ -506,6 +506,36 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         __props__.__dict__["user_uid"] = user_uid
         return EnterpriseProxyAccess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            indep_account: pulumi.Input[Optional[_builtins.str]] = None,
+            indep_password: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_info: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessId"] = access_id
+        __props__["accessSecret"] = access_secret
+        __props__["createTime"] = create_time
+        __props__["indepAccount"] = indep_account
+        __props__["indepPassword"] = indep_password
+        __props__["instanceId"] = instance_id
+        __props__["originInfo"] = origin_info
+        __props__["proxyAccessId"] = proxy_access_id
+        __props__["proxyId"] = proxy_id
+        __props__["userId"] = user_id
+        __props__["userName"] = user_name
+        __props__["userUid"] = user_uid
+        return pulumi.runtime.exists_resource(None, 'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessId")
     def access_id(self) -> pulumi.Output[_builtins.str]:

@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
  *             .nameRegex("plan-tf-used-dont-delete")
  *             .build());
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .targetCreateTime(defaultGetNasBackupPlans.plans()[0].createTime())
  *             .targetPath("/")
  *             .options("""
- *     {\"includes\":[], \"excludes\":[]}
+ *     }{&#92;{@code "includes}&#92;{@code ":[], }&#92;{@code "excludes}&#92;{@code ":[]}}{@code
  *             """)
  *             .build());
  * 
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .targetBucket(defaultGetOssBackupPlans.plans()[0].bucket())
  *             .targetPrefix("")
  *             .options("""
- *     {\"includes\":[], \"excludes\":[]}
+ *     }{&#92;{@code "includes}&#92;{@code ":[], }&#92;{@code "excludes}&#92;{@code ":[]}}{@code
  *             """)
  *             .build());
  * 
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *             .targetPath("/")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

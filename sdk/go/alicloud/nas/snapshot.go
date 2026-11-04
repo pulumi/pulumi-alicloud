@@ -162,6 +162,12 @@ func (SnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotState)(nil)).Elem()
 }
 
+// SnapshotExists checks whether an existing Snapshot resource with the given ID exists.
+func SnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/snapshot:Snapshot", id, state, "", opts...)
+}
+
 type snapshotArgs struct {
 	// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
 	Description *string `pulumi:"description"`

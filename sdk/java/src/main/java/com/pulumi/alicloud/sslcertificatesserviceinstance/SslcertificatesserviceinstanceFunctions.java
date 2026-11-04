@@ -57,11 +57,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static Output<CertificatesResult> certificates() {
         return certificates(CertificatesArgs.Empty, InvokeOptions.Empty);
     }
@@ -104,11 +103,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static CompletableFuture<CertificatesResult> certificatesPlain() {
         return certificatesPlain(CertificatesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -151,11 +149,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static Output<CertificatesResult> certificates(CertificatesArgs args) {
         return certificates(args, InvokeOptions.Empty);
     }
@@ -198,11 +195,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static CompletableFuture<CertificatesResult> certificatesPlain(CertificatesPlainArgs args) {
         return certificatesPlain(args, InvokeOptions.Empty);
     }
@@ -245,11 +241,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static Output<CertificatesResult> certificates(CertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -292,11 +287,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static Output<CertificatesResult> certificates(CertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -339,11 +333,10 @@ public final class SslcertificatesserviceinstanceFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
+     * @deprecated alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates
      * 
      */
-    @Deprecated /* alicloud.sslcertificatesserviceinstance/certificates.Certificates has been deprecated in favor of alicloud.sslcertificatesserviceinstance/getcertificates.getCertificates */
+    @Deprecated
     public static CompletableFuture<CertificatesResult> certificatesPlain(CertificatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sslcertificatesserviceinstance/certificates:Certificates", TypeShape.of(CertificatesResult.class), args, Utilities.withVersion(options));
     }

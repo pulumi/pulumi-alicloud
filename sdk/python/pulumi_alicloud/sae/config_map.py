@@ -356,6 +356,20 @@ class ConfigMap(pulumi.CustomResource):
         __props__.__dict__["namespace_id"] = namespace_id
         return ConfigMap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            data: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["data"] = data
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["namespaceId"] = namespace_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:sae/configMap:ConfigMap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def data(self) -> pulumi.Output[_builtins.str]:

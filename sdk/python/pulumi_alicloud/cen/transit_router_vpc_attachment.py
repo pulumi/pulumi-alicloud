@@ -1153,6 +1153,58 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         __props__.__dict__["zone_mappings"] = zone_mappings
         return TransitRouterVpcAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict', 'outputs.TransitRouterVpcAttachmentOptions']]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_vpc_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict', 'outputs.TransitRouterVpcAttachmentZoneMapping']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPublishRouteEnabled"] = auto_publish_route_enabled
+        __props__["cenId"] = cen_id
+        __props__["createTime"] = create_time
+        __props__["dryRun"] = dry_run
+        __props__["forceDelete"] = force_delete
+        __props__["options"] = options
+        __props__["orderType"] = order_type
+        __props__["paymentType"] = payment_type
+        __props__["regionId"] = region_id
+        __props__["resourceType"] = resource_type
+        __props__["routeTableAssociationEnabled"] = route_table_association_enabled
+        __props__["routeTablePropagationEnabled"] = route_table_propagation_enabled
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transitRouterAttachmentDescription"] = transit_router_attachment_description
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        __props__["transitRouterAttachmentName"] = transit_router_attachment_name
+        __props__["transitRouterId"] = transit_router_id
+        __props__["transitRouterVpcAttachmentName"] = transit_router_vpc_attachment_name
+        __props__["transitRouterVpcAttachmentOptions"] = transit_router_vpc_attachment_options
+        __props__["vpcId"] = vpc_id
+        __props__["vpcOwnerId"] = vpc_owner_id
+        __props__["zoneMappings"] = zone_mappings
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

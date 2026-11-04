@@ -66,22 +66,20 @@ public final class EnterpriseUserArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * It has been deprecated from 1.100.0 and use `userName` instead.
      * 
-     * @deprecated
-     * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
+     * @deprecated Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead. */
+    @Deprecated
     @Import(name="nickName")
     private @Nullable Output<String> nickName;
 
     /**
      * @return It has been deprecated from 1.100.0 and use `userName` instead.
      * 
-     * @deprecated
-     * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
+     * @deprecated Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead. */
+    @Deprecated
     public Optional<Output<String>> nickName() {
         return Optional.ofNullable(this.nickName);
     }
@@ -261,11 +259,10 @@ public final class EnterpriseUserArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
+         * @deprecated Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead. */
+        @Deprecated
         public Builder nickName(@Nullable Output<String> nickName) {
             $.nickName = nickName;
             return this;
@@ -276,11 +273,10 @@ public final class EnterpriseUserArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
+         * @deprecated Field &#39;nick_name&#39; has been deprecated from version 1.100.0. Use &#39;user_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead. */
+        @Deprecated
         public Builder nickName(String nickName) {
             return nickName(Output.of(nickName));
         }

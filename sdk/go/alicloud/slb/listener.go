@@ -333,6 +333,12 @@ func (ListenerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerState)(nil)).Elem()
 }
 
+// ListenerExists checks whether an existing Listener resource with the given ID exists.
+func ListenerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListenerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/listener:Listener", id, state, "", opts...)
+}
+
 type listenerArgs struct {
 	// Deprecated: Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
 	AclId                      *string  `pulumi:"aclId"`

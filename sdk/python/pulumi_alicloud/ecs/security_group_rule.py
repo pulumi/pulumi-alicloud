@@ -791,6 +791,42 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return SecurityGroupRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_group_owner_account: pulumi.Input[Optional[_builtins.str]] = None,
+            source_group_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrIp"] = cidr_ip
+        __props__["description"] = description
+        __props__["ipProtocol"] = ip_protocol
+        __props__["ipv6CidrIp"] = ipv6_cidr_ip
+        __props__["nicType"] = nic_type
+        __props__["policy"] = policy
+        __props__["portRange"] = port_range
+        __props__["prefixListId"] = prefix_list_id
+        __props__["priority"] = priority
+        __props__["securityGroupId"] = security_group_id
+        __props__["securityGroupRuleId"] = security_group_rule_id
+        __props__["sourceGroupOwnerAccount"] = source_group_owner_account
+        __props__["sourceGroupOwnerId"] = source_group_owner_id
+        __props__["sourceSecurityGroupId"] = source_security_group_id
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/securityGroupRule:SecurityGroupRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> pulumi.Output[Optional[_builtins.str]]:

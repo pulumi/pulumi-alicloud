@@ -569,6 +569,36 @@ class PrefixList(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return PrefixList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix_list_associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict', 'outputs.PrefixListPrefixListAssociation']]]]] = None,
+            prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["entrys"] = entrys
+        __props__["ipVersion"] = ip_version
+        __props__["maxEntries"] = max_entries
+        __props__["prefixListAssociations"] = prefix_list_associations
+        __props__["prefixListDescription"] = prefix_list_description
+        __props__["prefixListId"] = prefix_list_id
+        __props__["prefixListName"] = prefix_list_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["shareType"] = share_type
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/prefixList:PrefixList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

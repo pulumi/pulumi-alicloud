@@ -23,12 +23,12 @@ public final class GetBucketsBucketCorsRule {
      */
     private List<String> allowedMethods;
     /**
-     * @return The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard &#34;\*&#34;. If &#34;\*&#34; is specified, cross-domain requests of all origins are allowed.
+     * @return The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard &#34;&#92;*&#34;. If &#34;&#92;*&#34; is specified, cross-domain requests of all origins are allowed.
      * 
      */
     private List<String> allowedOrigins;
     /**
-     * @return Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard &#34;\*&#34; is not allowed.
+     * @return Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard &#34;&#92;*&#34; is not allowed.
      * 
      */
     private List<String> exposeHeaders;
@@ -54,14 +54,14 @@ public final class GetBucketsBucketCorsRule {
         return this.allowedMethods;
     }
     /**
-     * @return The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard &#34;\*&#34;. If &#34;\*&#34; is specified, cross-domain requests of all origins are allowed.
+     * @return The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard &#34;&#92;*&#34;. If &#34;&#92;*&#34; is specified, cross-domain requests of all origins are allowed.
      * 
      */
     public List<String> allowedOrigins() {
         return this.allowedOrigins;
     }
     /**
-     * @return Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard &#34;\*&#34; is not allowed.
+     * @return Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard &#34;&#92;*&#34; is not allowed.
      * 
      */
     public List<String> exposeHeaders() {

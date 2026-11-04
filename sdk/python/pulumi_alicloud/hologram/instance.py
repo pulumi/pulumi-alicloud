@@ -1149,6 +1149,54 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict', 'outputs.InstanceEndpoint']]]]] = None,
+            gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
+            initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            leader_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["coldStorageSize"] = cold_storage_size
+        __props__["cpu"] = cpu
+        __props__["createTime"] = create_time
+        __props__["duration"] = duration
+        __props__["enableSsl"] = enable_ssl
+        __props__["endpoints"] = endpoints
+        __props__["gatewayCount"] = gateway_count
+        __props__["initialDatabases"] = initial_databases
+        __props__["instanceName"] = instance_name
+        __props__["instanceType"] = instance_type
+        __props__["leaderInstanceId"] = leader_instance_id
+        __props__["paymentType"] = payment_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scaleType"] = scale_type
+        __props__["status"] = status
+        __props__["storageSize"] = storage_size
+        __props__["tags"] = tags
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hologram/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

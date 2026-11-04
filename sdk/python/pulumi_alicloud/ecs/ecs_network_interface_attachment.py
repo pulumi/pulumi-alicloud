@@ -441,6 +441,22 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         __props__.__dict__["wait_for_network_configuration_ready"] = wait_for_network_configuration_ready
         return EcsNetworkInterfaceAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            trunk_network_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_network_configuration_ready: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["instanceId"] = instance_id
+        __props__["networkCardIndex"] = network_card_index
+        __props__["networkInterfaceId"] = network_interface_id
+        __props__["trunkNetworkInstanceId"] = trunk_network_instance_id
+        __props__["waitForNetworkConfigurationReady"] = wait_for_network_configuration_ready
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:

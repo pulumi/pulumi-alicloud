@@ -273,6 +273,12 @@ func (AccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountState)(nil)).Elem()
 }
 
+// AccountExists checks whether an existing Account resource with the given ID exists.
+func AccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/account:Account", id, state, "", opts...)
+}
+
 type accountArgs struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	AccountName        *string `pulumi:"accountName"`

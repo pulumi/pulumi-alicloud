@@ -1637,6 +1637,74 @@ class ClusterV2(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ClusterV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_packages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AdditionalPackageArgs', 'ClusterV2AdditionalPackageArgsDict', 'outputs.ClusterV2AdditionalPackage']]]]] = None,
+            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict', 'outputs.ClusterV2Addon']]]]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict', 'outputs.ClusterV2ClusterCredentials']]] = None,
+            cluster_custom_configuration: pulumi.Input[Optional[Union['ClusterV2ClusterCustomConfigurationArgs', 'ClusterV2ClusterCustomConfigurationArgsDict', 'outputs.ClusterV2ClusterCustomConfiguration']]] = None,
+            cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_status: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+            grow_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            idle_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict', 'outputs.ClusterV2Manager']]] = None,
+            max_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_spec: pulumi.Input[Optional[Union['ClusterV2MonitorSpecArgs', 'ClusterV2MonitorSpecArgsDict', 'outputs.ClusterV2MonitorSpec']]] = None,
+            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2QueueArgs', 'ClusterV2QueueArgsDict', 'outputs.ClusterV2Queue']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_spec: pulumi.Input[Optional[Union['ClusterV2SchedulerSpecArgs', 'ClusterV2SchedulerSpecArgsDict', 'outputs.ClusterV2SchedulerSpec']]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict', 'outputs.ClusterV2SharedStorage']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalPackages"] = additional_packages
+        __props__["addons"] = addons
+        __props__["clientVersion"] = client_version
+        __props__["clusterCategory"] = cluster_category
+        __props__["clusterCredentials"] = cluster_credentials
+        __props__["clusterCustomConfiguration"] = cluster_custom_configuration
+        __props__["clusterDescription"] = cluster_description
+        __props__["clusterMode"] = cluster_mode
+        __props__["clusterName"] = cluster_name
+        __props__["clusterStatus"] = cluster_status
+        __props__["clusterVpcId"] = cluster_vpc_id
+        __props__["clusterVswitchId"] = cluster_vswitch_id
+        __props__["createTime"] = create_time
+        __props__["deletionProtection"] = deletion_protection
+        __props__["ehpcVersion"] = ehpc_version
+        __props__["enableScaleIn"] = enable_scale_in
+        __props__["enableScaleOut"] = enable_scale_out
+        __props__["growInterval"] = grow_interval
+        __props__["idleInterval"] = idle_interval
+        __props__["isEnterpriseSecurityGroup"] = is_enterprise_security_group
+        __props__["manager"] = manager
+        __props__["maxCoreCount"] = max_core_count
+        __props__["maxCount"] = max_count
+        __props__["modifyTime"] = modify_time
+        __props__["monitorSpec"] = monitor_spec
+        __props__["queues"] = queues
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["schedulerSpec"] = scheduler_spec
+        __props__["securityGroupId"] = security_group_id
+        __props__["sharedStorages"] = shared_storages
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ehpc/clusterV2:ClusterV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalPackages")
     def additional_packages(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterV2AdditionalPackage']]]:

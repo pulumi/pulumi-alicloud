@@ -324,7 +324,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enter a name for the listener.
-     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
@@ -332,7 +332,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enter a name for the listener.
-     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (&#92;_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> listenerDescription() {
@@ -461,7 +461,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The security policy ID. System security policies and custom security policies are supported.
      * 
-     * Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+     * Valid values: `tls_cipher_policy&#92;_1&#92;_0` (default), `tls_cipher_policy&#92;_1&#92;_1`, `tls_cipher_policy&#92;_1&#92;_2`, `tls_cipher_policy&#92;_1&#92;_2&#92;_strict`, and `tls_cipher_policy&#92;_1&#92;_2&#92;_strict_with&#92;_1&#92;_3`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      * 
@@ -472,7 +472,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * @return The security policy ID. System security policies and custom security policies are supported.
      * 
-     * Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+     * Valid values: `tls_cipher_policy&#92;_1&#92;_0` (default), `tls_cipher_policy&#92;_1&#92;_1`, `tls_cipher_policy&#92;_1&#92;_2`, `tls_cipher_policy&#92;_1&#92;_2&#92;_strict`, and `tls_cipher_policy&#92;_1&#92;_2&#92;_strict_with&#92;_1&#92;_3`.
      * 
      * &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      * 

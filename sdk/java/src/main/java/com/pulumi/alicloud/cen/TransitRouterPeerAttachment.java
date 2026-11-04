@@ -311,11 +311,10 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
     /**
      * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
-     * @deprecated
-     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated
     @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
@@ -329,11 +328,10 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
     /**
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
-     * @deprecated
-     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      * 
      */
-    @Deprecated /* Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0. */
+    @Deprecated
     @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
@@ -405,11 +403,10 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
     /**
      * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+     * @deprecated Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
+    @Deprecated
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentName;
 

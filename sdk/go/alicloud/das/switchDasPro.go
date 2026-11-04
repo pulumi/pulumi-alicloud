@@ -187,6 +187,12 @@ func (SwitchDasProState) ElementType() reflect.Type {
 	return reflect.TypeOf((*switchDasProState)(nil)).Elem()
 }
 
+// SwitchDasProExists checks whether an existing SwitchDasPro resource with the given ID exists.
+func SwitchDasProExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SwitchDasProState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:das/switchDasPro:SwitchDasPro", id, state, "", opts...)
+}
+
 type switchDasProArgs struct {
 	// The ID of the database instance.
 	InstanceId string `pulumi:"instanceId"`

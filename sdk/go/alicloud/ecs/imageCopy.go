@@ -248,6 +248,12 @@ func (ImageCopyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageCopyState)(nil)).Elem()
 }
 
+// ImageCopyExists checks whether an existing ImageCopy resource with the given ID exists.
+func ImageCopyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageCopyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/imageCopy:ImageCopy", id, state, "", opts...)
+}
+
 type imageCopyArgs struct {
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
 	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.

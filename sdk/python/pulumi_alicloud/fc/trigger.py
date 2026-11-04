@@ -1536,6 +1536,34 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            config_mns: pulumi.Input[Optional[_builtins.str]] = None,
+            function: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["configMns"] = config_mns
+        __props__["function"] = function
+        __props__["lastModified"] = last_modified
+        __props__["name"] = name
+        __props__["namePrefix"] = name_prefix
+        __props__["role"] = role
+        __props__["service"] = service
+        __props__["sourceArn"] = source_arn
+        __props__["triggerId"] = trigger_id
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/trigger:Trigger', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -604,6 +604,36 @@ class Vault(pulumi.CustomResource):
         __props__.__dict__["worm_enabled"] = worm_enabled
         return Vault(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+            worm_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["encryptType"] = encrypt_type
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vaultName"] = vault_name
+        __props__["vaultStorageClass"] = vault_storage_class
+        __props__["vaultType"] = vault_type
+        __props__["wormEnabled"] = worm_enabled
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/vault:Vault', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -170,6 +170,12 @@ func (PolicyVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyVersionState)(nil)).Elem()
 }
 
+// PolicyVersionExists checks whether an existing PolicyVersion resource with the given ID exists.
+func PolicyVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/policyVersion:PolicyVersion", id, state, "", opts...)
+}
+
 type policyVersionArgs struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
 	//

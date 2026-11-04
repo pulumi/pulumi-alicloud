@@ -465,6 +465,28 @@ class Schedule(pulumi.CustomResource):
         __props__.__dict__["schedule_name"] = schedule_name
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payload: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cronExpression"] = cron_expression
+        __props__["description"] = description
+        __props__["enable"] = enable
+        __props__["flowName"] = flow_name
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["payload"] = payload
+        __props__["scheduleId"] = schedule_id
+        __props__["scheduleName"] = schedule_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:fnf/schedule:Schedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> pulumi.Output[_builtins.str]:

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// Download the kernel.
         /// - 1:curl
         /// - 0:WinInet
-        /// Default 1.
+        ///   Default 1.
         /// </summary>
         public readonly int? DownloadKernel;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// - 1:http1
         /// - 2:http2
         /// - 3:http3
-        /// Default 1.
+        ///   Default 1.
         /// </summary>
         public readonly int? QuickProtocol;
         /// <summary>

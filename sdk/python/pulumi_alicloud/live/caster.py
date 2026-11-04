@@ -1150,6 +1150,58 @@ class Caster(pulumi.CustomResource):
         __props__.__dict__["urgent_material_id"] = urgent_material_id
         return Caster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_switch_urgent_config: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_switch_urgent_on: pulumi.Input[Optional[_builtins.bool]] = None,
+            callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            caster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delay: pulumi.Input[Optional[_builtins.float]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            norm_type: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            program_effect: pulumi.Input[Optional[_builtins.int]] = None,
+            program_name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_config: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            side_output_url: pulumi.Input[Optional[_builtins.str]] = None,
+            side_output_url_list: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_groups_config: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transcode_config: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_live_stream_url: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_material_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoSwitchUrgentConfig"] = auto_switch_urgent_config
+        __props__["autoSwitchUrgentOn"] = auto_switch_urgent_on
+        __props__["callbackUrl"] = callback_url
+        __props__["casterName"] = caster_name
+        __props__["createTime"] = create_time
+        __props__["delay"] = delay
+        __props__["domainName"] = domain_name
+        __props__["normType"] = norm_type
+        __props__["paymentType"] = payment_type
+        __props__["programEffect"] = program_effect
+        __props__["programName"] = program_name
+        __props__["recordConfig"] = record_config
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resourceType"] = resource_type
+        __props__["sideOutputUrl"] = side_output_url
+        __props__["sideOutputUrlList"] = side_output_url_list
+        __props__["syncGroupsConfig"] = sync_groups_config
+        __props__["tags"] = tags
+        __props__["transcodeConfig"] = transcode_config
+        __props__["urgentImageId"] = urgent_image_id
+        __props__["urgentImageUrl"] = urgent_image_url
+        __props__["urgentLiveStreamUrl"] = urgent_live_stream_url
+        __props__["urgentMaterialId"] = urgent_material_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:live/caster:Caster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoSwitchUrgentConfig")
     def auto_switch_urgent_config(self) -> pulumi.Output[Optional[_builtins.str]]:

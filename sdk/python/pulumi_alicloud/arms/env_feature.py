@@ -452,6 +452,22 @@ class EnvFeature(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return EnvFeature(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            env_feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_version: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["envFeatureName"] = env_feature_name
+        __props__["environmentId"] = environment_id
+        __props__["featureVersion"] = feature_version
+        __props__["namespace"] = namespace
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/envFeature:EnvFeature', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="envFeatureName")
     def env_feature_name(self) -> pulumi.Output[_builtins.str]:

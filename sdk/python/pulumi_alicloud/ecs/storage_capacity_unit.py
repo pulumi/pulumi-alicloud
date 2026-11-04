@@ -429,6 +429,26 @@ class StorageCapacityUnit(pulumi.CustomResource):
         __props__.__dict__["storage_capacity_unit_name"] = storage_capacity_unit_name
         return StorageCapacityUnit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_capacity_unit_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capacity"] = capacity
+        __props__["description"] = description
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["startTime"] = start_time
+        __props__["status"] = status
+        __props__["storageCapacityUnitName"] = storage_capacity_unit_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/storageCapacityUnit:StorageCapacityUnit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Output[_builtins.int]:

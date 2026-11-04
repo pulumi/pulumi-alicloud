@@ -322,6 +322,20 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["source"] = source
         return Organization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            desired_member_count: pulumi.Input[Optional[_builtins.int]] = None,
+            organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+            real_pk: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["desiredMemberCount"] = desired_member_count
+        __props__["organizationName"] = organization_name
+        __props__["realPk"] = real_pk
+        __props__["source"] = source
+        return pulumi.runtime.exists_resource(None, 'alicloud:rdc/organization:Organization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="desiredMemberCount")
     def desired_member_count(self) -> pulumi.Output[Optional[_builtins.int]]:

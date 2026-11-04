@@ -227,6 +227,12 @@ func (MembershipAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipAttachmentState)(nil)).Elem()
 }
 
+// MembershipAttachmentExists checks whether an existing MembershipAttachment resource with the given ID exists.
+func MembershipAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ackone/membershipAttachment:MembershipAttachment", id, state, "", opts...)
+}
+
 type membershipAttachmentArgs struct {
 	// The ID of the cluster to which the membership is being attached.
 	ClusterId string `pulumi:"clusterId"`

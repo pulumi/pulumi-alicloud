@@ -139,22 +139,20 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
     /**
      * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
-     * @deprecated
-     * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * @deprecated Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
      */
-    @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
+    @Deprecated
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
      * @return IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
-     * @deprecated
-     * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * @deprecated Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
      */
-    @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
+    @Deprecated
     public Optional<Output<String>> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -412,11 +410,10 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+         * @deprecated Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
          * 
          */
-        @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
+        @Deprecated
         public Builder spec(@Nullable Output<String> spec) {
             $.spec = spec;
             return this;
@@ -427,11 +424,10 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+         * @deprecated Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
          * 
          */
-        @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
+        @Deprecated
         public Builder spec(String spec) {
             return spec(Output.of(spec));
         }

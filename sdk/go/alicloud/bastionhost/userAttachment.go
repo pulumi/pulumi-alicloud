@@ -195,6 +195,12 @@ func (UserAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userAttachmentState)(nil)).Elem()
 }
 
+// UserAttachmentExists checks whether an existing UserAttachment resource with the given ID exists.
+func UserAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/userAttachment:UserAttachment", id, state, "", opts...)
+}
+
 type userAttachmentArgs struct {
 	// Specifies the user group to add the user's bastion host ID of.
 	InstanceId string `pulumi:"instanceId"`

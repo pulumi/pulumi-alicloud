@@ -30,11 +30,10 @@ public final class GetLaunchOptionsResult {
     /**
      * @return (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
+     * @deprecated Field &#39;options&#39; has been deprecated from provider version 1.197.0.
      * 
      */
-    @Deprecated /* Field 'options' has been deprecated from provider version 1.197.0. */
+    @Deprecated
     private List<GetLaunchOptionsOption> options;
     private @Nullable String outputFile;
     private String productId;
@@ -63,11 +62,10 @@ public final class GetLaunchOptionsResult {
     /**
      * @return (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
+     * @deprecated Field &#39;options&#39; has been deprecated from provider version 1.197.0.
      * 
      */
-    @Deprecated /* Field 'options' has been deprecated from provider version 1.197.0. */
+    @Deprecated
     public List<GetLaunchOptionsOption> options() {
         return this.options;
     }

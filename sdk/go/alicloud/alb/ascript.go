@@ -294,6 +294,12 @@ func (AScriptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ascriptState)(nil)).Elem()
 }
 
+// AScriptExists checks whether an existing AScript resource with the given ID exists.
+func AScriptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AScriptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/aScript:AScript", id, state, "", opts...)
+}
+
 type ascriptArgs struct {
 	// AScript name.
 	AscriptName string `pulumi:"ascriptName"`

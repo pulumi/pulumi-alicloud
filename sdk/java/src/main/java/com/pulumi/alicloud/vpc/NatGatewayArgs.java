@@ -159,11 +159,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
      * 
-     * @deprecated
-     * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+     * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
+    @Deprecated
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
@@ -174,11 +173,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** The `Normal` Nat Gateway has been offline and please using `Enhanced` Nat Gateway to get the better performance.
      * 
-     * @deprecated
-     * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+     * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      * 
      */
-    @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
+    @Deprecated
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -201,22 +199,20 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -606,11 +602,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+         * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
+        @Deprecated
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -625,11 +620,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+         * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
          * 
          */
-        @Deprecated /* Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead. */
+        @Deprecated
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -660,11 +654,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -675,11 +668,10 @@ public final class NatGatewayArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

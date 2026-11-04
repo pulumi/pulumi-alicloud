@@ -638,6 +638,36 @@ class SimpleOfficeSite(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return SimpleOfficeSite(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_cross_desktop_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["cenId"] = cen_id
+        __props__["cenOwnerId"] = cen_owner_id
+        __props__["cidrBlock"] = cidr_block
+        __props__["desktopAccessType"] = desktop_access_type
+        __props__["enableAdminAccess"] = enable_admin_access
+        __props__["enableCrossDesktopAccess"] = enable_cross_desktop_access
+        __props__["enableInternetAccess"] = enable_internet_access
+        __props__["mfaEnabled"] = mfa_enabled
+        __props__["officeSiteName"] = office_site_name
+        __props__["ssoEnabled"] = sso_enabled
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/simpleOfficeSite:SimpleOfficeSite', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""")

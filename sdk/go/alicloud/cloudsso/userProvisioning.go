@@ -275,6 +275,12 @@ func (UserProvisioningState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userProvisioningState)(nil)).Elem()
 }
 
+// UserProvisioningExists checks whether an existing UserProvisioning resource with the given ID exists.
+func UserProvisioningExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserProvisioningState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudsso/userProvisioning:UserProvisioning", id, state, "", opts...)
+}
+
 type userProvisioningArgs struct {
 	// The processing policy for users who have been synchronized when deleting synchronization
 	DeletionStrategy string `pulumi:"deletionStrategy"`

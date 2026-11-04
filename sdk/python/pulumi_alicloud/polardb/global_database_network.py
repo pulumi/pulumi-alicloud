@@ -297,6 +297,18 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return GlobalDatabaseNetwork(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["description"] = description
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[_builtins.str]:

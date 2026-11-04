@@ -484,6 +484,26 @@ class WafRule(pulumi.CustomResource):
         __props__.__dict__["waf_rule_id"] = waf_rule_id
         return WafRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict', 'outputs.WafRuleConfig']]] = None,
+            phase: pulumi.Input[Optional[_builtins.str]] = None,
+            ruleset_id: pulumi.Input[Optional[_builtins.int]] = None,
+            shared: pulumi.Input[Optional[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict', 'outputs.WafRuleShared']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            waf_rule_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["phase"] = phase
+        __props__["rulesetId"] = ruleset_id
+        __props__["shared"] = shared
+        __props__["siteId"] = site_id
+        __props__["siteVersion"] = site_version
+        __props__["wafRuleId"] = waf_rule_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/wafRule:WafRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.WafRuleConfig']]:

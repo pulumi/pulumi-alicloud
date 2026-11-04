@@ -274,6 +274,16 @@ class Alias(pulumi.CustomResource):
         __props__.__dict__["key_id"] = key_id
         return Alias(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aliasName"] = alias_name
+        __props__["keyId"] = key_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/alias:Alias', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> pulumi.Output[_builtins.str]:

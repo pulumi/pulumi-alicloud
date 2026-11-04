@@ -335,6 +335,18 @@ class SlsGroup(pulumi.CustomResource):
         __props__.__dict__["sls_group_name"] = sls_group_name
         return SlsGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            sls_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict', 'outputs.SlsGroupSlsGroupConfig']]]]] = None,
+            sls_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["slsGroupConfigs"] = sls_group_configs
+        __props__["slsGroupDescription"] = sls_group_description
+        __props__["slsGroupName"] = sls_group_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/slsGroup:SlsGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="slsGroupConfigs")
     def sls_group_configs(self) -> pulumi.Output[Sequence['outputs.SlsGroupSlsGroupConfig']]:

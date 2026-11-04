@@ -411,6 +411,24 @@ class TransitRouterCidr(pulumi.CustomResource):
         __props__.__dict__["transit_router_id"] = transit_router_id
         return TransitRouterCidr(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            publish_cidr_route: pulumi.Input[Optional[_builtins.bool]] = None,
+            transit_router_cidr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidr"] = cidr
+        __props__["description"] = description
+        __props__["publishCidrRoute"] = publish_cidr_route
+        __props__["transitRouterCidrId"] = transit_router_cidr_id
+        __props__["transitRouterCidrName"] = transit_router_cidr_name
+        __props__["transitRouterId"] = transit_router_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterCidr:TransitRouterCidr', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:

@@ -236,6 +236,12 @@ func (ChildInstanceRouteEntryToAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*childInstanceRouteEntryToAttachmentState)(nil)).Elem()
 }
 
+// ChildInstanceRouteEntryToAttachmentExists checks whether an existing ChildInstanceRouteEntryToAttachment resource with the given ID exists.
+func ChildInstanceRouteEntryToAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChildInstanceRouteEntryToAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment", id, state, "", opts...)
+}
+
 type childInstanceRouteEntryToAttachmentArgs struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`

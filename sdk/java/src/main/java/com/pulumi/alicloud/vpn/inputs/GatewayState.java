@@ -175,22 +175,20 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
+    @Deprecated
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.216.0. New field &#39;payment_type&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
+    @Deprecated
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -213,22 +211,20 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return . Field &#39;name&#39; has been deprecated from provider version 1.216.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -680,11 +676,10 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+         * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
+        @Deprecated
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -695,11 +690,10 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
+         * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.215.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead. */
+        @Deprecated
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -730,11 +724,10 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -745,11 +738,10 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.215.0. New field &#39;vpn_gateway_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

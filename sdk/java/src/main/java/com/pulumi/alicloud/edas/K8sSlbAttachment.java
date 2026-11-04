@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -140,8 +140,8 @@ import javax.annotation.Nullable;
  *             .packageUrl("http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar")
  *             .jdk("Open JDK 8")
  *             .replicas(2)
- *             .readiness("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}")
- *             .liveness("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}")
+ *             .readiness("}{&#92;{@code "failureThreshold}&#92;{@code ": 3,}&#92;{@code "initialDelaySeconds}&#92;{@code ": 5,}&#92;{@code "successThreshold}&#92;{@code ": 1,}&#92;{@code "timeoutSeconds}&#92;{@code ": 1,}&#92;{@code "tcpSocket}&#92;{@code ":}{&#92;{@code "port}&#92;{@code ":18081}}}{@code ")
+ *             .liveness("}{&#92;{@code "failureThreshold}&#92;{@code ": 3,}&#92;{@code "initialDelaySeconds}&#92;{@code ": 5,}&#92;{@code "successThreshold}&#92;{@code ": 1,}&#92;{@code "timeoutSeconds}&#92;{@code ": 1,}&#92;{@code "tcpSocket}&#92;{@code ":}{&#92;{@code "port}&#92;{@code ":18081}}}{@code ")
  *             .applicationDescriotion(name)
  *             .build());
  * 
@@ -161,8 +161,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

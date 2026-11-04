@@ -251,6 +251,12 @@ func (ComputingGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*computingGroupState)(nil)).Elem()
 }
 
+// ComputingGroupExists checks whether an existing ComputingGroup resource with the given ID exists.
+func ComputingGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComputingGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:clickhouseenterprisedbcluster/computingGroup:ComputingGroup", id, state, "", opts...)
+}
+
 type computingGroupArgs struct {
 	// Computing group name
 	ComputingGroupDescription *string `pulumi:"computingGroupDescription"`

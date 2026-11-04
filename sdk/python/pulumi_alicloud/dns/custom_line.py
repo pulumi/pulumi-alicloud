@@ -329,6 +329,20 @@ class CustomLine(pulumi.CustomResource):
         __props__.__dict__["lang"] = lang
         return CustomLine(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict', 'outputs.CustomLineIpSegmentList']]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customLineName"] = custom_line_name
+        __props__["domainName"] = domain_name
+        __props__["ipSegmentLists"] = ip_segment_lists
+        __props__["lang"] = lang
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/customLine:CustomLine', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customLineName")
     def custom_line_name(self) -> pulumi.Output[_builtins.str]:

@@ -459,6 +459,12 @@ func (EndpointGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointGroupState)(nil)).Elem()
 }
 
+// EndpointGroupExists checks whether an existing EndpointGroup resource with the given ID exists.
+func EndpointGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/endpointGroup:EndpointGroup", id, state, "", opts...)
+}
+
 type endpointGroupArgs struct {
 	// The ID of the Global Accelerator instance to which the endpoint group will be added.
 	AcceleratorId string `pulumi:"acceleratorId"`

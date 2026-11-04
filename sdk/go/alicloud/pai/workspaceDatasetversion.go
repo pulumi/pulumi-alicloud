@@ -311,6 +311,12 @@ func (WorkspaceDatasetversionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceDatasetversionState)(nil)).Elem()
 }
 
+// WorkspaceDatasetversionExists checks whether an existing WorkspaceDatasetversion resource with the given ID exists.
+func WorkspaceDatasetversionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceDatasetversionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion", id, state, "", opts...)
+}
+
 type workspaceDatasetversionArgs struct {
 	// Data count.
 	DataCount *int `pulumi:"dataCount"`

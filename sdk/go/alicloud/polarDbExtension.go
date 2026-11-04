@@ -215,6 +215,12 @@ func (PolarDbExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*polarDbExtensionState)(nil)).Elem()
 }
 
+// PolarDbExtensionExists checks whether an existing PolarDbExtension resource with the given ID exists.
+func PolarDbExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolarDbExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:index/polarDbExtension:PolarDbExtension", id, state, "", opts...)
+}
+
 type polarDbExtensionArgs struct {
 	// The database account name of the associated PolarDB cluster. Only support `Super` account.
 	AccountName string `pulumi:"accountName"`

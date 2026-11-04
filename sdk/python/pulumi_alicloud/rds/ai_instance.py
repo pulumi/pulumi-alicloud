@@ -833,6 +833,42 @@ class AiInstance(pulumi.CustomResource):
         __props__.__dict__["storage_config_lists"] = storage_config_lists
         return AiInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_type: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict', 'outputs.AiInstanceAuthConfigList']]]]] = None,
+            ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
+            database_password: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            initialize_with_existing_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_network_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            server_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict', 'outputs.AiInstanceStorageConfigList']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appName"] = app_name
+        __props__["appType"] = app_type
+        __props__["authConfigLists"] = auth_config_lists
+        __props__["caType"] = ca_type
+        __props__["dashboardPassword"] = dashboard_password
+        __props__["databasePassword"] = database_password
+        __props__["dbInstanceName"] = db_instance_name
+        __props__["initializeWithExistingData"] = initialize_with_existing_data
+        __props__["publicEndpointEnabled"] = public_endpoint_enabled
+        __props__["publicNetworkAccessEnabled"] = public_network_access_enabled
+        __props__["serverCert"] = server_cert
+        __props__["serverKey"] = server_key
+        __props__["sslEnabled"] = ssl_enabled
+        __props__["status"] = status
+        __props__["storageConfigLists"] = storage_config_lists
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/aiInstance:AiInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appName")
     def app_name(self) -> pulumi.Output[_builtins.str]:

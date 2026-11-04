@@ -60,22 +60,20 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The snapshot policy name.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The snapshot policy name.
      * 
-     * @deprecated
-     * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -255,11 +253,10 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -270,11 +267,10 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

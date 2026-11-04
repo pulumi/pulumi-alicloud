@@ -187,6 +187,12 @@ func (PrivateZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*privateZoneState)(nil)).Elem()
 }
 
+// PrivateZoneExists checks whether an existing PrivateZone resource with the given ID exists.
+func PrivateZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivateZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/privateZone:PrivateZone", id, state, "", opts...)
+}
+
 type privateZoneArgs struct {
 	// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
 	AccessRegionId string `pulumi:"accessRegionId"`

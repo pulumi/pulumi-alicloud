@@ -246,6 +246,12 @@ func (StackInstancesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackInstancesState)(nil)).Elem()
 }
 
+// StackInstancesExists checks whether an existing StackInstances resource with the given ID exists.
+func StackInstancesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StackInstancesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/stackInstances:StackInstances", id, state, "", opts...)
+}
+
 type stackInstancesArgs struct {
 	// List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deploymentTargets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
 	AccountIds []string `pulumi:"accountIds"`

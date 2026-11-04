@@ -434,6 +434,24 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return CustomRoutingEndpointGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_routing_endpoint_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorId"] = accelerator_id
+        __props__["customRoutingEndpointGroupName"] = custom_routing_endpoint_group_name
+        __props__["description"] = description
+        __props__["endpointGroupRegion"] = endpoint_group_region
+        __props__["listenerId"] = listener_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[_builtins.str]:

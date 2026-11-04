@@ -162,6 +162,12 @@ func (AlertRobotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRobotState)(nil)).Elem()
 }
 
+// AlertRobotExists checks whether an existing AlertRobot resource with the given ID exists.
+func AlertRobotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertRobotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/alertRobot:AlertRobot", id, state, "", opts...)
+}
+
 type alertRobotArgs struct {
 	// The name of the resource.
 	AlertRobotName string `pulumi:"alertRobotName"`

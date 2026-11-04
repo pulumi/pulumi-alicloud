@@ -1240,6 +1240,66 @@ class DbCluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DbCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocate_public_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            cold_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_access_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict', 'outputs.DbClusterDbClusterAccessWhiteList']]]]] = None,
+            db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_group_count: pulumi.Input[Optional[_builtins.int]] = None,
+            db_node_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_zone_vswitch_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict', 'outputs.DbClusterMultiZoneVswitchList']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            public_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            used_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocatePublicConnection"] = allocate_public_connection
+        __props__["category"] = category
+        __props__["coldStorage"] = cold_storage
+        __props__["connectionString"] = connection_string
+        __props__["dbClusterAccessWhiteLists"] = db_cluster_access_white_lists
+        __props__["dbClusterClass"] = db_cluster_class
+        __props__["dbClusterDescription"] = db_cluster_description
+        __props__["dbClusterNetworkType"] = db_cluster_network_type
+        __props__["dbClusterVersion"] = db_cluster_version
+        __props__["dbNodeGroupCount"] = db_node_group_count
+        __props__["dbNodeStorage"] = db_node_storage
+        __props__["encryptionKey"] = encryption_key
+        __props__["encryptionType"] = encryption_type
+        __props__["maintainTime"] = maintain_time
+        __props__["multiZoneVswitchLists"] = multi_zone_vswitch_lists
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["port"] = port
+        __props__["publicConnectionString"] = public_connection_string
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["storageType"] = storage_type
+        __props__["usedTime"] = used_time
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:clickhouse/dbCluster:DbCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocatePublicConnection")
     def allocate_public_connection(self) -> pulumi.Output[Optional[_builtins.bool]]:

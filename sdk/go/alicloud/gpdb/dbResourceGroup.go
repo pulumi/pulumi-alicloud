@@ -196,6 +196,12 @@ func (DbResourceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbResourceGroupState)(nil)).Elem()
 }
 
+// DbResourceGroupExists checks whether an existing DbResourceGroup resource with the given ID exists.
+func DbResourceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbResourceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/dbResourceGroup:DbResourceGroup", id, state, "", opts...)
+}
+
 type dbResourceGroupArgs struct {
 	// The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
 	DbInstanceId string `pulumi:"dbInstanceId"`

@@ -1009,6 +1009,46 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            any_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict', 'outputs.ServerGroupHealthCheck']]] = None,
+            ip_version_affinity_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressIpVersion"] = address_ip_version
+        __props__["anyPortEnabled"] = any_port_enabled
+        __props__["connectionDrain"] = connection_drain
+        __props__["connectionDrainEnabled"] = connection_drain_enabled
+        __props__["connectionDrainTimeout"] = connection_drain_timeout
+        __props__["healthCheck"] = health_check
+        __props__["ipVersionAffinityMode"] = ip_version_affinity_mode
+        __props__["preserveClientIpEnabled"] = preserve_client_ip_enabled
+        __props__["protocol"] = protocol
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scheduler"] = scheduler
+        __props__["serverGroupName"] = server_group_name
+        __props__["serverGroupType"] = server_group_type
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:nlb/serverGroup:ServerGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[_builtins.str]:

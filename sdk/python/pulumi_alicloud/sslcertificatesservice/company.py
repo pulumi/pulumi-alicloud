@@ -664,6 +664,36 @@ class Company(pulumi.CustomResource):
         __props__.__dict__["province"] = province
         return Company(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            city: pulumi.Input[Optional[_builtins.str]] = None,
+            company_address: pulumi.Input[Optional[_builtins.str]] = None,
+            company_code: pulumi.Input[Optional[_builtins.str]] = None,
+            company_email: pulumi.Input[Optional[_builtins.str]] = None,
+            company_name: pulumi.Input[Optional[_builtins.str]] = None,
+            company_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            company_type: pulumi.Input[Optional[_builtins.int]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            department: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            post_code: pulumi.Input[Optional[_builtins.str]] = None,
+            province: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["city"] = city
+        __props__["companyAddress"] = company_address
+        __props__["companyCode"] = company_code
+        __props__["companyEmail"] = company_email
+        __props__["companyName"] = company_name
+        __props__["companyPhone"] = company_phone
+        __props__["companyType"] = company_type
+        __props__["countryCode"] = country_code
+        __props__["department"] = department
+        __props__["lang"] = lang
+        __props__["postCode"] = post_code
+        __props__["province"] = province
+        return pulumi.runtime.exists_resource(None, 'alicloud:sslcertificatesservice/company:Company', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def city(self) -> pulumi.Output[_builtins.str]:

@@ -361,6 +361,26 @@ class StageModel(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return StageModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_model_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdTime"] = created_time
+        __props__["description"] = description
+        __props__["modifiedTime"] = modified_time
+        __props__["stageModelAlias"] = stage_model_alias
+        __props__["stageModelId"] = stage_model_id
+        __props__["stageModelName"] = stage_model_name
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/stageModel:StageModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdTime")
     def created_time(self) -> pulumi.Output[_builtins.str]:

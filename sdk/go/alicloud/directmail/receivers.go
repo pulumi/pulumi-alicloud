@@ -147,6 +147,12 @@ func (ReceiversState) ElementType() reflect.Type {
 	return reflect.TypeOf((*receiversState)(nil)).Elem()
 }
 
+// ReceiversExists checks whether an existing Receivers resource with the given ID exists.
+func ReceiversExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReceiversState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:directmail/receivers:Receivers", id, state, "", opts...)
+}
+
 type receiversArgs struct {
 	// The description of receivers and 1-50 characters in length.
 	Description *string `pulumi:"description"`

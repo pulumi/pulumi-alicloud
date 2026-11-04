@@ -67,11 +67,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
  * ```
  * 
- * @deprecated
- * alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos
+ * @deprecated alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos
  * 
  */
-@Deprecated /* alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos */
+@Deprecated
 @ResourceType(type="alicloud:rocketmq/qos:Qos")
 public class Qos extends com.pulumi.resources.CustomResource {
     /**

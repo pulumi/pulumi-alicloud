@@ -615,6 +615,36 @@ class AddressBook(pulumi.CustomResource):
         __props__.__dict__["tag_relation"] = tag_relation
         return AddressBook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_list_count: pulumi.Input[Optional[_builtins.int]] = None,
+            address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            asset_member_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            asset_region_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookAssetRegionResourceTypeArgs', 'AddressBookAssetRegionResourceTypeArgsDict', 'outputs.AddressBookAssetRegionResourceType']]]]] = None,
+            auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict', 'outputs.AddressBookEcsTag']]]]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_count: pulumi.Input[Optional[_builtins.int]] = None,
+            tag_relation: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressListCount"] = address_list_count
+        __props__["addressLists"] = address_lists
+        __props__["assetMemberUids"] = asset_member_uids
+        __props__["assetRegionResourceTypes"] = asset_region_resource_types
+        __props__["autoAddTagEcs"] = auto_add_tag_ecs
+        __props__["description"] = description
+        __props__["ecsTags"] = ecs_tags
+        __props__["groupName"] = group_name
+        __props__["groupType"] = group_type
+        __props__["lang"] = lang
+        __props__["referenceCount"] = reference_count
+        __props__["tagRelation"] = tag_relation
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/addressBook:AddressBook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressListCount")
     def address_list_count(self) -> pulumi.Output[_builtins.int]:

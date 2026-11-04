@@ -181,6 +181,12 @@ func (ClientFileProtectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientFileProtectState)(nil)).Elem()
 }
 
+// ClientFileProtectExists checks whether an existing ClientFileProtect resource with the given ID exists.
+func ClientFileProtectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientFileProtectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/clientFileProtect:ClientFileProtect", id, state, "", opts...)
+}
+
 type clientFileProtectArgs struct {
 	// 0 no alert 1 info 2 suspicious 3 critical.
 	AlertLevel *int `pulumi:"alertLevel"`

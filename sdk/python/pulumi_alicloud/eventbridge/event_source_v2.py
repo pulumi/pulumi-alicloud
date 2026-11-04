@@ -694,6 +694,36 @@ class EventSourceV2(pulumi.CustomResource):
         __props__.__dict__["source_sls_parameters"] = source_sls_parameters
         return EventSourceV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict', 'outputs.EventSourceV2SourceHttpEventParameters']]] = None,
+            source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict', 'outputs.EventSourceV2SourceKafkaParameters']]] = None,
+            source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict', 'outputs.EventSourceV2SourceMnsParameters']]] = None,
+            source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict', 'outputs.EventSourceV2SourceOssEventParameters']]] = None,
+            source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict', 'outputs.EventSourceV2SourceRabbitMqParameters']]] = None,
+            source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict', 'outputs.EventSourceV2SourceRocketmqParameters']]] = None,
+            source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict', 'outputs.EventSourceV2SourceScheduledEventParameters']]] = None,
+            source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict', 'outputs.EventSourceV2SourceSlsParameters']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["eventBusName"] = event_bus_name
+        __props__["eventSourceName"] = event_source_name
+        __props__["linkedExternalSource"] = linked_external_source
+        __props__["sourceHttpEventParameters"] = source_http_event_parameters
+        __props__["sourceKafkaParameters"] = source_kafka_parameters
+        __props__["sourceMnsParameters"] = source_mns_parameters
+        __props__["sourceOssEventParameters"] = source_oss_event_parameters
+        __props__["sourceRabbitMqParameters"] = source_rabbit_mq_parameters
+        __props__["sourceRocketmqParameters"] = source_rocketmq_parameters
+        __props__["sourceScheduledEventParameters"] = source_scheduled_event_parameters
+        __props__["sourceSlsParameters"] = source_sls_parameters
+        return pulumi.runtime.exists_resource(None, 'alicloud:eventbridge/eventSourceV2:EventSourceV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -416,7 +416,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Filter the results by system disk category. Valid values: `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `CloudEssdEntry`, `CloudAuto`. 
+        /// Filter the results by system disk category. Valid values: `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `CloudEssdEntry`, `CloudAuto`.
         /// **NOTE**: Its default value `CloudEfficiency` has been removed from the version v1.150.0.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -540,7 +540,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Filter the results by system disk category. Valid values: `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `CloudEssdEntry`, `CloudAuto`. 
+        /// Filter the results by system disk category. Valid values: `Cloud`, `EphemeralSsd`, `CloudEssd`, `CloudEfficiency`, `CloudSsd`, `CloudEssdEntry`, `CloudAuto`.
         /// **NOTE**: Its default value `CloudEfficiency` has been removed from the version v1.150.0.
         /// </summary>
         [Input("systemDiskCategory")]

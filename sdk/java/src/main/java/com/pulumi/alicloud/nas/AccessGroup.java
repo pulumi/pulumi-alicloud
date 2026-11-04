@@ -166,11 +166,10 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -198,11 +197,10 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * @deprecated Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead. */
+    @Deprecated
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 

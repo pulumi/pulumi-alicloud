@@ -677,6 +677,36 @@ class NacosConfig(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return NacosConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            beta_ips: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            data_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desc: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_data_key: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceptLanguage"] = accept_language
+        __props__["appName"] = app_name
+        __props__["betaIps"] = beta_ips
+        __props__["content"] = content
+        __props__["dataId"] = data_id
+        __props__["desc"] = desc
+        __props__["encryptedDataKey"] = encrypted_data_key
+        __props__["group"] = group
+        __props__["instanceId"] = instance_id
+        __props__["namespaceId"] = namespace_id
+        __props__["tags"] = tags
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:mse/nacosConfig:NacosConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
     def accept_language(self) -> pulumi.Output[Optional[_builtins.str]]:

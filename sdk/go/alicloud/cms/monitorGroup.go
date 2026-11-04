@@ -142,6 +142,12 @@ func (MonitorGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorGroupState)(nil)).Elem()
 }
 
+// MonitorGroupExists checks whether an existing MonitorGroup resource with the given ID exists.
+func MonitorGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/monitorGroup:MonitorGroup", id, state, "", opts...)
+}
+
 type monitorGroupArgs struct {
 	// The alert group to which alert notifications will be sent.
 	ContactGroups []string `pulumi:"contactGroups"`

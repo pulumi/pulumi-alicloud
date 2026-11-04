@@ -445,6 +445,24 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return VpcEndpointLinkedVpc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable_create_dns_record_in_pvzt: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            module_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enableCreateDnsRecordInPvzt"] = enable_create_dns_record_in_pvzt
+        __props__["instanceId"] = instance_id
+        __props__["moduleName"] = module_name
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="enableCreateDnsRecordInPvzt")
     def enable_create_dns_record_in_pvzt(self) -> pulumi.Output[Optional[_builtins.bool]]:

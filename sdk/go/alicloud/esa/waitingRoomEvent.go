@@ -320,6 +320,12 @@ func (WaitingRoomEventState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomEventState)(nil)).Elem()
 }
 
+// WaitingRoomEventExists checks whether an existing WaitingRoomEvent resource with the given ID exists.
+func WaitingRoomEventExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomEventState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/waitingRoomEvent:WaitingRoomEvent", id, state, "", opts...)
+}
+
 type waitingRoomEventArgs struct {
 	// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 	CustomPageHtml *string `pulumi:"customPageHtml"`

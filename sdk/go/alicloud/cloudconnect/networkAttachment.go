@@ -139,6 +139,12 @@ func (NetworkAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAttachmentState)(nil)).Elem()
 }
 
+// NetworkAttachmentExists checks whether an existing NetworkAttachment resource with the given ID exists.
+func NetworkAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudconnect/networkAttachment:NetworkAttachment", id, state, "", opts...)
+}
+
 type networkAttachmentArgs struct {
 	// The ID of the CCN instance.
 	CcnId string `pulumi:"ccnId"`

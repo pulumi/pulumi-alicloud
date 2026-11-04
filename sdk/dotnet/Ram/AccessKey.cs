@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> PgpKey { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
+        /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
         /// If you use this, please protect your backend state file judiciously.
         /// Alternatively, you may supply a `PgpKey` instead, which will prevent the secret from being stored in plaintext,
         /// at the cost of preventing the use of the secret key in automation.
@@ -296,7 +296,7 @@ namespace Pulumi.AliCloud.Ram
         private Input<string>? _secret;
 
         /// <summary>
-        /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
+        /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
         /// If you use this, please protect your backend state file judiciously.
         /// Alternatively, you may supply a `PgpKey` instead, which will prevent the secret from being stored in plaintext,
         /// at the cost of preventing the use of the secret key in automation.

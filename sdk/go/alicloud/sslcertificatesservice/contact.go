@@ -166,6 +166,12 @@ func (ContactState) ElementType() reflect.Type {
 	return reflect.TypeOf((*contactState)(nil)).Elem()
 }
 
+// ContactExists checks whether an existing Contact resource with the given ID exists.
+func ContactExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContactState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservice/contact:Contact", id, state, "", opts...)
+}
+
 type contactArgs struct {
 	// The email address of the contact.
 	Email *string `pulumi:"email"`

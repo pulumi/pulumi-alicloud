@@ -424,6 +424,26 @@ class V3Alias(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return V3Alias(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_version_weight: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalVersionWeight"] = additional_version_weight
+        __props__["aliasName"] = alias_name
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["functionName"] = function_name
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3Alias:V3Alias', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalVersionWeight")
     def additional_version_weight(self) -> pulumi.Output[Optional[Mapping[str, _builtins.float]]]:

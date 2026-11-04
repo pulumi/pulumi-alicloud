@@ -132,6 +132,12 @@ func (HdMonitorRegionConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hdMonitorRegionConfigState)(nil)).Elem()
 }
 
+// HdMonitorRegionConfigExists checks whether an existing HdMonitorRegionConfig resource with the given ID exists.
+func HdMonitorRegionConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HdMonitorRegionConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nlb/hdMonitorRegionConfig:HdMonitorRegionConfig", id, state, "", opts...)
+}
+
 type hdMonitorRegionConfigArgs struct {
 	// The name of the LogProject.
 	LogProject string `pulumi:"logProject"`

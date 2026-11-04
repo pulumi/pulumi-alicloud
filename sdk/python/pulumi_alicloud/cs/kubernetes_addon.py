@@ -514,6 +514,28 @@ class KubernetesAddon(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return KubernetesAddon(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            can_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            cleanup_cloud_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            next_version: pulumi.Input[Optional[_builtins.str]] = None,
+            required: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["canUpgrade"] = can_upgrade
+        __props__["cleanupCloudResources"] = cleanup_cloud_resources
+        __props__["clusterId"] = cluster_id
+        __props__["config"] = config
+        __props__["name"] = name
+        __props__["nextVersion"] = next_version
+        __props__["required"] = required
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/kubernetesAddon:KubernetesAddon', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="canUpgrade")
     @_utilities.deprecated("""Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it""")

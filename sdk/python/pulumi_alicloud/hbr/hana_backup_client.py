@@ -487,6 +487,28 @@ class HanaBackupClient(pulumi.CustomResource):
         __props__.__dict__["vault_id"] = vault_id
         return HanaBackupClient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_info: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertSetting"] = alert_setting
+        __props__["clientId"] = client_id
+        __props__["clientInfo"] = client_info
+        __props__["clusterId"] = cluster_id
+        __props__["instanceId"] = instance_id
+        __props__["status"] = status
+        __props__["useHttps"] = use_https
+        __props__["vaultId"] = vault_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbr/hanaBackupClient:HanaBackupClient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertSetting")
     def alert_setting(self) -> pulumi.Output[_builtins.str]:

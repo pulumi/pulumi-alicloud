@@ -162,6 +162,12 @@ func (ServiceHybridDoubleWriteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceHybridDoubleWriteState)(nil)).Elem()
 }
 
+// ServiceHybridDoubleWriteExists checks whether an existing ServiceHybridDoubleWrite resource with the given ID exists.
+func ServiceHybridDoubleWriteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceHybridDoubleWriteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite", id, state, "", opts...)
+}
+
 type serviceHybridDoubleWriteArgs struct {
 	// Target Namespace.
 	Namespace string `pulumi:"namespace"`

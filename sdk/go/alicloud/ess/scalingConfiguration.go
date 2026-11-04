@@ -624,6 +624,12 @@ func (ScalingConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingConfigurationState)(nil)).Elem()
 }
 
+// ScalingConfigurationExists checks whether an existing ScalingConfiguration resource with the given ID exists.
+func ScalingConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScalingConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/scalingConfiguration:ScalingConfiguration", id, state, "", opts...)
+}
+
 type scalingConfigurationArgs struct {
 	// Whether active current scaling configuration in the specified scaling group. Default to `false`.
 	Active *bool `pulumi:"active"`

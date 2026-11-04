@@ -163,6 +163,12 @@ func (V3FunctionVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3functionVersionState)(nil)).Elem()
 }
 
+// V3FunctionVersionExists checks whether an existing V3FunctionVersion resource with the given ID exists.
+func V3FunctionVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3FunctionVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3FunctionVersion:V3FunctionVersion", id, state, "", opts...)
+}
+
 type v3functionVersionArgs struct {
 	// Description of the function version
 	Description *string `pulumi:"description"`

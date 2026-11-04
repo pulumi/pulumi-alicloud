@@ -378,6 +378,22 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["namespace_short_id"] = namespace_short_id
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable_micro_registration: pulumi.Input[Optional[_builtins.bool]] = None,
+            namespace_description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_short_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enableMicroRegistration"] = enable_micro_registration
+        __props__["namespaceDescription"] = namespace_description
+        __props__["namespaceId"] = namespace_id
+        __props__["namespaceName"] = namespace_name
+        __props__["namespaceShortId"] = namespace_short_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:sae/namespace:Namespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="enableMicroRegistration")
     def enable_micro_registration(self) -> pulumi.Output[_builtins.bool]:

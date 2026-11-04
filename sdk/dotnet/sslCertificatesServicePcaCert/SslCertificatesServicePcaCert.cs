@@ -94,10 +94,9 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
     public partial class SslCertificatesServicePcaCert : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        /// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
         /// 
         /// &gt; **NOTE:**  The `BeforeTime` and `AfterTime` parameters must either both be empty or both be specified.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -142,7 +141,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Output<string?> CommonName { get; private set; } = null!;
 
         /// <summary>
-        /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
         /// For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         /// </summary>
         [Output("countryCode")]
@@ -155,7 +154,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Output<string?> CustomIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// Validity period of the client certificate, in days.  
+        /// Validity period of the client certificate, in days.
         /// 
         /// The `Days`, `BeforeTime`, and `AfterTime` parameters cannot all be empty. Additionally, `BeforeTime` and `AfterTime` must either both be set or both remain unset. The specific rules are as follows:
         /// - If you set the `Days` parameter, you may optionally also set `BeforeTime` and `AfterTime`.
@@ -225,7 +224,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Output<string?> SanType { get; private set; } = null!;
 
         /// <summary>
-        /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -318,10 +317,9 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
     public sealed class SslCertificatesServicePcaCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        /// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
         /// 
         /// &gt; **NOTE:**  The `BeforeTime` and `AfterTime` parameters must either both be empty or both be specified.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -366,7 +364,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Input<string>? CommonName { get; set; }
 
         /// <summary>
-        /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
         /// For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         /// </summary>
         [Input("countryCode")]
@@ -379,7 +377,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Input<string>? CustomIdentifier { get; set; }
 
         /// <summary>
-        /// Validity period of the client certificate, in days.  
+        /// Validity period of the client certificate, in days.
         /// 
         /// The `Days`, `BeforeTime`, and `AfterTime` parameters cannot all be empty. Additionally, `BeforeTime` and `AfterTime` must either both be set or both remain unset. The specific rules are as follows:
         /// - If you set the `Days` parameter, you may optionally also set `BeforeTime` and `AfterTime`.
@@ -449,7 +447,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Input<string>? SanType { get; set; }
 
         /// <summary>
-        /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -506,10 +504,9 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
     public sealed class SslCertificatesServicePcaCertState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        /// The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
         /// 
         /// &gt; **NOTE:**  The `BeforeTime` and `AfterTime` parameters must either both be empty or both be specified.
-        /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -554,7 +551,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Input<string>? CommonName { get; set; }
 
         /// <summary>
-        /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        /// Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
         /// For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         /// </summary>
         [Input("countryCode")]
@@ -567,7 +564,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Input<string>? CustomIdentifier { get; set; }
 
         /// <summary>
-        /// Validity period of the client certificate, in days.  
+        /// Validity period of the client certificate, in days.
         /// 
         /// The `Days`, `BeforeTime`, and `AfterTime` parameters cannot all be empty. Additionally, `BeforeTime` and `AfterTime` must either both be set or both remain unset. The specific rules are as follows:
         /// - If you set the `Days` parameter, you may optionally also set `BeforeTime` and `AfterTime`.
@@ -637,7 +634,7 @@ namespace Pulumi.AliCloud.sslCertificatesServicePcaCert
         public Input<string>? SanType { get; set; }
 
         /// <summary>
-        /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        /// Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>

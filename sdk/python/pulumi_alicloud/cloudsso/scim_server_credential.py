@@ -372,6 +372,26 @@ class ScimServerCredential(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ScimServerCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_secret_file: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["credentialId"] = credential_id
+        __props__["credentialSecretFile"] = credential_secret_file
+        __props__["credentialType"] = credential_type
+        __props__["directoryId"] = directory_id
+        __props__["expireTime"] = expire_time
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudsso/scimServerCredential:ScimServerCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

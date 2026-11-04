@@ -187,6 +187,12 @@ func (InstanceCustomizedDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceCustomizedDomainState)(nil)).Elem()
 }
 
+// InstanceCustomizedDomainExists checks whether an existing InstanceCustomizedDomain resource with the given ID exists.
+func InstanceCustomizedDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceCustomizedDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/instanceCustomizedDomain:InstanceCustomizedDomain", id, state, "", opts...)
+}
+
 type instanceCustomizedDomainArgs struct {
 	// The ID of the custom domain name certificate.
 	CertId string `pulumi:"certId"`

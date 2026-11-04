@@ -66,22 +66,20 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
-     * @deprecated
-     * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
+     * @deprecated Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead. */
+    @Deprecated
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
      * @return Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      * 
-     * @deprecated
-     * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
+     * @deprecated Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead. */
+    @Deprecated
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -411,11 +409,10 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
+         * @deprecated Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead. */
+        @Deprecated
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
@@ -426,11 +423,10 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
+         * @deprecated Field &#39;domain&#39; has been deprecated from version 1.94.0. Use &#39;domain_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead. */
+        @Deprecated
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

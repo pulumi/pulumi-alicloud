@@ -663,6 +663,34 @@ class ForwardEntry(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ForwardEntry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            external_port: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_break: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["externalIp"] = external_ip
+        __props__["externalPort"] = external_port
+        __props__["forwardEntryId"] = forward_entry_id
+        __props__["forwardEntryName"] = forward_entry_name
+        __props__["forwardTableId"] = forward_table_id
+        __props__["internalIp"] = internal_ip
+        __props__["internalPort"] = internal_port
+        __props__["ipProtocol"] = ip_protocol
+        __props__["name"] = name
+        __props__["portBreak"] = port_break
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/forwardEntry:ForwardEntry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="externalIp")
     def external_ip(self) -> pulumi.Output[_builtins.str]:

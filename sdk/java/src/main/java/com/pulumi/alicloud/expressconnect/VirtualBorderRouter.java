@@ -100,11 +100,10 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
     /**
      * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
-     * @deprecated
-     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
-    @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
+    @Deprecated
     @Export(name="associatedPhysicalConnections", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> associatedPhysicalConnections;
 

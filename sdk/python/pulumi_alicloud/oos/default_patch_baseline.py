@@ -226,6 +226,16 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         __props__.__dict__["patch_baseline_name"] = patch_baseline_name
         return DefaultPatchBaseline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            patch_baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["patchBaselineId"] = patch_baseline_id
+        __props__["patchBaselineName"] = patch_baseline_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="patchBaselineId")
     def patch_baseline_id(self) -> pulumi.Output[_builtins.str]:

@@ -176,6 +176,12 @@ func (NodeGroupAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeGroupAttachmentState)(nil)).Elem()
 }
 
+// NodeGroupAttachmentExists checks whether an existing NodeGroupAttachment resource with the given ID exists.
+func NodeGroupAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeGroupAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment", id, state, "", opts...)
+}
+
 type nodeGroupAttachmentArgs struct {
 	// Cluster ID
 	ClusterId *string `pulumi:"clusterId"`

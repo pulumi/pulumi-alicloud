@@ -443,6 +443,24 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["user_access_param"] = user_access_param
         return Resource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict', 'outputs.ResourceMachineTypes']]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict', 'outputs.ResourceUserAccessParam']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterDesc"] = cluster_desc
+        __props__["clusterId"] = cluster_id
+        __props__["clusterName"] = cluster_name
+        __props__["machineTypes"] = machine_types
+        __props__["resourceId"] = resource_id
+        __props__["userAccessParam"] = user_access_param
+        return pulumi.runtime.exists_resource(None, 'alicloud:eflo/resource:Resource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterDesc")
     def cluster_desc(self) -> pulumi.Output[Optional[_builtins.str]]:

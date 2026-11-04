@@ -23,11 +23,10 @@ public final class GetGatewaysResult {
     /**
      * @return Whether the ipsec function is enabled.
      * 
-     * @deprecated
-     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * @deprecated Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
+    @Deprecated
     private @Nullable Boolean enableIpsec;
     private @Nullable String gatewayType;
     /**
@@ -80,11 +79,10 @@ public final class GetGatewaysResult {
     /**
      * @return Whether the ipsec function is enabled.
      * 
-     * @deprecated
-     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * @deprecated Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
+    @Deprecated
     public Optional<Boolean> enableIpsec() {
         return Optional.ofNullable(this.enableIpsec);
     }

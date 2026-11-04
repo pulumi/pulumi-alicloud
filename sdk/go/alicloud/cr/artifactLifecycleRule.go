@@ -218,6 +218,12 @@ func (ArtifactLifecycleRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*artifactLifecycleRuleState)(nil)).Elem()
 }
 
+// ArtifactLifecycleRuleExists checks whether an existing ArtifactLifecycleRule resource with the given ID exists.
+func ArtifactLifecycleRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ArtifactLifecycleRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule", id, state, "", opts...)
+}
+
 type artifactLifecycleRuleArgs struct {
 	// Whether to execute automatically
 	Auto bool `pulumi:"auto"`

@@ -196,6 +196,12 @@ func (VpcFirewallAclEngineModeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcFirewallAclEngineModeState)(nil)).Elem()
 }
 
+// VpcFirewallAclEngineModeExists checks whether an existing VpcFirewallAclEngineMode resource with the given ID exists.
+func VpcFirewallAclEngineModeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcFirewallAclEngineModeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode", id, state, "", opts...)
+}
+
 type vpcFirewallAclEngineModeArgs struct {
 	// The ID of member account.
 	MemberUid *string `pulumi:"memberUid"`

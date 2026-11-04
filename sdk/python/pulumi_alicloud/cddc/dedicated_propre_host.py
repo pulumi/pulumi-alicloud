@@ -1521,6 +1521,66 @@ class DedicatedPropreHost(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return DedicatedPropreHost(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_class_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict', 'outputs.DedicatedPropreHostEcsClassList']]]]] = None,
+            ecs_deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_unique_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            os_password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            period_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data_encoded: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["dedicatedHostGroupId"] = dedicated_host_group_id
+        __props__["ecsClassLists"] = ecs_class_lists
+        __props__["ecsDeploymentSetId"] = ecs_deployment_set_id
+        __props__["ecsHostName"] = ecs_host_name
+        __props__["ecsInstanceId"] = ecs_instance_id
+        __props__["ecsInstanceName"] = ecs_instance_name
+        __props__["ecsUniqueSuffix"] = ecs_unique_suffix
+        __props__["ecsZoneId"] = ecs_zone_id
+        __props__["engine"] = engine
+        __props__["imageId"] = image_id
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["internetMaxBandwidthOut"] = internet_max_bandwidth_out
+        __props__["keyPairName"] = key_pair_name
+        __props__["osPassword"] = os_password
+        __props__["passwordInherit"] = password_inherit
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodType"] = period_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroupId"] = security_group_id
+        __props__["tags"] = tags
+        __props__["userData"] = user_data
+        __props__["userDataEncoded"] = user_data_encoded
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:

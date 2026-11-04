@@ -112,11 +112,10 @@ public class ConsumerGroup extends com.pulumi.resources.CustomResource {
     /**
      * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
-     * @deprecated
-     * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
+     * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      * 
      */
-    @Deprecated /* Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead. */
+    @Deprecated
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 

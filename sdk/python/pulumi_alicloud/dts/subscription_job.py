@@ -1821,6 +1821,90 @@ class SubscriptionJob(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return SubscriptionJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            database_count: pulumi.Input[Optional[_builtins.int]] = None,
+            db_list: pulumi.Input[Optional[_builtins.str]] = None,
+            delay_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+            delay_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_region: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+            error_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reserve: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
+            subscription_data_type_dml: pulumi.Input[Optional[_builtins.bool]] = None,
+            subscription_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_instance_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_instance_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checkpoint"] = checkpoint
+        __props__["computeUnit"] = compute_unit
+        __props__["databaseCount"] = database_count
+        __props__["dbList"] = db_list
+        __props__["delayNotice"] = delay_notice
+        __props__["delayPhone"] = delay_phone
+        __props__["delayRuleTime"] = delay_rule_time
+        __props__["destinationEndpointEngineName"] = destination_endpoint_engine_name
+        __props__["destinationRegion"] = destination_region
+        __props__["dtsInstanceId"] = dts_instance_id
+        __props__["dtsJobName"] = dts_job_name
+        __props__["errorNotice"] = error_notice
+        __props__["errorPhone"] = error_phone
+        __props__["instanceClass"] = instance_class
+        __props__["paymentDuration"] = payment_duration
+        __props__["paymentDurationUnit"] = payment_duration_unit
+        __props__["paymentType"] = payment_type
+        __props__["reserve"] = reserve
+        __props__["sourceEndpointDatabaseName"] = source_endpoint_database_name
+        __props__["sourceEndpointEngineName"] = source_endpoint_engine_name
+        __props__["sourceEndpointInstanceId"] = source_endpoint_instance_id
+        __props__["sourceEndpointInstanceType"] = source_endpoint_instance_type
+        __props__["sourceEndpointIp"] = source_endpoint_ip
+        __props__["sourceEndpointOracleSid"] = source_endpoint_oracle_sid
+        __props__["sourceEndpointOwnerId"] = source_endpoint_owner_id
+        __props__["sourceEndpointPassword"] = source_endpoint_password
+        __props__["sourceEndpointPort"] = source_endpoint_port
+        __props__["sourceEndpointRegion"] = source_endpoint_region
+        __props__["sourceEndpointRole"] = source_endpoint_role
+        __props__["sourceEndpointUserName"] = source_endpoint_user_name
+        __props__["status"] = status
+        __props__["subscriptionDataTypeDdl"] = subscription_data_type_ddl
+        __props__["subscriptionDataTypeDml"] = subscription_data_type_dml
+        __props__["subscriptionInstanceNetworkType"] = subscription_instance_network_type
+        __props__["subscriptionInstanceVpcId"] = subscription_instance_vpc_id
+        __props__["subscriptionInstanceVswitchId"] = subscription_instance_vswitch_id
+        __props__["syncArchitecture"] = sync_architecture
+        __props__["synchronizationDirection"] = synchronization_direction
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:dts/subscriptionJob:SubscriptionJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checkpoint(self) -> pulumi.Output[_builtins.str]:

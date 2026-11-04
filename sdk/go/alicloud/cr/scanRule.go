@@ -234,6 +234,12 @@ func (ScanRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scanRuleState)(nil)).Elem()
 }
 
+// ScanRuleExists checks whether an existing ScanRule resource with the given ID exists.
+func ScanRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScanRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/scanRule:ScanRule", id, state, "", opts...)
+}
+
 type scanRuleArgs struct {
 	// Instance ID
 	InstanceId string `pulumi:"instanceId"`

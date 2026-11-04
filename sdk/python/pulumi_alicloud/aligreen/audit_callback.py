@@ -394,6 +394,22 @@ class AuditCallback(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return AuditCallback(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audit_callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+            callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            crypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["auditCallbackName"] = audit_callback_name
+        __props__["callbackSuggestions"] = callback_suggestions
+        __props__["callbackTypes"] = callback_types
+        __props__["cryptType"] = crypt_type
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'alicloud:aligreen/auditCallback:AuditCallback', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="auditCallbackName")
     def audit_callback_name(self) -> pulumi.Output[_builtins.str]:

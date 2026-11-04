@@ -896,6 +896,46 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["waf_log"] = waf_log
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            big_screen: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_ip_package: pulumi.Input[Optional[_builtins.str]] = None,
+            ext_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            ext_domain_package: pulumi.Input[Optional[_builtins.str]] = None,
+            log_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            log_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_code: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            prefessional_service: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+            waf_log: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bigScreen"] = big_screen
+        __props__["exclusiveIpPackage"] = exclusive_ip_package
+        __props__["extBandwidth"] = ext_bandwidth
+        __props__["extDomainPackage"] = ext_domain_package
+        __props__["logStorage"] = log_storage
+        __props__["logTime"] = log_time
+        __props__["modifyType"] = modify_type
+        __props__["packageCode"] = package_code
+        __props__["period"] = period
+        __props__["prefessionalService"] = prefessional_service
+        __props__["region"] = region
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["subscriptionType"] = subscription_type
+        __props__["wafLog"] = waf_log
+        return pulumi.runtime.exists_resource(None, 'alicloud:waf/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bigScreen")
     def big_screen(self) -> pulumi.Output[_builtins.str]:

@@ -53,11 +53,10 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
      * 
      * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
@@ -66,11 +65,10 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
      * 
      * &gt; **WARNING:**  If `force` set to `true`, it it will reboot instances which attached with the key pair to make key pair effective immediately.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -176,11 +174,10 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+        @Deprecated
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
@@ -193,11 +190,10 @@ public final class EcsKeyPairAttachmentArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+        @Deprecated
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }

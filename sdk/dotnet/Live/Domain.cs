@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Live
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Domain business type. Valid values:  
+        /// Domain business type. Valid values:
         /// - `liveVideo`: Playback domain.
         /// - `liveEdge`: Edge ingest domain.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Live
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Domain business type. Valid values:  
+        /// Domain business type. Valid values:
         /// - `liveVideo`: Playback domain.
         /// - `liveEdge`: Edge ingest domain.
         /// </summary>
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Live
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// Domain business type. Valid values:  
+        /// Domain business type. Valid values:
         /// - `liveVideo`: Playback domain.
         /// - `liveEdge`: Edge ingest domain.
         /// </summary>

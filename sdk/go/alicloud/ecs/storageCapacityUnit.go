@@ -152,6 +152,12 @@ func (StorageCapacityUnitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageCapacityUnitState)(nil)).Elem()
 }
 
+// StorageCapacityUnitExists checks whether an existing StorageCapacityUnit resource with the given ID exists.
+func StorageCapacityUnitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageCapacityUnitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/storageCapacityUnit:StorageCapacityUnit", id, state, "", opts...)
+}
+
 type storageCapacityUnitArgs struct {
 	// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
 	Capacity int `pulumi:"capacity"`

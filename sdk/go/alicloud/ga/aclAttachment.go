@@ -193,6 +193,12 @@ func (AclAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclAttachmentState)(nil)).Elem()
 }
 
+// AclAttachmentExists checks whether an existing AclAttachment resource with the given ID exists.
+func AclAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/aclAttachment:AclAttachment", id, state, "", opts...)
+}
+
 type aclAttachmentArgs struct {
 	// The ID of an ACL.
 	AclId string `pulumi:"aclId"`

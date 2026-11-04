@@ -251,6 +251,12 @@ func (VbrHaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vbrHaState)(nil)).Elem()
 }
 
+// VbrHaExists checks whether an existing VbrHa resource with the given ID exists.
+func VbrHaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VbrHaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/vbrHa:VbrHa", id, state, "", opts...)
+}
+
 type vbrHaArgs struct {
 	// The description of the VBR switching group.
 	// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.

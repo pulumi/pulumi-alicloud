@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -85,16 +85,16 @@ import javax.annotation.Nullable;
  *             .name("terraform-example")
  *             .outputType("LogService")
  *             .inputDetail("""
- *   \t{
- * \t\t\"logPath\": \"/logPath\",
- * \t\t\"filePattern\": \"access.log\",
- * \t\t\"logType\": \"json_log\",
- * \t\t\"topicFormat\": \"default\",
- * \t\t\"discardUnmatch\": false,
- * \t\t\"enableRawLog\": true,
- * \t\t\"fileEncoding\": \"gbk\",
- * \t\t\"maxDepth\": 10
- * \t}
+ *   }&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "logPath}&#92;{@code ": }&#92;{@code "/logPath}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "filePattern}&#92;{@code ": }&#92;{@code "access.log}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "logType}&#92;{@code ": }&#92;{@code "json_log}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "topicFormat}&#92;{@code ": }&#92;{@code "default}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "discardUnmatch}&#92;{@code ": false,
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "enableRawLog}&#92;{@code ": true,
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "fileEncoding}&#92;{@code ": }&#92;{@code "gbk}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code "maxDepth}&#92;{@code ": 10
+ * }&#92;{@code t}}{@code
  *             """)
  *             .build());
  * 
@@ -114,8 +114,8 @@ import javax.annotation.Nullable;
  *             .machineGroupName(exampleMachineGroup.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

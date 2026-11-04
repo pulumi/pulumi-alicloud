@@ -370,6 +370,22 @@ class BizType(pulumi.CustomResource):
         __props__.__dict__["industry_info"] = industry_info
         return BizType(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biz_type_import: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cite_template: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            industry_info: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bizTypeImport"] = biz_type_import
+        __props__["bizTypeName"] = biz_type_name
+        __props__["citeTemplate"] = cite_template
+        __props__["description"] = description
+        __props__["industryInfo"] = industry_info
+        return pulumi.runtime.exists_resource(None, 'alicloud:aligreen/bizType:BizType', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bizTypeImport")
     def biz_type_import(self) -> pulumi.Output[Optional[_builtins.str]]:

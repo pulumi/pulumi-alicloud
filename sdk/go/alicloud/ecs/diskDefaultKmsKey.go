@@ -125,6 +125,12 @@ func (DiskDefaultKmsKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskDefaultKmsKeyState)(nil)).Elem()
 }
 
+// DiskDefaultKmsKeyExists checks whether an existing DiskDefaultKmsKey resource with the given ID exists.
+func DiskDefaultKmsKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiskDefaultKmsKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/diskDefaultKmsKey:DiskDefaultKmsKey", id, state, "", opts...)
+}
+
 type diskDefaultKmsKeyArgs struct {
 	// The ID of the KMS key.
 	KmsKeyId string `pulumi:"kmsKeyId"`

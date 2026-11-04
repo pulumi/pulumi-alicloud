@@ -74,22 +74,20 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     /**
      * Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
      * 
-     * @deprecated
-     * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+     * @deprecated Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
+    @Deprecated
     @Import(name="ipWhitelists")
     private @Nullable Output<List<String>> ipWhitelists;
 
     /**
      * @return Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
      * 
-     * @deprecated
-     * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+     * @deprecated Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
+    @Deprecated
     public Optional<Output<List<String>>> ipWhitelists() {
         return Optional.ofNullable(this.ipWhitelists);
     }
@@ -197,11 +195,10 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+         * @deprecated Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
+        @Deprecated
         public Builder ipWhitelists(@Nullable Output<List<String>> ipWhitelists) {
             $.ipWhitelists = ipWhitelists;
             return this;
@@ -212,11 +209,10 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+         * @deprecated Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
+        @Deprecated
         public Builder ipWhitelists(List<String> ipWhitelists) {
             return ipWhitelists(Output.of(ipWhitelists));
         }
@@ -226,11 +222,10 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+         * @deprecated Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
+        @Deprecated
         public Builder ipWhitelists(String... ipWhitelists) {
             return ipWhitelists(List.of(ipWhitelists));
         }

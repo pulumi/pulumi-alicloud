@@ -169,22 +169,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
-     * @deprecated
-     * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     * @deprecated Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      */
-    @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
+    @Deprecated
     @Import(name="commandArgs")
     private @Nullable Output<String> commandArgs;
 
     /**
      * @return Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
-     * @deprecated
-     * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     * @deprecated Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      * 
      */
-    @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
+    @Deprecated
     public Optional<Output<String>> commandArgs() {
         return Optional.ofNullable(this.commandArgs);
     }
@@ -207,22 +205,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
-     * @deprecated
-     * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     * @deprecated Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      */
-    @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
+    @Deprecated
     @Import(name="configMapMountDesc")
     private @Nullable Output<String> configMapMountDesc;
 
     /**
      * @return ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
-     * @deprecated
-     * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     * @deprecated Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      * 
      */
-    @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
+    @Deprecated
     public Optional<Output<String>> configMapMountDesc() {
         return Optional.ofNullable(this.configMapMountDesc);
     }
@@ -260,22 +256,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
-     * @deprecated
-     * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     * @deprecated Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      */
-    @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
+    @Deprecated
     @Import(name="customHostAlias")
     private @Nullable Output<String> customHostAlias;
 
     /**
      * @return Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
-     * @deprecated
-     * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     * @deprecated Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      * 
      */
-    @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
+    @Deprecated
     public Optional<Output<String>> customHostAlias() {
         return Optional.ofNullable(this.customHostAlias);
     }
@@ -464,11 +458,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
-     * @deprecated
-     * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+     * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      */
-    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
+    @Deprecated
     @Import(name="liveness")
     private @Nullable Output<String> liveness;
 
@@ -476,11 +469,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      * @return Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
-     * @deprecated
-     * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+     * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      * 
      */
-    @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
+    @Deprecated
     public Optional<Output<String>> liveness() {
         return Optional.ofNullable(this.liveness);
     }
@@ -627,22 +619,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
-     * @deprecated
-     * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     * @deprecated Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      */
-    @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
+    @Deprecated
     @Import(name="ossMountDescs")
     private @Nullable Output<String> ossMountDescs;
 
     /**
      * @return OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
-     * @deprecated
-     * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     * @deprecated Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      * 
      */
-    @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
+    @Deprecated
     public Optional<Output<String>> ossMountDescs() {
         return Optional.ofNullable(this.ossMountDescs);
     }
@@ -770,22 +760,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
-     * @deprecated
-     * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     * @deprecated Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      */
-    @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
+    @Deprecated
     @Import(name="postStart")
     private @Nullable Output<String> postStart;
 
     /**
      * @return Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
-     * @deprecated
-     * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     * @deprecated Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      * 
      */
-    @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
+    @Deprecated
     public Optional<Output<String>> postStart() {
         return Optional.ofNullable(this.postStart);
     }
@@ -808,22 +796,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
-     * @deprecated
-     * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     * @deprecated Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      */
-    @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
+    @Deprecated
     @Import(name="preStop")
     private @Nullable Output<String> preStop;
 
     /**
      * @return Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,&#34;/etc/group&#34;]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
-     * @deprecated
-     * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     * @deprecated Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      * 
      */
-    @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
+    @Deprecated
     public Optional<Output<String>> preStop() {
         return Optional.ofNullable(this.preStop);
     }
@@ -877,11 +863,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
-     * @deprecated
-     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+     * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      */
-    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
+    @Deprecated
     @Import(name="readiness")
     private @Nullable Output<String> readiness;
 
@@ -889,11 +874,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      * @return Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},`initialDelaySeconds`:30,`periodSeconds`:30,&#34;timeoutSeconds &#34;:2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
-     * @deprecated
-     * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+     * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      * 
      */
-    @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
+    @Deprecated
     public Optional<Output<String>> readiness() {
         return Optional.ofNullable(this.readiness);
     }
@@ -1044,11 +1028,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      * Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
-     * @deprecated
-     * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+     * @deprecated Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      */
-    @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
+    @Deprecated
     @Import(name="tomcatConfig")
     private @Nullable Output<String> tomcatConfig;
 
@@ -1056,11 +1039,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      * @return Tomcat file configuration, set to &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
-     * @deprecated
-     * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+     * @deprecated Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      * 
      */
-    @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
+    @Deprecated
     public Optional<Output<String>> tomcatConfig() {
         return Optional.ofNullable(this.tomcatConfig);
     }
@@ -1083,22 +1065,20 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
-     * @deprecated
-     * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     * @deprecated Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      */
-    @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
+    @Deprecated
     @Import(name="updateStrategy")
     private @Nullable Output<String> updateStrategy;
 
     /**
      * @return The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
-     * @deprecated
-     * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     * @deprecated Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      * 
      */
-    @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
+    @Deprecated
     public Optional<Output<String>> updateStrategy() {
         return Optional.ofNullable(this.updateStrategy);
     }
@@ -1464,11 +1444,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+         * @deprecated Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
          * 
          */
-        @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
+        @Deprecated
         public Builder commandArgs(@Nullable Output<String> commandArgs) {
             $.commandArgs = commandArgs;
             return this;
@@ -1479,11 +1458,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+         * @deprecated Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
          * 
          */
-        @Deprecated /* Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead. */
+        @Deprecated
         public Builder commandArgs(String commandArgs) {
             return commandArgs(Output.of(commandArgs));
         }
@@ -1524,11 +1502,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+         * @deprecated Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
          * 
          */
-        @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
+        @Deprecated
         public Builder configMapMountDesc(@Nullable Output<String> configMapMountDesc) {
             $.configMapMountDesc = configMapMountDesc;
             return this;
@@ -1539,11 +1516,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+         * @deprecated Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
          * 
          */
-        @Deprecated /* Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead. */
+        @Deprecated
         public Builder configMapMountDesc(String configMapMountDesc) {
             return configMapMountDesc(Output.of(configMapMountDesc));
         }
@@ -1605,11 +1581,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+         * @deprecated Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
          * 
          */
-        @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
+        @Deprecated
         public Builder customHostAlias(@Nullable Output<String> customHostAlias) {
             $.customHostAlias = customHostAlias;
             return this;
@@ -1620,11 +1595,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+         * @deprecated Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
          * 
          */
-        @Deprecated /* Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead. */
+        @Deprecated
         public Builder customHostAlias(String customHostAlias) {
             return customHostAlias(Output.of(customHostAlias));
         }
@@ -1897,11 +1871,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+         * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
          * 
          */
-        @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
+        @Deprecated
         public Builder liveness(@Nullable Output<String> liveness) {
             $.liveness = liveness;
             return this;
@@ -1913,11 +1886,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
+         * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
          * 
          */
-        @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead. */
+        @Deprecated
         public Builder liveness(String liveness) {
             return liveness(Output.of(liveness));
         }
@@ -2130,11 +2102,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+         * @deprecated Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
          * 
          */
-        @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
+        @Deprecated
         public Builder ossMountDescs(@Nullable Output<String> ossMountDescs) {
             $.ossMountDescs = ossMountDescs;
             return this;
@@ -2145,11 +2116,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+         * @deprecated Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
          * 
          */
-        @Deprecated /* Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead. */
+        @Deprecated
         public Builder ossMountDescs(String ossMountDescs) {
             return ossMountDescs(Output.of(ossMountDescs));
         }
@@ -2337,11 +2307,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+         * @deprecated Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
          * 
          */
-        @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
+        @Deprecated
         public Builder postStart(@Nullable Output<String> postStart) {
             $.postStart = postStart;
             return this;
@@ -2352,11 +2321,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+         * @deprecated Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
          * 
          */
-        @Deprecated /* Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead. */
+        @Deprecated
         public Builder postStart(String postStart) {
             return postStart(Output.of(postStart));
         }
@@ -2387,11 +2355,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+         * @deprecated Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
          * 
          */
-        @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
+        @Deprecated
         public Builder preStop(@Nullable Output<String> preStop) {
             $.preStop = preStop;
             return this;
@@ -2402,11 +2369,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+         * @deprecated Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
          * 
          */
-        @Deprecated /* Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead. */
+        @Deprecated
         public Builder preStop(String preStop) {
             return preStop(Output.of(preStop));
         }
@@ -2480,11 +2446,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+         * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
          * 
          */
-        @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
+        @Deprecated
         public Builder readiness(@Nullable Output<String> readiness) {
             $.readiness = readiness;
             return this;
@@ -2496,11 +2461,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
+         * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
          * 
          */
-        @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead. */
+        @Deprecated
         public Builder readiness(String readiness) {
             return readiness(Output.of(readiness));
         }
@@ -2701,11 +2665,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+         * @deprecated Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
          * 
          */
-        @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
+        @Deprecated
         public Builder tomcatConfig(@Nullable Output<String> tomcatConfig) {
             $.tomcatConfig = tomcatConfig;
             return this;
@@ -2717,11 +2680,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
+         * @deprecated Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
          * 
          */
-        @Deprecated /* Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead. */
+        @Deprecated
         public Builder tomcatConfig(String tomcatConfig) {
             return tomcatConfig(Output.of(tomcatConfig));
         }
@@ -2752,11 +2714,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+         * @deprecated Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
          * 
          */
-        @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
+        @Deprecated
         public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
             $.updateStrategy = updateStrategy;
             return this;
@@ -2767,11 +2728,10 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+         * @deprecated Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
          * 
          */
-        @Deprecated /* Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead. */
+        @Deprecated
         public Builder updateStrategy(String updateStrategy) {
             return updateStrategy(Output.of(updateStrategy));
         }

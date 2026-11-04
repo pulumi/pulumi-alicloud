@@ -152,6 +152,12 @@ func (KeyPairState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairState)(nil)).Elem()
 }
 
+// KeyPairExists checks whether an existing KeyPair resource with the given ID exists.
+func KeyPairExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyPairState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudphone/keyPair:KeyPair", id, state, "", opts...)
+}
+
 type keyPairArgs struct {
 	// ADB key pair name.
 	KeyPairName string `pulumi:"keyPairName"`

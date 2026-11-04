@@ -125,14 +125,14 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     @Import(name="exclude")
     private @Nullable Output<String> exclude;
 
     /**
-     * @return Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * @return Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     public Optional<Output<String>> exclude() {
@@ -140,14 +140,14 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * Include path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     @Import(name="include")
     private @Nullable Output<String> include;
 
     /**
-     * @return Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * @return Include path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     public Optional<Output<String>> include() {
@@ -170,14 +170,14 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
+     * Windows operating system with application consistency using VSS, e.g: `{&#92;&#34;UseVSS&#92;&#34;:false}`.
      * 
      */
     @Import(name="options")
     private @Nullable Output<String> options;
 
     /**
-     * @return Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
+     * @return Windows operating system with application consistency using VSS, e.g: `{&#92;&#34;UseVSS&#92;&#34;:false}`.
      * 
      */
     public Optional<Output<String>> options() {
@@ -249,22 +249,20 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
-     * @deprecated
-     * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      * 
      */
-    @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+    @Deprecated
     @Import(name="updatePaths")
     private @Nullable Output<Boolean> updatePaths;
 
     /**
      * @return Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
-     * @deprecated
-     * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      * 
      */
-    @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+    @Deprecated
     public Optional<Output<Boolean>> updatePaths() {
         return Optional.ofNullable(this.updatePaths);
     }
@@ -472,7 +470,7 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclude Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+         * @param exclude Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
          * 
          * @return builder
          * 
@@ -483,7 +481,7 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclude Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+         * @param exclude Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
          * 
          * @return builder
          * 
@@ -493,7 +491,7 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param include Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+         * @param include Include path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
          * 
          * @return builder
          * 
@@ -504,7 +502,7 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param include Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+         * @param include Include path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
          * 
          * @return builder
          * 
@@ -535,7 +533,7 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
+         * @param options Windows operating system with application consistency using VSS, e.g: `{&#92;&#34;UseVSS&#92;&#34;:false}`.
          * 
          * @return builder
          * 
@@ -546,7 +544,7 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
+         * @param options Windows operating system with application consistency using VSS, e.g: `{&#92;&#34;UseVSS&#92;&#34;:false}`.
          * 
          * @return builder
          * 
@@ -656,11 +654,10 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+         * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
          * 
          */
-        @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+        @Deprecated
         public Builder updatePaths(@Nullable Output<Boolean> updatePaths) {
             $.updatePaths = updatePaths;
             return this;
@@ -671,11 +668,10 @@ public final class EcsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+         * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
          * 
          */
-        @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+        @Deprecated
         public Builder updatePaths(Boolean updatePaths) {
             return updatePaths(Output.of(updatePaths));
         }

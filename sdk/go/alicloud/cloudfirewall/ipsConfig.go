@@ -199,6 +199,12 @@ func (IpsConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipsConfigState)(nil)).Elem()
 }
 
+// IpsConfigExists checks whether an existing IpsConfig resource with the given ID exists.
+func IpsConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpsConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/ipsConfig:IpsConfig", id, state, "", opts...)
+}
+
 type ipsConfigArgs struct {
 	// Basic rule switch. Value:
 	// - 1: Open.

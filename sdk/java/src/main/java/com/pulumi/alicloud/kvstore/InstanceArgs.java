@@ -68,22 +68,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead. */
+    @Deprecated
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
      * @return It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead. */
+    @Deprecated
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -196,22 +194,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
-     * @deprecated
-     * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     @Import(name="connectionStringPrefix")
     private @Nullable Output<String> connectionStringPrefix;
 
     /**
      * @return It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
-     * @deprecated
-     * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     public Optional<Output<String>> connectionStringPrefix() {
         return Optional.ofNullable(this.connectionStringPrefix);
     }
@@ -313,22 +309,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
-     * @deprecated
-     * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     @Import(name="enablePublic")
     private @Nullable Output<Boolean> enablePublic;
 
     /**
      * @return It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
-     * @deprecated
-     * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+     * @deprecated Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
-    @Deprecated /* Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+    @Deprecated
     public Optional<Output<Boolean>> enablePublic() {
         return Optional.ofNullable(this.enablePublic);
     }
@@ -428,22 +422,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead. */
+    @Deprecated
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead. */
+    @Deprecated
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -468,22 +460,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
-     * @deprecated
-     * Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+     * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      * 
      */
-    @Deprecated /* Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead. */
+    @Deprecated
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
      * @return It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      * 
-     * @deprecated
-     * Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+     * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      * 
      */
-    @Deprecated /* Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead. */
+    @Deprecated
     public Optional<Output<String>> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }
@@ -630,22 +620,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     @Import(name="parameters")
     private @Nullable Output<List<InstanceParameterArgs>> parameters;
 
     /**
      * @return It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
-     * @deprecated
-     * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+     * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
      * 
      */
-    @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+    @Deprecated
     public Optional<Output<List<InstanceParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -1223,11 +1211,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
+         * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead. */
+        @Deprecated
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
@@ -1238,11 +1225,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
+         * @deprecated Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead. */
+        @Deprecated
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
@@ -1409,11 +1395,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+         * @deprecated Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
          * 
          */
-        @Deprecated /* Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+        @Deprecated
         public Builder connectionStringPrefix(@Nullable Output<String> connectionStringPrefix) {
             $.connectionStringPrefix = connectionStringPrefix;
             return this;
@@ -1424,11 +1409,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+         * @deprecated Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
          * 
          */
-        @Deprecated /* Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+        @Deprecated
         public Builder connectionStringPrefix(String connectionStringPrefix) {
             return connectionStringPrefix(Output.of(connectionStringPrefix));
         }
@@ -1568,11 +1552,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+         * @deprecated Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
          * 
          */
-        @Deprecated /* Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+        @Deprecated
         public Builder enablePublic(@Nullable Output<Boolean> enablePublic) {
             $.enablePublic = enablePublic;
             return this;
@@ -1583,11 +1566,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
+         * @deprecated Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
          * 
          */
-        @Deprecated /* Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
+        @Deprecated
         public Builder enablePublic(Boolean enablePublic) {
             return enablePublic(Output.of(enablePublic));
         }
@@ -1725,11 +1707,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
+         * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead. */
+        @Deprecated
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -1740,11 +1721,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
+         * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead. */
+        @Deprecated
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -1777,11 +1757,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+         * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
          * 
          */
-        @Deprecated /* Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead. */
+        @Deprecated
         public Builder instanceName(@Nullable Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
@@ -1792,11 +1771,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+         * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
          * 
          */
-        @Deprecated /* Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead. */
+        @Deprecated
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }
@@ -1999,11 +1977,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder parameters(@Nullable Output<List<InstanceParameterArgs>> parameters) {
             $.parameters = parameters;
             return this;
@@ -2014,11 +1991,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder parameters(List<InstanceParameterArgs> parameters) {
             return parameters(Output.of(parameters));
         }
@@ -2028,11 +2004,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
+         * @deprecated Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
          * 
          */
-        @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
+        @Deprecated
         public Builder parameters(InstanceParameterArgs... parameters) {
             return parameters(List.of(parameters));
         }

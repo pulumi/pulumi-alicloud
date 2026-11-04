@@ -215,6 +215,12 @@ func (CommandState) ElementType() reflect.Type {
 	return reflect.TypeOf((*commandState)(nil)).Elem()
 }
 
+// CommandExists checks whether an existing Command resource with the given ID exists.
+func CommandExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommandState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/command:Command", id, state, "", opts...)
+}
+
 type commandArgs struct {
 	// The Contents of the Script to Base64 Encoded Transmission.
 	CommandContent string `pulumi:"commandContent"`

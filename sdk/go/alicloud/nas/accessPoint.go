@@ -262,6 +262,12 @@ func (AccessPointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPointState)(nil)).Elem()
 }
 
+// AccessPointExists checks whether an existing AccessPoint resource with the given ID exists.
+func AccessPointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/accessPoint:AccessPoint", id, state, "", opts...)
+}
+
 type accessPointArgs struct {
 	// The name of the permission group.
 	AccessGroup string `pulumi:"accessGroup"`

@@ -81,11 +81,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:dns/ddosCooInstance:DdosCooInstance example &lt;id&gt;
  * ```
  * 
- * @deprecated
- * alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance
+ * @deprecated alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance
  * 
  */
-@Deprecated /* alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance */
+@Deprecated
 @ResourceType(type="alicloud:dns/ddosCooInstance:DdosCooInstance")
 public class DdosCooInstance extends com.pulumi.resources.CustomResource {
     /**

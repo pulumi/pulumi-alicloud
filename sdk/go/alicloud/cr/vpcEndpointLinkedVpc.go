@@ -206,6 +206,12 @@ func (VpcEndpointLinkedVpcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointLinkedVpcState)(nil)).Elem()
 }
 
+// VpcEndpointLinkedVpcExists checks whether an existing VpcEndpointLinkedVpc resource with the given ID exists.
+func VpcEndpointLinkedVpcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcEndpointLinkedVpcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc", id, state, "", opts...)
+}
+
 type vpcEndpointLinkedVpcArgs struct {
 	// Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
 	EnableCreateDnsRecordInPvzt *bool `pulumi:"enableCreateDnsRecordInPvzt"`

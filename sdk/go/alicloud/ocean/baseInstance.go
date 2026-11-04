@@ -457,6 +457,12 @@ func (BaseInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*baseInstanceState)(nil)).Elem()
 }
 
+// BaseInstanceExists checks whether an existing BaseInstance resource with the given ID exists.
+func BaseInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BaseInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ocean/baseInstance:BaseInstance", id, state, "", opts...)
+}
+
 type baseInstanceArgs struct {
 	// Whether to automatically renew.
 	//

@@ -208,6 +208,12 @@ func (DomainConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainConfigState)(nil)).Elem()
 }
 
+// DomainConfigExists checks whether an existing DomainConfig resource with the given ID exists.
+func DomainConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/domainConfig:DomainConfig", id, state, "", opts...)
+}
+
 type domainConfigArgs struct {
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName string `pulumi:"domainName"`

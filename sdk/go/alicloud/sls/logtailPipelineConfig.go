@@ -233,6 +233,12 @@ func (LogtailPipelineConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logtailPipelineConfigState)(nil)).Elem()
 }
 
+// LogtailPipelineConfigExists checks whether an existing LogtailPipelineConfig resource with the given ID exists.
+func LogtailPipelineConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogtailPipelineConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sls/logtailPipelineConfig:LogtailPipelineConfig", id, state, "", opts...)
+}
+
 type logtailPipelineConfigArgs struct {
 	// This property does not have a description in the spec, please add it before generating code. See `aggregators` below.
 	Aggregators []map[string]string `pulumi:"aggregators"`

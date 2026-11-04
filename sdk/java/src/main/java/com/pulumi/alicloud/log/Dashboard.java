@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -76,43 +76,43 @@ import javax.annotation.Nullable;
  *             .dashboardName("terraform-example")
  *             .displayName("terraform-example")
  *             .attribute("""
- *   {
- *     \"type\":\"grid\"
- *   }
+ *   }{{@code
+ *     }&#92;{@code "type}&#92;{@code ":}&#92;{@code "grid}&#92;{@code "
+ *   }}{@code
  *             """)
  *             .charList("""
  *   [
- *     {
- *       \"action\": {},
- *       \"title\":\"new_title\",
- *       \"type\":\"map\",
- *       \"search\":{
- *         \"logstore\":\"example-store\",
- *         \"topic\":\"new_topic\",
- *         \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",
- *         \"start\":\"-86400s\",
- *         \"end\":\"now\"
- *       },
- *       \"display\":{
- *         \"xAxis\":[
- *           \"ct_name\"
+ *     }{{@code
+ *       }&#92;{@code "action}&#92;{@code ": }{}{@code ,
+ *       }&#92;{@code "title}&#92;{@code ":}&#92;{@code "new_title}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ":}&#92;{@code "map}&#92;{@code ",
+ *       }&#92;{@code "search}&#92;{@code ":}{{@code
+ *         }&#92;{@code "logstore}&#92;{@code ":}&#92;{@code "example-store}&#92;{@code ",
+ *         }&#92;{@code "topic}&#92;{@code ":}&#92;{@code "new_topic}&#92;{@code ",
+ *         }&#92;{@code "query}&#92;{@code ":}&#92;{@code "* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product}&#92;{@code ",
+ *         }&#92;{@code "start}&#92;{@code ":}&#92;{@code "-86400s}&#92;{@code ",
+ *         }&#92;{@code "end}&#92;{@code ":}&#92;{@code "now}&#92;{@code "
+ *       }}{@code ,
+ *       }&#92;{@code "display}&#92;{@code ":}{{@code
+ *         }&#92;{@code "xAxis}&#92;{@code ":[
+ *           }&#92;{@code "ct_name}&#92;{@code "
  *         ],
- *         \"yAxis\":[
- *           \"ct_product\"
+ *         }&#92;{@code "yAxis}&#92;{@code ":[
+ *           }&#92;{@code "ct_product}&#92;{@code "
  *         ],
- *         \"xPos\":0,
- *         \"yPos\":0,
- *         \"width\":10,
- *         \"height\":12,
- *         \"displayName\":\"terraform-example\"
- *       }
- *     }
+ *         }&#92;{@code "xPos}&#92;{@code ":0,
+ *         }&#92;{@code "yPos}&#92;{@code ":0,
+ *         }&#92;{@code "width}&#92;{@code ":10,
+ *         }&#92;{@code "height}&#92;{@code ":12,
+ *         }&#92;{@code "displayName}&#92;{@code ":}&#92;{@code "terraform-example}&#92;{@code "
+ *       }}{@code
+ *     }}{@code
  *   ]
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

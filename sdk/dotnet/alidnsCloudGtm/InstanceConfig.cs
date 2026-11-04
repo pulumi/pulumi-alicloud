@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Output<string?> ScheduleHostName { get; private set; } = null!;
 
         /// <summary>
-        /// Record type for the access domain name:  
+        /// Record type for the access domain name:
         /// - A: IPv4 address
         /// - AAAA: IPv6 address
         /// - CNAME: domain name.
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Output<string> ScheduleRrType { get; private set; } = null!;
 
         /// <summary>
-        /// Access domain name assignment mode:  
+        /// Access domain name assignment mode:
         /// - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
         /// - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         /// </summary>
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Output<string?> ScheduleZoneName { get; private set; } = null!;
 
         /// <summary>
-        /// When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        /// When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
         /// - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
         /// - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         /// </summary>
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Input<string>? ScheduleHostName { get; set; }
 
         /// <summary>
-        /// Record type for the access domain name:  
+        /// Record type for the access domain name:
         /// - A: IPv4 address
         /// - AAAA: IPv6 address
         /// - CNAME: domain name.
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Input<string> ScheduleRrType { get; set; } = null!;
 
         /// <summary>
-        /// Access domain name assignment mode:  
+        /// Access domain name assignment mode:
         /// - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
         /// - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         /// </summary>
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Input<string>? ScheduleZoneName { get; set; }
 
         /// <summary>
-        /// When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        /// When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
         /// - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
         /// - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         /// </summary>
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Input<string>? ScheduleHostName { get; set; }
 
         /// <summary>
-        /// Record type for the access domain name:  
+        /// Record type for the access domain name:
         /// - A: IPv4 address
         /// - AAAA: IPv6 address
         /// - CNAME: domain name.
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Input<string>? ScheduleRrType { get; set; }
 
         /// <summary>
-        /// Access domain name assignment mode:  
+        /// Access domain name assignment mode:
         /// - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
         /// - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         /// </summary>
@@ -332,7 +332,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
         public Input<string>? ScheduleZoneName { get; set; }
 
         /// <summary>
-        /// When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        /// When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
         /// - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
         /// - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         /// </summary>

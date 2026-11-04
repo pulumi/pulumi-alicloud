@@ -226,6 +226,12 @@ func (VpcEndpointServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcEndpointServiceState)(nil)).Elem()
 }
 
+// VpcEndpointServiceExists checks whether an existing VpcEndpointService resource with the given ID exists.
+func VpcEndpointServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcEndpointServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:privatelink/vpcEndpointService:VpcEndpointService", id, state, "", opts...)
+}
+
 type vpcEndpointServiceArgs struct {
 	// The IP address version.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`

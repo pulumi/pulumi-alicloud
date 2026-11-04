@@ -159,6 +159,12 @@ func (PublicIpAddressPoolCidrBlockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpAddressPoolCidrBlockState)(nil)).Elem()
 }
 
+// PublicIpAddressPoolCidrBlockExists checks whether an existing PublicIpAddressPoolCidrBlock resource with the given ID exists.
+func PublicIpAddressPoolCidrBlockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicIpAddressPoolCidrBlockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock", id, state, "", opts...)
+}
+
 type publicIpAddressPoolCidrBlockArgs struct {
 	// The CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`

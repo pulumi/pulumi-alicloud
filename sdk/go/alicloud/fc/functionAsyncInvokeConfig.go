@@ -304,6 +304,12 @@ func (FunctionAsyncInvokeConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionAsyncInvokeConfigState)(nil)).Elem()
 }
 
+// FunctionAsyncInvokeConfigExists checks whether an existing FunctionAsyncInvokeConfig resource with the given ID exists.
+func FunctionAsyncInvokeConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FunctionAsyncInvokeConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", id, state, "", opts...)
+}
+
 type functionAsyncInvokeConfigArgs struct {
 	// Configuration block with destination configuration. See `destinationConfig` below.
 	DestinationConfig *FunctionAsyncInvokeConfigDestinationConfig `pulumi:"destinationConfig"`

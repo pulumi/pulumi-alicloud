@@ -174,6 +174,12 @@ func (BucketWebsiteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketWebsiteState)(nil)).Elem()
 }
 
+// BucketWebsiteExists checks whether an existing BucketWebsite resource with the given ID exists.
+func BucketWebsiteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketWebsiteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketWebsite:BucketWebsite", id, state, "", opts...)
+}
+
 type bucketWebsiteArgs struct {
 	// The name of the bucket
 	Bucket string `pulumi:"bucket"`

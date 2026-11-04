@@ -1013,6 +1013,40 @@ class V3CustomDomain(pulumi.CustomResource):
         __props__.__dict__["waf_config"] = waf_config
         return V3CustomDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict', 'outputs.V3CustomDomainAuthConfig']]] = None,
+            cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict', 'outputs.V3CustomDomainCertConfig']]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict', 'outputs.V3CustomDomainCorsConfig']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            route_config: pulumi.Input[Optional[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict', 'outputs.V3CustomDomainRouteConfig']]] = None,
+            subdomain_count: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_config: pulumi.Input[Optional[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict', 'outputs.V3CustomDomainTlsConfig']]] = None,
+            waf_config: pulumi.Input[Optional[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict', 'outputs.V3CustomDomainWafConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["apiVersion"] = api_version
+        __props__["authConfig"] = auth_config
+        __props__["certConfig"] = cert_config
+        __props__["certificateId"] = certificate_id
+        __props__["corsConfig"] = cors_config
+        __props__["createTime"] = create_time
+        __props__["customDomainName"] = custom_domain_name
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["protocol"] = protocol
+        __props__["routeConfig"] = route_config
+        __props__["subdomainCount"] = subdomain_count
+        __props__["tlsConfig"] = tls_config
+        __props__["wafConfig"] = waf_config
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3CustomDomain:V3CustomDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

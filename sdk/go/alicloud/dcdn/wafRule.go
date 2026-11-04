@@ -256,6 +256,12 @@ func (WafRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafRuleState)(nil)).Elem()
 }
 
+// WafRuleExists checks whether an existing WafRule resource with the given ID exists.
+func WafRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WafRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/wafRule:WafRule", id, state, "", opts...)
+}
+
 type wafRuleArgs struct {
 	// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
 	Action *string `pulumi:"action"`

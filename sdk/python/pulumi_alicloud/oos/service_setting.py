@@ -379,6 +379,22 @@ class ServiceSetting(pulumi.CustomResource):
         __props__.__dict__["delivery_sls_project_name"] = delivery_sls_project_name
         return ServiceSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delivery_oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_oss_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            delivery_oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_sls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            delivery_sls_project_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deliveryOssBucketName"] = delivery_oss_bucket_name
+        __props__["deliveryOssEnabled"] = delivery_oss_enabled
+        __props__["deliveryOssKeyPrefix"] = delivery_oss_key_prefix
+        __props__["deliverySlsEnabled"] = delivery_sls_enabled
+        __props__["deliverySlsProjectName"] = delivery_sls_project_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/serviceSetting:ServiceSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deliveryOssBucketName")
     def delivery_oss_bucket_name(self) -> pulumi.Output[Optional[_builtins.str]]:

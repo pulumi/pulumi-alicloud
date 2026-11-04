@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultMetricRuleBlackList = new MetricRuleBlackList("defaultMetricRuleBlackList", MetricRuleBlackListArgs.builder()
- *             .instances(defaultInstance.id().applyValue(_id -> String.format("{{\"instancceId\":\"%s\"}}", _id)))
+ *             .instances(defaultInstance.id().applyValue(_id -> String.format("}{{&#92;{@code "instancceId}&#92;{@code ":}&#92;{@code "%s}&#92;{@code "}}}{@code ", _id)))
  *             .metrics(MetricRuleBlackListMetricArgs.builder()
  *                 .metricName("disk_utilization")
  *                 .build())
@@ -119,8 +119,8 @@ import javax.annotation.Nullable;
  *             .metricRuleBlackListName(name)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

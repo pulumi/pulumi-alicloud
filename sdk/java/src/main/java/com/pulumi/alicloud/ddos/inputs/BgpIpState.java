@@ -63,22 +63,20 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      * 
-     * @deprecated
-     * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+     * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      * 
      */
-    @Deprecated /* Field `resourceGroupId` has been deprecated from provider version 1.259.0. */
+    @Deprecated
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
      * @return Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      * 
-     * @deprecated
-     * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+     * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      * 
      */
-    @Deprecated /* Field `resourceGroupId` has been deprecated from provider version 1.259.0. */
+    @Deprecated
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -194,11 +192,10 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+         * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
          * 
          */
-        @Deprecated /* Field `resourceGroupId` has been deprecated from provider version 1.259.0. */
+        @Deprecated
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
@@ -209,11 +206,10 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+         * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
          * 
          */
-        @Deprecated /* Field `resourceGroupId` has been deprecated from provider version 1.259.0. */
+        @Deprecated
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }

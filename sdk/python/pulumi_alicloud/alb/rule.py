@@ -742,6 +742,28 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Rule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict', 'outputs.RuleRuleAction']]]]] = None,
+            rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict', 'outputs.RuleRuleCondition']]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["direction"] = direction
+        __props__["dryRun"] = dry_run
+        __props__["listenerId"] = listener_id
+        __props__["priority"] = priority
+        __props__["ruleActions"] = rule_actions
+        __props__["ruleConditions"] = rule_conditions
+        __props__["ruleName"] = rule_name
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/rule:Rule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def direction(self) -> pulumi.Output[_builtins.str]:

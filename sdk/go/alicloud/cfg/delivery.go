@@ -287,6 +287,12 @@ func (DeliveryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deliveryState)(nil)).Elem()
 }
 
+// DeliveryExists checks whether an existing Delivery resource with the given ID exists.
+func DeliveryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeliveryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/delivery:Delivery", id, state, "", opts...)
+}
+
 type deliveryArgs struct {
 	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	// - true: The specified destination receives resource change logs.

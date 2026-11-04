@@ -955,6 +955,52 @@ class EcdPolicyGroup(pulumi.CustomResource):
         __props__.__dict__["watermark_type"] = watermark_type
         return EcdPolicyGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
+            authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
+            camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+            html_access: pulumi.Input[Optional[_builtins.str]] = None,
+            html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+            local_drive: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            recording: pulumi.Input[Optional[_builtins.str]] = None,
+            recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
+            recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
+            recording_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            usb_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            visual_quality: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark_transparency: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizeAccessPolicyRules"] = authorize_access_policy_rules
+        __props__["authorizeSecurityPolicyRules"] = authorize_security_policy_rules
+        __props__["cameraRedirect"] = camera_redirect
+        __props__["clipboard"] = clipboard
+        __props__["domainList"] = domain_list
+        __props__["htmlAccess"] = html_access
+        __props__["htmlFileTransfer"] = html_file_transfer
+        __props__["localDrive"] = local_drive
+        __props__["policyGroupName"] = policy_group_name
+        __props__["recording"] = recording
+        __props__["recordingEndTime"] = recording_end_time
+        __props__["recordingExpires"] = recording_expires
+        __props__["recordingFps"] = recording_fps
+        __props__["recordingStartTime"] = recording_start_time
+        __props__["status"] = status
+        __props__["usbRedirect"] = usb_redirect
+        __props__["visualQuality"] = visual_quality
+        __props__["watermark"] = watermark
+        __props__["watermarkTransparency"] = watermark_transparency
+        __props__["watermarkType"] = watermark_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/ecdPolicyGroup:EcdPolicyGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizeAccessPolicyRules")
     def authorize_access_policy_rules(self) -> pulumi.Output[Optional[Sequence['outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]:

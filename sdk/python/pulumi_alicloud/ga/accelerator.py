@@ -901,6 +901,48 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Accelerator(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_border_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_set_config: pulumi.Input[Optional[Union['AcceleratorIpSetConfigArgs', 'AcceleratorIpSetConfigArgsDict', 'outputs.AcceleratorIpSetConfig']]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceleratorName"] = accelerator_name
+        __props__["autoRenewDuration"] = auto_renew_duration
+        __props__["autoUseCoupon"] = auto_use_coupon
+        __props__["bandwidth"] = bandwidth
+        __props__["bandwidthBillingType"] = bandwidth_billing_type
+        __props__["crossBorderMode"] = cross_border_mode
+        __props__["crossBorderStatus"] = cross_border_status
+        __props__["description"] = description
+        __props__["duration"] = duration
+        __props__["ipSetConfig"] = ip_set_config
+        __props__["paymentType"] = payment_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["promotionOptionNo"] = promotion_option_no
+        __props__["renewalStatus"] = renewal_status
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/accelerator:Accelerator', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceleratorName")
     def accelerator_name(self) -> pulumi.Output[Optional[_builtins.str]]:

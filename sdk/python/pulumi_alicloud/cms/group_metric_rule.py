@@ -917,6 +917,48 @@ class GroupMetricRule(pulumi.CustomResource):
         __props__.__dict__["webhook"] = webhook
         return GroupMetricRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict', 'outputs.GroupMetricRuleEscalations']]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict', 'outputs.GroupMetricRuleTarget']]]]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["category"] = category
+        __props__["contactGroups"] = contact_groups
+        __props__["dimensions"] = dimensions
+        __props__["effectiveInterval"] = effective_interval
+        __props__["emailSubject"] = email_subject
+        __props__["escalations"] = escalations
+        __props__["groupId"] = group_id
+        __props__["groupMetricRuleName"] = group_metric_rule_name
+        __props__["interval"] = interval
+        __props__["metricName"] = metric_name
+        __props__["namespace"] = namespace
+        __props__["noEffectiveInterval"] = no_effective_interval
+        __props__["period"] = period
+        __props__["ruleId"] = rule_id
+        __props__["silenceTime"] = silence_time
+        __props__["status"] = status
+        __props__["targets"] = targets
+        __props__["webhook"] = webhook
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/groupMetricRule:GroupMetricRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[_builtins.str]]:

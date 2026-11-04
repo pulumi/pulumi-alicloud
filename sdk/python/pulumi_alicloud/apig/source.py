@@ -543,6 +543,32 @@ class Source(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Source(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            association_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            association_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_source_info: pulumi.Input[Optional[Union['SourceK8sSourceInfoArgs', 'SourceK8sSourceInfoArgsDict', 'outputs.SourceK8sSourceInfo']]] = None,
+            nacos_source_info: pulumi.Input[Optional[Union['SourceNacosSourceInfoArgs', 'SourceNacosSourceInfoArgsDict', 'outputs.SourceNacosSourceInfo']]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associationReason"] = association_reason
+        __props__["associationStatus"] = association_status
+        __props__["createTime"] = create_time
+        __props__["gatewayId"] = gateway_id
+        __props__["k8sSourceInfo"] = k8s_source_info
+        __props__["nacosSourceInfo"] = nacos_source_info
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sourceName"] = source_name
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/source:Source', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associationReason")
     def association_reason(self) -> pulumi.Output[_builtins.str]:

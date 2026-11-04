@@ -169,6 +169,12 @@ func (TransitRouterMulticastDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterMulticastDomainState)(nil)).Elem()
 }
 
+// TransitRouterMulticastDomainExists checks whether an existing TransitRouterMulticastDomain resource with the given ID exists.
+func TransitRouterMulticastDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterMulticastDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain", id, state, "", opts...)
+}
+
 type transitRouterMulticastDomainArgs struct {
 	// The function options of the multicast domain. See `options` below.
 	Options *TransitRouterMulticastDomainOptions `pulumi:"options"`

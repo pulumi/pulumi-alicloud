@@ -899,6 +899,48 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["write_time"] = write_time
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_time: pulumi.Input[Optional[_builtins.int]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http2_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            http_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            http_to_user_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            https_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            https_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_access_product: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancing: pulumi.Input[Optional[_builtins.str]] = None,
+            log_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict', 'outputs.DomainLogHeader']]]]] = None,
+            read_time: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            write_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterType"] = cluster_type
+        __props__["cname"] = cname
+        __props__["connectionTime"] = connection_time
+        __props__["domain"] = domain
+        __props__["domainName"] = domain_name
+        __props__["http2Ports"] = http2_ports
+        __props__["httpPorts"] = http_ports
+        __props__["httpToUserIp"] = http_to_user_ip
+        __props__["httpsPorts"] = https_ports
+        __props__["httpsRedirect"] = https_redirect
+        __props__["instanceId"] = instance_id
+        __props__["isAccessProduct"] = is_access_product
+        __props__["loadBalancing"] = load_balancing
+        __props__["logHeaders"] = log_headers
+        __props__["readTime"] = read_time
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sourceIps"] = source_ips
+        __props__["writeTime"] = write_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:waf/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -91,20 +91,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .document("""
- * \t\t{
- * \t\t\t\"Statement\": [
- * \t\t\t\t{
- * \t\t\t\t\t\"Action\": \"sts:AssumeRole\",
- * \t\t\t\t\t\"Effect\": \"Allow\",
- * \t\t\t\t\t\"Principal\": {
- * \t\t\t\t\t\t\"Service\": [
- * \t\t\t\t\t\t\t\"ecs.aliyuncs.com\"
- * \t\t\t\t\t\t]
- * \t\t\t\t\t}
- * \t\t\t\t}
- * \t\t  \t],
- * \t\t\t\"Version\": \"1\"
- * \t\t}
+ * }&#92;{@code t}&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "sts:AssumeRole}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Principal}&#92;{@code ": }{{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Service}&#92;{@code ": [
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "ecs.aliyuncs.com}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t]
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code t}}{@code
+ * }&#92;{@code t}&#92;{@code t  }&#92;{@code t],
+ * }&#92;{@code t}&#92;{@code t}&#92;{@code t}&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code "
+ * }&#92;{@code t}&#92;{@code t}}{@code
  *             """)
  *             .force(true)
  *             .build());
@@ -143,8 +143,8 @@ import javax.annotation.Nullable;
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

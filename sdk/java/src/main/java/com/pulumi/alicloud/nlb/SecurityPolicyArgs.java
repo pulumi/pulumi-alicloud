@@ -61,7 +61,7 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The name of the security policy.
      * 
-     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      */
     @Import(name="securityPolicyName")
@@ -70,7 +70,7 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The name of the security policy.
      * 
-     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> securityPolicyName() {
@@ -203,7 +203,7 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param securityPolicyName The name of the security policy.
          * 
-         * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+         * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class SecurityPolicyArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param securityPolicyName The name of the security policy.
          * 
-         * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+         * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
          * 
          * @return builder
          * 

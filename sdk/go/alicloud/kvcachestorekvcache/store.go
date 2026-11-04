@@ -166,6 +166,12 @@ func (StoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeState)(nil)).Elem()
 }
 
+// StoreExists checks whether an existing Store resource with the given ID exists.
+func StoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kvcachestorekvcache/store:Store", id, state, "", opts...)
+}
+
 type storeArgs struct {
 	// The storage capacity of the instance. Unit: GiB. The minimum value is `307200` (300 TiB), and the value must be a multiple of `307200`.
 	Capacity int `pulumi:"capacity"`

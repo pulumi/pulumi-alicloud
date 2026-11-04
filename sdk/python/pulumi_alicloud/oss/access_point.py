@@ -420,6 +420,24 @@ class AccessPoint(pulumi.CustomResource):
         __props__.__dict__["vpc_configuration"] = vpc_configuration
         return AccessPoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            network_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict', 'outputs.AccessPointPublicAccessBlockConfiguration']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict', 'outputs.AccessPointVpcConfiguration']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPointName"] = access_point_name
+        __props__["bucket"] = bucket
+        __props__["networkOrigin"] = network_origin
+        __props__["publicAccessBlockConfiguration"] = public_access_block_configuration
+        __props__["status"] = status
+        __props__["vpcConfiguration"] = vpc_configuration
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/accessPoint:AccessPoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPointName")
     def access_point_name(self) -> pulumi.Output[_builtins.str]:

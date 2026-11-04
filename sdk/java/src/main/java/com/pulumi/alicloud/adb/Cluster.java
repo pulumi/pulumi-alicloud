@@ -156,11 +156,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.dbClusterCategory;
     }
     /**
-     * @deprecated
-     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
-    @Deprecated /* It duplicates with attribute dbNodeClass and is deprecated from 1.121.2. */
+    @Deprecated
     @Export(name="dbClusterClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterClass;
 
@@ -308,11 +307,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      * 
-     * @deprecated
-     * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * @deprecated Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated
     @Export(name="payType", refs={String.class}, tree="[0]")
     private Output<String> payType;
 

@@ -167,6 +167,12 @@ func (CustomerGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customerGatewayState)(nil)).Elem()
 }
 
+// CustomerGatewayExists checks whether an existing CustomerGateway resource with the given ID exists.
+func CustomerGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomerGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpn/customerGateway:CustomerGateway", id, state, "", opts...)
+}
+
 type customerGatewayArgs struct {
 	// Asn.
 	Asn *string `pulumi:"asn"`

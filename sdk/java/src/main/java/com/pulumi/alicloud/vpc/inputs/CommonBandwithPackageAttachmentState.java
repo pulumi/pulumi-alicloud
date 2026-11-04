@@ -51,22 +51,20 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     /**
      * . Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidthPackageBandwidth` = `&#34;Cancelled&#34;`.
      * 
-     * @deprecated
-     * Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
+     * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
      * 
      */
-    @Deprecated /* Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = ""Cancelled"" */
+    @Deprecated
     @Import(name="cancelCommonBandwidthPackageIpBandwidth")
     private @Nullable Output<Boolean> cancelCommonBandwidthPackageIpBandwidth;
 
     /**
      * @return . Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidthPackageBandwidth` = `&#34;Cancelled&#34;`.
      * 
-     * @deprecated
-     * Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
+     * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
      * 
      */
-    @Deprecated /* Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = ""Cancelled"" */
+    @Deprecated
     public Optional<Output<Boolean>> cancelCommonBandwidthPackageIpBandwidth() {
         return Optional.ofNullable(this.cancelCommonBandwidthPackageIpBandwidth);
     }
@@ -202,11 +200,10 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
+         * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
          * 
          */
-        @Deprecated /* Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = ""Cancelled"" */
+        @Deprecated
         public Builder cancelCommonBandwidthPackageIpBandwidth(@Nullable Output<Boolean> cancelCommonBandwidthPackageIpBandwidth) {
             $.cancelCommonBandwidthPackageIpBandwidth = cancelCommonBandwidthPackageIpBandwidth;
             return this;
@@ -217,11 +214,10 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
+         * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
          * 
          */
-        @Deprecated /* Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = ""Cancelled"" */
+        @Deprecated
         public Builder cancelCommonBandwidthPackageIpBandwidth(Boolean cancelCommonBandwidthPackageIpBandwidth) {
             return cancelCommonBandwidthPackageIpBandwidth(Output.of(cancelCommonBandwidthPackageIpBandwidth));
         }

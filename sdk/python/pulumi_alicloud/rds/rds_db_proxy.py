@@ -1296,6 +1296,60 @@ class RdsDbProxy(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return RdsDbProxy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            db_proxy_connect_string_port: pulumi.Input[Optional[_builtins.int]] = None,
+            db_proxy_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_aliases: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_features: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_instance_num: pulumi.Input[Optional[_builtins.int]] = None,
+            db_proxy_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_specific_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only_instance_distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only_instance_max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+            read_only_instance_weights: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict', 'outputs.RdsDbProxyReadOnlyInstanceWeight']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dbProxyConnectStringPort"] = db_proxy_connect_string_port
+        __props__["dbProxyConnectionPrefix"] = db_proxy_connection_prefix
+        __props__["dbProxyConnectionString"] = db_proxy_connection_string
+        __props__["dbProxyEndpointAliases"] = db_proxy_endpoint_aliases
+        __props__["dbProxyEndpointId"] = db_proxy_endpoint_id
+        __props__["dbProxyEndpointReadWriteMode"] = db_proxy_endpoint_read_write_mode
+        __props__["dbProxyFeatures"] = db_proxy_features
+        __props__["dbProxyInstanceNum"] = db_proxy_instance_num
+        __props__["dbProxyInstanceType"] = db_proxy_instance_type
+        __props__["dbProxySslEnabled"] = db_proxy_ssl_enabled
+        __props__["effectiveSpecificTime"] = effective_specific_time
+        __props__["effectiveTime"] = effective_time
+        __props__["instanceId"] = instance_id
+        __props__["instanceNetworkType"] = instance_network_type
+        __props__["netType"] = net_type
+        __props__["readOnlyInstanceDistributionType"] = read_only_instance_distribution_type
+        __props__["readOnlyInstanceMaxDelayTime"] = read_only_instance_max_delay_time
+        __props__["readOnlyInstanceWeights"] = read_only_instance_weights
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["sslExpiredTime"] = ssl_expired_time
+        __props__["switchTime"] = switch_time
+        __props__["upgradeTime"] = upgrade_time
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/rdsDbProxy:RdsDbProxy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectStringPort")
     def db_proxy_connect_string_port(self) -> pulumi.Output[_builtins.int]:

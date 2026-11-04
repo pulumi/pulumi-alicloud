@@ -703,6 +703,36 @@ class Record(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return Record(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict', 'outputs.RecordAuthConf']]] = None,
+            biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict', 'outputs.RecordData']]] = None,
+            host_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+            record_name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_type: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authConf"] = auth_conf
+        __props__["bizName"] = biz_name
+        __props__["comment"] = comment
+        __props__["createTime"] = create_time
+        __props__["data"] = data
+        __props__["hostPolicy"] = host_policy
+        __props__["proxied"] = proxied
+        __props__["recordName"] = record_name
+        __props__["recordType"] = record_type
+        __props__["siteId"] = site_id
+        __props__["sourceType"] = source_type
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/record:Record', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authConf")
     def auth_conf(self) -> pulumi.Output[Optional['outputs.RecordAuthConf']]:

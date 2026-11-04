@@ -1062,6 +1062,44 @@ class TrafficQosRule(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return TrafficQosRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dst_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dst_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remarking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            src_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            src_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dstCidr"] = dst_cidr
+        __props__["dstIpv6Cidr"] = dst_ipv6_cidr
+        __props__["dstPortRange"] = dst_port_range
+        __props__["matchDscp"] = match_dscp
+        __props__["priority"] = priority
+        __props__["protocol"] = protocol
+        __props__["qosId"] = qos_id
+        __props__["queueId"] = queue_id
+        __props__["remarkingDscp"] = remarking_dscp
+        __props__["ruleDescription"] = rule_description
+        __props__["ruleId"] = rule_id
+        __props__["ruleName"] = rule_name
+        __props__["srcCidr"] = src_cidr
+        __props__["srcIpv6Cidr"] = src_ipv6_cidr
+        __props__["srcPortRange"] = src_port_range
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/trafficQosRule:TrafficQosRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dstCidr")
     def dst_cidr(self) -> pulumi.Output[Optional[_builtins.str]]:

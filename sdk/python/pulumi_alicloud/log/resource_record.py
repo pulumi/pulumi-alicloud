@@ -398,6 +398,20 @@ class ResourceRecord(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return ResourceRecord(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            record_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["recordId"] = record_id
+        __props__["resourceName"] = resource_name_
+        __props__["tag"] = tag
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/resourceRecord:ResourceRecord', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="recordId")
     def record_id(self) -> pulumi.Output[_builtins.str]:

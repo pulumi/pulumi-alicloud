@@ -193,22 +193,20 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
-     * @deprecated
-     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+     * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
-    @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
+    @Deprecated
     @Import(name="upgradedEngineMinorVersion")
     private @Nullable Output<String> upgradedEngineMinorVersion;
 
     /**
      * @return Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
-     * @deprecated
-     * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+     * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      * 
      */
-    @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
+    @Deprecated
     public Optional<Output<String>> upgradedEngineMinorVersion() {
         return Optional.ofNullable(this.upgradedEngineMinorVersion);
     }
@@ -546,11 +544,10 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+         * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
          * 
          */
-        @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
+        @Deprecated
         public Builder upgradedEngineMinorVersion(@Nullable Output<String> upgradedEngineMinorVersion) {
             $.upgradedEngineMinorVersion = upgradedEngineMinorVersion;
             return this;
@@ -561,11 +558,10 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
+         * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
          * 
          */
-        @Deprecated /* Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead. */
+        @Deprecated
         public Builder upgradedEngineMinorVersion(String upgradedEngineMinorVersion) {
             return upgradedEngineMinorVersion(Output.of(upgradedEngineMinorVersion));
         }

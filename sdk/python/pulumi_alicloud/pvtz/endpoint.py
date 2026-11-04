@@ -454,6 +454,24 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["vpc_region_id"] = vpc_region_id
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict', 'outputs.EndpointIpConfig']]]]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpointName"] = endpoint_name
+        __props__["ipConfigs"] = ip_configs
+        __props__["securityGroupId"] = security_group_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vpcRegionId"] = vpc_region_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/endpoint:Endpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> pulumi.Output[_builtins.str]:

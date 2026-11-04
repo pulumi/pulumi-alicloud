@@ -507,6 +507,26 @@ class MessageContact(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return MessageContact(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            email_address: pulumi.Input[Optional[_builtins.str]] = None,
+            message_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+            message_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["emailAddress"] = email_address
+        __props__["messageContactName"] = message_contact_name
+        __props__["messageTypes"] = message_types
+        __props__["phoneNumber"] = phone_number
+        __props__["status"] = status
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/messageContact:MessageContact', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

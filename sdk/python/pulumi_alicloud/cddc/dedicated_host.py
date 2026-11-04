@@ -814,6 +814,42 @@ class DedicatedHost(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DedicatedHost(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_class: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_category: pulumi.Input[Optional[_builtins.str]] = None,
+            os_password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            used_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocationStatus"] = allocation_status
+        __props__["autoRenew"] = auto_renew
+        __props__["dedicatedHostGroupId"] = dedicated_host_group_id
+        __props__["dedicatedHostId"] = dedicated_host_id
+        __props__["hostClass"] = host_class
+        __props__["hostName"] = host_name
+        __props__["imageCategory"] = image_category
+        __props__["osPassword"] = os_password
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["usedTime"] = used_time
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cddc/dedicatedHost:DedicatedHost', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocationStatus")
     def allocation_status(self) -> pulumi.Output[_builtins.str]:

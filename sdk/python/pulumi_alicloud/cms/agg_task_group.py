@@ -884,6 +884,48 @@ class AggTaskGroup(pulumi.CustomResource):
         __props__.__dict__["to_time"] = to_time
         return AggTaskGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agg_task_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+            agg_task_group_config_type: pulumi.Input[Optional[_builtins.str]] = None,
+            agg_task_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agg_task_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cron_expr: pulumi.Input[Optional[_builtins.str]] = None,
+            delay: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+            max_run_time_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            override_if_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            precheck_string: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_time_expr: pulumi.Input[Optional[_builtins.str]] = None,
+            source_prometheus_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_prometheus_id: pulumi.Input[Optional[_builtins.str]] = None,
+            to_time: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggTaskGroupConfig"] = agg_task_group_config
+        __props__["aggTaskGroupConfigType"] = agg_task_group_config_type
+        __props__["aggTaskGroupId"] = agg_task_group_id
+        __props__["aggTaskGroupName"] = agg_task_group_name
+        __props__["cronExpr"] = cron_expr
+        __props__["delay"] = delay
+        __props__["description"] = description
+        __props__["maxRetries"] = max_retries
+        __props__["maxRunTimeInSeconds"] = max_run_time_in_seconds
+        __props__["overrideIfExists"] = override_if_exists
+        __props__["precheckString"] = precheck_string
+        __props__["regionId"] = region_id
+        __props__["scheduleMode"] = schedule_mode
+        __props__["scheduleTimeExpr"] = schedule_time_expr
+        __props__["sourcePrometheusId"] = source_prometheus_id
+        __props__["status"] = status
+        __props__["targetPrometheusId"] = target_prometheus_id
+        __props__["toTime"] = to_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/aggTaskGroup:AggTaskGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aggTaskGroupConfig")
     def agg_task_group_config(self) -> pulumi.Output[_builtins.str]:

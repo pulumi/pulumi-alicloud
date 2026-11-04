@@ -455,6 +455,12 @@ func (EnterpriseInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseInstanceState)(nil)).Elem()
 }
 
+// EnterpriseInstanceExists checks whether an existing EnterpriseInstance resource with the given ID exists.
+func EnterpriseInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/enterpriseInstance:EnterpriseInstance", id, state, "", opts...)
+}
+
 type enterpriseInstanceArgs struct {
 	// Cross-database query datalink name.
 	DataLinkName *string `pulumi:"dataLinkName"`

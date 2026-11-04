@@ -241,6 +241,12 @@ func (QuotaScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaScheduleState)(nil)).Elem()
 }
 
+// QuotaScheduleExists checks whether an existing QuotaSchedule resource with the given ID exists.
+func QuotaScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:maxcompute/quotaSchedule:QuotaSchedule", id, state, "", opts...)
+}
+
 type quotaScheduleArgs struct {
 	// The nickname of level-1 compute quota.
 	Nickname string `pulumi:"nickname"`

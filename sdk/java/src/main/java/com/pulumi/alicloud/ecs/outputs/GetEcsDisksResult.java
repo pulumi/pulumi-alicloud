@@ -27,11 +27,10 @@ public final class GetEcsDisksResult {
     /**
      * @return Availability zone of the disk.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated
     private @Nullable String availabilityZone;
     /**
      * @return Disk category.
@@ -144,11 +143,10 @@ public final class GetEcsDisksResult {
     /**
      * @return The type of the disk.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead. */
+    @Deprecated
     private @Nullable String type;
     /**
      * @return The zone id.
@@ -170,11 +168,10 @@ public final class GetEcsDisksResult {
     /**
      * @return Availability zone of the disk.
      * 
-     * @deprecated
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
+     * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
      * 
      */
-    @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
+    @Deprecated
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -345,11 +342,10 @@ public final class GetEcsDisksResult {
     /**
      * @return The type of the disk.
      * 
-     * @deprecated
-     * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
+     * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead. */
+    @Deprecated
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

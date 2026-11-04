@@ -359,6 +359,22 @@ class AlertContact(pulumi.CustomResource):
         __props__.__dict__["system_noc"] = system_noc
         return AlertContact(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ding_robot_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_num: pulumi.Input[Optional[_builtins.str]] = None,
+            system_noc: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertContactName"] = alert_contact_name
+        __props__["dingRobotWebhookUrl"] = ding_robot_webhook_url
+        __props__["email"] = email
+        __props__["phoneNum"] = phone_num
+        __props__["systemNoc"] = system_noc
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/alertContact:AlertContact', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertContactName")
     def alert_contact_name(self) -> pulumi.Output[Optional[_builtins.str]]:

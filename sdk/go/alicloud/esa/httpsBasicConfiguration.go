@@ -306,6 +306,12 @@ func (HttpsBasicConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpsBasicConfigurationState)(nil)).Elem()
 }
 
+// HttpsBasicConfigurationExists checks whether an existing HttpsBasicConfiguration resource with the given ID exists.
+func HttpsBasicConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HttpsBasicConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration", id, state, "", opts...)
+}
+
 type httpsBasicConfigurationArgs struct {
 	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
 	Ciphersuite *string `pulumi:"ciphersuite"`

@@ -117,11 +117,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
-     * @deprecated
-     * Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
+     * @deprecated Field &#39;container_image_scan&#39; has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].&gt; The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
-    @Deprecated /* Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in. */
+    @Deprecated
     @Export(name="containerImageScan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerImageScan;
 
@@ -310,11 +309,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Value: `0` means off, `1` means on
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
-     * @deprecated
-     * Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
+     * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      */
-    @Deprecated /* Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead. */
+    @Deprecated
     @Export(name="postPayModuleSwitch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> postPayModuleSwitch;
 

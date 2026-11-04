@@ -616,6 +616,42 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]]] = None,
+            ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certName"] = cert_name
+        __props__["checkUrl"] = check_url
+        __props__["cname"] = cname
+        __props__["description"] = description
+        __props__["domainName"] = domain_name
+        __props__["gmtCreated"] = gmt_created
+        __props__["gmtModified"] = gmt_modified
+        __props__["scope"] = scope
+        __props__["sources"] = sources
+        __props__["sslProtocol"] = ssl_protocol
+        __props__["sslPub"] = ssl_pub
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["topLevelDomain"] = top_level_domain
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'alicloud:vod/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certName")
     def cert_name(self) -> pulumi.Output[_builtins.str]:

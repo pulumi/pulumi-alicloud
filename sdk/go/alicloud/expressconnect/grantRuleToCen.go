@@ -180,6 +180,12 @@ func (GrantRuleToCenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantRuleToCenState)(nil)).Elem()
 }
 
+// GrantRuleToCenExists checks whether an existing GrantRuleToCen resource with the given ID exists.
+func GrantRuleToCenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrantRuleToCenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/grantRuleToCen:GrantRuleToCen", id, state, "", opts...)
+}
+
 type grantRuleToCenArgs struct {
 	// The ID of the CEN instance to which you want to grant permissions.
 	CenId string `pulumi:"cenId"`

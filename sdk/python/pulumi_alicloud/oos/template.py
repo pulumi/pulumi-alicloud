@@ -670,6 +670,46 @@ class Template(pulumi.CustomResource):
         __props__.__dict__["version_name"] = version_name
         return Template(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_delete_executions: pulumi.Input[Optional[_builtins.bool]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            created_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            has_trigger: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_format: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_type: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_date: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoDeleteExecutions"] = auto_delete_executions
+        __props__["content"] = content
+        __props__["createdBy"] = created_by
+        __props__["createdDate"] = created_date
+        __props__["description"] = description
+        __props__["hasTrigger"] = has_trigger
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["shareType"] = share_type
+        __props__["tags"] = tags
+        __props__["templateFormat"] = template_format
+        __props__["templateId"] = template_id
+        __props__["templateName"] = template_name
+        __props__["templateType"] = template_type
+        __props__["templateVersion"] = template_version
+        __props__["updatedBy"] = updated_by
+        __props__["updatedDate"] = updated_date
+        __props__["versionName"] = version_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/template:Template', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoDeleteExecutions")
     def auto_delete_executions(self) -> pulumi.Output[Optional[_builtins.bool]]:

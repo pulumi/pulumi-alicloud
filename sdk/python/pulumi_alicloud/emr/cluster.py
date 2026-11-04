@@ -2098,6 +2098,66 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]]] = None,
+            deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
+            eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
+            high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]]] = None,
+            is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
+            meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']]] = None,
+            meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            related_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            use_local_metadb: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_defined_emr_ecs_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bootstrapActions"] = bootstrap_actions
+        __props__["chargeType"] = charge_type
+        __props__["clusterType"] = cluster_type
+        __props__["configs"] = configs
+        __props__["depositType"] = deposit_type
+        __props__["easEnable"] = eas_enable
+        __props__["emrVer"] = emr_ver
+        __props__["highAvailabilityEnable"] = high_availability_enable
+        __props__["hostGroups"] = host_groups
+        __props__["isOpenPublicIp"] = is_open_public_ip
+        __props__["keyPairName"] = key_pair_name
+        __props__["masterPwd"] = master_pwd
+        __props__["metaStoreConf"] = meta_store_conf
+        __props__["metaStoreType"] = meta_store_type
+        __props__["modifyClusterServiceConfig"] = modify_cluster_service_config
+        __props__["name"] = name
+        __props__["optionSoftwareLists"] = option_software_lists
+        __props__["period"] = period
+        __props__["relatedClusterId"] = related_cluster_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroupId"] = security_group_id
+        __props__["sshEnable"] = ssh_enable
+        __props__["tags"] = tags
+        __props__["useLocalMetadb"] = use_local_metadb
+        __props__["userDefinedEmrEcsRole"] = user_defined_emr_ecs_role
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:emr/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapAction']]]:

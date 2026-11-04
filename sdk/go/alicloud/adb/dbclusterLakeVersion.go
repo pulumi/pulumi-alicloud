@@ -376,6 +376,12 @@ func (DBClusterLakeVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbclusterLakeVersionState)(nil)).Elem()
 }
 
+// DBClusterLakeVersionExists checks whether an existing DBClusterLakeVersion resource with the given ID exists.
+func DBClusterLakeVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DBClusterLakeVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion", id, state, "", opts...)
+}
+
 type dbclusterLakeVersionArgs struct {
 	// The ID of the backup set that you want to use to restore data.
 	BackupSetId *string `pulumi:"backupSetId"`

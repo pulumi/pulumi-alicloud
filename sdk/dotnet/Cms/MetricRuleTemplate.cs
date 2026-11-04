@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// The mode in which the alert template is applied. Valid values:
         /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-        /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+        /// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         /// </summary>
         [Output("applyMode")]
         public Output<string?> ApplyMode { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// The mode in which the alert template is applied. Valid values:
         /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-        /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+        /// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         /// </summary>
         [Input("applyMode")]
         public Input<string>? ApplyMode { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// The mode in which the alert template is applied. Valid values:
         /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-        /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+        /// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         /// </summary>
         [Input("applyMode")]
         public Input<string>? ApplyMode { get; set; }

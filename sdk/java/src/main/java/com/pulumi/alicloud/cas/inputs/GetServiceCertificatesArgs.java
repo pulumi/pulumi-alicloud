@@ -65,22 +65,20 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
     /**
      * The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
      * 
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
      * @return The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
      * 
-     * @deprecated
-     * Field `lang` has been deprecated from provider version 1.232.0.
+     * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
-    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+    @Deprecated
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -222,11 +220,10 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `lang` has been deprecated from provider version 1.232.0.
+         * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
          * 
          */
-        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+        @Deprecated
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
@@ -237,11 +234,10 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `lang` has been deprecated from provider version 1.232.0.
+         * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
          * 
          */
-        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
+        @Deprecated
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }

@@ -455,6 +455,22 @@ class ServiceEventRule(pulumi.CustomResource):
         __props__.__dict__["rule_name"] = rule_name
         return ServiceEventRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict', 'outputs.ServiceEventRuleEndpoint']]] = None,
+            event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict', 'outputs.ServiceEventRuleMatchRule']]]]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deliveryMode"] = delivery_mode
+        __props__["endpoint"] = endpoint
+        __props__["eventTypes"] = event_types
+        __props__["matchRules"] = match_rules
+        __props__["ruleName"] = rule_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:message/serviceEventRule:ServiceEventRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deliveryMode")
     def delivery_mode(self) -> pulumi.Output[_builtins.str]:

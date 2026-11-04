@@ -192,6 +192,12 @@ func (CommonBandwithPackageAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*commonBandwithPackageAttachmentState)(nil)).Elem()
 }
 
+// CommonBandwithPackageAttachmentExists checks whether an existing CommonBandwithPackageAttachment resource with the given ID exists.
+func CommonBandwithPackageAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommonBandwithPackageAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", id, state, "", opts...)
+}
+
 type commonBandwithPackageAttachmentArgs struct {
 	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
 	// > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.

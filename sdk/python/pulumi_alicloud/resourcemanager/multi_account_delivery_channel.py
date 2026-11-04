@@ -436,6 +436,22 @@ class MultiAccountDeliveryChannel(pulumi.CustomResource):
         __props__.__dict__["resource_snapshot_delivery"] = resource_snapshot_delivery
         return MultiAccountDeliveryChannel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_filter: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict', 'outputs.MultiAccountDeliveryChannelDeliveryChannelFilter']]] = None,
+            multi_account_delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_change_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict', 'outputs.MultiAccountDeliveryChannelResourceChangeDelivery']]] = None,
+            resource_snapshot_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict', 'outputs.MultiAccountDeliveryChannelResourceSnapshotDelivery']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deliveryChannelDescription"] = delivery_channel_description
+        __props__["deliveryChannelFilter"] = delivery_channel_filter
+        __props__["multiAccountDeliveryChannelName"] = multi_account_delivery_channel_name
+        __props__["resourceChangeDelivery"] = resource_change_delivery
+        __props__["resourceSnapshotDelivery"] = resource_snapshot_delivery
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deliveryChannelDescription")
     def delivery_channel_description(self) -> pulumi.Output[_builtins.str]:

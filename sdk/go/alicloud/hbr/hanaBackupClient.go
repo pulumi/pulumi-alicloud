@@ -249,6 +249,12 @@ func (HanaBackupClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hanaBackupClientState)(nil)).Elem()
 }
 
+// HanaBackupClientExists checks whether an existing HanaBackupClient resource with the given ID exists.
+func HanaBackupClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HanaBackupClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/hanaBackupClient:HanaBackupClient", id, state, "", opts...)
+}
+
 type hanaBackupClientArgs struct {
 	// The alert settings. Valid value: `INHERITED`.
 	AlertSetting *string `pulumi:"alertSetting"`

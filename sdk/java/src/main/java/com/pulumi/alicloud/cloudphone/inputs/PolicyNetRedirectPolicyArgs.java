@@ -61,14 +61,14 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Transparent proxy port. The Port value range is 1\~ 65535.
+     * Transparent proxy port. The Port value range is 1&#92;~ 65535.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return Transparent proxy port. The Port value range is 1\~ 65535.
+     * @return Transparent proxy port. The Port value range is 1&#92;~ 65535.
      * 
      */
     public Optional<Output<String>> port() {
@@ -76,14 +76,14 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * The proxy password. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     @Import(name="proxyPassword")
     private @Nullable Output<String> proxyPassword;
 
     /**
-     * @return The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * @return The proxy password. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     public Optional<Output<String>> proxyPassword() {
@@ -106,14 +106,14 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * The proxy user name. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     @Import(name="proxyUserName")
     private @Nullable Output<String> proxyUserName;
 
     /**
-     * @return The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+     * @return The proxy user name. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
      * 
      */
     public Optional<Output<String>> proxyUserName() {
@@ -214,7 +214,7 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param port Transparent proxy port. The Port value range is 1\~ 65535.
+         * @param port Transparent proxy port. The Port value range is 1&#92;~ 65535.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param port Transparent proxy port. The Port value range is 1\~ 65535.
+         * @param port Transparent proxy port. The Port value range is 1&#92;~ 65535.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPassword The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         * @param proxyPassword The proxy password. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPassword The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         * @param proxyPassword The proxy password. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyUserName The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         * @param proxyUserName The proxy user name. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class PolicyNetRedirectPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyUserName The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         * @param proxyUserName The proxy user name. The length range is 1&#92;~ 256. Chinese characters and white space characters are not allowed.
          * 
          * @return builder
          * 

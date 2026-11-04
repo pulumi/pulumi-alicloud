@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
  *             .planSubscribeType("enterpriseplan")
  *             .build());
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .config(WafRuleConfigArgs.builder()
  *                 .status("on")
  *                 .action("deny")
- *                 .expression("(http.host in {\"123.example.top\"})")
+ *                 .expression("(http.host in }{&#92;{@code "123.example.top}&#92;{@code "}}{@code )")
  *                 .actions(WafRuleConfigActionsArgs.builder()
  *                     .response(WafRuleConfigActionsResponseArgs.builder()
  *                         .id(0)
@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  *             .siteId(default_.sites()[0].siteId())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

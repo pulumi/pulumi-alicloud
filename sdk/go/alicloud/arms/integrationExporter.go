@@ -197,6 +197,12 @@ func (IntegrationExporterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationExporterState)(nil)).Elem()
 }
 
+// IntegrationExporterExists checks whether an existing IntegrationExporter resource with the given ID exists.
+func IntegrationExporterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntegrationExporterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/integrationExporter:IntegrationExporter", id, state, "", opts...)
+}
+
 type integrationExporterArgs struct {
 	// The ID of the Prometheus instance.
 	ClusterId string `pulumi:"clusterId"`

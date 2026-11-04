@@ -182,6 +182,12 @@ func (IpamIpamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipamIpamState)(nil)).Elem()
 }
 
+// IpamIpamExists checks whether an existing IpamIpam resource with the given ID exists.
+func IpamIpamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpamIpamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/ipamIpam:IpamIpam", id, state, "", opts...)
+}
+
 type ipamIpamArgs struct {
 	// The description of IPAM.
 	// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.

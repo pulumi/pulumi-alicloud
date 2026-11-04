@@ -215,6 +215,12 @@ func (ServiceEventRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceEventRuleState)(nil)).Elem()
 }
 
+// ServiceEventRuleExists checks whether an existing ServiceEventRule resource with the given ID exists.
+func ServiceEventRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceEventRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:message/serviceEventRule:ServiceEventRule", id, state, "", opts...)
+}
+
 type serviceEventRuleArgs struct {
 	// DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
 	// - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;

@@ -110,6 +110,12 @@ func (ProductState) ElementType() reflect.Type {
 	return reflect.TypeOf((*productState)(nil)).Elem()
 }
 
+// ProductExists checks whether an existing Product resource with the given ID exists.
+func ProductExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProductState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mhub/product:Product", id, state, "", opts...)
+}
+
 type productArgs struct {
 	// ProductName.
 	ProductName string `pulumi:"productName"`

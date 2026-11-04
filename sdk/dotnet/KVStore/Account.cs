@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite` 
+        /// The privilege of account access database. Default value: `RoleReadWrite`
         /// - `RoleReadOnly`: This value is only for Redis and Memcache
         /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
-        /// Default to Normal.
+        ///   Default to Normal.
         /// </summary>
         [Output("accountType")]
         public Output<string> AccountType { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite` 
+        /// The privilege of account access database. Default value: `RoleReadWrite`
         /// - `RoleReadOnly`: This value is only for Redis and Memcache
         /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
-        /// Default to Normal.
+        ///   Default to Normal.
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? AccountPasswordWoVersion { get; set; }
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite` 
+        /// The privilege of account access database. Default value: `RoleReadWrite`
         /// - `RoleReadOnly`: This value is only for Redis and Memcache
         /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
@@ -387,7 +387,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
-        /// Default to Normal.
+        ///   Default to Normal.
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }

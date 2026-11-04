@@ -434,6 +434,24 @@ class RouterGrantAssociation(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return RouterGrantAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_owner_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ecrId"] = ecr_id
+        __props__["ecrOwnerAliUid"] = ecr_owner_ali_uid
+        __props__["instanceId"] = instance_id
+        __props__["instanceRegionId"] = instance_region_id
+        __props__["instanceType"] = instance_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ecrId")
     def ecr_id(self) -> pulumi.Output[_builtins.str]:

@@ -207,6 +207,12 @@ func (RegistryEnterpriseRepoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseRepoState)(nil)).Elem()
 }
 
+// RegistryEnterpriseRepoExists checks whether an existing RegistryEnterpriseRepo resource with the given ID exists.
+func RegistryEnterpriseRepoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegistryEnterpriseRepoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo", id, state, "", opts...)
+}
+
 type registryEnterpriseRepoArgs struct {
 	// The description of the repository.
 	Detail *string `pulumi:"detail"`

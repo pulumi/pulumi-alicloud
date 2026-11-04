@@ -206,6 +206,12 @@ func (AddressPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressPoolState)(nil)).Elem()
 }
 
+// AddressPoolExists checks whether an existing AddressPool resource with the given ID exists.
+func AddressPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dns/addressPool:AddressPool", id, state, "", opts...)
+}
+
 type addressPoolArgs struct {
 	// The name of the address pool.
 	AddressPoolName string `pulumi:"addressPoolName"`

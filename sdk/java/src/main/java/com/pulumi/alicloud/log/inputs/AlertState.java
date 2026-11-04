@@ -106,22 +106,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use evalCondition in severity_configurations
+     * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
+    @Deprecated
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
     /**
      * @return Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use evalCondition in severity_configurations
+     * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
+    @Deprecated
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -129,22 +127,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use dashboardId in query_list
+     * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use dashboardId in query_list */
+    @Deprecated
     @Import(name="dashboard")
     private @Nullable Output<String> dashboard;
 
     /**
      * @return The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use dashboardId in query_list
+     * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use dashboardId in query_list */
+    @Deprecated
     public Optional<Output<String>> dashboard() {
         return Optional.ofNullable(this.dashboard);
     }
@@ -242,22 +238,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use policyConfiguration for notification
+     * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
+    @Deprecated
     @Import(name="notificationLists")
     private @Nullable Output<List<AlertNotificationListArgs>> notificationLists;
 
     /**
      * @return Alarm information notification list, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use policyConfiguration for notification
+     * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
+    @Deprecated
     public Optional<Output<List<AlertNotificationListArgs>>> notificationLists() {
         return Optional.ofNullable(this.notificationLists);
     }
@@ -265,22 +259,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use threshold
+     * @deprecated Deprecated from 1.161.0+, use threshold
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use threshold */
+    @Deprecated
     @Import(name="notifyThreshold")
     private @Nullable Output<Integer> notifyThreshold;
 
     /**
      * @return Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use threshold
+     * @deprecated Deprecated from 1.161.0+, use threshold
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use threshold */
+    @Deprecated
     public Optional<Output<Integer>> notifyThreshold() {
         return Optional.ofNullable(this.notifyThreshold);
     }
@@ -348,22 +340,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
      * 
-     * @deprecated
-     * Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+     * @deprecated Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+    @Deprecated
     @Import(name="scheduleInterval")
     private @Nullable Output<String> scheduleInterval;
 
     /**
      * @return Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
      * 
-     * @deprecated
-     * Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+     * @deprecated Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+    @Deprecated
     public Optional<Output<String>> scheduleInterval() {
         return Optional.ofNullable(this.scheduleInterval);
     }
@@ -371,22 +361,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
      * 
-     * @deprecated
-     * Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+     * @deprecated Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+    @Deprecated
     @Import(name="scheduleType")
     private @Nullable Output<String> scheduleType;
 
     /**
      * @return Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
      * 
-     * @deprecated
-     * Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+     * @deprecated Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
      * 
      */
-    @Deprecated /* Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+    @Deprecated
     public Optional<Output<String>> scheduleType() {
         return Optional.ofNullable(this.scheduleType);
     }
@@ -454,22 +442,20 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+     * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
+    @Deprecated
     @Import(name="throttling")
     private @Nullable Output<String> throttling;
 
     /**
      * @return Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+     * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
+    @Deprecated
     public Optional<Output<String>> throttling() {
         return Optional.ofNullable(this.throttling);
     }
@@ -675,11 +661,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use evalCondition in severity_configurations
+         * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
+        @Deprecated
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
@@ -690,11 +675,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use evalCondition in severity_configurations
+         * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use evalCondition in severity_configurations */
+        @Deprecated
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }
@@ -704,11 +688,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use dashboardId in query_list
+         * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use dashboardId in query_list */
+        @Deprecated
         public Builder dashboard(@Nullable Output<String> dashboard) {
             $.dashboard = dashboard;
             return this;
@@ -719,11 +702,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use dashboardId in query_list
+         * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use dashboardId in query_list */
+        @Deprecated
         public Builder dashboard(String dashboard) {
             return dashboard(Output.of(dashboard));
         }
@@ -879,11 +861,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use policyConfiguration for notification
+         * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
+        @Deprecated
         public Builder notificationLists(@Nullable Output<List<AlertNotificationListArgs>> notificationLists) {
             $.notificationLists = notificationLists;
             return this;
@@ -894,11 +875,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use policyConfiguration for notification
+         * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
+        @Deprecated
         public Builder notificationLists(List<AlertNotificationListArgs> notificationLists) {
             return notificationLists(Output.of(notificationLists));
         }
@@ -908,11 +888,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use policyConfiguration for notification
+         * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use policyConfiguration for notification */
+        @Deprecated
         public Builder notificationLists(AlertNotificationListArgs... notificationLists) {
             return notificationLists(List.of(notificationLists));
         }
@@ -922,11 +901,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use threshold
+         * @deprecated Deprecated from 1.161.0+, use threshold
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use threshold */
+        @Deprecated
         public Builder notifyThreshold(@Nullable Output<Integer> notifyThreshold) {
             $.notifyThreshold = notifyThreshold;
             return this;
@@ -937,11 +915,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use threshold
+         * @deprecated Deprecated from 1.161.0+, use threshold
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use threshold */
+        @Deprecated
         public Builder notifyThreshold(Integer notifyThreshold) {
             return notifyThreshold(Output.of(notifyThreshold));
         }
@@ -1045,11 +1022,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+         * @deprecated Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
          * 
          */
-        @Deprecated /* Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+        @Deprecated
         public Builder scheduleInterval(@Nullable Output<String> scheduleInterval) {
             $.scheduleInterval = scheduleInterval;
             return this;
@@ -1060,11 +1036,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+         * @deprecated Field &#39;schedule_interval&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
          * 
          */
-        @Deprecated /* Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+        @Deprecated
         public Builder scheduleInterval(String scheduleInterval) {
             return scheduleInterval(Output.of(scheduleInterval));
         }
@@ -1074,11 +1049,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+         * @deprecated Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
          * 
          */
-        @Deprecated /* Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+        @Deprecated
         public Builder scheduleType(@Nullable Output<String> scheduleType) {
             $.scheduleType = scheduleType;
             return this;
@@ -1089,11 +1063,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
+         * @deprecated Field &#39;schedule_type&#39; has been deprecated from provider version 1.176.0. New field &#39;schedule&#39; instead.
          * 
          */
-        @Deprecated /* Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
+        @Deprecated
         public Builder scheduleType(String scheduleType) {
             return scheduleType(Output.of(scheduleType));
         }
@@ -1197,11 +1170,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+         * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
+        @Deprecated
         public Builder throttling(@Nullable Output<String> throttling) {
             $.throttling = throttling;
             return this;
@@ -1212,11 +1184,10 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+         * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use repeatInterval in policy_configuration */
+        @Deprecated
         public Builder throttling(String throttling) {
             return throttling(Output.of(throttling));
         }

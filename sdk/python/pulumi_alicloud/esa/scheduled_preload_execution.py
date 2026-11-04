@@ -426,6 +426,26 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ScheduledPreloadExecution(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            scheduled_preload_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slice_len: pulumi.Input[Optional[_builtins.int]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endTime"] = end_time
+        __props__["interval"] = interval
+        __props__["scheduledPreloadExecutionId"] = scheduled_preload_execution_id
+        __props__["scheduledPreloadJobId"] = scheduled_preload_job_id
+        __props__["sliceLen"] = slice_len
+        __props__["startTime"] = start_time
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -348,6 +348,12 @@ func (RestoreJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*restoreJobState)(nil)).Elem()
 }
 
+// RestoreJobExists checks whether an existing RestoreJob resource with the given ID exists.
+func RestoreJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RestoreJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/restoreJob:RestoreJob", id, state, "", opts...)
+}
+
 type restoreJobArgs struct {
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
 	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`

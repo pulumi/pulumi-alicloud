@@ -226,6 +226,12 @@ func (RdsBackupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsBackupState)(nil)).Elem()
 }
 
+// RdsBackupExists checks whether an existing RdsBackup resource with the given ID exists.
+func RdsBackupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsBackupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsBackup:RdsBackup", id, state, "", opts...)
+}
+
 type rdsBackupArgs struct {
 	// The backup type. Valid values:
 	// * `Logical`: logical backup (supported only for MySQL)

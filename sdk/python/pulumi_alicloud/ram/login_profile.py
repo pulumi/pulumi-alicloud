@@ -376,6 +376,22 @@ class LoginProfile(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         return LoginProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            mfa_bind_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_reset_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["mfaBindRequired"] = mfa_bind_required
+        __props__["password"] = password
+        __props__["passwordResetRequired"] = password_reset_required
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/loginProfile:LoginProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

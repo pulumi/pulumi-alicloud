@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var logstoreName = config.get("logstoreName").orElse("logstore-example");
@@ -93,12 +93,12 @@ import javax.annotation.Nullable;
  *                             ",", 
  *                             " ", 
  *                             ";", 
- *                             "\"", 
+ *                             "}&#92;{@code "", 
  *                             "'", 
  *                             "(", 
  *                             ")", 
- *                             "{", 
- *                             "}", 
+ *                             "}{{@code ", 
+ *                             "}}{@code ", 
  *                             "[", 
  *                             "]", 
  *                             "<", 
@@ -118,8 +118,8 @@ import javax.annotation.Nullable;
  *             .projectName(projectName)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

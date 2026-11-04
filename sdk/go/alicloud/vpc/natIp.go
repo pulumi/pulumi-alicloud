@@ -203,6 +203,12 @@ func (NatIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natIpState)(nil)).Elem()
 }
 
+// NatIpExists checks whether an existing NatIp resource with the given ID exists.
+func NatIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/natIp:NatIp", id, state, "", opts...)
+}
+
 type natIpArgs struct {
 	// Specifies whether to only precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`

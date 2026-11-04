@@ -49,12 +49,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var domain = config.get("domain").orElse("com.aliyun.cn-hangzhou.oss");
@@ -74,20 +74,20 @@ import javax.annotation.Nullable;
  *             .resourceGroupId(defaultRg.id())
  *             .serviceName(domain)
  *             .policyDocument("""
- *       {
- *         \"Version\": \"1\",
- *         \"Statement\": [{
- *           \"Effect\": \"Allow\",
- *           \"Resource\": [\"*\"],
- *           \"Action\": [\"*\"],
- *           \"Principal\": [\"*\"]
- *         }]
- *       }
+ *       }{{@code
+ *         }&#92;{@code "Version}&#92;{@code ": }&#92;{@code "1}&#92;{@code ",
+ *         }&#92;{@code "Statement}&#92;{@code ": [}{{@code
+ *           }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *           }&#92;{@code "Resource}&#92;{@code ": [}&#92;{@code "*}&#92;{@code "],
+ *           }&#92;{@code "Action}&#92;{@code ": [}&#92;{@code "*}&#92;{@code "],
+ *           }&#92;{@code "Principal}&#92;{@code ": [}&#92;{@code "*}&#92;{@code "]
+ *         }}{@code ]
+ *       }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

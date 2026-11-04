@@ -860,6 +860,44 @@ class GrafanaWorkspace(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return GrafanaWorkspace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_number: pulumi.Input[Optional[_builtins.str]] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_account_number: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_version: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_workspace_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountNumber"] = account_number
+        __props__["aliyunLang"] = aliyun_lang
+        __props__["autoRenew"] = auto_renew
+        __props__["createTime"] = create_time
+        __props__["customAccountNumber"] = custom_account_number
+        __props__["description"] = description
+        __props__["duration"] = duration
+        __props__["grafanaVersion"] = grafana_version
+        __props__["grafanaWorkspaceEdition"] = grafana_workspace_edition
+        __props__["grafanaWorkspaceName"] = grafana_workspace_name
+        __props__["password"] = password
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:arms/grafanaWorkspace:GrafanaWorkspace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> pulumi.Output[Optional[_builtins.str]]:

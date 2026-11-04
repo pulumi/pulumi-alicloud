@@ -685,6 +685,42 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return PeerConnectionAccepter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepting_owner_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            accepting_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accepting_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_connection_accepter_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceptingOwnerUid"] = accepting_owner_uid
+        __props__["acceptingRegionId"] = accepting_region_id
+        __props__["acceptingVpcId"] = accepting_vpc_id
+        __props__["bandwidth"] = bandwidth
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["dryRun"] = dry_run
+        __props__["forceDelete"] = force_delete
+        __props__["instanceId"] = instance_id
+        __props__["linkType"] = link_type
+        __props__["peerConnectionAccepterName"] = peer_connection_accepter_name
+        __props__["regionId"] = region_id
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceptingOwnerUid")
     def accepting_owner_uid(self) -> pulumi.Output[_builtins.int]:

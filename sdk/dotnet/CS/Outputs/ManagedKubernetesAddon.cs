@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Config;
         /// <summary>
-        /// It specifies whether to disable automatic installation. 
+        /// It specifies whether to disable automatic installation.
         /// 
         /// It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
         /// 

@@ -484,6 +484,28 @@ class PrometheusView(pulumi.CustomResource):
         __props__.__dict__["workspace"] = workspace
         return PrometheusView(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+            prometheus_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusViewPrometheusInstanceArgs', 'PrometheusViewPrometheusInstanceArgsDict', 'outputs.PrometheusViewPrometheusInstance']]]]] = None,
+            prometheus_view_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authFreeReadPolicy"] = auth_free_read_policy
+        __props__["createTime"] = create_time
+        __props__["enableAuthFreeRead"] = enable_auth_free_read
+        __props__["prometheusInstances"] = prometheus_instances
+        __props__["prometheusViewName"] = prometheus_view_name
+        __props__["regionId"] = region_id
+        __props__["version"] = version
+        __props__["workspace"] = workspace
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/prometheusView:PrometheusView', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authFreeReadPolicy")
     def auth_free_read_policy(self) -> pulumi.Output[Optional[_builtins.str]]:

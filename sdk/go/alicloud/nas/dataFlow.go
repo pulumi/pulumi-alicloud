@@ -262,6 +262,12 @@ func (DataFlowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataFlowState)(nil)).Elem()
 }
 
+// DataFlowExists checks whether an existing DataFlow resource with the given ID exists.
+func DataFlowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataFlowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/dataFlow:DataFlow", id, state, "", opts...)
+}
+
 type dataFlowArgs struct {
 	// The Description of the data flow. Restrictions:
 	Description *string `pulumi:"description"`

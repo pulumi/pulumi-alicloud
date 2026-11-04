@@ -197,6 +197,12 @@ func (RouteTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableState)(nil)).Elem()
 }
 
+// RouteTableExists checks whether an existing RouteTable resource with the given ID exists.
+func RouteTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/routeTable:RouteTable", id, state, "", opts...)
+}
+
 type routeTableArgs struct {
 	// The type of cloud resource that is bound to the routing table. Value:
 	// - `VSwitch`: switch.

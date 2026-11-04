@@ -902,6 +902,40 @@ class SecurityPreference(pulumi.CustomResource):
         __props__.__dict__["verification_types"] = verification_types
         return SecurityPreference(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_user_to_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_login_with_passkey: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_manage_access_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_manage_mfa_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_manage_personal_ding_talk: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_save_mfa_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
+            enforce_mfa_for_login: pulumi.Input[Optional[_builtins.bool]] = None,
+            login_network_masks: pulumi.Input[Optional[_builtins.str]] = None,
+            login_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            max_idle_days_for_access_keys: pulumi.Input[Optional[_builtins.int]] = None,
+            max_idle_days_for_users: pulumi.Input[Optional[_builtins.int]] = None,
+            mfa_operation_for_login: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_for_risk_login: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowUserToChangePassword"] = allow_user_to_change_password
+        __props__["allowUserToLoginWithPasskey"] = allow_user_to_login_with_passkey
+        __props__["allowUserToManageAccessKeys"] = allow_user_to_manage_access_keys
+        __props__["allowUserToManageMfaDevices"] = allow_user_to_manage_mfa_devices
+        __props__["allowUserToManagePersonalDingTalk"] = allow_user_to_manage_personal_ding_talk
+        __props__["enableSaveMfaTicket"] = enable_save_mfa_ticket
+        __props__["enforceMfaForLogin"] = enforce_mfa_for_login
+        __props__["loginNetworkMasks"] = login_network_masks
+        __props__["loginSessionDuration"] = login_session_duration
+        __props__["maxIdleDaysForAccessKeys"] = max_idle_days_for_access_keys
+        __props__["maxIdleDaysForUsers"] = max_idle_days_for_users
+        __props__["mfaOperationForLogin"] = mfa_operation_for_login
+        __props__["operationForRiskLogin"] = operation_for_risk_login
+        __props__["verificationTypes"] = verification_types
+        return pulumi.runtime.exists_resource(None, 'alicloud:ram/securityPreference:SecurityPreference', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowUserToChangePassword")
     def allow_user_to_change_password(self) -> pulumi.Output[_builtins.bool]:

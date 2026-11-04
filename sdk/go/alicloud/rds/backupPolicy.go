@@ -387,6 +387,12 @@ func (BackupPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPolicyState)(nil)).Elem()
 }
 
+// BackupPolicyExists checks whether an existing BackupPolicy resource with the given ID exists.
+func BackupPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BackupPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/backupPolicy:BackupPolicy", id, state, "", opts...)
+}
+
 type backupPolicyArgs struct {
 	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is MySQL local disk. When `archiveBackupKeepPolicy` is `ByMonth`, valid values: `1-31`. When `archiveBackupKeepPolicy` is `ByWeek`, valid values: `1-7`.
 	ArchiveBackupKeepCount *int `pulumi:"archiveBackupKeepCount"`

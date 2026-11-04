@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var this = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultStackGroup = new StackGroup("defaultStackGroup", StackGroupArgs.builder()
  *             .stackGroupName(name)
- *             .templateBody("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}")
+ *             .templateBody("}{&#92;{@code "ROSTemplateFormatVersion}&#92;{@code ":}&#92;{@code "2015-09-01}&#92;{@code ", }&#92;{@code "Parameters}&#92;{@code ": }{&#92;{@code "VpcName}&#92;{@code ": }{&#92;{@code "Type}&#92;{@code ": }&#92;{@code "String}&#92;{@code "}}{@code ,}&#92;{@code "InstanceType}&#92;{@code ": }{&#92;{@code "Type}&#92;{@code ": }&#92;{@code "String}&#92;{@code "}}}}{@code ")
  *             .description("test for stack groups")
  *             .parameters(            
  *                 StackGroupParameterArgs.builder()
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .stackGroupName(defaultStackGroup.stackGroupName())
  *             .stackInstanceAccountId(this_.id())
  *             .stackInstanceRegionId(default_.regions()[0].regionId())
- *             .operationPreferences("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}")
+ *             .operationPreferences("}{&#92;{@code "FailureToleranceCount}&#92;{@code ": 1, }&#92;{@code "MaxConcurrentCount}&#92;{@code ": 2}}{@code ")
  *             .timeoutInMinutes("60")
  *             .operationDescription("tf-example")
  *             .retainStacks(true)
@@ -93,8 +93,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

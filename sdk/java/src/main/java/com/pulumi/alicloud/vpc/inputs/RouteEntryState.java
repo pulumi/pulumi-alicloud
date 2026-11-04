@@ -132,22 +132,20 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
-     * @deprecated
-     * Attribute routerId has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
+    @Deprecated
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
      * @return This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
-     * @deprecated
-     * Attribute routerId has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
+    @Deprecated
     public Optional<Output<String>> routerId() {
         return Optional.ofNullable(this.routerId);
     }
@@ -337,11 +335,10 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute routerId has been deprecated and suggest removing it from your template.
+         * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
+        @Deprecated
         public Builder routerId(@Nullable Output<String> routerId) {
             $.routerId = routerId;
             return this;
@@ -352,11 +349,10 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute routerId has been deprecated and suggest removing it from your template.
+         * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute routerId has been deprecated and suggest removing it from your template. */
+        @Deprecated
         public Builder routerId(String routerId) {
             return routerId(Output.of(routerId));
         }

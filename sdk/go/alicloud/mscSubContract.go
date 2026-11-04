@@ -148,6 +148,12 @@ func (MscSubContractState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mscSubContractState)(nil)).Elem()
 }
 
+// MscSubContractExists checks whether an existing MscSubContract resource with the given ID exists.
+func MscSubContractExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MscSubContractState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:index/mscSubContract:MscSubContract", id, state, "", opts...)
+}
+
 type mscSubContractArgs struct {
 	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
 	ContactName string `pulumi:"contactName"`

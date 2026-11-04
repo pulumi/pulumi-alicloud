@@ -210,6 +210,12 @@ func (TrafficQosQueueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trafficQosQueueState)(nil)).Elem()
 }
 
+// TrafficQosQueueExists checks whether an existing TrafficQosQueue resource with the given ID exists.
+func TrafficQosQueueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrafficQosQueueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/trafficQosQueue:TrafficQosQueue", id, state, "", opts...)
+}
+
 type trafficQosQueueArgs struct {
 	// QoS queue bandwidth percentage.
 	//

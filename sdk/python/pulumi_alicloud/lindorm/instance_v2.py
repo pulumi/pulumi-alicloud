@@ -1256,6 +1256,56 @@ class InstanceV2(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return InstanceV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+            cloud_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict', 'outputs.InstanceV2EngineList']]]]] = None,
+            instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict', 'outputs.InstanceV2WhiteIpList']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arbiterVswitchId"] = arbiter_vswitch_id
+        __props__["arbiterZoneId"] = arbiter_zone_id
+        __props__["archVersion"] = arch_version
+        __props__["autoRenewDuration"] = auto_renew_duration
+        __props__["autoRenewal"] = auto_renewal
+        __props__["cloudStorageSize"] = cloud_storage_size
+        __props__["cloudStorageType"] = cloud_storage_type
+        __props__["deletionProtection"] = deletion_protection
+        __props__["duration"] = duration
+        __props__["engineLists"] = engine_lists
+        __props__["instanceAlias"] = instance_alias
+        __props__["paymentType"] = payment_type
+        __props__["pricingCycle"] = pricing_cycle
+        __props__["primaryVswitchId"] = primary_vswitch_id
+        __props__["primaryZoneId"] = primary_zone_id
+        __props__["regionId"] = region_id
+        __props__["standbyVswitchId"] = standby_vswitch_id
+        __props__["standbyZoneId"] = standby_zone_id
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["whiteIpLists"] = white_ip_lists
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:lindorm/instanceV2:InstanceV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="arbiterVswitchId")
     def arbiter_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:

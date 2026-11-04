@@ -497,6 +497,28 @@ class ClientFileProtect(pulumi.CustomResource):
         __props__.__dict__["switch_id"] = switch_id
         return ClientFileProtect(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_level: pulumi.Input[Optional[_builtins.int]] = None,
+            file_ops: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            file_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proc_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            switch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertLevel"] = alert_level
+        __props__["fileOps"] = file_ops
+        __props__["filePaths"] = file_paths
+        __props__["procPaths"] = proc_paths
+        __props__["ruleAction"] = rule_action
+        __props__["ruleName"] = rule_name
+        __props__["status"] = status
+        __props__["switchId"] = switch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/clientFileProtect:ClientFileProtect', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertLevel")
     def alert_level(self) -> pulumi.Output[Optional[_builtins.int]]:

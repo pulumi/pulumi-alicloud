@@ -86,11 +86,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.11.0.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
+     * @deprecated Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
      * 
      */
-    @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
+    @Deprecated
     @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output<String> accessPointId;
 
@@ -176,11 +175,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.11.0.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
+     * @deprecated Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
      * 
      */
-    @Deprecated /* Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0. */
+    @Deprecated
     @Export(name="oppositeAccessPointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeAccessPointId;
 
@@ -194,11 +192,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_interface_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
+     * @deprecated Attribute &#39;opposite_interface_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead. */
+    @Deprecated
     @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceId;
 
@@ -212,11 +209,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_interface_owner_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_owner_id&#39; instead.
+     * @deprecated Attribute &#39;opposite_interface_owner_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_owner_id&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead. */
+    @Deprecated
     @Export(name="oppositeInterfaceOwnerId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceOwnerId;
 
@@ -244,11 +240,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_router_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
+     * @deprecated Attribute &#39;opposite_router_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead. */
+    @Deprecated
     @Export(name="oppositeRouterId", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterId;
 
@@ -262,11 +257,10 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
      * 
-     * @deprecated
-     * Attribute &#39;opposite_router_type&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
+     * @deprecated Attribute &#39;opposite_router_type&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead. */
+    @Deprecated
     @Export(name="oppositeRouterType", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterType;
 

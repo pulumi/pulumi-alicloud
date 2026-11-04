@@ -238,6 +238,12 @@ func (CycleTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cycleTaskState)(nil)).Elem()
 }
 
+// CycleTaskExists checks whether an existing CycleTask resource with the given ID exists.
+func CycleTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CycleTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/cycleTask:CycleTask", id, state, "", opts...)
+}
+
 type cycleTaskArgs struct {
 	// Whether to enable. Value:
 	Enable int `pulumi:"enable"`

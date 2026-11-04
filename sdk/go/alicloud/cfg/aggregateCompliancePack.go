@@ -231,6 +231,12 @@ func (AggregateCompliancePackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggregateCompliancePackState)(nil)).Elem()
 }
 
+// AggregateCompliancePackExists checks whether an existing AggregateCompliancePack resource with the given ID exists.
+func AggregateCompliancePackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AggregateCompliancePackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack", id, state, "", opts...)
+}
+
 type aggregateCompliancePackArgs struct {
 	// The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
 	AggregateCompliancePackName string `pulumi:"aggregateCompliancePackName"`

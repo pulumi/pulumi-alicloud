@@ -556,6 +556,32 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["update_timestamp"] = update_timestamp
         return Secret(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_config: pulumi.Input[Optional[Union['SecretKmsConfigArgs', 'SecretKmsConfigArgsDict', 'outputs.SecretKmsConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_count: pulumi.Input[Optional[_builtins.int]] = None,
+            secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_source: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            update_timestamp: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTimestamp"] = create_timestamp
+        __props__["description"] = description
+        __props__["gatewayType"] = gateway_type
+        __props__["kmsConfig"] = kms_config
+        __props__["name"] = name
+        __props__["referenceCount"] = reference_count
+        __props__["secretData"] = secret_data
+        __props__["secretSource"] = secret_source
+        __props__["status"] = status
+        __props__["updateTimestamp"] = update_timestamp
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/secret:Secret', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTimestamp")
     def create_timestamp(self) -> pulumi.Output[_builtins.int]:

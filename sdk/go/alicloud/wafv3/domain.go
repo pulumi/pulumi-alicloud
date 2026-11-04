@@ -150,6 +150,12 @@ func (DomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainState)(nil)).Elem()
 }
 
+// DomainExists checks whether an existing Domain resource with the given ID exists.
+func DomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:wafv3/domain:Domain", id, state, "", opts...)
+}
+
 type domainArgs struct {
 	// The mode in which the domain name is added to WAF. Valid values:
 	// share: CNAME record mode. This is the default value.

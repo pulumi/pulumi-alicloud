@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The operator used in the dispatch rule. Valid values: 
+        /// The operator used in the dispatch rule. Valid values:
         /// * eq: equals to.
         /// * re: matches a regular expression.
         /// </summary>

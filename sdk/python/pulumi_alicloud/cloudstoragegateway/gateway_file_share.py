@@ -1577,6 +1577,80 @@ class GatewayFileShare(pulumi.CustomResource):
         __props__.__dict__["windows_acl"] = windows_acl
         return GatewayFileShare(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_based_enumeration: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            browsable: pulumi.Input[Optional[_builtins.bool]] = None,
+            bypass_cache_read: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+            download_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            fast_reclaim: pulumi.Input[Optional[_builtins.bool]] = None,
+            fe_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_file_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            in_place: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lag_period: pulumi.Input[Optional[_builtins.int]] = None,
+            local_path: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_v4_optimization: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            partial_sync_paths: pulumi.Input[Optional[_builtins.str]] = None,
+            path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            polling_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+            remote_sync_download: pulumi.Input[Optional[_builtins.bool]] = None,
+            ro_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+            ro_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+            rw_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+            rw_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+            squash: pulumi.Input[Optional[_builtins.str]] = None,
+            support_archive: pulumi.Input[Optional[_builtins.bool]] = None,
+            transfer_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+            windows_acl: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessBasedEnumeration"] = access_based_enumeration
+        __props__["backendLimit"] = backend_limit
+        __props__["browsable"] = browsable
+        __props__["bypassCacheRead"] = bypass_cache_read
+        __props__["cacheMode"] = cache_mode
+        __props__["directIo"] = direct_io
+        __props__["downloadLimit"] = download_limit
+        __props__["fastReclaim"] = fast_reclaim
+        __props__["feLimit"] = fe_limit
+        __props__["gatewayFileShareName"] = gateway_file_share_name
+        __props__["gatewayId"] = gateway_id
+        __props__["ignoreDelete"] = ignore_delete
+        __props__["inPlace"] = in_place
+        __props__["indexId"] = index_id
+        __props__["lagPeriod"] = lag_period
+        __props__["localPath"] = local_path
+        __props__["nfsV4Optimization"] = nfs_v4_optimization
+        __props__["ossBucketName"] = oss_bucket_name
+        __props__["ossBucketSsl"] = oss_bucket_ssl
+        __props__["ossEndpoint"] = oss_endpoint
+        __props__["partialSyncPaths"] = partial_sync_paths
+        __props__["pathPrefix"] = path_prefix
+        __props__["pollingInterval"] = polling_interval
+        __props__["protocol"] = protocol
+        __props__["remoteSync"] = remote_sync
+        __props__["remoteSyncDownload"] = remote_sync_download
+        __props__["roClientList"] = ro_client_list
+        __props__["roUserList"] = ro_user_list
+        __props__["rwClientList"] = rw_client_list
+        __props__["rwUserList"] = rw_user_list
+        __props__["squash"] = squash
+        __props__["supportArchive"] = support_archive
+        __props__["transferAcceleration"] = transfer_acceleration
+        __props__["windowsAcl"] = windows_acl
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessBasedEnumeration")
     def access_based_enumeration(self) -> pulumi.Output[_builtins.bool]:

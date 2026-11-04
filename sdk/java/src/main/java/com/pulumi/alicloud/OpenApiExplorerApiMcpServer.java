@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new OpenApiExplorerApiMcpServer("default", OpenApiExplorerApiMcpServerArgs.builder()
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .prompts(            
  *                 OpenApiExplorerApiMcpServerPromptArgs.builder()
  *                     .description("Obtain user customization information description")
- *                     .content("Prompt body,{{name}}")
+ *                     .content("Prompt body,}{{{@code name}}}{@code ")
  *                     .arguments(OpenApiExplorerApiMcpServerPromptArgumentArgs.builder()
  *                         .description("Name information")
  *                         .required(true)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 OpenApiExplorerApiMcpServerPromptArgs.builder()
  *                     .description("Obtain user customization information description")
- *                     .content("Prompt text, {{name }}, {{age }}, {{description}}")
+ *                     .content("Prompt text, }{{{@code name }}}{@code , }{{{@code age }}}{@code , }{{{@code description}}}{@code ")
  *                     .arguments(                    
  *                         OpenApiExplorerApiMcpServerPromptArgumentArgs.builder()
  *                             .description("Name information")
@@ -185,21 +185,21 @@ import javax.annotation.Nullable;
  *                     .async(true)
  *                     .destroyPolicy("NEVER")
  *                     .code("""
- * variable \"name\" {
- *   default = \"terraform-example\"
- * }
+ * variable }&#92;{@code "name}&#92;{@code " }{{@code
+ *   default = }&#92;{@code "terraform-example}&#92;{@code "
+ * }}{@code
  * 
- * provider \"alicloud\" {
- *   region = \"cn-beijing\"
- * }
+ * provider }&#92;{@code "alicloud}&#92;{@code " }{{@code
+ *   region = }&#92;{@code "cn-beijing}&#92;{@code "
+ * }}{@code
  * 
- * resource \"alicloud_vpc\" \"default\" {
- *   ipv6_isp    = \"BGP\"
- *   description = \"example\"
- *   cidr_block  = \"10.0.0.0/8\"
+ * resource }&#92;{@code "alicloud_vpc}&#92;{@code " }&#92;{@code "default}&#92;{@code " }{{@code
+ *   ipv6_isp    = }&#92;{@code "BGP}&#92;{@code "
+ *   description = }&#92;{@code "example}&#92;{@code "
+ *   cidr_block  = }&#92;{@code "10.0.0.0/8}&#92;{@code "
  *   vpc_name    = var.name
  *   enable_ipv6 = true
- * }
+ * }}{@code
  *                     """)
  *                     .name("tfexample")
  *                     .build(),
@@ -208,21 +208,21 @@ import javax.annotation.Nullable;
  *                     .async(true)
  *                     .destroyPolicy("NEVER")
  *                     .code("""
- * variable \"name\" {
- *   default = \"terraform-example\"
- * }
+ * variable }&#92;{@code "name}&#92;{@code " }{{@code
+ *   default = }&#92;{@code "terraform-example}&#92;{@code "
+ * }}{@code
  * 
- * provider \"alicloud\" {
- *   region = \"cn-beijing\"
- * }
+ * provider }&#92;{@code "alicloud}&#92;{@code " }{{@code
+ *   region = }&#92;{@code "cn-beijing}&#92;{@code "
+ * }}{@code
  * 
- * resource \"alicloud_vpc\" \"default\" {
- *   ipv6_isp    = \"BGP\"
- *   description = \"example\"
- *   cidr_block  = \"10.0.0.0/8\"
+ * resource }&#92;{@code "alicloud_vpc}&#92;{@code " }&#92;{@code "default}&#92;{@code " }{{@code
+ *   ipv6_isp    = }&#92;{@code "BGP}&#92;{@code "
+ *   description = }&#92;{@code "example}&#92;{@code "
+ *   cidr_block  = }&#92;{@code "10.0.0.0/8}&#92;{@code "
  *   vpc_name    = var.name
  *   enable_ipv6 = true
- * }
+ * }}{@code
  *                     """)
  *                     .name("tfexample2")
  *                     .build(),
@@ -231,21 +231,21 @@ import javax.annotation.Nullable;
  *                     .async(true)
  *                     .destroyPolicy("NEVER")
  *                     .code("""
- * variable \"name\" {
- *   default = \"terraform-example\"
- * }
+ * variable }&#92;{@code "name}&#92;{@code " }{{@code
+ *   default = }&#92;{@code "terraform-example}&#92;{@code "
+ * }}{@code
  * 
- * provider \"alicloud\" {
- *   region = \"cn-beijing\"
- * }
+ * provider }&#92;{@code "alicloud}&#92;{@code " }{{@code
+ *   region = }&#92;{@code "cn-beijing}&#92;{@code "
+ * }}{@code
  * 
- * resource \"alicloud_vpc\" \"default\" {
- *   ipv6_isp    = \"BGP\"
- *   description = \"example\"
- *   cidr_block  = \"10.0.0.0/8\"
+ * resource }&#92;{@code "alicloud_vpc}&#92;{@code " }&#92;{@code "default}&#92;{@code " }{{@code
+ *   ipv6_isp    = }&#92;{@code "BGP}&#92;{@code "
+ *   description = }&#92;{@code "example}&#92;{@code "
+ *   cidr_block  = }&#92;{@code "10.0.0.0/8}&#92;{@code "
  *   vpc_name    = var.name
  *   enable_ipv6 = true
- * }
+ * }}{@code
  *                     """)
  *                     .name("tfexample3")
  *                     .build())
@@ -254,8 +254,8 @@ import javax.annotation.Nullable;
  *             .enableCustomVpcWhitelist(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

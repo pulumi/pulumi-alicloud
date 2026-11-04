@@ -46,7 +46,7 @@ public final class StoreIndexFieldSearch {
      */
     private String name;
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
     private @Nullable String token;
@@ -100,7 +100,7 @@ public final class StoreIndexFieldSearch {
         return this.name;
     }
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return The string of several split words, like &#34;&#92;r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
     public Optional<String> token() {

@@ -573,6 +573,12 @@ func (MigrationJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*migrationJobState)(nil)).Elem()
 }
 
+// MigrationJobExists checks whether an existing MigrationJob resource with the given ID exists.
+func MigrationJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MigrationJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/migrationJob:MigrationJob", id, state, "", opts...)
+}
+
 type migrationJobArgs struct {
 	// Start time in Unix timestamp format.
 	Checkpoint *string `pulumi:"checkpoint"`

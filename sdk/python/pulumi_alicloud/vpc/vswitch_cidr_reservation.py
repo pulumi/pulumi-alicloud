@@ -548,6 +548,34 @@ class VswitchCidrReservation(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return VswitchCidrReservation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr_reservation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_reservation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_reservation_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_cidr_reservation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_cidr_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrReservationCidr"] = cidr_reservation_cidr
+        __props__["cidrReservationDescription"] = cidr_reservation_description
+        __props__["cidrReservationMask"] = cidr_reservation_mask
+        __props__["cidrReservationType"] = cidr_reservation_type
+        __props__["createTime"] = create_time
+        __props__["ipVersion"] = ip_version
+        __props__["status"] = status
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchCidrReservationId"] = vswitch_cidr_reservation_id
+        __props__["vswitchCidrReservationName"] = vswitch_cidr_reservation_name
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cidrReservationCidr")
     def cidr_reservation_cidr(self) -> pulumi.Output[_builtins.str]:

@@ -215,6 +215,12 @@ func (PrimaryEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*primaryEndpointState)(nil)).Elem()
 }
 
+// PrimaryEndpointExists checks whether an existing PrimaryEndpoint resource with the given ID exists.
+func PrimaryEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrimaryEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", id, state, "", opts...)
+}
+
 type primaryEndpointArgs struct {
 	// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`

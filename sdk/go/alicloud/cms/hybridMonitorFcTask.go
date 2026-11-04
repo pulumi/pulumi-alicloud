@@ -171,6 +171,12 @@ func (HybridMonitorFcTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hybridMonitorFcTaskState)(nil)).Elem()
 }
 
+// HybridMonitorFcTaskExists checks whether an existing HybridMonitorFcTask resource with the given ID exists.
+func HybridMonitorFcTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HybridMonitorFcTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/hybridMonitorFcTask:HybridMonitorFcTask", id, state, "", opts...)
+}
+
 type hybridMonitorFcTaskArgs struct {
 	// The index warehouse where the host belongs.
 	Namespace string `pulumi:"namespace"`

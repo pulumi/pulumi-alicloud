@@ -725,6 +725,40 @@ class MetricRuleBlackList(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return MetricRuleBlackList(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            metric_rule_black_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict', 'outputs.MetricRuleBlackListMetric']]]]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["category"] = category
+        __props__["createTime"] = create_time
+        __props__["effectiveTime"] = effective_time
+        __props__["enableEndTime"] = enable_end_time
+        __props__["enableStartTime"] = enable_start_time
+        __props__["instances"] = instances
+        __props__["isEnable"] = is_enable
+        __props__["metricRuleBlackListId"] = metric_rule_black_list_id
+        __props__["metricRuleBlackListName"] = metric_rule_black_list_name
+        __props__["metrics"] = metrics
+        __props__["namespace"] = namespace
+        __props__["scopeType"] = scope_type
+        __props__["scopeValues"] = scope_values
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/metricRuleBlackList:MetricRuleBlackList', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[_builtins.str]:

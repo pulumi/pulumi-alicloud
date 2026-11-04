@@ -524,6 +524,30 @@ class Ipv6Address(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Ipv6Address(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressType"] = address_type
+        __props__["createTime"] = create_time
+        __props__["ipv6Address"] = ipv6_address
+        __props__["ipv6AddressDescription"] = ipv6_address_description
+        __props__["ipv6AddressName"] = ipv6_address_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/ipv6Address:Ipv6Address', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Output[_builtins.str]:

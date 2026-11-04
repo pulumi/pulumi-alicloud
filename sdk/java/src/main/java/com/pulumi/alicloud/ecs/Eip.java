@@ -78,11 +78,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
  * ```
  * 
- * @deprecated
- * This resource has been deprecated in favour of the EipAddress resource
+ * @deprecated This resource has been deprecated in favour of the EipAddress resource
  * 
  */
-@Deprecated /* This resource has been deprecated in favour of the EipAddress resource */
+@Deprecated
 @ResourceType(type="alicloud:ecs/eip:Eip")
 public class Eip extends com.pulumi.resources.CustomResource {
     @Export(name="activityId", refs={String.class}, tree="[0]")
@@ -178,11 +177,10 @@ public class Eip extends com.pulumi.resources.CustomResource {
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
+     * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
+    @Deprecated
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -256,11 +254,10 @@ public class Eip extends com.pulumi.resources.CustomResource {
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

@@ -405,6 +405,24 @@ class ClientKey(pulumi.CustomResource):
         __props__.__dict__["private_key_data_file"] = private_key_data_file
         return ClientKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aap_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            not_after: pulumi.Input[Optional[_builtins.str]] = None,
+            not_before: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_data_file: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aapName"] = aap_name
+        __props__["createTime"] = create_time
+        __props__["notAfter"] = not_after
+        __props__["notBefore"] = not_before
+        __props__["password"] = password
+        __props__["privateKeyDataFile"] = private_key_data_file
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/clientKey:ClientKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aapName")
     def aap_name(self) -> pulumi.Output[_builtins.str]:

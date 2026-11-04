@@ -540,6 +540,12 @@ func (ShardingInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shardingInstanceState)(nil)).Elem()
 }
 
+// ShardingInstanceExists checks whether an existing ShardingInstance resource with the given ID exists.
+func ShardingInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShardingInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/shardingInstance:ShardingInstance", id, state, "", opts...)
+}
+
 type shardingInstanceArgs struct {
 	// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
 	AccountPassword *string `pulumi:"accountPassword"`

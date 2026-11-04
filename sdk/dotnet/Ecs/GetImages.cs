@@ -12,8 +12,8 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetImages
     {
         /// <summary>
-        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
-        /// other public images and the ones available on the image market. 
+        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+        /// other public images and the ones available on the image market.
         /// 
         /// ## Example Usage
         /// 
@@ -42,8 +42,8 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
-        /// other public images and the ones available on the image market. 
+        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+        /// other public images and the ones available on the image market.
         /// 
         /// ## Example Usage
         /// 
@@ -72,8 +72,8 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
-        /// other public images and the ones available on the image market. 
+        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+        /// other public images and the ones available on the image market.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
         /// - `CreateEcs`: instance creation.
         /// - `ChangeOS`: replacement of the system disk or operating system.
         /// </summary>
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         /// - `Creating`: The image is being created.
         /// - `Waiting`: The image is waiting to be processed.
         /// - `Available`: The image is available.
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
         /// - `CreateEcs`: instance creation.
         /// - `ChangeOS`: replacement of the system disk or operating system.
         /// </summary>
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         /// - `Creating`: The image is being created.
         /// - `Waiting`: The image is waiting to be processed.
         /// - `Available`: The image is available.

@@ -825,6 +825,46 @@ class JobTemplate(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return JobTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            array_request: pulumi.Input[Optional[_builtins.str]] = None,
+            clock_time: pulumi.Input[Optional[_builtins.str]] = None,
+            command_line: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu: pulumi.Input[Optional[_builtins.int]] = None,
+            job_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mem: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.int]] = None,
+            package_path: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            queue: pulumi.Input[Optional[_builtins.str]] = None,
+            re_runable: pulumi.Input[Optional[_builtins.bool]] = None,
+            runas_user: pulumi.Input[Optional[_builtins.str]] = None,
+            stderr_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+            stdout_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+            task: pulumi.Input[Optional[_builtins.int]] = None,
+            thread: pulumi.Input[Optional[_builtins.int]] = None,
+            variables: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arrayRequest"] = array_request
+        __props__["clockTime"] = clock_time
+        __props__["commandLine"] = command_line
+        __props__["gpu"] = gpu
+        __props__["jobTemplateName"] = job_template_name
+        __props__["mem"] = mem
+        __props__["node"] = node
+        __props__["packagePath"] = package_path
+        __props__["priority"] = priority
+        __props__["queue"] = queue
+        __props__["reRunable"] = re_runable
+        __props__["runasUser"] = runas_user
+        __props__["stderrRedirectPath"] = stderr_redirect_path
+        __props__["stdoutRedirectPath"] = stdout_redirect_path
+        __props__["task"] = task
+        __props__["thread"] = thread
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'alicloud:ehpc/jobTemplate:JobTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="arrayRequest")
     def array_request(self) -> pulumi.Output[Optional[_builtins.str]]:

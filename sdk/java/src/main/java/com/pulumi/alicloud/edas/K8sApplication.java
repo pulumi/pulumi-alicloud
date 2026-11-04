@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -135,13 +135,13 @@ import javax.annotation.Nullable;
  *             .packageUrl("http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar")
  *             .jdk("Open JDK 8")
  *             .replicas(2)
- *             .readiness("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}")
- *             .liveness("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}")
+ *             .readiness("}{&#92;{@code "failureThreshold}&#92;{@code ": 3,}&#92;{@code "initialDelaySeconds}&#92;{@code ": 5,}&#92;{@code "successThreshold}&#92;{@code ": 1,}&#92;{@code "timeoutSeconds}&#92;{@code ": 1,}&#92;{@code "tcpSocket}&#92;{@code ":}{&#92;{@code "port}&#92;{@code ":18081}}}{@code ")
+ *             .liveness("}{&#92;{@code "failureThreshold}&#92;{@code ": 3,}&#92;{@code "initialDelaySeconds}&#92;{@code ": 5,}&#92;{@code "successThreshold}&#92;{@code ": 1,}&#92;{@code "timeoutSeconds}&#92;{@code ": 1,}&#92;{@code "tcpSocket}&#92;{@code ":}{&#92;{@code "port}&#92;{@code ":18081}}}{@code ")
  *             .applicationDescriotion(name)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -274,11 +274,10 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Export(name="internetSlbId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetSlbId;
 
@@ -293,11 +292,10 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
     /**
      * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Export(name="internetSlbPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetSlbPort;
 
@@ -311,11 +309,10 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
     /**
      * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Export(name="internetSlbProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetSlbProtocol;
 
@@ -330,11 +327,10 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      * It has been deprecated, and new resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it.
      * 
-     * @deprecated
-     * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * @deprecated Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
      * 
      */
-    @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
+    @Deprecated
     @Export(name="internetTargetPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetTargetPort;
 

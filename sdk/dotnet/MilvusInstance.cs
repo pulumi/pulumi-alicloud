@@ -123,8 +123,8 @@ namespace Pulumi.AliCloud
         /// Instance component information. Includes Starter Edition/Standard Edition.
         /// - Starter version: Array including standalone
         /// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        /// 2.5: proxy ,mix_coordinator,data,query,index
-        /// 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `Components` below.
+        ///   2.5: proxy ,mix_coordinator,data,query,index
+        ///   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `Components` below.
         /// </summary>
         [Output("components")]
         public Output<ImmutableArray<Outputs.MilvusInstanceComponent>> Components { get; private set; } = null!;
@@ -372,8 +372,8 @@ namespace Pulumi.AliCloud
         /// Instance component information. Includes Starter Edition/Standard Edition.
         /// - Starter version: Array including standalone
         /// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        /// 2.5: proxy ,mix_coordinator,data,query,index
-        /// 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `Components` below.
+        ///   2.5: proxy ,mix_coordinator,data,query,index
+        ///   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `Components` below.
         /// </summary>
         public InputList<Inputs.MilvusInstanceComponentArgs> Components
         {
@@ -562,8 +562,8 @@ namespace Pulumi.AliCloud
         /// Instance component information. Includes Starter Edition/Standard Edition.
         /// - Starter version: Array including standalone
         /// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        /// 2.5: proxy ,mix_coordinator,data,query,index
-        /// 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `Components` below.
+        ///   2.5: proxy ,mix_coordinator,data,query,index
+        ///   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `Components` below.
         /// </summary>
         public InputList<Inputs.MilvusInstanceComponentGetArgs> Components
         {

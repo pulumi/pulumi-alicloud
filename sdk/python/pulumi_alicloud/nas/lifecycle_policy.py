@@ -372,6 +372,22 @@ class LifecyclePolicy(pulumi.CustomResource):
         __props__.__dict__["storage_type"] = storage_type
         return LifecyclePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fileSystemId"] = file_system_id
+        __props__["lifecyclePolicyName"] = lifecycle_policy_name
+        __props__["lifecycleRuleName"] = lifecycle_rule_name
+        __props__["paths"] = paths
+        __props__["storageType"] = storage_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:nas/lifecyclePolicy:LifecyclePolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> pulumi.Output[_builtins.str]:

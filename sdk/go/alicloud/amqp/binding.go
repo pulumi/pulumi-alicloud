@@ -228,6 +228,12 @@ func (BindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bindingState)(nil)).Elem()
 }
 
+// BindingExists checks whether an existing Binding resource with the given ID exists.
+func BindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:amqp/binding:Binding", id, state, "", opts...)
+}
+
 type bindingArgs struct {
 	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.

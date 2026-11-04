@@ -360,6 +360,12 @@ func (GroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupState)(nil)).Elem()
 }
 
+// GroupExists checks whether an existing Group resource with the given ID exists.
+func GroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecddesktop/group:Group", id, state, "", opts...)
+}
+
 type groupArgs struct {
 	// Specifies whether to allow cloud desktops to be automatically created for a subscription desktop group. This parameter takes effect only when the desktop group uses the subscription billing method. Valid values: `0` and `1`.
 	AllowAutoSetup *int `pulumi:"allowAutoSetup"`

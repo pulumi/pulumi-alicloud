@@ -257,11 +257,10 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `sourceGroupOwnerId` instead. This parameter is invalid if `cidrIp` has already been set.
      * 
-     * @deprecated
-     * Use sourceGroupOwnerId instead.
+     * @deprecated Use sourceGroupOwnerId instead.
      * 
      */
-    @Deprecated /* Use sourceGroupOwnerId instead. */
+    @Deprecated
     @Export(name="sourceGroupOwnerAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceGroupOwnerAccount;
 

@@ -126,6 +126,12 @@ func (RdsServiceLinkedRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdsServiceLinkedRoleState)(nil)).Elem()
 }
 
+// RdsServiceLinkedRoleExists checks whether an existing RdsServiceLinkedRole resource with the given ID exists.
+func RdsServiceLinkedRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdsServiceLinkedRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/rdsServiceLinkedRole:RdsServiceLinkedRole", id, state, "", opts...)
+}
+
 type rdsServiceLinkedRoleArgs struct {
 	// The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
 	ServiceName string `pulumi:"serviceName"`

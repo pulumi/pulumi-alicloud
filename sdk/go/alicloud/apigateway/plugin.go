@@ -237,6 +237,12 @@ func (PluginState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pluginState)(nil)).Elem()
 }
 
+// PluginExists checks whether an existing Plugin resource with the given ID exists.
+func PluginExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PluginState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/plugin:Plugin", id, state, "", opts...)
+}
+
 type pluginArgs struct {
 	// The description of the plug-in, which cannot exceed 200 characters.
 	Description *string `pulumi:"description"`

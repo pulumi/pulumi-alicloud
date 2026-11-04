@@ -342,6 +342,18 @@ class UserAttachment(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return UserAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["directoryId"] = directory_id
+        __props__["groupId"] = group_id
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudsso/userAttachment:UserAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[_builtins.str]:

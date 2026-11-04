@@ -69,12 +69,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform_example");
  *         var defaultMMHL8U = new Project("defaultMMHL8U", ProjectArgs.builder()
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .transformationRules(DiJobTransformationRuleArgs.builder()
  *                 .ruleActionType("Rename")
- *                 .ruleExpression("{\"expression\":\"table2\"}")
+ *                 .ruleExpression("}{&#92;{@code "expression}&#92;{@code ":}&#92;{@code "table2}&#92;{@code "}}{@code ")
  *                 .ruleName("my_table_rename_rule")
  *                 .ruleTargetType("Table")
  *                 .build())
@@ -168,8 +168,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -232,6 +232,12 @@ func (RuleAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleAttachmentState)(nil)).Elem()
 }
 
+// RuleAttachmentExists checks whether an existing RuleAttachment resource with the given ID exists.
+func RuleAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pvtz/ruleAttachment:RuleAttachment", id, state, "", opts...)
+}
+
 type ruleAttachmentArgs struct {
 	// The ID of the rule.
 	RuleId string `pulumi:"ruleId"`

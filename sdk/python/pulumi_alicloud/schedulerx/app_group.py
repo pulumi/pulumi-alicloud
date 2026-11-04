@@ -835,6 +835,42 @@ class AppGroup(pulumi.CustomResource):
         __props__.__dict__["schedule_busy_workers"] = schedule_busy_workers
         return AppGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_type: pulumi.Input[Optional[_builtins.int]] = None,
+            app_version: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            max_jobs: pulumi.Input[Optional[_builtins.int]] = None,
+            monitor_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_contacts_json: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_busy_workers: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appName"] = app_name
+        __props__["appType"] = app_type
+        __props__["appVersion"] = app_version
+        __props__["deleteJobs"] = delete_jobs
+        __props__["description"] = description
+        __props__["enableLog"] = enable_log
+        __props__["groupId"] = group_id
+        __props__["maxConcurrency"] = max_concurrency
+        __props__["maxJobs"] = max_jobs
+        __props__["monitorConfigJson"] = monitor_config_json
+        __props__["monitorContactsJson"] = monitor_contacts_json
+        __props__["namespace"] = namespace
+        __props__["namespaceName"] = namespace_name
+        __props__["namespaceSource"] = namespace_source
+        __props__["scheduleBusyWorkers"] = schedule_busy_workers
+        return pulumi.runtime.exists_resource(None, 'alicloud:schedulerx/appGroup:AppGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appName")
     def app_name(self) -> pulumi.Output[_builtins.str]:

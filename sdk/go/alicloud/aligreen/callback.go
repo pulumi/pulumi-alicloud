@@ -167,6 +167,12 @@ func (CallbackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*callbackState)(nil)).Elem()
 }
 
+// CallbackExists checks whether an existing Callback resource with the given ID exists.
+func CallbackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CallbackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:aligreen/callback:Callback", id, state, "", opts...)
+}
+
 type callbackArgs struct {
 	// The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
 	CallbackName string `pulumi:"callbackName"`

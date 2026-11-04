@@ -226,6 +226,12 @@ func (LoadBalancerCommonBandwidthPackageAttachmentState) ElementType() reflect.T
 	return reflect.TypeOf((*loadBalancerCommonBandwidthPackageAttachmentState)(nil)).Elem()
 }
 
+// LoadBalancerCommonBandwidthPackageAttachmentExists checks whether an existing LoadBalancerCommonBandwidthPackageAttachment resource with the given ID exists.
+func LoadBalancerCommonBandwidthPackageAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerCommonBandwidthPackageAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment", id, state, "", opts...)
+}
+
 type loadBalancerCommonBandwidthPackageAttachmentArgs struct {
 	// The ID of the bound shared bandwidth package.
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`

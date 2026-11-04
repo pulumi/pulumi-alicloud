@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -129,10 +129,10 @@ import javax.annotation.Nullable;
  *             .effectiveInterval("06:00-20:00")
  *             .metricDimensions(defaultInstance.id().applyValue(_id -> """
  *   [
- *     {
- *       \"instanceId\": \"%s\",
- *       \"device\": \"/dev/vda1\"
- *     }
+ *     }{{@code
+ *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+ *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+ *     }}{@code
  *   ]
  * ", _id)))
  *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -143,8 +143,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -192,11 +192,10 @@ public class Alarm extends com.pulumi.resources.CustomResource {
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
-     * @deprecated
-     * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      * 
      */
-    @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead. */
+    @Deprecated
     @Export(name="dimensions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> dimensions;
 
@@ -240,11 +239,10 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
-     * @deprecated
-     * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+    @Deprecated
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
@@ -402,11 +400,10 @@ public class Alarm extends com.pulumi.resources.CustomResource {
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
-     * @deprecated
-     * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
+     * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      * 
      */
-    @Deprecated /* Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead. */
+    @Deprecated
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 

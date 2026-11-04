@@ -160,6 +160,12 @@ func (MachineGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineGroupState)(nil)).Elem()
 }
 
+// MachineGroupExists checks whether an existing MachineGroup resource with the given ID exists.
+func MachineGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MachineGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/machineGroup:MachineGroup", id, state, "", opts...)
+}
+
 type machineGroupArgs struct {
 	// The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyLists []string `pulumi:"identifyLists"`

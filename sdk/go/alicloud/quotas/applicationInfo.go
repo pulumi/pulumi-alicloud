@@ -122,6 +122,12 @@ func (ApplicationInfoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationInfoState)(nil)).Elem()
 }
 
+// ApplicationInfoExists checks whether an existing ApplicationInfo resource with the given ID exists.
+func ApplicationInfoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationInfoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:quotas/applicationInfo:ApplicationInfo", id, state, "", opts...)
+}
+
 type applicationInfoArgs struct {
 	AuditMode       *string                    `pulumi:"auditMode"`
 	DesireValue     float64                    `pulumi:"desireValue"`

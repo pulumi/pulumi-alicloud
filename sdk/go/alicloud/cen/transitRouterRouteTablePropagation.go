@@ -212,6 +212,12 @@ func (TransitRouterRouteTablePropagationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterRouteTablePropagationState)(nil)).Elem()
 }
 
+// TransitRouterRouteTablePropagationExists checks whether an existing TransitRouterRouteTablePropagation resource with the given ID exists.
+func TransitRouterRouteTablePropagationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterRouteTablePropagationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation", id, state, "", opts...)
+}
+
 type transitRouterRouteTablePropagationArgs struct {
 	// The dry run.
 	//

@@ -1033,6 +1033,58 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["user_status"] = user_status
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_number: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_asset_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            band_width: pulumi.Input[Optional[_builtins.int]] = None,
+            cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
+            cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            cfw_log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            fw_vpc_number: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_number: pulumi.Input[Optional[_builtins.int]] = None,
+            logistics: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_status: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountNumber"] = account_number
+        __props__["autoAssetProtection"] = auto_asset_protection
+        __props__["bandWidth"] = band_width
+        __props__["cfwAccount"] = cfw_account
+        __props__["cfwLog"] = cfw_log
+        __props__["cfwLogStorage"] = cfw_log_storage
+        __props__["createTime"] = create_time
+        __props__["endTime"] = end_time
+        __props__["fwVpcNumber"] = fw_vpc_number
+        __props__["instanceCount"] = instance_count
+        __props__["ipNumber"] = ip_number
+        __props__["logistics"] = logistics
+        __props__["modifyType"] = modify_type
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["releaseTime"] = release_time
+        __props__["renewPeriod"] = renew_period
+        __props__["renewalDuration"] = renewal_duration
+        __props__["renewalDurationUnit"] = renewal_duration_unit
+        __props__["renewalStatus"] = renewal_status
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["userStatus"] = user_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> pulumi.Output[Optional[_builtins.int]]:

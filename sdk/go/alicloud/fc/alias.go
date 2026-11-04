@@ -159,6 +159,12 @@ func (AliasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aliasState)(nil)).Elem()
 }
 
+// AliasExists checks whether an existing Alias resource with the given ID exists.
+func AliasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AliasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/alias:Alias", id, state, "", opts...)
+}
+
 type aliasArgs struct {
 	// Name for the alias you are creating.
 	AliasName string `pulumi:"aliasName"`

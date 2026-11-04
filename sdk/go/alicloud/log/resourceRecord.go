@@ -183,6 +183,12 @@ func (ResourceRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceRecordState)(nil)).Elem()
 }
 
+// ResourceRecordExists checks whether an existing ResourceRecord resource with the given ID exists.
+func ResourceRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/resourceRecord:ResourceRecord", id, state, "", opts...)
+}
+
 type resourceRecordArgs struct {
 	// The record's id, should be unique.
 	RecordId string `pulumi:"recordId"`

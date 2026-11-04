@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list of available addons that the cluster can install.
         /// 
         /// &gt; **NOTE:** Available since v1.150.0.
-        /// &gt; **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+        /// **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
         /// 
         /// ## Example Usage
         /// 
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list of available addons that the cluster can install.
         /// 
         /// &gt; **NOTE:** Available since v1.150.0.
-        /// &gt; **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+        /// **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
         /// 
         /// ## Example Usage
         /// 
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list of available addons that the cluster can install.
         /// 
         /// &gt; **NOTE:** Available since v1.150.0.
-        /// &gt; **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+        /// **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
         /// 
         /// ## Example Usage
         /// 

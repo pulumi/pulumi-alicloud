@@ -121,6 +121,12 @@ func (CustomPropertyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customPropertyState)(nil)).Elem()
 }
 
+// CustomPropertyExists checks whether an existing CustomProperty resource with the given ID exists.
+func CustomPropertyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomPropertyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eds/customProperty:CustomProperty", id, state, "", opts...)
+}
+
 type customPropertyArgs struct {
 	// The Custom attribute key.
 	PropertyKey string `pulumi:"propertyKey"`

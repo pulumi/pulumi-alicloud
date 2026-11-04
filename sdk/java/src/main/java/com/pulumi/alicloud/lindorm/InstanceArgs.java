@@ -612,22 +612,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
-     * @deprecated
-     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+     * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      */
-    @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
+    @Deprecated
     @Import(name="timeSeriresEngineSpecification")
     private @Nullable Output<String> timeSeriresEngineSpecification;
 
     /**
      * @return Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
-     * @deprecated
-     * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+     * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      * 
      */
-    @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
+    @Deprecated
     public Optional<Output<String>> timeSeriresEngineSpecification() {
         return Optional.ofNullable(this.timeSeriresEngineSpecification);
     }
@@ -1581,11 +1579,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+         * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
          * 
          */
-        @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
+        @Deprecated
         public Builder timeSeriresEngineSpecification(@Nullable Output<String> timeSeriresEngineSpecification) {
             $.timeSeriresEngineSpecification = timeSeriresEngineSpecification;
             return this;
@@ -1596,11 +1593,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
+         * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
          * 
          */
-        @Deprecated /* Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead. */
+        @Deprecated
         public Builder timeSeriresEngineSpecification(String timeSeriresEngineSpecification) {
             return timeSeriresEngineSpecification(Output.of(timeSeriresEngineSpecification));
         }

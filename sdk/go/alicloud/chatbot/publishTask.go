@@ -143,6 +143,12 @@ func (PublishTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publishTaskState)(nil)).Elem()
 }
 
+// PublishTaskExists checks whether an existing PublishTask resource with the given ID exists.
+func PublishTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublishTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:chatbot/publishTask:PublishTask", id, state, "", opts...)
+}
+
 type publishTaskArgs struct {
 	// The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
 	AgentKey *string `pulumi:"agentKey"`

@@ -240,6 +240,12 @@ func (TransitRouterRouteEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitRouterRouteEntryState)(nil)).Elem()
 }
 
+// TransitRouterRouteEntryExists checks whether an existing TransitRouterRouteEntry resource with the given ID exists.
+func TransitRouterRouteEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitRouterRouteEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry", id, state, "", opts...)
+}
+
 type transitRouterRouteEntryArgs struct {
 	// The dry run.
 	//

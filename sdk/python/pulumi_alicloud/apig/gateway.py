@@ -987,6 +987,58 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["zones"] = zones
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_from: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict', 'outputs.GatewayEnvironment']]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict', 'outputs.GatewayLoadBalancer']]]]] = None,
+            log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict', 'outputs.GatewayLogConfig']]] = None,
+            network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict', 'outputs.GatewayNetworkAccessConfig']]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict', 'outputs.GatewaySecurityGroup']]]]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_version: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict', 'outputs.GatewayVpc']]] = None,
+            vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict', 'outputs.GatewayVswitch']]] = None,
+            zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict', 'outputs.GatewayZoneConfig']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict', 'outputs.GatewayZone']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createFrom"] = create_from
+        __props__["createTime"] = create_time
+        __props__["environments"] = environments
+        __props__["expireTime"] = expire_time
+        __props__["gatewayEdition"] = gateway_edition
+        __props__["gatewayName"] = gateway_name
+        __props__["gatewayType"] = gateway_type
+        __props__["loadBalancers"] = load_balancers
+        __props__["logConfig"] = log_config
+        __props__["networkAccessConfig"] = network_access_config
+        __props__["paymentType"] = payment_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityGroups"] = security_groups
+        __props__["spec"] = spec
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["targetVersion"] = target_version
+        __props__["updateTime"] = update_time
+        __props__["version"] = version
+        __props__["vpc"] = vpc
+        __props__["vswitch"] = vswitch
+        __props__["zoneConfig"] = zone_config
+        __props__["zones"] = zones
+        return pulumi.runtime.exists_resource(None, 'alicloud:apig/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createFrom")
     def create_from(self) -> pulumi.Output[_builtins.str]:

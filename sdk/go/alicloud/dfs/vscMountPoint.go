@@ -160,6 +160,12 @@ func (VscMountPointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vscMountPointState)(nil)).Elem()
 }
 
+// VscMountPointExists checks whether an existing VscMountPoint resource with the given ID exists.
+func VscMountPointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VscMountPointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dfs/vscMountPoint:VscMountPoint", id, state, "", opts...)
+}
+
 type vscMountPointArgs struct {
 	// Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
 	AliasPrefix *string `pulumi:"aliasPrefix"`

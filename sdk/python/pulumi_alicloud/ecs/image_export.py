@@ -333,6 +333,18 @@ class ImageExport(pulumi.CustomResource):
         __props__.__dict__["oss_prefix"] = oss_prefix
         return ImageExport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_prefix: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["imageId"] = image_id
+        __props__["ossBucket"] = oss_bucket
+        __props__["ossPrefix"] = oss_prefix
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/imageExport:ImageExport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[_builtins.str]:

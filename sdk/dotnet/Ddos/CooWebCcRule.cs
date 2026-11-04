@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Ddos
     public partial class CooWebCcRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The domain name of the website service.  
+        /// The domain name of the website service.
         /// 
         /// &gt; **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         /// </summary>
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class CooWebCcRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The domain name of the website service.  
+        /// The domain name of the website service.
         /// 
         /// &gt; **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         /// </summary>
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class CooWebCcRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The domain name of the website service.  
+        /// The domain name of the website service.
         /// 
         /// &gt; **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         /// </summary>

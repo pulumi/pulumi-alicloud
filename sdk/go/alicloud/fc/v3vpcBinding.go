@@ -146,6 +146,12 @@ func (V3VpcBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*v3vpcBindingState)(nil)).Elem()
 }
 
+// V3VpcBindingExists checks whether an existing V3VpcBinding resource with the given ID exists.
+func V3VpcBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V3VpcBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:fc/v3VpcBinding:V3VpcBinding", id, state, "", opts...)
+}
+
 type v3vpcBindingArgs struct {
 	// Function Name
 	FunctionName string `pulumi:"functionName"`

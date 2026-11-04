@@ -675,6 +675,34 @@ class DefenseRule(pulumi.CustomResource):
         __props__.__dict__["template_id"] = template_id
         return DefenseRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict', 'outputs.DefenseRuleConfig']]] = None,
+            defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_status: pulumi.Input[Optional[_builtins.int]] = None,
+            template_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["defenseOrigin"] = defense_origin
+        __props__["defenseScene"] = defense_scene
+        __props__["defenseType"] = defense_type
+        __props__["gmtModified"] = gmt_modified
+        __props__["instanceId"] = instance_id
+        __props__["resource"] = resource
+        __props__["ruleId"] = rule_id
+        __props__["ruleName"] = rule_name
+        __props__["ruleStatus"] = rule_status
+        __props__["templateId"] = template_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:wafv3/defenseRule:DefenseRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.DefenseRuleConfig']:

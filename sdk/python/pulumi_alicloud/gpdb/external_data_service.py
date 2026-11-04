@@ -441,6 +441,26 @@ class ExternalDataService(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ExternalDataService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_description: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.int]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["serviceDescription"] = service_description
+        __props__["serviceId"] = service_id
+        __props__["serviceName"] = service_name
+        __props__["serviceSpec"] = service_spec
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:gpdb/externalDataService:ExternalDataService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

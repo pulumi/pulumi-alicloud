@@ -155,6 +155,12 @@ func (BucketObjectWormConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketObjectWormConfigurationState)(nil)).Elem()
 }
 
+// BucketObjectWormConfigurationExists checks whether an existing BucketObjectWormConfiguration resource with the given ID exists.
+func BucketObjectWormConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketObjectWormConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketObjectWormConfiguration:BucketObjectWormConfiguration", id, state, "", opts...)
+}
+
 type bucketObjectWormConfigurationArgs struct {
 	// Bucket name
 	BucketName string `pulumi:"bucketName"`

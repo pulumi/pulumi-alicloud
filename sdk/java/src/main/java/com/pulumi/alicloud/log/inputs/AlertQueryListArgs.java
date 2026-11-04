@@ -64,22 +64,20 @@ public final class AlertQueryListArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Query logstore, use store for new alert, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use store
+     * @deprecated Deprecated from 1.161.0+, use store
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use store */
+    @Deprecated
     @Import(name="logstore")
     private @Nullable Output<String> logstore;
 
     /**
      * @return Query logstore, use store for new alert, Deprecated from 1.161.0+.
      * 
-     * @deprecated
-     * Deprecated from 1.161.0+, use store
+     * @deprecated Deprecated from 1.161.0+, use store
      * 
      */
-    @Deprecated /* Deprecated from 1.161.0+, use store */
+    @Deprecated
     public Optional<Output<String>> logstore() {
         return Optional.ofNullable(this.logstore);
     }
@@ -323,11 +321,10 @@ public final class AlertQueryListArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use store
+         * @deprecated Deprecated from 1.161.0+, use store
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use store */
+        @Deprecated
         public Builder logstore(@Nullable Output<String> logstore) {
             $.logstore = logstore;
             return this;
@@ -338,11 +335,10 @@ public final class AlertQueryListArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated from 1.161.0+, use store
+         * @deprecated Deprecated from 1.161.0+, use store
          * 
          */
-        @Deprecated /* Deprecated from 1.161.0+, use store */
+        @Deprecated
         public Builder logstore(String logstore) {
             return logstore(Output.of(logstore));
         }

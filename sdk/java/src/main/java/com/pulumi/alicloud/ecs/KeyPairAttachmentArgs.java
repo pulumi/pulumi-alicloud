@@ -51,22 +51,20 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
     /**
      * The name of key pair used to bind.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
      * @return The name of key pair used to bind.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -162,11 +160,10 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+        @Deprecated
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
@@ -177,11 +174,10 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+         * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
          * 
          */
-        @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+        @Deprecated
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }

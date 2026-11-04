@@ -128,18 +128,18 @@ namespace Pulumi.AliCloud.Log
         /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
         /// - format = `Json`
-        /// `JsonEnableTag` - (Optional) Whether to deliver the label.
+        ///   `JsonEnableTag` - (Optional) Whether to deliver the label.
         /// - format = `Csv`
-        /// `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-        /// `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
-        /// `CsvConfigNullidentifier` - (Optional) Invalid field content.
-        /// `CsvConfigQuote` - (Optional) Escape character under csv configuration.
-        /// `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
-        /// `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+        ///   `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+        ///   `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
+        ///   `CsvConfigNullidentifier` - (Optional) Invalid field content.
+        ///   `CsvConfigQuote` - (Optional) Escape character under csv configuration.
+        ///   `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
+        ///   `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
         /// - format = `Parquet`
-        /// `ParquetConfig` - (Optional) Configure to use parquet storage format.
-        /// `Name` - (Required) The name of the key.
-        /// `Type` - (Required) Type of configuration name.
+        ///   `ParquetConfig` - (Optional) Configure to use parquet storage format.
+        ///   `Name` - (Required) The name of the key.
+        ///   `Type` - (Required) Type of configuration name.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -283,18 +283,18 @@ namespace Pulumi.AliCloud.Log
         /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
         /// - format = `Json`
-        /// `JsonEnableTag` - (Optional) Whether to deliver the label.
+        ///   `JsonEnableTag` - (Optional) Whether to deliver the label.
         /// - format = `Csv`
-        /// `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-        /// `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
-        /// `CsvConfigNullidentifier` - (Optional) Invalid field content.
-        /// `CsvConfigQuote` - (Optional) Escape character under csv configuration.
-        /// `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
-        /// `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+        ///   `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+        ///   `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
+        ///   `CsvConfigNullidentifier` - (Optional) Invalid field content.
+        ///   `CsvConfigQuote` - (Optional) Escape character under csv configuration.
+        ///   `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
+        ///   `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
         /// - format = `Parquet`
-        /// `ParquetConfig` - (Optional) Configure to use parquet storage format.
-        /// `Name` - (Required) The name of the key.
-        /// `Type` - (Required) Type of configuration name.
+        ///   `ParquetConfig` - (Optional) Configure to use parquet storage format.
+        ///   `Name` - (Required) The name of the key.
+        ///   `Type` - (Required) Type of configuration name.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -405,18 +405,18 @@ namespace Pulumi.AliCloud.Log
         /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
         /// - format = `Json`
-        /// `JsonEnableTag` - (Optional) Whether to deliver the label.
+        ///   `JsonEnableTag` - (Optional) Whether to deliver the label.
         /// - format = `Csv`
-        /// `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-        /// `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
-        /// `CsvConfigNullidentifier` - (Optional) Invalid field content.
-        /// `CsvConfigQuote` - (Optional) Escape character under csv configuration.
-        /// `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
-        /// `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+        ///   `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+        ///   `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
+        ///   `CsvConfigNullidentifier` - (Optional) Invalid field content.
+        ///   `CsvConfigQuote` - (Optional) Escape character under csv configuration.
+        ///   `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
+        ///   `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
         /// - format = `Parquet`
-        /// `ParquetConfig` - (Optional) Configure to use parquet storage format.
-        /// `Name` - (Required) The name of the key.
-        /// `Type` - (Required) Type of configuration name.
+        ///   `ParquetConfig` - (Optional) Configure to use parquet storage format.
+        ///   `Name` - (Required) The name of the key.
+        ///   `Type` - (Required) Type of configuration name.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

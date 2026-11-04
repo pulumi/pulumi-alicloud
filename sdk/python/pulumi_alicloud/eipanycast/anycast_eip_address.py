@@ -533,6 +533,32 @@ class AnycastEipAddress(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return AnycastEipAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            anycast_eip_address_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_location: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["anycastEipAddressName"] = anycast_eip_address_name
+        __props__["bandwidth"] = bandwidth
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["paymentType"] = payment_type
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["serviceLocation"] = service_location
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:eipanycast/anycastEipAddress:AnycastEipAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="anycastEipAddressName")
     def anycast_eip_address_name(self) -> pulumi.Output[Optional[_builtins.str]]:

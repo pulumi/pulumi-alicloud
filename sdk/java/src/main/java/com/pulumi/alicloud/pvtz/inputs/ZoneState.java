@@ -68,22 +68,20 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use &#39;zone_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead. */
+    @Deprecated
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use &#39;zone_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead. */
+    @Deprecated
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -333,11 +331,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead. */
+        @Deprecated
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -348,11 +345,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
+         * @deprecated Field &#39;name&#39; has been deprecated from version 1.107.0. Use &#39;zone_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead. */
+        @Deprecated
         public Builder name(String name) {
             return name(Output.of(name));
         }

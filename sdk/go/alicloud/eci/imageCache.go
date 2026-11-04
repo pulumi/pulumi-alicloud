@@ -244,6 +244,12 @@ func (ImageCacheState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageCacheState)(nil)).Elem()
 }
 
+// ImageCacheExists checks whether an existing ImageCache resource with the given ID exists.
+func ImageCacheExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageCacheState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eci/imageCache:ImageCache", id, state, "", opts...)
+}
+
 type imageCacheArgs struct {
 	// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
 	EipInstanceId *string `pulumi:"eipInstanceId"`

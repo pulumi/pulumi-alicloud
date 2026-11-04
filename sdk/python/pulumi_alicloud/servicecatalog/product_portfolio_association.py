@@ -272,6 +272,16 @@ class ProductPortfolioAssociation(pulumi.CustomResource):
         __props__.__dict__["product_id"] = product_id
         return ProductPortfolioAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["portfolioId"] = portfolio_id
+        __props__["productId"] = product_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="portfolioId")
     def portfolio_id(self) -> pulumi.Output[_builtins.str]:

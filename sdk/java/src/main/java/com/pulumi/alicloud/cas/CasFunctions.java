@@ -23,11 +23,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static Output<GetCertificatesResult> getCertificates() {
         return getCertificates(GetCertificatesArgs.Empty, InvokeOptions.Empty);
     }
@@ -36,11 +35,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain() {
         return getCertificatesPlain(GetCertificatesPlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -49,11 +47,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
         return getCertificates(args, InvokeOptions.Empty);
     }
@@ -62,11 +59,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
         return getCertificatesPlain(args, InvokeOptions.Empty);
     }
@@ -75,11 +71,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cas/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -88,11 +83,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cas/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
@@ -101,11 +95,10 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * @deprecated
-     * This resource has been deprecated in favour of getServiceCertificates
+     * @deprecated This resource has been deprecated in favour of getServiceCertificates
      * 
      */
-    @Deprecated /* This resource has been deprecated in favour of getServiceCertificates */
+    @Deprecated
     public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cas/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }

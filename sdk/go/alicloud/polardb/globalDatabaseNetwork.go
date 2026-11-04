@@ -158,6 +158,12 @@ func (GlobalDatabaseNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalDatabaseNetworkState)(nil)).Elem()
 }
 
+// GlobalDatabaseNetworkExists checks whether an existing GlobalDatabaseNetwork resource with the given ID exists.
+func GlobalDatabaseNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalDatabaseNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork", id, state, "", opts...)
+}
+
 type globalDatabaseNetworkArgs struct {
 	// The ID of the primary cluster.
 	DbClusterId string `pulumi:"dbClusterId"`

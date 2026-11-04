@@ -653,6 +653,12 @@ func (EdgeKubernetesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeKubernetesState)(nil)).Elem()
 }
 
+// EdgeKubernetesExists checks whether an existing EdgeKubernetes resource with the given ID exists.
+func EdgeKubernetesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeKubernetesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/edgeKubernetes:EdgeKubernetes", id, state, "", opts...)
+}
+
 type edgeKubernetesArgs struct {
 	// The addon you want to install in cluster. See `addons` below.
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`

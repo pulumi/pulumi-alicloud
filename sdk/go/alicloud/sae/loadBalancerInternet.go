@@ -226,6 +226,12 @@ func (LoadBalancerInternetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerInternetState)(nil)).Elem()
 }
 
+// LoadBalancerInternetExists checks whether an existing LoadBalancerInternet resource with the given ID exists.
+func LoadBalancerInternetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerInternetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sae/loadBalancerInternet:LoadBalancerInternet", id, state, "", opts...)
+}
+
 type loadBalancerInternetArgs struct {
 	// The target application ID that needs to be bound to the SLB.
 	AppId string `pulumi:"appId"`

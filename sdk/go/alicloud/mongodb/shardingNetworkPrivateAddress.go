@@ -227,6 +227,12 @@ func (ShardingNetworkPrivateAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shardingNetworkPrivateAddressState)(nil)).Elem()
 }
 
+// ShardingNetworkPrivateAddressExists checks whether an existing ShardingNetworkPrivateAddress resource with the given ID exists.
+func ShardingNetworkPrivateAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShardingNetworkPrivateAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress", id, state, "", opts...)
+}
+
 type shardingNetworkPrivateAddressArgs struct {
 	// The username of the account.
 	// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.

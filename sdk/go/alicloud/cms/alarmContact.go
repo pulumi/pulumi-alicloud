@@ -154,6 +154,12 @@ func (AlarmContactState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alarmContactState)(nil)).Elem()
 }
 
+// AlarmContactExists checks whether an existing AlarmContact resource with the given ID exists.
+func AlarmContactExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlarmContactState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/alarmContact:AlarmContact", id, state, "", opts...)
+}
+
 type alarmContactArgs struct {
 	// The name of the alarm contact. The length should between 2 and 40 characters.
 	AlarmContactName string `pulumi:"alarmContactName"`

@@ -184,6 +184,12 @@ func (RouterGrantAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerGrantAssociationState)(nil)).Elem()
 }
 
+// RouterGrantAssociationExists checks whether an existing RouterGrantAssociation resource with the given ID exists.
+func RouterGrantAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterGrantAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/routerGrantAssociation:RouterGrantAssociation", id, state, "", opts...)
+}
+
 type routerGrantAssociationArgs struct {
 	// The ID of the associated Leased Line Gateway instance.
 	EcrId string `pulumi:"ecrId"`

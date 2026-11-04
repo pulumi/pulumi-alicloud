@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Network("default", NetworkArgs.builder()
@@ -103,15 +103,15 @@ import javax.annotation.Nullable;
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(name)
  *             .policyClassName("ServiceTls")
- *             .policyConfig("{\"mode\":\"SIMPLE\",\"sni\":\"aaaa\",\"enable\":true}")
+ *             .policyConfig("}{&#92;{@code "mode}&#92;{@code ":}&#92;{@code "SIMPLE}&#92;{@code ",}&#92;{@code "sni}&#92;{@code ":}&#92;{@code "aaaa}&#92;{@code ",}&#92;{@code "enable}&#92;{@code ":true}}{@code ")
  *             .gatewayId(defaultGateway.id())
  *             .environmentId(defaultGateway.environments().applyValue(_environments -> _environments.get(0).environmentId()))
  *             .attachResourceType("GatewayService")
  *             .attachResourceIds(defaultService.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

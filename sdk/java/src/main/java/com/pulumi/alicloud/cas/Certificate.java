@@ -129,11 +129,10 @@ import javax.annotation.Nullable;
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
- * @deprecated
- * This resource has been deprecated in favour of ServiceCertificate
+ * @deprecated This resource has been deprecated in favour of ServiceCertificate
  * 
  */
-@Deprecated /* This resource has been deprecated in favour of ServiceCertificate */
+@Deprecated
 @ResourceType(type="alicloud:cas/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {
     /**
@@ -203,11 +202,10 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyWoVersion);
     }
     /**
-     * @deprecated
-     * Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
-    @Deprecated /* Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version. */
+    @Deprecated
     @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
@@ -217,11 +215,10 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

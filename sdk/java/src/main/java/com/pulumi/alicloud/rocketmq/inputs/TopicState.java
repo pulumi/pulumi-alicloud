@@ -50,22 +50,20 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     /**
      * This attribute has been deprecated.
      * 
-     * @deprecated
-     * Attribute perm has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute perm has been deprecated and suggest removing it from your template. */
+    @Deprecated
     @Import(name="perm")
     private @Nullable Output<Integer> perm;
 
     /**
      * @return This attribute has been deprecated.
      * 
-     * @deprecated
-     * Attribute perm has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      * 
      */
-    @Deprecated /* Attribute perm has been deprecated and suggest removing it from your template. */
+    @Deprecated
     public Optional<Output<Integer>> perm() {
         return Optional.ofNullable(this.perm);
     }
@@ -111,22 +109,20 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     /**
      * Replaced by `topicName` after version 1.97.0.
      * 
-     * @deprecated
-     * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
+     * @deprecated Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead. */
+    @Deprecated
     @Import(name="topic")
     private @Nullable Output<String> topic;
 
     /**
      * @return Replaced by `topicName` after version 1.97.0.
      * 
-     * @deprecated
-     * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
+     * @deprecated Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead. */
+    @Deprecated
     public Optional<Output<String>> topic() {
         return Optional.ofNullable(this.topic);
     }
@@ -223,11 +219,10 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute perm has been deprecated and suggest removing it from your template.
+         * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute perm has been deprecated and suggest removing it from your template. */
+        @Deprecated
         public Builder perm(@Nullable Output<Integer> perm) {
             $.perm = perm;
             return this;
@@ -238,11 +233,10 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Attribute perm has been deprecated and suggest removing it from your template.
+         * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
          * 
          */
-        @Deprecated /* Attribute perm has been deprecated and suggest removing it from your template. */
+        @Deprecated
         public Builder perm(Integer perm) {
             return perm(Output.of(perm));
         }
@@ -302,11 +296,10 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
+         * @deprecated Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead. */
+        @Deprecated
         public Builder topic(@Nullable Output<String> topic) {
             $.topic = topic;
             return this;
@@ -317,11 +310,10 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
+         * @deprecated Field &#39;topic&#39; has been deprecated from version 1.97.0. Use &#39;topic_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead. */
+        @Deprecated
         public Builder topic(String topic) {
             return topic(Output.of(topic));
         }

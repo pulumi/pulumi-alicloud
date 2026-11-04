@@ -458,6 +458,28 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["vpc_intranet_enable"] = vpc_intranet_enable
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            base_path: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            user_log_config: pulumi.Input[Optional[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict', 'outputs.GroupUserLogConfig']]] = None,
+            vpc_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basePath"] = base_path
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["name"] = name
+        __props__["subDomain"] = sub_domain
+        __props__["userLogConfig"] = user_log_config
+        __props__["vpcDomain"] = vpc_domain
+        __props__["vpcIntranetEnable"] = vpc_intranet_enable
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basePath")
     def base_path(self) -> pulumi.Output[_builtins.str]:

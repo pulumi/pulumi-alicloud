@@ -473,6 +473,26 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["resolution_width"] = resolution_width
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+            net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict', 'outputs.PolicyNetRedirectPolicy']]] = None,
+            policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
+            resolution_width: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cameraRedirect"] = camera_redirect
+        __props__["clipboard"] = clipboard
+        __props__["lockResolution"] = lock_resolution
+        __props__["netRedirectPolicy"] = net_redirect_policy
+        __props__["policyGroupName"] = policy_group_name
+        __props__["resolutionHeight"] = resolution_height
+        __props__["resolutionWidth"] = resolution_width
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudphone/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cameraRedirect")
     def camera_redirect(self) -> pulumi.Output[_builtins.str]:

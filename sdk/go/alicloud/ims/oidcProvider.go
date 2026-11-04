@@ -178,6 +178,12 @@ func (OidcProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oidcProviderState)(nil)).Elem()
 }
 
+// OidcProviderExists checks whether an existing OidcProvider resource with the given ID exists.
+func OidcProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OidcProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ims/oidcProvider:OidcProvider", id, state, "", opts...)
+}
+
 type oidcProviderArgs struct {
 	// Client ID.
 	ClientIds []string `pulumi:"clientIds"`

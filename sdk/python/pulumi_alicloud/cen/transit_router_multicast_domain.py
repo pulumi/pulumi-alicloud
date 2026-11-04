@@ -424,6 +424,26 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         __props__.__dict__["transit_router_multicast_domain_name"] = transit_router_multicast_domain_name
         return TransitRouterMulticastDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict', 'outputs.TransitRouterMulticastDomainOptions']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["options"] = options
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transitRouterId"] = transit_router_id
+        __props__["transitRouterMulticastDomainDescription"] = transit_router_multicast_domain_description
+        __props__["transitRouterMulticastDomainName"] = transit_router_multicast_domain_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def options(self) -> pulumi.Output['outputs.TransitRouterMulticastDomainOptions']:

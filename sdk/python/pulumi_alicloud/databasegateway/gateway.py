@@ -255,6 +255,18 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            gateway_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["gatewayDesc"] = gateway_desc
+        __props__["gatewayName"] = gateway_name
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:databasegateway/gateway:Gateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="gatewayDesc")
     def gateway_desc(self) -> pulumi.Output[Optional[_builtins.str]]:

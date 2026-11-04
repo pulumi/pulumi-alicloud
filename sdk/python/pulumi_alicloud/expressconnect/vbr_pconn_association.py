@@ -699,6 +699,36 @@ class VbrPconnAssociation(pulumi.CustomResource):
         __props__.__dict__["vlan_id"] = vlan_id
         return VbrPconnAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["circuitCode"] = circuit_code
+        __props__["enableIpv6"] = enable_ipv6
+        __props__["localGatewayIp"] = local_gateway_ip
+        __props__["localIpv6GatewayIp"] = local_ipv6_gateway_ip
+        __props__["peerGatewayIp"] = peer_gateway_ip
+        __props__["peerIpv6GatewayIp"] = peer_ipv6_gateway_ip
+        __props__["peeringIpv6SubnetMask"] = peering_ipv6_subnet_mask
+        __props__["peeringSubnetMask"] = peering_subnet_mask
+        __props__["physicalConnectionId"] = physical_connection_id
+        __props__["status"] = status
+        __props__["vbrId"] = vbr_id
+        __props__["vlanId"] = vlan_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> pulumi.Output[_builtins.str]:

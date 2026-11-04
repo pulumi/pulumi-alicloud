@@ -136,11 +136,10 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
-     * @deprecated
-     * This property has been deprecated as it is no longer supported by Aliyun.
+     * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
      * 
      */
-    @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
+    @Deprecated
     @Import(name="enforceMfaForLogin")
     private @Nullable Output<Boolean> enforceMfaForLogin;
 
@@ -148,11 +147,10 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
      * @return Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
-     * @deprecated
-     * This property has been deprecated as it is no longer supported by Aliyun.
+     * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
      * 
      */
-    @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
+    @Deprecated
     public Optional<Output<Boolean>> enforceMfaForLogin() {
         return Optional.ofNullable(this.enforceMfaForLogin);
     }
@@ -489,11 +487,10 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property has been deprecated as it is no longer supported by Aliyun.
+         * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
          * 
          */
-        @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
+        @Deprecated
         public Builder enforceMfaForLogin(@Nullable Output<Boolean> enforceMfaForLogin) {
             $.enforceMfaForLogin = enforceMfaForLogin;
             return this;
@@ -505,11 +502,10 @@ public final class SecurityPreferenceState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property has been deprecated as it is no longer supported by Aliyun.
+         * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
          * 
          */
-        @Deprecated /* This property has been deprecated as it is no longer supported by Aliyun. */
+        @Deprecated
         public Builder enforceMfaForLogin(Boolean enforceMfaForLogin) {
             return enforceMfaForLogin(Output.of(enforceMfaForLogin));
         }

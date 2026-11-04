@@ -373,6 +373,22 @@ class Activation(pulumi.CustomResource):
         __props__.__dict__["time_to_live_in_hours"] = time_to_live_in_hours
         return Activation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address_range: pulumi.Input[Optional[_builtins.str]] = None,
+            time_to_live_in_hours: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["instanceCount"] = instance_count
+        __props__["instanceName"] = instance_name
+        __props__["ipAddressRange"] = ip_address_range
+        __props__["timeToLiveInHours"] = time_to_live_in_hours
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/activation:Activation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

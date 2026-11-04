@@ -51,27 +51,25 @@ public final class NodePoolManagement {
      */
     private @Nullable Boolean enable;
     /**
-     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
      * 
      */
     private @Nullable Integer maxUnavailable;
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     private @Nullable Integer surge;
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     private @Nullable Integer surgePercentage;
 
     private NodePoolManagement() {}
@@ -125,7 +123,7 @@ public final class NodePoolManagement {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
      * 
      */
     public Optional<Integer> maxUnavailable() {
@@ -134,22 +132,20 @@ public final class NodePoolManagement {
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     public Optional<Integer> surge() {
         return Optional.ofNullable(this.surge);
     }
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
-     * @deprecated
-     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * @deprecated Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
+    @Deprecated
     public Optional<Integer> surgePercentage() {
         return Optional.ofNullable(this.surgePercentage);
     }

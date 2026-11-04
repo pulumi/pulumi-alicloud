@@ -131,6 +131,12 @@ func (ApplicationEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationEndpointState)(nil)).Elem()
 }
 
+// ApplicationEndpointExists checks whether an existing ApplicationEndpoint resource with the given ID exists.
+func ApplicationEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:polardb/applicationEndpoint:ApplicationEndpoint", id, state, "", opts...)
+}
+
 type applicationEndpointArgs struct {
 	// The ID of the PolarDB application to which the endpoint belongs.
 	ApplicationId string `pulumi:"applicationId"`

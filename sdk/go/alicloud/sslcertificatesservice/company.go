@@ -217,6 +217,12 @@ func (CompanyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*companyState)(nil)).Elem()
 }
 
+// CompanyExists checks whether an existing Company resource with the given ID exists.
+func CompanyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CompanyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservice/company:Company", id, state, "", opts...)
+}
+
 type companyArgs struct {
 	// The city where the company is located.
 	City string `pulumi:"city"`

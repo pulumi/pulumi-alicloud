@@ -329,6 +329,20 @@ class WorkspaceUserConfig(pulumi.CustomResource):
         __props__.__dict__["scope"] = scope
         return WorkspaceUserConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            category_name: pulumi.Input[Optional[_builtins.str]] = None,
+            config_key: pulumi.Input[Optional[_builtins.str]] = None,
+            config_value: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["categoryName"] = category_name
+        __props__["configKey"] = config_key
+        __props__["configValue"] = config_value
+        __props__["scope"] = scope
+        return pulumi.runtime.exists_resource(None, 'alicloud:pai/workspaceUserConfig:WorkspaceUserConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="categoryName")
     def category_name(self) -> pulumi.Output[_builtins.str]:

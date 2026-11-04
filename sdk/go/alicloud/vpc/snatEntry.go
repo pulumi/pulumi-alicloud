@@ -214,6 +214,12 @@ func (SnatEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snatEntryState)(nil)).Elem()
 }
 
+// SnatEntryExists checks whether an existing SnatEntry resource with the given ID exists.
+func SnatEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnatEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/snatEntry:SnatEntry", id, state, "", opts...)
+}
+
 type snatEntryArgs struct {
 	// Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
 	EipAffinity *int `pulumi:"eipAffinity"`

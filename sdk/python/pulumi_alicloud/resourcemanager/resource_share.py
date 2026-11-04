@@ -642,6 +642,36 @@ class ResourceShare(pulumi.CustomResource):
         __props__.__dict__["targets"] = targets
         return ResourceShare(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_external_targets: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict', 'outputs.ResourceShareResourceProperty']]]]] = None,
+            resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_share_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict', 'outputs.ResourceShareResource']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowExternalTargets"] = allow_external_targets
+        __props__["createTime"] = create_time
+        __props__["permissionNames"] = permission_names
+        __props__["resourceArns"] = resource_arns
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["resourceProperties"] = resource_properties
+        __props__["resourceShareName"] = resource_share_name
+        __props__["resourceShareOwner"] = resource_share_owner
+        __props__["resources"] = resources
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["targets"] = targets
+        return pulumi.runtime.exists_resource(None, 'alicloud:resourcemanager/resourceShare:ResourceShare', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowExternalTargets")
     def allow_external_targets(self) -> pulumi.Output[Optional[_builtins.bool]]:

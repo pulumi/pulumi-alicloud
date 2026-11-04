@@ -292,6 +292,12 @@ func (ElasticInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*elasticInstanceState)(nil)).Elem()
 }
 
+// ElasticInstanceExists checks whether an existing ElasticInstance resource with the given ID exists.
+func ElasticInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ElasticInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/elasticInstance:ElasticInstance", id, state, "", opts...)
+}
+
 type elasticInstanceArgs struct {
 	// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`

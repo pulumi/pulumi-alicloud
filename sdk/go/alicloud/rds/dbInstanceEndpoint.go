@@ -275,6 +275,12 @@ func (DbInstanceEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbInstanceEndpointState)(nil)).Elem()
 }
 
+// DbInstanceEndpointExists checks whether an existing DbInstanceEndpoint resource with the given ID exists.
+func DbInstanceEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbInstanceEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint", id, state, "", opts...)
+}
+
 type dbInstanceEndpointArgs struct {
 	// The IP address of the internal endpoint.
 	ConnectionStringPrefix string `pulumi:"connectionStringPrefix"`

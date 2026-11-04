@@ -316,6 +316,20 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
         __props__.__dict__["rule_id"] = rule_id
         return StorageDomainRoutingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict', 'outputs.StorageDomainRoutingRuleRoute']]]]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["instanceId"] = instance_id
+        __props__["routes"] = routes
+        __props__["ruleId"] = rule_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.int]:

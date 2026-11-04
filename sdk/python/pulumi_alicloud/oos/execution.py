@@ -861,6 +861,56 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["update_date"] = update_date
         return Execution(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            counters: pulumi.Input[Optional[_builtins.str]] = None,
+            create_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            executed_by: pulumi.Input[Optional[_builtins.str]] = None,
+            is_parent: pulumi.Input[Optional[_builtins.bool]] = None,
+            loop_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            outputs: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role: pulumi.Input[Optional[_builtins.str]] = None,
+            safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_content: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            update_date: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["counters"] = counters
+        __props__["createDate"] = create_date
+        __props__["description"] = description
+        __props__["endDate"] = end_date
+        __props__["executedBy"] = executed_by
+        __props__["isParent"] = is_parent
+        __props__["loopMode"] = loop_mode
+        __props__["mode"] = mode
+        __props__["outputs"] = outputs
+        __props__["parameters"] = parameters
+        __props__["parentExecutionId"] = parent_execution_id
+        __props__["ramRole"] = ram_role
+        __props__["safetyCheck"] = safety_check
+        __props__["startDate"] = start_date
+        __props__["status"] = status
+        __props__["statusMessage"] = status_message
+        __props__["tags"] = tags
+        __props__["templateContent"] = template_content
+        __props__["templateId"] = template_id
+        __props__["templateName"] = template_name
+        __props__["templateVersion"] = template_version
+        __props__["updateDate"] = update_date
+        return pulumi.runtime.exists_resource(None, 'alicloud:oos/execution:Execution', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def counters(self) -> pulumi.Output[_builtins.str]:

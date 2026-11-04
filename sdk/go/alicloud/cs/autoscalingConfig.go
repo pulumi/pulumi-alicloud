@@ -335,6 +335,12 @@ func (AutoscalingConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoscalingConfigState)(nil)).Elem()
 }
 
+// AutoscalingConfigExists checks whether an existing AutoscalingConfig resource with the given ID exists.
+func AutoscalingConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutoscalingConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/autoscalingConfig:AutoscalingConfig", id, state, "", opts...)
+}
+
 type autoscalingConfigArgs struct {
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`

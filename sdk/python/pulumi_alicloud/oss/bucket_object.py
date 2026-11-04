@@ -857,6 +857,48 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return BucketObject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_length: pulumi.Input[Optional[_builtins.str]] = None,
+            content_md5: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expires: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_worm_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            object_worm_retain_until_date: pulumi.Input[Optional[_builtins.str]] = None,
+            server_side_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["bucket"] = bucket
+        __props__["cacheControl"] = cache_control
+        __props__["content"] = content
+        __props__["contentDisposition"] = content_disposition
+        __props__["contentEncoding"] = content_encoding
+        __props__["contentLength"] = content_length
+        __props__["contentMd5"] = content_md5
+        __props__["contentType"] = content_type
+        __props__["etag"] = etag
+        __props__["expires"] = expires
+        __props__["key"] = key
+        __props__["kmsKeyId"] = kms_key_id
+        __props__["objectWormMode"] = object_worm_mode
+        __props__["objectWormRetainUntilDate"] = object_worm_retain_until_date
+        __props__["serverSideEncryption"] = server_side_encryption
+        __props__["source"] = source
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:oss/bucketObject:BucketObject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[_builtins.str]]:

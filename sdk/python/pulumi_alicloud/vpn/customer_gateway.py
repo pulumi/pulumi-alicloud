@@ -451,6 +451,26 @@ class CustomerGateway(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return CustomerGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            asn: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            customer_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asn"] = asn
+        __props__["createTime"] = create_time
+        __props__["customerGatewayName"] = customer_gateway_name
+        __props__["description"] = description
+        __props__["ipAddress"] = ip_address
+        __props__["name"] = name
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpn/customerGateway:CustomerGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def asn(self) -> pulumi.Output[Optional[_builtins.str]]:

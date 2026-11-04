@@ -585,6 +585,32 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            data_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["autoRenewPeriod"] = auto_renew_period
+        __props__["dataDiskSize"] = data_disk_size
+        __props__["imageId"] = image_id
+        __props__["instanceName"] = instance_name
+        __props__["password"] = password
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["planId"] = plan_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:simpleapplicationserver/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -748,6 +748,48 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["video_seek_enable"] = video_seek_enable
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_config: pulumi.Input[Optional[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict', 'outputs.DomainAuthConfig']]] = None,
+            block_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cache_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict', 'outputs.DomainCacheConfig']]]]] = None,
+            cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_config: pulumi.Input[Optional[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict', 'outputs.DomainCertificateConfig']]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_header_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict', 'outputs.DomainHttpHeaderConfig']]]]] = None,
+            optimize_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            page404_config: pulumi.Input[Optional[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict', 'outputs.DomainPage404Config']]] = None,
+            page_compress_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_filter_config: pulumi.Input[Optional[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict', 'outputs.DomainParameterFilterConfig']]] = None,
+            range_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            refer_config: pulumi.Input[Optional[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict', 'outputs.DomainReferConfig']]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port: pulumi.Input[Optional[_builtins.int]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authConfig"] = auth_config
+        __props__["blockIps"] = block_ips
+        __props__["cacheConfigs"] = cache_configs
+        __props__["cdnType"] = cdn_type
+        __props__["certificateConfig"] = certificate_config
+        __props__["domainName"] = domain_name
+        __props__["httpHeaderConfigs"] = http_header_configs
+        __props__["optimizeEnable"] = optimize_enable
+        __props__["page404Config"] = page404_config
+        __props__["pageCompressEnable"] = page_compress_enable
+        __props__["parameterFilterConfig"] = parameter_filter_config
+        __props__["rangeEnable"] = range_enable
+        __props__["referConfig"] = refer_config
+        __props__["scope"] = scope
+        __props__["sourcePort"] = source_port
+        __props__["sourceType"] = source_type
+        __props__["sources"] = sources
+        __props__["videoSeekEnable"] = video_seek_enable
+        return pulumi.runtime.exists_resource(None, 'alicloud:cdn/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")

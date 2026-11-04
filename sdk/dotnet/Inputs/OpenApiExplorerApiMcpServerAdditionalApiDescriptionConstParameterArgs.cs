@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Inputs
     public sealed class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+        /// Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
         /// 
         /// For RPC-style APIs, examples include:
         /// - Name: sets the Name parameter to a fixed value.

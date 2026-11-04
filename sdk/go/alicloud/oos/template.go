@@ -241,6 +241,12 @@ func (TemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateState)(nil)).Elem()
 }
 
+// TemplateExists checks whether an existing Template resource with the given ID exists.
+func TemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/template:Template", id, state, "", opts...)
+}
+
 type templateArgs struct {
 	// When deleting a template, whether to delete its related executions. Default to `false`.
 	AutoDeleteExecutions *bool `pulumi:"autoDeleteExecutions"`

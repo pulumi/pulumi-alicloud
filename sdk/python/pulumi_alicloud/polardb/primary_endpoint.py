@@ -576,6 +576,36 @@ class PrimaryEndpoint(pulumi.CustomResource):
         __props__.__dict__["ssl_expire_time"] = ssl_expire_time
         return PrimaryEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expire_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionPrefix"] = connection_prefix
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["dbEndpointDescription"] = db_endpoint_description
+        __props__["dbEndpointId"] = db_endpoint_id
+        __props__["endpointType"] = endpoint_type
+        __props__["netType"] = net_type
+        __props__["port"] = port
+        __props__["sslAutoRotate"] = ssl_auto_rotate
+        __props__["sslCertificateUrl"] = ssl_certificate_url
+        __props__["sslConnectionString"] = ssl_connection_string
+        __props__["sslEnabled"] = ssl_enabled
+        __props__["sslExpireTime"] = ssl_expire_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/primaryEndpoint:PrimaryEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
     def connection_prefix(self) -> pulumi.Output[_builtins.str]:

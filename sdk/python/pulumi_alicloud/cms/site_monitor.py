@@ -774,6 +774,40 @@ class SiteMonitor(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return SiteMonitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_group: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict', 'outputs.SiteMonitorCustomSchedule']]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict', 'outputs.SiteMonitorIspCity']]]]] = None,
+            option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict', 'outputs.SiteMonitorOptionJson']]] = None,
+            options_json: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_state: pulumi.Input[Optional[_builtins.str]] = None,
+            task_type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["agentGroup"] = agent_group
+        __props__["alertIds"] = alert_ids
+        __props__["createTime"] = create_time
+        __props__["customSchedule"] = custom_schedule
+        __props__["interval"] = interval
+        __props__["ispCities"] = isp_cities
+        __props__["optionJson"] = option_json
+        __props__["optionsJson"] = options_json
+        __props__["status"] = status
+        __props__["taskName"] = task_name
+        __props__["taskState"] = task_state
+        __props__["taskType"] = task_type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:cms/siteMonitor:SiteMonitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

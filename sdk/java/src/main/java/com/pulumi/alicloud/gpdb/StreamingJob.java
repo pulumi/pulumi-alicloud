@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var defaultTXqb15 = new Network("defaultTXqb15", NetworkArgs.builder()
@@ -145,14 +145,14 @@ import javax.annotation.Nullable;
  *         TYPE: int
  *       FORMAT: delimited
  *       DELIMITED_OPTION:
- *         DELIMITER: \\'|\\'
+ *         DELIMITER: }&#92;&#92;{@code '|}&#92;&#92;{@code '
  *     VALUE:
  *       COLUMNS:
  *       - NAME: c_comment
  *         TYPE: varchar
  *       FORMAT: delimited
  *       DELIMITED_OPTION:
- *         DELIMITER: \\'|\\'
+ *         DELIMITER: }&#92;&#92;{@code '|}&#92;&#92;{@code '
  *     ERROR_LIMIT: 10
  *   OUTPUT:
  *     SCHEMA: public
@@ -179,8 +179,8 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

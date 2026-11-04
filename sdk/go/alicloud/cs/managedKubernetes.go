@@ -1167,6 +1167,12 @@ func (ManagedKubernetesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedKubernetesState)(nil)).Elem()
 }
 
+// ManagedKubernetesExists checks whether an existing ManagedKubernetes resource with the given ID exists.
+func ManagedKubernetesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedKubernetesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/managedKubernetes:ManagedKubernetes", id, state, "", opts...)
+}
+
 type managedKubernetesArgs struct {
 	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`

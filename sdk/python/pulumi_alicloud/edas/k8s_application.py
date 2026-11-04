@@ -1509,6 +1509,74 @@ class K8sApplication(pulumi.CustomResource):
         __props__.__dict__["web_container"] = web_container
         return K8sApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            command: pulumi.Input[Optional[_builtins.str]] = None,
+            command_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+            envs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_port: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_slb_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_target_port: pulumi.Input[Optional[_builtins.int]] = None,
+            jdk: pulumi.Input[Optional[_builtins.str]] = None,
+            limit_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            limit_mem: pulumi.Input[Optional[_builtins.int]] = None,
+            liveness: pulumi.Input[Optional[_builtins.str]] = None,
+            local_volume: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_url: pulumi.Input[Optional[_builtins.str]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            post_start: pulumi.Input[Optional[_builtins.str]] = None,
+            pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+            readiness: pulumi.Input[Optional[_builtins.str]] = None,
+            replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            requests_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            requests_mem: pulumi.Input[Optional[_builtins.int]] = None,
+            web_container: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationDescriotion"] = application_descriotion
+        __props__["applicationName"] = application_name
+        __props__["clusterId"] = cluster_id
+        __props__["command"] = command
+        __props__["commandArgs"] = command_args
+        __props__["edasContainerVersion"] = edas_container_version
+        __props__["envs"] = envs
+        __props__["imageUrl"] = image_url
+        __props__["internetSlbId"] = internet_slb_id
+        __props__["internetSlbPort"] = internet_slb_port
+        __props__["internetSlbProtocol"] = internet_slb_protocol
+        __props__["internetTargetPort"] = internet_target_port
+        __props__["jdk"] = jdk
+        __props__["limitMCpu"] = limit_m_cpu
+        __props__["limitMem"] = limit_mem
+        __props__["liveness"] = liveness
+        __props__["localVolume"] = local_volume
+        __props__["logicalRegionId"] = logical_region_id
+        __props__["mountDescs"] = mount_descs
+        __props__["namespace"] = namespace
+        __props__["nasId"] = nas_id
+        __props__["packageType"] = package_type
+        __props__["packageUrl"] = package_url
+        __props__["packageVersion"] = package_version
+        __props__["postStart"] = post_start
+        __props__["preStop"] = pre_stop
+        __props__["readiness"] = readiness
+        __props__["replicas"] = replicas
+        __props__["requestsMCpu"] = requests_m_cpu
+        __props__["requestsMem"] = requests_mem
+        __props__["webContainer"] = web_container
+        return pulumi.runtime.exists_resource(None, 'alicloud:edas/k8sApplication:K8sApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationDescriotion")
     def application_descriotion(self) -> pulumi.Output[Optional[_builtins.str]]:

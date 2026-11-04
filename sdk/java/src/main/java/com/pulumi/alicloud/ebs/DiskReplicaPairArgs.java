@@ -164,22 +164,20 @@ public final class DiskReplicaPairArgs extends com.pulumi.resources.ResourceArgs
     /**
      * . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * @deprecated Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
+    @Deprecated
     @Import(name="pairName")
     private @Nullable Output<String> pairName;
 
     /**
      * @return . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * @deprecated Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
+    @Deprecated
     public Optional<Output<String>> pairName() {
         return Optional.ofNullable(this.pairName);
     }
@@ -555,11 +553,10 @@ public final class DiskReplicaPairArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+         * @deprecated Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
+        @Deprecated
         public Builder pairName(@Nullable Output<String> pairName) {
             $.pairName = pairName;
             return this;
@@ -570,11 +567,10 @@ public final class DiskReplicaPairArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+         * @deprecated Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
+        @Deprecated
         public Builder pairName(String pairName) {
             return pairName(Output.of(pairName));
         }

@@ -273,6 +273,18 @@ class DomainGroup(pulumi.CustomResource):
         __props__.__dict__["lang"] = lang
         return DomainGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["domainGroupName"] = domain_group_name
+        __props__["groupName"] = group_name
+        __props__["lang"] = lang
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/domainGroup:DomainGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="domainGroupName")
     def domain_group_name(self) -> pulumi.Output[_builtins.str]:

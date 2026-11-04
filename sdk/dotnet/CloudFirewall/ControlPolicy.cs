@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        /// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         /// </summary>
         [Output("proto")]
         public Output<string> Proto { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        /// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto", required: true)]
         public Input<string> Proto { get; set; } = null!;
@@ -564,7 +564,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        /// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }

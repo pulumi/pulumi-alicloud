@@ -30,11 +30,10 @@ public final class GetKeyPairsResult {
     /**
      * @return A list of key pairs. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
+     * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
      */
-    @Deprecated /* Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
+    @Deprecated
     private List<GetKeyPairsKeyPair> keyPairs;
     private @Nullable String nameRegex;
     /**
@@ -76,11 +75,10 @@ public final class GetKeyPairsResult {
     /**
      * @return A list of key pairs. Each element contains the following attributes:
      * 
-     * @deprecated
-     * Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
+     * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
      */
-    @Deprecated /* Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead. */
+    @Deprecated
     public List<GetKeyPairsKeyPair> keyPairs() {
         return this.keyPairs;
     }

@@ -78,11 +78,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
  * ```
  * 
- * @deprecated
- * alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser
+ * @deprecated alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser
  * 
  */
-@Deprecated /* alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser */
+@Deprecated
 @ResourceType(type="alicloud:rocketmq/clientUser:ClientUser")
 public class ClientUser extends com.pulumi.resources.CustomResource {
     /**

@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -59,25 +59,25 @@ import javax.annotation.Nullable;
  *             .editingProjectName(name)
  *             .title(name)
  *             .timeline("""
- *   {
- *     \"VideoTracks\":[
- *       {
- *         \"VideoTrackClips\":[
- *           {
- *           \"MediaId\":\"0c60e6f02dae71edbfaa472190a90102\",
- *           \"In\":2811
- *           }
+ *   }{{@code
+ *     }&#92;{@code "VideoTracks}&#92;{@code ":[
+ *       }{{@code
+ *         }&#92;{@code "VideoTrackClips}&#92;{@code ":[
+ *           }{{@code
+ *           }&#92;{@code "MediaId}&#92;{@code ":}&#92;{@code "0c60e6f02dae71edbfaa472190a90102}&#92;{@code ",
+ *           }&#92;{@code "In}&#92;{@code ":2811
+ *           }}{@code
  *         ]
- *       }
+ *       }}{@code
  *     ]
- *   }
+ *   }}{@code
  *             """)
  *             .coverUrl("https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png")
  *             .division(default_.regions()[0].id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

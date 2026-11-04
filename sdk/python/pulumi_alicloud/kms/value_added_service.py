@@ -486,6 +486,28 @@ class ValueAddedService(pulumi.CustomResource):
         __props__.__dict__["value_added_service"] = value_added_service
         return ValueAddedService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            value_added_service: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["regionId"] = region_id
+        __props__["renewPeriod"] = renew_period
+        __props__["renewStatus"] = renew_status
+        __props__["status"] = status
+        __props__["valueAddedService"] = value_added_service
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/valueAddedService:ValueAddedService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

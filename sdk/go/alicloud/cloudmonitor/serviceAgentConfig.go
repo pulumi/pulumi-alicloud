@@ -122,6 +122,12 @@ func (ServiceAgentConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceAgentConfigState)(nil)).Elem()
 }
 
+// ServiceAgentConfigExists checks whether an existing ServiceAgentConfig resource with the given ID exists.
+func ServiceAgentConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceAgentConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudmonitor/serviceAgentConfig:ServiceAgentConfig", id, state, "", opts...)
+}
+
 type serviceAgentConfigArgs struct {
 	// Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
 	// - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.

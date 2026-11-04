@@ -165,6 +165,12 @@ func (SubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionState)(nil)).Elem()
 }
 
+// SubscriptionExists checks whether an existing Subscription resource with the given ID exists.
+func SubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:datahub/subscription:Subscription", id, state, "", opts...)
+}
+
 type subscriptionArgs struct {
 	// Comment of the datahub subscription. It cannot be longer than 255 characters.
 	Comment *string `pulumi:"comment"`

@@ -516,6 +516,32 @@ class Tunnel(pulumi.CustomResource):
         __props__.__dict__["tunnel_type"] = tunnel_type
         return Tunnel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict', 'outputs.TunnelChannel']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_rpo: pulumi.Input[Optional[_builtins.int]] = None,
+            tunnel_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["channels"] = channels
+        __props__["createTime"] = create_time
+        __props__["expired"] = expired
+        __props__["instanceName"] = instance_name
+        __props__["tableName"] = table_name
+        __props__["tunnelId"] = tunnel_id
+        __props__["tunnelName"] = tunnel_name
+        __props__["tunnelRpo"] = tunnel_rpo
+        __props__["tunnelStage"] = tunnel_stage
+        __props__["tunnelType"] = tunnel_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ots/tunnel:Tunnel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def channels(self) -> pulumi.Output[Sequence['outputs.TunnelChannel']]:

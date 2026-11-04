@@ -1263,6 +1263,68 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            core_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            core_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            core_instance_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+            core_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            immediate_delete_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_white: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            master_instance_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+            master_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            slb_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSlbConnAddrArgs', 'InstanceSlbConnAddrArgsDict', 'outputs.InstanceSlbConnAddr']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ui_proxy_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUiProxyConnAddrArgs', 'InstanceUiProxyConnAddrArgsDict', 'outputs.InstanceUiProxyConnAddr']]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zk_conn_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZkConnAddrArgs', 'InstanceZkConnAddrArgsDict', 'outputs.InstanceZkConnAddr']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["autoRenew"] = auto_renew
+        __props__["coldStorageSize"] = cold_storage_size
+        __props__["coreDiskSize"] = core_disk_size
+        __props__["coreDiskType"] = core_disk_type
+        __props__["coreInstanceQuantity"] = core_instance_quantity
+        __props__["coreInstanceType"] = core_instance_type
+        __props__["deletionProtection"] = deletion_protection
+        __props__["duration"] = duration
+        __props__["engine"] = engine
+        __props__["engineVersion"] = engine_version
+        __props__["immediateDeleteFlag"] = immediate_delete_flag
+        __props__["ipWhite"] = ip_white
+        __props__["maintainEndTime"] = maintain_end_time
+        __props__["maintainStartTime"] = maintain_start_time
+        __props__["masterInstanceQuantity"] = master_instance_quantity
+        __props__["masterInstanceType"] = master_instance_type
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["payType"] = pay_type
+        __props__["securityGroups"] = security_groups
+        __props__["slbConnAddrs"] = slb_conn_addrs
+        __props__["tags"] = tags
+        __props__["uiProxyConnAddrs"] = ui_proxy_conn_addrs
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zkConnAddrs"] = zk_conn_addrs
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:hbase/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output[Optional[_builtins.str]]:

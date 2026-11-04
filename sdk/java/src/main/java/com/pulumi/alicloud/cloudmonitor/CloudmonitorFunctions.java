@@ -519,12 +519,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -547,10 +547,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -578,8 +578,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -619,12 +619,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -647,10 +647,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -678,8 +678,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -719,12 +719,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -747,10 +747,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -778,8 +778,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -819,12 +819,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -847,10 +847,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -878,8 +878,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -919,12 +919,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -947,10 +947,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -978,8 +978,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1019,12 +1019,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -1047,10 +1047,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -1078,8 +1078,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -1119,12 +1119,12 @@ public final class CloudmonitorFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
@@ -1147,10 +1147,10 @@ public final class CloudmonitorFunctions {
      *             .effectiveInterval("06:00-20:00")
      *             .metricDimensions("""
      *   [
-     *     {
-     *       \"instanceId\": \"%s\",
-     *       \"device\": \"/dev/vda1\"
-     *     }
+     *     }{{@code
+     *       }&#92;{@code "instanceId}&#92;{@code ": }&#92;{@code "%s}&#92;{@code ",
+     *       }&#92;{@code "device}&#92;{@code ": }&#92;{@code "/dev/vda1}&#92;{@code "
+     *     }}{@code
      *   ]
      * ", default_.ids()[0]))
      *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
@@ -1178,8 +1178,8 @@ public final class CloudmonitorFunctions {
      *             .build());
      * 
      *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules().get(0).id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

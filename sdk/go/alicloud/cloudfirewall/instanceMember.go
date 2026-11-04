@@ -160,6 +160,12 @@ func (InstanceMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceMemberState)(nil)).Elem()
 }
 
+// InstanceMemberExists checks whether an existing InstanceMember resource with the given ID exists.
+func InstanceMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/instanceMember:InstanceMember", id, state, "", opts...)
+}
+
 type instanceMemberArgs struct {
 	// Remarks of cloud firewall member accounts.
 	MemberDesc *string `pulumi:"memberDesc"`

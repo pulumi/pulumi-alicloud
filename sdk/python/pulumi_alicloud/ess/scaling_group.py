@@ -2018,6 +2018,96 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return ScalingGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict', 'outputs.ScalingGroupAlbServerGroup']]]]] = None,
+            allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+            az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
+            balance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity_options_compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            capacity_options_on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            capacity_options_on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            capacity_options_price_comparison_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity_options_spot_auto_replace_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            group_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict', 'outputs.ScalingGroupLaunchTemplateOverride']]]]] = None,
+            launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            protected_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            removal_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
+            spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+            stop_instance_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["albServerGroups"] = alb_server_groups
+        __props__["allocationStrategy"] = allocation_strategy
+        __props__["autoRebalance"] = auto_rebalance
+        __props__["azBalance"] = az_balance
+        __props__["balanceMode"] = balance_mode
+        __props__["capacityOptionsCompensateWithOnDemand"] = capacity_options_compensate_with_on_demand
+        __props__["capacityOptionsOnDemandBaseCapacity"] = capacity_options_on_demand_base_capacity
+        __props__["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = capacity_options_on_demand_percentage_above_base_capacity
+        __props__["capacityOptionsPriceComparisonMode"] = capacity_options_price_comparison_mode
+        __props__["capacityOptionsSpotAutoReplaceOnDemand"] = capacity_options_spot_auto_replace_on_demand
+        __props__["compensateWithOnDemand"] = compensate_with_on_demand
+        __props__["containerGroupId"] = container_group_id
+        __props__["dbInstanceIds"] = db_instance_ids
+        __props__["defaultCooldown"] = default_cooldown
+        __props__["desiredCapacity"] = desired_capacity
+        __props__["groupDeletionProtection"] = group_deletion_protection
+        __props__["groupType"] = group_type
+        __props__["healthCheckType"] = health_check_type
+        __props__["healthCheckTypes"] = health_check_types
+        __props__["instanceId"] = instance_id
+        __props__["launchTemplateId"] = launch_template_id
+        __props__["launchTemplateOverrides"] = launch_template_overrides
+        __props__["launchTemplateVersion"] = launch_template_version
+        __props__["loadbalancerIds"] = loadbalancer_ids
+        __props__["maxInstanceLifetime"] = max_instance_lifetime
+        __props__["maxSize"] = max_size
+        __props__["minSize"] = min_size
+        __props__["multiAzPolicy"] = multi_az_policy
+        __props__["onDemandBaseCapacity"] = on_demand_base_capacity
+        __props__["onDemandPercentageAboveBaseCapacity"] = on_demand_percentage_above_base_capacity
+        __props__["protectedInstances"] = protected_instances
+        __props__["removalPolicies"] = removal_policies
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scalingGroupName"] = scaling_group_name
+        __props__["scalingPolicy"] = scaling_policy
+        __props__["spotAllocationStrategy"] = spot_allocation_strategy
+        __props__["spotInstancePools"] = spot_instance_pools
+        __props__["spotInstanceRemedy"] = spot_instance_remedy
+        __props__["stopInstanceTimeout"] = stop_instance_timeout
+        __props__["tags"] = tags
+        __props__["vswitchId"] = vswitch_id
+        __props__["vswitchIds"] = vswitch_ids
+        return pulumi.runtime.exists_resource(None, 'alicloud:ess/scalingGroup:ScalingGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="albServerGroups")
     def alb_server_groups(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingGroupAlbServerGroup']]]:

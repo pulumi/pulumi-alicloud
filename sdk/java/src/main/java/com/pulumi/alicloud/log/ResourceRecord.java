@@ -55,21 +55,21 @@ import javax.annotation.Nullable;
  *             .extInfo("}{}{@code ")
  *             .schema("""
  *     }{{@code
- *       \"schema\": [
+ *       }&#92;{@code "schema}&#92;{@code ": [
  *         }{{@code
- *           \"column\": \"col1\",
- *           \"desc\": \"col1   desc\",
- *           \"ext_info\": }{{@code
+ *           }&#92;{@code "column}&#92;{@code ": }&#92;{@code "col1}&#92;{@code ",
+ *           }&#92;{@code "desc}&#92;{@code ": }&#92;{@code "col1   desc}&#92;{@code ",
+ *           }&#92;{@code "ext_info}&#92;{@code ": }{{@code
  *           }}{@code ,
- *           \"required\": true,
- *           \"type\": \"string\"
+ *           }&#92;{@code "required}&#92;{@code ": true,
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
  *         }}{@code ,
  *         }{{@code
- *           \"column\": \"col2\",
- *           \"desc\": \"col2   desc\",
- *           \"ext_info\": \"optional\",
- *           \"required\": true,
- *           \"type\": \"string\"
+ *           }&#92;{@code "column}&#92;{@code ": }&#92;{@code "col2}&#92;{@code ",
+ *           }&#92;{@code "desc}&#92;{@code ": }&#92;{@code "col2   desc}&#92;{@code ",
+ *           }&#92;{@code "ext_info}&#92;{@code ": }&#92;{@code "optional}&#92;{@code ",
+ *           }&#92;{@code "required}&#92;{@code ": true,
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "
  *         }}{@code
  *       ]
  *     }}{@code
@@ -82,16 +82,16 @@ import javax.annotation.Nullable;
  *             .tag("tf example")
  *             .value("""
  * }{{@code
- *   \"user_name\": \"tf example\",
- *   \"sms_enabled\": true,
- *   \"phone\": \"18888888889\",
- *   \"voice_enabled\": false,
- *   \"email\": [
- *     \"test}{@literal @}{@code qq.com\"
+ *   }&#92;{@code "user_name}&#92;{@code ": }&#92;{@code "tf example}&#92;{@code ",
+ *   }&#92;{@code "sms_enabled}&#92;{@code ": true,
+ *   }&#92;{@code "phone}&#92;{@code ": }&#92;{@code "18888888889}&#92;{@code ",
+ *   }&#92;{@code "voice_enabled}&#92;{@code ": false,
+ *   }&#92;{@code "email}&#92;{@code ": [
+ *     }&#92;{@code "test}{@literal @}{@code qq.com}&#92;{@code "
  *   ],
- *   \"enabled\": true,
- *   \"user_id\": \"tf_user\",
- *   \"country_code\": \"86\"
+ *   }&#92;{@code "enabled}&#92;{@code ": true,
+ *   }&#92;{@code "user_id}&#92;{@code ": }&#92;{@code "tf_user}&#92;{@code ",
+ *   }&#92;{@code "country_code}&#92;{@code ": }&#92;{@code "86}&#92;{@code "
  * }}{@code
  *             """)
  *             .build());

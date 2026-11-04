@@ -137,11 +137,10 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
     /**
      * The resource record of the Private Zone Record.
      * 
-     * @deprecated
-     * Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
+     * @deprecated Field &#39;resource_record&#39; has been deprecated from version 1.109.0. Use &#39;rr&#39; instead.
      * 
      */
-    @Deprecated /* Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead. */
+    @Deprecated
     @Export(name="resourceRecord", refs={String.class}, tree="[0]")
     private Output<String> resourceRecord;
 

@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -152,15 +152,15 @@ import javax.annotation.Nullable;
  *             .sourceEndpointInstanceId(defaultInstance.id())
  *             .sourceEndpointUserName(defaultAccountPrivilege.accountName())
  *             .sourceEndpointPassword(defaultRdsAccount.accountPassword())
- *             .backupObjects(defaultDatabase.name().applyValue(_name -> String.format("[{{\"DBName\":\"%s\"}}]", _name)))
+ *             .backupObjects(defaultDatabase.name().applyValue(_name -> String.format("[}{{&#92;{@code "DBName}&#92;{@code ":}&#92;{@code "%s}&#92;{@code "}}}{@code ]", _name)))
  *             .backupPeriod("Monday")
  *             .backupStartTime("14:22")
  *             .backupStorageType("system")
  *             .backupRetentionPeriod(740)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

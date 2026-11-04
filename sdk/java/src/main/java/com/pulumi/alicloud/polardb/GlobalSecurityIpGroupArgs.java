@@ -17,7 +17,7 @@ public final class GlobalSecurityIpGroupArgs extends com.pulumi.resources.Resour
     /**
      * The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
      * 
-     * - The name can contain lowercase letters, digits, and underscores (\_).
+     * - The name can contain lowercase letters, digits, and underscores (&#92;_).
      * - The name must start with a letter and end with a letter or digit.
      * - The name must be 2 to 120 characters in length.
      * 
@@ -28,7 +28,7 @@ public final class GlobalSecurityIpGroupArgs extends com.pulumi.resources.Resour
     /**
      * @return The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
      * 
-     * - The name can contain lowercase letters, digits, and underscores (\_).
+     * - The name can contain lowercase letters, digits, and underscores (&#92;_).
      * - The name must start with a letter and end with a letter or digit.
      * - The name must be 2 to 120 characters in length.
      * 
@@ -84,7 +84,7 @@ public final class GlobalSecurityIpGroupArgs extends com.pulumi.resources.Resour
         /**
          * @param globalIpGroupName The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
          * 
-         * - The name can contain lowercase letters, digits, and underscores (\_).
+         * - The name can contain lowercase letters, digits, and underscores (&#92;_).
          * - The name must start with a letter and end with a letter or digit.
          * - The name must be 2 to 120 characters in length.
          * 
@@ -99,7 +99,7 @@ public final class GlobalSecurityIpGroupArgs extends com.pulumi.resources.Resour
         /**
          * @param globalIpGroupName The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
          * 
-         * - The name can contain lowercase letters, digits, and underscores (\_).
+         * - The name can contain lowercase letters, digits, and underscores (&#92;_).
          * - The name must start with a letter and end with a letter or digit.
          * - The name must be 2 to 120 characters in length.
          * 

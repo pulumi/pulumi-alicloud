@@ -498,6 +498,12 @@ func (EciScalingConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eciScalingConfigurationState)(nil)).Elem()
 }
 
+// EciScalingConfigurationExists checks whether an existing EciScalingConfiguration resource with the given ID exists.
+func EciScalingConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EciScalingConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration", id, state, "", opts...)
+}
+
 type eciScalingConfigurationArgs struct {
 	// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 	AcrRegistryInfos []EciScalingConfigurationAcrRegistryInfo `pulumi:"acrRegistryInfos"`

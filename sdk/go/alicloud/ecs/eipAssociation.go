@@ -294,6 +294,12 @@ func (EipAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipAssociationState)(nil)).Elem()
 }
 
+// EipAssociationExists checks whether an existing EipAssociation resource with the given ID exists.
+func EipAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EipAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/eipAssociation:EipAssociation", id, state, "", opts...)
+}
+
 type eipAssociationArgs struct {
 	// The ID of the EIP instance.
 	AllocationId string `pulumi:"allocationId"`

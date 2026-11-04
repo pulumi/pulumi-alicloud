@@ -150,11 +150,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:index/starRocksInstance:StarRocksInstance example &lt;id&gt;
  * ```
  * 
- * @deprecated
- * alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance
+ * @deprecated alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance
  * 
  */
-@Deprecated /* alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance */
+@Deprecated
 @ResourceType(type="alicloud:index/starRocksInstance:StarRocksInstance")
 public class StarRocksInstance extends com.pulumi.resources.CustomResource {
     /**

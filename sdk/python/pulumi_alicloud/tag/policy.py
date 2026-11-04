@@ -330,6 +330,20 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["user_type"] = user_type
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            policy_content: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["policyContent"] = policy_content
+        __props__["policyDesc"] = policy_desc
+        __props__["policyName"] = policy_name
+        __props__["userType"] = user_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:tag/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="policyContent")
     def policy_content(self) -> pulumi.Output[_builtins.str]:

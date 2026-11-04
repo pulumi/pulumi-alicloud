@@ -253,6 +253,12 @@ func (EdgeContainerAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeContainerAppState)(nil)).Elem()
 }
 
+// EdgeContainerAppExists checks whether an existing EdgeContainerApp resource with the given ID exists.
+func EdgeContainerAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeContainerAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/edgeContainerApp:EdgeContainerApp", id, state, "", opts...)
+}
+
 type edgeContainerAppArgs struct {
 	// The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
 	EdgeContainerAppName string `pulumi:"edgeContainerAppName"`

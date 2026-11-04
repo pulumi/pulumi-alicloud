@@ -168,11 +168,10 @@ public class KeyPairAttachment extends com.pulumi.resources.CustomResource {
     /**
      * The name of key pair used to bind.
      * 
-     * @deprecated
-     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      * 
      */
-    @Deprecated /* Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead. */
+    @Deprecated
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 

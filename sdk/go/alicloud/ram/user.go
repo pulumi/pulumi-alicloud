@@ -155,6 +155,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ram/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
 	Comments *string `pulumi:"comments"`

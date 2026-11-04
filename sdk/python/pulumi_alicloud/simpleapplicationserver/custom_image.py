@@ -410,6 +410,22 @@ class CustomImage(pulumi.CustomResource):
         __props__.__dict__["system_snapshot_id"] = system_snapshot_id
         return CustomImage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            system_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customImageName"] = custom_image_name
+        __props__["description"] = description
+        __props__["instanceId"] = instance_id
+        __props__["status"] = status
+        __props__["systemSnapshotId"] = system_snapshot_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:simpleapplicationserver/customImage:CustomImage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customImageName")
     def custom_image_name(self) -> pulumi.Output[_builtins.str]:

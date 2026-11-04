@@ -471,6 +471,24 @@ class CustomDeploymentSet(pulumi.CustomResource):
         __props__.__dict__["strategy"] = strategy
         return CustomDeploymentSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            group_count: pulumi.Input[Optional[_builtins.int]] = None,
+            on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customDeploymentSetName"] = custom_deployment_set_name
+        __props__["description"] = description
+        __props__["groupCount"] = group_count
+        __props__["onUnableToRedeployFailedInstance"] = on_unable_to_redeploy_failed_instance
+        __props__["status"] = status
+        __props__["strategy"] = strategy
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/customDeploymentSet:CustomDeploymentSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customDeploymentSetName")
     def custom_deployment_set_name(self) -> pulumi.Output[Optional[_builtins.str]]:

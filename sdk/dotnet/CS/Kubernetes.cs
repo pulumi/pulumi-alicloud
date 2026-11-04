@@ -386,7 +386,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbInternet { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
@@ -847,7 +847,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
 
         /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
@@ -1309,7 +1309,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SlbInternet { get; set; }
 
         /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         /// 
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.

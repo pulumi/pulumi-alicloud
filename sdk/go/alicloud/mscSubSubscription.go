@@ -174,6 +174,12 @@ func (MscSubSubscriptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mscSubSubscriptionState)(nil)).Elem()
 }
 
+// MscSubSubscriptionExists checks whether an existing MscSubSubscription resource with the given ID exists.
+func MscSubSubscriptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MscSubSubscriptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:index/mscSubSubscription:MscSubSubscription", id, state, "", opts...)
+}
+
 type mscSubSubscriptionArgs struct {
 	// The ids of subscribed contacts.
 	// **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.

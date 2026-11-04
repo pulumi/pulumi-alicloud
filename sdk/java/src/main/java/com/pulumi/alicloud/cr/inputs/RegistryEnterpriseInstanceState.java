@@ -37,22 +37,20 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
     /**
      * . Field &#39;created_time&#39; has been deprecated from provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
+     * @deprecated Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
      */
-    @Deprecated /* Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead. */
+    @Deprecated
     @Import(name="createdTime")
     private @Nullable Output<String> createdTime;
 
     /**
      * @return . Field &#39;created_time&#39; has been deprecated from provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
+     * @deprecated Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
      */
-    @Deprecated /* Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead. */
+    @Deprecated
     public Optional<Output<String>> createdTime() {
         return Optional.ofNullable(this.createdTime);
     }
@@ -508,11 +506,10 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
+         * @deprecated Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
          * 
          */
-        @Deprecated /* Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead. */
+        @Deprecated
         public Builder createdTime(@Nullable Output<String> createdTime) {
             $.createdTime = createdTime;
             return this;
@@ -523,11 +520,10 @@ public final class RegistryEnterpriseInstanceState extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
+         * @deprecated Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
          * 
          */
-        @Deprecated /* Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead. */
+        @Deprecated
         public Builder createdTime(String createdTime) {
             return createdTime(Output.of(createdTime));
         }

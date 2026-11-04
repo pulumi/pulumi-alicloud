@@ -236,6 +236,12 @@ func (DispatchRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dispatchRuleState)(nil)).Elem()
 }
 
+// DispatchRuleExists checks whether an existing DispatchRule resource with the given ID exists.
+func DispatchRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DispatchRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/dispatchRule:DispatchRule", id, state, "", opts...)
+}
+
 type dispatchRuleArgs struct {
 	// The name of the dispatch policy.
 	DispatchRuleName string `pulumi:"dispatchRuleName"`

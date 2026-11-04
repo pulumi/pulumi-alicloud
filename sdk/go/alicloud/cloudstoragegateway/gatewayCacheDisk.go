@@ -219,6 +219,12 @@ func (GatewayCacheDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayCacheDiskState)(nil)).Elem()
 }
 
+// GatewayCacheDiskExists checks whether an existing GatewayCacheDisk resource with the given ID exists.
+func GatewayCacheDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GatewayCacheDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk", id, state, "", opts...)
+}
+
 type gatewayCacheDiskArgs struct {
 	// The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
 	CacheDiskCategory *string `pulumi:"cacheDiskCategory"`

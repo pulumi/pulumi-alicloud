@@ -353,6 +353,12 @@ func (JobMonitorRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobMonitorRuleState)(nil)).Elem()
 }
 
+// JobMonitorRuleExists checks whether an existing JobMonitorRule resource with the given ID exists.
+func JobMonitorRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobMonitorRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dts/jobMonitorRule:JobMonitorRule", id, state, "", opts...)
+}
+
 type jobMonitorRuleArgs struct {
 	// Trigger delay alarm threshold, which is measured in seconds.
 	DelayRuleTime *string `pulumi:"delayRuleTime"`

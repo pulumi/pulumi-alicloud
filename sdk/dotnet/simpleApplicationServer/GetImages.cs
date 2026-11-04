@@ -40,7 +40,6 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// });
         /// ```
         /// 
-        /// 
         /// The following arguments are supported:
         /// 
         /// * `Ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -81,7 +80,6 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// });
         /// ```
         /// 
-        /// 
         /// The following arguments are supported:
         /// 
         /// * `Ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
@@ -121,7 +119,6 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// 
         /// 
         /// The following arguments are supported:
         /// 

@@ -221,6 +221,12 @@ func (PatchBaselineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*patchBaselineState)(nil)).Elem()
 }
 
+// PatchBaselineExists checks whether an existing PatchBaseline resource with the given ID exists.
+func PatchBaselineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PatchBaselineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oos/patchBaseline:PatchBaseline", id, state, "", opts...)
+}
+
 type patchBaselineArgs struct {
 	// This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
 	ApprovalRules string `pulumi:"approvalRules"`

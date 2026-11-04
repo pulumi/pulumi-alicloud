@@ -244,6 +244,12 @@ func (CapacityReservationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*capacityReservationState)(nil)).Elem()
 }
 
+// CapacityReservationExists checks whether an existing CapacityReservation resource with the given ID exists.
+func CapacityReservationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CapacityReservationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/capacityReservation:CapacityReservation", id, state, "", opts...)
+}
+
 type capacityReservationArgs struct {
 	// Capacity reservation service name.
 	CapacityReservationName *string `pulumi:"capacityReservationName"`

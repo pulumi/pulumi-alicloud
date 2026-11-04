@@ -271,6 +271,12 @@ func (SearchIndexState) ElementType() reflect.Type {
 	return reflect.TypeOf((*searchIndexState)(nil)).Elem()
 }
 
+// SearchIndexExists checks whether an existing SearchIndex resource with the given ID exists.
+func SearchIndexExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SearchIndexState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ots/searchIndex:SearchIndex", id, state, "", opts...)
+}
+
 type searchIndexArgs struct {
 	// The index name of the OTS Table. If changed, a new index would be created.
 	IndexName string `pulumi:"indexName"`

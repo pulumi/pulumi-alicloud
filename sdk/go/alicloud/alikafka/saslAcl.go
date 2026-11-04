@@ -330,6 +330,12 @@ func (SaslAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*saslAclState)(nil)).Elem()
 }
 
+// SaslAclExists checks whether an existing SaslAcl resource with the given ID exists.
+func SaslAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SaslAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alikafka/saslAcl:SaslAcl", id, state, "", opts...)
+}
+
 type saslAclArgs struct {
 	// Operation type. Valid values:
 	// - `Write`: write

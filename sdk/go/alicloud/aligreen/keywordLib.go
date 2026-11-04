@@ -193,6 +193,12 @@ func (KeywordLibState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keywordLibState)(nil)).Elem()
 }
 
+// KeywordLibExists checks whether an existing KeywordLib resource with the given ID exists.
+func KeywordLibExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeywordLibState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:aligreen/keywordLib:KeywordLib", id, state, "", opts...)
+}
+
 type keywordLibArgs struct {
 	// The business scenario. Example:["bizTypeA","bizTypeB"]
 	BizTypes []string `pulumi:"bizTypes"`

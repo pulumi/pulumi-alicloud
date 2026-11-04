@@ -498,6 +498,30 @@ class Eip(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Eip(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["eipName"] = eip_name
+        __props__["ensRegionId"] = ens_region_id
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["isp"] = isp
+        __props__["paymentType"] = payment_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/eip:Eip', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:

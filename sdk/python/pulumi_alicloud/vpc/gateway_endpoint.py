@@ -572,6 +572,32 @@ class GatewayEndpoint(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return GatewayEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_endpoint_descrption: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["gatewayEndpointDescrption"] = gateway_endpoint_descrption
+        __props__["gatewayEndpointName"] = gateway_endpoint_name
+        __props__["policyDocument"] = policy_document
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["routeTables"] = route_tables
+        __props__["serviceName"] = service_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/gatewayEndpoint:GatewayEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

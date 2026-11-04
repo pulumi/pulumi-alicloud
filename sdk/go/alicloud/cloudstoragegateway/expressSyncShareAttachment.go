@@ -272,6 +272,12 @@ func (ExpressSyncShareAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*expressSyncShareAttachmentState)(nil)).Elem()
 }
 
+// ExpressSyncShareAttachmentExists checks whether an existing ExpressSyncShareAttachment resource with the given ID exists.
+func ExpressSyncShareAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExpressSyncShareAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment", id, state, "", opts...)
+}
+
 type expressSyncShareAttachmentArgs struct {
 	// The ID of the ExpressSync.
 	ExpressSyncId string `pulumi:"expressSyncId"`

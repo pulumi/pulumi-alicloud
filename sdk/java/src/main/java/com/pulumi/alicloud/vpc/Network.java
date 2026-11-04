@@ -111,11 +111,10 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
      * 
-     * @deprecated
-     * Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
+     * @deprecated Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      * 
      */
-    @Deprecated /* Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. */
+    @Deprecated
     @Export(name="classicLinkEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> classicLinkEnabled;
 
@@ -249,11 +248,10 @@ public class Network extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
-     * @deprecated
-     * Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * @deprecated Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
      * 
      */
-    @Deprecated /* Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
+    @Deprecated
     @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
 
@@ -289,11 +287,10 @@ public class Network extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
-     * @deprecated
-     * Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * @deprecated Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
      * 
      */
-    @Deprecated /* Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
+    @Deprecated
     @Export(name="ipv6Isp", refs={String.class}, tree="[0]")
     private Output<String> ipv6Isp;
 
@@ -327,11 +324,10 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -405,11 +401,10 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;router_table_id&#39; has been deprecated from provider version 1.227.1. New field &#39;route_table_id&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
+     * @deprecated Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead. */
+    @Deprecated
     @Export(name="routerTableId", refs={String.class}, tree="[0]")
     private Output<String> routerTableId;
 
@@ -423,11 +418,10 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
-     * @deprecated
-     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @deprecated Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated
     @Export(name="secondaryCidrBlocks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> secondaryCidrBlocks;
 
@@ -441,11 +435,10 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. New resource &#39;alicloud_vpc_ipv4_cidr_block&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @deprecated Field &#39;secondary_cidr_mask&#39; has been deprecated from provider version 1.248.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated
     @Export(name="secondaryCidrMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> secondaryCidrMask;
 

@@ -851,6 +851,42 @@ class DynamoTable(pulumi.CustomResource):
         __props__.__dict__["write_capacity"] = write_capacity
         return DynamoTable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_auth: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableAttributeArgs', 'DynamoTableAttributeArgsDict', 'outputs.DynamoTableAttribute']]]]] = None,
+            billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            global_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableGlobalSecondaryIndexArgs', 'DynamoTableGlobalSecondaryIndexArgsDict', 'outputs.DynamoTableGlobalSecondaryIndex']]]]] = None,
+            hash_key: pulumi.Input[Optional[_builtins.str]] = None,
+            local_secondary_indices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamoTableLocalSecondaryIndexArgs', 'DynamoTableLocalSecondaryIndexArgsDict', 'outputs.DynamoTableLocalSecondaryIndex']]]]] = None,
+            range_key: pulumi.Input[Optional[_builtins.str]] = None,
+            read_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[Union['DynamoTableTtlArgs', 'DynamoTableTtlArgsDict', 'outputs.DynamoTableTtl']]] = None,
+            write_capacity: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountAuth"] = account_auth
+        __props__["accountName"] = account_name
+        __props__["arn"] = arn
+        __props__["attributes"] = attributes
+        __props__["billingMode"] = billing_mode
+        __props__["dbClusterId"] = db_cluster_id
+        __props__["endpoint"] = endpoint
+        __props__["globalSecondaryIndices"] = global_secondary_indices
+        __props__["hashKey"] = hash_key
+        __props__["localSecondaryIndices"] = local_secondary_indices
+        __props__["rangeKey"] = range_key
+        __props__["readCapacity"] = read_capacity
+        __props__["tableName"] = table_name
+        __props__["ttl"] = ttl
+        __props__["writeCapacity"] = write_capacity
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/dynamoTable:DynamoTable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountAuth")
     def account_auth(self) -> pulumi.Output[_builtins.str]:

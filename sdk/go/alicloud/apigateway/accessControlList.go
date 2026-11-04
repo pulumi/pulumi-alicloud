@@ -153,6 +153,12 @@ func (AccessControlListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessControlListState)(nil)).Elem()
 }
 
+// AccessControlListExists checks whether an existing AccessControlList resource with the given ID exists.
+func AccessControlListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessControlListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/accessControlList:AccessControlList", id, state, "", opts...)
+}
+
 type accessControlListArgs struct {
 	// Access control list name.
 	AccessControlListName string `pulumi:"accessControlListName"`

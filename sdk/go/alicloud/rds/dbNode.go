@@ -213,6 +213,12 @@ func (DbNodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbNodeState)(nil)).Elem()
 }
 
+// DbNodeExists checks whether an existing DbNode resource with the given ID exists.
+func DbNodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbNodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/dbNode:DbNode", id, state, "", opts...)
+}
+
 type dbNodeArgs struct {
 	// The specification information of the node.
 	ClassCode string `pulumi:"classCode"`

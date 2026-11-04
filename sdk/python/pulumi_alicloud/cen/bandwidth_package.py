@@ -700,6 +700,38 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return BandwidthPackage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            cen_bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            geographic_region_a_id: pulumi.Input[Optional[_builtins.str]] = None,
+            geographic_region_b_id: pulumi.Input[Optional[_builtins.str]] = None,
+            geographic_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRenew"] = auto_renew
+        __props__["bandwidth"] = bandwidth
+        __props__["cenBandwidthPackageName"] = cen_bandwidth_package_name
+        __props__["chargeType"] = charge_type
+        __props__["description"] = description
+        __props__["expiredTime"] = expired_time
+        __props__["geographicRegionAId"] = geographic_region_a_id
+        __props__["geographicRegionBId"] = geographic_region_b_id
+        __props__["geographicRegionIds"] = geographic_region_ids
+        __props__["name"] = name
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/bandwidthPackage:BandwidthPackage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:

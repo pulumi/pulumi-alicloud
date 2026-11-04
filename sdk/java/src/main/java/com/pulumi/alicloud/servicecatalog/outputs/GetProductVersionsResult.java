@@ -41,11 +41,10 @@ public final class GetProductVersionsResult {
      */
     private List<GetProductVersionsProductVersion> productVersions;
     /**
-     * @deprecated
-     * Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
+     * @deprecated Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
      * 
      */
-    @Deprecated /* Field 'versions' has been deprecated from provider version 1.197.0. */
+    @Deprecated
     private List<GetProductVersionsVersion> versions;
 
     private GetProductVersionsResult() {}
@@ -90,11 +89,10 @@ public final class GetProductVersionsResult {
         return this.productVersions;
     }
     /**
-     * @deprecated
-     * Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
+     * @deprecated Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
      * 
      */
-    @Deprecated /* Field 'versions' has been deprecated from provider version 1.197.0. */
+    @Deprecated
     public List<GetProductVersionsVersion> versions() {
         return this.versions;
     }

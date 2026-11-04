@@ -20,20 +20,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     public static final ListenerState Empty = new ListenerState();
 
     /**
-     * @deprecated
-     * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+     * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      * 
      */
-    @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
+    @Deprecated
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
     /**
-     * @deprecated
-     * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+     * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      * 
      */
-    @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
+    @Deprecated
     public Optional<Output<String>> aclId() {
         return Optional.ofNullable(this.aclId);
     }
@@ -291,20 +289,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
+     * @deprecated Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead. */
+    @Deprecated
     @Import(name="sslCertificateId")
     private @Nullable Output<String> sslCertificateId;
 
     /**
-     * @deprecated
-     * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
+     * @deprecated Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead. */
+    @Deprecated
     public Optional<Output<String>> sslCertificateId() {
         return Optional.ofNullable(this.sslCertificateId);
     }
@@ -421,11 +417,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+         * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
          * 
          */
-        @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
+        @Deprecated
         public Builder aclId(@Nullable Output<String> aclId) {
             $.aclId = aclId;
             return this;
@@ -434,11 +429,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
+         * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
          * 
          */
-        @Deprecated /* Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead. */
+        @Deprecated
         public Builder aclId(String aclId) {
             return aclId(Output.of(aclId));
         }
@@ -774,11 +768,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
+         * @deprecated Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead. */
+        @Deprecated
         public Builder sslCertificateId(@Nullable Output<String> sslCertificateId) {
             $.sslCertificateId = sslCertificateId;
             return this;
@@ -787,11 +780,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
+         * @deprecated Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead. */
+        @Deprecated
         public Builder sslCertificateId(String sslCertificateId) {
             return sslCertificateId(Output.of(sslCertificateId));
         }

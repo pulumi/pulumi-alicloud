@@ -158,6 +158,12 @@ func (EnterpriseWorkspaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*enterpriseWorkspaceState)(nil)).Elem()
 }
 
+// EnterpriseWorkspaceExists checks whether an existing EnterpriseWorkspace resource with the given ID exists.
+func EnterpriseWorkspaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnterpriseWorkspaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace", id, state, "", opts...)
+}
+
 type enterpriseWorkspaceArgs struct {
 	// The description of the Workspace.
 	Description string `pulumi:"description"`

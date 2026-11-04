@@ -266,6 +266,12 @@ func (CustomRoutingEndpointTrafficPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customRoutingEndpointTrafficPolicyState)(nil)).Elem()
 }
 
+// CustomRoutingEndpointTrafficPolicyExists checks whether an existing CustomRoutingEndpointTrafficPolicy resource with the given ID exists.
+func CustomRoutingEndpointTrafficPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomRoutingEndpointTrafficPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy", id, state, "", opts...)
+}
+
 type customRoutingEndpointTrafficPolicyArgs struct {
 	// The IP address of the destination to which traffic is allowed.
 	Address string `pulumi:"address"`

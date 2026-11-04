@@ -20,22 +20,20 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
     /**
      * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      * 
-     * @deprecated
-     * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
      * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      * 
-     * @deprecated
-     * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     public Optional<Output<Integer>> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
@@ -133,22 +131,20 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
     /**
      * Whether the Open Internet Access Function.
      * 
-     * @deprecated
-     * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     @Import(name="enableInternetAccess")
     private @Nullable Output<Boolean> enableInternetAccess;
 
     /**
      * @return Whether the Open Internet Access Function.
      * 
-     * @deprecated
-     * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+     * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
      * 
      */
-    @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+    @Deprecated
     public Optional<Output<Boolean>> enableInternetAccess() {
         return Optional.ofNullable(this.enableInternetAccess);
     }
@@ -253,11 +249,10 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+         * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
          * 
          */
-        @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+        @Deprecated
         public Builder bandwidth(@Nullable Output<Integer> bandwidth) {
             $.bandwidth = bandwidth;
             return this;
@@ -268,11 +263,10 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
+         * @deprecated Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
          * 
          */
-        @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
+        @Deprecated
         public Builder bandwidth(Integer bandwidth) {
             return bandwidth(Output.of(bandwidth));
         }
@@ -408,11 +402,10 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+         * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
          * 
          */
-        @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+        @Deprecated
         public Builder enableInternetAccess(@Nullable Output<Boolean> enableInternetAccess) {
             $.enableInternetAccess = enableInternetAccess;
             return this;
@@ -423,11 +416,10 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
+         * @deprecated Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
          * 
          */
-        @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
+        @Deprecated
         public Builder enableInternetAccess(Boolean enableInternetAccess) {
             return enableInternetAccess(Output.of(enableInternetAccess));
         }

@@ -490,6 +490,12 @@ func (EcsInstanceSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsInstanceSetState)(nil)).Elem()
 }
 
+// EcsInstanceSetExists checks whether an existing EcsInstanceSet resource with the given ID exists.
+func EcsInstanceSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsInstanceSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/ecsInstanceSet:EcsInstanceSet", id, state, "", opts...)
+}
+
 type ecsInstanceSetArgs struct {
 	// The number of instances that you want to create. Valid values: `1` to `100`.
 	Amount *int `pulumi:"amount"`

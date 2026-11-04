@@ -201,6 +201,12 @@ func (EipInstanceAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipInstanceAttachmentState)(nil)).Elem()
 }
 
+// EipInstanceAttachmentExists checks whether an existing EipInstanceAttachment resource with the given ID exists.
+func EipInstanceAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EipInstanceAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ens/eipInstanceAttachment:EipInstanceAttachment", id, state, "", opts...)
+}
+
 type eipInstanceAttachmentArgs struct {
 	// The first ID of the resource
 	AllocationId string `pulumi:"allocationId"`

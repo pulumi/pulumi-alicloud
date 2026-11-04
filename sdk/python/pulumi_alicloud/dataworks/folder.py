@@ -283,6 +283,20 @@ class Folder(pulumi.CustomResource):
         __props__.__dict__["project_identifier"] = project_identifier
         return Folder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_identifier: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["folderId"] = folder_id
+        __props__["folderPath"] = folder_path
+        __props__["projectId"] = project_id
+        __props__["projectIdentifier"] = project_identifier
+        return pulumi.runtime.exists_resource(None, 'alicloud:dataworks/folder:Folder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[_builtins.str]:

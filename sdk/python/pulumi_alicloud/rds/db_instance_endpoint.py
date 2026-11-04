@@ -635,6 +635,36 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         return DbInstanceEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceEndpointNodeItemArgs', 'DbInstanceEndpointNodeItemArgsDict', 'outputs.DbInstanceEndpointNodeItem']]]]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionString"] = connection_string
+        __props__["connectionStringPrefix"] = connection_string_prefix
+        __props__["dbInstanceEndpointDescription"] = db_instance_endpoint_description
+        __props__["dbInstanceEndpointId"] = db_instance_endpoint_id
+        __props__["dbInstanceEndpointType"] = db_instance_endpoint_type
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["ipType"] = ip_type
+        __props__["nodeItems"] = node_items
+        __props__["port"] = port
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[_builtins.str]:

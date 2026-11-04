@@ -193,6 +193,12 @@ func (AddressBookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressBookState)(nil)).Elem()
 }
 
+// AddressBookExists checks whether an existing AddressBook resource with the given ID exists.
+func AddressBookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressBookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/addressBook:AddressBook", id, state, "", opts...)
+}
+
 type addressBookArgs struct {
 	// The list of addresses.
 	AddressLists []string `pulumi:"addressLists"`

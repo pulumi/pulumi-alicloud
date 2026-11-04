@@ -104,6 +104,12 @@ func (OpenApiImageCacheState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openApiImageCacheState)(nil)).Elem()
 }
 
+// OpenApiImageCacheExists checks whether an existing OpenApiImageCache resource with the given ID exists.
+func OpenApiImageCacheExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenApiImageCacheState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eci/openApiImageCache:OpenApiImageCache", id, state, "", opts...)
+}
+
 type openApiImageCacheArgs struct {
 	EipInstanceId            *string                                    `pulumi:"eipInstanceId"`
 	ImageCacheName           string                                     `pulumi:"imageCacheName"`

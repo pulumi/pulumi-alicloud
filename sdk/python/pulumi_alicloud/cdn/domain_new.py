@@ -603,6 +603,34 @@ class DomainNew(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DomainNew(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict', 'outputs.DomainNewCertificateConfig']]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            env: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict', 'outputs.DomainNewSource']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cdnType"] = cdn_type
+        __props__["certificateConfig"] = certificate_config
+        __props__["checkUrl"] = check_url
+        __props__["cname"] = cname
+        __props__["domainName"] = domain_name
+        __props__["env"] = env
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["scope"] = scope
+        __props__["sources"] = sources
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:cdn/domainNew:DomainNew', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cdnType")
     def cdn_type(self) -> pulumi.Output[_builtins.str]:

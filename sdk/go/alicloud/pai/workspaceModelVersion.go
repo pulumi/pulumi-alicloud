@@ -337,6 +337,12 @@ func (WorkspaceModelVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceModelVersionState)(nil)).Elem()
 }
 
+// WorkspaceModelVersionExists checks whether an existing WorkspaceModelVersion resource with the given ID exists.
+func WorkspaceModelVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceModelVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceModelVersion:WorkspaceModelVersion", id, state, "", opts...)
+}
+
 type workspaceModelVersionArgs struct {
 	// The approval status. Valid values:
 	// - Pending: To be determined.

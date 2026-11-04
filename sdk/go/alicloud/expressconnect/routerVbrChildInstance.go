@@ -202,6 +202,12 @@ func (RouterVbrChildInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerVbrChildInstanceState)(nil)).Elem()
 }
 
+// RouterVbrChildInstanceExists checks whether an existing RouterVbrChildInstance resource with the given ID exists.
+func RouterVbrChildInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterVbrChildInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance", id, state, "", opts...)
+}
+
 type routerVbrChildInstanceArgs struct {
 	// The ID of the leased line gateway subinstance.
 	ChildInstanceId string `pulumi:"childInstanceId"`

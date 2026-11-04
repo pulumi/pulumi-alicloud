@@ -773,6 +773,40 @@ class V3Trigger(pulumi.CustomResource):
         __props__.__dict__["trigger_type"] = trigger_type
         return V3Trigger(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_trigger: pulumi.Input[Optional[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict', 'outputs.V3TriggerHttpTrigger']]] = None,
+            invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+            source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_config: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["functionName"] = function_name
+        __props__["httpTrigger"] = http_trigger
+        __props__["invocationRole"] = invocation_role
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["qualifier"] = qualifier
+        __props__["sourceArn"] = source_arn
+        __props__["status"] = status
+        __props__["targetArn"] = target_arn
+        __props__["triggerConfig"] = trigger_config
+        __props__["triggerId"] = trigger_id
+        __props__["triggerName"] = trigger_name
+        __props__["triggerType"] = trigger_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:fc/v3Trigger:V3Trigger', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

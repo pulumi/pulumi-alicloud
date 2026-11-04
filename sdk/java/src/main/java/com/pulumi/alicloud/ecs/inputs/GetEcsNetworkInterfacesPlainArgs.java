@@ -50,22 +50,20 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+    @Deprecated
     @Import(name="name")
     private @Nullable String name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+     * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+    @Deprecated
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -133,22 +131,20 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     /**
      * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
-     * @deprecated
-     * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+     * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+    @Deprecated
     @Import(name="privateIp")
     private @Nullable String privateIp;
 
     /**
      * @return Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      * 
-     * @deprecated
-     * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+     * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
-    @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+    @Deprecated
     public Optional<String> privateIp() {
         return Optional.ofNullable(this.privateIp);
     }
@@ -349,11 +345,10 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
+         * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
+        @Deprecated
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
@@ -408,11 +403,10 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
+         * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
          * 
          */
-        @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
+        @Deprecated
         public Builder privateIp(@Nullable String privateIp) {
             $.privateIp = privateIp;
             return this;

@@ -974,6 +974,50 @@ class Desktop(pulumi.CustomResource):
         __props__.__dict__["user_disk_size_gib"] = user_disk_size_gib
         return Desktop(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amount"] = amount
+        __props__["autoPay"] = auto_pay
+        __props__["autoRenew"] = auto_renew
+        __props__["bundleId"] = bundle_id
+        __props__["desktopName"] = desktop_name
+        __props__["desktopType"] = desktop_type
+        __props__["endUserIds"] = end_user_ids
+        __props__["hostName"] = host_name
+        __props__["officeSiteId"] = office_site_id
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodUnit"] = period_unit
+        __props__["policyGroupId"] = policy_group_id
+        __props__["rootDiskSizeGib"] = root_disk_size_gib
+        __props__["status"] = status
+        __props__["stoppedMode"] = stopped_mode
+        __props__["tags"] = tags
+        __props__["userAssignMode"] = user_assign_mode
+        __props__["userDiskSizeGib"] = user_disk_size_gib
+        return pulumi.runtime.exists_resource(None, 'alicloud:eds/desktop:Desktop', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def amount(self) -> pulumi.Output[Optional[_builtins.int]]:

@@ -278,6 +278,12 @@ func (TrailState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trailState)(nil)).Elem()
 }
 
+// TrailExists checks whether an existing Trail resource with the given ID exists.
+func TrailExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrailState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:actiontrail/trail:Trail", id, state, "", opts...)
+}
+
 type trailArgs struct {
 	// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
 	DataEventTrailRegion *string `pulumi:"dataEventTrailRegion"`

@@ -652,6 +652,34 @@ class QosPolicy(pulumi.CustomResource):
         __props__.__dict__["start_time"] = start_time
         return QosPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["destCidr"] = dest_cidr
+        __props__["destPortRange"] = dest_port_range
+        __props__["endTime"] = end_time
+        __props__["ipProtocol"] = ip_protocol
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["qosId"] = qos_id
+        __props__["sourceCidr"] = source_cidr
+        __props__["sourcePortRange"] = source_port_range
+        __props__["startTime"] = start_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/qosPolicy:QosPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -460,6 +460,24 @@ class HAVipAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return HAVipAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            havip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["force"] = force
+        __props__["haVipId"] = ha_vip_id
+        __props__["havipId"] = havip_id
+        __props__["instanceId"] = instance_id
+        __props__["instanceType"] = instance_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:vpc/hAVipAttachment:HAVipAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:

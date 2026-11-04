@@ -240,6 +240,12 @@ func (StackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackState)(nil)).Elem()
 }
 
+// StackExists checks whether an existing Stack resource with the given ID exists.
+func StackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ros/stack:Stack", id, state, "", opts...)
+}
+
 type stackArgs struct {
 	// Specifies whether to delete the stack after it is created.
 	CreateOption *string `pulumi:"createOption"`

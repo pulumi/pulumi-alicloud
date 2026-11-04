@@ -227,6 +227,12 @@ func (InstanceV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceV2State)(nil)).Elem()
 }
 
+// InstanceV2Exists checks whether an existing InstanceV2 resource with the given ID exists.
+func InstanceV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudfirewall/instanceV2:InstanceV2", id, state, "", opts...)
+}
+
 type instanceV2Args struct {
 	// Whether to use log audit. Valid values:
 	CfwLog *bool `pulumi:"cfwLog"`

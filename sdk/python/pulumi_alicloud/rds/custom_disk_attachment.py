@@ -413,6 +413,22 @@ class CustomDiskAttachment(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return CustomDiskAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteWithInstance"] = delete_with_instance
+        __props__["diskId"] = disk_id
+        __props__["instanceId"] = instance_id
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/customDiskAttachment:CustomDiskAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> pulumi.Output[_builtins.bool]:

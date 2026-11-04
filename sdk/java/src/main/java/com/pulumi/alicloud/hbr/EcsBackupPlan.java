@@ -65,12 +65,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("Instance")
  *             .build());
@@ -134,15 +134,15 @@ import javax.annotation.Nullable;
  *                 "/home",
  *                 "/var")
  *             .exclude("""
- *   [\"/home/exclude\"]
+ *   [}&#92;{@code "/home/exclude}&#92;{@code "]
  *             """)
  *             .include("""
- *   [\"/home/include\"]
+ *   [}&#92;{@code "/home/include}&#92;{@code "]
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * **About Backup path rules:**
  * 1. If there is no wildcard `*`, you can enter 8 items of path.
  * 2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*&#47;*` are supported.
- * 3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
+ * 3. Each item of path only supports absolute paths, for example starting with `/`, `&#92;`, `C:&#92;`, `D:&#92;`.
  * 
  * **About Restrictions:**
  * 1. When using `VSS`: multiple paths, UNC paths, wildcards, and excluded files not supported.
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  * 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
  * 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*&#47;*&#47;` share will match `/a/b/c/share`, but not `/a/d/share`.
  * 4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
- * 5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
+ * 5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `&#92;`.
  * 
  * ## Import
  * 
@@ -276,28 +276,28 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.ecsBackupPlanName;
     }
     /**
-     * Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     @Export(name="exclude", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclude;
 
     /**
-     * @return Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
+     * @return Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/home/work&#92;&#34;]&#34;`
      * 
      */
     public Output<Optional<String>> exclude() {
         return Codegen.optional(this.exclude);
     }
     /**
-     * Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * Include path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     @Export(name="include", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> include;
 
     /**
-     * @return Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
+     * @return Include path. String of Json list, up to 255 characters. e.g. `&#34;[&#92;&#34;/var&#92;&#34;]&#34;`
      * 
      */
     public Output<Optional<String>> include() {
@@ -318,14 +318,14 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
+     * Windows operating system with application consistency using VSS, e.g: `{&#92;&#34;UseVSS&#92;&#34;:false}`.
      * 
      */
     @Export(name="options", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> options;
 
     /**
-     * @return Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
+     * @return Windows operating system with application consistency using VSS, e.g: `{&#92;&#34;UseVSS&#92;&#34;:false}`.
      * 
      */
     public Output<Optional<String>> options() {
@@ -392,11 +392,10 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      * 
-     * @deprecated
-     * Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      * 
      */
-    @Deprecated /* Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
+    @Deprecated
     @Export(name="updatePaths", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updatePaths;
 

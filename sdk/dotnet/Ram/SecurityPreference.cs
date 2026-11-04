@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<bool> EnableSaveMfaTicket { get; private set; } = null!;
 
         /// <summary>
-        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead. 
+        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead.
         /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `True` and `False`
         /// </summary>
         [Output("enforceMfaForLogin")]
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? EnableSaveMfaTicket { get; set; }
 
         /// <summary>
-        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead. 
+        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead.
         /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `True` and `False`
         /// </summary>
         [Input("enforceMfaForLogin")]
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? EnableSaveMfaTicket { get; set; }
 
         /// <summary>
-        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead. 
+        /// Field `EnforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `MfaOperationForLogin` instead.
         /// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `True` and `False`
         /// </summary>
         [Input("enforceMfaForLogin")]

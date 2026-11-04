@@ -860,6 +860,46 @@ class Airflow(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Airflow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            airflow_id: pulumi.Input[Optional[_builtins.str]] = None,
+            airflow_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            dags_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+            plugins_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requirement_file: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_file: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_serverless_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["airflowId"] = airflow_id
+        __props__["airflowName"] = airflow_name
+        __props__["appSpec"] = app_spec
+        __props__["dagsDir"] = dags_dir
+        __props__["description"] = description
+        __props__["ossBucketName"] = oss_bucket_name
+        __props__["ossPath"] = oss_path
+        __props__["pluginsDir"] = plugins_dir
+        __props__["regionId"] = region_id
+        __props__["requirementFile"] = requirement_file
+        __props__["securityGroupId"] = security_group_id
+        __props__["startupFile"] = startup_file
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["workerServerlessReplicas"] = worker_serverless_replicas
+        __props__["workspaceId"] = workspace_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:dms/airflow:Airflow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="airflowId")
     def airflow_id(self) -> pulumi.Output[_builtins.str]:

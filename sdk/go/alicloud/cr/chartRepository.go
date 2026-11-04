@@ -172,6 +172,12 @@ func (ChartRepositoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*chartRepositoryState)(nil)).Elem()
 }
 
+// ChartRepositoryExists checks whether an existing ChartRepository resource with the given ID exists.
+func ChartRepositoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChartRepositoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cr/chartRepository:ChartRepository", id, state, "", opts...)
+}
+
 type chartRepositoryArgs struct {
 	// The ID of the Container Registry instance.
 	InstanceId string `pulumi:"instanceId"`

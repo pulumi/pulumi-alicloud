@@ -202,6 +202,12 @@ func (StreamingDataServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamingDataServiceState)(nil)).Elem()
 }
 
+// StreamingDataServiceExists checks whether an existing StreamingDataService resource with the given ID exists.
+func StreamingDataServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamingDataServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/streamingDataService:StreamingDataService", id, state, "", opts...)
+}
+
 type streamingDataServiceArgs struct {
 	// The ID of the associated instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`

@@ -803,6 +803,38 @@ class SiteDeliveryTask(pulumi.CustomResource):
         __props__.__dict__["task_name"] = task_name
         return SiteDeliveryTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            business_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_type: pulumi.Input[Optional[_builtins.str]] = None,
+            discard_rate: pulumi.Input[Optional[_builtins.float]] = None,
+            field_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict', 'outputs.SiteDeliveryTaskHttpDelivery']]] = None,
+            kafka_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict', 'outputs.SiteDeliveryTaskKafkaDelivery']]] = None,
+            oss_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict', 'outputs.SiteDeliveryTaskOssDelivery']]] = None,
+            s3_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict', 'outputs.SiteDeliveryTaskS3Delivery']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict', 'outputs.SiteDeliveryTaskSlsDelivery']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["businessType"] = business_type
+        __props__["dataCenter"] = data_center
+        __props__["deliveryType"] = delivery_type
+        __props__["discardRate"] = discard_rate
+        __props__["fieldName"] = field_name
+        __props__["httpDelivery"] = http_delivery
+        __props__["kafkaDelivery"] = kafka_delivery
+        __props__["ossDelivery"] = oss_delivery
+        __props__["s3Delivery"] = s3_delivery
+        __props__["siteId"] = site_id
+        __props__["slsDelivery"] = sls_delivery
+        __props__["status"] = status
+        __props__["taskName"] = task_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/siteDeliveryTask:SiteDeliveryTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="businessType")
     def business_type(self) -> pulumi.Output[_builtins.str]:

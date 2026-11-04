@@ -177,6 +177,12 @@ func (SmartagFlowLogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*smartagFlowLogState)(nil)).Elem()
 }
 
+// SmartagFlowLogExists checks whether an existing SmartagFlowLog resource with the given ID exists.
+func SmartagFlowLogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SmartagFlowLogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sag/smartagFlowLog:SmartagFlowLog", id, state, "", opts...)
+}
+
 type smartagFlowLogArgs struct {
 	// The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
 	ActiveAging *int `pulumi:"activeAging"`

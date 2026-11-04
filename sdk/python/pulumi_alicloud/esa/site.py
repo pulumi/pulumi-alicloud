@@ -1523,6 +1523,80 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["version_management"] = version_management
         return Site(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            add_client_geolocation_header: pulumi.Input[Optional[_builtins.str]] = None,
+            add_real_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_frequency_control_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_frequency_control_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_frequency_control_level: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_architecture_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_reserve_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_reserve_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            case_insensitive: pulumi.Input[Optional[_builtins.str]] = None,
+            coverage: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            development_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            flatten_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            global_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_region: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            performance_data_collection_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            real_client_ip_header_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            seo_bypass: pulumi.Input[Optional[_builtins.str]] = None,
+            site_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_name_exclusive: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            site_waf_settings: pulumi.Input[Optional[Union['SiteSiteWafSettingsArgs', 'SiteSiteWafSettingsArgsDict', 'outputs.SiteSiteWafSettings']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_management: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessType"] = access_type
+        __props__["addClientGeolocationHeader"] = add_client_geolocation_header
+        __props__["addRealClientIpHeader"] = add_real_client_ip_header
+        __props__["aiMode"] = ai_mode
+        __props__["aiTemplate"] = ai_template
+        __props__["automaticFrequencyControlActionType"] = automatic_frequency_control_action_type
+        __props__["automaticFrequencyControlEnable"] = automatic_frequency_control_enable
+        __props__["automaticFrequencyControlLevel"] = automatic_frequency_control_level
+        __props__["cacheArchitectureMode"] = cache_architecture_mode
+        __props__["cacheReserveEnable"] = cache_reserve_enable
+        __props__["cacheReserveInstanceId"] = cache_reserve_instance_id
+        __props__["caseInsensitive"] = case_insensitive
+        __props__["coverage"] = coverage
+        __props__["createTime"] = create_time
+        __props__["crossBorderOptimization"] = cross_border_optimization
+        __props__["developmentMode"] = development_mode
+        __props__["flattenMode"] = flatten_mode
+        __props__["globalMode"] = global_mode
+        __props__["instanceId"] = instance_id
+        __props__["ipv6Enable"] = ipv6_enable
+        __props__["ipv6Region"] = ipv6_region
+        __props__["paused"] = paused
+        __props__["performanceDataCollectionEnable"] = performance_data_collection_enable
+        __props__["realClientIpHeaderName"] = real_client_ip_header_name
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["seoBypass"] = seo_bypass
+        __props__["siteName"] = site_name
+        __props__["siteNameExclusive"] = site_name_exclusive
+        __props__["siteVersion"] = site_version
+        __props__["siteWafSettings"] = site_waf_settings
+        __props__["status"] = status
+        __props__["tagName"] = tag_name
+        __props__["tags"] = tags
+        __props__["versionManagement"] = version_management
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/site:Site', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[_builtins.str]:

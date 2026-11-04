@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -102,11 +102,11 @@ import javax.annotation.Nullable;
  *         var defaultIntegrationExporter = new IntegrationExporter("defaultIntegrationExporter", IntegrationExporterArgs.builder()
  *             .clusterId(defaultPrometheus.id())
  *             .integrationType("kafka")
- *             .param("{\"tls_insecure-skip-tls-verify\":\"none=tls.insecure-skip-tls-verify\",\"tls_enabled\":\"none=tls.enabled\",\"sasl_mechanism\":\"\",\"name\":\"kafka1\",\"sasl_enabled\":\"none=sasl.enabled\",\"ip_ports\":\"abc:888\",\"scrape_interval\":30,\"version\":\"0.10.1.0\"}")
+ *             .param("}{&#92;{@code "tls_insecure-skip-tls-verify}&#92;{@code ":}&#92;{@code "none=tls.insecure-skip-tls-verify}&#92;{@code ",}&#92;{@code "tls_enabled}&#92;{@code ":}&#92;{@code "none=tls.enabled}&#92;{@code ",}&#92;{@code "sasl_mechanism}&#92;{@code ":}&#92;{@code "}&#92;{@code ",}&#92;{@code "name}&#92;{@code ":}&#92;{@code "kafka1}&#92;{@code ",}&#92;{@code "sasl_enabled}&#92;{@code ":}&#92;{@code "none=sasl.enabled}&#92;{@code ",}&#92;{@code "ip_ports}&#92;{@code ":}&#92;{@code "abc:888}&#92;{@code ",}&#92;{@code "scrape_interval}&#92;{@code ":30,}&#92;{@code "version}&#92;{@code ":}&#92;{@code "0.10.1.0}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

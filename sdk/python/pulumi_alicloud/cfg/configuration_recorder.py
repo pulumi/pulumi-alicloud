@@ -310,6 +310,22 @@ class ConfigurationRecorder(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ConfigurationRecorder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enterprise_edition: pulumi.Input[Optional[_builtins.bool]] = None,
+            organization_enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_master_id: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enterpriseEdition"] = enterprise_edition
+        __props__["organizationEnableStatus"] = organization_enable_status
+        __props__["organizationMasterId"] = organization_master_id
+        __props__["resourceTypes"] = resource_types
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:cfg/configurationRecorder:ConfigurationRecorder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="enterpriseEdition")
     def enterprise_edition(self) -> pulumi.Output[_builtins.bool]:

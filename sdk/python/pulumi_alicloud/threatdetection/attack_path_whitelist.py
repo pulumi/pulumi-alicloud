@@ -434,6 +434,24 @@ class AttackPathWhitelist(pulumi.CustomResource):
         __props__.__dict__["whitelist_type"] = whitelist_type
         return AttackPathWhitelist(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathWhitelistAttackPathAssetListArgs', 'AttackPathWhitelistAttackPathAssetListArgsDict', 'outputs.AttackPathWhitelistAttackPathAssetList']]]]] = None,
+            path_name: pulumi.Input[Optional[_builtins.str]] = None,
+            path_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist_name: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attackPathAssetLists"] = attack_path_asset_lists
+        __props__["pathName"] = path_name
+        __props__["pathType"] = path_type
+        __props__["remark"] = remark
+        __props__["whitelistName"] = whitelist_name
+        __props__["whitelistType"] = whitelist_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/attackPathWhitelist:AttackPathWhitelist', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attackPathAssetLists")
     def attack_path_asset_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AttackPathWhitelistAttackPathAssetList']]]:

@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -86,33 +86,33 @@ import javax.annotation.Nullable;
  *             .runImmediately(true)
  *             .timeZone("+0800")
  *             .source("""
- *         {
- *           \"bucket\": \"bucket_name\",
- *           \"compressionCodec\": \"none\",
- *           \"encoding\": \"UTF-8\",
- *           \"endpoint\": \"oss-cn-hangzhou-internal.aliyuncs.com\",
- *           \"format\": {
- *             \"escapeChar\": \"\\\\\",
- *             \"fieldDelimiter\": \",\",
- *             \"fieldNames\": [],
- *             \"firstRowAsHeader\": true,
- *             \"maxLines\": 1,
- *             \"quoteChar\": \"\\\"\",
- *             \"skipLeadingRows\": 0,
- *             \"timeField\": \"\",
- *             \"type\": \"DelimitedText\"
- *           },
- *           \"pattern\": \"\",
- *           \"prefix\": \"test-prefix/\",
- *           \"restoreObjectEnabled\": false,
- *           \"roleARN\": \"acs:ram::1049446484210612:role/aliyunlogimportossrole\",
- *           \"type\": \"AliyunOSS\"
- *         }
+ *         }{{@code
+ *           }&#92;{@code "bucket}&#92;{@code ": }&#92;{@code "bucket_name}&#92;{@code ",
+ *           }&#92;{@code "compressionCodec}&#92;{@code ": }&#92;{@code "none}&#92;{@code ",
+ *           }&#92;{@code "encoding}&#92;{@code ": }&#92;{@code "UTF-8}&#92;{@code ",
+ *           }&#92;{@code "endpoint}&#92;{@code ": }&#92;{@code "oss-cn-hangzhou-internal.aliyuncs.com}&#92;{@code ",
+ *           }&#92;{@code "format}&#92;{@code ": }{{@code
+ *             }&#92;{@code "escapeChar}&#92;{@code ": }&#92;{@code "}&#92;&#92;&#92;&#92;&#92;{@code ",
+ *             }&#92;{@code "fieldDelimiter}&#92;{@code ": }&#92;{@code ",}&#92;{@code ",
+ *             }&#92;{@code "fieldNames}&#92;{@code ": [],
+ *             }&#92;{@code "firstRowAsHeader}&#92;{@code ": true,
+ *             }&#92;{@code "maxLines}&#92;{@code ": 1,
+ *             }&#92;{@code "quoteChar}&#92;{@code ": }&#92;{@code "}&#92;&#92;&#92;{@code "}&#92;{@code ",
+ *             }&#92;{@code "skipLeadingRows}&#92;{@code ": 0,
+ *             }&#92;{@code "timeField}&#92;{@code ": }&#92;{@code "}&#92;{@code ",
+ *             }&#92;{@code "type}&#92;{@code ": }&#92;{@code "DelimitedText}&#92;{@code "
+ *           }}{@code ,
+ *           }&#92;{@code "pattern}&#92;{@code ": }&#92;{@code "}&#92;{@code ",
+ *           }&#92;{@code "prefix}&#92;{@code ": }&#92;{@code "test-prefix/}&#92;{@code ",
+ *           }&#92;{@code "restoreObjectEnabled}&#92;{@code ": false,
+ *           }&#92;{@code "roleARN}&#92;{@code ": }&#92;{@code "acs:ram::1049446484210612:role/aliyunlogimportossrole}&#92;{@code ",
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "AliyunOSS}&#92;{@code "
+ *         }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

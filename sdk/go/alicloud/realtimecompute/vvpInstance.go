@@ -289,6 +289,12 @@ func (VvpInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vvpInstanceState)(nil)).Elem()
 }
 
+// VvpInstanceExists checks whether an existing VvpInstance resource with the given ID exists.
+func VvpInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VvpInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:realtimecompute/vvpInstance:VvpInstance", id, state, "", opts...)
+}
+
 type vvpInstanceArgs struct {
 	// The auto-renewal period of the subscription instance. It only takes effect when `paymentType = "Subscription"` and `renewStatus = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewalDurationUnit`.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`

@@ -213,6 +213,12 @@ func (PrometheusAlertRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prometheusAlertRuleState)(nil)).Elem()
 }
 
+// PrometheusAlertRuleExists checks whether an existing PrometheusAlertRule resource with the given ID exists.
+func PrometheusAlertRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrometheusAlertRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:arms/prometheusAlertRule:PrometheusAlertRule", id, state, "", opts...)
+}
+
 type prometheusAlertRuleArgs struct {
 	// The annotations of the alert rule. See `annotations` below.
 	Annotations []PrometheusAlertRuleAnnotation `pulumi:"annotations"`

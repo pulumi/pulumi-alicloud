@@ -386,6 +386,20 @@ class QuotaPlan(pulumi.CustomResource):
         __props__.__dict__["quota"] = quota
         return QuotaPlan(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict', 'outputs.QuotaPlanQuota']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["isEffective"] = is_effective
+        __props__["nickname"] = nickname
+        __props__["planName"] = plan_name
+        __props__["quota"] = quota
+        return pulumi.runtime.exists_resource(None, 'alicloud:maxcompute/quotaPlan:QuotaPlan', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="isEffective")
     def is_effective(self) -> pulumi.Output[Optional[_builtins.bool]]:

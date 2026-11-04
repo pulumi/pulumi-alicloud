@@ -157,6 +157,12 @@ func (ResourceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupState)(nil)).Elem()
 }
 
+// ResourceGroupExists checks whether an existing ResourceGroup resource with the given ID exists.
+func ResourceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/resourceGroup:ResourceGroup", id, state, "", opts...)
+}
+
 type resourceGroupArgs struct {
 	// The display name of the resource group. The name must be 1 to 50 characters in length.
 	DisplayName string `pulumi:"displayName"`

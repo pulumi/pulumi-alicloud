@@ -365,6 +365,18 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
         __props__.__dict__["vpc_firewall_id"] = vpc_firewall_id
         return VpcFirewallAclEngineMode(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["memberUid"] = member_uid
+        __props__["strictMode"] = strict_mode
+        __props__["vpcFirewallId"] = vpc_firewall_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cloudfirewall/vpcFirewallAclEngineMode:VpcFirewallAclEngineMode', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> pulumi.Output[Optional[_builtins.str]]:

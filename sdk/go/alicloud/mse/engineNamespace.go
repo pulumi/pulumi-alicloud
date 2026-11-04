@@ -217,6 +217,12 @@ func (EngineNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*engineNamespaceState)(nil)).Elem()
 }
 
+// EngineNamespaceExists checks whether an existing EngineNamespace resource with the given ID exists.
+func EngineNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EngineNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:mse/engineNamespace:EngineNamespace", id, state, "", opts...)
+}
+
 type engineNamespaceArgs struct {
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage *string `pulumi:"acceptLanguage"`

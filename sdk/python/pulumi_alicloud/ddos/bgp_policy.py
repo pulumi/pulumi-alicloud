@@ -331,6 +331,18 @@ class BgpPolicy(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return BgpPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content: pulumi.Input[Optional[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict', 'outputs.BgpPolicyContent']]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["content"] = content
+        __props__["policyName"] = policy_name
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ddos/bgpPolicy:BgpPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Output['outputs.BgpPolicyContent']:

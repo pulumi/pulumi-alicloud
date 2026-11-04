@@ -46,41 +46,41 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new AutoGroupingRule("default", AutoGroupingRuleArgs.builder()
  *             .ruleContents(AutoGroupingRuleRuleContentArgs.builder()
  *                 .targetResourceGroupCondition("""
- *     {
- *         \"children\": [
- *       {
- *         \"desired\": \"rg-aek*****sbvy\",
- *         \"featurePath\": \"$.resourceGroupId\",
- *         \"featureSource\": \"RESOURCE\",
- *         \"operator\": \"StringEquals\"
- *       }
+ *     }{{@code
+ *         }&#92;{@code "children}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "desired}&#92;{@code ": }&#92;{@code "rg-aek*****sbvy}&#92;{@code ",
+ *         }&#92;{@code "featurePath}&#92;{@code ": }&#92;{@code "$.resourceGroupId}&#92;{@code ",
+ *         }&#92;{@code "featureSource}&#92;{@code ": }&#92;{@code "RESOURCE}&#92;{@code ",
+ *         }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "StringEquals}&#92;{@code "
+ *       }}{@code
  *         ],
- *         \"operator\": \"and\"
- *     }
+ *         }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "and}&#92;{@code "
+ *     }}{@code
  *                 """)
  *                 .autoGroupingScopeCondition("""
- *     {
- *         \"children\": [
- *       {
- *         \"desired\": \"name_a\",
- *         \"featurePath\": \"$.resourceName\",
- *         \"featureSource\": \"RESOURCE\",
- *         \"operator\": \"StringEqualsAny\"
- *       }
+ *     }{{@code
+ *         }&#92;{@code "children}&#92;{@code ": [
+ *       }{{@code
+ *         }&#92;{@code "desired}&#92;{@code ": }&#92;{@code "name_a}&#92;{@code ",
+ *         }&#92;{@code "featurePath}&#92;{@code ": }&#92;{@code "$.resourceName}&#92;{@code ",
+ *         }&#92;{@code "featureSource}&#92;{@code ": }&#92;{@code "RESOURCE}&#92;{@code ",
+ *         }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "StringEqualsAny}&#92;{@code "
+ *       }}{@code
  *         ],
- *         \"operator\": \"and\"
- *     }
+ *         }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "and}&#92;{@code "
+ *     }}{@code
  *                 """)
  *                 .build())
  *             .ruleDesc(name)
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  *             .ruleName(name)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

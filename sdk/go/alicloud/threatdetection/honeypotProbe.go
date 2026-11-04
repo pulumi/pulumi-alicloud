@@ -202,6 +202,12 @@ func (HoneypotProbeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*honeypotProbeState)(nil)).Elem()
 }
 
+// HoneypotProbeExists checks whether an existing HoneypotProbe resource with the given ID exists.
+func HoneypotProbeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HoneypotProbeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/honeypotProbe:HoneypotProbe", id, state, "", opts...)
+}
+
 type honeypotProbeArgs struct {
 	// ARP spoofing detection.**true**: Enable **false**: Disabled
 	Arp *bool `pulumi:"arp"`

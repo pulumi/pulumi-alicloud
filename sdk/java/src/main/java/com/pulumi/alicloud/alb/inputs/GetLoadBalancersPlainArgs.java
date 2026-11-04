@@ -80,22 +80,20 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     /**
      * Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
+     * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
+    @Deprecated
     @Import(name="loadBalancerBussinessStatus")
     private @Nullable String loadBalancerBussinessStatus;
 
     /**
      * @return Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      * 
-     * @deprecated
-     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
+     * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
      */
-    @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
+    @Deprecated
     public Optional<String> loadBalancerBussinessStatus() {
         return Optional.ofNullable(this.loadBalancerBussinessStatus);
     }
@@ -347,11 +345,10 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
+         * @deprecated Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
          * 
          */
-        @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
+        @Deprecated
         public Builder loadBalancerBussinessStatus(@Nullable String loadBalancerBussinessStatus) {
             $.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
             return this;

@@ -575,6 +575,30 @@ class ConsumerGroup(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict', 'outputs.ConsumerGroupConsumeRetryPolicy']]] = None,
+            consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_receive_tps: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["consumeRetryPolicy"] = consume_retry_policy
+        __props__["consumerGroupId"] = consumer_group_id
+        __props__["createTime"] = create_time
+        __props__["deliveryOrderType"] = delivery_order_type
+        __props__["instanceId"] = instance_id
+        __props__["maxReceiveTps"] = max_receive_tps
+        __props__["regionId"] = region_id
+        __props__["remark"] = remark
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:rocketmq/consumerGroup:ConsumerGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="consumeRetryPolicy")
     def consume_retry_policy(self) -> pulumi.Output['outputs.ConsumerGroupConsumeRetryPolicy']:

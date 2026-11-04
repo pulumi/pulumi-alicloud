@@ -140,6 +140,12 @@ func (AliasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aliasState)(nil)).Elem()
 }
 
+// AliasExists checks whether an existing Alias resource with the given ID exists.
+func AliasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AliasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/alias:Alias", id, state, "", opts...)
+}
+
 type aliasArgs struct {
 	// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
 	AliasName string `pulumi:"aliasName"`

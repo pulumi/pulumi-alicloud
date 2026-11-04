@@ -378,6 +378,22 @@ class ImageLib(pulumi.CustomResource):
         __props__.__dict__["scene"] = scene
         return ImageLib(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scene: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bizTypes"] = biz_types
+        __props__["category"] = category
+        __props__["enable"] = enable
+        __props__["imageLibName"] = image_lib_name
+        __props__["scene"] = scene
+        return pulumi.runtime.exists_resource(None, 'alicloud:aligreen/imageLib:ImageLib', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bizTypes")
     def biz_types(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -163,6 +163,12 @@ func (RegistryEnterpriseNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryEnterpriseNamespaceState)(nil)).Elem()
 }
 
+// RegistryEnterpriseNamespaceExists checks whether an existing RegistryEnterpriseNamespace resource with the given ID exists.
+func RegistryEnterpriseNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegistryEnterpriseNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace", id, state, "", opts...)
+}
+
 type registryEnterpriseNamespaceArgs struct {
 	// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
 	AutoCreate *bool `pulumi:"autoCreate"`

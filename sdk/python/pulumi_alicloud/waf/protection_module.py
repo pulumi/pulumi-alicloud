@@ -429,6 +429,22 @@ class ProtectionModule(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return ProtectionModule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defenseType"] = defense_type
+        __props__["domain"] = domain
+        __props__["instanceId"] = instance_id
+        __props__["mode"] = mode
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:waf/protectionModule:ProtectionModule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defenseType")
     def defense_type(self) -> pulumi.Output[_builtins.str]:

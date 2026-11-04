@@ -1033,6 +1033,54 @@ class LoadBalancerHttpListener(pulumi.CustomResource):
         __props__.__dict__["x_forwarded_for"] = x_forwarded_for
         return LoadBalancerHttpListener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_forward: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendServerPort"] = backend_server_port
+        __props__["description"] = description
+        __props__["forwardPort"] = forward_port
+        __props__["healthCheck"] = health_check
+        __props__["healthCheckConnectPort"] = health_check_connect_port
+        __props__["healthCheckDomain"] = health_check_domain
+        __props__["healthCheckHttpCode"] = health_check_http_code
+        __props__["healthCheckInterval"] = health_check_interval
+        __props__["healthCheckMethod"] = health_check_method
+        __props__["healthCheckTimeout"] = health_check_timeout
+        __props__["healthCheckUri"] = health_check_uri
+        __props__["healthyThreshold"] = healthy_threshold
+        __props__["idleTimeout"] = idle_timeout
+        __props__["listenerForward"] = listener_forward
+        __props__["listenerPort"] = listener_port
+        __props__["loadBalancerId"] = load_balancer_id
+        __props__["requestTimeout"] = request_timeout
+        __props__["scheduler"] = scheduler
+        __props__["status"] = status
+        __props__["unhealthyThreshold"] = unhealthy_threshold
+        __props__["xForwardedFor"] = x_forwarded_for
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/loadBalancerHttpListener:LoadBalancerHttpListener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendServerPort")
     def backend_server_port(self) -> pulumi.Output[_builtins.int]:

@@ -211,6 +211,12 @@ func (ApplyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applyState)(nil)).Elem()
 }
 
+// ApplyExists checks whether an existing Apply resource with the given ID exists.
+func ApplyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesservicecertificate/apply:Apply", id, state, "", opts...)
+}
+
 type applyArgs struct {
 	// The content of the certificate signing request.
 	Csr *string `pulumi:"csr"`

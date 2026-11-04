@@ -246,6 +246,12 @@ func (K8sSlbAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*k8sSlbAttachmentState)(nil)).Elem()
 }
 
+// K8sSlbAttachmentExists checks whether an existing K8sSlbAttachment resource with the given ID exists.
+func K8sSlbAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *K8sSlbAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:edas/k8sSlbAttachment:K8sSlbAttachment", id, state, "", opts...)
+}
+
 type k8sSlbAttachmentArgs struct {
 	// The ID of the EDAS k8s application to which you want to bind SLB instances.
 	AppId string `pulumi:"appId"`

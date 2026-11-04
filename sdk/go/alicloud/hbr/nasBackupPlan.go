@@ -249,6 +249,12 @@ func (NasBackupPlanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nasBackupPlanState)(nil)).Elem()
 }
 
+// NasBackupPlanExists checks whether an existing NasBackupPlan resource with the given ID exists.
+func NasBackupPlanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NasBackupPlanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:hbr/nasBackupPlan:NasBackupPlan", id, state, "", opts...)
+}
+
 type nasBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`

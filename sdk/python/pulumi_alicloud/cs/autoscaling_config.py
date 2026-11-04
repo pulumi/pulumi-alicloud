@@ -969,6 +969,46 @@ class AutoscalingConfig(pulumi.CustomResource):
         __props__.__dict__["utilization_threshold"] = utilization_threshold
         return AutoscalingConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            daemonset_eviction_for_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+            expander: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            max_graceful_termination_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            min_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            priorities: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            recycle_node_deletion_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            scale_up_from_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaler_type: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_nodes_with_local_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_nodes_with_system_pods: pulumi.Input[Optional[_builtins.bool]] = None,
+            unneeded_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["coolDownDuration"] = cool_down_duration
+        __props__["daemonsetEvictionForNodes"] = daemonset_eviction_for_nodes
+        __props__["expander"] = expander
+        __props__["gpuUtilizationThreshold"] = gpu_utilization_threshold
+        __props__["maxGracefulTerminationSec"] = max_graceful_termination_sec
+        __props__["minReplicaCount"] = min_replica_count
+        __props__["priorities"] = priorities
+        __props__["recycleNodeDeletionEnabled"] = recycle_node_deletion_enabled
+        __props__["scaleDownEnabled"] = scale_down_enabled
+        __props__["scaleUpFromZero"] = scale_up_from_zero
+        __props__["scalerType"] = scaler_type
+        __props__["scanInterval"] = scan_interval
+        __props__["skipNodesWithLocalStorage"] = skip_nodes_with_local_storage
+        __props__["skipNodesWithSystemPods"] = skip_nodes_with_system_pods
+        __props__["unneededDuration"] = unneeded_duration
+        __props__["utilizationThreshold"] = utilization_threshold
+        return pulumi.runtime.exists_resource(None, 'alicloud:cs/autoscalingConfig:AutoscalingConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -347,6 +347,12 @@ func (DiJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*diJobState)(nil)).Elem()
 }
 
+// DiJobExists checks whether an existing DiJob resource with the given ID exists.
+func DiJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dataworks/diJob:DiJob", id, state, "", opts...)
+}
+
 type diJobArgs struct {
 	// Description of the integration task
 	Description *string `pulumi:"description"`

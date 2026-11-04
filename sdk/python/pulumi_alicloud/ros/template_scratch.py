@@ -513,6 +513,30 @@ class TemplateScratch(pulumi.CustomResource):
         __props__.__dict__["template_scratch_type"] = template_scratch_type
         return TemplateScratch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_id_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            preference_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict', 'outputs.TemplateScratchPreferenceParameter']]]]] = None,
+            source_resource_group: pulumi.Input[Optional[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict', 'outputs.TemplateScratchSourceResourceGroup']]] = None,
+            source_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict', 'outputs.TemplateScratchSourceResource']]]]] = None,
+            source_tag: pulumi.Input[Optional[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict', 'outputs.TemplateScratchSourceTag']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            template_scratch_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["executionMode"] = execution_mode
+        __props__["logicalIdStrategy"] = logical_id_strategy
+        __props__["preferenceParameters"] = preference_parameters
+        __props__["sourceResourceGroup"] = source_resource_group
+        __props__["sourceResources"] = source_resources
+        __props__["sourceTag"] = source_tag
+        __props__["status"] = status
+        __props__["templateScratchType"] = template_scratch_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:ros/templateScratch:TemplateScratch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

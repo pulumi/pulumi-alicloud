@@ -211,6 +211,12 @@ func (HttpRequestHeaderModificationRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpRequestHeaderModificationRuleState)(nil)).Elem()
 }
 
+// HttpRequestHeaderModificationRuleExists checks whether an existing HttpRequestHeaderModificationRule resource with the given ID exists.
+func HttpRequestHeaderModificationRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HttpRequestHeaderModificationRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule", id, state, "", opts...)
+}
+
 type httpRequestHeaderModificationRuleArgs struct {
 	// The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
 	RequestHeaderModifications []HttpRequestHeaderModificationRuleRequestHeaderModification `pulumi:"requestHeaderModifications"`

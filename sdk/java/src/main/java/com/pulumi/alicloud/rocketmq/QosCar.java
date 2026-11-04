@@ -84,11 +84,10 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/qosCar:QosCar example &lt;qos_id&gt;:&lt;qos_car_id&gt;
  * ```
  * 
- * @deprecated
- * alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar
+ * @deprecated alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar
  * 
  */
-@Deprecated /* alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar */
+@Deprecated
 @ResourceType(type="alicloud:rocketmq/qosCar:QosCar")
 public class QosCar extends com.pulumi.resources.CustomResource {
     /**

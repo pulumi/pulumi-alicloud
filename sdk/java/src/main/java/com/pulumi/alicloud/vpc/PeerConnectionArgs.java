@@ -171,7 +171,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The name of the VPC peering connection.
-     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="peerConnectionName")
@@ -179,7 +179,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The name of the VPC peering connection.
-     * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * The name must be 2 to 128 characters in length, and can contain digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> peerConnectionName() {
@@ -486,7 +486,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param peerConnectionName The name of the VPC peering connection.
-         * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param peerConnectionName The name of the VPC peering connection.
-         * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * The name must be 2 to 128 characters in length, and can contain digits, underscores (&#92;_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 

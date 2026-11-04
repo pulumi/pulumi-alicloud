@@ -168,6 +168,12 @@ func (WafPolicyDomainAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafPolicyDomainAttachmentState)(nil)).Elem()
 }
 
+// WafPolicyDomainAttachmentExists checks whether an existing WafPolicyDomainAttachment resource with the given ID exists.
+func WafPolicyDomainAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WafPolicyDomainAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment", id, state, "", opts...)
+}
+
 type wafPolicyDomainAttachmentArgs struct {
 	// Access the accelerated domain name of the specified protection policy.
 	DomainName string `pulumi:"domainName"`

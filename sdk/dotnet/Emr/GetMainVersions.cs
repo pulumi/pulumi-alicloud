@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Emr
     public static class GetMainVersions
     {
         /// <summary>
-        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr
         /// main versions available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Emr
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr
         /// main versions available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Emr
             => global::Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr
         /// main versions available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+

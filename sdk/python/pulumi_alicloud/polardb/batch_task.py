@@ -422,6 +422,26 @@ class BatchTask(pulumi.CustomResource):
         __props__.__dict__["task_type"] = task_type
         return BatchTask(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            batch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BatchTaskTaskParamArgs', 'BatchTaskTaskParamArgsDict', 'outputs.BatchTaskTaskParam']]]]] = None,
+            task_status: pulumi.Input[Optional[_builtins.str]] = None,
+            task_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["batchId"] = batch_id
+        __props__["instanceIds"] = instance_ids
+        __props__["regionId"] = region_id
+        __props__["taskName"] = task_name
+        __props__["taskParams"] = task_params
+        __props__["taskStatus"] = task_status
+        __props__["taskType"] = task_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:polardb/batchTask:BatchTask', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="batchId")
     def batch_id(self) -> pulumi.Output[_builtins.str]:

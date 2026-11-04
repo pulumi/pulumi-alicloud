@@ -46,33 +46,33 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Stack("example", StackArgs.builder()
  *             .stackName("tf-testaccstack")
  *             .templateBody("""
- *     {
- *     \t\"ROSTemplateFormatVersion\": \"2015-09-01\"
- *     }
+ *     }{{@code
+ *     }&#92;{@code t}&#92;{@code "ROSTemplateFormatVersion}&#92;{@code ": }&#92;{@code "2015-09-01}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .stackPolicyBody("""
- *     {
- *     \t\"Statement\": [{
- *     \t\t\"Action\": \"Update:Delete\",
- *     \t\t\"Resource\": \"*\",
- *     \t\t\"Effect\": \"Allow\",
- *     \t\t\"Principal\": \"*\"
- *     \t}]
- *     }
+ *     }{{@code
+ *     }&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [}{{@code
+ *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "Update:Delete}&#92;{@code ",
+ *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+ *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Principal}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+ *     }&#92;{@code t}}{@code ]
+ *     }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

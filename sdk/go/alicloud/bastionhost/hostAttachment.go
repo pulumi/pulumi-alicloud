@@ -195,6 +195,12 @@ func (HostAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostAttachmentState)(nil)).Elem()
 }
 
+// HostAttachmentExists checks whether an existing HostAttachment resource with the given ID exists.
+func HostAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/hostAttachment:HostAttachment", id, state, "", opts...)
+}
+
 type hostAttachmentArgs struct {
 	// Specifies the added to the host group ID.
 	HostGroupId string `pulumi:"hostGroupId"`

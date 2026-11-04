@@ -299,6 +299,18 @@ class SecurityGroup(pulumi.CustomResource):
         __props__.__dict__["security_group_name"] = security_group_name
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGroupPermissionArgs', 'SecurityGroupPermissionArgsDict', 'outputs.SecurityGroupPermission']]]]] = None,
+            security_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["permissions"] = permissions
+        __props__["securityGroupName"] = security_group_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:ens/securityGroup:SecurityGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -224,6 +224,12 @@ func (MountTargetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mountTargetState)(nil)).Elem()
 }
 
+// MountTargetExists checks whether an existing MountTarget resource with the given ID exists.
+func MountTargetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MountTargetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:nas/mountTarget:MountTarget", id, state, "", opts...)
+}
+
 type mountTargetArgs struct {
 	// The name of the permission group.
 	AccessGroupName *string `pulumi:"accessGroupName"`

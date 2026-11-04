@@ -1222,6 +1222,60 @@ class Etl(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Etl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etl_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict', 'outputs.EtlEtlSink']]]]] = None,
+            etl_type: pulumi.Input[Optional[_builtins.str]] = None,
+            from_time: pulumi.Input[Optional[_builtins.int]] = None,
+            kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_access_key_id_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            kms_encryption_access_key_secret_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            to_time: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKeyId"] = access_key_id
+        __props__["accessKeySecret"] = access_key_secret
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["etlName"] = etl_name
+        __props__["etlSinks"] = etl_sinks
+        __props__["etlType"] = etl_type
+        __props__["fromTime"] = from_time
+        __props__["kmsEncryptedAccessKeyId"] = kms_encrypted_access_key_id
+        __props__["kmsEncryptedAccessKeySecret"] = kms_encrypted_access_key_secret
+        __props__["kmsEncryptionAccessKeyIdContext"] = kms_encryption_access_key_id_context
+        __props__["kmsEncryptionAccessKeySecretContext"] = kms_encryption_access_key_secret_context
+        __props__["lang"] = lang
+        __props__["lastModifiedTime"] = last_modified_time
+        __props__["logstore"] = logstore
+        __props__["parameters"] = parameters
+        __props__["project"] = project
+        __props__["roleArn"] = role_arn
+        __props__["schedule"] = schedule
+        __props__["script"] = script
+        __props__["status"] = status
+        __props__["toTime"] = to_time
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'alicloud:log/etl:Etl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:

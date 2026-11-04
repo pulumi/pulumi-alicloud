@@ -201,6 +201,12 @@ func (PolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyAttachmentState)(nil)).Elem()
 }
 
+// PolicyAttachmentExists checks whether an existing PolicyAttachment resource with the given ID exists.
+func PolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/policyAttachment:PolicyAttachment", id, state, "", opts...)
+}
+
 type policyAttachmentArgs struct {
 	// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName string `pulumi:"policyName"`

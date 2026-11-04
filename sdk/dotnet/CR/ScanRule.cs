@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Set of namespaces:  
+        /// Set of namespaces:
         /// - This parameter must not be empty when the scan scope is NAMESPACE.
         /// - This parameter must contain exactly one namespace when the scan scope is REPO.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.CR
         public Output<ImmutableArray<string>> Namespaces { get; private set; } = null!;
 
         /// <summary>
-        /// Repository list:  
+        /// Repository list:
         /// - This parameter must be empty when the scan scope is NAMESPACE.
         /// - This parameter must not be empty when the scan scope is REPO.
         /// </summary>
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string> ScanScope { get; private set; } = null!;
 
         /// <summary>
-        /// Scan type:  
+        /// Scan type:
         /// - `VUL`: Artifact vulnerability scan
         /// - `SBOM`: Artifact content analysis
         /// 
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<string>? _namespaces;
 
         /// <summary>
-        /// Set of namespaces:  
+        /// Set of namespaces:
         /// - This parameter must not be empty when the scan scope is NAMESPACE.
         /// - This parameter must contain exactly one namespace when the scan scope is REPO.
         /// </summary>
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<string>? _repoNames;
 
         /// <summary>
-        /// Repository list:  
+        /// Repository list:
         /// - This parameter must be empty when the scan scope is NAMESPACE.
         /// - This parameter must not be empty when the scan scope is REPO.
         /// </summary>
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string> ScanScope { get; set; } = null!;
 
         /// <summary>
-        /// Scan type:  
+        /// Scan type:
         /// - `VUL`: Artifact vulnerability scan
         /// - `SBOM`: Artifact content analysis
         /// 
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<string>? _namespaces;
 
         /// <summary>
-        /// Set of namespaces:  
+        /// Set of namespaces:
         /// - This parameter must not be empty when the scan scope is NAMESPACE.
         /// - This parameter must contain exactly one namespace when the scan scope is REPO.
         /// </summary>
@@ -299,7 +299,7 @@ namespace Pulumi.AliCloud.CR
         private InputList<string>? _repoNames;
 
         /// <summary>
-        /// Repository list:  
+        /// Repository list:
         /// - This parameter must be empty when the scan scope is NAMESPACE.
         /// - This parameter must not be empty when the scan scope is REPO.
         /// </summary>
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? ScanScope { get; set; }
 
         /// <summary>
-        /// Scan type:  
+        /// Scan type:
         /// - `VUL`: Artifact vulnerability scan
         /// - `SBOM`: Artifact content analysis
         /// 

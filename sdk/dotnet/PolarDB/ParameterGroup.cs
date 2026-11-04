@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbType { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the database engine. Valid values: 
+        /// The version of the database engine. Valid values:
         /// - **5.6**
         /// - **5.7**
         /// - **8.0**
@@ -107,7 +107,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// Details about the parameters. See `Parameters` below.
         /// 
         /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -167,7 +166,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbType { get; set; } = null!;
 
         /// <summary>
-        /// The version of the database engine. Valid values: 
+        /// The version of the database engine. Valid values:
         /// - **5.6**
         /// - **5.7**
         /// - **8.0**
@@ -205,7 +204,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
         /// 
-        /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
@@ -235,7 +233,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbType { get; set; }
 
         /// <summary>
-        /// The version of the database engine. Valid values: 
+        /// The version of the database engine. Valid values:
         /// - **5.6**
         /// - **5.7**
         /// - **8.0**
@@ -272,7 +270,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// Details about the parameters. See `Parameters` below.
         /// 
         /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

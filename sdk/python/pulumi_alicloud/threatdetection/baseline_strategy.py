@@ -557,6 +557,30 @@ class BaselineStrategy(pulumi.CustomResource):
         __props__.__dict__["target_type"] = target_type
         return BaselineStrategy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            baseline_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            baseline_strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cycle_days: pulumi.Input[Optional[_builtins.int]] = None,
+            cycle_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_sub_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baselineStrategyId"] = baseline_strategy_id
+        __props__["baselineStrategyName"] = baseline_strategy_name
+        __props__["customType"] = custom_type
+        __props__["cycleDays"] = cycle_days
+        __props__["cycleStartTime"] = cycle_start_time
+        __props__["endTime"] = end_time
+        __props__["riskSubTypeName"] = risk_sub_type_name
+        __props__["startTime"] = start_time
+        __props__["targetType"] = target_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/baselineStrategy:BaselineStrategy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="baselineStrategyId")
     def baseline_strategy_id(self) -> pulumi.Output[_builtins.str]:

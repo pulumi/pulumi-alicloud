@@ -181,6 +181,12 @@ func (UserGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGroupState)(nil)).Elem()
 }
 
+// UserGroupExists checks whether an existing UserGroup resource with the given ID exists.
+func UserGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:bastionhost/userGroup:UserGroup", id, state, "", opts...)
+}
+
 type userGroupArgs struct {
 	// Specify the New Group of Remark Information. Supports up to 500 Characters.
 	Comment *string `pulumi:"comment"`

@@ -492,6 +492,22 @@ class ZoneAttachment(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict', 'outputs.ZoneAttachmentVpc']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["lang"] = lang
+        __props__["userClientIp"] = user_client_ip
+        __props__["vpcIds"] = vpc_ids
+        __props__["vpcs"] = vpcs
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:pvtz/zoneAttachment:ZoneAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -952,6 +952,44 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         __props__.__dict__["tls13"] = tls13
         return HttpsBasicConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ciphersuite: pulumi.Input[Optional[_builtins.str]] = None,
+            ciphersuite_group: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            http2: pulumi.Input[Optional[_builtins.str]] = None,
+            http3: pulumi.Input[Optional[_builtins.str]] = None,
+            https: pulumi.Input[Optional[_builtins.str]] = None,
+            ocsp_stapling: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tls10: pulumi.Input[Optional[_builtins.str]] = None,
+            tls11: pulumi.Input[Optional[_builtins.str]] = None,
+            tls12: pulumi.Input[Optional[_builtins.str]] = None,
+            tls13: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ciphersuite"] = ciphersuite
+        __props__["ciphersuiteGroup"] = ciphersuite_group
+        __props__["configId"] = config_id
+        __props__["http2"] = http2
+        __props__["http3"] = http3
+        __props__["https"] = https
+        __props__["ocspStapling"] = ocsp_stapling
+        __props__["rule"] = rule
+        __props__["ruleEnable"] = rule_enable
+        __props__["ruleName"] = rule_name
+        __props__["sequence"] = sequence
+        __props__["siteId"] = site_id
+        __props__["tls10"] = tls10
+        __props__["tls11"] = tls11
+        __props__["tls12"] = tls12
+        __props__["tls13"] = tls13
+        return pulumi.runtime.exists_resource(None, 'alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def ciphersuite(self) -> pulumi.Output[Optional[_builtins.str]]:

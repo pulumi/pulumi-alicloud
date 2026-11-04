@@ -433,6 +433,12 @@ func (HadoopDataSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hadoopDataSourceState)(nil)).Elem()
 }
 
+// HadoopDataSourceExists checks whether an existing HadoopDataSource resource with the given ID exists.
+func HadoopDataSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HadoopDataSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:gpdb/hadoopDataSource:HadoopDataSource", id, state, "", opts...)
+}
+
 type hadoopDataSourceArgs struct {
 	// Data Source Description
 	DataSourceDescription *string `pulumi:"dataSourceDescription"`

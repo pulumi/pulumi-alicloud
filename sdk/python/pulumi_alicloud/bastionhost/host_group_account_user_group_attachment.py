@@ -398,6 +398,20 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
         __props__.__dict__["user_group_id"] = user_group_id
         return HostGroupAccountUserGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            host_account_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hostAccountNames"] = host_account_names
+        __props__["hostGroupId"] = host_group_id
+        __props__["instanceId"] = instance_id
+        __props__["userGroupId"] = user_group_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="hostAccountNames")
     def host_account_names(self) -> pulumi.Output[Sequence[_builtins.str]]:

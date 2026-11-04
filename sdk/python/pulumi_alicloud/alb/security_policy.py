@@ -425,6 +425,26 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["tls_versions"] = tls_versions
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ciphers"] = ciphers
+        __props__["dryRun"] = dry_run
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["securityPolicyName"] = security_policy_name
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["tlsVersions"] = tls_versions
+        return pulumi.runtime.exists_resource(None, 'alicloud:alb/securityPolicy:SecurityPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def ciphers(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -49,22 +49,20 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use &#39;description_regex&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
+     * @deprecated Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead. */
+    @Deprecated
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
      * @return A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use &#39;description_regex&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
+     * @deprecated Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead. */
+    @Deprecated
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -160,11 +158,10 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
+         * @deprecated Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead. */
+        @Deprecated
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
@@ -175,11 +172,10 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
+         * @deprecated Field &#39;name_regex&#39; is deprecated and will be removed in a future release. Please use &#39;description_regex&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead. */
+        @Deprecated
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }

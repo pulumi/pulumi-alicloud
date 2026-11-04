@@ -306,6 +306,18 @@ class ServiceEndpointAcl(pulumi.CustomResource):
         __props__.__dict__["endpoint_type"] = endpoint_type
         return ServiceEndpointAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclStrategy"] = acl_strategy
+        __props__["cidr"] = cidr
+        __props__["endpointType"] = endpoint_type
+        return pulumi.runtime.exists_resource(None, 'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclStrategy")
     def acl_strategy(self) -> pulumi.Output[_builtins.str]:

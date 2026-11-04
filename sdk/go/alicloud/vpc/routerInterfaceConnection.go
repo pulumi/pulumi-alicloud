@@ -206,6 +206,12 @@ func (RouterInterfaceConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceConnectionState)(nil)).Elem()
 }
 
+// RouterInterfaceConnectionExists checks whether an existing RouterInterfaceConnection resource with the given ID exists.
+func RouterInterfaceConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterInterfaceConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection", id, state, "", opts...)
+}
+
 type routerInterfaceConnectionArgs struct {
 	// One side router interface ID.
 	InterfaceId string `pulumi:"interfaceId"`

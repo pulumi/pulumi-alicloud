@@ -441,6 +441,26 @@ class IpSet(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return IpSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accelerate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            isp_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accelerateRegionId"] = accelerate_region_id
+        __props__["acceleratorId"] = accelerator_id
+        __props__["bandwidth"] = bandwidth
+        __props__["ipAddressLists"] = ip_address_lists
+        __props__["ipVersion"] = ip_version
+        __props__["ispType"] = isp_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:ga/ipSet:IpSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accelerateRegionId")
     def accelerate_region_id(self) -> pulumi.Output[_builtins.str]:

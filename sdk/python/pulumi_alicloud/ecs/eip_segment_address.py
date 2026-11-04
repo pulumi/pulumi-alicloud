@@ -634,6 +634,32 @@ class EipSegmentAddress(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return EipSegmentAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            netmode: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            segment_address_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidth"] = bandwidth
+        __props__["createTime"] = create_time
+        __props__["eipMask"] = eip_mask
+        __props__["internetChargeType"] = internet_charge_type
+        __props__["isp"] = isp
+        __props__["netmode"] = netmode
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["segmentAddressName"] = segment_address_name
+        __props__["status"] = status
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'alicloud:ecs/eipSegmentAddress:EipSegmentAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[Optional[_builtins.str]]:

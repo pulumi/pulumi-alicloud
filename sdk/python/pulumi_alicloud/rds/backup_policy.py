@@ -1423,6 +1423,68 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["retention_period"] = retention_period
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            archive_backup_keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+            archive_backup_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            archive_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_pitr_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            inc_backup_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_local_retention_number: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            log_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["archiveBackupKeepCount"] = archive_backup_keep_count
+        __props__["archiveBackupKeepPolicy"] = archive_backup_keep_policy
+        __props__["archiveBackupRetentionPeriod"] = archive_backup_retention_period
+        __props__["backupInterval"] = backup_interval
+        __props__["backupMethod"] = backup_method
+        __props__["backupPeriods"] = backup_periods
+        __props__["backupPriority"] = backup_priority
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["backupTime"] = backup_time
+        __props__["category"] = category
+        __props__["compressType"] = compress_type
+        __props__["enableBackupLog"] = enable_backup_log
+        __props__["enableIncrementDataBackup"] = enable_increment_data_backup
+        __props__["enablePitrProtection"] = enable_pitr_protection
+        __props__["highSpaceUsageProtection"] = high_space_usage_protection
+        __props__["incBackupInterval"] = inc_backup_interval
+        __props__["instanceId"] = instance_id
+        __props__["localLogRetentionHours"] = local_log_retention_hours
+        __props__["localLogRetentionSpace"] = local_log_retention_space
+        __props__["logBackup"] = log_backup
+        __props__["logBackupFrequency"] = log_backup_frequency
+        __props__["logBackupLocalRetentionNumber"] = log_backup_local_retention_number
+        __props__["logBackupRetentionPeriod"] = log_backup_retention_period
+        __props__["logRetentionPeriod"] = log_retention_period
+        __props__["preferredBackupPeriods"] = preferred_backup_periods
+        __props__["preferredBackupTime"] = preferred_backup_time
+        __props__["releasedKeepPolicy"] = released_keep_policy
+        __props__["retentionPeriod"] = retention_period
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/backupPolicy:BackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="archiveBackupKeepCount")
     def archive_backup_keep_count(self) -> pulumi.Output[_builtins.int]:

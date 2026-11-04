@@ -208,6 +208,12 @@ func (InstanceAllowedIpAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceAllowedIpAttachmentState)(nil)).Elem()
 }
 
+// InstanceAllowedIpAttachmentExists checks whether an existing InstanceAllowedIpAttachment resource with the given ID exists.
+func InstanceAllowedIpAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceAllowedIpAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment", id, state, "", opts...)
+}
+
 type instanceAllowedIpAttachmentArgs struct {
 	// The IP address whitelist. It can be a CIDR block.
 	AllowedIp string `pulumi:"allowedIp"`

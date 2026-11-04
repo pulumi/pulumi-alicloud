@@ -225,6 +225,12 @@ func (NetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkState)(nil)).Elem()
 }
 
+// NetworkExists checks whether an existing Network resource with the given ID exists.
+func NetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:dataworks/network:Network", id, state, "", opts...)
+}
+
 type networkArgs struct {
 	// The ID of the resource group.
 	DwResourceGroupId string `pulumi:"dwResourceGroupId"`

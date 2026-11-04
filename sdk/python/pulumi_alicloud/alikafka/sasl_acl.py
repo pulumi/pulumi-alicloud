@@ -755,6 +755,30 @@ class SaslAcl(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return SaslAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_operation_types: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclOperationType"] = acl_operation_type
+        __props__["aclOperationTypes"] = acl_operation_types
+        __props__["aclPermissionType"] = acl_permission_type
+        __props__["aclResourceName"] = acl_resource_name
+        __props__["aclResourcePatternType"] = acl_resource_pattern_type
+        __props__["aclResourceType"] = acl_resource_type
+        __props__["host"] = host
+        __props__["instanceId"] = instance_id
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'alicloud:alikafka/saslAcl:SaslAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclOperationType")
     def acl_operation_type(self) -> pulumi.Output[_builtins.str]:

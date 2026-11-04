@@ -281,6 +281,12 @@ func (BucketObjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketObjectState)(nil)).Elem()
 }
 
+// BucketObjectExists checks whether an existing BucketObject resource with the given ID exists.
+func BucketObjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BucketObjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:oss/bucketObject:BucketObject", id, state, "", opts...)
+}
+
 type bucketObjectArgs struct {
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 	Acl *string `pulumi:"acl"`

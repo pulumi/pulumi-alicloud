@@ -275,6 +275,12 @@ func (SiteMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteMonitorState)(nil)).Elem()
 }
 
+// SiteMonitorExists checks whether an existing SiteMonitor resource with the given ID exists.
+func SiteMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SiteMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/siteMonitor:SiteMonitor", id, state, "", opts...)
+}
+
 type siteMonitorArgs struct {
 	// The URL or IP address monitored by the site monitoring task.
 	Address string `pulumi:"address"`

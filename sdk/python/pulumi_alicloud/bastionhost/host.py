@@ -641,6 +641,34 @@ class Host(pulumi.CustomResource):
         __props__.__dict__["source_instance_id"] = source_instance_id
         return Host(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host_private_address: pulumi.Input[Optional[_builtins.str]] = None,
+            host_public_address: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeAddressType"] = active_address_type
+        __props__["comment"] = comment
+        __props__["hostId"] = host_id
+        __props__["hostName"] = host_name
+        __props__["hostPrivateAddress"] = host_private_address
+        __props__["hostPublicAddress"] = host_public_address
+        __props__["instanceId"] = instance_id
+        __props__["instanceRegionId"] = instance_region_id
+        __props__["osType"] = os_type
+        __props__["source"] = source
+        __props__["sourceInstanceId"] = source_instance_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:bastionhost/host:Host', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeAddressType")
     def active_address_type(self) -> pulumi.Output[_builtins.str]:

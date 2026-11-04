@@ -152,6 +152,12 @@ func (ProductPortfolioAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*productPortfolioAssociationState)(nil)).Elem()
 }
 
+// ProductPortfolioAssociationExists checks whether an existing ProductPortfolioAssociation resource with the given ID exists.
+func ProductPortfolioAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProductPortfolioAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation", id, state, "", opts...)
+}
+
 type productPortfolioAssociationArgs struct {
 	// Product Portfolio ID
 	PortfolioId string `pulumi:"portfolioId"`

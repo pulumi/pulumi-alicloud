@@ -193,6 +193,12 @@ func (LogTailAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logTailAttachmentState)(nil)).Elem()
 }
 
+// LogTailAttachmentExists checks whether an existing LogTailAttachment resource with the given ID exists.
+func LogTailAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogTailAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:log/logTailAttachment:LogTailAttachment", id, state, "", opts...)
+}
+
 type logTailAttachmentArgs struct {
 	// The Logtail configuration name, which is unique in the same project.
 	LogtailConfigName string `pulumi:"logtailConfigName"`

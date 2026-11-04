@@ -402,6 +402,20 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         __props__.__dict__["port_range"] = port_range
         return InstanceAllowedIpAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port_range: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedIp"] = allowed_ip
+        __props__["allowedType"] = allowed_type
+        __props__["instanceId"] = instance_id
+        __props__["portRange"] = port_range
+        return pulumi.runtime.exists_resource(None, 'alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedIp")
     def allowed_ip(self) -> pulumi.Output[_builtins.str]:

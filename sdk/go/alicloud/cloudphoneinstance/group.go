@@ -265,6 +265,12 @@ func (GroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupState)(nil)).Elem()
 }
 
+// GroupExists checks whether an existing Group resource with the given ID exists.
+func GroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cloudphoneinstance/group:Group", id, state, "", opts...)
+}
+
 type groupArgs struct {
 	// The number of instance groups. The default value is 1 and the maximum value is 100.
 	Amount *int `pulumi:"amount"`

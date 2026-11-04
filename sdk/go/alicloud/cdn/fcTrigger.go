@@ -175,6 +175,12 @@ func (FcTriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fcTriggerState)(nil)).Elem()
 }
 
+// FcTriggerExists checks whether an existing FcTrigger resource with the given ID exists.
+func FcTriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FcTriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cdn/fcTrigger:FcTrigger", id, state, "", opts...)
+}
+
 type fcTriggerArgs struct {
 	// The name of the Event.
 	EventMetaName string `pulumi:"eventMetaName"`

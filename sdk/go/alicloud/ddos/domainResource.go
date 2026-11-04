@@ -449,6 +449,12 @@ func (DomainResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainResourceState)(nil)).Elem()
 }
 
+// DomainResourceExists checks whether an existing DomainResource resource with the given ID exists.
+func DomainResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/domainResource:DomainResource", id, state, "", opts...)
+}
+
 type domainResourceArgs struct {
 	// the mode of the Intelligent Protection policy.
 	// - watch: the Warning mode

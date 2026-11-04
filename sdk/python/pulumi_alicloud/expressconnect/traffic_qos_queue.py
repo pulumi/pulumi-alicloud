@@ -491,6 +491,26 @@ class TrafficQosQueue(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return TrafficQosQueue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_percent: pulumi.Input[Optional[_builtins.str]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidthPercent"] = bandwidth_percent
+        __props__["qosId"] = qos_id
+        __props__["queueDescription"] = queue_description
+        __props__["queueId"] = queue_id
+        __props__["queueName"] = queue_name
+        __props__["queueType"] = queue_type
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'alicloud:expressconnect/trafficQosQueue:TrafficQosQueue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bandwidthPercent")
     def bandwidth_percent(self) -> pulumi.Output[_builtins.str]:

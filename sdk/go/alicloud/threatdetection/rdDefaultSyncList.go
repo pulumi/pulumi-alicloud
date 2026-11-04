@@ -119,6 +119,12 @@ func (RdDefaultSyncListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdDefaultSyncListState)(nil)).Elem()
 }
 
+// RdDefaultSyncListExists checks whether an existing RdDefaultSyncList resource with the given ID exists.
+func RdDefaultSyncListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdDefaultSyncListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/rdDefaultSyncList:RdDefaultSyncList", id, state, "", opts...)
+}
+
 type rdDefaultSyncListArgs struct {
 	// The list of resource directory folder ids to be synchronized by Threat Detection. Setting an empty list clears the synchronized folders (disables the default synchronization). Folder ids can be obtained via the `GetRdTree` API.
 	FolderIds []string `pulumi:"folderIds"`

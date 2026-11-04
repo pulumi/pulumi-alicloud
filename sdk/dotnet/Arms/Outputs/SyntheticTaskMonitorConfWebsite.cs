@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// Whether to support automatic scrolling screen, loading page.
         /// - 0 (default): No
-        /// 1: Yes.
+        ///   1: Yes.
         /// </summary>
         public readonly int? AutomaticScrolling;
         /// <summary>

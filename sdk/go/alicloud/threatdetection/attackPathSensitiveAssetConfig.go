@@ -123,6 +123,12 @@ func (AttackPathSensitiveAssetConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attackPathSensitiveAssetConfigState)(nil)).Elem()
 }
 
+// AttackPathSensitiveAssetConfigExists checks whether an existing AttackPathSensitiveAssetConfig resource with the given ID exists.
+func AttackPathSensitiveAssetConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttackPathSensitiveAssetConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig", id, state, "", opts...)
+}
+
 type attackPathSensitiveAssetConfigArgs struct {
 	// The attack path sensitive asset configuration list. See `attackPathAssetList` below.
 	AttackPathAssetLists []AttackPathSensitiveAssetConfigAttackPathAssetList `pulumi:"attackPathAssetLists"`

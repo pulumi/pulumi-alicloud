@@ -200,6 +200,12 @@ func (TemplateQuotaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateQuotaState)(nil)).Elem()
 }
 
+// TemplateQuotaExists checks whether an existing TemplateQuota resource with the given ID exists.
+func TemplateQuotaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateQuotaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:quotas/templateQuota:TemplateQuota", id, state, "", opts...)
+}
+
 type templateQuotaArgs struct {
 	// Quota application value.
 	DesireValue float64 `pulumi:"desireValue"`

@@ -482,6 +482,32 @@ class DnsDomain(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DnsDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            puny_code: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dnsServers"] = dns_servers
+        __props__["domainId"] = domain_id
+        __props__["domainName"] = domain_name
+        __props__["groupId"] = group_id
+        __props__["groupName"] = group_name
+        __props__["lang"] = lang
+        __props__["punyCode"] = puny_code
+        __props__["remark"] = remark
+        __props__["resourceGroupId"] = resource_group_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'alicloud:dns/dnsDomain:DnsDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -242,6 +242,12 @@ func (ServerGroupServerAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupServerAttachmentState)(nil)).Elem()
 }
 
+// ServerGroupServerAttachmentExists checks whether an existing ServerGroupServerAttachment resource with the given ID exists.
+func ServerGroupServerAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerGroupServerAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment", id, state, "", opts...)
+}
+
 type serverGroupServerAttachmentArgs struct {
 	// The description of the backend server.
 	Description *string `pulumi:"description"`

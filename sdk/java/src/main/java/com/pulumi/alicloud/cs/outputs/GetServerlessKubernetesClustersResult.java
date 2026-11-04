@@ -32,11 +32,10 @@ public final class GetServerlessKubernetesClustersResult {
      */
     private List<String> ids;
     /**
-     * @deprecated
-     * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+     * @deprecated Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
-    @Deprecated /* Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+    @Deprecated
     private @Nullable String kubeConfigFilePrefix;
     private @Nullable String nameRegex;
     /**
@@ -72,11 +71,10 @@ public final class GetServerlessKubernetesClustersResult {
         return this.ids;
     }
     /**
-     * @deprecated
-     * Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
+     * @deprecated Field &#39;kube_config_file_prefix&#39; has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute &#39;output_file&#39; of new DataSource &#39;alicloud_cs_cluster_credential&#39; to replace it.
      * 
      */
-    @Deprecated /* Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it. */
+    @Deprecated
     public Optional<String> kubeConfigFilePrefix() {
         return Optional.ofNullable(this.kubeConfigFilePrefix);
     }

@@ -207,6 +207,12 @@ func (BandwidthLimitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthLimitState)(nil)).Elem()
 }
 
+// BandwidthLimitExists checks whether an existing BandwidthLimit resource with the given ID exists.
+func BandwidthLimitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BandwidthLimitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cen/bandwidthLimit:BandwidthLimit", id, state, "", opts...)
+}
+
 type bandwidthLimitArgs struct {
 	// The bandwidth configured for the interconnected regions communication.
 	//

@@ -146,7 +146,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
     /**
      * The name of the exchange that you want to create. The exchange name must meet the following conventions:
      * 
-     * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
+     * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (&#92;_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
      * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
      * 
      */
@@ -156,7 +156,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the exchange that you want to create. The exchange name must meet the following conventions:
      * 
-     * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
+     * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (&#92;_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}).
      * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
      * 
      */

@@ -610,6 +610,32 @@ class RdsBackup(pulumi.CustomResource):
         __props__.__dict__["store_status"] = store_status
         return RdsBackup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_name: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_from_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            store_status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupId"] = backup_id
+        __props__["backupMethod"] = backup_method
+        __props__["backupRetentionPeriod"] = backup_retention_period
+        __props__["backupStrategy"] = backup_strategy
+        __props__["backupType"] = backup_type
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["dbName"] = db_name
+        __props__["removeFromState"] = remove_from_state
+        __props__["status"] = status
+        __props__["storeStatus"] = store_status
+        return pulumi.runtime.exists_resource(None, 'alicloud:rds/rdsBackup:RdsBackup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[_builtins.str]:

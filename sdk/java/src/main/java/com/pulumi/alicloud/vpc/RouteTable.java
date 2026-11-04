@@ -133,11 +133,10 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
-     * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.119.1. New field &#39;route_table_name&#39; instead.
+     * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead. */
+    @Deprecated
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 

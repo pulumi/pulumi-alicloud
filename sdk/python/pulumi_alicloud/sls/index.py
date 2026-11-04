@@ -588,6 +588,28 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["project_name"] = project_name
         return Index(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            keys: pulumi.Input[Optional[_builtins.str]] = None,
+            line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict', 'outputs.IndexLine']]] = None,
+            log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_text_len: pulumi.Input[Optional[_builtins.int]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["keys"] = keys
+        __props__["line"] = line
+        __props__["logReduce"] = log_reduce
+        __props__["logReduceBlackLists"] = log_reduce_black_lists
+        __props__["logReduceWhiteLists"] = log_reduce_white_lists
+        __props__["logstoreName"] = logstore_name
+        __props__["maxTextLen"] = max_text_len
+        __props__["projectName"] = project_name
+        return pulumi.runtime.exists_resource(None, 'alicloud:sls/index:Index', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def keys(self) -> pulumi.Output[Optional[_builtins.str]]:

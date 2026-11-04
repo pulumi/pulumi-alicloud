@@ -19,11 +19,10 @@ public final class GetTrailsResult {
     /**
      * @return Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead.&#34;
      * 
-     * @deprecated
-     * Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
+     * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
      */
-    @Deprecated /* Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead. */
+    @Deprecated
     private List<GetTrailsActiontrail> actiontrails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -59,11 +58,10 @@ public final class GetTrailsResult {
     /**
      * @return Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead.&#34;
      * 
-     * @deprecated
-     * Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
+     * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
      */
-    @Deprecated /* Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead. */
+    @Deprecated
     public List<GetTrailsActiontrail> actiontrails() {
         return this.actiontrails;
     }

@@ -120,6 +120,12 @@ func (EventBusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventBusState)(nil)).Elem()
 }
 
+// EventBusExists checks whether an existing EventBus resource with the given ID exists.
+func EventBusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventBusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:eventbridge/eventBus:EventBus", id, state, "", opts...)
+}
+
 type eventBusArgs struct {
 	// The description of event bus.
 	Description *string `pulumi:"description"`

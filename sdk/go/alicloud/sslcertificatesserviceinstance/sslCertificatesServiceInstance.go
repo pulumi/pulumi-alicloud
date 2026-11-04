@@ -430,6 +430,12 @@ func (SslCertificatesServiceInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslCertificatesServiceInstanceState)(nil)).Elem()
 }
 
+// SslCertificatesServiceInstanceExists checks whether an existing SslCertificatesServiceInstance resource with the given ID exists.
+func SslCertificatesServiceInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SslCertificatesServiceInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:sslcertificatesserviceinstance/sslCertificatesServiceInstance:SslCertificatesServiceInstance", id, state, "", opts...)
+}
+
 type sslCertificatesServiceInstanceArgs struct {
 	// Specifies whether to enable managed renewal.
 	// enable: Enabled

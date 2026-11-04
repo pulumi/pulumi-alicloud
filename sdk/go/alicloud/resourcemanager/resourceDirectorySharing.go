@@ -110,6 +110,12 @@ func (ResourceDirectorySharingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceDirectorySharingState)(nil)).Elem()
 }
 
+// ResourceDirectorySharingExists checks whether an existing ResourceDirectorySharing resource with the given ID exists.
+func ResourceDirectorySharingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceDirectorySharingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing", id, state, "", opts...)
+}
+
 type resourceDirectorySharingArgs struct {
 }
 

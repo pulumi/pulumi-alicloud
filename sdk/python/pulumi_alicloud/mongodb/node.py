@@ -1093,6 +1093,44 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["switch_time"] = switch_time
         return Node(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            business_info: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            from_app: pulumi.Input[Optional[_builtins.str]] = None,
+            node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            shard_direct: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["accountPassword"] = account_password
+        __props__["autoPay"] = auto_pay
+        __props__["businessInfo"] = business_info
+        __props__["dbInstanceId"] = db_instance_id
+        __props__["effectiveTime"] = effective_time
+        __props__["fromApp"] = from_app
+        __props__["nodeClass"] = node_class
+        __props__["nodeId"] = node_id
+        __props__["nodeStorage"] = node_storage
+        __props__["nodeType"] = node_type
+        __props__["orderType"] = order_type
+        __props__["readonlyReplicas"] = readonly_replicas
+        __props__["shardDirect"] = shard_direct
+        __props__["status"] = status
+        __props__["switchTime"] = switch_time
+        return pulumi.runtime.exists_resource(None, 'alicloud:mongodb/node:Node', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[Optional[_builtins.str]]:

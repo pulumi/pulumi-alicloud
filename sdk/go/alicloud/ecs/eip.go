@@ -252,6 +252,12 @@ func (EipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipState)(nil)).Elem()
 }
 
+// EipExists checks whether an existing Eip resource with the given ID exists.
+func EipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ecs/eip:Eip", id, state, "", opts...)
+}
+
 type eipArgs struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.

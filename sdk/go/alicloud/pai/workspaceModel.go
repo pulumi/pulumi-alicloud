@@ -223,6 +223,12 @@ func (WorkspaceModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workspaceModelState)(nil)).Elem()
 }
 
+// WorkspaceModelExists checks whether an existing WorkspaceModel resource with the given ID exists.
+func WorkspaceModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkspaceModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:pai/workspaceModel:WorkspaceModel", id, state, "", opts...)
+}
+
 type workspaceModelArgs struct {
 	// The visibility of the model in the workspace. Default value: `PRIVATE`. Valid values:
 	// - `PRIVATE`: In this workspace, it is only visible to you and the administrator.

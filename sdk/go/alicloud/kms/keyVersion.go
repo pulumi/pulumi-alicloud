@@ -122,6 +122,12 @@ func (KeyVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyVersionState)(nil)).Elem()
 }
 
+// KeyVersionExists checks whether an existing KeyVersion resource with the given ID exists.
+func KeyVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:kms/keyVersion:KeyVersion", id, state, "", opts...)
+}
+
 type keyVersionArgs struct {
 	// The id of the master key (CMK).
 	//

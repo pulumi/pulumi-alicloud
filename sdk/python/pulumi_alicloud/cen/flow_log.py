@@ -686,6 +686,38 @@ class FlowLog(pulumi.CustomResource):
         __props__.__dict__["transit_router_id"] = transit_router_id
         return FlowLog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            log_format_string: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cenId"] = cen_id
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["flowLogName"] = flow_log_name
+        __props__["interval"] = interval
+        __props__["logFormatString"] = log_format_string
+        __props__["logStoreName"] = log_store_name
+        __props__["projectName"] = project_name
+        __props__["regionId"] = region_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["transitRouterAttachmentId"] = transit_router_attachment_id
+        __props__["transitRouterId"] = transit_router_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:cen/flowLog:FlowLog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[_builtins.str]:

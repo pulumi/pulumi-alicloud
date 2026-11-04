@@ -1033,6 +1033,50 @@ class Api(pulumi.CustomResource):
         __props__.__dict__["system_parameters"] = system_parameters
         return Api(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_code_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_id: pulumi.Input[Optional[_builtins.str]] = None,
+            constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict', 'outputs.ApiConstantParameter']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fc_service_config: pulumi.Input[Optional[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict', 'outputs.ApiFcServiceConfig']]] = None,
+            force_nonce_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            http_service_config: pulumi.Input[Optional[Union['ApiHttpServiceConfigArgs', 'ApiHttpServiceConfigArgsDict', 'outputs.ApiHttpServiceConfig']]] = None,
+            http_vpc_service_config: pulumi.Input[Optional[Union['ApiHttpVpcServiceConfigArgs', 'ApiHttpVpcServiceConfigArgsDict', 'outputs.ApiHttpVpcServiceConfig']]] = None,
+            mock_service_config: pulumi.Input[Optional[Union['ApiMockServiceConfigArgs', 'ApiMockServiceConfigArgsDict', 'outputs.ApiMockServiceConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            request_config: pulumi.Input[Optional[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict', 'outputs.ApiRequestConfig']]] = None,
+            request_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict', 'outputs.ApiRequestParameter']]]]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            system_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict', 'outputs.ApiSystemParameter']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiId"] = api_id
+        __props__["appCodeAuthType"] = app_code_auth_type
+        __props__["authType"] = auth_type
+        __props__["backendEnabled"] = backend_enabled
+        __props__["backendId"] = backend_id
+        __props__["constantParameters"] = constant_parameters
+        __props__["description"] = description
+        __props__["fcServiceConfig"] = fc_service_config
+        __props__["forceNonceCheck"] = force_nonce_check
+        __props__["groupId"] = group_id
+        __props__["httpServiceConfig"] = http_service_config
+        __props__["httpVpcServiceConfig"] = http_vpc_service_config
+        __props__["mockServiceConfig"] = mock_service_config
+        __props__["name"] = name
+        __props__["requestConfig"] = request_config
+        __props__["requestParameters"] = request_parameters
+        __props__["serviceType"] = service_type
+        __props__["stageNames"] = stage_names
+        __props__["systemParameters"] = system_parameters
+        return pulumi.runtime.exists_resource(None, 'alicloud:apigateway/api:Api', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[_builtins.str]:

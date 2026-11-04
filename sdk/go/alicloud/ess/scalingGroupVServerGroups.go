@@ -107,6 +107,12 @@ func (ScalingGroupVServerGroupsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingGroupVServerGroupsState)(nil)).Elem()
 }
 
+// ScalingGroupVServerGroupsExists checks whether an existing ScalingGroupVServerGroups resource with the given ID exists.
+func ScalingGroupVServerGroupsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScalingGroupVServerGroupsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups", id, state, "", opts...)
+}
+
 type scalingGroupVServerGroupsArgs struct {
 	// If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
 	Force *bool `pulumi:"force"`

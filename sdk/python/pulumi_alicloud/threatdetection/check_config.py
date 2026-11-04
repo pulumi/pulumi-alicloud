@@ -609,6 +609,30 @@ class CheckConfig(pulumi.CustomResource):
         __props__.__dict__["vendors"] = vendors
         return CheckConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configure: pulumi.Input[Optional[_builtins.str]] = None,
+            cycle_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            enable_add_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auto_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            selected_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict', 'outputs.CheckConfigSelectedCheck']]]]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            system_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            vendors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configure"] = configure
+        __props__["cycleDays"] = cycle_days
+        __props__["enableAddCheck"] = enable_add_check
+        __props__["enableAutoCheck"] = enable_auto_check
+        __props__["endTime"] = end_time
+        __props__["selectedChecks"] = selected_checks
+        __props__["startTime"] = start_time
+        __props__["systemConfig"] = system_config
+        __props__["vendors"] = vendors
+        return pulumi.runtime.exists_resource(None, 'alicloud:threatdetection/checkConfig:CheckConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configure(self) -> pulumi.Output[Optional[_builtins.str]]:

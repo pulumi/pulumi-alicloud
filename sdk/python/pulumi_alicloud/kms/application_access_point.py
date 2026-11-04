@@ -297,6 +297,18 @@ class ApplicationAccessPoint(pulumi.CustomResource):
         __props__.__dict__["policies"] = policies
         return ApplicationAccessPoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationAccessPointName"] = application_access_point_name
+        __props__["description"] = description
+        __props__["policies"] = policies
+        return pulumi.runtime.exists_resource(None, 'alicloud:kms/applicationAccessPoint:ApplicationAccessPoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationAccessPointName")
     def application_access_point_name(self) -> pulumi.Output[_builtins.str]:

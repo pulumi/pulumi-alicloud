@@ -50,7 +50,7 @@ public final class GetKubernetesNodePoolsNodepoolManagement {
      */
     private Boolean enable;
     /**
-     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
      * 
      */
     private Integer maxUnavailable;
@@ -116,7 +116,7 @@ public final class GetKubernetesNodePoolsNodepoolManagement {
         return this.enable;
     }
     /**
-     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:&#92;[1,1000&#92;].
      * 
      */
     public Integer maxUnavailable() {

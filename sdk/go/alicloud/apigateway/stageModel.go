@@ -149,6 +149,12 @@ func (StageModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stageModelState)(nil)).Elem()
 }
 
+// StageModelExists checks whether an existing StageModel resource with the given ID exists.
+func StageModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StageModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:apigateway/stageModel:StageModel", id, state, "", opts...)
+}
+
 type stageModelArgs struct {
 	// The description of the Stage Model.
 	Description *string `pulumi:"description"`

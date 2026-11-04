@@ -1184,6 +1184,80 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DbInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cache_size_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cache_size_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_count_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_count_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict', 'outputs.DbInstanceDesiredSecurityIpList']]]]] = None,
+            enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_expired: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_net_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict', 'outputs.DbInstanceInstanceNetInfo']]]]] = None,
+            lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            memory_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            period_time: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict', 'outputs.DbInstanceSecurityIpList']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            upgraded_engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminPass"] = admin_pass
+        __props__["cacheSize"] = cache_size
+        __props__["cacheSizePostpaid"] = cache_size_postpaid
+        __props__["cacheSizePrepaid"] = cache_size_prepaid
+        __props__["clusterCountPostpaid"] = cluster_count_postpaid
+        __props__["clusterCountPrepaid"] = cluster_count_prepaid
+        __props__["cpuPostpaid"] = cpu_postpaid
+        __props__["cpuPrepaid"] = cpu_prepaid
+        __props__["dbInstanceClass"] = db_instance_class
+        __props__["dbInstanceDescription"] = db_instance_description
+        __props__["desiredSecurityIpLists"] = desired_security_ip_lists
+        __props__["enablePublicNetwork"] = enable_public_network
+        __props__["engine"] = engine
+        __props__["engineMinorVersion"] = engine_minor_version
+        __props__["gmtCreated"] = gmt_created
+        __props__["gmtExpired"] = gmt_expired
+        __props__["gmtModified"] = gmt_modified
+        __props__["instanceNetInfos"] = instance_net_infos
+        __props__["lockMode"] = lock_mode
+        __props__["lockReason"] = lock_reason
+        __props__["memoryPostpaid"] = memory_postpaid
+        __props__["memoryPrepaid"] = memory_prepaid
+        __props__["paymentType"] = payment_type
+        __props__["period"] = period
+        __props__["periodTime"] = period_time
+        __props__["regionId"] = region_id
+        __props__["securityIpLists"] = security_ip_lists
+        __props__["status"] = status
+        __props__["subDomain"] = sub_domain
+        __props__["tags"] = tags
+        __props__["upgradedEngineMinorVersion"] = upgraded_engine_minor_version
+        __props__["vpcId"] = vpc_id
+        __props__["vswitchId"] = vswitch_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'alicloud:selectdb/dbInstance:DbInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminPass")
     def admin_pass(self) -> pulumi.Output[Optional[_builtins.str]]:

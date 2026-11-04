@@ -212,6 +212,12 @@ func (CustomDiskAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDiskAttachmentState)(nil)).Elem()
 }
 
+// CustomDiskAttachmentExists checks whether an existing CustomDiskAttachment resource with the given ID exists.
+func CustomDiskAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDiskAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:rds/customDiskAttachment:CustomDiskAttachment", id, state, "", opts...)
+}
+
 type customDiskAttachmentArgs struct {
 	// Whether the disk is released together with the instance when the instance is released. Value range:
 	// true: Release.

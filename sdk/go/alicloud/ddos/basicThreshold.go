@@ -238,6 +238,12 @@ func (BasicThresholdState) ElementType() reflect.Type {
 	return reflect.TypeOf((*basicThresholdState)(nil)).Elem()
 }
 
+// BasicThresholdExists checks whether an existing BasicThreshold resource with the given ID exists.
+func BasicThresholdExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BasicThresholdState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:ddos/basicThreshold:BasicThreshold", id, state, "", opts...)
+}
+
 type basicThresholdArgs struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps int `pulumi:"bps"`

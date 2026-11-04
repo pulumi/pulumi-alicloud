@@ -149,6 +149,12 @@ func (VirtualHostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualHostState)(nil)).Elem()
 }
 
+// VirtualHostExists checks whether an existing VirtualHost resource with the given ID exists.
+func VirtualHostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualHostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:amqp/virtualHost:VirtualHost", id, state, "", opts...)
+}
+
 type virtualHostArgs struct {
 	// InstanceId.
 	InstanceId string `pulumi:"instanceId"`

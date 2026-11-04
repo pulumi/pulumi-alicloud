@@ -192,6 +192,12 @@ func (ServiceMeshState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceMeshState)(nil)).Elem()
 }
 
+// ServiceMeshExists checks whether an existing ServiceMesh resource with the given ID exists.
+func ServiceMeshExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceMeshState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:servicemesh/serviceMesh:ServiceMesh", id, state, "", opts...)
+}
+
 type serviceMeshArgs struct {
 	// List of clusters.
 	ClusterIds []string `pulumi:"clusterIds"`

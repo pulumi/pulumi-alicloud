@@ -176,6 +176,12 @@ func (IntegrationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationPolicyState)(nil)).Elem()
 }
 
+// IntegrationPolicyExists checks whether an existing IntegrationPolicy resource with the given ID exists.
+func IntegrationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntegrationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("alicloud:cms/integrationPolicy:IntegrationPolicy", id, state, "", opts...)
+}
+
 type integrationPolicyArgs struct {
 	// The entity group used to create the policy. See `entityGroup` below.
 	EntityGroup *IntegrationPolicyEntityGroup `pulumi:"entityGroup"`
