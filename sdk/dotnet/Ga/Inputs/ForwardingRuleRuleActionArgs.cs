@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
     {
         /// <summary>
         /// Forwarding configuration. See `ForwardGroupConfig` below.
+        /// 
         /// &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `ForwardGroupConfig`, and we recommend that you use the `RuleActionType` and `RuleActionValue` to configure forwarding actions.
         /// </summary>
         [Input("forwardGroupConfig")]

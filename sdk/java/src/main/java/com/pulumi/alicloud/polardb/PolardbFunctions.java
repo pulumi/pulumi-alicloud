@@ -12,21 +12,48 @@ import com.pulumi.alicloud.polardb.inputs.GetDatabasesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetDatabasesPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
 import com.pulumi.alicloud.polardb.inputs.GetEndpointsPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesArgs;
+import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksArgs;
 import com.pulumi.alicloud.polardb.inputs.GetGlobalDatabaseNetworksPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenArgs;
+import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetNodeClassesPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsArgs;
 import com.pulumi.alicloud.polardb.inputs.GetParameterGroupsPlainArgs;
+import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesPlainArgs;
 import com.pulumi.alicloud.polardb.inputs.GetZonesArgs;
 import com.pulumi.alicloud.polardb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.polardb.outputs.GetAccountsResult;
 import com.pulumi.alicloud.polardb.outputs.GetClustersResult;
 import com.pulumi.alicloud.polardb.outputs.GetDatabasesResult;
 import com.pulumi.alicloud.polardb.outputs.GetEndpointsResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayBudgetPoliciesResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayConsumerGroupsResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayConsumersResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayCostRulesResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayModelApisResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayModelServicesResult;
+import com.pulumi.alicloud.polardb.outputs.GetGatewayRateLimitPoliciesResult;
 import com.pulumi.alicloud.polardb.outputs.GetGlobalDatabaseNetworksResult;
+import com.pulumi.alicloud.polardb.outputs.GetLakebaseTenantTokenResult;
 import com.pulumi.alicloud.polardb.outputs.GetNodeClassesResult;
 import com.pulumi.alicloud.polardb.outputs.GetParameterGroupsResult;
+import com.pulumi.alicloud.polardb.outputs.GetPolarFsInstancesResult;
 import com.pulumi.alicloud.polardb.outputs.GetZonesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1972,6 +1999,1506 @@ public final class PolardbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides a list of PolarDB AI Gateway Budget Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .budgetDimensionType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayBudgetPoliciesResult> getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs args) {
+        return getGatewayBudgetPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Budget Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .budgetDimensionType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayBudgetPoliciesResult> getGatewayBudgetPoliciesPlain(GetGatewayBudgetPoliciesPlainArgs args) {
+        return getGatewayBudgetPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Budget Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .budgetDimensionType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayBudgetPoliciesResult> getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayBudgetPolicies:getGatewayBudgetPolicies", TypeShape.of(GetGatewayBudgetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Budget Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .budgetDimensionType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayBudgetPoliciesResult> getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayBudgetPolicies:getGatewayBudgetPolicies", TypeShape.of(GetGatewayBudgetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Budget Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayBudgetPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayBudgetPolicies(GetGatewayBudgetPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .budgetDimensionType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayBudgetPoliciesResult> getGatewayBudgetPoliciesPlain(GetGatewayBudgetPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayBudgetPolicies:getGatewayBudgetPolicies", TypeShape.of(GetGatewayBudgetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumer Groups.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayConsumerGroupsResult> getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs args) {
+        return getGatewayConsumerGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumer Groups.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayConsumerGroupsResult> getGatewayConsumerGroupsPlain(GetGatewayConsumerGroupsPlainArgs args) {
+        return getGatewayConsumerGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumer Groups.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayConsumerGroupsResult> getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayConsumerGroups:getGatewayConsumerGroups", TypeShape.of(GetGatewayConsumerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumer Groups.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayConsumerGroupsResult> getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayConsumerGroups:getGatewayConsumerGroups", TypeShape.of(GetGatewayConsumerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumer Groups.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumerGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumerGroups(GetGatewayConsumerGroupsArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayConsumerGroupsResult> getGatewayConsumerGroupsPlain(GetGatewayConsumerGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayConsumerGroups:getGatewayConsumerGroups", TypeShape.of(GetGatewayConsumerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumers. API keys are deliberately omitted.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumers(GetGatewayConsumersArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .consumerGroupId(exampleAlicloudPolardbGatewayConsumerGroup.get("consumerGroupId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayConsumersResult> getGatewayConsumers(GetGatewayConsumersArgs args) {
+        return getGatewayConsumers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumers. API keys are deliberately omitted.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumers(GetGatewayConsumersArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .consumerGroupId(exampleAlicloudPolardbGatewayConsumerGroup.get("consumerGroupId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayConsumersResult> getGatewayConsumersPlain(GetGatewayConsumersPlainArgs args) {
+        return getGatewayConsumersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumers. API keys are deliberately omitted.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumers(GetGatewayConsumersArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .consumerGroupId(exampleAlicloudPolardbGatewayConsumerGroup.get("consumerGroupId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayConsumersResult> getGatewayConsumers(GetGatewayConsumersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayConsumers:getGatewayConsumers", TypeShape.of(GetGatewayConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumers. API keys are deliberately omitted.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumers(GetGatewayConsumersArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .consumerGroupId(exampleAlicloudPolardbGatewayConsumerGroup.get("consumerGroupId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayConsumersResult> getGatewayConsumers(GetGatewayConsumersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayConsumers:getGatewayConsumers", TypeShape.of(GetGatewayConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Consumers. API keys are deliberately omitted.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayConsumersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayConsumers(GetGatewayConsumersArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .consumerGroupId(exampleAlicloudPolardbGatewayConsumerGroup.get("consumerGroupId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayConsumersResult> getGatewayConsumersPlain(GetGatewayConsumersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayConsumers:getGatewayConsumers", TypeShape.of(GetGatewayConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway cost rules.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayCostRules(GetGatewayCostRulesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .modelServiceId("ms-abc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayCostRulesResult> getGatewayCostRules(GetGatewayCostRulesArgs args) {
+        return getGatewayCostRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway cost rules.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayCostRules(GetGatewayCostRulesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .modelServiceId("ms-abc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayCostRulesResult> getGatewayCostRulesPlain(GetGatewayCostRulesPlainArgs args) {
+        return getGatewayCostRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway cost rules.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayCostRules(GetGatewayCostRulesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .modelServiceId("ms-abc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayCostRulesResult> getGatewayCostRules(GetGatewayCostRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayCostRules:getGatewayCostRules", TypeShape.of(GetGatewayCostRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway cost rules.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayCostRules(GetGatewayCostRulesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .modelServiceId("ms-abc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayCostRulesResult> getGatewayCostRules(GetGatewayCostRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayCostRules:getGatewayCostRules", TypeShape.of(GetGatewayCostRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway cost rules.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayCostRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayCostRules(GetGatewayCostRulesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .modelServiceId("ms-abc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayCostRulesResult> getGatewayCostRulesPlain(GetGatewayCostRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayCostRules:getGatewayCostRules", TypeShape.of(GetGatewayCostRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model APIs.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelApis(GetGatewayModelApisArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .status("Enable")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayModelApisResult> getGatewayModelApis(GetGatewayModelApisArgs args) {
+        return getGatewayModelApis(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model APIs.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelApis(GetGatewayModelApisArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .status("Enable")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayModelApisResult> getGatewayModelApisPlain(GetGatewayModelApisPlainArgs args) {
+        return getGatewayModelApisPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model APIs.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelApis(GetGatewayModelApisArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .status("Enable")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayModelApisResult> getGatewayModelApis(GetGatewayModelApisArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayModelApis:getGatewayModelApis", TypeShape.of(GetGatewayModelApisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model APIs.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelApis(GetGatewayModelApisArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .status("Enable")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayModelApisResult> getGatewayModelApis(GetGatewayModelApisArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayModelApis:getGatewayModelApis", TypeShape.of(GetGatewayModelApisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model APIs.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelApisArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelApis(GetGatewayModelApisArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .status("Enable")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayModelApisResult> getGatewayModelApisPlain(GetGatewayModelApisPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayModelApis:getGatewayModelApis", TypeShape.of(GetGatewayModelApisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model services. API keys are intentionally not exported.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelServices(GetGatewayModelServicesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .protocol("openai")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayModelServicesResult> getGatewayModelServices(GetGatewayModelServicesArgs args) {
+        return getGatewayModelServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model services. API keys are intentionally not exported.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelServices(GetGatewayModelServicesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .protocol("openai")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayModelServicesResult> getGatewayModelServicesPlain(GetGatewayModelServicesPlainArgs args) {
+        return getGatewayModelServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model services. API keys are intentionally not exported.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelServices(GetGatewayModelServicesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .protocol("openai")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayModelServicesResult> getGatewayModelServices(GetGatewayModelServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayModelServices:getGatewayModelServices", TypeShape.of(GetGatewayModelServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model services. API keys are intentionally not exported.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelServices(GetGatewayModelServicesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .protocol("openai")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayModelServicesResult> getGatewayModelServices(GetGatewayModelServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayModelServices:getGatewayModelServices", TypeShape.of(GetGatewayModelServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway model services. API keys are intentionally not exported.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayModelServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayModelServices(GetGatewayModelServicesArgs.builder()
+     *             .gatewayId("pg-abc")
+     *             .protocol("openai")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayModelServicesResult> getGatewayModelServicesPlain(GetGatewayModelServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayModelServices:getGatewayModelServices", TypeShape.of(GetGatewayModelServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Rate Limit Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .scopeType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayRateLimitPoliciesResult> getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs args) {
+        return getGatewayRateLimitPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Rate Limit Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .scopeType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayRateLimitPoliciesResult> getGatewayRateLimitPoliciesPlain(GetGatewayRateLimitPoliciesPlainArgs args) {
+        return getGatewayRateLimitPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Rate Limit Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .scopeType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayRateLimitPoliciesResult> getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayRateLimitPolicies:getGatewayRateLimitPolicies", TypeShape.of(GetGatewayRateLimitPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Rate Limit Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .scopeType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayRateLimitPoliciesResult> getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getGatewayRateLimitPolicies:getGatewayRateLimitPolicies", TypeShape.of(GetGatewayRateLimitPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB AI Gateway Rate Limit Policies.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetGatewayRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getGatewayRateLimitPolicies(GetGatewayRateLimitPoliciesArgs.builder()
+     *             .gatewayId(exampleAlicloudPolardbGateway.get("id"))
+     *             .scopeType("Consumer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayRateLimitPoliciesResult> getGatewayRateLimitPoliciesPlain(GetGatewayRateLimitPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getGatewayRateLimitPolicies:getGatewayRateLimitPolicies", TypeShape.of(GetGatewayRateLimitPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.181.0+.
@@ -2616,6 +4143,231 @@ public final class PolardbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", TypeShape.of(GetGlobalDatabaseNetworksResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves a Lakebase tenant token for a PolarFS instance.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getLakebaseTenantToken(GetLakebaseTenantTokenArgs.builder()
+     *             .polarFsInstanceId(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .dbClusterId(exampleAlicloudPolardbCluster.get("id"))
+     *             .subdir("/home/project")
+     *             .tenant("admin")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLakebaseTenantTokenResult> getLakebaseTenantToken(GetLakebaseTenantTokenArgs args) {
+        return getLakebaseTenantToken(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a Lakebase tenant token for a PolarFS instance.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getLakebaseTenantToken(GetLakebaseTenantTokenArgs.builder()
+     *             .polarFsInstanceId(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .dbClusterId(exampleAlicloudPolardbCluster.get("id"))
+     *             .subdir("/home/project")
+     *             .tenant("admin")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLakebaseTenantTokenResult> getLakebaseTenantTokenPlain(GetLakebaseTenantTokenPlainArgs args) {
+        return getLakebaseTenantTokenPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves a Lakebase tenant token for a PolarFS instance.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getLakebaseTenantToken(GetLakebaseTenantTokenArgs.builder()
+     *             .polarFsInstanceId(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .dbClusterId(exampleAlicloudPolardbCluster.get("id"))
+     *             .subdir("/home/project")
+     *             .tenant("admin")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLakebaseTenantTokenResult> getLakebaseTenantToken(GetLakebaseTenantTokenArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getLakebaseTenantToken:getLakebaseTenantToken", TypeShape.of(GetLakebaseTenantTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a Lakebase tenant token for a PolarFS instance.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getLakebaseTenantToken(GetLakebaseTenantTokenArgs.builder()
+     *             .polarFsInstanceId(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .dbClusterId(exampleAlicloudPolardbCluster.get("id"))
+     *             .subdir("/home/project")
+     *             .tenant("admin")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLakebaseTenantTokenResult> getLakebaseTenantToken(GetLakebaseTenantTokenArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getLakebaseTenantToken:getLakebaseTenantToken", TypeShape.of(GetLakebaseTenantTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves a Lakebase tenant token for a PolarFS instance.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetLakebaseTenantTokenArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getLakebaseTenantToken(GetLakebaseTenantTokenArgs.builder()
+     *             .polarFsInstanceId(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .dbClusterId(exampleAlicloudPolardbCluster.get("id"))
+     *             .subdir("/home/project")
+     *             .tenant("admin")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLakebaseTenantTokenResult> getLakebaseTenantTokenPlain(GetLakebaseTenantTokenPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getLakebaseTenantToken:getLakebaseTenantToken", TypeShape.of(GetLakebaseTenantTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.81.0+
@@ -3229,6 +4981,300 @@ public final class PolardbFunctions {
      */
     public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain(GetParameterGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:polardb/getParameterGroups:getParameterGroups", TypeShape.of(GetParameterGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolarFsInstancesResult> getPolarFsInstances() {
+        return getPolarFsInstances(GetPolarFsInstancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolarFsInstancesResult> getPolarFsInstancesPlain() {
+        return getPolarFsInstancesPlain(GetPolarFsInstancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolarFsInstancesResult> getPolarFsInstances(GetPolarFsInstancesArgs args) {
+        return getPolarFsInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolarFsInstancesResult> getPolarFsInstancesPlain(GetPolarFsInstancesPlainArgs args) {
+        return getPolarFsInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolarFsInstancesResult> getPolarFsInstances(GetPolarFsInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getPolarFsInstances:getPolarFsInstances", TypeShape.of(GetPolarFsInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolarFsInstancesResult> getPolarFsInstances(GetPolarFsInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:polardb/getPolarFsInstances:getPolarFsInstances", TypeShape.of(GetPolarFsInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of PolarDB PolarFS instances.
+     * 
+     * &gt; **NOTE:** Available since v2.1.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.polardb.PolardbFunctions;
+     * import com.pulumi.alicloud.polardb.inputs.GetPolarFsInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PolardbFunctions.getPolarFsInstances(GetPolarFsInstancesArgs.builder()
+     *             .ids(exampleAlicloudPolardbPolarFs.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolarFsInstancesResult> getPolarFsInstancesPlain(GetPolarFsInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:polardb/getPolarFsInstances:getPolarFsInstances", TypeShape.of(GetPolarFsInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides availability zones for PolarDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.

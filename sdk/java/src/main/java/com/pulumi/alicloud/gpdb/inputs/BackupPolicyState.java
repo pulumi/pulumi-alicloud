@@ -34,6 +34,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The instance ID.
+     * 
      * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      * 
      */
@@ -42,6 +43,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The instance ID.
+     * 
      * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      * 
      */
@@ -187,6 +189,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbInstanceId The instance ID.
+         * 
          * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
          * 
          * @return builder
@@ -199,6 +202,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbInstanceId The instance ID.
+         * 
          * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
          * 
          * @return builder

@@ -264,6 +264,7 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
+        /// 
         /// &gt; **NOTE:** Do not set `InstanceType` when creating a serverless instance. Set `PaymentType = "PayAsYouGo"` and choose `ServerlessChargeType = "onDemand"` or `ServerlessChargeType = "provisioned"`.
         /// </summary>
         [Output("instanceType")]
@@ -509,6 +510,7 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
+        /// 
         /// &gt; **NOTE:** Do not set `InstanceType` when creating a serverless instance. Set `PaymentType = "PayAsYouGo"` and choose `ServerlessChargeType = "onDemand"` or `ServerlessChargeType = "provisioned"`.
         /// </summary>
         [Input("instanceType")]
@@ -728,6 +730,7 @@ namespace Pulumi.AliCloud.Amqp
         /// - enterprise: enterprise Edition
         /// - vip: Platinum Edition.
         /// - serverless: Serverless Edition.
+        /// 
         /// &gt; **NOTE:** Do not set `InstanceType` when creating a serverless instance. Set `PaymentType = "PayAsYouGo"` and choose `ServerlessChargeType = "onDemand"` or `ServerlessChargeType = "provisioned"`.
         /// </summary>
         [Input("instanceType")]

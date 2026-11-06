@@ -47,6 +47,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The network type of the instance. Valid values: `VPC`.
+     * 
      * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
@@ -55,6 +56,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The network type of the instance. Valid values: `VPC`.
+     * 
      * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
@@ -212,6 +214,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param networkType The network type of the instance. Valid values: `VPC`.
+         * 
          * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
          * 
          * @return builder
@@ -224,6 +227,7 @@ public final class InstanceReplicaSetArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param networkType The network type of the instance. Valid values: `VPC`.
+         * 
          * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
          * 
          * @return builder

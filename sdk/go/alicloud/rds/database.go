@@ -129,6 +129,7 @@ type Database struct {
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet pulumi.StringPtrOutput `pulumi:"characterSet"`
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -141,6 +142,7 @@ type Database struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -194,6 +196,7 @@ type databaseState struct {
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet *string `pulumi:"characterSet"`
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -206,6 +209,7 @@ type databaseState struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -227,6 +231,7 @@ type DatabaseState struct {
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet pulumi.StringPtrInput
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -239,6 +244,7 @@ type DatabaseState struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -270,6 +276,7 @@ type databaseArgs struct {
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet *string `pulumi:"characterSet"`
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -282,6 +289,7 @@ type databaseArgs struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -302,6 +310,7 @@ type DatabaseArgs struct {
 	// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
 	CharacterSet pulumi.StringPtrInput
 	// The name of the database.
+	//
 	// > **NOTE:**
 	// The name must be 2 to 64 characters in length.
 	// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -314,6 +323,7 @@ type DatabaseArgs struct {
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	InstanceId pulumi.StringInput
 	// The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+	//
 	// > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -422,6 +432,7 @@ func (o DatabaseOutput) CharacterSet() pulumi.StringPtrOutput {
 }
 
 // The name of the database.
+//
 // > **NOTE:**
 // The name must be 2 to 64 characters in length.
 // The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -443,6 +454,7 @@ func (o DatabaseOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+//
 // > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.

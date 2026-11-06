@@ -124,6 +124,7 @@ namespace Pulumi.AliCloud.alikafka
         /// The encryption method. Valid values:
         /// - SCRAM-SHA-512. This is the default value.
         /// - SCRAM-SHA-256
+        /// 
         /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         /// </summary>
         [Output("mechanism")]
@@ -225,6 +226,7 @@ namespace Pulumi.AliCloud.alikafka
         /// The encryption method. Valid values:
         /// - SCRAM-SHA-512. This is the default value.
         /// - SCRAM-SHA-256
+        /// 
         /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         /// </summary>
         [Input("mechanism")]
@@ -294,6 +296,7 @@ namespace Pulumi.AliCloud.alikafka
         /// The encryption method. Valid values:
         /// - SCRAM-SHA-512. This is the default value.
         /// - SCRAM-SHA-256
+        /// 
         /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         /// </summary>
         [Input("mechanism")]

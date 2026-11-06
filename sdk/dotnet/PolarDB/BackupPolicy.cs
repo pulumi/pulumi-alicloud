@@ -113,6 +113,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         [Output("dataLevel1BackupPeriods")]
@@ -144,6 +145,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         [Output("dataLevel2BackupPeriods")]
@@ -175,6 +177,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+        /// 
         /// &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         /// </summary>
         [Output("logBackupAnotherRegionRetentionPeriod")]
@@ -273,6 +276,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel1BackupPeriods
@@ -310,6 +314,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel2BackupPeriods
@@ -338,6 +343,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+        /// 
         /// &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         /// </summary>
         [Input("logBackupAnotherRegionRetentionPeriod")]
@@ -404,6 +410,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel1BackupPeriods
@@ -441,6 +448,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel2BackupPeriods
@@ -475,6 +483,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+        /// 
         /// &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         /// </summary>
         [Input("logBackupAnotherRegionRetentionPeriod")]

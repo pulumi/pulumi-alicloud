@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.190.0.
  * 
+ * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PayAsYouGo` by setting `paymentType = &#34;PayAsYouGo&#34;` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -397,6 +399,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     * 
      * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
@@ -407,6 +410,7 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * @return The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     * 
      * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */

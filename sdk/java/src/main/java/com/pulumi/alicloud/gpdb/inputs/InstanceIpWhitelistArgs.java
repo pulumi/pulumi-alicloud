@@ -33,14 +33,14 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * IP whitelist group name.
+     * IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
      * 
      */
     @Import(name="ipGroupName")
     private @Nullable Output<String> ipGroupName;
 
     /**
-     * @return IP whitelist group name.
+     * @return IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
      * 
      */
     public Optional<Output<String>> ipGroupName() {
@@ -112,7 +112,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipGroupName IP whitelist group name.
+         * @param ipGroupName IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipGroupName IP whitelist group name.
+         * @param ipGroupName IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
          * 
          * @return builder
          * 

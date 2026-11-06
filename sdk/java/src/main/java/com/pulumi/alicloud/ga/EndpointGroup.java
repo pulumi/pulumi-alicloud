@@ -338,6 +338,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     * 
      * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
@@ -346,6 +347,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     * 
      * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
@@ -354,6 +356,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * 
      * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      * 
      */
@@ -362,6 +365,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * 
      * &gt; **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      * 
      */
@@ -370,6 +374,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * 
      * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      * 
      */
@@ -378,6 +383,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * 
      * &gt; **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      * 
      */
@@ -445,6 +451,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     * 
      * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
@@ -456,6 +463,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     * 
      * &gt; **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
@@ -492,6 +500,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
@@ -500,6 +509,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,23 @@ public final class IntegrationPolicyEntityGroup {
      * 
      */
     private @Nullable String clusterId;
+    /**
+     * @return The cluster Namespace.
+     * 
+     * &gt; **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+     * 
+     */
+    private @Nullable String clusterNamespace;
+    /**
+     * @return Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    private @Nullable Boolean disablePolicyShare;
+    /**
+     * @return The ID of the user who owns the cluster.
+     * 
+     */
+    private @Nullable String entityUserId;
 
     private IntegrationPolicyEntityGroup() {}
     /**
@@ -37,6 +55,29 @@ public final class IntegrationPolicyEntityGroup {
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
+    /**
+     * @return The cluster Namespace.
+     * 
+     * &gt; **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+     * 
+     */
+    public Optional<String> clusterNamespace() {
+        return Optional.ofNullable(this.clusterNamespace);
+    }
+    /**
+     * @return Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Boolean> disablePolicyShare() {
+        return Optional.ofNullable(this.disablePolicyShare);
+    }
+    /**
+     * @return The ID of the user who owns the cluster.
+     * 
+     */
+    public Optional<String> entityUserId() {
+        return Optional.ofNullable(this.entityUserId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +90,17 @@ public final class IntegrationPolicyEntityGroup {
     public static final class Builder {
         private @Nullable String clusterEntityType;
         private @Nullable String clusterId;
+        private @Nullable String clusterNamespace;
+        private @Nullable Boolean disablePolicyShare;
+        private @Nullable String entityUserId;
         public Builder() {}
         public Builder(IntegrationPolicyEntityGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterEntityType = defaults.clusterEntityType;
     	      this.clusterId = defaults.clusterId;
+    	      this.clusterNamespace = defaults.clusterNamespace;
+    	      this.disablePolicyShare = defaults.disablePolicyShare;
+    	      this.entityUserId = defaults.entityUserId;
         }
 
         @CustomType.Setter
@@ -68,10 +115,31 @@ public final class IntegrationPolicyEntityGroup {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
+        public Builder clusterNamespace(@Nullable String clusterNamespace) {
+
+            this.clusterNamespace = clusterNamespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disablePolicyShare(@Nullable Boolean disablePolicyShare) {
+
+            this.disablePolicyShare = disablePolicyShare;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder entityUserId(@Nullable String entityUserId) {
+
+            this.entityUserId = entityUserId;
+            return this;
+        }
         public IntegrationPolicyEntityGroup build() {
             final var _resultValue = new IntegrationPolicyEntityGroup();
             _resultValue.clusterEntityType = clusterEntityType;
             _resultValue.clusterId = clusterId;
+            _resultValue.clusterNamespace = clusterNamespace;
+            _resultValue.disablePolicyShare = disablePolicyShare;
+            _resultValue.entityUserId = entityUserId;
             return _resultValue;
         }
     }

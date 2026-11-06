@@ -79,6 +79,7 @@ namespace Pulumi.AliCloud.Quotas
     {
         /// <summary>
         /// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+        /// 
         /// &gt; **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         /// </summary>
         [Output("aliyunUids")]
@@ -86,6 +87,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The value of the quota request.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Output("desireValue")]
@@ -99,6 +101,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+        /// 
         /// &gt; **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         /// </summary>
         [Output("effectiveTime")]
@@ -114,6 +117,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+        /// 
         /// &gt; **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         /// </summary>
         [Output("expireTime")]
@@ -129,6 +133,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// Cloud service name abbreviation.
+        /// 
         /// &gt; **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         /// </summary>
         [Output("productCode")]
@@ -157,6 +162,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// Reason for quota application.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Output("reason")]
@@ -213,6 +219,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+        /// 
         /// &gt; **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         /// </summary>
         public InputList<string> AliyunUids
@@ -223,6 +230,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The value of the quota request.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Input("desireValue", required: true)]
@@ -242,6 +250,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+        /// 
         /// &gt; **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         /// </summary>
         [Input("effectiveTime")]
@@ -257,6 +266,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+        /// 
         /// &gt; **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         /// </summary>
         [Input("expireTime")]
@@ -272,6 +282,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// Cloud service name abbreviation.
+        /// 
         /// &gt; **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         /// </summary>
         [Input("productCode", required: true)]
@@ -294,6 +305,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// Reason for quota application.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Input("reason", required: true)]
@@ -312,6 +324,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+        /// 
         /// &gt; **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
         /// </summary>
         public InputList<string> AliyunUids
@@ -322,6 +335,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The value of the quota request.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Input("desireValue")]
@@ -341,6 +355,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+        /// 
         /// &gt; **NOTE:**  If the current account does not select the effective time, the default is the submission time.
         /// </summary>
         [Input("effectiveTime")]
@@ -356,6 +371,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+        /// 
         /// &gt; **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
         /// </summary>
         [Input("expireTime")]
@@ -371,6 +387,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// Cloud service name abbreviation.
+        /// 
         /// &gt; **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         /// </summary>
         [Input("productCode")]
@@ -405,6 +422,7 @@ namespace Pulumi.AliCloud.Quotas
 
         /// <summary>
         /// Reason for quota application.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Input("reason")]

@@ -968,8 +968,10 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
-     * **NOTE:** type = cdn_events, available in 1.47.0+.
-     * **NOTE:** type = eventbridge, available in 1.173.0+.
+     * 
+     * &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+     * 
+     * &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -979,8 +981,10 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mnsTopic&#34;, &#34;cdnEvents&#34;, &#34;eventbridge&#34;].
      * 
      * &gt; **NOTE:** Config does not support modification when type is mns_topic.
-     * **NOTE:** type = cdn_events, available in 1.47.0+.
-     * **NOTE:** type = eventbridge, available in 1.173.0+.
+     * 
+     * &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+     * 
+     * &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
     public Output<String> type() {

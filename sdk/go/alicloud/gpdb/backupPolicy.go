@@ -169,6 +169,7 @@ type BackupPolicy struct {
 	// Data backup retention days.
 	BackupRetentionPeriod pulumi.IntOutput `pulumi:"backupRetentionPeriod"`
 	// The instance ID.
+	//
 	// > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// Whether to enable automatic recovery points. Value Description:
@@ -236,6 +237,7 @@ type backupPolicyState struct {
 	// Data backup retention days.
 	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
 	// The instance ID.
+	//
 	// > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// Whether to enable automatic recovery points. Value Description:
@@ -265,6 +267,7 @@ type BackupPolicyState struct {
 	// Data backup retention days.
 	BackupRetentionPeriod pulumi.IntPtrInput
 	// The instance ID.
+	//
 	// > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	DbInstanceId pulumi.StringPtrInput
 	// Whether to enable automatic recovery points. Value Description:
@@ -304,6 +307,7 @@ type backupPolicyArgs struct {
 	// Data backup retention days.
 	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
 	// The instance ID.
+	//
 	// > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// Whether to enable automatic recovery points. Value Description:
@@ -334,6 +338,7 @@ type BackupPolicyArgs struct {
 	// Data backup retention days.
 	BackupRetentionPeriod pulumi.IntPtrInput
 	// The instance ID.
+	//
 	// > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	DbInstanceId pulumi.StringInput
 	// Whether to enable automatic recovery points. Value Description:
@@ -452,6 +457,7 @@ func (o BackupPolicyOutput) BackupRetentionPeriod() pulumi.IntOutput {
 }
 
 // The instance ID.
+//
 // > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 func (o BackupPolicyOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)

@@ -171,6 +171,7 @@ export class User extends pulumi.CustomResource {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
+     *
      * > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      */
     declare public readonly source: pulumi.Output<string>;
@@ -306,6 +307,7 @@ export interface UserState {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
+     *
      * > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      */
     source?: pulumi.Input<string | undefined>;
@@ -386,6 +388,7 @@ export interface UserArgs {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
+     *
      * > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      */
     source: pulumi.Input<string>;

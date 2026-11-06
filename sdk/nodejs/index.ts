@@ -93,6 +93,9 @@ utilities.lazyLoad(exports, ["StarRocksInstance"], () => require("./starRocksIns
 import * as ackone from "./ackone";
 import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
+import * as agentloop from "./agentloop";
+import * as agentloopcontextstore from "./agentloopcontextstore";
+import * as agentloopevaluator from "./agentloopevaluator";
 import * as alb from "./alb";
 import * as alidnscloudgtm from "./alidnscloudgtm";
 import * as alidnscloudgtmaddress from "./alidnscloudgtmaddress";
@@ -247,6 +250,9 @@ export {
     ackone,
     actiontrail,
     adb,
+    agentloop,
+    agentloopcontextstore,
+    agentloopevaluator,
     alb,
     alidnscloudgtm,
     alidnscloudgtmaddress,

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        /// A list of kubernetes cluster connection information.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEdgeKubernetesClustersClusterConnectionResult> Connections;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        /// List of cluster worker nodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult> WorkerNodes;
 

@@ -32,6 +32,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
 
         /// <summary>
         /// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+        /// 
         /// &gt; **NOTE :**:
         /// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
         /// 

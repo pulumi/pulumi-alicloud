@@ -99,6 +99,172 @@
                     }
                 }
             },
+            "alicloud_agentloop_agent_space": {
+                "current": "alicloud:agentloop/agentSpace:AgentSpace"
+            },
+            "alicloud_agentloop_context_store": {
+                "current": "alicloud:agentloopcontextstore/agentloopContextStore:AgentloopContextStore",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "service_names": {
+                                    "maxItemsOne": false
+                                },
+                                "source": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "alicloud_agentloop_context_store_api_key": {
+                "current": "alicloud:agentloopcontextstore/apiKey:ApiKey"
+            },
+            "alicloud_agentloop_dataset": {
+                "current": "alicloud:agentloop/dataset:Dataset"
+            },
+            "alicloud_agentloop_endpoint_connector": {
+                "current": "alicloud:agentloop/endpointConnector:EndpointConnector",
+                "fields": {
+                    "headers": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_agentloop_evaluation_task": {
+                "current": "alicloud:agentloop/evaluationTask:EvaluationTask",
+                "fields": {
+                    "evaluators": {
+                        "maxItemsOne": false
+                    },
+                    "run_strategies": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "backfill": {
+                                    "maxItemsOne": true
+                                },
+                                "continuous": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "alicloud_agentloop_evaluator": {
+                "current": "alicloud:agentloopevaluator/agentloopEvaluator:AgentloopEvaluator",
+                "fields": {
+                    "annotations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_agentloop_evaluator_skill": {
+                "current": "alicloud:agentloopevaluator/skill:Skill",
+                "fields": {
+                    "files": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_agentloop_optimize_task": {
+                "current": "alicloud:agentloop/optimizeTask:OptimizeTask"
+            },
+            "alicloud_agentloop_pipeline": {
+                "current": "alicloud:agentloop/pipeline:Pipeline",
+                "fields": {
+                    "execute_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "run_once": {
+                                    "maxItemsOne": true
+                                },
+                                "scheduled": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "pipeline": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "nodes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sink": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "condition": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "default_sink": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "dataset": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "routes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "sink": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "dataset": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "dataset": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "source": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dataset": {
+                                    "maxItemsOne": true
+                                },
+                                "input_fields": {
+                                    "maxItemsOne": false
+                                },
+                                "logstore": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_alb_acl": {
                 "current": "alicloud:alb/acl:Acl",
                 "fields": {
@@ -7790,6 +7956,9 @@
             "alicloud_instance": {
                 "current": "alicloud:ecs/instance:Instance",
                 "fields": {
+                    "additional_attributes": {
+                        "maxItemsOne": false
+                    },
                     "cpu_options": {
                         "maxItemsOne": true,
                         "elem": {
@@ -7935,6 +8104,9 @@
                 "current": "alicloud:kvstore/instance:Instance",
                 "fields": {
                     "backup_period": {
+                        "maxItemsOne": false
+                    },
+                    "global_security_group_list": {
                         "maxItemsOne": false
                     },
                     "parameters": {
@@ -9491,7 +9663,12 @@
                 }
             },
             "alicloud_pai_workspace_experiment": {
-                "current": "alicloud:pai/workspaceExperiment:WorkspaceExperiment"
+                "current": "alicloud:pai/workspaceExperiment:WorkspaceExperiment",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_pai_workspace_member": {
                 "current": "alicloud:pai/workspaceMember:WorkspaceMember",
@@ -9693,6 +9870,27 @@
                     }
                 }
             },
+            "alicloud_polardb_gateway_budget_policy": {
+                "current": "alicloud:polardb/gatewayBudgetPolicy:GatewayBudgetPolicy"
+            },
+            "alicloud_polardb_gateway_consumer": {
+                "current": "alicloud:polardb/gatewayConsumer:GatewayConsumer"
+            },
+            "alicloud_polardb_gateway_consumer_group": {
+                "current": "alicloud:polardb/gatewayConsumerGroup:GatewayConsumerGroup"
+            },
+            "alicloud_polardb_gateway_cost_rule": {
+                "current": "alicloud:polardb/gatewayCostRule:GatewayCostRule"
+            },
+            "alicloud_polardb_gateway_model_api": {
+                "current": "alicloud:polardb/gatewayModelApi:GatewayModelApi"
+            },
+            "alicloud_polardb_gateway_model_service": {
+                "current": "alicloud:polardb/gatewayModelService:GatewayModelService"
+            },
+            "alicloud_polardb_gateway_rate_limit_policy": {
+                "current": "alicloud:polardb/gatewayRateLimitPolicy:GatewayRateLimitPolicy"
+            },
             "alicloud_polardb_global_database_network": {
                 "current": "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork"
             },
@@ -9703,6 +9901,17 @@
                 "current": "alicloud:polardb/parameterGroup:ParameterGroup",
                 "fields": {
                     "parameters": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_polar_fs": {
+                "current": "alicloud:polardb/polarFs:PolarFs"
+            },
+            "alicloud_polardb_polar_fs_endpoint": {
+                "current": "alicloud:polardb/polarFsEndpoint:PolarFsEndpoint",
+                "fields": {
+                    "address_items": {
                         "maxItemsOne": false
                     }
                 }
@@ -11228,7 +11437,12 @@
                 }
             },
             "alicloud_slb_acl_entry_attachment": {
-                "current": "alicloud:slb/aclEntryAttachment:AclEntryAttachment"
+                "current": "alicloud:slb/aclEntryAttachment:AclEntryAttachment",
+                "fields": {
+                    "entries": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_slb_attachment": {
                 "current": "alicloud:slb/attachment:Attachment",
@@ -23662,6 +23876,80 @@
                     }
                 }
             },
+            "alicloud_polardb_gateway_budget_policies": {
+                "current": "alicloud:polardb/getGatewayBudgetPolicies:getGatewayBudgetPolicies",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_gateway_consumer_groups": {
+                "current": "alicloud:polardb/getGatewayConsumerGroups:getGatewayConsumerGroups",
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_gateway_consumers": {
+                "current": "alicloud:polardb/getGatewayConsumers:getGatewayConsumers",
+                "fields": {
+                    "consumers": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_gateway_cost_rules": {
+                "current": "alicloud:polardb/getGatewayCostRules:getGatewayCostRules",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_gateway_model_apis": {
+                "current": "alicloud:polardb/getGatewayModelApis:getGatewayModelApis",
+                "fields": {
+                    "apis": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_gateway_model_services": {
+                "current": "alicloud:polardb/getGatewayModelServices:getGatewayModelServices",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "services": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_gateway_rate_limit_policies": {
+                "current": "alicloud:polardb/getGatewayRateLimitPolicies:getGatewayRateLimitPolicies",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_polardb_global_database_networks": {
                 "current": "alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks",
                 "fields": {
@@ -23679,6 +23967,9 @@
                         }
                     }
                 }
+            },
+            "alicloud_polardb_lakebase_tenant_token": {
+                "current": "alicloud:polardb/getLakebaseTenantToken:getLakebaseTenantToken"
             },
             "alicloud_polardb_node_classes": {
                 "current": "alicloud:polardb/getNodeClasses:getNodeClasses",
@@ -23712,6 +24003,17 @@
                         "maxItemsOne": false
                     },
                     "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_polar_fs_instances": {
+                "current": "alicloud:polardb/getPolarFsInstances:getPolarFsInstances",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "polar_fs_instances": {
                         "maxItemsOne": false
                     }
                 }
@@ -24745,6 +25047,38 @@
                     },
                     "names": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_sae_application_groups": {
+                "current": "alicloud:sae/getApplicationGroups:getApplicationGroups",
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_sae_application_instances": {
+                "current": "alicloud:sae/getApplicationInstances:getApplicationInstances",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "instances": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "sidecar_containers_status": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

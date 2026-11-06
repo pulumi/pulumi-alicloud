@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.112.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -87,6 +89,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `Type` is set to `Basic`, this parameter is required.
+        /// 
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Output("bandwidthType")]
@@ -251,6 +254,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `Type` is set to `Basic`, this parameter is required.
+        /// 
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
@@ -377,6 +381,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `Type` is set to `Basic`, this parameter is required.
+        /// 
         /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]

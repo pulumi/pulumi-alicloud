@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
         /// 
+        /// &gt; **NOTE:** Available since v1.17.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,6 +45,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
         /// 
+        /// &gt; **NOTE:** Available since v1.17.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -71,6 +75,8 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
+        /// 
+        /// &gt; **NOTE:** Available since v1.17.0.
         /// 
         /// ## Example Usage
         /// 

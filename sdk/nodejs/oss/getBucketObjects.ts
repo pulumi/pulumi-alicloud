@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the objects of an OSS bucket.
  *
+ * > **NOTE:** Available since v1.17.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,6 +75,8 @@ export interface GetBucketObjectsResult {
 }
 /**
  * This data source provides the objects of an OSS bucket.
+ *
+ * > **NOTE:** Available since v1.17.0.
  *
  * ## Example Usage
  *

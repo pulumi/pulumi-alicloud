@@ -293,6 +293,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -301,6 +302,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -830,6 +832,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -842,6 +845,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console. **NOTE:** International station only supports `Subscription`.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder

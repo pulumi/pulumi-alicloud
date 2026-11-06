@@ -262,6 +262,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -270,6 +271,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -819,6 +821,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -831,6 +834,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The subscription duration in months. It is valid when `payType` is `PrePaid`. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder

@@ -19,7 +19,7 @@ public final class GetEdgeKubernetesClustersCluster {
      */
     private String availabilityZone;
     /**
-     * @return A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
     private List<GetEdgeKubernetesClustersClusterConnection> connections;
@@ -49,7 +49,7 @@ public final class GetEdgeKubernetesClustersCluster {
      */
     private String vpcId;
     /**
-     * @return List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * @return List of cluster worker nodes.
      * 
      */
     private List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes;
@@ -63,7 +63,7 @@ public final class GetEdgeKubernetesClustersCluster {
         return this.availabilityZone;
     }
     /**
-     * @return A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return A list of kubernetes cluster connection information.
      * 
      */
     public List<GetEdgeKubernetesClustersClusterConnection> connections() {
@@ -105,7 +105,7 @@ public final class GetEdgeKubernetesClustersCluster {
         return this.vpcId;
     }
     /**
-     * @return List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * @return List of cluster worker nodes.
      * 
      */
     public List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes() {

@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** From version 1.214.0, if `ProductType` is set to `Ddoscoo` or `DdoscooIntl`, the provider `Region` should be set to `cn-hangzhou`, and if `ProductType` is set to `ddosDip`, the provider `Region` should be set to `ap-southeast-1`.
     /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

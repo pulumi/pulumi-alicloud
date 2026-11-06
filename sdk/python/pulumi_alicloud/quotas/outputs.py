@@ -223,6 +223,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
         :param _builtins.str quota_name: The quota name.
         :param _builtins.str quota_unit: Quota unit.
         :param _builtins.str reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param _builtins.str status: The approval status of the quota promotion application. Value:
                - Disagree: reject.
@@ -364,6 +365,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
     def reason(self) -> Optional[_builtins.str]:
         """
         Reason for quota application.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "reason")

@@ -57,7 +57,7 @@ func GetEdgeKubernetesClusters(ctx *pulumi.Context, args *GetEdgeKubernetesClust
 
 // A collection of arguments for invoking getEdgeKubernetesClusters.
 type GetEdgeKubernetesClustersArgs struct {
-	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `vpcId`, `securityGroupId`, `connections`. See full list in attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
@@ -69,7 +69,7 @@ type GetEdgeKubernetesClustersArgs struct {
 
 // A collection of values returned by getEdgeKubernetesClusters.
 type GetEdgeKubernetesClustersResult struct {
-	// A list of matched Kubernetes clusters. Each element contains the following attributes:
+	// A list of matched Kubernetes clusters.
 	Clusters      []GetEdgeKubernetesClustersCluster `pulumi:"clusters"`
 	EnableDetails *bool                              `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
@@ -89,7 +89,7 @@ func GetEdgeKubernetesClustersOutput(ctx *pulumi.Context, args GetEdgeKubernetes
 
 // A collection of arguments for invoking getEdgeKubernetesClusters.
 type GetEdgeKubernetesClustersOutputArgs struct {
-	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `vpcId`, `securityGroupId`, `connections`. See full list in attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -118,7 +118,7 @@ func (o GetEdgeKubernetesClustersResultOutput) ToGetEdgeKubernetesClustersResult
 	return o
 }
 
-// A list of matched Kubernetes clusters. Each element contains the following attributes:
+// A list of matched Kubernetes clusters.
 func (o GetEdgeKubernetesClustersResultOutput) Clusters() GetEdgeKubernetesClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersResult) []GetEdgeKubernetesClustersCluster { return v.Clusters }).(GetEdgeKubernetesClustersClusterArrayOutput)
 }

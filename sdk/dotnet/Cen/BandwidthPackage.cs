@@ -130,6 +130,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
@@ -260,6 +261,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
@@ -352,6 +354,7 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]

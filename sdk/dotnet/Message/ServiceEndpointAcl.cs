@@ -66,6 +66,7 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The CIDR block.
+        /// 
         /// &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         /// </summary>
         [Output("cidr")]
@@ -133,6 +134,7 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The CIDR block.
+        /// 
         /// &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         /// </summary>
         [Input("cidr", required: true)]
@@ -162,6 +164,7 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The CIDR block.
+        /// 
         /// &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
         /// </summary>
         [Input("cidr")]
