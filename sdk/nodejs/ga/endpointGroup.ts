@@ -228,16 +228,19 @@ export class EndpointGroup extends pulumi.CustomResource {
     declare public readonly endpointGroupRegion: pulumi.Output<string>;
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     *
      * > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      */
     declare public readonly endpointGroupType: pulumi.Output<string>;
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     *
      * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      */
     declare public readonly endpointProtocolVersion: pulumi.Output<string>;
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     *
      * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
     declare public readonly endpointRequestProtocol: pulumi.Output<string>;
@@ -262,6 +265,7 @@ export class EndpointGroup extends pulumi.CustomResource {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     *
      * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
     declare public readonly healthCheckProtocol: pulumi.Output<string | undefined>;
@@ -275,6 +279,7 @@ export class EndpointGroup extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     declare public readonly portOverrides: pulumi.Output<outputs.ga.EndpointGroupPortOverrides | undefined>;
@@ -394,16 +399,19 @@ export interface EndpointGroupState {
     endpointGroupRegion?: pulumi.Input<string | undefined>;
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     *
      * > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      */
     endpointGroupType?: pulumi.Input<string | undefined>;
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     *
      * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      */
     endpointProtocolVersion?: pulumi.Input<string | undefined>;
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     *
      * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
     endpointRequestProtocol?: pulumi.Input<string | undefined>;
@@ -428,6 +436,7 @@ export interface EndpointGroupState {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     *
      * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
     healthCheckProtocol?: pulumi.Input<string | undefined>;
@@ -441,6 +450,7 @@ export interface EndpointGroupState {
     name?: pulumi.Input<string | undefined>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides | undefined>;
@@ -484,16 +494,19 @@ export interface EndpointGroupArgs {
     endpointGroupRegion: pulumi.Input<string>;
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
+     *
      * > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      */
     endpointGroupType?: pulumi.Input<string | undefined>;
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     *
      * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      */
     endpointProtocolVersion?: pulumi.Input<string | undefined>;
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     *
      * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
     endpointRequestProtocol?: pulumi.Input<string | undefined>;
@@ -518,6 +531,7 @@ export interface EndpointGroupArgs {
      * - `TCP` or `tcp`: TCP protocol.
      * - `HTTP` or `http`: HTTP protocol.
      * - `HTTPS` or `https`: HTTPS protocol.
+     *
      * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
     healthCheckProtocol?: pulumi.Input<string | undefined>;
@@ -531,6 +545,7 @@ export interface EndpointGroupArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
+     *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides | undefined>;

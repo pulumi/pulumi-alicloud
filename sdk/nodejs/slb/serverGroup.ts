@@ -120,6 +120,7 @@ export class ServerGroup extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The list of backend servers to be added. See `servers` below.
+     *
      * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
      * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
@@ -182,6 +183,7 @@ export interface ServerGroupState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The list of backend servers to be added. See `servers` below.
+     *
      * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
      * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
@@ -211,6 +213,7 @@ export interface ServerGroupArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The list of backend servers to be added. See `servers` below.
+     *
      * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
      * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.

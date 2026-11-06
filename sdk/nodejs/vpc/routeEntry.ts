@@ -153,6 +153,7 @@ export class RouteEntry extends pulumi.CustomResource {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      */
     declare public readonly nexthopType: pulumi.Output<string | undefined>;
     /**
@@ -238,6 +239,7 @@ export interface RouteEntryState {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      */
     nexthopType?: pulumi.Input<string | undefined>;
     /**
@@ -286,6 +288,7 @@ export interface RouteEntryArgs {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      */
     nexthopType?: pulumi.Input<string | undefined>;
     /**

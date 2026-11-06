@@ -24,6 +24,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Whether to pay automatically. The default value is true. Value:
      * - true: automatic payment
      * - false: only generate orders, not pay
+     * 
      * &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      * 
      */
@@ -34,6 +35,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Whether to pay automatically. The default value is true. Value:
      * - true: automatic payment
      * - false: only generate orders, not pay
+     * 
      * &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      * 
      */
@@ -43,6 +45,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Instance low-frequency storage space. Unit: GB.
+     * 
      * &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      * 
      */
@@ -51,6 +54,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Instance low-frequency storage space. Unit: GB.
+     * 
      * &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      * 
      */
@@ -66,6 +70,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - 64 core 256 GB (number of compute nodes: 4)
      * - 96 core 384 GB (number of computing nodes: 6)
      * - 128 core 512 GB (number of compute nodes: 8)
+     * 
      * &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      * 
      */
@@ -80,6 +85,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - 64 core 256 GB (number of compute nodes: 4)
      * - 96 core 384 GB (number of computing nodes: 6)
      * - 128 core 512 GB (number of compute nodes: 8)
+     * 
      * &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      * 
      */
@@ -251,6 +257,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
+     * 
      * &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      * 
      */
@@ -261,6 +268,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
+     * 
      * &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      * 
      */
@@ -302,6 +310,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
+     * 
      * &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      * 
      */
@@ -312,6 +321,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
+     * 
      * &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      * 
      */
@@ -336,6 +346,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The standard storage space of the instance. Unit: GB.
+     * 
      * &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      * 
      */
@@ -344,6 +355,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The standard storage space of the instance. Unit: GB.
+     * 
      * &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      * 
      */
@@ -429,6 +441,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param autoPay Whether to pay automatically. The default value is true. Value:
          * - true: automatic payment
          * - false: only generate orders, not pay
+         * 
          * &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
          * 
          * @return builder
@@ -443,6 +456,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param autoPay Whether to pay automatically. The default value is true. Value:
          * - true: automatic payment
          * - false: only generate orders, not pay
+         * 
          * &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
          * 
          * @return builder
@@ -454,6 +468,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param coldStorageSize Instance low-frequency storage space. Unit: GB.
+         * 
          * &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
          * 
          * @return builder
@@ -466,6 +481,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param coldStorageSize Instance low-frequency storage space. Unit: GB.
+         * 
          * &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
          * 
          * @return builder
@@ -483,6 +499,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - 64 core 256 GB (number of compute nodes: 4)
          * - 96 core 384 GB (number of computing nodes: 6)
          * - 128 core 512 GB (number of compute nodes: 8)
+         * 
          * &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
          * 
          * @return builder
@@ -501,6 +518,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - 64 core 256 GB (number of compute nodes: 4)
          * - 96 core 384 GB (number of computing nodes: 6)
          * - 128 core 512 GB (number of compute nodes: 8)
+         * 
          * &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
          * 
          * @return builder
@@ -744,6 +762,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param pricingCycle Billing cycle. Value:
          * - Month: monthly billing
          * - Hour: hourly billing
+         * 
          * &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
          * 
          * @return builder
@@ -758,6 +777,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param pricingCycle Billing cycle. Value:
          * - Month: monthly billing
          * - Hour: hourly billing
+         * 
          * &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
          * 
          * @return builder
@@ -813,6 +833,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param scaleType Change matching type. Value:
          * - UPGRADE: UPGRADE
          * - DOWNGRADE: Downgrading
+         * 
          * &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
          * 
          * @return builder
@@ -827,6 +848,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param scaleType Change matching type. Value:
          * - UPGRADE: UPGRADE
          * - DOWNGRADE: Downgrading
+         * 
          * &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
          * 
          * @return builder
@@ -859,6 +881,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSize The standard storage space of the instance. Unit: GB.
+         * 
          * &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
          * 
          * @return builder
@@ -871,6 +894,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSize The standard storage space of the instance. Unit: GB.
+         * 
          * &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
          * 
          * @return builder

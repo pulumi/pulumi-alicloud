@@ -32,14 +32,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enter the development mode.
+     * Specifies whether to enter development mode. Valid values: `true`, `false`.
      * 
      */
     @Import(name="develop")
     private @Nullable Output<String> develop;
 
     /**
-     * @return Whether to enter the development mode.
+     * @return Specifies whether to enter development mode. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<String>> develop() {
@@ -62,18 +62,33 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      * 
      */
     @Import(name="serviceConfig")
     private @Nullable Output<String> serviceConfig;
 
     /**
-     * @return Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * @return Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      * 
      */
     public Optional<Output<String>> serviceConfig() {
         return Optional.ofNullable(this.serviceConfig);
+    }
+
+    /**
+     * (Available since v2.1.0) Unique Service ID
+     * 
+     */
+    @Import(name="serviceUid")
+    private @Nullable Output<String> serviceUid;
+
+    /**
+     * @return (Available since v2.1.0) Unique Service ID
+     * 
+     */
+    public Optional<Output<String>> serviceUid() {
+        return Optional.ofNullable(this.serviceUid);
     }
 
     /**
@@ -92,14 +107,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * The custom label.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The custom label.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -107,14 +122,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Workspace id
+     * The workspace ID.
      * 
      */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
     /**
-     * @return Workspace id
+     * @return The workspace ID.
      * 
      */
     public Optional<Output<String>> workspaceId() {
@@ -128,6 +143,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.develop = $.develop;
         this.regionId = $.regionId;
         this.serviceConfig = $.serviceConfig;
+        this.serviceUid = $.serviceUid;
         this.status = $.status;
         this.tags = $.tags;
         this.workspaceId = $.workspaceId;
@@ -173,7 +189,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param develop Whether to enter the development mode.
+         * @param develop Specifies whether to enter development mode. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -184,7 +200,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param develop Whether to enter the development mode.
+         * @param develop Specifies whether to enter development mode. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -215,7 +231,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceConfig Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+         * @param serviceConfig Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
          * 
          * @return builder
          * 
@@ -226,13 +242,34 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceConfig Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+         * @param serviceConfig Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
          * 
          * @return builder
          * 
          */
         public Builder serviceConfig(String serviceConfig) {
             return serviceConfig(Output.of(serviceConfig));
+        }
+
+        /**
+         * @param serviceUid (Available since v2.1.0) Unique Service ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceUid(@Nullable Output<String> serviceUid) {
+            $.serviceUid = serviceUid;
+            return this;
+        }
+
+        /**
+         * @param serviceUid (Available since v2.1.0) Unique Service ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceUid(String serviceUid) {
+            return serviceUid(Output.of(serviceUid));
         }
 
         /**
@@ -257,7 +294,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The custom label.
          * 
          * @return builder
          * 
@@ -268,7 +305,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The custom label.
          * 
          * @return builder
          * 
@@ -278,7 +315,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceId Workspace id
+         * @param workspaceId The workspace ID.
          * 
          * @return builder
          * 
@@ -289,7 +326,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceId Workspace id
+         * @param workspaceId The workspace ID.
          * 
          * @return builder
          * 

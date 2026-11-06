@@ -21,6 +21,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
     /**
      * The configuration of the domain name. See `hostConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
@@ -29,6 +30,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
     /**
      * @return The configuration of the domain name. See `hostConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
      * 
      */
@@ -110,6 +112,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
         /**
          * @param hostConfigs The configuration of the domain name. See `hostConfig` below.
+         * 
          * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          * 
          * @return builder
@@ -122,6 +125,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
         /**
          * @param hostConfigs The configuration of the domain name. See `hostConfig` below.
+         * 
          * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          * 
          * @return builder
@@ -133,6 +137,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
         /**
          * @param hostConfigs The configuration of the domain name. See `hostConfig` below.
+         * 
          * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          * 
          * @return builder

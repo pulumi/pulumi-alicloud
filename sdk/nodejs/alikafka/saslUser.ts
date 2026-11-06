@@ -128,6 +128,7 @@ export class SaslUser extends pulumi.CustomResource {
      * The encryption method. Valid values:
      * - SCRAM-SHA-512. This is the default value.
      * - SCRAM-SHA-256
+     *
      * > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
      */
     declare public readonly mechanism: pulumi.Output<string>;
@@ -207,6 +208,7 @@ export interface SaslUserState {
      * The encryption method. Valid values:
      * - SCRAM-SHA-512. This is the default value.
      * - SCRAM-SHA-256
+     *
      * > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
      */
     mechanism?: pulumi.Input<string | undefined>;
@@ -244,6 +246,7 @@ export interface SaslUserArgs {
      * The encryption method. Valid values:
      * - SCRAM-SHA-512. This is the default value.
      * - SCRAM-SHA-256
+     *
      * > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
      */
     mechanism?: pulumi.Input<string | undefined>;

@@ -265,6 +265,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
     declare public readonly engine: pulumi.Output<string>;
     /**
      * The ID of the custom image.
+     *
      * > **NOTE:**  If you need to use the default image, you do not need to fill it in.
      */
     declare public readonly imageId: pulumi.Output<string | undefined>;
@@ -285,6 +286,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+     *
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     declare public readonly osPassword: pulumi.Output<string | undefined>;
@@ -292,6 +294,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
+     *
      * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
     declare public readonly passwordInherit: pulumi.Output<string | undefined>;
@@ -491,6 +494,7 @@ export interface DedicatedPropreHostState {
     engine?: pulumi.Input<string | undefined>;
     /**
      * The ID of the custom image.
+     *
      * > **NOTE:**  If you need to use the default image, you do not need to fill it in.
      */
     imageId?: pulumi.Input<string | undefined>;
@@ -511,6 +515,7 @@ export interface DedicatedPropreHostState {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+     *
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     osPassword?: pulumi.Input<string | undefined>;
@@ -518,6 +523,7 @@ export interface DedicatedPropreHostState {
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
+     *
      * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
     passwordInherit?: pulumi.Input<string | undefined>;
@@ -618,6 +624,7 @@ export interface DedicatedPropreHostArgs {
     engine: pulumi.Input<string>;
     /**
      * The ID of the custom image.
+     *
      * > **NOTE:**  If you need to use the default image, you do not need to fill it in.
      */
     imageId?: pulumi.Input<string | undefined>;
@@ -638,6 +645,7 @@ export interface DedicatedPropreHostArgs {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+     *
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     osPassword?: pulumi.Input<string | undefined>;
@@ -645,6 +653,7 @@ export interface DedicatedPropreHostArgs {
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
+     *
      * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
     passwordInherit?: pulumi.Input<string | undefined>;

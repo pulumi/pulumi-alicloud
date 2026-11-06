@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
 public class Aggregator extends com.pulumi.resources.CustomResource {
     /**
      * The member accounts of the account group. See `aggregatorAccounts` below.
+     * 
      * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
@@ -100,6 +101,7 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The member accounts of the account group. See `aggregatorAccounts` below.
+     * 
      * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */

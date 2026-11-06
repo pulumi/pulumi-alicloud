@@ -1619,6 +1619,7 @@ class DomainRedirect(dict):
                
                > **NOTE:**  How long the multiplexed long connection is idle and then released.
         :param _builtins.int max_body_size: The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+               
                > **NOTE:** This parameter is supported only by the Ultimate edition.
         :param _builtins.int read_timeout: The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         :param Sequence['DomainRedirectRequestHeaderArgs'] request_headers: The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
@@ -1760,6 +1761,7 @@ class DomainRedirect(dict):
     def max_body_size(self) -> Optional[_builtins.int]:
         """
         The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+
         > **NOTE:** This parameter is supported only by the Ultimate edition.
         """
         return pulumi.get(self, "max_body_size")

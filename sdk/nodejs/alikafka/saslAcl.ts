@@ -142,6 +142,7 @@ export class SaslAcl extends pulumi.CustomResource {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     *
      * > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      */
     declare public readonly aclOperationTypes: pulumi.Output<string | undefined>;
@@ -149,6 +150,7 @@ export class SaslAcl extends pulumi.CustomResource {
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     *
      * > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      */
     declare public readonly aclPermissionType: pulumi.Output<string>;
@@ -174,6 +176,7 @@ export class SaslAcl extends pulumi.CustomResource {
     declare public readonly aclResourceType: pulumi.Output<string>;
     /**
      * The host of the acl.
+     *
      * > **NOTE:** From version 1.270.0, `host` can be set.
      */
     declare public readonly host: pulumi.Output<string>;
@@ -265,6 +268,7 @@ export interface SaslAclState {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     *
      * > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      */
     aclOperationTypes?: pulumi.Input<string | undefined>;
@@ -272,6 +276,7 @@ export interface SaslAclState {
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     *
      * > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      */
     aclPermissionType?: pulumi.Input<string | undefined>;
@@ -297,6 +302,7 @@ export interface SaslAclState {
     aclResourceType?: pulumi.Input<string | undefined>;
     /**
      * The host of the acl.
+     *
      * > **NOTE:** From version 1.270.0, `host` can be set.
      */
     host?: pulumi.Input<string | undefined>;
@@ -332,6 +338,7 @@ export interface SaslAclArgs {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     *
      * > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      */
     aclOperationTypes?: pulumi.Input<string | undefined>;
@@ -339,6 +346,7 @@ export interface SaslAclArgs {
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     *
      * > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      */
     aclPermissionType?: pulumi.Input<string | undefined>;
@@ -364,6 +372,7 @@ export interface SaslAclArgs {
     aclResourceType: pulumi.Input<string>;
     /**
      * The host of the acl.
+     *
      * > **NOTE:** From version 1.270.0, `host` can be set.
      */
     host?: pulumi.Input<string | undefined>;

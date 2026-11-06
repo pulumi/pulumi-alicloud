@@ -127,6 +127,7 @@ export class Database extends pulumi.CustomResource {
     declare public readonly characterSet: pulumi.Output<string | undefined>;
     /**
      * The name of the database.
+     *
      * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -145,6 +146,7 @@ export class Database extends pulumi.CustomResource {
     declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     *
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -210,6 +212,7 @@ export interface DatabaseState {
     characterSet?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
+     *
      * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -228,6 +231,7 @@ export interface DatabaseState {
     instanceId?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     *
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
@@ -258,6 +262,7 @@ export interface DatabaseArgs {
     characterSet?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
+     *
      * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -276,6 +281,7 @@ export interface DatabaseArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     *
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.

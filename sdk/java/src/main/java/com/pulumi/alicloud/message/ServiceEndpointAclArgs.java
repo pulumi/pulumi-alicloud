@@ -33,6 +33,7 @@ public final class ServiceEndpointAclArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The CIDR block.
+     * 
      * &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
      * 
      */
@@ -41,6 +42,7 @@ public final class ServiceEndpointAclArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The CIDR block.
+     * 
      * &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
      * 
      */
@@ -116,6 +118,7 @@ public final class ServiceEndpointAclArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param cidr The CIDR block.
+         * 
          * &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
          * 
          * @return builder
@@ -128,6 +131,7 @@ public final class ServiceEndpointAclArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param cidr The CIDR block.
+         * 
          * &gt; **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
          * 
          * @return builder

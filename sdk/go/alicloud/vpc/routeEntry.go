@@ -165,6 +165,7 @@ type RouteEntry struct {
 	// - `Ipv4Gateway`: An IPv4 gateway.
 	// - `GatewayEndpoint`: A gateway endpoint.
 	// - `Ecr`: A Express Connect Router (ECR).
+	// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
 	NexthopType pulumi.StringPtrOutput `pulumi:"nexthopType"`
 	// The ID of the Route Table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
@@ -228,6 +229,7 @@ type routeEntryState struct {
 	// - `Ipv4Gateway`: An IPv4 gateway.
 	// - `GatewayEndpoint`: A gateway endpoint.
 	// - `Ecr`: A Express Connect Router (ECR).
+	// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the Route Table.
 	RouteTableId *string `pulumi:"routeTableId"`
@@ -259,6 +261,7 @@ type RouteEntryState struct {
 	// - `Ipv4Gateway`: An IPv4 gateway.
 	// - `GatewayEndpoint`: A gateway endpoint.
 	// - `Ecr`: A Express Connect Router (ECR).
+	// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
 	NexthopType pulumi.StringPtrInput
 	// The ID of the Route Table.
 	RouteTableId pulumi.StringPtrInput
@@ -300,6 +303,7 @@ type routeEntryArgs struct {
 	// - `Ipv4Gateway`: An IPv4 gateway.
 	// - `GatewayEndpoint`: A gateway endpoint.
 	// - `Ecr`: A Express Connect Router (ECR).
+	// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the Route Table.
 	RouteTableId string `pulumi:"routeTableId"`
@@ -328,6 +332,7 @@ type RouteEntryArgs struct {
 	// - `Ipv4Gateway`: An IPv4 gateway.
 	// - `GatewayEndpoint`: A gateway endpoint.
 	// - `Ecr`: A Express Connect Router (ECR).
+	// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
 	NexthopType pulumi.StringPtrInput
 	// The ID of the Route Table.
 	RouteTableId pulumi.StringInput
@@ -453,6 +458,7 @@ func (o RouteEntryOutput) NexthopId() pulumi.StringPtrOutput {
 // - `Ipv4Gateway`: An IPv4 gateway.
 // - `GatewayEndpoint`: A gateway endpoint.
 // - `Ecr`: A Express Connect Router (ECR).
+// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
 func (o RouteEntryOutput) NexthopType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.NexthopType }).(pulumi.StringPtrOutput)
 }

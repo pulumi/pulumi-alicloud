@@ -183,7 +183,6 @@ export interface GetEcsLaunchTemplatesResult {
     readonly templateResourceGroupId?: string;
     /**
      * The tags of the launch template.
-     * > **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
      */
     readonly templateTags?: {[key: string]: string};
     /**

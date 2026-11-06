@@ -2091,6 +2091,7 @@ class ContainerGroupVolumeArgsDict(TypedDict):
     config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]]
     """
     The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+
     > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
     """
     disk_volume_disk_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -2150,6 +2151,7 @@ class ContainerGroupVolumeArgs:
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]] config_file_volume_config_file_to_paths: The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+               
                > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         :param pulumi.Input[_builtins.str] disk_volume_disk_id: The ID of DiskVolume.
         :param pulumi.Input[_builtins.str] disk_volume_fs_type: The system type of DiskVolume.
@@ -2190,6 +2192,7 @@ class ContainerGroupVolumeArgs:
     def config_file_volume_config_file_to_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]:
         """
         The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+
         > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         """
         return pulumi.get(self, "config_file_volume_config_file_to_paths")

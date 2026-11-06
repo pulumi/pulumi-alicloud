@@ -15,13 +15,14 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Microservice Engine (MSE) Gateway resource.
  * 
- * For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
+ * For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-addgateway).
  * 
  * &gt; **NOTE:** Available since v1.157.0.
  * 
@@ -197,6 +198,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.replica;
     }
     /**
+     * The ID of the resource group which the gateway belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group which the gateway belongs.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * A list of gateway Slb.
      * 
      */
@@ -251,6 +266,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The ID of the vpc.

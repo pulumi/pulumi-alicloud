@@ -93,17 +93,19 @@ type Service struct {
 
 	// Creation time of the service
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether to enter the development mode.
+	// Specifies whether to enter development mode. Valid values: `true`, `false`.
 	Develop pulumi.StringPtrOutput `pulumi:"develop"`
 	// The region ID of the resource
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
-	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+	// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
 	ServiceConfig pulumi.StringOutput `pulumi:"serviceConfig"`
+	// (Available since v2.1.0) Unique Service ID
+	ServiceUid pulumi.StringOutput `pulumi:"serviceUid"`
 	// Service Current Status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tag of the resource.
+	// The custom label.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Workspace id
+	// The workspace ID.
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
@@ -142,34 +144,38 @@ func GetService(ctx *pulumi.Context,
 type serviceState struct {
 	// Creation time of the service
 	CreateTime *string `pulumi:"createTime"`
-	// Whether to enter the development mode.
+	// Specifies whether to enter development mode. Valid values: `true`, `false`.
 	Develop *string `pulumi:"develop"`
 	// The region ID of the resource
 	RegionId *string `pulumi:"regionId"`
-	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+	// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
 	ServiceConfig *string `pulumi:"serviceConfig"`
+	// (Available since v2.1.0) Unique Service ID
+	ServiceUid *string `pulumi:"serviceUid"`
 	// Service Current Status.
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// The custom label.
 	Tags map[string]string `pulumi:"tags"`
-	// Workspace id
+	// The workspace ID.
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type ServiceState struct {
 	// Creation time of the service
 	CreateTime pulumi.StringPtrInput
-	// Whether to enter the development mode.
+	// Specifies whether to enter development mode. Valid values: `true`, `false`.
 	Develop pulumi.StringPtrInput
 	// The region ID of the resource
 	RegionId pulumi.StringPtrInput
-	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+	// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
 	ServiceConfig pulumi.StringPtrInput
+	// (Available since v2.1.0) Unique Service ID
+	ServiceUid pulumi.StringPtrInput
 	// Service Current Status.
 	Status pulumi.StringPtrInput
-	// The tag of the resource.
+	// The custom label.
 	Tags pulumi.StringMapInput
-	// Workspace id
+	// The workspace ID.
 	WorkspaceId pulumi.StringPtrInput
 }
 
@@ -184,29 +190,29 @@ func ServiceExists(ctx *pulumi.Context,
 }
 
 type serviceArgs struct {
-	// Whether to enter the development mode.
+	// Specifies whether to enter development mode. Valid values: `true`, `false`.
 	Develop *string `pulumi:"develop"`
-	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+	// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
 	ServiceConfig string `pulumi:"serviceConfig"`
 	// Service Current Status.
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// The custom label.
 	Tags map[string]string `pulumi:"tags"`
-	// Workspace id
+	// The workspace ID.
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// Whether to enter the development mode.
+	// Specifies whether to enter development mode. Valid values: `true`, `false`.
 	Develop pulumi.StringPtrInput
-	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+	// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
 	ServiceConfig pulumi.StringInput
 	// Service Current Status.
 	Status pulumi.StringPtrInput
-	// The tag of the resource.
+	// The custom label.
 	Tags pulumi.StringMapInput
-	// Workspace id
+	// The workspace ID.
 	WorkspaceId pulumi.StringPtrInput
 }
 
@@ -302,7 +308,7 @@ func (o ServiceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether to enter the development mode.
+// Specifies whether to enter development mode. Valid values: `true`, `false`.
 func (o ServiceOutput) Develop() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Develop }).(pulumi.StringPtrOutput)
 }
@@ -312,9 +318,14 @@ func (o ServiceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+// Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
 func (o ServiceOutput) ServiceConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceConfig }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) Unique Service ID
+func (o ServiceOutput) ServiceUid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceUid }).(pulumi.StringOutput)
 }
 
 // Service Current Status.
@@ -322,12 +333,12 @@ func (o ServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// The custom label.
 func (o ServiceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Workspace id
+// The workspace ID.
 func (o ServiceOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }

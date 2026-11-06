@@ -191,6 +191,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     * 
      * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
@@ -201,6 +202,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
      * @return The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
+     * 
      * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      * 
      */
@@ -694,6 +696,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
          * @param productVersion The edition of the cluster. Valid values:
          * - `BasicVersion`: Basic Edition.
          * - `EnterpriseVersion`: Enterprise Edition.
+         * 
          * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
          * 
          * @return builder
@@ -708,6 +711,7 @@ public final class DBClusterLakeVersionArgs extends com.pulumi.resources.Resourc
          * @param productVersion The edition of the cluster. Valid values:
          * - `BasicVersion`: Basic Edition.
          * - `EnterpriseVersion`: Enterprise Edition.
+         * 
          * &gt; **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
          * 
          * @return builder

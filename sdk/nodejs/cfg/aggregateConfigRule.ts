@@ -117,6 +117,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      * The trigger type of the rule. Valid values:
      * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
      * - `ScheduledNotification`: The rule is periodically triggered.
+     *
      * > **NOTE:** Separate multiple trigger types with commas (,).
      */
     declare public readonly configRuleTriggerTypes: pulumi.Output<string>;
@@ -275,6 +276,7 @@ export interface AggregateConfigRuleState {
      * The trigger type of the rule. Valid values:
      * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
      * - `ScheduledNotification`: The rule is periodically triggered.
+     *
      * > **NOTE:** Separate multiple trigger types with commas (,).
      */
     configRuleTriggerTypes?: pulumi.Input<string | undefined>;
@@ -352,6 +354,7 @@ export interface AggregateConfigRuleArgs {
      * The trigger type of the rule. Valid values:
      * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
      * - `ScheduledNotification`: The rule is periodically triggered.
+     *
      * > **NOTE:** Separate multiple trigger types with commas (,).
      */
     configRuleTriggerTypes: pulumi.Input<string>;

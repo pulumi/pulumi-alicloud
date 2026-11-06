@@ -85,6 +85,7 @@ type PublicIpAddressPoolCidrBlock struct {
 	// The CIDR block.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+	//
 	// > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
 	CidrMask pulumi.IntPtrOutput `pulumi:"cidrMask"`
 	// The creation time of the resource.
@@ -131,6 +132,7 @@ type publicIpAddressPoolCidrBlockState struct {
 	// The CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+	//
 	// > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
 	CidrMask *int `pulumi:"cidrMask"`
 	// The creation time of the resource.
@@ -145,6 +147,7 @@ type PublicIpAddressPoolCidrBlockState struct {
 	// The CIDR block.
 	CidrBlock pulumi.StringPtrInput
 	// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+	//
 	// > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
 	CidrMask pulumi.IntPtrInput
 	// The creation time of the resource.
@@ -169,6 +172,7 @@ type publicIpAddressPoolCidrBlockArgs struct {
 	// The CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+	//
 	// > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
 	CidrMask *int `pulumi:"cidrMask"`
 	// The ID of the VPC Public IP address pool.
@@ -180,6 +184,7 @@ type PublicIpAddressPoolCidrBlockArgs struct {
 	// The CIDR block.
 	CidrBlock pulumi.StringPtrInput
 	// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+	//
 	// > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
 	CidrMask pulumi.IntPtrInput
 	// The ID of the VPC Public IP address pool.
@@ -279,6 +284,7 @@ func (o PublicIpAddressPoolCidrBlockOutput) CidrBlock() pulumi.StringOutput {
 }
 
 // IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+//
 // > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
 func (o PublicIpAddressPoolCidrBlockOutput) CidrMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PublicIpAddressPoolCidrBlock) pulumi.IntPtrOutput { return v.CidrMask }).(pulumi.IntPtrOutput)

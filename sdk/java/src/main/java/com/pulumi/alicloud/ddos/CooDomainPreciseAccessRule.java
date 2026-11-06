@@ -136,6 +136,7 @@ public class CooDomainPreciseAccessRule extends com.pulumi.resources.CustomResou
     }
     /**
      * Domain name of the website service.
+     * 
      * &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      * 
      */
@@ -144,6 +145,7 @@ public class CooDomainPreciseAccessRule extends com.pulumi.resources.CustomResou
 
     /**
      * @return Domain name of the website service.
+     * 
      * &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      * 
      */

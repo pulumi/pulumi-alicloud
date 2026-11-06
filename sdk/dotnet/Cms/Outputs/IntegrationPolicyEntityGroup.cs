@@ -21,15 +21,38 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// The cluster ID.
         /// </summary>
         public readonly string? ClusterId;
+        /// <summary>
+        /// The cluster Namespace.
+        /// 
+        /// &gt; **NOTE:** If `DisablePolicyShare` is set to `True`, you can create multiple policies for a container cluster, and `ClusterNamespace` is required.
+        /// </summary>
+        public readonly string? ClusterNamespace;
+        /// <summary>
+        /// Specifies whether to disable unique policy binding. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
+        public readonly bool? DisablePolicyShare;
+        /// <summary>
+        /// The ID of the user who owns the cluster.
+        /// </summary>
+        public readonly string? EntityUserId;
 
         [OutputConstructor]
         private IntegrationPolicyEntityGroup(
             string? clusterEntityType,
 
-            string? clusterId)
+            string? clusterId,
+
+            string? clusterNamespace,
+
+            bool? disablePolicyShare,
+
+            string? entityUserId)
         {
             ClusterEntityType = clusterEntityType;
             ClusterId = clusterId;
+            ClusterNamespace = clusterNamespace;
+            DisablePolicyShare = disablePolicyShare;
+            EntityUserId = entityUserId;
         }
     }
 }

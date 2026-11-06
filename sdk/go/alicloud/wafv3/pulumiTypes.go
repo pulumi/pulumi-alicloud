@@ -3000,6 +3000,7 @@ type DomainRedirect struct {
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance string `pulumi:"loadbalance"`
 	// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+	//
 	// > **NOTE:** This parameter is supported only by the Ultimate edition.
 	MaxBodySize *int `pulumi:"maxBodySize"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -3062,6 +3063,7 @@ type DomainRedirectArgs struct {
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance pulumi.StringInput `pulumi:"loadbalance"`
 	// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+	//
 	// > **NOTE:** This parameter is supported only by the Ultimate edition.
 	MaxBodySize pulumi.IntPtrInput `pulumi:"maxBodySize"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
@@ -3219,6 +3221,7 @@ func (o DomainRedirectOutput) Loadbalance() pulumi.StringOutput {
 }
 
 // The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+//
 // > **NOTE:** This parameter is supported only by the Ultimate edition.
 func (o DomainRedirectOutput) MaxBodySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.MaxBodySize }).(pulumi.IntPtrOutput)
@@ -3395,6 +3398,7 @@ func (o DomainRedirectPtrOutput) Loadbalance() pulumi.StringPtrOutput {
 }
 
 // The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+//
 // > **NOTE:** This parameter is supported only by the Ultimate edition.
 func (o DomainRedirectPtrOutput) MaxBodySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {

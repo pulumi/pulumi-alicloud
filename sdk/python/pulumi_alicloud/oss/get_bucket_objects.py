@@ -106,6 +106,8 @@ def get_bucket_objects(bucket_name: Optional[_builtins.str] = None,
     """
     This data source provides the objects of an OSS bucket.
 
+    > **NOTE:** Available since v1.17.0.
+
     ## Example Usage
 
     ```python
@@ -145,6 +147,8 @@ def get_bucket_objects_output(bucket_name: pulumi.Input[Optional[_builtins.str]]
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectsResult]:
     """
     This data source provides the objects of an OSS bucket.
+
+    > **NOTE:** Available since v1.17.0.
 
     ## Example Usage
 

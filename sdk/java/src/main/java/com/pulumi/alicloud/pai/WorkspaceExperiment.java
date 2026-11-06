@@ -6,11 +6,14 @@ package com.pulumi.alicloud.pai;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.pai.WorkspaceExperimentArgs;
 import com.pulumi.alicloud.pai.inputs.WorkspaceExperimentState;
+import com.pulumi.alicloud.pai.outputs.WorkspaceExperimentLabel;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -137,6 +140,20 @@ public class WorkspaceExperiment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> experimentName() {
         return this.experimentName;
+    }
+    /**
+     * Labels are tags of the experiment. See `labels` below.
+     * 
+     */
+    @Export(name="labels", refs={List.class,WorkspaceExperimentLabel.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkspaceExperimentLabel>> labels;
+
+    /**
+     * @return Labels are tags of the experiment. See `labels` below.
+     * 
+     */
+    public Output<Optional<List<WorkspaceExperimentLabel>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * WorkspaceId is the workspace id which contains the experiment

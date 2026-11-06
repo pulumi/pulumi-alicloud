@@ -115,6 +115,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The name of the database.
+        /// 
         /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -139,6 +140,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// 
         /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Output("name")]
@@ -213,6 +215,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The name of the database.
+        /// 
         /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -237,6 +240,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// 
         /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Input("name")]
@@ -267,6 +271,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The name of the database.
+        /// 
         /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -291,6 +296,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// 
         /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Input("name")]

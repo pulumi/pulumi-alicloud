@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,63 @@ public final class IntegrationPolicyEntityGroupArgs extends com.pulumi.resources
         return Optional.ofNullable(this.clusterId);
     }
 
+    /**
+     * The cluster Namespace.
+     * 
+     * &gt; **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+     * 
+     */
+    @Import(name="clusterNamespace")
+    private @Nullable Output<String> clusterNamespace;
+
+    /**
+     * @return The cluster Namespace.
+     * 
+     * &gt; **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+     * 
+     */
+    public Optional<Output<String>> clusterNamespace() {
+        return Optional.ofNullable(this.clusterNamespace);
+    }
+
+    /**
+     * Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="disablePolicyShare")
+    private @Nullable Output<Boolean> disablePolicyShare;
+
+    /**
+     * @return Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> disablePolicyShare() {
+        return Optional.ofNullable(this.disablePolicyShare);
+    }
+
+    /**
+     * The ID of the user who owns the cluster.
+     * 
+     */
+    @Import(name="entityUserId")
+    private @Nullable Output<String> entityUserId;
+
+    /**
+     * @return The ID of the user who owns the cluster.
+     * 
+     */
+    public Optional<Output<String>> entityUserId() {
+        return Optional.ofNullable(this.entityUserId);
+    }
+
     private IntegrationPolicyEntityGroupArgs() {}
 
     private IntegrationPolicyEntityGroupArgs(IntegrationPolicyEntityGroupArgs $) {
         this.clusterEntityType = $.clusterEntityType;
         this.clusterId = $.clusterId;
+        this.clusterNamespace = $.clusterNamespace;
+        this.disablePolicyShare = $.disablePolicyShare;
+        this.entityUserId = $.entityUserId;
     }
 
     public static Builder builder() {
@@ -110,6 +163,73 @@ public final class IntegrationPolicyEntityGroupArgs extends com.pulumi.resources
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param clusterNamespace The cluster Namespace.
+         * 
+         * &gt; **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterNamespace(@Nullable Output<String> clusterNamespace) {
+            $.clusterNamespace = clusterNamespace;
+            return this;
+        }
+
+        /**
+         * @param clusterNamespace The cluster Namespace.
+         * 
+         * &gt; **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterNamespace(String clusterNamespace) {
+            return clusterNamespace(Output.of(clusterNamespace));
+        }
+
+        /**
+         * @param disablePolicyShare Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePolicyShare(@Nullable Output<Boolean> disablePolicyShare) {
+            $.disablePolicyShare = disablePolicyShare;
+            return this;
+        }
+
+        /**
+         * @param disablePolicyShare Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePolicyShare(Boolean disablePolicyShare) {
+            return disablePolicyShare(Output.of(disablePolicyShare));
+        }
+
+        /**
+         * @param entityUserId The ID of the user who owns the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entityUserId(@Nullable Output<String> entityUserId) {
+            $.entityUserId = entityUserId;
+            return this;
+        }
+
+        /**
+         * @param entityUserId The ID of the user who owns the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entityUserId(String entityUserId) {
+            return entityUserId(Output.of(entityUserId));
         }
 
         public IntegrationPolicyEntityGroupArgs build() {

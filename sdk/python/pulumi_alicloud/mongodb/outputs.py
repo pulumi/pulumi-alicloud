@@ -120,6 +120,7 @@ class InstanceReplicaSet(dict):
         :param _builtins.str connection_domain: The connection address of the node.
         :param _builtins.str connection_port: The connection port of the node.
         :param _builtins.str network_type: The network type of the instance. Valid values: `VPC`.
+               
                > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         :param _builtins.str replica_set_role: The role of the node.
         :param _builtins.str role_id: The id of the role.
@@ -165,6 +166,7 @@ class InstanceReplicaSet(dict):
     def network_type(self) -> Optional[_builtins.str]:
         """
         The network type of the instance. Valid values: `VPC`.
+
         > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         """
         return pulumi.get(self, "network_type")

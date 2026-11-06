@@ -350,6 +350,7 @@ public class V2Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * List of layers.
+     * 
      * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      * 
      */
@@ -358,6 +359,7 @@ public class V2Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return List of layers.
+     * 
      * &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      * 
      */

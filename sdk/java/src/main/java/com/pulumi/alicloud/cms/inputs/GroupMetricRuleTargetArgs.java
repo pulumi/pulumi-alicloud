@@ -17,6 +17,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
     /**
      * The Alibaba Cloud Resource Name (ARN) of the resource.
+     * 
      * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
@@ -25,6 +26,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * 
      * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
@@ -106,6 +108,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
         /**
          * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
+         * 
          * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder
@@ -118,6 +121,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
         /**
          * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
+         * 
          * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder

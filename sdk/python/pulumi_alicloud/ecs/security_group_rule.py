@@ -578,11 +578,13 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.224.0.
 
-        Security Group Rule can be imported using the id, e.g.
+        Security Group Rule can be imported using the ID in the format `<security_group_id>:<type>:<ip_protocol>:<port_range>:<nic_type>:<cidr_ip>:<policy>:<priority>`, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example <id>
+        $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example sg-12345678:ingress:tcp:80/80:internet:10.0.0.0/8:accept:1
         ```
+
+        **NOTE:** The `<cidr_ip>` part is the source or destination of the rule: use `cidr_ip` for IPv4 rules, `source_security_group_id` when the rule references another security group, `prefix_list_id` for prefix list rules, or `ipv6_cidr_ip` for IPv6 rules — with every `:` in the IPv6 address replaced by `_`, e.g. `2408:4004:cc:400::/56` becomes `2408_4004_cc_400__/56`. Every part must match the rule exactly as shown in the console, including `nic_type` (`intranet` for security groups in a VPC). Otherwise the rule cannot be found and the import fails.
 
 
         :param str resource_name: The name of the resource.
@@ -653,11 +655,13 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.224.0.
 
-        Security Group Rule can be imported using the id, e.g.
+        Security Group Rule can be imported using the ID in the format `<security_group_id>:<type>:<ip_protocol>:<port_range>:<nic_type>:<cidr_ip>:<policy>:<priority>`, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example <id>
+        $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example sg-12345678:ingress:tcp:80/80:internet:10.0.0.0/8:accept:1
         ```
+
+        **NOTE:** The `<cidr_ip>` part is the source or destination of the rule: use `cidr_ip` for IPv4 rules, `source_security_group_id` when the rule references another security group, `prefix_list_id` for prefix list rules, or `ipv6_cidr_ip` for IPv6 rules — with every `:` in the IPv6 address replaced by `_`, e.g. `2408:4004:cc:400::/56` becomes `2408_4004_cc_400__/56`. Every part must match the rule exactly as shown in the console, including `nic_type` (`intranet` for security groups in a VPC). Otherwise the rule cannot be found and the import fails.
 
 
         :param str resource_name: The name of the resource.
