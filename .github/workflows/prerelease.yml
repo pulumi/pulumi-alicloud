@@ -11,6 +11,7 @@ env:
 
 jobs:
   prerequisites:
+    if: github.repository == 'pulumi/pulumi-alicloud'
     permissions:
       contents: read
       pull-requests: write
@@ -44,6 +45,7 @@ jobs:
       version: ${{ needs.prerequisites.outputs.version }}
 
   license_check:
+    if: github.repository == 'pulumi/pulumi-alicloud'
     name: License Check
     uses: ./.github/workflows/license.yml
     secrets: inherit
@@ -81,6 +83,4 @@ jobs:
 
 name: prerelease
 on:
-  push:
-    tags:
-    - v*.*.*-**
+  workflow_call: {}
