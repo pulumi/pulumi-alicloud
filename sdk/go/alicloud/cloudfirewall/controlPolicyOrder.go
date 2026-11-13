@@ -85,6 +85,7 @@ type ControlPolicyOrder struct {
 	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	//
 	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order pulumi.IntOutput `pulumi:"order"`
 }
@@ -133,6 +134,7 @@ type controlPolicyOrderState struct {
 	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction *string `pulumi:"direction"`
 	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	//
 	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order *int `pulumi:"order"`
 }
@@ -143,6 +145,7 @@ type ControlPolicyOrderState struct {
 	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringPtrInput
 	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	//
 	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order pulumi.IntPtrInput
 }
@@ -163,6 +166,7 @@ type controlPolicyOrderArgs struct {
 	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction string `pulumi:"direction"`
 	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	//
 	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order int `pulumi:"order"`
 }
@@ -174,6 +178,7 @@ type ControlPolicyOrderArgs struct {
 	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringInput
 	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	//
 	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order pulumi.IntInput
 }
@@ -276,6 +281,7 @@ func (o ControlPolicyOrderOutput) Direction() pulumi.StringOutput {
 }
 
 // The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+//
 // > **NOTE:** From version 1.227.1, `order` must be set.
 func (o ControlPolicyOrderOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)

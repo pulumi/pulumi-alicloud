@@ -39,6 +39,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The certificates of the listener. See `certificates` below.
+     * 
      * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
@@ -47,6 +48,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The certificates of the listener. See `certificates` below.
+     * 
      * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
@@ -105,6 +107,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * 
      * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      * 
      */
@@ -113,6 +116,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * 
      * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      * 
      */
@@ -177,6 +181,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The portRanges of the listener. See `portRanges` below.
+     * 
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
@@ -185,6 +190,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The portRanges of the listener. See `portRanges` below.
+     * 
      * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
@@ -224,6 +230,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * 
      * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      * 
      */
@@ -232,6 +239,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * 
      * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      * 
      */
@@ -314,6 +322,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificates The certificates of the listener. See `certificates` below.
+         * 
          * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
          * 
          * @return builder
@@ -326,6 +335,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificates The certificates of the listener. See `certificates` below.
+         * 
          * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
          * 
          * @return builder
@@ -337,6 +347,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificates The certificates of the listener. See `certificates` below.
+         * 
          * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
          * 
          * @return builder
@@ -415,6 +426,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpVersion The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+         * 
          * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
          * 
          * @return builder
@@ -427,6 +439,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param httpVersion The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+         * 
          * &gt; **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
          * 
          * @return builder
@@ -511,6 +524,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param portRanges The portRanges of the listener. See `portRanges` below.
+         * 
          * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
@@ -523,6 +537,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param portRanges The portRanges of the listener. See `portRanges` below.
+         * 
          * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
@@ -534,6 +549,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param portRanges The portRanges of the listener. See `portRanges` below.
+         * 
          * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
@@ -587,6 +603,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requestTimeout The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+         * 
          * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
          * 
          * @return builder
@@ -599,6 +616,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param requestTimeout The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+         * 
          * &gt; **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
          * 
          * @return builder

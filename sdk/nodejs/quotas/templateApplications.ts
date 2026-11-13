@@ -96,11 +96,13 @@ export class TemplateApplications extends pulumi.CustomResource {
 
     /**
      * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+     *
      * > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      */
     declare public readonly aliyunUids: pulumi.Output<string[]>;
     /**
      * The value of the quota request.
+     *
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
     declare public readonly desireValue: pulumi.Output<number>;
@@ -110,6 +112,7 @@ export class TemplateApplications extends pulumi.CustomResource {
     declare public readonly dimensions: pulumi.Output<outputs.quotas.TemplateApplicationsDimension[] | undefined>;
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+     *
      * > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      */
     declare public readonly effectiveTime: pulumi.Output<string | undefined>;
@@ -121,6 +124,7 @@ export class TemplateApplications extends pulumi.CustomResource {
     declare public readonly envLanguage: pulumi.Output<string | undefined>;
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+     *
      * > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      */
     declare public readonly expireTime: pulumi.Output<string | undefined>;
@@ -132,6 +136,7 @@ export class TemplateApplications extends pulumi.CustomResource {
     declare public readonly noticeType: pulumi.Output<number | undefined>;
     /**
      * Cloud service name abbreviation.
+     *
      * > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      */
     declare public readonly productCode: pulumi.Output<string>;
@@ -152,6 +157,7 @@ export class TemplateApplications extends pulumi.CustomResource {
     declare public readonly quotaCategory: pulumi.Output<string>;
     /**
      * Reason for quota application.
+     *
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
     declare public readonly reason: pulumi.Output<string>;
@@ -225,11 +231,13 @@ export class TemplateApplications extends pulumi.CustomResource {
 export interface TemplateApplicationsState {
     /**
      * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+     *
      * > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      */
     aliyunUids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of the quota request.
+     *
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
     desireValue?: pulumi.Input<number | undefined>;
@@ -239,6 +247,7 @@ export interface TemplateApplicationsState {
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsDimension>[] | undefined>;
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+     *
      * > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      */
     effectiveTime?: pulumi.Input<string | undefined>;
@@ -250,6 +259,7 @@ export interface TemplateApplicationsState {
     envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+     *
      * > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      */
     expireTime?: pulumi.Input<string | undefined>;
@@ -261,6 +271,7 @@ export interface TemplateApplicationsState {
     noticeType?: pulumi.Input<number | undefined>;
     /**
      * Cloud service name abbreviation.
+     *
      * > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      */
     productCode?: pulumi.Input<string | undefined>;
@@ -281,6 +292,7 @@ export interface TemplateApplicationsState {
     quotaCategory?: pulumi.Input<string | undefined>;
     /**
      * Reason for quota application.
+     *
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
     reason?: pulumi.Input<string | undefined>;
@@ -292,11 +304,13 @@ export interface TemplateApplicationsState {
 export interface TemplateApplicationsArgs {
     /**
      * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
+     *
      * > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      */
     aliyunUids: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The value of the quota request.
+     *
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
     desireValue: pulumi.Input<number>;
@@ -306,6 +320,7 @@ export interface TemplateApplicationsArgs {
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsDimension>[] | undefined>;
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
+     *
      * > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      */
     effectiveTime?: pulumi.Input<string | undefined>;
@@ -317,6 +332,7 @@ export interface TemplateApplicationsArgs {
     envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
+     *
      * > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      */
     expireTime?: pulumi.Input<string | undefined>;
@@ -328,6 +344,7 @@ export interface TemplateApplicationsArgs {
     noticeType?: pulumi.Input<number | undefined>;
     /**
      * Cloud service name abbreviation.
+     *
      * > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      */
     productCode: pulumi.Input<string>;
@@ -344,6 +361,7 @@ export interface TemplateApplicationsArgs {
     quotaCategory: pulumi.Input<string>;
     /**
      * Reason for quota application.
+     *
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
     reason: pulumi.Input<string>;

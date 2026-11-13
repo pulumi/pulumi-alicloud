@@ -51,12 +51,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointAddress{}
 	case "alicloud:polardb/gateway:Gateway":
 		r = &Gateway{}
+	case "alicloud:polardb/gatewayBudgetPolicy:GatewayBudgetPolicy":
+		r = &GatewayBudgetPolicy{}
+	case "alicloud:polardb/gatewayConsumer:GatewayConsumer":
+		r = &GatewayConsumer{}
+	case "alicloud:polardb/gatewayConsumerGroup:GatewayConsumerGroup":
+		r = &GatewayConsumerGroup{}
+	case "alicloud:polardb/gatewayCostRule:GatewayCostRule":
+		r = &GatewayCostRule{}
+	case "alicloud:polardb/gatewayModelApi:GatewayModelApi":
+		r = &GatewayModelApi{}
+	case "alicloud:polardb/gatewayModelService:GatewayModelService":
+		r = &GatewayModelService{}
+	case "alicloud:polardb/gatewayRateLimitPolicy:GatewayRateLimitPolicy":
+		r = &GatewayRateLimitPolicy{}
 	case "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork":
 		r = &GlobalDatabaseNetwork{}
 	case "alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup":
 		r = &GlobalSecurityIpGroup{}
 	case "alicloud:polardb/parameterGroup:ParameterGroup":
 		r = &ParameterGroup{}
+	case "alicloud:polardb/polarFs:PolarFs":
+		r = &PolarFs{}
+	case "alicloud:polardb/polarFsEndpoint:PolarFsEndpoint":
+		r = &PolarFsEndpoint{}
 	case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
 		r = &PrimaryEndpoint{}
 	case "alicloud:polardb/zonalAccount:ZonalAccount":
@@ -155,6 +173,41 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"polardb/gatewayBudgetPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/gatewayConsumer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/gatewayConsumerGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/gatewayCostRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/gatewayModelApi",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/gatewayModelService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/gatewayRateLimitPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"polardb/globalDatabaseNetwork",
 		&module{version},
 	)
@@ -166,6 +219,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"polardb/parameterGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/polarFs",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/polarFsEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

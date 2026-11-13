@@ -666,7 +666,7 @@ class InstanceIpWhitelistArgsDict(TypedDict):
     """
     ip_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    IP whitelist group name.
+    IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
     """
     security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -682,7 +682,7 @@ class InstanceIpWhitelistArgs:
         """
         :param pulumi.Input[_builtins.str] ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group.
                If the value contains `hidden`, this white list item will not output.
-        :param pulumi.Input[_builtins.str] ip_group_name: IP whitelist group name.
+        :param pulumi.Input[_builtins.str] ip_group_name: IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
         :param pulumi.Input[_builtins.str] security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         if ip_group_attribute is not None:
@@ -709,7 +709,7 @@ class InstanceIpWhitelistArgs:
     @pulumi.getter(name="ipGroupName")
     def ip_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        IP whitelist group name.
+        IP whitelist group name. Defaults to `default`, the built-in whitelist group; a group without a name is applied to the `default` group instead of creating a new one.
         """
         return pulumi.get(self, "ip_group_name")
 

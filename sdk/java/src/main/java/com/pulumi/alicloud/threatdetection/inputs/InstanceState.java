@@ -242,6 +242,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - `CTDR_STORAGE`: Log Management Module.
      * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
      * - Value: `0` means off, `1` means on
+     * 
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -265,6 +266,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - `CTDR_STORAGE`: Log Management Module.
      * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
      * - Value: `0` means off, `1` means on
+     * 
      * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
      * 
      * @deprecated Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
@@ -1105,6 +1107,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - `CTDR_STORAGE`: Log Management Module.
          * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
          * - Value: `0` means off, `1` means on
+         * 
          * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
          * 
          * @return builder
@@ -1132,6 +1135,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - `CTDR_STORAGE`: Log Management Module.
          * - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
          * - Value: `0` means off, `1` means on
+         * 
          * &gt; **NOTE:** Field `postPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `postPayModuleSwitchObj` instead.
          * 
          * @return builder

@@ -20,6 +20,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
 
     /**
      * Forwarding configuration. See `forwardGroupConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
      * 
      */
@@ -28,6 +29,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
 
     /**
      * @return Forwarding configuration. See `forwardGroupConfig` below.
+     * 
      * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
      * 
      */
@@ -109,6 +111,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
 
         /**
          * @param forwardGroupConfig Forwarding configuration. See `forwardGroupConfig` below.
+         * 
          * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
          * 
          * @return builder
@@ -121,6 +124,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
 
         /**
          * @param forwardGroupConfig Forwarding configuration. See `forwardGroupConfig` below.
+         * 
          * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
          * 
          * @return builder

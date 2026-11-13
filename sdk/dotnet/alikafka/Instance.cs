@@ -116,6 +116,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The configurations of Confluent. See `ConfluentConfig` below.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `AlikafkaConfluent`, `ConfluentConfig` is required.
         /// </summary>
         [Output("confluentConfig")]
@@ -135,6 +136,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `Alikafka`, `DiskSize` is required.
         /// </summary>
         [Output("diskSize")]
@@ -282,6 +284,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `ServerlessConfig` below.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `AlikafkaServerless`, `ServerlessConfig` is required.
         /// </summary>
         [Output("serverlessConfig")]
@@ -376,6 +379,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The IDs of the vSwitches with which the instance is associated.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `Alikafka` or `AlikafkaServerless`, `VswitchIds` is required. When `InstanceType` is set to `AlikafkaConfluent`, you must specify at least one of the `VswitchId` and `VswitchIds`, and if you specify both `VswitchId` and `VswitchIds`, only the `VswitchIds` takes effect.
         /// </summary>
         [Output("vswitchIds")]
@@ -441,6 +445,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The configurations of Confluent. See `ConfluentConfig` below.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `AlikafkaConfluent`, `ConfluentConfig` is required.
         /// </summary>
         [Input("confluentConfig")]
@@ -460,6 +465,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `Alikafka`, `DiskSize` is required.
         /// </summary>
         [Input("diskSize")]
@@ -565,6 +571,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `ServerlessConfig` below.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `AlikafkaServerless`, `ServerlessConfig` is required.
         /// </summary>
         [Input("serverlessConfig")]
@@ -626,6 +633,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The IDs of the vSwitches with which the instance is associated.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `Alikafka` or `AlikafkaServerless`, `VswitchIds` is required. When `InstanceType` is set to `AlikafkaConfluent`, you must specify at least one of the `VswitchId` and `VswitchIds`, and if you specify both `VswitchId` and `VswitchIds`, only the `VswitchIds` takes effect.
         /// </summary>
         public InputList<string> VswitchIds
@@ -656,6 +664,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The configurations of Confluent. See `ConfluentConfig` below.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `AlikafkaConfluent`, `ConfluentConfig` is required.
         /// </summary>
         [Input("confluentConfig")]
@@ -675,6 +684,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `Alikafka`, `DiskSize` is required.
         /// </summary>
         [Input("diskSize")]
@@ -828,6 +838,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `ServerlessConfig` below.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `AlikafkaServerless`, `ServerlessConfig` is required.
         /// </summary>
         [Input("serverlessConfig")]
@@ -931,6 +942,7 @@ namespace Pulumi.AliCloud.alikafka
 
         /// <summary>
         /// The IDs of the vSwitches with which the instance is associated.
+        /// 
         /// &gt; **NOTE:** If `InstanceType` is set to `Alikafka` or `AlikafkaServerless`, `VswitchIds` is required. When `InstanceType` is set to `AlikafkaConfluent`, you must specify at least one of the `VswitchId` and `VswitchIds`, and if you specify both `VswitchId` and `VswitchIds`, only the `VswitchIds` takes effect.
         /// </summary>
         public InputList<string> VswitchIds

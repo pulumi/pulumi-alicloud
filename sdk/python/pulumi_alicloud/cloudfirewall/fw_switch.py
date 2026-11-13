@@ -475,6 +475,8 @@ class FwSwitch(pulumi.CustomResource):
             member_uid=int(1412345678901234))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Fw Switch can be imported using the id, e.g.
@@ -521,6 +523,8 @@ class FwSwitch(pulumi.CustomResource):
             internet_address="203.0.113.1",
             member_uid=int(1412345678901234))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

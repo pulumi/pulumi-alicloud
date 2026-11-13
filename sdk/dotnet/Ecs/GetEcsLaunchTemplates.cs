@@ -595,7 +595,6 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? TemplateResourceGroupId;
         /// <summary>
         /// The tags of the launch template.
-        /// &gt; **NOTE:** Except for the fields `Id`, `LaunchTemplateId`, `LaunchTemplateName`, `DefaultVersionNumber`, `LatestVersionNumber`, `CreatedBy`, `ModifiedTime`, `ResourceGroupId`, `TemplateTags`, all other fields take effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? TemplateTags;
         /// <summary>

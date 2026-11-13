@@ -10,6 +10,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -110,6 +111,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group which the gateway belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group which the gateway belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * A list of gateway Slb.
      * 
      */
@@ -170,6 +186,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The ID of the vpc.
      * 
      */
@@ -208,10 +239,12 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.gatewayName = $.gatewayName;
         this.internetSlbSpec = $.internetSlbSpec;
         this.replica = $.replica;
+        this.resourceGroupId = $.resourceGroupId;
         this.slbLists = $.slbLists;
         this.slbSpec = $.slbSpec;
         this.spec = $.spec;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
@@ -361,6 +394,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceGroupId The ID of the resource group which the gateway belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group which the gateway belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param slbLists A list of gateway Slb.
          * 
          * @return builder
@@ -452,6 +506,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

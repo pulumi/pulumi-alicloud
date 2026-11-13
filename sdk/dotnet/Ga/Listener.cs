@@ -88,6 +88,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The certificates of the listener. See `Certificates` below.
+        /// 
         /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         /// </summary>
         [Output("certificates")]
@@ -115,6 +116,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The maximum version of the HTTP protocol. Default Value: `Http2`. Valid values: `http1.1`, `Http2`, `Http3`.
+        /// 
         /// &gt; **NOTE:** `HttpVersion` is only valid when `Protocol` is `HTTPS`.
         /// </summary>
         [Output("httpVersion")]
@@ -145,6 +147,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The portRanges of the listener. See `PortRanges` below.
+        /// 
         /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         [Output("portRanges")]
@@ -164,6 +167,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        /// 
         /// &gt; **NOTE:** `RequestTimeout` is only valid when `Protocol` is `HTTP` or `HTTPS`.
         /// </summary>
         [Output("requestTimeout")]
@@ -238,6 +242,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The certificates of the listener. See `Certificates` below.
+        /// 
         /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         /// </summary>
         public InputList<Inputs.ListenerCertificateArgs> Certificates
@@ -268,6 +273,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The maximum version of the HTTP protocol. Default Value: `Http2`. Valid values: `http1.1`, `Http2`, `Http3`.
+        /// 
         /// &gt; **NOTE:** `HttpVersion` is only valid when `Protocol` is `HTTPS`.
         /// </summary>
         [Input("httpVersion")]
@@ -301,6 +307,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The portRanges of the listener. See `PortRanges` below.
+        /// 
         /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         public InputList<Inputs.ListenerPortRangeArgs> PortRanges
@@ -323,6 +330,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        /// 
         /// &gt; **NOTE:** `RequestTimeout` is only valid when `Protocol` is `HTTP` or `HTTPS`.
         /// </summary>
         [Input("requestTimeout")]
@@ -353,6 +361,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The certificates of the listener. See `Certificates` below.
+        /// 
         /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         /// </summary>
         public InputList<Inputs.ListenerCertificateGetArgs> Certificates
@@ -383,6 +392,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The maximum version of the HTTP protocol. Default Value: `Http2`. Valid values: `http1.1`, `Http2`, `Http3`.
+        /// 
         /// &gt; **NOTE:** `HttpVersion` is only valid when `Protocol` is `HTTPS`.
         /// </summary>
         [Input("httpVersion")]
@@ -416,6 +426,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The portRanges of the listener. See `PortRanges` below.
+        /// 
         /// &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         public InputList<Inputs.ListenerPortRangeGetArgs> PortRanges
@@ -438,6 +449,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        /// 
         /// &gt; **NOTE:** `RequestTimeout` is only valid when `Protocol` is `HTTP` or `HTTPS`.
         /// </summary>
         [Input("requestTimeout")]

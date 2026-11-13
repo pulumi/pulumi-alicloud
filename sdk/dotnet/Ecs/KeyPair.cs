@@ -101,6 +101,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
         /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
         /// </summary>
         [Output("tags")]
@@ -190,6 +191,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
         /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
         /// </summary>
         public InputMap<string> Tags
@@ -250,6 +252,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
         /// &gt; **NOTE:** If `KeyName` and `KeyNamePrefix` are not set, terraform will produce a specified ID to replace.
         /// </summary>
         public InputMap<string> Tags

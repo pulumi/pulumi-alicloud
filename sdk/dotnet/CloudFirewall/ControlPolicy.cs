@@ -73,6 +73,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationName` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationName` to `ANY`.
         /// </summary>
         [Output("applicationName")]
@@ -80,6 +81,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application types supported by the access control policy.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         [Output("applicationNameLists")]
@@ -144,6 +146,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `StartTime` and `EndTime` must be set.
         /// </summary>
         [Output("endTime")]
@@ -177,6 +180,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The days of a week or of a month on which the access control policy takes effect. Valid values:
         /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
         /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `Weekly`, or `Monthly`, `RepeatDays` must be set.
         /// </summary>
         [Output("repeatDays")]
@@ -184,6 +188,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`, `RepeatStartTime` and `RepeatEndTime` must be set.
         /// </summary>
         [Output("repeatEndTime")]
@@ -284,6 +289,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationName` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationName` to `ANY`.
         /// </summary>
         [Input("applicationName")]
@@ -294,6 +300,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application types supported by the access control policy.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         public InputList<string> ApplicationNameLists
@@ -355,6 +362,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `StartTime` and `EndTime` must be set.
         /// </summary>
         [Input("endTime")]
@@ -391,6 +399,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The days of a week or of a month on which the access control policy takes effect. Valid values:
         /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
         /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `Weekly`, or `Monthly`, `RepeatDays` must be set.
         /// </summary>
         public InputList<int> RepeatDays
@@ -401,6 +410,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`, `RepeatStartTime` and `RepeatEndTime` must be set.
         /// </summary>
         [Input("repeatEndTime")]
@@ -469,6 +479,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationName` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationName` to `ANY`.
         /// </summary>
         [Input("applicationName")]
@@ -479,6 +490,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The application types supported by the access control policy.
+        /// 
         /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
         /// </summary>
         public InputList<string> ApplicationNameLists
@@ -546,6 +558,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `StartTime` and `EndTime` must be set.
         /// </summary>
         [Input("endTime")]
@@ -582,6 +595,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The days of a week or of a month on which the access control policy takes effect. Valid values:
         /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
         /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `Weekly`, or `Monthly`, `RepeatDays` must be set.
         /// </summary>
         public InputList<int> RepeatDays
@@ -592,6 +606,7 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// 
         /// &gt; **NOTE:** If `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`, `RepeatStartTime` and `RepeatEndTime` must be set.
         /// </summary>
         [Input("repeatEndTime")]

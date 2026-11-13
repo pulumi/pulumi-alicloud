@@ -179,6 +179,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * 
      * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      * 
      */
@@ -193,6 +194,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * - `IdempotentWrite`: idempotent write to Cluster
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
+     * 
      * &gt; **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      * 
      */
@@ -203,6 +205,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     * 
      * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      * 
      */
@@ -213,6 +216,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * @return Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
+     * 
      * &gt; **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      * 
      */
@@ -279,6 +283,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
     }
     /**
      * The host of the acl.
+     * 
      * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */
@@ -287,6 +292,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The host of the acl.
+     * 
      * &gt; **NOTE:** From version 1.270.0, `host` can be set.
      * 
      */

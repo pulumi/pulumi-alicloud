@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEdgeKubernetesClustersResult {
     /**
-     * @return A list of matched Kubernetes clusters. Each element contains the following attributes:
+     * @return A list of matched Kubernetes clusters.
      * 
      */
     private List<GetEdgeKubernetesClustersCluster> clusters;
@@ -41,7 +41,7 @@ public final class GetEdgeKubernetesClustersResult {
 
     private GetEdgeKubernetesClustersResult() {}
     /**
-     * @return A list of matched Kubernetes clusters. Each element contains the following attributes:
+     * @return A list of matched Kubernetes clusters.
      * 
      */
     public List<GetEdgeKubernetesClustersCluster> clusters() {

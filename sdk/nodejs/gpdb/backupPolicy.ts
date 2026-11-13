@@ -144,6 +144,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     declare public readonly backupRetentionPeriod: pulumi.Output<number>;
     /**
      * The instance ID.
+     *
      * > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
@@ -229,6 +230,7 @@ export interface BackupPolicyState {
     backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The instance ID.
+     *
      * > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      */
     dbInstanceId?: pulumi.Input<string | undefined>;
@@ -273,6 +275,7 @@ export interface BackupPolicyArgs {
     backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The instance ID.
+     *
      * > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      */
     dbInstanceId: pulumi.Input<string>;

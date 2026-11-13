@@ -173,6 +173,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - `CTDR_STORAGE`: Log Management Module.
         /// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
         /// - Value: `0` means off, `1` means on
+        /// 
         /// &gt; **NOTE:** Field `PostPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `PostPayModuleSwitchObj` instead.
         /// </summary>
         [Output("postPayModuleSwitch")]
@@ -515,6 +516,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - `CTDR_STORAGE`: Log Management Module.
         /// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
         /// - Value: `0` means off, `1` means on
+        /// 
         /// &gt; **NOTE:** Field `PostPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `PostPayModuleSwitchObj` instead.
         /// </summary>
         [Input("postPayModuleSwitch")]
@@ -819,6 +821,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - `CTDR_STORAGE`: Log Management Module.
         /// - `ANTI_RANSOMWARE`: Anti-Ransomware Management.
         /// - Value: `0` means off, `1` means on
+        /// 
         /// &gt; **NOTE:** Field `PostPayModuleSwitch` has been deprecated from provider version 1.269.0. New field `PostPayModuleSwitchObj` instead.
         /// </summary>
         [Input("postPayModuleSwitch")]

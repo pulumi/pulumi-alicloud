@@ -11466,6 +11466,8 @@ type GetBucketObjectsObject struct {
 	SseKmsKeyId string `pulumi:"sseKmsKeyId"`
 	// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 	StorageClass string `pulumi:"storageClass"`
+	// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+	XOssHashCrc64ecma string `pulumi:"xOssHashCrc64ecma"`
 }
 
 // GetBucketObjectsObjectInput is an input type that accepts GetBucketObjectsObjectArgs and GetBucketObjectsObjectOutput values.
@@ -11508,6 +11510,8 @@ type GetBucketObjectsObjectArgs struct {
 	SseKmsKeyId pulumi.StringInput `pulumi:"sseKmsKeyId"`
 	// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+	XOssHashCrc64ecma pulumi.StringInput `pulumi:"xOssHashCrc64ecma"`
 }
 
 func (GetBucketObjectsObjectArgs) ElementType() reflect.Type {
@@ -11629,6 +11633,11 @@ func (o GetBucketObjectsObjectOutput) SseKmsKeyId() pulumi.StringOutput {
 // Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 func (o GetBucketObjectsObjectOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+func (o GetBucketObjectsObjectOutput) XOssHashCrc64ecma() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.XOssHashCrc64ecma }).(pulumi.StringOutput)
 }
 
 type GetBucketObjectsObjectArrayOutput struct{ *pulumi.OutputState }

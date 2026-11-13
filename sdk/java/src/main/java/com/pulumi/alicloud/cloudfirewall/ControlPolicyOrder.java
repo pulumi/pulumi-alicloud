@@ -117,6 +117,7 @@ public class ControlPolicyOrder extends com.pulumi.resources.CustomResource {
     }
     /**
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * 
      * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
@@ -125,6 +126,7 @@ public class ControlPolicyOrder extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * 
      * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */

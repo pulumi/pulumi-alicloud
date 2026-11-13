@@ -100,7 +100,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Whether to enter the development mode.
+     * Specifies whether to enter development mode. Valid values: `true`, `false`.
      */
     declare public readonly develop: pulumi.Output<string | undefined>;
     /**
@@ -108,19 +108,23 @@ export class Service extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
-     * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      */
     declare public readonly serviceConfig: pulumi.Output<string>;
+    /**
+     * (Available since v2.1.0) Unique Service ID
+     */
+    declare public /*out*/ readonly serviceUid: pulumi.Output<string>;
     /**
      * Service Current Status.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
-     * The tag of the resource.
+     * The custom label.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Workspace id
+     * The workspace ID.
      */
     declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
@@ -141,6 +145,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["develop"] = state?.develop;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["serviceConfig"] = state?.serviceConfig;
+            resourceInputs["serviceUid"] = state?.serviceUid;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["workspaceId"] = state?.workspaceId;
@@ -156,6 +161,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
+            resourceInputs["serviceUid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -171,7 +177,7 @@ export interface ServiceState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Whether to enter the development mode.
+     * Specifies whether to enter development mode. Valid values: `true`, `false`.
      */
     develop?: pulumi.Input<string | undefined>;
     /**
@@ -179,19 +185,23 @@ export interface ServiceState {
      */
     regionId?: pulumi.Input<string | undefined>;
     /**
-     * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      */
     serviceConfig?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v2.1.0) Unique Service ID
+     */
+    serviceUid?: pulumi.Input<string | undefined>;
     /**
      * Service Current Status.
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * The tag of the resource.
+     * The custom label.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Workspace id
+     * The workspace ID.
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }
@@ -201,11 +211,11 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * Whether to enter the development mode.
+     * Specifies whether to enter development mode. Valid values: `true`, `false`.
      */
     develop?: pulumi.Input<string | undefined>;
     /**
-     * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
+     * Service configuration information. Please refer to [Parameters of Model Services](https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services).
      */
     serviceConfig: pulumi.Input<string>;
     /**
@@ -213,11 +223,11 @@ export interface ServiceArgs {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * The tag of the resource.
+     * The custom label.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Workspace id
+     * The workspace ID.
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }

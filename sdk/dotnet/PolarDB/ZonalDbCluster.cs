@@ -221,6 +221,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
+        /// 
         /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
         /// </summary>
         [Output("storageSpace")]
@@ -240,6 +241,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Output("usedTime")]
@@ -383,6 +385,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
+        /// 
         /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
         /// </summary>
         [Input("storageSpace")]
@@ -402,6 +405,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Input("usedTime")]
@@ -555,6 +559,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
+        /// 
         /// &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when PayType are `PrePaid` ,`PostPaid`.
         /// </summary>
         [Input("storageSpace")]
@@ -574,6 +579,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// 
         /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Input("usedTime")]

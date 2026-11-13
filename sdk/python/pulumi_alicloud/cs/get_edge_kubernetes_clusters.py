@@ -54,7 +54,7 @@ class GetEdgeKubernetesClustersResult:
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetEdgeKubernetesClustersClusterResult']:
         """
-        A list of matched Kubernetes clusters. Each element contains the following attributes:
+        A list of matched Kubernetes clusters.
         """
         return pulumi.get(self, "clusters")
 
@@ -138,7 +138,7 @@ def get_edge_kubernetes_clusters(enable_details: Optional[_builtins.bool] = None
     ```
 
 
-    :param _builtins.bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+    :param _builtins.bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `vpc_id`, `security_group_id`, `connections`. See full list in attributes.
     :param Sequence[_builtins.str] ids: Cluster IDs to filter.
     :param _builtins.str name_regex: A regex string to filter results by cluster name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -184,7 +184,7 @@ def get_edge_kubernetes_clusters_output(enable_details: pulumi.Input[Optional[Op
     ```
 
 
-    :param _builtins.bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+    :param _builtins.bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `vpc_id`, `security_group_id`, `connections`. See full list in attributes.
     :param Sequence[_builtins.str] ids: Cluster IDs to filter.
     :param _builtins.str name_regex: A regex string to filter results by cluster name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

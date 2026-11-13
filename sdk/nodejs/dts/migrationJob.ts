@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *         engine: "MySQL",
  *         engineVersion: "8.0",
  *         instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *         instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRanges?.min),
+ *         instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRanges?.[0]?.min)).apply(x =>Number(x)),
  *         instanceChargeType: "Postpaid",
  *         instanceName: std.format({
  *             input: `${name}_%d`,
@@ -221,6 +221,8 @@ export class MigrationJob extends pulumi.CustomResource {
     declare public readonly destPrimaryVswitchId: pulumi.Output<string | undefined>;
     /**
      * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     declare public readonly destSecondaryVswitchId: pulumi.Output<string | undefined>;
     /**
@@ -228,7 +230,7 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly destinationEndpointDatabaseName: pulumi.Output<string | undefined>;
     /**
-     * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+     * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
     declare public readonly destinationEndpointEngineName: pulumi.Output<string>;
     /**
@@ -284,7 +286,7 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly sourceEndpointDatabaseName: pulumi.Output<string | undefined>;
     /**
-     * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+     * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
     declare public readonly sourceEndpointEngineName: pulumi.Output<string>;
     /**
@@ -341,8 +343,6 @@ export class MigrationJob extends pulumi.CustomResource {
     declare public readonly srcSecondaryVswitchId: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-     *
-     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -498,6 +498,8 @@ export interface MigrationJobState {
     destPrimaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     destSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
@@ -505,7 +507,7 @@ export interface MigrationJobState {
      */
     destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+     * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
     destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
@@ -561,7 +563,7 @@ export interface MigrationJobState {
      */
     sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+     * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
     sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
@@ -618,8 +620,6 @@ export interface MigrationJobState {
     srcSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-     *
-     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -654,6 +654,8 @@ export interface MigrationJobArgs {
     destPrimaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     destSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
@@ -661,7 +663,7 @@ export interface MigrationJobArgs {
      */
     destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+     * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
     destinationEndpointEngineName: pulumi.Input<string>;
     /**
@@ -717,7 +719,7 @@ export interface MigrationJobArgs {
      */
     sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+     * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MARIADB`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
     sourceEndpointEngineName: pulumi.Input<string>;
     /**
@@ -774,8 +776,6 @@ export interface MigrationJobArgs {
     srcSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
-     *
-     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     status?: pulumi.Input<string | undefined>;
     /**

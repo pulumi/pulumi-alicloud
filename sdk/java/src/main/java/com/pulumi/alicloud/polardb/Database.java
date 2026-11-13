@@ -138,6 +138,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The language that defines the collation rules in the database.
+     * 
      * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      * 
      */
@@ -146,6 +147,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The language that defines the collation rules in the database.
+     * 
      * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      * 
      */
@@ -154,6 +156,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The language that indicates the character type of the database.
+     * 
      * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      * 
      */
@@ -162,6 +165,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The language that indicates the character type of the database.
+     * 
      * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      * 
      */
