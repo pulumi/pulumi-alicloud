@@ -36,12 +36,12 @@ namespace Pulumi.AliCloud.agentloopContextStore
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{name}-as",
+    ///         AgentSpaceName = $"{name}-as",
     ///     });
     /// 
     ///     var defaultAgentloopContextStore = new AliCloud.AgentloopContextStore.AgentloopContextStore("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         ContextStoreName = "terraform_example_cs",
     ///         ContextType = "experience",
     ///         Config = new AliCloud.agentloopContextStore.Inputs.AgentloopContextStoreConfigArgs
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.agentloopContextStore
         /// (Sensitive) The Api Key of the Context Store. The complete Api Key is only returned at creation time and is never refreshed from the Get API (which only returns a masked value), so it cannot be recovered by `pulumi import`.
         /// </summary>
         [Output("apiKey")]
-        public Output<string> ApiKey { get; private set; } = null!;
+        public Output<string> ApiKeyValue { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Context Store.
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.agentloopContextStore
         /// <summary>
         /// (Sensitive) The Api Key of the Context Store. The complete Api Key is only returned at creation time and is never refreshed from the Get API (which only returns a masked value), so it cannot be recovered by `pulumi import`.
         /// </summary>
-        public Input<string>? ApiKey
+        public Input<string>? ApiKeyValue
         {
             get => _apiKey;
             set

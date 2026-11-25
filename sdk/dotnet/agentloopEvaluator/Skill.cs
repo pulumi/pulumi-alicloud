@@ -34,12 +34,12 @@ namespace Pulumi.AliCloud.agentloopEvaluator
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{name}-as",
+    ///         AgentSpaceName = $"{name}-as",
     ///     });
     /// 
     ///     var defaultAgentloopEvaluator = new AliCloud.AgentloopEvaluator.AgentloopEvaluator("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         Name = "terraform_example_evaluator",
     ///         Type = "AGENT",
     ///         MetricName = "example_metric",

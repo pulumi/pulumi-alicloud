@@ -37,12 +37,12 @@ namespace Pulumi.AliCloud.agentloop
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{name}-as",
+    ///         AgentSpaceName = $"{name}-as",
     ///     });
     /// 
     ///     var defaultDataset = new AliCloud.Agentloop.Dataset("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         DatasetName = "terraform_example_ds1",
     ///         Schema = 
     ///         {
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.agentloop
     /// 
     ///     var default2 = new AliCloud.Agentloop.Dataset("default2", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         DatasetName = "terraform_example_ds2",
     ///         Schema = 
     ///         {
@@ -70,10 +70,10 @@ namespace Pulumi.AliCloud.agentloop
     /// 
     ///     var defaultPipeline = new AliCloud.Agentloop.Pipeline("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         PipelineName = name,
     ///         Description = "terraform-example",
-    ///         Pipeline = new AliCloud.agentloop.Inputs.PipelinePipelineArgs
+    ///         PipelineConfig = new AliCloud.agentloop.Inputs.PipelinePipelineArgs
     ///         {
     ///             Nodes = new[]
     ///             {
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.agentloop
     ///             Type = "dataset",
     ///             Dataset = new AliCloud.agentloop.Inputs.PipelineSinkDatasetArgs
     ///             {
-    ///                 AgentSpace = @default.AgentSpace,
+    ///                 AgentSpace = @default.AgentSpaceName,
     ///                 Dataset = default2.DatasetName,
     ///             },
     ///         },
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.agentloop
         /// The definition of the Pipeline. It can be updated in place. See `Pipeline` below.
         /// </summary>
         [Output("pipeline")]
-        public Output<Outputs.PipelinePipeline> Pipeline { get; private set; } = null!;
+        public Output<Outputs.PipelinePipeline> PipelineConfig { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Pipeline. It must be 3 to 63 characters in length and can contain only lowercase letters, digits, and hyphens (`-`).
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.agentloop
         /// The definition of the Pipeline. It can be updated in place. See `Pipeline` below.
         /// </summary>
         [Input("pipeline", required: true)]
-        public Input<Inputs.PipelinePipelineArgs> Pipeline { get; set; } = null!;
+        public Input<Inputs.PipelinePipelineArgs> PipelineConfig { get; set; } = null!;
 
         /// <summary>
         /// The name of the Pipeline. It must be 3 to 63 characters in length and can contain only lowercase letters, digits, and hyphens (`-`).
@@ -325,7 +325,7 @@ namespace Pulumi.AliCloud.agentloop
         /// The definition of the Pipeline. It can be updated in place. See `Pipeline` below.
         /// </summary>
         [Input("pipeline")]
-        public Input<Inputs.PipelinePipelineGetArgs>? Pipeline { get; set; }
+        public Input<Inputs.PipelinePipelineGetArgs>? PipelineConfig { get; set; }
 
         /// <summary>
         /// The name of the Pipeline. It must be 3 to 63 characters in length and can contain only lowercase letters, digits, and hyphens (`-`).

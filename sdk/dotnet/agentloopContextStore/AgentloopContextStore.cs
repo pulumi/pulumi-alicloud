@@ -34,12 +34,12 @@ namespace Pulumi.AliCloud.agentloopContextStore
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{name}-as",
+    ///         AgentSpaceName = $"{name}-as",
     ///     });
     /// 
     ///     var defaultAgentloopContextStore = new AliCloud.AgentloopContextStore.AgentloopContextStore("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         ContextStoreName = "terraform_example",
     ///         ContextType = "experience",
     ///         Description = "terraform-example",
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.agentloopContextStore
     ///             },
     ///             Source = new AliCloud.agentloopContextStore.Inputs.AgentloopContextStoreConfigSourceArgs
     ///             {
-    ///                 AgentSpace = @default.AgentSpace,
+    ///                 AgentSpace = @default.AgentSpaceName,
     ///                 StartTime = "2026-01-01T00:00:00Z",
     ///             },
     ///         },

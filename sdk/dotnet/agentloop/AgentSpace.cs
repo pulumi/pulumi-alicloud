@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.agentloop
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = name,
+    ///         AgentSpaceName = name,
     ///         Description = "terraform-example",
     ///     });
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.agentloop
         /// The name of the Agent Space. It must be 2 to 64 characters in length.
         /// </summary>
         [Output("agentSpace")]
-        public Output<string> AgentSpace { get; private set; } = null!;
+        public Output<string> AgentSpaceName { get; private set; } = null!;
 
         /// <summary>
         /// The name of an existing CMS (CloudMonitor) workspace to bind to the Agent Space, used for observability data. If omitted, the backend automatically creates a dedicated CMS workspace (recommended).
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.agentloop
         /// The name of the Agent Space. It must be 2 to 64 characters in length.
         /// </summary>
         [Input("agentSpace", required: true)]
-        public Input<string> AgentSpace { get; set; } = null!;
+        public Input<string> AgentSpaceName { get; set; } = null!;
 
         /// <summary>
         /// The name of an existing CMS (CloudMonitor) workspace to bind to the Agent Space, used for observability data. If omitted, the backend automatically creates a dedicated CMS workspace (recommended).
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.agentloop
         /// The name of the Agent Space. It must be 2 to 64 characters in length.
         /// </summary>
         [Input("agentSpace")]
-        public Input<string>? AgentSpace { get; set; }
+        public Input<string>? AgentSpaceName { get; set; }
 
         /// <summary>
         /// The name of an existing CMS (CloudMonitor) workspace to bind to the Agent Space, used for observability data. If omitted, the backend automatically creates a dedicated CMS workspace (recommended).

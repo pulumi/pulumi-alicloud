@@ -35,12 +35,12 @@ namespace Pulumi.AliCloud.agentloop
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{name}-as",
+    ///         AgentSpaceName = $"{name}-as",
     ///     });
     /// 
     ///     var defaultDataset = new AliCloud.Agentloop.Dataset("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         DatasetName = "terraform_example",
     ///         Description = "terraform-example",
     ///         Schema = 

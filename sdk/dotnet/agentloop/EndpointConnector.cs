@@ -35,12 +35,12 @@ namespace Pulumi.AliCloud.agentloop
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{name}-as",
+    ///         AgentSpaceName = $"{name}-as",
     ///     });
     /// 
     ///     var defaultEndpointConnector = new AliCloud.Agentloop.EndpointConnector("default", new()
     ///     {
-    ///         AgentSpace = @default.AgentSpace,
+    ///         AgentSpace = @default.AgentSpaceName,
     ///         Name = name,
     ///         Type = "model_service",
     ///         Endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1",

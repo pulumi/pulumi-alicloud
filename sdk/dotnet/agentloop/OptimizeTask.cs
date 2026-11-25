@@ -51,12 +51,12 @@ namespace Pulumi.AliCloud.agentloop
     /// 
     ///     var defaultAgentSpace = new AliCloud.Agentloop.AgentSpace("default", new()
     ///     {
-    ///         AgentSpace = $"{myName}-as",
+    ///         AgentSpaceName = $"{myName}-as",
     ///     });
     /// 
     ///     var suggestions = new AliCloud.Agentloop.Dataset("suggestions", new()
     ///     {
-    ///         AgentSpace = defaultAgentSpace.AgentSpace,
+    ///         AgentSpace = defaultAgentSpace.AgentSpaceName,
     ///         DatasetName = $"{myName}_suggestions",
     ///         Description = "OptimizeTask suggestions output",
     ///         Schema = 
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.agentloop
     /// 
     ///     var defaultOptimizeTask = new AliCloud.Agentloop.OptimizeTask("default", new()
     ///     {
-    ///         AgentSpace = defaultAgentSpace.AgentSpace,
+    ///         AgentSpace = defaultAgentSpace.AgentSpaceName,
     ///         OptimizeTaskName = myName,
     ///         Type = "EfficiencyAnalysis",
     ///         Status = "Enabled",
