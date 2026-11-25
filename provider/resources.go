@@ -413,6 +413,24 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_msc_sub_subscription": {Tok: resource(alicloudMod, "MscSubSubscription")},
 			"alicloud_msc_sub_webhook":      {Tok: resource(alicloudMod, "MscSubWebhook")},
 
+			// AgentLoop
+			// The upstream argument names match the resource names, which is invalid in C# (CS0542).
+			"alicloud_agentloop_agent_space": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"agent_space": {CSharpName: "AgentSpaceName"},
+				},
+			},
+			"alicloud_agentloop_pipeline": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"pipeline": {CSharpName: "PipelineConfig"},
+				},
+			},
+			"alicloud_agentloop_context_store_api_key": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"api_key": {CSharpName: "ApiKeyValue"},
+				},
+			},
+
 			// ActionTrail
 			"alicloud_actiontrail_trail":                {Tok: resource(actionTrailMod, "Trail")},
 			"alicloud_actiontrail_history_delivery_job": {Tok: resource(actionTrailMod, "HistoryDeliveryJob")},
